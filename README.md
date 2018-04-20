@@ -38,6 +38,6 @@ Initial release.
 Be sure to clear the Dalvik cache for OPLongshot after installing this. (If unsure, just clear the whole cache.)
 
 ## Links
-[Module XDA Forum Thread](https://forum.xda-developers.com/apps/magisk/module-url-here "Module official XDA thread")
+[Module XDA Forum Thread](https://forum.xda-developers.com/apps/magisk/module-png-patch-op5t-oplongshot-t3780355)
 
 [Latest stable Magisk](http://www.tiny.cc/latestmagisk)
