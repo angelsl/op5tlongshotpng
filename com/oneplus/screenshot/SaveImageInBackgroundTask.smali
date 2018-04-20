@@ -19,7 +19,7 @@
 # static fields
 .field private static final SCREENSHOTS_DIR_NAME:Ljava/lang/String; = "Screenshots"
 
-.field private static final SCREENSHOT_FILE_NAME_TEMPLATE:Ljava/lang/String; = "Screenshot_%s.jpg"
+.field private static final SCREENSHOT_FILE_NAME_TEMPLATE:Ljava/lang/String; = "Screenshot_%s.png"
 
 .field private static final SCREENSHOT_SHARE_SUBJECT_TEMPLATE:Ljava/lang/String; = "Screenshot (%s)"
 
@@ -160,7 +160,7 @@
 
     .line 172
     .local v8, "imageDate":Ljava/lang/String;
-    const-string/jumbo v19, "Screenshot_%s.jpg"
+    const-string/jumbo v19, "Screenshot_%s.png"
 
     const/16 v20, 0x1
 
@@ -1130,7 +1130,7 @@
 
     .line 311
     .local v13, "out":Ljava/io/OutputStream;
-    sget-object v23, Landroid/graphics/Bitmap$CompressFormat;->JPEG:Landroid/graphics/Bitmap$CompressFormat;
+    sget-object v23, Landroid/graphics/Bitmap$CompressFormat;->PNG:Landroid/graphics/Bitmap$CompressFormat;
 
     const/16 v24, 0x64
 
@@ -1227,7 +1227,7 @@
     .line 324
     const-string/jumbo v23, "mime_type"
 
-    const-string/jumbo v24, "image/jpeg"
+    const-string/jumbo v24, "image/png"
 
     invoke-virtual/range {v22 .. v24}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
@@ -1353,7 +1353,7 @@
 
     .line 334
     .local v18, "sharingIntent":Landroid/content/Intent;
-    const-string/jumbo v23, "image/jpeg"
+    const-string/jumbo v23, "image/png"
 
     move-object/from16 v0, v18
 
@@ -1904,7 +1904,7 @@
 
     iget-object v5, v5, Lcom/oneplus/screenshot/SaveImageInBackgroundData;->imageUri:Landroid/net/Uri;
 
-    const-string/jumbo v6, "image/jpeg"
+    const-string/jumbo v6, "image/png"
 
     invoke-virtual {v1, v5, v6}, Landroid/content/Intent;->setDataAndType(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/Intent;
 
