@@ -430,7 +430,7 @@
     .line 94
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsShotState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
-    const v1, 0x7f0c000d
+    const v1, 0x7f0c000e
 
     const v2, 0x7f030003
 

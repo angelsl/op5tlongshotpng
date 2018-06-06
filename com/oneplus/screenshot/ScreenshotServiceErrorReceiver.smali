@@ -34,7 +34,7 @@
 
     .line 38
     .local v0, "nm":Landroid/app/NotificationManager;
-    const v1, 0x7f0c001c
+    const v1, 0x7f0c001d
 
     .line 37
     invoke-static {p1, v0, v1}, Lcom/oneplus/screenshot/GlobalScreenshot;->notifyScreenshotError(Landroid/content/Context;Landroid/app/NotificationManager;I)V

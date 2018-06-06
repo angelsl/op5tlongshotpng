@@ -36,7 +36,7 @@
 
     iget-object v1, p0, Lcom/oneplus/screenshot/service/GlobalNotification$SaveError;->mResources:Landroid/content/res/Resources;
 
-    const v2, 0x7f0c0018
+    const v2, 0x7f0c0019
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -49,7 +49,7 @@
 
     iget-object v1, p0, Lcom/oneplus/screenshot/service/GlobalNotification$SaveError;->mResources:Landroid/content/res/Resources;
 
-    const v2, 0x7f0c0019
+    const v2, 0x7f0c001a
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -116,7 +116,7 @@
     .line 167
     iget-object v0, p0, Lcom/oneplus/screenshot/service/GlobalNotification$SaveError;->mResources:Landroid/content/res/Resources;
 
-    const v1, 0x7f0c0018
+    const v1, 0x7f0c0019
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 

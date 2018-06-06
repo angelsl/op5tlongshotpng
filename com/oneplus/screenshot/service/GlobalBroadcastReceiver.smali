@@ -118,7 +118,7 @@
 
     invoke-interface {v3}, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver$BroadcastListener;->onCloseSystemDialogs()V
 
-    .line 62
+    .line 64
     .end local v0    # "action":Ljava/lang/String;
     .end local v1    # "reason":Ljava/lang/String;
     :cond_1d
@@ -184,10 +184,10 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 58
+    .line 59
     iget-object v3, p0, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;->mListener:Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver$BroadcastListener;
 
-    invoke-interface {v3}, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver$BroadcastListener;->onCloseSystemDialogs()V
+    invoke-interface {v3}, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver$BroadcastListener;->onRinging()V
 
     goto :goto_1d
 .end method
@@ -196,11 +196,11 @@
     .registers 2
 
     .prologue
-    .line 68
+    .line 70
     iget-object v0, p0, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;->mContext:Landroid/content/Context;
 
     invoke-virtual {v0, p0}, Landroid/content/Context;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
 
-    .line 69
+    .line 71
     return-void
 .end method

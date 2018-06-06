@@ -14,6 +14,10 @@
 .end annotation
 
 
+# static fields
+.field public static final CALL_RINGING:I = 0x3e8
+
+
 # virtual methods
-.method public abstract onDismiss()V
+.method public abstract onDismiss(I)V
 .end method

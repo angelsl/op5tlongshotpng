@@ -172,7 +172,7 @@
     .line 124
     iget-object v0, p0, Lcom/oneplus/screenshot/service/GlobalNotification$Builder;->mResources:Landroid/content/res/Resources;
 
-    const v1, 0x7f0c0013
+    const v1, 0x7f0c0014
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 

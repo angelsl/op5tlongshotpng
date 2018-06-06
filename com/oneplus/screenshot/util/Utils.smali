@@ -1260,7 +1260,7 @@
     .line 119
     .local v18, "outFile":Ljava/io/OutputStream;
     :try_start_46
-    sget-object v24, Landroid/graphics/Bitmap$CompressFormat;->PNG:Landroid/graphics/Bitmap$CompressFormat;
+    sget-object v24, Landroid/graphics/Bitmap$CompressFormat;->JPEG:Landroid/graphics/Bitmap$CompressFormat;
 
     .end local v17    # "outFile":Ljava/io/OutputStream;
     const/16 v25, 0x64
@@ -1346,7 +1346,7 @@
     .line 127
     const-string/jumbo v24, "mime_type"
 
-    const-string/jumbo v25, "image/png"
+    const-string/jumbo v25, "image/jpeg"
 
     invoke-virtual/range {v23 .. v25}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 

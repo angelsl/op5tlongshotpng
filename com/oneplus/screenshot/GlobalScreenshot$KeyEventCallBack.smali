@@ -24,7 +24,7 @@
     .param p1, "this$0"    # Lcom/oneplus/screenshot/GlobalScreenshot;
 
     .prologue
-    .line 1577
+    .line 1584
     iput-object p1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$KeyEventCallBack;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -39,13 +39,13 @@
     .param p1, "event"    # Landroid/view/KeyEvent;
 
     .prologue
-    .line 1579
+    .line 1586
     if-nez p1, :cond_3
 
-    .line 1580
+    .line 1587
     return-void
 
-    .line 1583
+    .line 1590
     :cond_3
     invoke-virtual {p1}, Landroid/view/KeyEvent;->getKeyCode()I
 
@@ -55,12 +55,12 @@
 
     if-ne v0, v1, :cond_f
 
-    .line 1584
+    .line 1591
     iget-object v0, p0, Lcom/oneplus/screenshot/GlobalScreenshot$KeyEventCallBack;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
     invoke-static {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->-wrap2(Lcom/oneplus/screenshot/GlobalScreenshot;)V
 
-    .line 1586
+    .line 1593
     :cond_f
     return-void
 .end method

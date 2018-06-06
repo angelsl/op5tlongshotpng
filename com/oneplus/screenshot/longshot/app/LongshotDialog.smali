@@ -78,52 +78,52 @@
     .registers 5
 
     .prologue
-    .line 137
+    .line 147
     const v0, 0x1830500
 
-    .line 143
+    .line 153
     .local v0, "flags":I
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->getWindow()Landroid/view/Window;
 
     move-result-object v2
 
-    .line 144
+    .line 154
     .local v2, "window":Landroid/view/Window;
     invoke-virtual {v2}, Landroid/view/Window;->getAttributes()Landroid/view/WindowManager$LayoutParams;
 
     move-result-object v1
 
-    .line 145
+    .line 155
     .local v1, "lp":Landroid/view/WindowManager$LayoutParams;
     const/16 v3, 0x33
 
     iput v3, v1, Landroid/view/WindowManager$LayoutParams;->gravity:I
 
-    .line 146
+    .line 156
     const/4 v3, -0x3
 
     iput v3, v1, Landroid/view/WindowManager$LayoutParams;->format:I
 
-    .line 147
+    .line 157
     const/16 v3, 0x7f4
 
     iput v3, v1, Landroid/view/WindowManager$LayoutParams;->type:I
 
-    .line 137
+    .line 147
     const v3, 0x1830500
 
-    .line 148
+    .line 158
     iput v3, v1, Landroid/view/WindowManager$LayoutParams;->flags:I
 
-    .line 149
+    .line 159
     const/4 v3, 0x0
 
     iput v3, v1, Landroid/view/WindowManager$LayoutParams;->windowAnimations:I
 
-    .line 150
+    .line 160
     invoke-virtual {v2, v1}, Landroid/view/Window;->setAttributes(Landroid/view/WindowManager$LayoutParams;)V
 
-    .line 151
+    .line 161
     return-void
 .end method
 
@@ -146,15 +146,17 @@
     .line 106
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mOnDismissListener:Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;
 
-    if-eqz v0, :cond_15
+    if-eqz v0, :cond_16
 
     .line 107
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mOnDismissListener:Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;
 
-    invoke-interface {v0}, Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;->onDismiss()V
+    const/4 v1, 0x0
+
+    invoke-interface {v0, v1}, Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;->onDismiss(I)V
 
     .line 109
-    :cond_15
+    :cond_16
     return-void
 .end method
 
@@ -223,6 +225,34 @@
     return-void
 .end method
 
+.method public onRinging()V
+    .registers 3
+
+    .prologue
+    .line 119
+    const-string/jumbo v0, "Longshot.Dialog"
+
+    const-string/jumbo v1, "onRinging"
+
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 120
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mOnDismissListener:Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;
+
+    if-eqz v0, :cond_14
+
+    .line 121
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mOnDismissListener:Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;
+
+    const/16 v1, 0x3e8
+
+    invoke-interface {v0, v1}, Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;->onDismiss(I)V
+
+    .line 123
+    :cond_14
+    return-void
+.end method
+
 .method protected onStop()V
     .registers 4
 
@@ -261,20 +291,20 @@
     .param p1, "layoutRes"    # I
 
     .prologue
-    .line 120
+    .line 130
     iget v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mContentLayout:I
 
     if-eq v0, p1, :cond_9
 
-    .line 121
+    .line 131
     iput p1, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mContentLayout:I
 
-    .line 122
+    .line 132
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mContentChanged:Z
 
-    .line 124
+    .line 134
     :cond_9
     return-void
 .end method
@@ -307,10 +337,10 @@
     .param p1, "listener"    # Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;
 
     .prologue
-    .line 131
+    .line 141
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mOnDismissListener:Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;
 
-    .line 132
+    .line 142
     return-void
 .end method
 
@@ -319,10 +349,10 @@
     .param p1, "listener"    # Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnShowListener;
 
     .prologue
-    .line 127
+    .line 137
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mOnShowListener:Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnShowListener;
 
-    .line 128
+    .line 138
     return-void
 .end method
 

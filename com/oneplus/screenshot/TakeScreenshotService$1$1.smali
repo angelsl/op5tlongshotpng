@@ -34,7 +34,7 @@
 
     iput-object p2, p0, Lcom/oneplus/screenshot/TakeScreenshotService$1$1;->val$callback:Landroid/os/Messenger;
 
-    .line 52
+    .line 55
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 1
@@ -49,10 +49,10 @@
     .prologue
     const/4 v7, 0x0
 
-    .line 56
+    .line 59
     const/4 v2, 0x1
 
-    .line 57
+    .line 60
     .local v2, "what":I
     invoke-static {}, Lcom/oneplus/screenshot/TakeScreenshotService;->-get0()Lcom/oneplus/screenshot/GlobalScreenshot;
 
@@ -70,23 +70,23 @@
 
     if-eqz v3, :cond_26
 
-    .line 58
+    .line 61
     const/4 v2, 0x2
 
-    .line 59
+    .line 62
     const-string/jumbo v3, "Longshot.TakeScreenshotService"
 
     const-string/jumbo v4, "send 2 back"
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 65
+    .line 68
     :goto_1c
     invoke-static {v7, v2}, Landroid/os/Message;->obtain(Landroid/os/Handler;I)Landroid/os/Message;
 
     move-result-object v1
 
-    .line 69
+    .line 72
     .local v1, "reply":Landroid/os/Message;
     :try_start_20
     iget-object v3, p0, Lcom/oneplus/screenshot/TakeScreenshotService$1$1;->val$callback:Landroid/os/Messenger;
@@ -95,11 +95,11 @@
     :try_end_25
     .catch Landroid/os/RemoteException; {:try_start_20 .. :try_end_25} :catch_36
 
-    .line 72
+    .line 75
     :goto_25
     return-void
 
-    .line 62
+    .line 65
     .end local v1    # "reply":Landroid/os/Message;
     :cond_26
     iget-object v3, p0, Lcom/oneplus/screenshot/TakeScreenshotService$1$1;->this$1:Lcom/oneplus/screenshot/TakeScreenshotService$1;
@@ -116,7 +116,7 @@
 
     goto :goto_1c
 
-    .line 70
+    .line 73
     .restart local v1    # "reply":Landroid/os/Message;
     :catch_36
     move-exception v0

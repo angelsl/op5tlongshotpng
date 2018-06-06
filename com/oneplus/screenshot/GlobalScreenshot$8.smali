@@ -30,7 +30,7 @@
     .line 1
     iput-object p1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$8;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .line 1161
+    .line 1167
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 1
@@ -47,7 +47,7 @@
 
     const/4 v2, 0x1
 
-    .line 1165
+    .line 1171
     iget-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$8;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
     invoke-static {v1}, Lcom/oneplus/screenshot/GlobalScreenshot;->-get10(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/graphics/Bitmap;
@@ -56,17 +56,17 @@
 
     if-nez v1, :cond_14
 
-    .line 1166
+    .line 1172
     const-string/jumbo v1, "Longshot.GlobalScreenshot"
 
     const-string/jumbo v2, "mScreenBitmap is null"
 
     invoke-static {v1, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1167
+    .line 1173
     return-void
 
-    .line 1174
+    .line 1180
     :cond_14
     iget-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$8;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
@@ -78,7 +78,7 @@
 
     move-result-object v0
 
-    .line 1175
+    .line 1181
     .local v0, "cr":Landroid/content/ContentResolver;
     const-string/jumbo v1, "oem_screenshot_sound_enable"
 
@@ -88,7 +88,7 @@
 
     if-ne v1, v2, :cond_31
 
-    .line 1176
+    .line 1182
     iget-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$8;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
     invoke-static {v1}, Lcom/oneplus/screenshot/GlobalScreenshot;->-get2(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/media/MediaActionSound;
@@ -99,7 +99,7 @@
 
     invoke-virtual {v1, v2}, Landroid/media/MediaActionSound;->play(I)V
 
-    .line 1180
+    .line 1186
     :cond_31
     iget-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$8;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
@@ -111,7 +111,7 @@
 
     invoke-virtual {v1, v2, v3}, Landroid/widget/ImageView;->setLayerType(ILandroid/graphics/Paint;)V
 
-    .line 1181
+    .line 1187
     iget-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$8;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
     invoke-static {v1}, Lcom/oneplus/screenshot/GlobalScreenshot;->-get15(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageView;
@@ -120,7 +120,7 @@
 
     invoke-virtual {v1}, Landroid/widget/ImageView;->buildLayer()V
 
-    .line 1182
+    .line 1188
     iget-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$8;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
     invoke-static {v1}, Lcom/oneplus/screenshot/GlobalScreenshot;->-get11(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/animation/AnimatorSet;
@@ -129,6 +129,6 @@
 
     invoke-virtual {v1}, Landroid/animation/AnimatorSet;->start()V
 
-    .line 1183
+    .line 1189
     return-void
 .end method

@@ -433,6 +433,8 @@
 
 .field private static mAppTrackers:Lnet/oneplus/odm/insight/tracker/AppTracker;
 
+.field public static mHeaderOffset:I
+
 .field public static mNoFooter:Z
 
 .field private static mToast:Landroid/widget/Toast;
@@ -3852,34 +3854,37 @@
     .line 277
     sput-boolean v5, Lcom/oneplus/screenshot/longshot/util/Configs;->mNoFooter:Z
 
-    .line 282
+    .line 279
+    sput v5, Lcom/oneplus/screenshot/longshot/util/Configs;->mHeaderOffset:I
+
+    .line 285
     const/4 v0, 0x0
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
-    .line 287
+    .line 290
     const/4 v0, 0x0
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->gaInstance:Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;
 
-    .line 309
+    .line 312
     const-string/jumbo v0, ""
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->IMEI_NUMBER:Ljava/lang/String;
 
-    .line 310
+    .line 313
     sput v6, Lcom/oneplus/screenshot/longshot/util/Configs;->RLEASE_TYPE_MP:I
 
-    .line 311
+    .line 314
     sput v7, Lcom/oneplus/screenshot/longshot/util/Configs;->RLEASE_TYPE_OPEN_BETA:I
 
-    .line 312
+    .line 315
     sput v8, Lcom/oneplus/screenshot/longshot/util/Configs;->RLEASE_TYPE_CLOSE_BETA:I
 
-    .line 314
+    .line 317
     sput-boolean v5, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_CLOSE_BETA:Z
 
-    .line 318
+    .line 321
     new-array v0, v6, [I
 
     aput v9, v0, v5
@@ -3904,28 +3909,28 @@
 
     const/4 v0, 0x0
 
-    .line 300
+    .line 303
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
-    .line 292
+    .line 295
     iput-object v1, p0, Lcom/oneplus/screenshot/longshot/util/Configs;->mArray:[Ljava/lang/String;
 
-    .line 293
+    .line 296
     iput-object v1, p0, Lcom/oneplus/screenshot/longshot/util/Configs;->mType:Ljava/lang/String;
 
-    .line 294
+    .line 297
     iput v0, p0, Lcom/oneplus/screenshot/longshot/util/Configs;->mResID:I
 
-    .line 295
+    .line 298
     iput v0, p0, Lcom/oneplus/screenshot/longshot/util/Configs;->mValue:I
 
-    .line 301
+    .line 304
     iput-object p3, p0, Lcom/oneplus/screenshot/longshot/util/Configs;->mType:Ljava/lang/String;
 
-    .line 302
+    .line 305
     iput p4, p0, Lcom/oneplus/screenshot/longshot/util/Configs;->mResID:I
 
-    .line 303
+    .line 306
     return-void
 .end method
 
@@ -3935,7 +3940,7 @@
     .param p1, "context"    # Landroid/content/Context;
 
     .prologue
-    .line 713
+    .line 716
     sget-object v2, Lcom/oneplus/screenshot/longshot/util/Configs;->mView:Landroid/view/View;
 
     if-eqz v2, :cond_34
@@ -3944,7 +3949,7 @@
 
     if-eqz v2, :cond_34
 
-    .line 714
+    .line 717
     const-string/jumbo v2, "Longshot.Configs"
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -3967,7 +3972,7 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 715
+    .line 718
     const-string/jumbo v2, "window"
 
     invoke-virtual {p1, v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
@@ -3976,19 +3981,19 @@
 
     check-cast v1, Landroid/view/WindowManager;
 
-    .line 716
+    .line 719
     .local v1, "wm":Landroid/view/WindowManager;
     invoke-static {p0}, Lcom/oneplus/screenshot/longshot/util/Configs;->getNotifyWindowLayoutParams(Z)Landroid/view/WindowManager$LayoutParams;
 
     move-result-object v0
 
-    .line 717
+    .line 720
     .local v0, "lp":Landroid/view/WindowManager$LayoutParams;
     sget-object v2, Lcom/oneplus/screenshot/longshot/util/Configs;->mView:Landroid/view/View;
 
     invoke-interface {v1, v2, v0}, Landroid/view/WindowManager;->updateViewLayout(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 719
+    .line 722
     .end local v0    # "lp":Landroid/view/WindowManager$LayoutParams;
     .end local v1    # "wm":Landroid/view/WindowManager;
     :cond_34
@@ -4002,7 +4007,7 @@
     .prologue
     const/4 v2, 0x1
 
-    .line 637
+    .line 640
     invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v1
@@ -4011,7 +4016,7 @@
 
     move-result-object v0
 
-    .line 638
+    .line 641
     .local v0, "config":Landroid/content/res/Configuration;
     invoke-virtual {v0}, Landroid/content/res/Configuration;->getLayoutDirection()I
 
@@ -4019,10 +4024,10 @@
 
     if-ne v1, v2, :cond_10
 
-    .line 639
+    .line 642
     return v2
 
-    .line 641
+    .line 644
     :cond_10
     const/4 v1, 0x0
 
@@ -4033,10 +4038,10 @@
     .registers 3
 
     .prologue
-    .line 545
+    .line 548
     const/4 v0, 0x2
 
-    .line 547
+    .line 550
     .local v0, "level":I
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
@@ -4050,15 +4055,15 @@
 
     if-eqz v1, :cond_f
 
-    .line 548
+    .line 551
     const/4 v0, 0x1
 
-    .line 558
+    .line 561
     :cond_e
     :goto_e
     return v0
 
-    .line 549
+    .line 552
     :cond_f
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
@@ -4072,12 +4077,12 @@
 
     if-eqz v1, :cond_1d
 
-    .line 550
+    .line 553
     const/4 v0, 0x2
 
     goto :goto_e
 
-    .line 551
+    .line 554
     :cond_1d
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
@@ -4091,12 +4096,12 @@
 
     if-eqz v1, :cond_2b
 
-    .line 552
+    .line 555
     const/4 v0, 0x3
 
     goto :goto_e
 
-    .line 553
+    .line 556
     :cond_2b
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
@@ -4110,12 +4115,12 @@
 
     if-eqz v1, :cond_39
 
-    .line 554
+    .line 557
     const/4 v0, 0x4
 
     goto :goto_e
 
-    .line 555
+    .line 558
     :cond_39
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
@@ -4129,7 +4134,7 @@
 
     if-eqz v1, :cond_e
 
-    .line 556
+    .line 559
     const/4 v0, 0x5
 
     goto :goto_e
@@ -4139,7 +4144,7 @@
     .registers 2
 
     .prologue
-    .line 613
+    .line 616
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->LEVEL3_DELAY_ACTIVITY:Lcom/oneplus/screenshot/longshot/util/Configs;
@@ -4152,12 +4157,12 @@
 
     if-eqz v0, :cond_e
 
-    .line 614
+    .line 617
     const/4 v0, 0x3
 
     return v0
 
-    .line 616
+    .line 619
     :cond_e
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
@@ -4171,12 +4176,12 @@
 
     if-eqz v0, :cond_1c
 
-    .line 617
+    .line 620
     const/4 v0, 0x2
 
     return v0
 
-    .line 619
+    .line 622
     :cond_1c
     const/4 v0, 0x1
 
@@ -4187,7 +4192,7 @@
     .registers 2
 
     .prologue
-    .line 536
+    .line 539
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->ERROR_2_ACTIVITY:Lcom/oneplus/screenshot/longshot/util/Configs;
@@ -4200,12 +4205,12 @@
 
     if-eqz v0, :cond_e
 
-    .line 537
+    .line 540
     const/4 v0, 0x2
 
     return v0
 
-    .line 539
+    .line 542
     :cond_e
     const/4 v0, 0x1
 
@@ -4216,10 +4221,10 @@
     .registers 3
 
     .prologue
-    .line 578
+    .line 581
     const/4 v0, 0x1
 
-    .line 580
+    .line 583
     .local v0, "level":I
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
@@ -4233,15 +4238,15 @@
 
     if-eqz v1, :cond_f
 
-    .line 581
+    .line 584
     const/4 v0, 0x2
 
-    .line 590
+    .line 593
     :cond_e
     :goto_e
     return v0
 
-    .line 582
+    .line 585
     :cond_f
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
@@ -4255,12 +4260,12 @@
 
     if-eqz v1, :cond_1d
 
-    .line 583
+    .line 586
     const/4 v0, 0x3
 
     goto :goto_e
 
-    .line 584
+    .line 587
     :cond_1d
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
@@ -4274,12 +4279,12 @@
 
     if-eqz v1, :cond_2b
 
-    .line 585
+    .line 588
     const/4 v0, 0x4
 
     goto :goto_e
 
-    .line 586
+    .line 589
     :cond_2b
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
@@ -4293,7 +4298,7 @@
 
     if-eqz v1, :cond_e
 
-    .line 587
+    .line 590
     const/4 v0, 0x5
 
     goto :goto_e
@@ -4303,7 +4308,7 @@
     .registers 2
 
     .prologue
-    .line 775
+    .line 778
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->Level4_SCROLLBAR_ACTIVITY:Lcom/oneplus/screenshot/longshot/util/Configs;
@@ -4316,12 +4321,12 @@
 
     if-eqz v0, :cond_e
 
-    .line 776
+    .line 779
     const/4 v0, 0x4
 
     return v0
 
-    .line 780
+    .line 783
     :cond_e
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
@@ -4335,12 +4340,12 @@
 
     if-eqz v0, :cond_1c
 
-    .line 781
+    .line 784
     const/4 v0, 0x3
 
     return v0
 
-    .line 784
+    .line 787
     :cond_1c
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
@@ -4354,12 +4359,12 @@
 
     if-eqz v0, :cond_2a
 
-    .line 785
+    .line 788
     const/4 v0, 0x2
 
     return v0
 
-    .line 787
+    .line 790
     :cond_2a
     const/4 v0, 0x1
 
@@ -4370,12 +4375,12 @@
     .registers 1
 
     .prologue
-    .line 594
+    .line 597
     invoke-static {}, Lcom/oneplus/screenshot/longshot/util/Configs;->getLevel()I
 
     move-result v0
 
-    .line 595
+    .line 598
     .local v0, "level":I
     return v0
 .end method
@@ -4384,12 +4389,12 @@
     .registers 3
 
     .prologue
-    .line 599
+    .line 602
     invoke-static {}, Lcom/oneplus/screenshot/longshot/util/Configs;->getLevel()I
 
     move-result v0
 
-    .line 600
+    .line 603
     .local v0, "level":I
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
@@ -4403,15 +4408,15 @@
 
     if-eqz v1, :cond_12
 
-    .line 601
+    .line 604
     const/4 v0, 0x5
 
-    .line 609
+    .line 612
     :cond_11
     :goto_11
     return v0
 
-    .line 602
+    .line 605
     :cond_12
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
@@ -4425,12 +4430,12 @@
 
     if-eqz v1, :cond_20
 
-    .line 603
+    .line 606
     const/4 v0, 0x4
 
     goto :goto_11
 
-    .line 604
+    .line 607
     :cond_20
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
@@ -4444,12 +4449,12 @@
 
     if-eqz v1, :cond_2e
 
-    .line 605
+    .line 608
     const/4 v0, 0x3
 
     goto :goto_11
 
-    .line 606
+    .line 609
     :cond_2e
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
@@ -4463,7 +4468,7 @@
 
     if-eqz v1, :cond_11
 
-    .line 607
+    .line 610
     const/4 v0, 0x2
 
     goto :goto_11
@@ -4473,12 +4478,12 @@
     .registers 3
 
     .prologue
-    .line 562
+    .line 565
     invoke-static {}, Lcom/oneplus/screenshot/longshot/util/Configs;->getLevel()I
 
     move-result v0
 
-    .line 564
+    .line 567
     .local v0, "level":I
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
@@ -4492,15 +4497,15 @@
 
     if-eqz v1, :cond_12
 
-    .line 565
+    .line 568
     const/4 v0, 0x2
 
-    .line 574
+    .line 577
     :cond_11
     :goto_11
     return v0
 
-    .line 566
+    .line 569
     :cond_12
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
@@ -4514,12 +4519,12 @@
 
     if-eqz v1, :cond_20
 
-    .line 567
+    .line 570
     const/4 v0, 0x3
 
     goto :goto_11
 
-    .line 568
+    .line 571
     :cond_20
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
@@ -4533,12 +4538,12 @@
 
     if-eqz v1, :cond_2e
 
-    .line 569
+    .line 572
     const/4 v0, 0x4
 
     goto :goto_11
 
-    .line 570
+    .line 573
     :cond_2e
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
@@ -4552,7 +4557,7 @@
 
     if-eqz v1, :cond_11
 
-    .line 571
+    .line 574
     const/4 v0, 0x5
 
     goto :goto_11
@@ -4562,7 +4567,7 @@
     .registers 2
 
     .prologue
-    .line 623
+    .line 626
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->LIMIT_LEFT_ACTIVITY:Lcom/oneplus/screenshot/longshot/util/Configs;
@@ -4575,14 +4580,14 @@
 
     if-eqz v0, :cond_11
 
-    .line 624
+    .line 627
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->LIMIT_LINE_LEFT:Lcom/oneplus/screenshot/longshot/util/Configs;
 
     iget v0, v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mValue:I
 
     return v0
 
-    .line 626
+    .line 629
     :cond_11
     sget v0, Lcom/oneplus/screenshot/longshot/util/Configs;->LIMIT_LEFT:I
 
@@ -4593,7 +4598,7 @@
     .registers 2
 
     .prologue
-    .line 630
+    .line 633
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->LIMIT_RIGHT_ACTIVITY:Lcom/oneplus/screenshot/longshot/util/Configs;
@@ -4606,14 +4611,14 @@
 
     if-eqz v0, :cond_11
 
-    .line 631
+    .line 634
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->LIMIT_LINE_RIGHT:Lcom/oneplus/screenshot/longshot/util/Configs;
 
     iget v0, v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mValue:I
 
     return v0
 
-    .line 633
+    .line 636
     :cond_11
     sget v0, Lcom/oneplus/screenshot/longshot/util/Configs;->LIMIT_RIGHT:I
 
@@ -4625,28 +4630,28 @@
     .param p0, "block"    # Z
 
     .prologue
-    .line 722
+    .line 725
     new-instance v0, Landroid/view/WindowManager$LayoutParams;
 
-    .line 723
+    .line 726
     const/4 v1, -0x1
 
-    .line 724
+    .line 727
     const/4 v2, -0x2
 
-    .line 725
+    .line 728
     const/16 v3, 0x8ff
 
-    .line 726
+    .line 729
     const v4, 0x1040100
 
-    .line 729
+    .line 732
     const/4 v5, -0x3
 
-    .line 722
+    .line 725
     invoke-direct/range {v0 .. v5}, Landroid/view/WindowManager$LayoutParams;-><init>(IIIII)V
 
-    .line 730
+    .line 733
     .local v0, "lp":Landroid/view/WindowManager$LayoutParams;
     if-eqz p0, :cond_20
 
@@ -4657,20 +4662,20 @@
     :goto_13
     iput v1, v0, Landroid/view/WindowManager$LayoutParams;->flags:I
 
-    .line 731
+    .line 734
     const/16 v1, 0x31
 
     iput v1, v0, Landroid/view/WindowManager$LayoutParams;->gravity:I
 
-    .line 732
+    .line 735
     const-string/jumbo v1, "LongshotNotifyWindow"
 
     invoke-virtual {v0, v1}, Landroid/view/WindowManager$LayoutParams;->setTitle(Ljava/lang/CharSequence;)V
 
-    .line 733
+    .line 736
     return-object v0
 
-    .line 730
+    .line 733
     :cond_20
     iget v1, v0, Landroid/view/WindowManager$LayoutParams;->flags:I
 
@@ -4685,7 +4690,7 @@
     .param p1, "percent"    # Lcom/oneplus/screenshot/longshot/util/Configs;
 
     .prologue
-    .line 422
+    .line 425
     invoke-virtual {p1}, Lcom/oneplus/screenshot/longshot/util/Configs;->getValue()I
 
     move-result v0
@@ -4707,10 +4712,10 @@
     .registers 6
 
     .prologue
-    .line 827
+    .line 830
     const/4 v2, 0x0
 
-    .line 828
+    .line 831
     .local v2, "releaseType":I
     const-string/jumbo v3, "1"
 
@@ -4724,7 +4729,7 @@
 
     move-result v0
 
-    .line 829
+    .line 832
     .local v0, "isAlpha":Z
     const-string/jumbo v3, "1"
 
@@ -4738,16 +4743,16 @@
 
     move-result v1
 
-    .line 832
+    .line 835
     .local v1, "isBeta":Z
     if-eqz v0, :cond_3e
 
     if-eqz v1, :cond_3e
 
-    .line 833
+    .line 836
     sget v2, Lcom/oneplus/screenshot/longshot/util/Configs;->RLEASE_TYPE_CLOSE_BETA:I
 
-    .line 839
+    .line 842
     :cond_23
     :goto_23
     const-string/jumbo v3, "Longshot.Configs"
@@ -4772,21 +4777,21 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 840
+    .line 843
     return v2
 
-    .line 834
+    .line 837
     :cond_3e
     if-nez v0, :cond_45
 
     if-eqz v1, :cond_45
 
-    .line 835
+    .line 838
     sget v2, Lcom/oneplus/screenshot/longshot/util/Configs;->RLEASE_TYPE_OPEN_BETA:I
 
     goto :goto_23
 
-    .line 836
+    .line 839
     :cond_45
     if-nez v0, :cond_23
 
@@ -4794,7 +4799,7 @@
 
     if-eqz v3, :cond_23
 
-    .line 837
+    .line 840
     sget v2, Lcom/oneplus/screenshot/longshot/util/Configs;->RLEASE_TYPE_MP:I
 
     goto :goto_23
@@ -4806,14 +4811,14 @@
     .param p1, "rtl"    # Z
 
     .prologue
-    .line 797
+    .line 800
     sget-object v2, Lcom/oneplus/screenshot/longshot/util/Configs;->LEFT_SIDE_OFFSET_LEVEL_1:Lcom/oneplus/screenshot/longshot/util/Configs;
 
     invoke-virtual {v2}, Lcom/oneplus/screenshot/longshot/util/Configs;->getValue()I
 
     move-result v0
 
-    .line 799
+    .line 802
     .local v0, "offset":I
     if-nez p0, :cond_c
 
@@ -4826,7 +4831,7 @@
 
     move v1, p1
 
-    .line 800
+    .line 803
     :goto_f
     invoke-static {}, Lcom/oneplus/screenshot/longshot/util/Configs;->getLevelSkipEdge()I
 
@@ -4834,7 +4839,7 @@
 
     packed-switch v2, :pswitch_data_74
 
-    .line 819
+    .line 822
     :goto_16
     const-string/jumbo v2, "Longshot.Configs"
 
@@ -4882,10 +4887,10 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 820
+    .line 823
     return v0
 
-    .line 799
+    .line 802
     :cond_4b
     const/4 v1, 0x1
 
@@ -4899,12 +4904,12 @@
     .restart local v1    # "scrollbarSide":Z
     goto :goto_f
 
-    .line 802
+    .line 805
     .end local v1    # "scrollbarSide":Z
     :pswitch_4f
     if-eqz v1, :cond_58
 
-    .line 803
+    .line 806
     sget-object v2, Lcom/oneplus/screenshot/longshot/util/Configs;->LEFT_SIDE_OFFSET_LEVEL_4:Lcom/oneplus/screenshot/longshot/util/Configs;
 
     invoke-virtual {v2}, Lcom/oneplus/screenshot/longshot/util/Configs;->getValue()I
@@ -4913,7 +4918,7 @@
 
     goto :goto_16
 
-    .line 805
+    .line 808
     :cond_58
     sget-object v2, Lcom/oneplus/screenshot/longshot/util/Configs;->LEFT_SIDE_OFFSET_LEVEL_3:Lcom/oneplus/screenshot/longshot/util/Configs;
 
@@ -4923,7 +4928,7 @@
 
     goto :goto_16
 
-    .line 810
+    .line 813
     :pswitch_5f
     sget-object v2, Lcom/oneplus/screenshot/longshot/util/Configs;->LEFT_SIDE_OFFSET_LEVEL_3:Lcom/oneplus/screenshot/longshot/util/Configs;
 
@@ -4933,7 +4938,7 @@
 
     goto :goto_16
 
-    .line 813
+    .line 816
     :pswitch_66
     sget-object v2, Lcom/oneplus/screenshot/longshot/util/Configs;->LEFT_SIDE_OFFSET_LEVEL_2:Lcom/oneplus/screenshot/longshot/util/Configs;
 
@@ -4943,7 +4948,7 @@
 
     goto :goto_16
 
-    .line 816
+    .line 819
     :pswitch_6d
     sget-object v2, Lcom/oneplus/screenshot/longshot/util/Configs;->LEFT_SIDE_OFFSET_LEVEL_1:Lcom/oneplus/screenshot/longshot/util/Configs;
 
@@ -4953,7 +4958,7 @@
 
     goto :goto_16
 
-    .line 800
+    .line 803
     :pswitch_data_74
     .packed-switch 0x1
         :pswitch_6d
@@ -4972,17 +4977,17 @@
 
     const/4 v3, 0x0
 
-    .line 465
+    .line 468
     const-string/jumbo v2, "activity"
 
     invoke-virtual {p0, v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
     move-result-object v0
 
-    .line 464
+    .line 467
     check-cast v0, Landroid/app/ActivityManager;
 
-    .line 467
+    .line 470
     .local v0, "activityManager":Landroid/app/ActivityManager;
     const/4 v2, 0x1
 
@@ -4990,7 +4995,7 @@
 
     move-result-object v1
 
-    .line 469
+    .line 472
     .local v1, "taskInfo":Ljava/util/List;, "Ljava/util/List<Landroid/app/ActivityManager$RunningTaskInfo;>;"
     if-eqz v1, :cond_29
 
@@ -5008,7 +5013,7 @@
 
     if-eqz v2, :cond_29
 
-    .line 470
+    .line 473
     invoke-interface {v1, v4}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     move-result-object v2
@@ -5019,7 +5024,7 @@
 
     return-object v2
 
-    .line 472
+    .line 475
     :cond_29
     return-object v3
 .end method
@@ -5034,12 +5039,12 @@
 
     const/4 v3, 0x0
 
-    .line 518
+    .line 521
     if-eqz p1, :cond_2e
 
     if-eqz p0, :cond_2e
 
-    .line 519
+    .line 522
     array-length v4, p1
 
     move v2, v3
@@ -5049,7 +5054,7 @@
 
     aget-object v0, p1, v2
 
-    .line 520
+    .line 523
     .local v0, "name":Ljava/lang/String;
     const-string/jumbo v5, "/"
 
@@ -5059,7 +5064,7 @@
 
     if-eqz v5, :cond_20
 
-    .line 521
+    .line 524
     invoke-static {v0}, Landroid/content/ComponentName;->unflattenFromString(Ljava/lang/String;)Landroid/content/ComponentName;
 
     move-result-object v5
@@ -5070,16 +5075,16 @@
 
     if-eqz v5, :cond_2b
 
-    .line 522
+    .line 525
     return v6
 
-    .line 525
+    .line 528
     :cond_20
     invoke-virtual {p0}, Landroid/content/ComponentName;->getPackageName()Ljava/lang/String;
 
     move-result-object v1
 
-    .line 526
+    .line 529
     .local v1, "topActivityPackage":Ljava/lang/String;
     invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -5087,17 +5092,17 @@
 
     if-eqz v5, :cond_2b
 
-    .line 527
+    .line 530
     return v6
 
-    .line 519
+    .line 522
     .end local v1    # "topActivityPackage":Ljava/lang/String;
     :cond_2b
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_8
 
-    .line 532
+    .line 535
     .end local v0    # "name":Ljava/lang/String;
     :cond_2e
     return v3
@@ -5107,7 +5112,7 @@
     .registers 2
 
     .prologue
-    .line 844
+    .line 847
     invoke-static {}, Lcom/oneplus/screenshot/longshot/util/Configs;->getReleaseType()I
 
     move-result v0
@@ -5132,10 +5137,10 @@
     .param p0, "context"    # Landroid/content/Context;
 
     .prologue
-    .line 764
+    .line 767
     const/4 v0, 0x0
 
-    .line 765
+    .line 768
     .local v0, "result":Z
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
@@ -5149,12 +5154,12 @@
 
     if-eqz v1, :cond_f
 
-    .line 766
+    .line 769
     const/4 v1, 0x1
 
     return v1
 
-    .line 768
+    .line 771
     :cond_f
     return v0
 .end method
@@ -5165,12 +5170,12 @@
     .param p1, "name"    # Ljava/lang/String;
 
     .prologue
-    .line 506
+    .line 509
     invoke-virtual {p0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
 
     move-result-object v2
 
-    .line 507
+    .line 510
     .local v2, "packageManager":Landroid/content/pm/PackageManager;
     new-instance v1, Landroid/content/Intent;
 
@@ -5178,13 +5183,13 @@
 
     invoke-direct {v1, v3}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 508
+    .line 511
     .local v1, "intent":Landroid/content/Intent;
     const-string/jumbo v3, "android.intent.category.HOME"
 
     invoke-virtual {v1, v3}, Landroid/content/Intent;->addCategory(Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 510
+    .line 513
     const/high16 v3, 0x10000
 
     invoke-virtual {v2, v1, v3}, Landroid/content/pm/PackageManager;->resolveActivity(Landroid/content/Intent;I)Landroid/content/pm/ResolveInfo;
@@ -5195,18 +5200,18 @@
 
     iget-object v0, v3, Landroid/content/pm/ActivityInfo;->packageName:Ljava/lang/String;
 
-    .line 511
+    .line 514
     .local v0, "homeName":Ljava/lang/String;
     if-eqz v0, :cond_23
 
-    .line 512
+    .line 515
     invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
     return v3
 
-    .line 514
+    .line 517
     :cond_23
     const/4 v3, 0x0
 
@@ -5223,19 +5228,19 @@
 
     const/4 v5, 0x0
 
-    .line 430
+    .line 433
     if-nez p1, :cond_5
 
-    .line 431
+    .line 434
     return v5
 
-    .line 434
+    .line 437
     :cond_5
     invoke-virtual {p1}, Landroid/content/ComponentName;->getPackageName()Ljava/lang/String;
 
     move-result-object v4
 
-    .line 435
+    .line 438
     .local v4, "topPackage":Ljava/lang/String;
     invoke-static {p0, v4}, Lcom/oneplus/screenshot/longshot/util/Configs;->isHomeApp(Landroid/content/Context;Ljava/lang/String;)Z
 
@@ -5243,16 +5248,16 @@
 
     if-eqz v6, :cond_10
 
-    .line 436
+    .line 439
     return v9
 
-    .line 439
+    .line 442
     :cond_10
     invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v3
 
-    .line 440
+    .line 443
     .local v3, "res":Landroid/content/res/Resources;
     const v6, 0x7f080001
 
@@ -5260,11 +5265,11 @@
 
     move-result-object v0
 
-    .line 442
+    .line 445
     .local v0, "blackList":[Ljava/lang/String;
     if-eqz v0, :cond_2d
 
-    .line 443
+    .line 446
     array-length v7, v0
 
     move v6, v5
@@ -5274,7 +5279,7 @@
 
     aget-object v2, v0, v6
 
-    .line 444
+    .line 447
     .local v2, "name":Ljava/lang/String;
     invoke-virtual {v4, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -5282,16 +5287,16 @@
 
     if-eqz v8, :cond_2a
 
-    .line 445
+    .line 448
     return v9
 
-    .line 443
+    .line 446
     :cond_2a
     add-int/lit8 v6, v6, 0x1
 
     goto :goto_1f
 
-    .line 450
+    .line 453
     .end local v2    # "name":Ljava/lang/String;
     :cond_2d
     const/high16 v6, 0x7f080000
@@ -5300,7 +5305,7 @@
 
     move-result-object v1
 
-    .line 452
+    .line 455
     .local v1, "blackListW":[Ljava/lang/String;
     if-eqz v1, :cond_4a
 
@@ -5308,7 +5313,7 @@
 
     if-eqz v6, :cond_4a
 
-    .line 453
+    .line 456
     array-length v6, v1
 
     :goto_3a
@@ -5316,7 +5321,7 @@
 
     aget-object v2, v1, v5
 
-    .line 454
+    .line 457
     .restart local v2    # "name":Ljava/lang/String;
     sget-object v7, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopFocusWindow:Ljava/lang/String;
 
@@ -5326,16 +5331,16 @@
 
     if-eqz v7, :cond_47
 
-    .line 455
+    .line 458
     return v9
 
-    .line 453
+    .line 456
     :cond_47
     add-int/lit8 v5, v5, 0x1
 
     goto :goto_3a
 
-    .line 460
+    .line 463
     .end local v2    # "name":Ljava/lang/String;
     :cond_4a
     sget-object v5, Lcom/oneplus/screenshot/longshot/util/Configs;->BLACK_LIST_ACTIVITY:Lcom/oneplus/screenshot/longshot/util/Configs;
@@ -5356,12 +5361,12 @@
     .prologue
     const/4 v4, 0x0
 
-    .line 322
+    .line 325
     invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v1
 
-    .line 323
+    .line 326
     .local v1, "res":Landroid/content/res/Resources;
     invoke-static {}, Lcom/oneplus/screenshot/longshot/util/Configs;->values()[Lcom/oneplus/screenshot/longshot/util/Configs;
 
@@ -5376,7 +5381,7 @@
 
     aget-object v0, v6, v5
 
-    .line 324
+    .line 327
     .local v0, "config":Lcom/oneplus/screenshot/longshot/util/Configs;
     iget-object v3, v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mType:Ljava/lang/String;
 
@@ -5388,7 +5393,7 @@
 
     if-eqz v3, :cond_4a
 
-    .line 325
+    .line 328
     iget v3, v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mResID:I
 
     invoke-virtual {v1, v3}, Landroid/content/res/Resources;->getInteger(I)I
@@ -5397,7 +5402,7 @@
 
     iput v3, v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mValue:I
 
-    .line 327
+    .line 330
     const-string/jumbo v3, "Longshot.Configs"
 
     new-instance v8, Ljava/lang/StringBuilder;
@@ -5430,7 +5435,7 @@
 
     invoke-static {v3, v8}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 323
+    .line 326
     :cond_46
     :goto_46
     add-int/lit8 v3, v5, 0x1
@@ -5439,7 +5444,7 @@
 
     goto :goto_b
 
-    .line 330
+    .line 333
     :cond_4a
     iget-object v3, v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mType:Ljava/lang/String;
 
@@ -5451,7 +5456,7 @@
 
     if-eqz v3, :cond_82
 
-    .line 331
+    .line 334
     iget v3, v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mResID:I
 
     invoke-virtual {v1, v3}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
@@ -5460,7 +5465,7 @@
 
     iput v3, v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mValue:I
 
-    .line 333
+    .line 336
     const-string/jumbo v3, "Longshot.Configs"
 
     new-instance v8, Ljava/lang/StringBuilder;
@@ -5495,7 +5500,7 @@
 
     goto :goto_46
 
-    .line 336
+    .line 339
     :cond_82
     iget-object v3, v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mType:Ljava/lang/String;
 
@@ -5507,7 +5512,7 @@
 
     if-eqz v3, :cond_46
 
-    .line 337
+    .line 340
     iget v3, v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mResID:I
 
     invoke-virtual {v1, v3}, Landroid/content/res/Resources;->getStringArray(I)[Ljava/lang/String;
@@ -5516,7 +5521,7 @@
 
     iput-object v3, v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mArray:[Ljava/lang/String;
 
-    .line 338
+    .line 341
     iget-object v8, v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mArray:[Ljava/lang/String;
 
     array-length v9, v8
@@ -5528,7 +5533,7 @@
 
     aget-object v2, v8, v3
 
-    .line 339
+    .line 342
     .local v2, "s":Ljava/lang/String;
     const-string/jumbo v10, "Longshot.Configs"
 
@@ -5552,12 +5557,12 @@
 
     invoke-static {v10, v11}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 338
+    .line 341
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_99
 
-    .line 346
+    .line 349
     .end local v0    # "config":Lcom/oneplus/screenshot/longshot/util/Configs;
     .end local v2    # "s":Ljava/lang/String;
     :cond_ba
@@ -5567,14 +5572,14 @@
 
     invoke-static {v3, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 348
+    .line 351
     invoke-static {p0}, Lcom/oneplus/screenshot/longshot/util/Configs;->getTopActivity(Landroid/content/Context;)Landroid/content/ComponentName;
 
     move-result-object v3
 
     sput-object v3, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
-    .line 349
+    .line 352
     const-string/jumbo v3, "Longshot.Configs"
 
     new-instance v5, Ljava/lang/StringBuilder;
@@ -5599,10 +5604,10 @@
 
     invoke-static {v3, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 352
+    .line 355
     sput-boolean v4, Lcom/oneplus/screenshot/longshot/util/Configs;->STOP_BY_USER:Z
 
-    .line 353
+    .line 356
     sget-object v3, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
     invoke-static {p0, v3}, Lcom/oneplus/screenshot/longshot/util/Configs;->isUnsupported(Landroid/content/Context;Landroid/content/ComponentName;)Z
@@ -5611,7 +5616,7 @@
 
     sput-boolean v3, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_UNSUPPORTED:Z
 
-    .line 354
+    .line 357
     sget-object v3, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
     sget-object v4, Lcom/oneplus/screenshot/longshot/util/Configs;->STRICT_LIST_ACTIVITY:Lcom/oneplus/screenshot/longshot/util/Configs;
@@ -5624,7 +5629,7 @@
 
     sput-boolean v3, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_STRICT_LIST:Z
 
-    .line 355
+    .line 358
     sget-object v3, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
     sget-object v4, Lcom/oneplus/screenshot/longshot/util/Configs;->SMALL_LIST_ACTIVITY:Lcom/oneplus/screenshot/longshot/util/Configs;
@@ -5637,7 +5642,7 @@
 
     sput-boolean v3, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_SMALL_LIST:Z
 
-    .line 356
+    .line 359
     sget-object v3, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
     sget-object v4, Lcom/oneplus/screenshot/longshot/util/Configs;->LOWER_LIST_ACTIVITY:Lcom/oneplus/screenshot/longshot/util/Configs;
@@ -5650,7 +5655,7 @@
 
     sput-boolean v3, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_LOWER_LIST:Z
 
-    .line 358
+    .line 361
     sget-object v3, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
     sget-object v4, Lcom/oneplus/screenshot/longshot/util/Configs;->HIGHER_LIST_ACTIVITY:Lcom/oneplus/screenshot/longshot/util/Configs;
@@ -5663,7 +5668,7 @@
 
     sput-boolean v3, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_HIGHER_LIST:Z
 
-    .line 360
+    .line 363
     sget-object v3, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
     sget-object v4, Lcom/oneplus/screenshot/longshot/util/Configs;->PAGE_LIST_ACTIVITY:Lcom/oneplus/screenshot/longshot/util/Configs;
@@ -5676,7 +5681,7 @@
 
     sput-boolean v3, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_PAGE_LIST:Z
 
-    .line 361
+    .line 364
     sget-object v3, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
     sget-object v4, Lcom/oneplus/screenshot/longshot/util/Configs;->KEEP_LIST_ACTIVITY:Lcom/oneplus/screenshot/longshot/util/Configs;
@@ -5689,7 +5694,7 @@
 
     sput-boolean v3, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_KEEP_LIST:Z
 
-    .line 362
+    .line 365
     sget-object v3, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
     sget-object v4, Lcom/oneplus/screenshot/longshot/util/Configs;->NON_LIST_ACTIVITY:Lcom/oneplus/screenshot/longshot/util/Configs;
@@ -5702,7 +5707,7 @@
 
     sput-boolean v3, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_NON_LIST:Z
 
-    .line 363
+    .line 366
     sget-object v3, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
     sget-object v4, Lcom/oneplus/screenshot/longshot/util/Configs;->BG_LIST_ACTIVITY:Lcom/oneplus/screenshot/longshot/util/Configs;
@@ -5715,7 +5720,7 @@
 
     sput-boolean v3, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_BG_LIST:Z
 
-    .line 365
+    .line 368
     sget-object v3, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
     sget-object v4, Lcom/oneplus/screenshot/longshot/util/Configs;->BIGTOP_LIST_ACTIVITY:Lcom/oneplus/screenshot/longshot/util/Configs;
@@ -5728,7 +5733,7 @@
 
     sput-boolean v3, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_BIGTOP_LIST:Z
 
-    .line 368
+    .line 371
     sget-object v3, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
     sget-object v4, Lcom/oneplus/screenshot/longshot/util/Configs;->LARGETOP_LIST_ACTIVITY:Lcom/oneplus/screenshot/longshot/util/Configs;
@@ -5741,14 +5746,14 @@
 
     sput-boolean v3, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_LARGETOP_LIST:Z
 
-    .line 370
+    .line 373
     invoke-static {p0}, Lcom/oneplus/screenshot/longshot/util/Configs;->getLayoutRtl(Landroid/content/Context;)Z
 
     move-result v3
 
     sput-boolean v3, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_RTL:Z
 
-    .line 371
+    .line 374
     sget-object v3, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
     sget-object v4, Lcom/oneplus/screenshot/longshot/util/Configs;->NOT_IGNORE_FAIL_ACTIVITY:Lcom/oneplus/screenshot/longshot/util/Configs;
@@ -5761,97 +5766,97 @@
 
     sput-boolean v3, Lcom/oneplus/screenshot/longshot/util/Configs;->NOT_IGNORE_FAIL:Z
 
-    .line 372
+    .line 375
     invoke-static {}, Lcom/oneplus/screenshot/longshot/util/Configs;->getLevelError()I
 
     move-result v3
 
     sput v3, Lcom/oneplus/screenshot/longshot/util/Configs;->LEVEL_ERROR:I
 
-    .line 373
+    .line 376
     invoke-static {}, Lcom/oneplus/screenshot/longshot/util/Configs;->getLevelStitchNext()I
 
     move-result v3
 
     sput v3, Lcom/oneplus/screenshot/longshot/util/Configs;->LEVEL_STITCH_NEXT:I
 
-    .line 374
+    .line 377
     invoke-static {}, Lcom/oneplus/screenshot/longshot/util/Configs;->getLevelShotNext()I
 
     move-result v3
 
     sput v3, Lcom/oneplus/screenshot/longshot/util/Configs;->LEVEL_SHOT_NEXT:I
 
-    .line 375
+    .line 378
     invoke-static {}, Lcom/oneplus/screenshot/longshot/util/Configs;->getLevelStitchLast()I
 
     move-result v3
 
     sput v3, Lcom/oneplus/screenshot/longshot/util/Configs;->LEVEL_STITCH_LAST:I
 
-    .line 376
+    .line 379
     invoke-static {}, Lcom/oneplus/screenshot/longshot/util/Configs;->getLevelStitchMatch()I
 
     move-result v3
 
     sput v3, Lcom/oneplus/screenshot/longshot/util/Configs;->LEVEL_STITCH_MATCH:I
 
-    .line 377
+    .line 380
     invoke-static {}, Lcom/oneplus/screenshot/longshot/util/Configs;->getLevelDelay()I
 
     move-result v3
 
     sput v3, Lcom/oneplus/screenshot/longshot/util/Configs;->LEVEL_DELAY:I
 
-    .line 379
+    .line 382
     invoke-static {}, Lcom/oneplus/screenshot/longshot/util/Configs;->getLevelSkipEdge()I
 
     move-result v3
 
     sput v3, Lcom/oneplus/screenshot/longshot/util/Configs;->LEVEL_RIGHT_SIDE_OFFSET:I
 
-    .line 380
+    .line 383
     invoke-static {}, Lcom/oneplus/screenshot/longshot/util/Configs;->getLevelSkipEdge()I
 
     move-result v3
 
     sput v3, Lcom/oneplus/screenshot/longshot/util/Configs;->LEVEL_LEFT_SIDE_OFFSET:I
 
-    .line 382
+    .line 385
     invoke-static {}, Lcom/oneplus/screenshot/longshot/util/Configs;->getLimitLeft()I
 
     move-result v3
 
     sput v3, Lcom/oneplus/screenshot/longshot/util/Configs;->LIMIT_LEFT:I
 
-    .line 383
+    .line 386
     invoke-static {}, Lcom/oneplus/screenshot/longshot/util/Configs;->getLimitRight()I
 
     move-result v3
 
     sput v3, Lcom/oneplus/screenshot/longshot/util/Configs;->LIMIT_RIGHT:I
 
-    .line 386
+    .line 389
     invoke-static {p0}, Lcom/oneplus/screenshot/util/Utils;->getIMEI(Landroid/content/Context;)Ljava/lang/String;
 
     move-result-object v3
 
     sput-object v3, Lcom/oneplus/screenshot/longshot/util/Configs;->IMEI_NUMBER:Ljava/lang/String;
 
-    .line 387
+    .line 390
     invoke-static {}, Lcom/oneplus/screenshot/longshot/util/Configs;->isCloseBeta()Z
 
     move-result v3
 
     sput-boolean v3, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_CLOSE_BETA:Z
 
-    .line 389
+    .line 392
     invoke-static {p0}, Lcom/oneplus/screenshot/longshot/util/Configs;->loadLineParams(Landroid/content/Context;)V
 
-    .line 391
+    .line 394
     invoke-static {p0}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->init(Landroid/content/Context;)V
 
-    .line 394
+    .line 397
     const-string/jumbo v3, "Longshot.Configs"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -5876,7 +5881,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 395
+    .line 398
     const-string/jumbo v3, "Longshot.Configs"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -5901,7 +5906,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 396
+    .line 399
     const-string/jumbo v3, "Longshot.Configs"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -5926,7 +5931,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 397
+    .line 400
     const-string/jumbo v3, "Longshot.Configs"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -5951,7 +5956,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 398
+    .line 401
     const-string/jumbo v3, "Longshot.Configs"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -5976,7 +5981,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 399
+    .line 402
     const-string/jumbo v3, "Longshot.Configs"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -6001,7 +6006,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 400
+    .line 403
     const-string/jumbo v3, "Longshot.Configs"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -6026,7 +6031,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 401
+    .line 404
     const-string/jumbo v3, "Longshot.Configs"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -6051,7 +6056,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 402
+    .line 405
     const-string/jumbo v3, "Longshot.Configs"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -6076,7 +6081,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 403
+    .line 406
     const-string/jumbo v3, "Longshot.Configs"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -6101,7 +6106,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 404
+    .line 407
     const-string/jumbo v3, "Longshot.Configs"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -6126,7 +6131,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 405
+    .line 408
     const-string/jumbo v3, "Longshot.Configs"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -6151,7 +6156,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 406
+    .line 409
     const-string/jumbo v3, "Longshot.Configs"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -6176,7 +6181,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 407
+    .line 410
     const-string/jumbo v3, "Longshot.Configs"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -6201,7 +6206,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 408
+    .line 411
     const-string/jumbo v3, "Longshot.Configs"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -6226,7 +6231,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 409
+    .line 412
     const-string/jumbo v3, "Longshot.Configs"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -6251,7 +6256,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 411
+    .line 414
     const-string/jumbo v3, "Longshot.Configs"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -6276,7 +6281,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 412
+    .line 415
     const-string/jumbo v3, "Longshot.Configs"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -6301,14 +6306,14 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 414
+    .line 417
     const-string/jumbo v3, "Longshot.Configs"
 
     const-string/jumbo v4, "=============================================================="
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 416
+    .line 419
     return-void
 .end method
 
@@ -6319,7 +6324,7 @@
     .prologue
     const/4 v6, 0x0
 
-    .line 486
+    .line 489
     invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v7
@@ -6330,7 +6335,7 @@
 
     iget v5, v7, Landroid/util/DisplayMetrics;->density:F
 
-    .line 487
+    .line 490
     .local v5, "scale":F
     sget-object v7, Lcom/oneplus/screenshot/longshot/util/Configs;->LINE_SAMPLE_LIST:Lcom/oneplus/screenshot/longshot/util/Configs;
 
@@ -6345,7 +6350,7 @@
 
     aget-object v0, v9, v8
 
-    .line 488
+    .line 491
     .local v0, "area":Ljava/lang/String;
     const-string/jumbo v7, "\\|"
 
@@ -6353,7 +6358,7 @@
 
     move-result-object v3
 
-    .line 489
+    .line 492
     .local v3, "params":[Ljava/lang/String;
     array-length v7, v3
 
@@ -6361,12 +6366,12 @@
 
     if-ne v7, v11, :cond_46
 
-    .line 490
+    .line 493
     new-instance v2, Ljava/util/ArrayList;
 
     invoke-direct {v2}, Ljava/util/ArrayList;-><init>()V
 
-    .line 491
+    .line 494
     .local v2, "param":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Integer;>;"
     array-length v11, v3
 
@@ -6377,7 +6382,7 @@
 
     aget-object v1, v3, v7
 
-    .line 492
+    .line 495
     .local v1, "p":Ljava/lang/String;
     invoke-static {v1}, Ljava/lang/Float;->valueOf(Ljava/lang/String;)Ljava/lang/Float;
 
@@ -6397,19 +6402,19 @@
 
     invoke-interface {v2, v12}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 491
+    .line 494
     add-int/lit8 v7, v7, 0x1
 
     goto :goto_27
 
-    .line 494
+    .line 497
     .end local v1    # "p":Ljava/lang/String;
     :cond_41
     sget-object v7, Lcom/oneplus/screenshot/longshot/util/Configs;->LINE_SAMPLES:Ljava/util/List;
 
     invoke-interface {v7, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 487
+    .line 490
     .end local v2    # "param":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Integer;>;"
     :cond_46
     add-int/lit8 v7, v8, 0x1
@@ -6418,7 +6423,7 @@
 
     goto :goto_11
 
-    .line 497
+    .line 500
     .end local v0    # "area":Ljava/lang/String;
     .end local v3    # "params":[Ljava/lang/String;
     :cond_4a
@@ -6433,7 +6438,7 @@
 
     aget-object v4, v7, v6
 
-    .line 498
+    .line 501
     .local v4, "sample":Ljava/lang/String;
     sget-object v9, Lcom/oneplus/screenshot/longshot/util/Configs;->BGLINE_SAMPLES:Ljava/util/List;
 
@@ -6455,12 +6460,12 @@
 
     invoke-interface {v9, v10}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 497
+    .line 500
     add-int/lit8 v6, v6, 0x1
 
     goto :goto_4f
 
-    .line 500
+    .line 503
     .end local v4    # "sample":Ljava/lang/String;
     :cond_6b
     return-void
@@ -6470,7 +6475,7 @@
     .registers 3
 
     .prologue
-    .line 792
+    .line 795
     const/4 v0, 0x1
 
     new-array v0, v0, [I
@@ -6496,7 +6501,7 @@
     .param p3, "time"    # I
 
     .prologue
-    .line 649
+    .line 652
     const-string/jumbo v0, "Longshot.Configs"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -6529,33 +6534,33 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 650
+    .line 653
     if-eqz p1, :cond_33
 
-    .line 651
+    .line 654
     invoke-static {p0, p2, p3}, Landroid/widget/Toast;->makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
 
     move-result-object v0
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mToast:Landroid/widget/Toast;
 
-    .line 652
+    .line 655
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mToast:Landroid/widget/Toast;
 
     invoke-virtual {v0}, Landroid/widget/Toast;->show()V
 
-    .line 656
+    .line 659
     :cond_32
     :goto_32
     return-void
 
-    .line 653
+    .line 656
     :cond_33
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mToast:Landroid/widget/Toast;
 
     if-eqz v0, :cond_32
 
-    .line 654
+    .line 657
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mToast:Landroid/widget/Toast;
 
     invoke-virtual {v0}, Landroid/widget/Toast;->cancel()V
@@ -6567,7 +6572,7 @@
     .registers 1
 
     .prologue
-    .line 477
+    .line 480
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopActivity:Landroid/content/ComponentName;
 
     return-object v0
@@ -6578,7 +6583,7 @@
     .param p0, "pages"    # I
 
     .prologue
-    .line 426
+    .line 429
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->MAX_PAGES:Lcom/oneplus/screenshot/longshot/util/Configs;
 
     invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/util/Configs;->getValue()I
@@ -6602,17 +6607,17 @@
     .registers 1
 
     .prologue
-    .line 481
+    .line 484
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->BGLINE_SAMPLES:Ljava/util/List;
 
     invoke-interface {v0}, Ljava/util/List;->clear()V
 
-    .line 482
+    .line 485
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->LINE_SAMPLES:Ljava/util/List;
 
     invoke-interface {v0}, Ljava/util/List;->clear()V
 
-    .line 483
+    .line 486
     return-void
 .end method
 
@@ -6624,52 +6629,52 @@
     .param p3, "value"    # Ljava/lang/String;
 
     .prologue
-    .line 738
+    .line 741
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->mAppTrackers:Lnet/oneplus/odm/insight/tracker/AppTracker;
 
     if-nez v1, :cond_b
 
-    .line 739
+    .line 742
     new-instance v1, Lnet/oneplus/odm/insight/tracker/AppTracker;
 
     invoke-direct {v1, p0}, Lnet/oneplus/odm/insight/tracker/AppTracker;-><init>(Landroid/content/Context;)V
 
     sput-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->mAppTrackers:Lnet/oneplus/odm/insight/tracker/AppTracker;
 
-    .line 741
+    .line 744
     :cond_b
     if-nez p3, :cond_f
 
     sget-object p3, Lcom/oneplus/screenshot/longshot/util/Configs;->mTopFocusWindow:Ljava/lang/String;
 
-    .line 743
+    .line 746
     :cond_f
     new-instance v0, Ljava/util/HashMap;
 
     invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
-    .line 744
+    .line 747
     .local v0, "data":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     invoke-interface {v0, p2, p3}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 745
+    .line 748
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->mAppTrackers:Lnet/oneplus/odm/insight/tracker/AppTracker;
 
     invoke-virtual {v1, p1, v0}, Lnet/oneplus/odm/insight/tracker/AppTracker;->onEvent(Ljava/lang/String;Ljava/util/Map;)V
 
-    .line 747
+    .line 750
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->gaInstance:Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;
 
     if-nez v1, :cond_26
 
-    .line 748
+    .line 751
     invoke-static {p0}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->getInstance(Landroid/content/Context;)Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;
 
     move-result-object v1
 
     sput-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->gaInstance:Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;
 
-    .line 750
+    .line 753
     :cond_26
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/Configs;->gaInstance:Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;
 
@@ -6679,7 +6684,7 @@
 
     invoke-virtual {v1, p1, p2, p3}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->send(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 751
+    .line 754
     :cond_2f
     return-void
 .end method
@@ -6696,7 +6701,7 @@
 
     const/4 v8, 0x0
 
-    .line 659
+    .line 662
     const-string/jumbo v4, "window"
 
     invoke-virtual {p0, v4}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
@@ -6705,7 +6710,7 @@
 
     check-cast v3, Landroid/view/WindowManager;
 
-    .line 661
+    .line 664
     .local v3, "wm":Landroid/view/WindowManager;
     const-string/jumbo v6, "Longshot.Configs"
 
@@ -6746,19 +6751,19 @@
 
     invoke-static {v6, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 663
+    .line 666
     if-eqz p1, :cond_63
 
     sget-object v4, Lcom/oneplus/screenshot/longshot/util/Configs;->mView:Landroid/view/View;
 
     if-nez v4, :cond_63
 
-    .line 665
+    .line 668
     invoke-static {v5}, Lcom/oneplus/screenshot/longshot/util/Configs;->getNotifyWindowLayoutParams(Z)Landroid/view/WindowManager$LayoutParams;
 
     move-result-object v2
 
-    .line 669
+    .line 672
     .local v2, "lp":Landroid/view/WindowManager$LayoutParams;
     const-string/jumbo v4, "layout_inflater"
 
@@ -6766,16 +6771,16 @@
 
     move-result-object v1
 
-    .line 668
+    .line 671
     check-cast v1, Landroid/view/LayoutInflater;
 
-    .line 672
+    .line 675
     .local v1, "layoutInflater":Landroid/view/LayoutInflater;
     sget-boolean v4, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_SUPPORT_CUSTOM_STATUS_BAR:Z
 
     if-eqz v4, :cond_78
 
-    .line 673
+    .line 676
     const/high16 v4, 0x7f030000
 
     invoke-virtual {v1, v4, v8}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
@@ -6784,13 +6789,13 @@
 
     sput-object v4, Lcom/oneplus/screenshot/longshot/util/Configs;->mView:Landroid/view/View;
 
-    .line 678
+    .line 681
     :goto_54
     sget-object v4, Lcom/oneplus/screenshot/longshot/util/Configs;->mView:Landroid/view/View;
 
     invoke-interface {v3, v4, v2}, Landroid/view/WindowManager;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 680
+    .line 683
     sget-object v4, Lcom/oneplus/screenshot/longshot/util/Configs;->mView:Landroid/view/View;
 
     new-instance v5, Lcom/oneplus/screenshot/longshot/util/Configs$1;
@@ -6799,13 +6804,13 @@
 
     invoke-virtual {v4, v5}, Landroid/view/View;->setOnTouchListener(Landroid/view/View$OnTouchListener;)V
 
-    .line 696
+    .line 699
     .end local v1    # "layoutInflater":Landroid/view/LayoutInflater;
     .end local v2    # "lp":Landroid/view/WindowManager$LayoutParams;
     :cond_63
     if-eqz p1, :cond_82
 
-    .line 698
+    .line 701
     sget-object v4, Lcom/oneplus/screenshot/longshot/util/Configs;->mView:Landroid/view/View;
 
     const v5, 0x7f0b0005
@@ -6816,13 +6821,13 @@
 
     check-cast v0, Landroid/widget/TextView;
 
-    .line 700
+    .line 703
     .local v0, "hint2":Landroid/widget/TextView;
     if-eqz p3, :cond_75
 
     invoke-virtual {v0, p3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 709
+    .line 712
     .end local v0    # "hint2":Landroid/widget/TextView;
     :cond_75
     :goto_75
@@ -6831,10 +6836,10 @@
     :cond_76
     move v4, v5
 
-    .line 661
+    .line 664
     goto :goto_2a
 
-    .line 675
+    .line 678
     .restart local v1    # "layoutInflater":Landroid/view/LayoutInflater;
     .restart local v2    # "lp":Landroid/view/WindowManager$LayoutParams;
     :cond_78
@@ -6848,7 +6853,7 @@
 
     goto :goto_54
 
-    .line 702
+    .line 705
     .end local v1    # "layoutInflater":Landroid/view/LayoutInflater;
     .end local v2    # "lp":Landroid/view/WindowManager$LayoutParams;
     :cond_82
@@ -6856,19 +6861,19 @@
 
     if-eqz v4, :cond_75
 
-    .line 703
+    .line 706
     const-string/jumbo v4, "Longshot.Configs"
 
     const-string/jumbo v5, "notifyWindow hide"
 
     invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 704
+    .line 707
     sget-object v4, Lcom/oneplus/screenshot/longshot/util/Configs;->mView:Landroid/view/View;
 
     invoke-interface {v3, v4}, Landroid/view/WindowManager;->removeView(Landroid/view/View;)V
 
-    .line 705
+    .line 708
     sput-object v8, Lcom/oneplus/screenshot/longshot/util/Configs;->mView:Landroid/view/View;
 
     goto :goto_75
@@ -6907,7 +6912,7 @@
     .registers 2
 
     .prologue
-    .line 645
+    .line 648
     iget v0, p0, Lcom/oneplus/screenshot/longshot/util/Configs;->mValue:I
 
     return v0

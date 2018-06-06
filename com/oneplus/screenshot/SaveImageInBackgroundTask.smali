@@ -19,7 +19,7 @@
 # static fields
 .field private static final SCREENSHOTS_DIR_NAME:Ljava/lang/String; = "Screenshots"
 
-.field private static final SCREENSHOT_FILE_NAME_TEMPLATE:Ljava/lang/String; = "Screenshot_%s.png"
+.field private static final SCREENSHOT_FILE_NAME_TEMPLATE:Ljava/lang/String; = "Screenshot_%s.jpg"
 
 .field private static final SCREENSHOT_SHARE_SUBJECT_TEMPLATE:Ljava/lang/String; = "Screenshot (%s)"
 
@@ -160,7 +160,7 @@
 
     .line 172
     .local v8, "imageDate":Ljava/lang/String;
-    const-string/jumbo v19, "Screenshot_%s.png"
+    const-string/jumbo v19, "Screenshot_%s.jpg"
 
     const/16 v20, 0x1
 
@@ -608,7 +608,7 @@
     invoke-direct {v0, v1, v2}, Landroid/app/Notification$Builder;-><init>(Landroid/content/Context;Ljava/lang/String;)V
 
     .line 225
-    const v20, 0x7f0c0014
+    const v20, 0x7f0c0015
 
     move-object/from16 v0, v17
 
@@ -624,7 +624,7 @@
     move-result-object v19
 
     .line 226
-    const v20, 0x7f0c0015
+    const v20, 0x7f0c0016
 
     move-object/from16 v0, v17
 
@@ -711,7 +711,7 @@
 
     invoke-direct/range {v19 .. v19}, Ljava/lang/StringBuilder;-><init>()V
 
-    const v21, 0x7f0c0013
+    const v21, 0x7f0c0014
 
     move-object/from16 v0, v17
 
@@ -760,7 +760,7 @@
     move-result-object v19
 
     .line 243
-    const v20, 0x7f0c0014
+    const v20, 0x7f0c0015
 
     move-object/from16 v0, v17
 
@@ -776,7 +776,7 @@
     move-result-object v19
 
     .line 244
-    const v20, 0x7f0c0015
+    const v20, 0x7f0c0016
 
     move-object/from16 v0, v17
 
@@ -1130,7 +1130,7 @@
 
     .line 311
     .local v13, "out":Ljava/io/OutputStream;
-    sget-object v23, Landroid/graphics/Bitmap$CompressFormat;->PNG:Landroid/graphics/Bitmap$CompressFormat;
+    sget-object v23, Landroid/graphics/Bitmap$CompressFormat;->JPEG:Landroid/graphics/Bitmap$CompressFormat;
 
     const/16 v24, 0x64
 
@@ -1227,7 +1227,7 @@
     .line 324
     const-string/jumbo v23, "mime_type"
 
-    const-string/jumbo v24, "image/png"
+    const-string/jumbo v24, "image/jpeg"
 
     invoke-virtual/range {v22 .. v24}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
@@ -1353,7 +1353,7 @@
 
     .line 334
     .local v18, "sharingIntent":Landroid/content/Intent;
-    const-string/jumbo v23, "image/png"
+    const-string/jumbo v23, "image/jpeg"
 
     move-object/from16 v0, v18
 
@@ -1694,7 +1694,7 @@
 
     move-object/from16 v23, v0
 
-    const v24, 0x7f0c001a
+    const v24, 0x7f0c001b
 
     move/from16 v0, v24
 
@@ -1810,9 +1810,9 @@
     .param p1, "params"    # Ljava/lang/Void;
 
     .prologue
-    const v12, 0x7f0c0017
+    const v12, 0x7f0c0018
 
-    const v11, 0x7f0c0016
+    const v11, 0x7f0c0017
 
     const v10, 0x106014c
 
@@ -1904,7 +1904,7 @@
 
     iget-object v5, v5, Lcom/oneplus/screenshot/SaveImageInBackgroundData;->imageUri:Landroid/net/Uri;
 
-    const-string/jumbo v6, "image/png"
+    const-string/jumbo v6, "image/jpeg"
 
     invoke-virtual {v1, v5, v6}, Landroid/content/Intent;->setDataAndType(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/Intent;
 

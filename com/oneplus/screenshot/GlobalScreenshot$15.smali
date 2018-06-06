@@ -30,7 +30,7 @@
     .line 1
     iput-object p1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$15;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .line 1371
+    .line 1377
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 1
@@ -48,12 +48,12 @@
 
     const v1, 0x3f5c4771
 
-    .line 1374
+    .line 1380
     cmpg-float v0, p1, v1
 
     if-gez v0, :cond_1a
 
-    .line 1376
+    .line 1382
     div-float v0, p1, v1
 
     sub-float v0, v2, v0
@@ -74,7 +74,7 @@
 
     return v0
 
-    .line 1378
+    .line 1384
     :cond_1a
     return v2
 .end method

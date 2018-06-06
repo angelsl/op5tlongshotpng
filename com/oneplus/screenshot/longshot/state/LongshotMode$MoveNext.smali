@@ -27,13 +27,13 @@
     .param p4, "end"    # Landroid/graphics/Point;
 
     .prologue
-    .line 625
+    .line 644
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->this$0:Lcom/oneplus/screenshot/longshot/state/LongshotMode;
 
-    .line 626
+    .line 645
     invoke-direct {p0, p2, p3, p4}, Lcom/oneplus/screenshot/longshot/util/MovePoint;-><init>(ILandroid/graphics/Point;Landroid/graphics/Point;)V
 
-    .line 627
+    .line 646
     return-void
 .end method
 
@@ -45,13 +45,13 @@
     .param p2, "y"    # I
 
     .prologue
-    .line 650
+    .line 669
     iput p1, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->x:I
 
-    .line 651
+    .line 670
     iput p2, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->y:I
 
-    .line 652
+    .line 671
     return-void
 .end method
 
@@ -59,7 +59,7 @@
     .registers 3
 
     .prologue
-    .line 641
+    .line 660
     iget v0, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->y:I
 
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->getEnd()Landroid/graphics/Point;
@@ -85,7 +85,7 @@
     .registers 2
 
     .prologue
-    .line 631
+    .line 650
     const-string/jumbo v0, "Next"
 
     return-object v0
@@ -95,7 +95,7 @@
     .registers 2
 
     .prologue
-    .line 646
+    .line 665
     const/4 v0, 0x1
 
     return v0
@@ -105,7 +105,7 @@
     .registers 3
 
     .prologue
-    .line 636
+    .line 655
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->getDistance()I
 
     move-result v0
@@ -116,6 +116,6 @@
 
     invoke-virtual {p0, v1, v0}, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->offset(II)V
 
-    .line 637
+    .line 656
     return-void
 .end method

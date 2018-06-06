@@ -65,7 +65,7 @@
     .param p1, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 132
+    .line 135
     new-instance v0, Landroid/os/Messenger;
 
     iget-object v1, p0, Lcom/oneplus/screenshot/TakeScreenshotService;->mHandler:Landroid/os/Handler;
@@ -84,21 +84,21 @@
     .param p1, "newConfig"    # Landroid/content/res/Configuration;
 
     .prologue
-    .line 123
+    .line 126
     sget-object v0, Lcom/oneplus/screenshot/TakeScreenshotService;->mScreenshot:Lcom/oneplus/screenshot/GlobalScreenshot;
 
     if-eqz v0, :cond_9
 
-    .line 124
+    .line 127
     sget-object v0, Lcom/oneplus/screenshot/TakeScreenshotService;->mScreenshot:Lcom/oneplus/screenshot/GlobalScreenshot;
 
     invoke-virtual {v0, p1}, Lcom/oneplus/screenshot/GlobalScreenshot;->onConfigurationChanged(Landroid/content/res/Configuration;)V
 
-    .line 126
+    .line 129
     :cond_9
     invoke-super {p0, p1}, Landroid/app/Service;->onConfigurationChanged(Landroid/content/res/Configuration;)V
 
-    .line 127
+    .line 130
     return-void
 .end method
 
@@ -107,7 +107,7 @@
     .param p1, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 137
+    .line 140
     sget-object v0, Lcom/oneplus/screenshot/TakeScreenshotService;->mScreenshot:Lcom/oneplus/screenshot/GlobalScreenshot;
 
     if-eqz v0, :cond_9
@@ -116,7 +116,7 @@
 
     invoke-virtual {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->stopScreenshot()V
 
-    .line 138
+    .line 141
     :cond_9
     const/4 v0, 0x1
 

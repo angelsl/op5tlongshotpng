@@ -17,3 +17,6 @@
 # virtual methods
 .method public abstract onCloseSystemDialogs()V
 .end method
+
+.method public abstract onRinging()V
+.end method

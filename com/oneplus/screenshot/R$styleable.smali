@@ -57,58 +57,58 @@
     .registers 3
 
     .prologue
-    .line 631
+    .line 632
     const v0, 0x7f010002
 
     const v1, 0x7f010003
 
-    .line 630
+    .line 631
     filled-new-array {v0, v1}, [I
 
     move-result-object v0
 
     sput-object v0, Lcom/oneplus/screenshot/R$styleable;->EditView:[I
 
-    .line 665
+    .line 666
     const/4 v0, 0x1
 
     new-array v0, v0, [I
 
-    .line 666
+    .line 667
     const v1, 0x7f010004
 
     const/4 v2, 0x0
 
     aput v1, v0, v2
 
-    .line 665
+    .line 666
     sput-object v0, Lcom/oneplus/screenshot/R$styleable;->GuideLayout:[I
 
-    .line 695
+    .line 696
     const/high16 v0, 0x7f010000
 
     const v1, 0x7f010001
 
-    .line 694
+    .line 695
     filled-new-array {v0, v1}, [I
 
     move-result-object v0
 
     sput-object v0, Lcom/oneplus/screenshot/R$styleable;->ImageView:[I
 
-    .line 740
+    .line 741
     const v0, 0x7f01000b
 
     const v1, 0x7f01000c
 
-    .line 739
+    .line 740
     filled-new-array {v0, v1}, [I
 
     move-result-object v0
 
     sput-object v0, Lcom/oneplus/screenshot/R$styleable;->Interpolator:[I
 
-    .line 790
+    .line 791
     const/4 v0, 0x6
 
     new-array v0, v0, [I
@@ -117,10 +117,10 @@
 
     sput-object v0, Lcom/oneplus/screenshot/R$styleable;->Target:[I
 
-    .line 617
+    .line 618
     return-void
 
-    .line 790
+    .line 791
     nop
 
     :array_38
@@ -138,7 +138,7 @@
     .registers 1
 
     .prologue
-    .line 617
+    .line 618
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
