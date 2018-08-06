@@ -46,7 +46,7 @@
 
     iput-object p5, p0, Lcom/oneplus/screenshot/GlobalScreenshot$4$1;->val$rect:Landroid/graphics/Rect;
 
-    .line 989
+    .line 1018
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 1
@@ -59,7 +59,7 @@
     .registers 9
 
     .prologue
-    .line 991
+    .line 1020
     iget-object v0, p0, Lcom/oneplus/screenshot/GlobalScreenshot$4$1;->this$1:Lcom/oneplus/screenshot/GlobalScreenshot$4;
 
     iget-object v0, v0, Lcom/oneplus/screenshot/GlobalScreenshot$4;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
@@ -70,7 +70,7 @@
 
     iget-boolean v3, p0, Lcom/oneplus/screenshot/GlobalScreenshot$4$1;->val$navBarVisible:Z
 
-    .line 992
+    .line 1021
     iget-object v4, p0, Lcom/oneplus/screenshot/GlobalScreenshot$4$1;->val$rect:Landroid/graphics/Rect;
 
     iget v4, v4, Landroid/graphics/Rect;->left:I
@@ -91,9 +91,9 @@
 
     move-result v7
 
-    .line 991
+    .line 1020
     invoke-virtual/range {v0 .. v7}, Lcom/oneplus/screenshot/GlobalScreenshot;->takeScreenshot(Ljava/lang/Runnable;ZZIIII)V
 
-    .line 993
+    .line 1022
     return-void
 .end method

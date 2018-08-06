@@ -30,7 +30,7 @@
     .line 1
     iput-object p1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$5;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .line 1005
+    .line 1034
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 1
@@ -43,7 +43,7 @@
     .registers 3
 
     .prologue
-    .line 1008
+    .line 1037
     iget-object v0, p0, Lcom/oneplus/screenshot/GlobalScreenshot$5;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
     invoke-static {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->-get14(Lcom/oneplus/screenshot/GlobalScreenshot;)Lcom/oneplus/screenshot/ScreenshotSelectorView;
@@ -54,7 +54,7 @@
 
     invoke-virtual {v0, v1}, Lcom/oneplus/screenshot/ScreenshotSelectorView;->setVisibility(I)V
 
-    .line 1009
+    .line 1038
     iget-object v0, p0, Lcom/oneplus/screenshot/GlobalScreenshot$5;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
     invoke-static {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->-get14(Lcom/oneplus/screenshot/GlobalScreenshot;)Lcom/oneplus/screenshot/ScreenshotSelectorView;
@@ -63,6 +63,6 @@
 
     invoke-virtual {v0}, Lcom/oneplus/screenshot/ScreenshotSelectorView;->requestFocus()Z
 
-    .line 1010
+    .line 1039
     return-void
 .end method

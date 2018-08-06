@@ -30,7 +30,7 @@
     .line 1
     iput-object p1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$6;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .line 1073
+    .line 1106
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 1
@@ -43,11 +43,11 @@
     .registers 2
 
     .prologue
-    .line 1076
+    .line 1109
     iget-object v0, p0, Lcom/oneplus/screenshot/GlobalScreenshot$6;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
     invoke-static {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->-wrap3(Lcom/oneplus/screenshot/GlobalScreenshot;)V
 
-    .line 1077
+    .line 1110
     return-void
 .end method

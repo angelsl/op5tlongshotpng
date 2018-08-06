@@ -24,7 +24,7 @@
     .param p1, "this$0"    # Lcom/oneplus/screenshot/GlobalScreenshot;
 
     .prologue
-    .line 725
+    .line 727
     iput-object p1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$closeReceiver;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -51,12 +51,12 @@
     .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 727
+    .line 729
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 729
+    .line 731
     .local v0, "action":Ljava/lang/String;
     const-string/jumbo v2, "android.intent.action.CLOSE_SYSTEM_DIALOGS"
 
@@ -74,18 +74,18 @@
 
     if-eqz v2, :cond_1c
 
-    .line 731
+    .line 733
     :cond_16
     iget-object v2, p0, Lcom/oneplus/screenshot/GlobalScreenshot$closeReceiver;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
     invoke-static {v2}, Lcom/oneplus/screenshot/GlobalScreenshot;->-wrap2(Lcom/oneplus/screenshot/GlobalScreenshot;)V
 
-    .line 744
+    .line 746
     :cond_1b
     :goto_1b
     return-void
 
-    .line 734
+    .line 736
     :cond_1c
     const-string/jumbo v2, "android.intent.action.PHONE_STATE"
 
@@ -95,14 +95,14 @@
 
     if-eqz v2, :cond_1b
 
-    .line 735
+    .line 737
     const-string/jumbo v2, "state"
 
     invoke-virtual {p2, v2}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 736
+    .line 738
     .local v1, "state":Ljava/lang/String;
     sget-object v2, Landroid/telephony/TelephonyManager;->EXTRA_STATE_RINGING:Ljava/lang/String;
 
@@ -112,12 +112,12 @@
 
     if-eqz v2, :cond_1b
 
-    .line 737
+    .line 739
     iget-object v2, p0, Lcom/oneplus/screenshot/GlobalScreenshot$closeReceiver;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
     invoke-static {v2}, Lcom/oneplus/screenshot/GlobalScreenshot;->-wrap2(Lcom/oneplus/screenshot/GlobalScreenshot;)V
 
-    .line 739
+    .line 741
     iget-object v2, p0, Lcom/oneplus/screenshot/GlobalScreenshot$closeReceiver;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
     invoke-static {v2}, Lcom/oneplus/screenshot/GlobalScreenshot;->-get9(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageView;

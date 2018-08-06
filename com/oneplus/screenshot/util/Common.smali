@@ -4,7 +4,7 @@
 
 
 # static fields
-.field public static final MIME_TYPE_IMAGE:Ljava/lang/String; = "image/png"
+.field public static final MIME_TYPE_IMAGE:Ljava/lang/String; = "image/jpeg"
 
 
 # direct methods

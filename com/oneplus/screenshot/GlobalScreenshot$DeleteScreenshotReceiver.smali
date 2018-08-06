@@ -19,7 +19,7 @@
     .registers 1
 
     .prologue
-    .line 1472
+    .line 1505
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
 
     return-void
@@ -35,7 +35,7 @@
     .prologue
     const/4 v3, 0x1
 
-    .line 1475
+    .line 1508
     const-string/jumbo v2, "android:screenshot_uri_id"
 
     invoke-virtual {p2, v2}, Landroid/content/Intent;->hasExtra(Ljava/lang/String;)Z
@@ -44,10 +44,10 @@
 
     if-nez v2, :cond_b
 
-    .line 1476
+    .line 1509
     return-void
 
-    .line 1481
+    .line 1514
     :cond_b
     const-string/jumbo v2, "notification"
 
@@ -57,7 +57,7 @@
 
     check-cast v0, Landroid/app/NotificationManager;
 
-    .line 1482
+    .line 1515
     .local v0, "nm":Landroid/app/NotificationManager;
     const-string/jumbo v2, "android:screenshot_uri_id"
 
@@ -69,11 +69,11 @@
 
     move-result-object v1
 
-    .line 1483
+    .line 1516
     .local v1, "uri":Landroid/net/Uri;
     invoke-virtual {v0, v3}, Landroid/app/NotificationManager;->cancel(I)V
 
-    .line 1486
+    .line 1519
     new-instance v2, Lcom/oneplus/screenshot/DeleteImageInBackgroundTask;
 
     invoke-direct {v2, p1}, Lcom/oneplus/screenshot/DeleteImageInBackgroundTask;-><init>(Landroid/content/Context;)V
@@ -86,6 +86,6 @@
 
     invoke-virtual {v2, v3}, Lcom/oneplus/screenshot/DeleteImageInBackgroundTask;->execute([Ljava/lang/Object;)Landroid/os/AsyncTask;
 
-    .line 1487
+    .line 1520
     return-void
 .end method

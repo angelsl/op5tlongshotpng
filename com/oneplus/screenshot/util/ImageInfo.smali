@@ -24,7 +24,7 @@
 
     .prologue
     .line 17
-    const-string/jumbo v0, ".png"
+    const-string/jumbo v0, ".jpg"
 
     return-object v0
 .end method

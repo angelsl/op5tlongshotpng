@@ -19,7 +19,7 @@
     .registers 1
 
     .prologue
-    .line 1459
+    .line 1492
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
 
     return-void
@@ -33,7 +33,7 @@
     .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 1464
+    .line 1497
     const-string/jumbo v1, "notification"
 
     invoke-virtual {p1, v1}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
@@ -42,12 +42,12 @@
 
     check-cast v0, Landroid/app/NotificationManager;
 
-    .line 1465
+    .line 1498
     .local v0, "nm":Landroid/app/NotificationManager;
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Landroid/app/NotificationManager;->cancel(I)V
 
-    .line 1466
+    .line 1499
     return-void
 .end method
