@@ -103,9 +103,7 @@
     .catch Landroid/os/RemoteException; {:try_start_16 .. :try_end_36} :catch_38
 
     .line 182
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 186
     :cond_37
@@ -145,9 +143,7 @@
     invoke-interface {v2, v3, v0}, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient$OnConnectionFailedListener;->onConnectionFailed(ILandroid/content/Intent;)V
 
     .line 192
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public onServiceDisconnected(Landroid/content/ComponentName;)V
@@ -190,7 +186,5 @@
     invoke-interface {v0}, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient$OnConnectedListener;->onDisconnected()V
 
     .line 199
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

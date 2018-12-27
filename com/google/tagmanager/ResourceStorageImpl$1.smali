@@ -44,7 +44,5 @@
     invoke-virtual {v0}, Lcom/google/tagmanager/ResourceStorageImpl;->loadResourceFromDisk()V
 
     .line 59
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

@@ -135,9 +135,7 @@
 
     sput-object v0, Lcom/google/tagmanager/Runtime;->DEFAULT_VALUE_AND_STATIC:Lcom/google/tagmanager/ObjectAndStatic;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Lcom/google/tagmanager/ResourceUtil$ExpandedResource;Lcom/google/tagmanager/DataLayer;Lcom/google/tagmanager/CustomFunctionCall$CustomEvaluator;Lcom/google/tagmanager/CustomFunctionCall$CustomEvaluator;)V
@@ -1019,9 +1017,7 @@
     invoke-interface {p0, v0, p1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 534
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 530
     :cond_12
@@ -2450,9 +2446,7 @@
     if-nez p1, :cond_3
 
     .line 666
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 668
     :cond_3
@@ -2578,9 +2572,7 @@
     .end local v1    # "pushValueAsObject":Ljava/lang/Object;
     :cond_55
     :goto_55
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private static verifyFunctionAndNameListSizes(Ljava/util/List;Ljava/util/List;Ljava/lang/String;)V
@@ -2636,9 +2628,7 @@
 
     .line 903
     :cond_23
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -2655,9 +2645,7 @@
     invoke-static {v0, p1}, Lcom/google/tagmanager/Runtime;->addFunctionImplToMap(Ljava/util/Map;Lcom/google/tagmanager/FunctionCallImplementation;)V
 
     .line 539
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method addPredicate(Lcom/google/tagmanager/FunctionCallImplementation;)V
@@ -2672,9 +2660,7 @@
     invoke-static {v0, p1}, Lcom/google/tagmanager/Runtime;->addFunctionImplToMap(Ljava/util/Map;Lcom/google/tagmanager/FunctionCallImplementation;)V
 
     .line 549
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method addTrackingTag(Lcom/google/tagmanager/FunctionCallImplementation;)V
@@ -2689,9 +2675,7 @@
     invoke-static {v0, p1}, Lcom/google/tagmanager/Runtime;->addFunctionImplToMap(Ljava/util/Map;Lcom/google/tagmanager/FunctionCallImplementation;)V
 
     .line 544
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method calculateMacrosToRun(Ljava/lang/String;Ljava/util/Set;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Set;Lcom/google/tagmanager/RuleEvaluationStepInfoBuilder;)Lcom/google/tagmanager/ObjectAndStatic;
@@ -3257,9 +3241,7 @@
     .line 359
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 345
     .end local v0    # "eventInfoBuilder":Lcom/google/tagmanager/EventInfoBuilder;
@@ -3324,9 +3306,7 @@
     .line 376
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 374
     .end local p1    # "currentEventName":Ljava/lang/String;
@@ -3432,9 +3412,7 @@
     :cond_3b
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 328
     .end local p1    # "supplementals":Ljava/util/List;, "Ljava/util/List<Lcom/google/analytics/containertag/proto/Serving$Supplemental;>;"

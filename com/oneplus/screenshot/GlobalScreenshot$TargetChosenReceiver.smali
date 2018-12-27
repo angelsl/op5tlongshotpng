@@ -48,7 +48,5 @@
     invoke-virtual {v0, v1}, Landroid/app/NotificationManager;->cancel(I)V
 
     .line 1641
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

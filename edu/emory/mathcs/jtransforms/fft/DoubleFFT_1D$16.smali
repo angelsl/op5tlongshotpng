@@ -203,7 +203,5 @@
     .end local v10    # "isplt":I
     .restart local v12    # "j":I
     :cond_60
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

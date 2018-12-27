@@ -77,9 +77,7 @@
     iput-wide p1, p0, Lcom/google/tagmanager/SendHitRateLimiter;->mLastTrackTime:J
 
     .line 43
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method setTokensAvailable(J)V
@@ -94,9 +92,7 @@
     iput-wide v0, p0, Lcom/google/tagmanager/SendHitRateLimiter;->mTokens:D
 
     .line 48
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public tokenAvailable()Z

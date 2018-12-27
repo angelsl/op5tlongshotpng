@@ -92,9 +92,7 @@
 
     sput-object v0, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->CREATE_MAPS_TABLE:Ljava/lang/String;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;)V
@@ -171,9 +169,7 @@
     .line 32
     invoke-direct {p0, p1, p2, p3}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->saveSingleThreaded(Ljava/util/List;J)V
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method static synthetic access$100(Lcom/google/tagmanager/DataLayerPersistentStoreImpl;)Ljava/util/List;
@@ -196,9 +192,7 @@
     .line 32
     invoke-direct {p0, p1}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->clearKeysWithPrefixSingleThreaded(Ljava/lang/String;)V
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method static synthetic access$300(Lcom/google/tagmanager/DataLayerPersistentStoreImpl;)Landroid/content/Context;
@@ -236,9 +230,7 @@
     if-nez v0, :cond_9
 
     .line 235
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 239
     :cond_9
@@ -355,9 +347,7 @@
     nop
 
     .line 247
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 245
     :goto_6e
@@ -386,9 +376,7 @@
 
     .line 378
     :goto_7
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private deleteEntries([Ljava/lang/String;)V
@@ -417,9 +405,7 @@
     if-nez v0, :cond_f
 
     .line 274
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 276
     :cond_f
@@ -498,18 +484,14 @@
     .line 283
     .end local v2    # "e":Landroid/database/sqlite/SQLiteException;
     :goto_4c
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 270
     .end local v0    # "db":Landroid/database/sqlite/SQLiteDatabase;
     .end local v1    # "whereClause":Ljava/lang/String;
     :cond_4d
     :goto_4d
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private deleteEntriesOlderThan(J)V
@@ -528,9 +510,7 @@
     if-nez v0, :cond_9
 
     .line 252
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 255
     :cond_9
@@ -596,9 +576,7 @@
     .line 261
     .end local v1    # "e":Landroid/database/sqlite/SQLiteException;
     :goto_3b
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private getNumStoredEntries()I
@@ -981,9 +959,7 @@
     .line 230
     .end local v1    # "entrysToDelete":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     :cond_37
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private peekEntryIds(I)Ljava/util/List;
@@ -1233,9 +1209,7 @@
     .line 187
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 185
     :catchall_1c
@@ -1749,9 +1723,7 @@
     if-nez v0, :cond_9
 
     .line 211
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 213
     :cond_9
@@ -1818,9 +1790,7 @@
     .line 220
     .end local v1    # "i$":Ljava/util/Iterator;
     :cond_3c
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -1839,9 +1809,7 @@
     invoke-interface {v0, v1}, Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V
 
     .line 101
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public loadSaved(Lcom/google/tagmanager/DataLayer$PersistentStore$Callback;)V
@@ -1858,9 +1826,7 @@
     invoke-interface {v0, v1}, Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V
 
     .line 92
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public saveKeyValues(Ljava/util/List;J)V
@@ -1892,7 +1858,5 @@
     invoke-interface {v1, v2}, Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V
 
     .line 83
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

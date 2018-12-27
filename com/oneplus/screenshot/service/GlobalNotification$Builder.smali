@@ -210,9 +210,7 @@
 
     .line 148
     :goto_13
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method protected setIcon(Landroid/widget/RemoteViews;)V
@@ -241,7 +239,5 @@
 
     .line 140
     :goto_13
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

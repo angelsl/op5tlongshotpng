@@ -43,9 +43,7 @@
 
     sput-object v0, Lcom/google/android/gms/analytics/internal/Command;->CREATOR:Landroid/os/Parcelable$Creator;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public constructor <init>()V
@@ -69,9 +67,7 @@
     invoke-direct {p0, p1}, Lcom/google/android/gms/analytics/internal/Command;->readFromParcel(Landroid/os/Parcel;)V
 
     .line 72
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
@@ -93,9 +89,7 @@
     iput-object p3, p0, Lcom/google/android/gms/analytics/internal/Command;->value:Ljava/lang/String;
 
     .line 40
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private readFromParcel(Landroid/os/Parcel;)V
@@ -124,9 +118,7 @@
     iput-object v0, p0, Lcom/google/android/gms/analytics/internal/Command;->value:Ljava/lang/String;
 
     .line 90
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -188,7 +180,5 @@
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
     .line 84
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

@@ -129,9 +129,7 @@
 
     .line 41
     :goto_55
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     :pswitch_data_56
     .packed-switch 0x2

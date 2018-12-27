@@ -254,9 +254,7 @@
     if-eqz v2, :cond_47
 
     .line 497
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 495
     :cond_47
@@ -429,9 +427,7 @@
 
     .line 465
     :goto_2c
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public onUpgrade(Landroid/database/sqlite/SQLiteDatabase;II)V

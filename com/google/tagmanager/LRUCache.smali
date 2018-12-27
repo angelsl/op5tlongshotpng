@@ -61,9 +61,7 @@
     iput-object v0, p0, Lcom/google/tagmanager/LRUCache;->lruCache:Landroid/util/LruCache;
 
     .line 32
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -105,7 +103,5 @@
     invoke-virtual {v0, p1, p2}, Landroid/util/LruCache;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 37
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

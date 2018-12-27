@@ -73,7 +73,5 @@
     invoke-static {v0, p1, v1, v2}, Lcom/oneplus/screenshot/anim/TargetAnimator;->access$100(Lcom/oneplus/screenshot/anim/TargetAnimator;Landroid/view/View;Ljava/lang/reflect/Method;Ljava/lang/Object;)V
 
     .line 173
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

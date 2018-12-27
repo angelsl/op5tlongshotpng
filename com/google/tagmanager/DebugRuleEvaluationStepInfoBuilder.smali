@@ -22,9 +22,7 @@
     iput-object p1, p0, Lcom/google/tagmanager/DebugRuleEvaluationStepInfoBuilder;->ruleEvaluationStepInfo:Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;
 
     .line 20
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -115,7 +113,5 @@
     .line 29
     .end local v0    # "i$":Ljava/util/Iterator;
     :cond_21
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

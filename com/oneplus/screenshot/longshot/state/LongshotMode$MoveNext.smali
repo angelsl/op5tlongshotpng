@@ -49,9 +49,7 @@
     iput p2, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->y:I
 
     .line 686
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public canMove()Z
@@ -112,7 +110,5 @@
     invoke-virtual {p0, v1, v0}, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->offset(II)V
 
     .line 671
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

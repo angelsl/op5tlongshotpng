@@ -40,9 +40,7 @@
 
     sput-object v0, Lcom/google/tagmanager/InstallReferrerUtil;->clickReferrers:Ljava/util/Map;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method constructor <init>()V
@@ -88,9 +86,7 @@
 
     .line 78
     :cond_18
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method static cacheInstallReferrer(Ljava/lang/String;)V
@@ -110,9 +106,7 @@
     monitor-exit v0
 
     .line 35
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 34
     :catchall_7
@@ -338,7 +332,5 @@
     invoke-static {p0, p1}, Lcom/google/tagmanager/InstallReferrerUtil;->addClickReferrer(Landroid/content/Context;Ljava/lang/String;)V
 
     .line 44
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

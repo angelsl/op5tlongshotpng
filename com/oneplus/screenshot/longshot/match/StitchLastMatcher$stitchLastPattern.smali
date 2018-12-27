@@ -123,9 +123,7 @@
     iput-boolean p1, p0, Lcom/oneplus/screenshot/longshot/match/StitchLastMatcher$stitchLastPattern;->mChecked:Z
 
     .line 512
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public setRepeatCount(I)V
@@ -136,9 +134,7 @@
     iput p1, p0, Lcom/oneplus/screenshot/longshot/match/StitchLastMatcher$stitchLastPattern;->mRepeatCount:I
 
     .line 520
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public setSimilarity(I)V
@@ -149,7 +145,5 @@
     iput p1, p0, Lcom/oneplus/screenshot/longshot/match/StitchLastMatcher$stitchLastPattern;->mSimilarity:I
 
     .line 504
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

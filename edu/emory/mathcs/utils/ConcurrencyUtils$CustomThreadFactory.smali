@@ -36,9 +36,7 @@
 
     sput-object v0, Ledu/emory/mathcs/utils/ConcurrencyUtils$CustomThreadFactory;->defaultFactory:Ljava/util/concurrent/ThreadFactory;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method constructor <init>(Ljava/lang/Thread$UncaughtExceptionHandler;)V

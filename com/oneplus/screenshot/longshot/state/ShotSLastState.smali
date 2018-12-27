@@ -26,9 +26,7 @@
     iput v0, p0, Lcom/oneplus/screenshot/longshot/state/ShotSLastState;->mOffset:I
 
     .line 16
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 

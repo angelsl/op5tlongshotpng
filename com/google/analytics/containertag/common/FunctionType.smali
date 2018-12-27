@@ -1709,9 +1709,7 @@
 
     sput-object v0, Lcom/google/analytics/containertag/common/FunctionType;->$VALUES:[Lcom/google/analytics/containertag/common/FunctionType;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private constructor <init>(Ljava/lang/String;ILjava/lang/String;)V

@@ -33,9 +33,7 @@
 
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/task/BaseThread;->mThread:Ljava/lang/Thread;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -86,9 +84,7 @@
 
     .line 31
     :cond_16
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public start()Lcom/oneplus/screenshot/longshot/task/BaseThread;
@@ -140,9 +136,7 @@
     :cond_d
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 42
     :catchall_f

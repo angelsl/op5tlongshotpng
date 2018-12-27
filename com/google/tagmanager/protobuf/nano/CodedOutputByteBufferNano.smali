@@ -981,9 +981,7 @@
     if-nez v0, :cond_7
 
     .line 741
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 738
     :cond_7
@@ -1028,9 +1026,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeBoolNoTag(Z)V
 
     .line 140
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeBoolNoTag(Z)V
@@ -1046,9 +1042,7 @@
     invoke-virtual {p0, p1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawByte(I)V
 
     .line 295
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeByteArray(I[B)V
@@ -1070,9 +1064,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeByteArrayNoTag([B)V
 
     .line 176
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeByteArrayNoTag([B)V
@@ -1115,9 +1107,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeBytesNoTag([B)V
 
     .line 169
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeBytesNoTag([B)V
@@ -1160,9 +1150,7 @@
     invoke-virtual {p0, p2, p3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeDoubleNoTag(D)V
 
     .line 91
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeDoubleNoTag(D)V
@@ -1182,9 +1170,7 @@
     invoke-virtual {p0, v0, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawLittleEndian64(J)V
 
     .line 255
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeEnum(II)V
@@ -1206,9 +1192,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeEnumNoTag(I)V
 
     .line 194
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeEnumNoTag(I)V
@@ -1246,9 +1230,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeFixed32NoTag(I)V
 
     .line 133
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeFixed32NoTag(I)V
@@ -1286,9 +1268,7 @@
     invoke-virtual {p0, p2, p3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeFixed64NoTag(J)V
 
     .line 126
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeFixed64NoTag(J)V
@@ -1326,9 +1306,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeFloatNoTag(F)V
 
     .line 98
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeFloatNoTag(F)V
@@ -1348,9 +1326,7 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawLittleEndian32(I)V
 
     .line 260
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeGroup(ILcom/google/tagmanager/protobuf/nano/MessageNano;)V
@@ -1377,9 +1353,7 @@
     invoke-virtual {p0, p1, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeTag(II)V
 
     .line 155
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeGroupNoTag(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
@@ -1395,9 +1369,7 @@
     invoke-virtual {p1, p0}, Lcom/google/tagmanager/protobuf/nano/MessageNano;->writeTo(Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;)V
 
     .line 310
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeInt32(II)V
@@ -1419,9 +1391,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeInt32NoTag(I)V
 
     .line 119
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeInt32NoTag(I)V
@@ -1449,9 +1419,7 @@
 
     .line 280
     :goto_a
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeInt64(IJ)V
@@ -1473,9 +1441,7 @@
     invoke-virtual {p0, p2, p3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeInt64NoTag(J)V
 
     .line 112
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeInt64NoTag(J)V
@@ -1513,9 +1479,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeMessageNoTag(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
 
     .line 162
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeMessageNoTag(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
@@ -1538,9 +1502,7 @@
     invoke-virtual {p1, p0}, Lcom/google/tagmanager/protobuf/nano/MessageNano;->writeTo(Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;)V
 
     .line 316
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeRawByte(B)V
@@ -1571,9 +1533,7 @@
     aput-byte p1, v0, v1
 
     .line 765
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 761
     :cond_11
@@ -1603,9 +1563,7 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawByte(B)V
 
     .line 770
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeRawBytes([B)V
@@ -1625,9 +1583,7 @@
     invoke-virtual {p0, p1, v1, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawBytes([BII)V
 
     .line 775
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeRawBytes([BII)V
@@ -1665,9 +1621,7 @@
     iput v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->position:I
 
     .line 788
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 786
     :cond_14
@@ -1718,9 +1672,7 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawByte(I)V
 
     .line 863
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeRawLittleEndian64(J)V
@@ -1817,9 +1769,7 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawByte(I)V
 
     .line 877
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeRawVarint32(I)V
@@ -1841,9 +1791,7 @@
     invoke-virtual {p0, p1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawByte(I)V
 
     .line 809
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 811
     :cond_8
@@ -1886,9 +1834,7 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawByte(I)V
 
     .line 835
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 837
     :cond_e
@@ -1927,9 +1873,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeSFixed32NoTag(I)V
 
     .line 201
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeSFixed32NoTag(I)V
@@ -1967,9 +1911,7 @@
     invoke-virtual {p0, p2, p3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeSFixed64NoTag(J)V
 
     .line 208
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeSFixed64NoTag(J)V
@@ -2007,9 +1949,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeSInt32NoTag(I)V
 
     .line 215
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeSInt32NoTag(I)V
@@ -2029,9 +1969,7 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawVarint32(I)V
 
     .line 356
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeSInt64(IJ)V
@@ -2053,9 +1991,7 @@
     invoke-virtual {p0, p2, p3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeSInt64NoTag(J)V
 
     .line 222
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeSInt64NoTag(J)V
@@ -2075,9 +2011,7 @@
     invoke-virtual {p0, v0, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawVarint64(J)V
 
     .line 361
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeString(ILjava/lang/String;)V
@@ -2099,9 +2033,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeStringNoTag(Ljava/lang/String;)V
 
     .line 147
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeStringNoTag(Ljava/lang/String;)V
@@ -2130,9 +2062,7 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawBytes([B)V
 
     .line 305
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeTag(II)V
@@ -2153,9 +2083,7 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawVarint32(I)V
 
     .line 794
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeUInt32(II)V
@@ -2177,9 +2105,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeUInt32NoTag(I)V
 
     .line 184
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeUInt32NoTag(I)V
@@ -2217,9 +2143,7 @@
     invoke-virtual {p0, p2, p3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeUInt64NoTag(J)V
 
     .line 105
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public writeUInt64NoTag(J)V

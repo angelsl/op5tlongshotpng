@@ -70,9 +70,7 @@
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mContext:Landroid/content/Context;
 
     .line 44
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private initWindow()V
@@ -126,9 +124,7 @@
     invoke-virtual {v1, v2}, Landroid/view/Window;->setAttributes(Landroid/view/WindowManager$LayoutParams;)V
 
     .line 172
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -160,9 +156,7 @@
 
     .line 112
     :cond_14
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public hide()V
@@ -179,9 +173,7 @@
     invoke-super {p0}, Landroid/app/Dialog;->hide()V
 
     .line 102
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public onCloseSystemDialogs()V
@@ -208,9 +200,7 @@
 
     .line 122
     :cond_12
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method protected onCreate(Landroid/os/Bundle;)V
@@ -245,9 +235,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mReceiver:Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;
 
     .line 58
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public onRinging()V
@@ -274,9 +262,7 @@
 
     .line 131
     :cond_12
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method protected onStop()V
@@ -308,9 +294,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mReceiver:Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;
 
     .line 67
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public setContent(I)V
@@ -332,9 +316,7 @@
 
     .line 142
     :cond_9
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public setContentView(I)V
@@ -356,9 +338,7 @@
 
     .line 75
     :cond_a
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public setOnDismissListener(Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;)V
@@ -369,9 +349,7 @@
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mOnDismissListener:Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;
 
     .line 150
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public setOnShowListener(Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnShowListener;)V
@@ -382,9 +360,7 @@
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mOnShowListener:Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnShowListener;
 
     .line 146
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public show()V
@@ -416,9 +392,7 @@
 
     if-nez v0, :cond_1d
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 82
     :cond_1d
@@ -490,7 +464,5 @@
 
     .line 96
     :cond_57
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

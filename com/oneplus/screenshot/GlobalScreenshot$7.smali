@@ -57,9 +57,7 @@
     invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 1339
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 1346
     :cond_10
@@ -134,7 +132,5 @@
     invoke-virtual {v1}, Landroid/animation/AnimatorSet;->start()V
 
     .line 1355
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

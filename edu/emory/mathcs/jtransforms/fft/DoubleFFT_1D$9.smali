@@ -137,7 +137,5 @@
     .line 1404
     .end local v0    # "i":I
     :cond_33
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

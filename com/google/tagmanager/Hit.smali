@@ -121,14 +121,10 @@
     iput-object p1, p0, Lcom/google/tagmanager/Hit;->mHitUrl:Ljava/lang/String;
 
     .line 56
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 53
     :cond_10
     :goto_10
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

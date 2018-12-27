@@ -34,9 +34,7 @@
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/cache/RunnableCache;->mHandler:Landroid/os/Handler;
 
     .line 16
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -77,9 +75,7 @@
     invoke-super {p0}, Ljava/util/ArrayList;->clear()V
 
     .line 27
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public postDelayed(Ljava/lang/Runnable;J)V
@@ -96,7 +92,5 @@
     invoke-virtual {v0, p1, p2, p3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
 
     .line 35
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

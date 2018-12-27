@@ -49,9 +49,7 @@
     invoke-interface {p1, v0}, Lcom/google/tagmanager/DataLayer$PersistentStore$Callback;->onKeyValuesLoaded(Ljava/util/List;)V
 
     .line 199
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public saveKeyValues(Ljava/util/List;J)V
@@ -68,7 +66,5 @@
 
     .line 194
     .local p1, "keysAndValues":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/DataLayer$KeyValue;>;"
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

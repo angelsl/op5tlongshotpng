@@ -30,7 +30,5 @@
     .line 155
     invoke-direct {p0}, Ljava/util/HashMap;-><init>()V
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

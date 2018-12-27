@@ -87,9 +87,7 @@
     iput-object p1, p0, Lcom/google/analytics/tracking/android/Hit;->mHitString:Ljava/lang/String;
 
     .line 25
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method setHitUrl(Ljava/lang/String;)V
@@ -132,14 +130,10 @@
 
     .line 64
     :cond_1d
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 59
     :cond_1e
     :goto_1e
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

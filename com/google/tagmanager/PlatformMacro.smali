@@ -31,9 +31,7 @@
 
     sput-object v0, Lcom/google/tagmanager/PlatformMacro;->PLATFORM:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public constructor <init>()V
@@ -49,9 +47,7 @@
     invoke-direct {p0, v0, v1}, Lcom/google/tagmanager/FunctionCallImplementation;-><init>(Ljava/lang/String;[Ljava/lang/String;)V
 
     .line 21
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;

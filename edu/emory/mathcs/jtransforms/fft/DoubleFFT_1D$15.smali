@@ -205,7 +205,5 @@
     .restart local v2    # "k":I
     .restart local v11    # "j":I
     :cond_5f
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

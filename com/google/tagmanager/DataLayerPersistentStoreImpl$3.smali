@@ -55,7 +55,5 @@
     invoke-interface {v0, v1}, Lcom/google/tagmanager/DataLayer$PersistentStore$Callback;->onKeyValuesLoaded(Ljava/util/List;)V
 
     .line 91
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

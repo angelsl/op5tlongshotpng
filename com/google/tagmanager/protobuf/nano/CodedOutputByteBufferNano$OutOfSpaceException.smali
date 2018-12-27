@@ -52,7 +52,5 @@
     invoke-direct {p0, v0}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
 
     .line 754
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

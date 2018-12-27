@@ -33,9 +33,7 @@
 
     sput-object v0, Lcom/google/analytics/tracking/android/AppFieldsDefaultProvider;->sInstanceLock:Ljava/lang/Object;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method protected constructor <init>()V
@@ -159,9 +157,7 @@
     iput-object v2, p0, Lcom/google/analytics/tracking/android/AppFieldsDefaultProvider;->mAppVersion:Ljava/lang/String;
 
     .line 64
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method static dropInstance()V
@@ -184,9 +180,7 @@
     monitor-exit v0
 
     .line 39
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 38
     :catchall_8
@@ -235,9 +229,7 @@
     monitor-exit v0
 
     .line 32
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 31
     :catchall_10

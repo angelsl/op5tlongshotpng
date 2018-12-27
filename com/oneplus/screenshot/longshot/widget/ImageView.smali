@@ -158,9 +158,7 @@
     invoke-virtual {v0, v2}, Landroid/view/GestureDetector;->setIsLongpressEnabled(Z)V
 
     .line 62
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method static synthetic access$100(Lcom/oneplus/screenshot/longshot/widget/ImageView;)Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;
@@ -191,9 +189,7 @@
     .line 21
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->trackMotionScroll(I)V
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method static synthetic access$400(Lcom/oneplus/screenshot/longshot/widget/ImageView;)I
@@ -213,9 +209,7 @@
     .line 21
     invoke-direct {p0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->scrollIntoSlots()V
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private endFlingAtEdge(I)I
@@ -374,9 +368,7 @@
     .end local v8    # "vheight":I
     .end local v9    # "scale":F
     :cond_49
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private scrollIntoSlots()V
@@ -465,9 +457,7 @@
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->invalidate()V
 
     .line 221
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -508,9 +498,7 @@
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->onUp()V
 
     .line 184
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method protected onDraw(Landroid/graphics/Canvas;)V
@@ -644,9 +632,7 @@
     .end local v0    # "width":I
     .end local v8    # "config":Landroid/graphics/Bitmap$Config;
     :cond_62
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method protected onMeasure(II)V
@@ -712,9 +698,7 @@
     invoke-virtual {p0, v0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->setOffsetY(I)V
 
     .line 76
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public onTouchEvent(Landroid/view/MotionEvent;)Z
@@ -786,9 +770,7 @@
     iput v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mTouchMode:I
 
     .line 180
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public setBitmaps(Ljava/util/List;)V
@@ -819,9 +801,7 @@
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->requestLayout()V
 
     .line 154
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public setImagePadding(I)V
@@ -834,9 +814,7 @@
     invoke-virtual {v0, p1}, Lcom/oneplus/screenshot/longshot/bitmap/DrawPadding;->setPadding(I)V
 
     .line 148
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public setNavBarHeight(I)V
@@ -868,9 +846,7 @@
 
     .line 165
     :cond_14
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public setOffsetY(I)V
@@ -881,7 +857,5 @@
     iput p1, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mOffsetY:I
 
     .line 173
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

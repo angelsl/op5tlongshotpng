@@ -73,9 +73,7 @@
     .line 41
     sput-boolean v0, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->mIsOnlineConfigEnabled:Z
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public constructor <init>()V
@@ -112,9 +110,7 @@
     .line 32
     invoke-static {p0}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->getOnlineConfig(Lorg/json/JSONArray;)V
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public static getInstance(Landroid/content/Context;)Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;
@@ -412,9 +408,7 @@
 
     .line 164
     :goto_ef
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public static init(Landroid/content/Context;)V
@@ -456,9 +450,7 @@
 
     .line 65
     :cond_1c
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private static isBetaRom()Z
@@ -644,9 +636,7 @@
     .end local v1    # "e":Ljava/lang/SecurityException;
     :cond_43
     :goto_43
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -679,7 +669,5 @@
 
     .line 75
     :cond_12
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

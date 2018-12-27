@@ -61,9 +61,7 @@
     if-ne v1, v2, :cond_c
 
     .line 719
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 721
     :cond_c

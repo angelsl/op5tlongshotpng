@@ -45,7 +45,5 @@
     invoke-static {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$2100(Lcom/oneplus/screenshot/GlobalScreenshot;)V
 
     .line 1364
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

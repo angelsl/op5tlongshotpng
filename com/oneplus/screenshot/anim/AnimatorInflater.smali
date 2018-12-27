@@ -83,9 +83,7 @@
     invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 63
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public constructor <init>()V
@@ -307,9 +305,7 @@
     invoke-virtual {v2}, Landroid/content/res/TypedArray;->recycle()V
 
     .line 397
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     :pswitch_data_86
     .packed-switch 0x1

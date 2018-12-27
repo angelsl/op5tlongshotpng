@@ -31,9 +31,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/transform/JTFFT;->mFFT:Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;
 
     .line 11
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private toComplex([D)[Lcom/oneplus/screenshot/longshot/transform/Complex;

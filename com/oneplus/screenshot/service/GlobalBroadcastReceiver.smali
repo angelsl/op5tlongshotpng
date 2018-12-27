@@ -73,9 +73,7 @@
     invoke-virtual {v1, p0, v0}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 
     .line 39
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -208,9 +206,7 @@
     .end local v1    # "state":Ljava/lang/String;
     :cond_69
     :goto_69
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public unregister()V
@@ -222,7 +218,5 @@
     invoke-virtual {v0, p0}, Landroid/content/Context;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
 
     .line 72
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

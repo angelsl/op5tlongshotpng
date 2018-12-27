@@ -102,9 +102,7 @@
 
     sput-object v0, Lcom/google/tagmanager/DataLayer;->LIFETIME_PATTERN:Ljava/util/regex/Pattern;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method constructor <init>()V
@@ -185,9 +183,7 @@
     .line 79
     invoke-direct {p0, p1}, Lcom/google/tagmanager/DataLayer;->pushWithoutWaitingForSaved(Ljava/util/Map;)V
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method static synthetic access$100(Lcom/google/tagmanager/DataLayer;)Ljava/util/concurrent/CountDownLatch;
@@ -363,9 +359,7 @@
     .line 361
     .end local v0    # "i$":Ljava/util/Iterator;
     :cond_5c
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private getLifetimeObject(Ljava/util/Map;)Ljava/lang/Object;
@@ -538,9 +532,7 @@
     invoke-interface {v0, v1}, Lcom/google/tagmanager/DataLayer$PersistentStore;->loadSaved(Lcom/google/tagmanager/DataLayer$PersistentStore$Callback;)V
 
     .line 289
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public static varargs mapOf([Ljava/lang/Object;)Ljava/util/Map;
@@ -660,9 +652,7 @@
     .line 513
     .end local v0    # "i$":Ljava/util/Iterator;
     :cond_1a
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method static parseLifetime(Ljava/lang/String;)Ljava/lang/Long;
@@ -962,9 +952,7 @@
 
     .line 414
     :cond_23
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private processUpdate(Ljava/util/Map;)V
@@ -1036,9 +1024,7 @@
     invoke-direct {p0, p1}, Lcom/google/tagmanager/DataLayer;->notifyListeners(Ljava/util/Map;)V
 
     .line 424
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 422
     :catchall_28
@@ -1105,9 +1091,7 @@
     nop
 
     .line 278
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 276
     :catchall_20
@@ -1143,9 +1127,7 @@
     if-nez v0, :cond_7
 
     .line 294
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 296
     :cond_7
@@ -1169,9 +1151,7 @@
     invoke-interface {v2, v1, v3, v4}, Lcom/google/tagmanager/DataLayer$PersistentStore;->saveKeyValues(Ljava/util/List;J)V
 
     .line 299
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -1191,9 +1171,7 @@
     invoke-interface {v0, p1}, Lcom/google/tagmanager/DataLayer$PersistentStore;->clearKeysWithPrefix(Ljava/lang/String;)V
 
     .line 333
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method expandKeyValue(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
@@ -1549,9 +1527,7 @@
     .line 618
     .end local v0    # "index":I
     :cond_66
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method mergeMap(Ljava/util/Map;Ljava/util/Map;)V
@@ -1704,9 +1680,7 @@
     .line 579
     .end local v0    # "i$":Ljava/util/Iterator;
     :cond_5c
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public push(Ljava/lang/Object;Ljava/lang/Object;)V
@@ -1724,9 +1698,7 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/DataLayer;->push(Ljava/util/Map;)V
 
     .line 226
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public push(Ljava/util/Map;)V
@@ -1769,9 +1741,7 @@
     invoke-direct {p0, p1}, Lcom/google/tagmanager/DataLayer;->pushWithoutWaitingForSaved(Ljava/util/Map;)V
 
     .line 260
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method registerListener(Lcom/google/tagmanager/DataLayer$Listener;)V
@@ -1790,9 +1760,7 @@
     invoke-virtual {v0, p1, v1}, Ljava/util/concurrent/ConcurrentHashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 500
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method unregisterListener(Lcom/google/tagmanager/DataLayer$Listener;)V
@@ -1805,7 +1773,5 @@
     invoke-virtual {v0, p1}, Ljava/util/concurrent/ConcurrentHashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 507
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

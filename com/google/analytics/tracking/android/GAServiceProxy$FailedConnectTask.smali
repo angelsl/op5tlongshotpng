@@ -65,7 +65,5 @@
 
     .line 409
     :cond_f
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

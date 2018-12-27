@@ -161,7 +161,5 @@
     invoke-interface {v0, p1, p2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 95
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

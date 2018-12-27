@@ -63,9 +63,7 @@
 
     .line 125
     :cond_9
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public containerRefreshSuccess(Lcom/google/tagmanager/Container;Lcom/google/tagmanager/Container$RefreshType;)V
@@ -79,7 +77,5 @@
     invoke-static {v0, p1}, Lcom/google/tagmanager/ContainerOpener;->access$000(Lcom/google/tagmanager/ContainerOpener;Lcom/google/tagmanager/Container;)V
 
     .line 117
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

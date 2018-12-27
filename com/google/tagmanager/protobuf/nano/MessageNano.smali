@@ -19,9 +19,7 @@
 
     iput v0, p0, Lcom/google/tagmanager/protobuf/nano/MessageNano;->cachedSize:I
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public static final mergeFrom(Lcom/google/tagmanager/protobuf/nano/MessageNano;[B)Lcom/google/tagmanager/protobuf/nano/MessageNano;
@@ -233,9 +231,7 @@
     nop
 
     .line 110
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 106
     :catch_c

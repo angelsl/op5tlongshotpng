@@ -27,9 +27,7 @@
 
     sput-object v0, Lcom/google/analytics/tracking/android/GANetworkReceiver;->SELF_IDENTIFYING_EXTRA:Ljava/lang/String;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method constructor <init>(Lcom/google/analytics/tracking/android/ServiceManager;)V
@@ -76,9 +74,7 @@
     invoke-virtual {p0, v0}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
 
     .line 71
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -149,9 +145,7 @@
     .line 44
     :cond_30
     :goto_30
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public register(Landroid/content/Context;)V

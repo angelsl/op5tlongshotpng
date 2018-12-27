@@ -99,7 +99,5 @@
     invoke-virtual {v0}, Ljava/util/concurrent/CountDownLatch;->countDown()V
 
     .line 288
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

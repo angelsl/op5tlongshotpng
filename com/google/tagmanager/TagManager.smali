@@ -123,9 +123,7 @@
     .line 67
     invoke-direct {p0, p1}, Lcom/google/tagmanager/TagManager;->refreshTagsInAllContainers(Ljava/lang/String;)V
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method static clearInstance()V
@@ -148,9 +146,7 @@
     monitor-exit v0
 
     .line 192
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 191
     :catchall_8
@@ -281,9 +277,7 @@
     .line 317
     .end local v0    # "i$":Ljava/util/Iterator;
     :cond_1a
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -444,9 +438,7 @@
     iput-object p1, p0, Lcom/google/tagmanager/TagManager;->mCtfeServerAddr:Ljava/lang/String;
 
     .line 307
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public setLogger(Lcom/google/tagmanager/Logger;)V
@@ -457,9 +449,7 @@
     invoke-static {p1}, Lcom/google/tagmanager/Log;->setLogger(Lcom/google/tagmanager/Logger;)V
 
     .line 245
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method declared-synchronized setPreviewData(Landroid/net/Uri;)Z
@@ -659,7 +649,5 @@
     iput-object p1, p0, Lcom/google/tagmanager/TagManager;->mRefreshMode:Lcom/google/tagmanager/TagManager$RefreshMode;
 
     .line 255
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

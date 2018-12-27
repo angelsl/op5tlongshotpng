@@ -101,9 +101,7 @@
 
     .line 163
     :cond_9
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public containerRefreshSuccess(Lcom/google/tagmanager/Container;Lcom/google/tagmanager/Container$RefreshType;)V
@@ -130,7 +128,5 @@
 
     .line 155
     :cond_f
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

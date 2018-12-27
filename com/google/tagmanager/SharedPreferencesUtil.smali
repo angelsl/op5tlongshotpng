@@ -46,9 +46,7 @@
     invoke-static {v1}, Lcom/google/tagmanager/SharedPreferencesUtil;->saveEditorAsync(Landroid/content/SharedPreferences$Editor;)V
 
     .line 42
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method static saveEditorAsync(Landroid/content/SharedPreferences$Editor;)V
@@ -81,7 +79,5 @@
 
     .line 29
     :goto_17
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

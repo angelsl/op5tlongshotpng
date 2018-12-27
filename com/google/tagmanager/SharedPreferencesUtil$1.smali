@@ -44,7 +44,5 @@
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
     .line 26
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

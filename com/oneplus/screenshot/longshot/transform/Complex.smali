@@ -20,9 +20,7 @@
     invoke-direct {p0, p1, p2, v0, v1}, Lcom/oneplus/screenshot/longshot/transform/Complex;-><init>(DD)V
 
     .line 10
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public constructor <init>(DD)V
@@ -48,9 +46,7 @@
     iput-wide p3, p0, Lcom/oneplus/screenshot/longshot/transform/Complex;->mImag:D
 
     .line 15
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 

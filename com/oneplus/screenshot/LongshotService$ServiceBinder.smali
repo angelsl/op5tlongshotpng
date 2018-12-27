@@ -112,9 +112,7 @@
 
     .line 101
     :goto_16
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public notifyScrollViewTop(I)V
@@ -154,9 +152,7 @@
 
     .line 124
     :cond_16
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public onUnscrollableView()V
@@ -194,9 +190,7 @@
 
     .line 132
     :cond_1a
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public start(Lcom/oneplus/longshot/ILongScreenshotCallback;)V
@@ -236,9 +230,7 @@
     invoke-virtual {v1, v0, p1, v2, v3}, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->start(Ljava/lang/Runnable;Lcom/oneplus/longshot/ILongScreenshotCallback;ZZ)V
 
     .line 88
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public stopLongshot()V
@@ -255,7 +247,5 @@
     invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->stop()V
 
     .line 116
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

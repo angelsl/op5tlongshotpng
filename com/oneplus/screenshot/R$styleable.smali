@@ -101,9 +101,7 @@
 
     sput-object v0, Lcom/oneplus/screenshot/R$styleable;->Target:[I
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     :array_2a
     .array-data 4

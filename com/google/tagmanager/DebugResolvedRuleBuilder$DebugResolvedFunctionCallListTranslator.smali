@@ -226,9 +226,7 @@
 
     .line 148
     :goto_80
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     nop
 

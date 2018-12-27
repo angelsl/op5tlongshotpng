@@ -41,9 +41,7 @@
     if-nez p1, :cond_3
 
     .line 1808
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 1811
     :cond_3
@@ -62,7 +60,5 @@
 
     .line 1814
     :cond_f
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

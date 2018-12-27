@@ -52,7 +52,5 @@
     invoke-virtual {v0, p1, v1}, Lcom/google/analytics/tracking/android/GAServiceManager;->updatePowerSaveMode(ZZ)V
 
     .line 61
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

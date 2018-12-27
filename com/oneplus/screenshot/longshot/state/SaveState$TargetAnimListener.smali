@@ -72,7 +72,5 @@
     invoke-interface {v0}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->stop()V
 
     .line 107
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

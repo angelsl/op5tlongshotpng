@@ -16,9 +16,7 @@
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/longshot/state/StitchNextState;-><init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;)V
 
     .line 17
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -81,7 +79,5 @@
     invoke-interface {v0, v1}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->setLast(Z)V
 
     .line 30
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

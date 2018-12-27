@@ -28,9 +28,7 @@
 
     sput-object v0, Lcom/oneplus/screenshot/util/SharedPrefs;->TAG:Ljava/lang/String;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;)V
@@ -57,9 +55,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/util/SharedPrefs;->mSharedPrefs:Landroid/content/SharedPreferences;
 
     .line 27
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -99,7 +95,5 @@
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
     .line 38
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

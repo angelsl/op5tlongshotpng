@@ -94,9 +94,7 @@
 
     .line 30
     :goto_42
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 

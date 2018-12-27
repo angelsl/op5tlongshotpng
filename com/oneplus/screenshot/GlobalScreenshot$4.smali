@@ -62,7 +62,5 @@
     invoke-virtual {v0}, Lcom/oneplus/screenshot/ScreenshotSelectorView;->requestFocus()Z
 
     .line 1153
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

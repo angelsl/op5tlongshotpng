@@ -68,9 +68,7 @@
 
     .line 1492
     :cond_19
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public onAnimationStart(Landroid/animation/Animator;)V
@@ -220,7 +218,5 @@
 
     .line 1483
     :cond_7b
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

@@ -50,7 +50,5 @@
     invoke-static {v0, v1}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->access$200(Lcom/google/tagmanager/DataLayerPersistentStoreImpl;Ljava/lang/String;)V
 
     .line 100
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

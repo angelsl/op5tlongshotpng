@@ -70,7 +70,5 @@
 
     .line 66
     :cond_1b
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

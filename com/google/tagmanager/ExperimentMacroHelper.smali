@@ -52,9 +52,7 @@
     .end local v1    # "len$":I
     .end local v2    # "i$":I
     :cond_12
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public static handleExperimentSupplemental(Lcom/google/tagmanager/DataLayer;Lcom/google/analytics/containertag/proto/Serving$Supplemental;)V
@@ -73,9 +71,7 @@
     invoke-static {v0}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
 
     .line 26
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 28
     :cond_a
@@ -94,9 +90,7 @@
     invoke-static {p0, v0}, Lcom/google/tagmanager/ExperimentMacroHelper;->setRandomValues(Lcom/google/tagmanager/DataLayer;Lcom/google/analytics/containertag/proto/Serving$GaExperimentSupplemental;)V
 
     .line 31
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private static pushValues(Lcom/google/tagmanager/DataLayer;Lcom/google/analytics/containertag/proto/Serving$GaExperimentSupplemental;)V
@@ -145,9 +139,7 @@
     .end local v1    # "len$":I
     .end local v2    # "i$":I
     :cond_14
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private static setRandomValues(Lcom/google/tagmanager/DataLayer;Lcom/google/analytics/containertag/proto/Serving$GaExperimentSupplemental;)V
@@ -499,9 +491,7 @@
     .end local v5    # "i$":I
     .end local v19    # "arr$":[Lcom/google/analytics/containertag/proto/Serving$GaExperimentRandom;
     :cond_de
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private static valueToMap(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/util/Map;

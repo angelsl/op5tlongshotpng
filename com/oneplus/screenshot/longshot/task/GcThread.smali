@@ -22,9 +22,7 @@
     iput-wide v0, p0, Lcom/oneplus/screenshot/longshot/task/GcThread;->mDelay:J
 
     .line 17
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -36,7 +34,5 @@
     invoke-static {}, Ljava/lang/System;->gc()V
 
     .line 25
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

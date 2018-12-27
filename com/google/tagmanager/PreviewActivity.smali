@@ -10,9 +10,7 @@
     .line 28
     invoke-direct {p0}, Landroid/app/Activity;-><init>()V
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private displayAlert(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
@@ -50,9 +48,7 @@
     invoke-virtual {v0}, Landroid/app/AlertDialog;->show()V
 
     .line 81
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -225,7 +221,5 @@
     .line 64
     .end local v0    # "e":Ljava/lang/Exception;
     :goto_96
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

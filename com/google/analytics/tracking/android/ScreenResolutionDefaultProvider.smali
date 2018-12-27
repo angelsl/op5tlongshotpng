@@ -27,9 +27,7 @@
 
     sput-object v0, Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;->sInstanceLock:Ljava/lang/Object;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method protected constructor <init>(Landroid/content/Context;)V
@@ -68,9 +66,7 @@
     monitor-exit v0
 
     .line 41
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 40
     :catchall_8
@@ -137,9 +133,7 @@
     monitor-exit v0
 
     .line 28
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 27
     :catchall_10

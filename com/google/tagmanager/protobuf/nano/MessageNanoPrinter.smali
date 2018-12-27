@@ -323,9 +323,7 @@
     if-nez v0, :cond_13
 
     .line 80
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 82
     :cond_13
@@ -557,9 +555,7 @@
     if-nez v0, :cond_b2
 
     .line 123
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 125
     :cond_b2
@@ -620,9 +616,7 @@
 
     .line 135
     :goto_e2
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private static sanitizeString(Ljava/lang/String;)Ljava/lang/String;

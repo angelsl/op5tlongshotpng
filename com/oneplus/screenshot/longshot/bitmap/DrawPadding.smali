@@ -39,9 +39,7 @@
 
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/bitmap/DrawPadding;->mMatrix:Landroid/graphics/Matrix;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -91,7 +89,5 @@
 
     .line 30
     :goto_e
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

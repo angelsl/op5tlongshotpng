@@ -111,9 +111,7 @@
 
     .line 38
     :goto_48
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -147,7 +145,5 @@
     invoke-interface {v0, v1}, Lcom/google/tagmanager/DebugInformationHandler;->receiveEventInfo(Lcom/google/analytics/containertag/proto/Debug$EventInfo;)V
 
     .line 53
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

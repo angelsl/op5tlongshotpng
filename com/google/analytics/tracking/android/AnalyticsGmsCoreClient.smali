@@ -68,9 +68,7 @@
     iput-object p3, p0, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;->mOnConnectionFailedListener:Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient$OnConnectionFailedListener;
 
     .line 67
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 64
     :cond_e
@@ -111,9 +109,7 @@
     .line 24
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;->onServiceBound()V
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method static synthetic access$200(Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;)Landroid/content/Context;
@@ -178,9 +174,7 @@
     invoke-interface {v0}, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient$OnConnectedListener;->onConnected()V
 
     .line 216
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private onServiceBound()V
@@ -190,9 +184,7 @@
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;->onConnectionSuccess()V
 
     .line 208
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -208,9 +200,7 @@
     if-eqz v0, :cond_7
 
     .line 159
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 156
     :cond_7
@@ -264,9 +254,7 @@
     .line 144
     .end local v0    # "e":Landroid/os/RemoteException;
     :goto_1d
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public connect()V
@@ -313,9 +301,7 @@
     invoke-static {v1}, Lcom/google/analytics/tracking/android/Log;->e(Ljava/lang/String;)V
 
     .line 82
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 84
     :cond_28
@@ -377,9 +363,7 @@
 
     .line 92
     :cond_60
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public disconnect()V
@@ -433,9 +417,7 @@
 
     .line 125
     :cond_1a
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public isConnected()Z
@@ -523,7 +505,5 @@
     .line 135
     .end local v0    # "e":Landroid/os/RemoteException;
     :goto_21
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

@@ -26,9 +26,7 @@
 
     iput-object v0, p0, Lcom/google/tagmanager/DefaultLogger;->mLogLevel:Lcom/google/tagmanager/Logger$LogLevel;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -59,9 +57,7 @@
 
     .line 58
     :cond_13
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public d(Ljava/lang/String;Ljava/lang/Throwable;)V
@@ -91,9 +87,7 @@
 
     .line 65
     :cond_13
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public e(Ljava/lang/String;)V
@@ -122,9 +116,7 @@
 
     .line 16
     :cond_13
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public e(Ljava/lang/String;Ljava/lang/Throwable;)V
@@ -154,9 +146,7 @@
 
     .line 23
     :cond_13
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public getLogLevel()Lcom/google/tagmanager/Logger$LogLevel;
@@ -194,9 +184,7 @@
 
     .line 44
     :cond_13
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public i(Ljava/lang/String;Ljava/lang/Throwable;)V
@@ -226,9 +214,7 @@
 
     .line 51
     :cond_13
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public setLogLevel(Lcom/google/tagmanager/Logger$LogLevel;)V
@@ -239,9 +225,7 @@
     iput-object p1, p0, Lcom/google/tagmanager/DefaultLogger;->mLogLevel:Lcom/google/tagmanager/Logger$LogLevel;
 
     .line 89
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public v(Ljava/lang/String;)V
@@ -270,9 +254,7 @@
 
     .line 72
     :cond_13
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public v(Ljava/lang/String;Ljava/lang/Throwable;)V
@@ -302,9 +284,7 @@
 
     .line 79
     :cond_13
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public w(Ljava/lang/String;)V
@@ -333,9 +313,7 @@
 
     .line 30
     :cond_13
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public w(Ljava/lang/String;Ljava/lang/Throwable;)V
@@ -365,7 +343,5 @@
 
     .line 37
     :cond_13
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

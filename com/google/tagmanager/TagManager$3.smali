@@ -96,7 +96,5 @@
     move-exception v0
 
     :goto_30
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

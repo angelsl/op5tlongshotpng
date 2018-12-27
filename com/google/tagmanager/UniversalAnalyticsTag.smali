@@ -126,9 +126,7 @@
 
     sput-object v0, Lcom/google/tagmanager/UniversalAnalyticsTag;->TRANSACTION_ITEM_DATALAYER_MAP:Ljava/lang/String;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Lcom/google/tagmanager/DataLayer;)V
@@ -228,9 +226,7 @@
 
     .line 147
     :cond_5
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private checkBooleanProperty(Ljava/util/Map;Ljava/lang/String;)Z
@@ -734,9 +730,7 @@
     invoke-static {v1}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
 
     .line 157
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 162
     :cond_e
@@ -869,9 +863,7 @@
     invoke-static {v7}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
 
     .line 179
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 182
     :cond_79
@@ -1004,9 +996,7 @@
     nop
 
     .line 200
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 196
     :catch_d7
@@ -1019,9 +1009,7 @@
     invoke-static {v3, v2}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;Ljava/lang/Throwable;)V
 
     .line 198
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private valueToMap(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/util/Map;
@@ -1200,7 +1188,5 @@
     invoke-virtual {v1, v0}, Lcom/google/tagmanager/TrackerProvider;->close(Lcom/google/analytics/tracking/android/Tracker;)V
 
     .line 106
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

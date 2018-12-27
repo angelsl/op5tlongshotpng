@@ -58,9 +58,7 @@
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/util/MovePoint;->reset()V
 
     .line 25
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -137,9 +135,7 @@
     invoke-virtual {p0, v0, v1}, Lcom/oneplus/screenshot/longshot/util/MovePoint;->set(II)V
 
     .line 40
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public setDownTime(J)V
@@ -150,9 +146,7 @@
     iput-wide p1, p0, Lcom/oneplus/screenshot/longshot/util/MovePoint;->mDownTime:J
 
     .line 60
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public toString()Ljava/lang/String;
@@ -200,7 +194,5 @@
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/util/MovePoint;->mStart:Landroid/graphics/Point;
 
     .line 76
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

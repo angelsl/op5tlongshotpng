@@ -16,9 +16,7 @@
     .line 35
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -71,15 +69,11 @@
     invoke-virtual {p1, v1}, Landroid/content/Context;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;
 
     .line 53
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 47
     .end local v1    # "serviceIntent":Landroid/content/Intent;
     :cond_25
     :goto_25
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

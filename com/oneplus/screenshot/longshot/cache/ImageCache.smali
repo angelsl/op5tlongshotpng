@@ -33,9 +33,7 @@
 
     iput-boolean v0, p0, Lcom/oneplus/screenshot/longshot/cache/ImageCache;->mCanClear:Z
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -53,9 +51,7 @@
 
     .line 26
     :cond_7
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public setCanClear(Z)V
@@ -66,7 +62,5 @@
     iput-boolean p1, p0, Lcom/oneplus/screenshot/longshot/cache/ImageCache;->mCanClear:Z
 
     .line 33
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

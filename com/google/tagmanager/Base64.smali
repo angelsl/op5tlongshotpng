@@ -65,9 +65,7 @@
 
     sput-object v0, Lcom/google/tagmanager/Base64;->WEBSAFE_DECODABET:[B
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     nop
 

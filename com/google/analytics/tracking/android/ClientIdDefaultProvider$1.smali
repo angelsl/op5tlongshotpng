@@ -81,9 +81,7 @@
     monitor-exit v0
 
     .line 138
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 137
     :catchall_23

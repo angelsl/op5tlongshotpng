@@ -33,9 +33,7 @@
 
     sput-object v0, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->sInstanceLock:Ljava/lang/Object;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method protected constructor <init>(Landroid/content/Context;)V
@@ -114,9 +112,7 @@
     invoke-virtual {v0}, Ljava/lang/Thread;->start()V
 
     .line 141
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private blockingGetClientId()Ljava/lang/String;
@@ -236,9 +232,7 @@
     monitor-exit v0
 
     .line 43
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 42
     :catchall_8
@@ -305,9 +299,7 @@
     monitor-exit v0
 
     .line 36
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 35
     :catchall_10

@@ -161,9 +161,7 @@
     .line 28
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->sendQueue()V
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method static synthetic access$1000(Lcom/google/analytics/tracking/android/GAServiceProxy;)Lcom/google/analytics/tracking/android/Clock;
@@ -183,9 +181,7 @@
     .line 28
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->disconnectFromService()V
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method static synthetic access$1200(Lcom/google/analytics/tracking/android/GAServiceProxy;)Ljava/util/Timer;
@@ -215,9 +211,7 @@
     .line 28
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->useStore()V
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method static synthetic access$600(Lcom/google/analytics/tracking/android/GAServiceProxy;)V
@@ -227,9 +221,7 @@
     .line 28
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->connectToService()V
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method static synthetic access$700(Lcom/google/analytics/tracking/android/GAServiceProxy;)Ljava/util/Queue;
@@ -310,9 +302,7 @@
     iput-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->disconnectCheckTimer:Ljava/util/Timer;
 
     .line 198
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private declared-synchronized connectToService()V
@@ -427,9 +417,7 @@
     :goto_51
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 321
     :catchall_53
@@ -474,9 +462,7 @@
     :cond_14
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 341
     :catchall_16
@@ -502,9 +488,7 @@
     iput-boolean v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->pendingDispatch:Z
 
     .line 298
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private fireReconnectAttempt()V
@@ -542,9 +526,7 @@
     invoke-virtual {v0, v1, v2, v3}, Ljava/util/Timer;->schedule(Ljava/util/TimerTask;J)V
 
     .line 400
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private declared-synchronized sendQueue()V
@@ -588,9 +570,7 @@
     .line 248
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 250
     :cond_21
@@ -820,9 +800,7 @@
     :goto_e2
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 240
     :catchall_e4
@@ -860,9 +838,7 @@
     .line 305
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 308
     :cond_9
@@ -922,9 +898,7 @@
     .line 319
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 303
     :catchall_34
@@ -1001,9 +975,7 @@
 
     .line 140
     :goto_2e
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     nop
 
@@ -1023,9 +995,7 @@
     if-eqz v0, :cond_5
 
     .line 207
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 209
     :cond_5
@@ -1041,9 +1011,7 @@
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->connectToService()V
 
     .line 211
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method createService(Lcom/google/analytics/tracking/android/AnalyticsClient;)V
@@ -1056,9 +1024,7 @@
     if-eqz v0, :cond_5
 
     .line 218
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 220
     :cond_5
@@ -1068,9 +1034,7 @@
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->connectToService()V
 
     .line 222
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public dispatch()V
@@ -1109,9 +1073,7 @@
 
     .line 121
     :goto_16
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     nop
 
@@ -1168,9 +1130,7 @@
     .line 358
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 361
     :cond_20
@@ -1213,9 +1173,7 @@
     .line 365
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 349
     :catchall_43
@@ -1304,9 +1262,7 @@
     :goto_43
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 385
     .end local p1    # "errorCode":I
@@ -1381,9 +1337,7 @@
     :goto_29
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 368
     :catchall_2b
@@ -1443,9 +1397,7 @@
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->sendQueue()V
 
     .line 107
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method setClock(Lcom/google/analytics/tracking/android/Clock;)V
@@ -1456,9 +1408,7 @@
     iput-object p1, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->clock:Lcom/google/analytics/tracking/android/Clock;
 
     .line 98
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public declared-synchronized setForceLocalDispatch()V
@@ -1477,9 +1427,7 @@
     .line 145
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 148
     :cond_7
@@ -1544,9 +1492,7 @@
     :goto_28
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 143
     :catchall_2a
@@ -1578,7 +1524,5 @@
     iput-wide p1, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->idleTimeout:J
 
     .line 230
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

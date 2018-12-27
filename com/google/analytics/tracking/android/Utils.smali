@@ -20,9 +20,7 @@
 
     sput-object v0, Lcom/google/analytics/tracking/android/Utils;->HEXBYTES:[C
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     :array_a
     .array-data 2
@@ -636,9 +634,7 @@
 
     .line 210
     :cond_9
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public static safeParseBoolean(Ljava/lang/String;Z)Z

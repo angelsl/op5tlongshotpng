@@ -103,9 +103,7 @@
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->sInstance:Lcom/oneplus/screenshot/longshot/state/LongshotMode;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private constructor <init>(Landroid/content/Context;)V
@@ -282,9 +280,7 @@
     invoke-direct {p0}, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->initStates()V
 
     .line 131
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private getBottom(I)I
@@ -510,9 +506,7 @@
     .line 572
     .end local v0    # "e":Landroid/os/RemoteException;
     :goto_18
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private initConfigs()V
@@ -540,9 +534,7 @@
     invoke-static {v0}, Lcom/oneplus/screenshot/longshot/util/Configs;->load(Landroid/content/Context;)V
 
     .line 560
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private initDialog(Landroid/content/Context;)V
@@ -647,9 +639,7 @@
     invoke-virtual {v5, p0}, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->setOnDismissListener(Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;)V
 
     .line 504
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private initNavigationBar(Z)V
@@ -709,9 +699,7 @@
     invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 512
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private initParams()V
@@ -797,9 +785,7 @@
     iput-object v5, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->mMoveNext:Lcom/oneplus/screenshot/longshot/util/MovePoint;
 
     .line 526
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private initSharedPrefs()V
@@ -817,9 +803,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->mSharedPrefs:Lcom/oneplus/screenshot/util/SharedPrefs;
 
     .line 554
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private initStates()V
@@ -1033,9 +1017,7 @@
     invoke-virtual {v0, v1}, Lcom/oneplus/screenshot/longshot/state/LongshotState;->init(Lcom/oneplus/screenshot/longshot/state/BaseState;)V
 
     .line 550
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private isFullHeight(Landroid/graphics/Rect;I)Z
@@ -1172,9 +1154,7 @@
     invoke-static {v0, v1, p1, v1}, Lcom/oneplus/screenshot/longshot/util/Configs;->notifyToast(Landroid/content/Context;ZLjava/lang/String;I)V
 
     .line 637
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private onDestroy()V
@@ -1287,9 +1267,7 @@
     invoke-virtual {v0, v1}, Lcom/oneplus/screenshot/longshot/state/LongshotState;->exit(Lcom/oneplus/screenshot/longshot/state/LongshotState;)V
 
     .line 479
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public static recycle()V
@@ -1314,9 +1292,7 @@
 
     .line 148
     :cond_e
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -1514,9 +1490,7 @@
     invoke-direct {p0}, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->onDestroy()V
 
     .line 435
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public hide()V
@@ -1528,9 +1502,7 @@
     invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->hide()V
 
     .line 192
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public isFirst()Z
@@ -1646,9 +1618,7 @@
     .line 176
     .end local v0    # "e":Landroid/os/RemoteException;
     :goto_a
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public onConfigurationChanged(Landroid/content/res/Configuration;)V
@@ -1684,9 +1654,7 @@
 
     .line 161
     :cond_19
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public onDismiss(I)V
@@ -1728,9 +1696,7 @@
     invoke-virtual {p0, v0, v1}, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->updateState(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
 
     .line 377
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 381
     :cond_23
@@ -1747,9 +1713,7 @@
     invoke-virtual {p0, v0, v1}, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->updateState(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
 
     .line 384
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 387
     :cond_2f
@@ -1761,9 +1725,7 @@
     invoke-direct {p0}, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->onDestroy()V
 
     .line 389
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public onLowMemory()V
@@ -1789,9 +1751,7 @@
     sput-boolean v0, Lcom/oneplus/screenshot/longshot/util/Configs;->STOP_BY_USER:Z
 
     .line 400
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public onUnscrollableView()V
@@ -1805,9 +1765,7 @@
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
     .line 726
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public reject(Ljava/lang/Runnable;Ljava/lang/String;)V
@@ -1838,9 +1796,7 @@
     invoke-virtual {v1, v0}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
     .line 426
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public setFirst(Z)V
@@ -1851,9 +1807,7 @@
     iput-boolean p1, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->mIsFirst:Z
 
     .line 278
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public setLast(Z)V
@@ -1883,9 +1837,7 @@
     iput-boolean p1, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->mIsLast:Z
 
     .line 268
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public setOverScroll(Z)V
@@ -1915,9 +1867,7 @@
     iput-boolean p1, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->mOverScroll:Z
 
     .line 296
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public setScroll(Z)V
@@ -1928,9 +1878,7 @@
     iput-boolean p1, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->mScroll:Z
 
     .line 306
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public setScrollViewTop(I)V
@@ -2048,9 +1996,7 @@
 
     .line 706
     :cond_70
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public show(IILcom/oneplus/screenshot/longshot/app/LongshotDialog$OnShowListener;)V
@@ -2094,9 +2040,7 @@
     invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->show()V
 
     .line 204
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public start(Ljava/lang/Runnable;Lcom/oneplus/longshot/ILongScreenshotCallback;ZZ)V
@@ -2165,9 +2109,7 @@
     invoke-virtual {p0, v0, v1}, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->updateState(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
 
     .line 417
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public stop()V
@@ -2220,9 +2162,7 @@
 
     .line 187
     :goto_2c
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public updateIndex(I)V
@@ -2237,9 +2177,7 @@
     iput v0, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->mIndex:I
 
     .line 257
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public updateState(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
@@ -2307,9 +2245,7 @@
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->stop()V
 
     .line 216
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 219
     :cond_40
@@ -2402,9 +2338,7 @@
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->stop()V
 
     .line 235
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 236
     :cond_98
@@ -2489,7 +2423,5 @@
     .line 252
     .end local v0    # "oldState":Lcom/oneplus/screenshot/longshot/state/LongshotState;
     :cond_da
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

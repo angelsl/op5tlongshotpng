@@ -37,9 +37,7 @@
     invoke-interface {p0, p1}, Ljava/util/List;->addAll(Ljava/util/Collection;)Z
 
     .line 134
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public static createPreview(Ljava/util/List;I)Landroid/graphics/Bitmap;
@@ -273,9 +271,7 @@
 
     move-object/from16 v15, p5
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private static drawDivider(IIIZLandroid/graphics/Canvas;Landroid/graphics/Bitmap$Config;)I
@@ -914,7 +910,5 @@
 
     .line 130
     :cond_32
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

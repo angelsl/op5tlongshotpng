@@ -48,9 +48,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/SaveImageInBackgroundData;->context:Landroid/content/Context;
 
     .line 141
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method clearImage()V
@@ -70,9 +68,7 @@
     iput v0, p0, Lcom/oneplus/screenshot/SaveImageInBackgroundData;->iconSize:I
 
     .line 130
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method doDelayAction()V
@@ -90,7 +86,5 @@
 
     .line 137
     :cond_9
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

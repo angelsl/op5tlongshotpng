@@ -45,9 +45,7 @@
     iput-boolean v0, p0, Lcom/oneplus/screenshot/longshot/task/CheckThread;->mIsStopped:Z
 
     .line 35
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method static synthetic access$000(Lcom/oneplus/screenshot/longshot/task/CheckThread;)Lcom/oneplus/screenshot/longshot/state/LongshotContext;
@@ -216,7 +214,5 @@
 
     .line 56
     :cond_1d
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

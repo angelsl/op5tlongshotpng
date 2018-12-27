@@ -112,7 +112,5 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/cache/BitmapCache$BitmapHolder;->mBitmap:Landroid/graphics/Bitmap;
 
     .line 136
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

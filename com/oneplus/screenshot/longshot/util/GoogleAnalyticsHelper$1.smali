@@ -68,7 +68,5 @@
     invoke-static {v1}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->access$200(Lorg/json/JSONArray;)V
 
     .line 62
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

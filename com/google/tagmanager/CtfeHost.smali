@@ -31,9 +31,7 @@
     iput-object v0, p0, Lcom/google/tagmanager/CtfeHost;->mCtfeServerAddress:Ljava/lang/String;
 
     .line 22
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -112,7 +110,5 @@
     invoke-static {v0}, Lcom/google/tagmanager/Log;->i(Ljava/lang/String;)V
 
     .line 27
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

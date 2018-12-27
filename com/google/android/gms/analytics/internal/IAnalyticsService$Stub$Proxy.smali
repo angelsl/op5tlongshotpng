@@ -33,9 +33,7 @@
     iput-object p1, p0, Lcom/google/android/gms/analytics/internal/IAnalyticsService$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
     .line 80
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -99,9 +97,7 @@
     nop
 
     .line 134
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 131
     :catchall_1f
@@ -202,9 +198,7 @@
     nop
 
     .line 117
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 114
     :catchall_2b

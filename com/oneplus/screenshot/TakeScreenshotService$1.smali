@@ -119,9 +119,7 @@
     invoke-virtual {p0, v2}, Lcom/oneplus/screenshot/TakeScreenshotService$1;->post(Ljava/lang/Runnable;)Z
 
     .line 84
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 87
     :cond_44
@@ -185,9 +183,7 @@
     invoke-virtual {p0, v2}, Lcom/oneplus/screenshot/TakeScreenshotService$1;->post(Ljava/lang/Runnable;)Z
 
     .line 100
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 105
     :cond_77
@@ -322,9 +318,7 @@
 
     .line 120
     :goto_e1
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     :pswitch_data_e2
     .packed-switch 0x1

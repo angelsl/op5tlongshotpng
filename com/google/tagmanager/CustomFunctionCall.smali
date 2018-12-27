@@ -54,9 +54,7 @@
 
     sput-object v0, Lcom/google/tagmanager/CustomFunctionCall;->ADDITIONAL_PARAMS:Ljava/lang/String;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public constructor <init>(Lcom/google/tagmanager/CustomFunctionCall$CustomEvaluator;)V

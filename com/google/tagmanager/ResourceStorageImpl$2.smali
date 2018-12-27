@@ -50,7 +50,5 @@
     invoke-virtual {v0, v1}, Lcom/google/tagmanager/ResourceStorageImpl;->saveResourceToDisk(Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;)Z
 
     .line 123
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

@@ -30,9 +30,7 @@
     iput-object p1, p0, Lcom/google/tagmanager/DebugValueBuilder;->value:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 21
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public static copyImmutableValue(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -84,9 +82,7 @@
     if-ne p1, p2, :cond_3
 
     .line 27
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 25
     :cond_3

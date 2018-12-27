@@ -63,7 +63,5 @@
     .line 119
     .end local v1    # "resion":Ljava/lang/String;
     :goto_10
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

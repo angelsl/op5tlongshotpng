@@ -130,7 +130,5 @@
     .line 847
     :cond_40
     :goto_40
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

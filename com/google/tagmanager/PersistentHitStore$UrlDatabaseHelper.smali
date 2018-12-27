@@ -263,9 +263,7 @@
     if-eqz v2, :cond_47
 
     .line 680
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 678
     :cond_47
@@ -517,9 +515,7 @@
 
     .line 647
     :goto_2c
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public onUpgrade(Landroid/database/sqlite/SQLiteDatabase;II)V
@@ -540,7 +536,5 @@
     iput-boolean p1, p0, Lcom/google/tagmanager/PersistentHitStore$UrlDatabaseHelper;->mBadDatabase:Z
 
     .line 556
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

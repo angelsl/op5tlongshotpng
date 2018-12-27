@@ -23,7 +23,5 @@
     invoke-direct {p0, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     .line 605
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

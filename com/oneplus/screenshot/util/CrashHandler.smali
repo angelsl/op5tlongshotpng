@@ -40,9 +40,7 @@
 
     sput-object v0, Lcom/oneplus/screenshot/util/CrashHandler;->sInstance:Lcom/oneplus/screenshot/util/CrashHandler;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private constructor <init>()V
@@ -76,9 +74,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/util/CrashHandler;->mFormatter:Ljava/text/DateFormat;
 
     .line 42
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private collectDeviceInfo()V
@@ -249,9 +245,7 @@
 
     .line 107
     :cond_73
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public static getInstance()Lcom/oneplus/screenshot/util/CrashHandler;
@@ -451,9 +445,7 @@
 
     .line 60
     :cond_18
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private saveCrashLog(Ljava/util/List;)V
@@ -472,9 +464,7 @@
     if-nez p1, :cond_3
 
     .line 133
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 135
     :cond_3
@@ -693,9 +683,7 @@
     .line 162
     .end local v2    # "e":Ljava/lang/Exception;
     :goto_b4
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -718,9 +706,7 @@
     invoke-static {p0}, Ljava/lang/Thread;->setDefaultUncaughtExceptionHandler(Ljava/lang/Thread$UncaughtExceptionHandler;)V
 
     .line 82
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public uncaughtException(Ljava/lang/Thread;Ljava/lang/Throwable;)V
@@ -775,7 +761,5 @@
 
     .line 76
     :goto_28
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

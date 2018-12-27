@@ -4061,9 +4061,7 @@
 
     sput-object v0, Lcom/google/analytics/containertag/common/Key;->$VALUES:[Lcom/google/analytics/containertag/common/Key;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private constructor <init>(Ljava/lang/String;ILjava/lang/String;)V

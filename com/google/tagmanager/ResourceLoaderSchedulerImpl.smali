@@ -208,9 +208,7 @@
     .line 134
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 132
     :cond_7
@@ -274,9 +272,7 @@
     .line 90
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 83
     :catchall_18
@@ -362,9 +358,7 @@
     .line 122
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 109
     :cond_40
@@ -409,9 +403,7 @@
     .line 128
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 125
     .end local p1    # "urlPathAndQuery":Ljava/lang/String;
@@ -450,9 +442,7 @@
     .line 96
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 93
     .end local p1    # "callback":Lcom/google/tagmanager/LoadCallback;, "Lcom/google/tagmanager/LoadCallback<Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;>;"

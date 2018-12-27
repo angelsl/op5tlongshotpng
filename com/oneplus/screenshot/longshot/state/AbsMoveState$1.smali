@@ -52,7 +52,5 @@
     invoke-static {v0}, Lcom/oneplus/screenshot/longshot/state/AbsMoveState;->access$000(Lcom/oneplus/screenshot/longshot/state/AbsMoveState;)V
 
     .line 57
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

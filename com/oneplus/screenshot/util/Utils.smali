@@ -22,9 +22,7 @@
 
     sput-object v0, Lcom/oneplus/screenshot/util/Utils;->WATER_MARK:Landroid/graphics/Bitmap;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public constructor <init>()V
@@ -283,9 +281,7 @@
     .line 454
     .end local v0    # "e":Ljava/lang/Exception;
     :goto_4e
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public static dip2px(FF)I
@@ -1462,9 +1458,7 @@
     .end local v0    # "e":Ljava/lang/Exception;
     .end local v1    # "e2":Ljava/lang/Exception;
     :goto_82
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public static saveToFile(Landroid/content/Context;Lcom/oneplus/screenshot/util/FileInfo;Landroid/graphics/Bitmap;)Z
@@ -2405,9 +2399,7 @@
     .registers 0
 
     .line 96
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public static shouldDumpForMove()Z

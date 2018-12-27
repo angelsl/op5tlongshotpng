@@ -52,7 +52,5 @@
     invoke-virtual {v0, p1, v1}, Lcom/google/tagmanager/ServiceManagerImpl;->updatePowerSaveMode(ZZ)V
 
     .line 56
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

@@ -133,9 +133,7 @@
     iput-object p1, p0, Lcom/google/analytics/tracking/android/ExceptionReporter;->mExceptionParser:Lcom/google/analytics/tracking/android/ExceptionParser;
 
     .line 69
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public uncaughtException(Ljava/lang/Thread;Ljava/lang/Throwable;)V
@@ -233,7 +231,5 @@
 
     .line 87
     :cond_4d
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

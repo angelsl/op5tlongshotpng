@@ -30,9 +30,7 @@
 
     iput-object v0, p0, Lcom/google/analytics/tracking/android/MapBuilder;->map:Ljava/util/Map;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method static booleanToString(Ljava/lang/Boolean;)Ljava/lang/String;

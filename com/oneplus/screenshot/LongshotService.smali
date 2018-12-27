@@ -35,9 +35,7 @@
 
     sput-object v0, Lcom/oneplus/screenshot/LongshotService;->TAG:Ljava/lang/String;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public constructor <init>()V
@@ -56,9 +54,7 @@
 
     iput v0, p0, Lcom/oneplus/screenshot/LongshotService;->mTargetViewTop:I
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method static synthetic access$000()Ljava/lang/String;
@@ -151,9 +147,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/LongshotService;->mLongshotMode:Lcom/oneplus/screenshot/longshot/state/LongshotMode;
 
     .line 38
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public onDestroy()V
@@ -179,9 +173,7 @@
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 49
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public onStartCommand(Landroid/content/Intent;II)I

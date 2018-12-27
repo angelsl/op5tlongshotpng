@@ -236,9 +236,7 @@
     .line 52
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 35
     :cond_51

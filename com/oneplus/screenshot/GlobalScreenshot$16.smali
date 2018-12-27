@@ -175,7 +175,5 @@
     invoke-virtual {v1, v3}, Landroid/widget/ImageView;->setTranslationY(F)V
 
     .line 1586
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

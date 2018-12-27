@@ -26,9 +26,7 @@
     iput v0, p0, Lcom/oneplus/screenshot/longshot/state/ShotFirstState;->mCaptureDelay:I
 
     .line 18
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -57,9 +55,7 @@
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/state/ShotFirstState;->updateState()V
 
     .line 30
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 28
     :catchall_d
@@ -81,9 +77,7 @@
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/ShotFirstState;->mMovePoint:Lcom/oneplus/screenshot/longshot/util/MovePoint;
 
     .line 43
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method protected updateState()V
@@ -113,7 +107,5 @@
 
     .line 38
     :goto_12
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

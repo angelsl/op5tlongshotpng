@@ -167,9 +167,7 @@
     if-nez v1, :cond_89
 
     .line 53
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 56
     :cond_89
@@ -250,7 +248,5 @@
 
     .line 65
     :goto_cb
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

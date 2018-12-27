@@ -59,9 +59,7 @@
 
     sput-object v0, Lcom/google/tagmanager/ContainerOpener;->mContainerIdNotifiersMap:Ljava/util/Map;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private constructor <init>(Lcom/google/tagmanager/TagManager;Ljava/lang/String;Ljava/lang/Long;Lcom/google/tagmanager/ContainerOpener$Notifier;)V
@@ -123,9 +121,7 @@
     .line 49
     invoke-direct {p0, p1}, Lcom/google/tagmanager/ContainerOpener;->callNotifiers(Lcom/google/tagmanager/Container;)V
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method static synthetic access$100(Lcom/google/tagmanager/ContainerOpener;)Lcom/google/tagmanager/Container;
@@ -244,9 +240,7 @@
     :goto_32
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 397
     .end local p1    # "container":Lcom/google/tagmanager/Container;
@@ -395,9 +389,7 @@
     iput-object v5, p0, Lcom/google/tagmanager/ContainerOpener;->mNotifier:Lcom/google/tagmanager/ContainerOpener$Notifier;
 
     .line 377
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 381
     :cond_65
@@ -424,9 +416,7 @@
     invoke-direct {p0, v5, v6}, Lcom/google/tagmanager/ContainerOpener;->setTimer(J)V
 
     .line 383
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 367
     .end local v3    # "remainingTimeout":J
@@ -443,9 +433,7 @@
     .line 369
     monitor-exit v3
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 372
     .end local v4    # "notifiers":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/ContainerOpener$Notifier;>;"
@@ -527,9 +515,7 @@
     invoke-direct {v0, v1}, Lcom/google/tagmanager/ContainerOpener;->open(Lcom/google/tagmanager/Container$RefreshType;)V
 
     .line 259
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 251
     .end local v0    # "containerLoader":Lcom/google/tagmanager/ContainerOpener;
@@ -593,7 +579,5 @@
     invoke-virtual {v1, v0, p1, p2}, Ljava/util/Timer;->schedule(Ljava/util/TimerTask;J)V
 
     .line 395
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

@@ -45,7 +45,5 @@
     invoke-virtual {v0, p1}, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;->setContainer(Lcom/google/tagmanager/Container;)V
 
     .line 307
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

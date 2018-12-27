@@ -13,9 +13,7 @@
     invoke-direct {p0, v0}, Landroid/app/IntentService;-><init>(Ljava/lang/String;)V
 
     .line 22
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;)V
@@ -39,9 +37,7 @@
     invoke-virtual {p0, p0, p1}, Lcom/google/analytics/tracking/android/CampaignTrackingService;->processIntent(Landroid/content/Context;Landroid/content/Intent;)V
 
     .line 28
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public processIntent(Landroid/content/Context;Landroid/content/Intent;)V
@@ -97,7 +93,5 @@
     .line 42
     .end local v1    # "e":Ljava/io/IOException;
     :goto_1e
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

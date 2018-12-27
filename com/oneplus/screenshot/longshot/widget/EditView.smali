@@ -98,9 +98,7 @@
     iput v2, p0, Lcom/oneplus/screenshot/longshot/widget/EditView;->mTouchSlop:I
 
     .line 45
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method static synthetic access$000(Lcom/oneplus/screenshot/longshot/widget/EditView;)Landroid/view/ViewParent;
@@ -121,9 +119,7 @@
     .line 16
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/longshot/widget/EditView;->trackMotionDrag(I)V
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method static synthetic access$200(Lcom/oneplus/screenshot/longshot/widget/EditView;)Landroid/content/Context;
@@ -224,9 +220,7 @@
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/widget/EditView;->invalidate()V
 
     .line 123
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -413,9 +407,7 @@
     .end local v17    # "cutPosition":I
     .end local v18    # "paddingLeft":I
     :cond_65
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method protected onMeasure(II)V
@@ -459,9 +451,7 @@
     invoke-virtual {p0, v0}, Lcom/oneplus/screenshot/longshot/widget/EditView;->setCutPosition(I)V
 
     .line 55
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public setCutPosition(I)V
@@ -472,7 +462,5 @@
     iput p1, p0, Lcom/oneplus/screenshot/longshot/widget/EditView;->mCutPosition:I
 
     .line 97
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

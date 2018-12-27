@@ -22,9 +22,7 @@
     invoke-direct {p0, p1, v0}, Lcom/oneplus/screenshot/longshot/app/GlobalScreenShotFrameLayout;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
     .line 18
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
@@ -36,9 +34,7 @@
     invoke-direct {p0, p1, p2}, Landroid/widget/FrameLayout;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
     .line 22
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -93,9 +89,7 @@
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/app/GlobalScreenShotFrameLayout;->mKeyCallback:Lcom/oneplus/screenshot/GlobalScreenshot$KeyEventCallBack;
 
     .line 35
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public unregisterKeyEventCallBack()V
@@ -114,7 +108,5 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/app/GlobalScreenShotFrameLayout;->mKeyCallback:Lcom/oneplus/screenshot/GlobalScreenshot$KeyEventCallBack;
 
     .line 40
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

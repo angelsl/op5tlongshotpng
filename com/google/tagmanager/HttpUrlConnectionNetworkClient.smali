@@ -32,9 +32,7 @@
 
     .line 73
     :cond_5
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private handleServerResponse(Ljava/net/HttpURLConnection;)Ljava/io/InputStream;
@@ -113,9 +111,7 @@
     invoke-direct {p0, v0}, Lcom/google/tagmanager/HttpUrlConnectionNetworkClient;->closeURLConnection(Ljava/net/HttpURLConnection;)V
 
     .line 67
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public getInputStream(Ljava/lang/String;)Ljava/io/InputStream;
@@ -260,9 +256,7 @@
     nop
 
     .line 47
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 40
     .restart local v1    # "sendToServer":Ljava/io/OutputStream;

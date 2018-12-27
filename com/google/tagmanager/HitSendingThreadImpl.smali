@@ -237,9 +237,7 @@
     invoke-virtual {p0}, Lcom/google/tagmanager/HitSendingThreadImpl;->interrupt()V
 
     .line 132
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method getQueueSize()I
@@ -289,9 +287,7 @@
     invoke-virtual {v0, p1}, Ljava/util/concurrent/LinkedBlockingQueue;->add(Ljava/lang/Object;)Z
 
     .line 88
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public run()V
@@ -406,9 +402,7 @@
     .line 126
     .end local v0    # "r":Ljava/lang/Runnable;
     :cond_43
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public sendHit(Ljava/lang/String;)V
@@ -423,9 +417,7 @@
     invoke-virtual {p0, p1, v0, v1}, Lcom/google/tagmanager/HitSendingThreadImpl;->sendHit(Ljava/lang/String;J)V
 
     .line 66
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method sendHit(Ljava/lang/String;J)V
@@ -455,7 +447,5 @@
     invoke-virtual {p0, v6}, Lcom/google/tagmanager/HitSendingThreadImpl;->queueToThread(Ljava/lang/Runnable;)V
 
     .line 83
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

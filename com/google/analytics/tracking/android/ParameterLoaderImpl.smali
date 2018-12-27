@@ -325,7 +325,5 @@
     iput-object p1, p0, Lcom/google/analytics/tracking/android/ParameterLoaderImpl;->mOverrideResourcePackageName:Ljava/lang/String;
 
     .line 107
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

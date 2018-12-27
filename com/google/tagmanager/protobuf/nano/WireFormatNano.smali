@@ -168,9 +168,7 @@
 
     sput-object v0, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->EMPTY_BOOLEAN_REF_ARRAY:[Ljava/lang/Boolean;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private constructor <init>()V
@@ -904,9 +902,7 @@
     if-nez p1, :cond_21
 
     .line 260
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 263
     :cond_21
@@ -962,9 +958,7 @@
 
     .line 270
     :cond_49
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public static storeUnknownField(Ljava/util/List;Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;I)Z
@@ -1532,9 +1526,7 @@
     if-nez p0, :cond_3
 
     .line 358
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 360
     :cond_3
@@ -1584,7 +1576,5 @@
     .line 364
     .end local v0    # "i$":Ljava/util/Iterator;
     :cond_28
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

@@ -34,9 +34,7 @@
     .line 283
     invoke-direct {p0}, Ledu/emory/mathcs/utils/ConcurrencyUtils$CustomExceptionHandler;-><init>()V
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -50,7 +48,5 @@
     invoke-virtual {p2}, Ljava/lang/Throwable;->printStackTrace()V
 
     .line 286
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

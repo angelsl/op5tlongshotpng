@@ -141,7 +141,5 @@
 
     .line 428
     :cond_38
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

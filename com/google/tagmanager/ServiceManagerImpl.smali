@@ -48,9 +48,7 @@
 
     sput-object v0, Lcom/google/tagmanager/ServiceManagerImpl;->MSG_OBJECT:Ljava/lang/Object;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private constructor <init>()V
@@ -91,9 +89,7 @@
     iput-boolean v1, p0, Lcom/google/tagmanager/ServiceManagerImpl;->storeIsEmpty:Z
 
     .line 78
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method constructor <init>(Landroid/content/Context;Lcom/google/tagmanager/HitSendingThread;Lcom/google/tagmanager/HitStore;Z)V
@@ -152,9 +148,7 @@
     invoke-virtual {p0, p1, p2}, Lcom/google/tagmanager/ServiceManagerImpl;->initialize(Landroid/content/Context;Lcom/google/tagmanager/HitSendingThread;)V
 
     .line 92
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method static synthetic access$000(Lcom/google/tagmanager/ServiceManagerImpl;)Z
@@ -227,9 +221,7 @@
     sput-object v0, Lcom/google/tagmanager/ServiceManagerImpl;->instance:Lcom/google/tagmanager/ServiceManagerImpl;
 
     .line 83
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public static getInstance()Lcom/google/tagmanager/ServiceManagerImpl;
@@ -302,9 +294,7 @@
 
     .line 120
     :cond_29
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private initializeNetworkReceiver()V
@@ -325,9 +315,7 @@
     invoke-virtual {v0, v1}, Lcom/google/tagmanager/NetworkReceiver;->register(Landroid/content/Context;)V
 
     .line 97
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -358,9 +346,7 @@
     .line 183
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 186
     :cond_f
@@ -378,9 +364,7 @@
     .line 192
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 179
     :catchall_1b
@@ -522,9 +506,7 @@
     .line 133
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 135
     :cond_7
@@ -549,9 +531,7 @@
     :cond_13
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 131
     .end local p1    # "ctx":Landroid/content/Context;
@@ -612,9 +592,7 @@
     :cond_22
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 237
     :catchall_24
@@ -651,9 +629,7 @@
     .line 200
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 203
     :cond_e
@@ -717,9 +693,7 @@
     :cond_3e
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 195
     .end local p1    # "dispatchPeriodInSeconds":I
@@ -749,9 +723,7 @@
     .line 234
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 232
     .end local p1    # "connected":Z
@@ -788,9 +760,7 @@
     .line 216
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 218
     :cond_b
@@ -887,9 +857,7 @@
     .line 229
     monitor-exit p0
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 214
     .end local p1    # "storeIsEmpty":Z

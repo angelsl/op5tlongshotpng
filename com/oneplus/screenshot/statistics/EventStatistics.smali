@@ -37,9 +37,7 @@
 
     sput v0, Lcom/oneplus/screenshot/statistics/EventStatistics;->APPBASE:I
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public constructor <init>()V
@@ -140,9 +138,7 @@
 
     .line 57
     :goto_1f
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private static isDebuggable(Landroid/content/Context;)Z

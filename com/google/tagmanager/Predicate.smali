@@ -31,9 +31,7 @@
 
     sput-object v0, Lcom/google/tagmanager/Predicate;->ARG1:Ljava/lang/String;
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;)V
@@ -60,9 +58,7 @@
     invoke-direct {p0, p1, v0}, Lcom/google/tagmanager/FunctionCallImplementation;-><init>(Ljava/lang/String;[Ljava/lang/String;)V
 
     .line 29
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method public static getArg0Key()Ljava/lang/String;

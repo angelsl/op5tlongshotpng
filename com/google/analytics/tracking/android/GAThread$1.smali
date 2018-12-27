@@ -233,15 +233,11 @@
     invoke-interface/range {v1 .. v6}, Lcom/google/analytics/tracking/android/ServiceProxy;->putHit(Ljava/util/Map;JLjava/lang/String;Ljava/util/List;)V
 
     .line 159
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 144
     .end local v0    # "wireFormatParams":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     :cond_aa
     :goto_aa
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

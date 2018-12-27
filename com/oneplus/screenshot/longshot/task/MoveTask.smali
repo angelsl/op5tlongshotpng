@@ -134,9 +134,7 @@
     iput-object p3, p0, Lcom/oneplus/screenshot/longshot/task/MoveTask;->mMovePoint:Lcom/oneplus/screenshot/longshot/util/MovePoint;
 
     .line 74
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method static synthetic access$000(Lcom/oneplus/screenshot/longshot/task/MoveTask;)Landroid/graphics/Bitmap;
@@ -167,9 +165,7 @@
     .line 31
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/longshot/task/MoveTask;->checkCanScrollInternal(I)V
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private checkCanScroll(I)V
@@ -188,9 +184,7 @@
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
     .line 185
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private checkCanScrollInternal(I)V
@@ -221,9 +215,7 @@
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 191
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 194
     :cond_16
@@ -412,18 +404,14 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/task/MoveTask;->mLastScreenPart:Landroid/graphics/Bitmap;
 
     .line 219
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 213
     :cond_c2
     iput-boolean v2, p0, Lcom/oneplus/screenshot/longshot/task/MoveTask;->mCanRunTask:Z
 
     .line 214
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private compare(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;)Z
@@ -650,9 +638,7 @@
 
     .line 392
     :goto_3e
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private static final lerp(FFF)F
@@ -757,9 +743,7 @@
 
     .line 281
     :goto_2f
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private sendSwipe(III)V
@@ -1077,9 +1061,7 @@
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 368
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 334
     .end local v19    # "alpha":F
@@ -1179,9 +1161,7 @@
     invoke-direct/range {v0 .. v7}, Lcom/oneplus/screenshot/longshot/task/MoveTask;->injectMotionEvent(IIJFFF)V
 
     .line 347
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method private storeImage(Landroid/graphics/Bitmap;Lcom/oneplus/screenshot/util/ImageInfo;)V
@@ -1202,9 +1182,7 @@
     invoke-static {v0, p2, p1}, Lcom/oneplus/screenshot/util/Utils;->saveToFile(Landroid/content/Context;Lcom/oneplus/screenshot/util/FileInfo;Landroid/graphics/Bitmap;)Z
 
     .line 181
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -1421,9 +1399,7 @@
     .line 468
     .end local v2    # "i":I
     :cond_97
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method protected bridge synthetic doInBackground([Ljava/lang/Object;)Ljava/lang/Object;
@@ -1697,9 +1673,7 @@
 
     invoke-virtual {p0, p1}, Lcom/oneplus/screenshot/longshot/task/MoveTask;->onPostExecute(Ljava/lang/Void;)V
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method protected onPostExecute(Ljava/lang/Void;)V
@@ -1903,9 +1877,7 @@
     monitor-exit v0
 
     .line 253
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 252
     :catchall_a3
@@ -1935,9 +1907,7 @@
     monitor-exit v0
 
     .line 298
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 297
     :catchall_7

@@ -49,7 +49,5 @@
     invoke-interface {v0}, Lcom/google/analytics/tracking/android/ServiceProxy;->setForceLocalDispatch()V
 
     .line 273
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

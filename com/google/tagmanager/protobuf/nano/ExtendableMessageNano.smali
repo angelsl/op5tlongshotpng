@@ -22,9 +22,7 @@
     .line 40
     invoke-direct {p0}, Lcom/google/tagmanager/protobuf/nano/MessageNano;-><init>()V
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 
@@ -103,7 +101,5 @@
     invoke-static {p1, p2, v0}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->setExtension(Lcom/google/tagmanager/protobuf/nano/Extension;Ljava/lang/Object;Ljava/util/List;)V
 
     .line 70
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

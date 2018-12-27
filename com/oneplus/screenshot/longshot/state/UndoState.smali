@@ -66,9 +66,7 @@
     invoke-interface {v0, v1}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->setLast(Z)V
 
     .line 29
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
 
 .method protected updateIndex()V
@@ -82,7 +80,5 @@
     invoke-interface {v0, v1}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->updateIndex(I)V
 
     .line 39
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

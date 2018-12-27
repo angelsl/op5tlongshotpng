@@ -65,7 +65,5 @@
     invoke-virtual {v0}, Landroid/animation/Animator;->start()V
 
     .line 137
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method

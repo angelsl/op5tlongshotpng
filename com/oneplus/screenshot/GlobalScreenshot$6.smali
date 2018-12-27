@@ -46,9 +46,7 @@
 
     if-nez v0, :cond_5
 
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 
     .line 1271
     :cond_5
@@ -331,7 +329,5 @@
     invoke-virtual {v1, v0}, Landroid/widget/ImageView;->setEnabled(Z)V
 
     .line 1327
-    #disallowed odex opcode
-    #return-void-no-barrier
-    nop
+    return-void
 .end method
