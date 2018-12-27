@@ -1,7 +1,7 @@
 id=op5tlongshotpng
 name=OP5T OPLongshot PNG
-version=v6
-versionCode=6
+version=v7
+versionCode=7
 author=angelsl
 description=A module that fixes the OP5T OPLongshot to produce PNG screenshots
 minMagisk=1500
