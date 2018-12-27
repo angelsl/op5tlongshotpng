@@ -18,7 +18,7 @@
 # static fields
 .field private static final SCREENSHOTS_DIR_NAME:Ljava/lang/String; = "Screenshots"
 
-.field private static final SCREENSHOT_FILE_NAME_TEMPLATE:Ljava/lang/String; = "Screenshot_%s.jpg"
+.field private static final SCREENSHOT_FILE_NAME_TEMPLATE:Ljava/lang/String; = "Screenshot_%s.png"
 
 .field private static final SCREENSHOT_SHARE_SUBJECT_TEMPLATE:Ljava/lang/String; = "Screenshot (%s)"
 
@@ -135,7 +135,7 @@
 
     .line 191
     .local v12, "imageDate":Ljava/lang/String;
-    const-string v1, "Screenshot_%s.jpg"
+    const-string v1, "Screenshot_%s.png"
 
     const/4 v13, 0x1
 
@@ -830,7 +830,7 @@
 
     .line 359
     .local v11, "out":Ljava/io/OutputStream;
-    sget-object v0, Landroid/graphics/Bitmap$CompressFormat;->JPEG:Landroid/graphics/Bitmap$CompressFormat;
+    sget-object v0, Landroid/graphics/Bitmap$CompressFormat;->PNG:Landroid/graphics/Bitmap$CompressFormat;
 
     const/16 v12, 0x64
 
@@ -881,7 +881,7 @@
 
     .line 370
     .local v14, "inputFilePath":Ljava/lang/StringBuffer;
-    const-string v0, ".jpg"
+    const-string v0, ".png"
 
     invoke-virtual {v14, v0}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -1117,7 +1117,7 @@
     :cond_153
     const-string v7, "mime_type"
 
-    const-string v8, "image/jpeg"
+    const-string v8, "image/png"
 
     invoke-virtual {v0, v7, v8}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
@@ -1229,7 +1229,7 @@
 
     .line 427
     :cond_1b4
-    const-string v15, "image/jpeg"
+    const-string v15, "image/png"
 
     invoke-virtual {v14, v15}, Landroid/content/Intent;->setType(Ljava/lang/String;)Landroid/content/Intent;
 
@@ -1741,7 +1741,7 @@
 
     iget-object v3, v3, Lcom/oneplus/screenshot/SaveImageInBackgroundData;->imageUri:Landroid/net/Uri;
 
-    const-string v4, "image/jpeg"
+    const-string v4, "image/png"
 
     invoke-virtual {v2, v3, v4}, Landroid/content/Intent;->setDataAndType(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/Intent;
 

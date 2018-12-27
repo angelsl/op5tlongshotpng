@@ -1618,7 +1618,7 @@
     move-object v7, v0
 
     .line 120
-    sget-object v0, Landroid/graphics/Bitmap$CompressFormat;->JPEG:Landroid/graphics/Bitmap$CompressFormat;
+    sget-object v0, Landroid/graphics/Bitmap$CompressFormat;->PNG:Landroid/graphics/Bitmap$CompressFormat;
 
     const/16 v2, 0x64
 
@@ -1672,7 +1672,7 @@
 
     .line 128
     .local v5, "inputFilePath":Ljava/lang/StringBuffer;
-    const-string v0, ".jpg"
+    const-string v0, ".png"
 
     invoke-virtual {v5, v0}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -1977,7 +1977,7 @@
     :cond_14b
     const-string v0, "mime_type"
 
-    const-string v5, "image/jpeg"
+    const-string v5, "image/png"
 
     invoke-virtual {v9, v0, v5}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
