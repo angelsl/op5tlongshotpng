@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Ljava/util/HashMap",
-        "<",
+        "Ljava/util/HashMap<",
         "Ljava/lang/String;",
         "Ljava/lang/Object;",
         ">;"
@@ -28,9 +27,10 @@
 .method public constructor <init>()V
     .registers 1
 
-    .prologue
     .line 155
     invoke-direct {p0}, Ljava/util/HashMap;-><init>()V
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

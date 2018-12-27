@@ -25,7 +25,6 @@
 .method constructor <init>(Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;)V
     .registers 2
 
-    .prologue
     .line 71
     iput-object p1, p0, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl$2;->this$0:Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;
 
@@ -40,7 +39,6 @@
     .registers 5
     .param p1, "ctfeHost"    # Lcom/google/tagmanager/CtfeHost;
 
-    .prologue
     .line 74
     new-instance v0, Lcom/google/tagmanager/ResourceLoader;
 

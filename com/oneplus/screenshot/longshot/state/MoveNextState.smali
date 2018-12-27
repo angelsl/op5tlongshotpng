@@ -13,18 +13,18 @@
     .param p1, "stateContext"    # Lcom/oneplus/screenshot/longshot/state/LongshotContext;
     .param p2, "point"    # Lcom/oneplus/screenshot/longshot/util/MovePoint;
 
-    .prologue
     .line 16
     invoke-direct {p0, p1, p2}, Lcom/oneplus/screenshot/longshot/state/AbsMoveState;-><init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;Lcom/oneplus/screenshot/longshot/util/MovePoint;)V
 
     .line 17
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private getShotLastState()Lcom/oneplus/screenshot/longshot/state/LongshotState;
     .registers 2
 
-    .prologue
     .line 59
     sget-boolean v0, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_STRICT_LIST:Z
 
@@ -32,19 +32,18 @@
 
     sget-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_SLAST:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    :goto_6
-    return-object v0
+    goto :goto_9
 
     :cond_7
     sget-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_LAST:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    goto :goto_6
+    :goto_9
+    return-object v0
 .end method
 
 .method private getShotNextState()Lcom/oneplus/screenshot/longshot/state/LongshotState;
     .registers 2
 
-    .prologue
     .line 67
     sget-boolean v0, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_BG_LIST:Z
 
@@ -52,19 +51,18 @@
 
     sget-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_BGNEXT:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    :goto_6
-    return-object v0
+    goto :goto_9
 
     :cond_7
     sget-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_NEXT:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    goto :goto_6
+    :goto_9
+    return-object v0
 .end method
 
 .method private getShotOneState()Lcom/oneplus/screenshot/longshot/state/LongshotState;
     .registers 2
 
-    .prologue
     .line 71
     sget-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_ONE:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
@@ -74,7 +72,6 @@
 .method private getShotOverState()Lcom/oneplus/screenshot/longshot/state/LongshotState;
     .registers 2
 
-    .prologue
     .line 63
     sget-boolean v0, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_BG_LIST:Z
 
@@ -82,39 +79,45 @@
 
     sget-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_BGOVER:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    :goto_6
-    return-object v0
+    goto :goto_9
 
     :cond_7
     sget-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_OVER:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    goto :goto_6
+    :goto_9
+    return-object v0
 .end method
 
 .method private isList()Z
     .registers 2
 
-    .prologue
     .line 51
     sget-boolean v0, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_PAGE_LIST:Z
 
-    if-nez v0, :cond_7
+    if-nez v0, :cond_b
 
     sget-boolean v0, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_SMALL_LIST:Z
 
-    :goto_6
-    return v0
+    if-eqz v0, :cond_9
 
-    :cond_7
+    goto :goto_b
+
+    :cond_9
+    const/4 v0, 0x0
+
+    goto :goto_c
+
+    :cond_b
+    :goto_b
     const/4 v0, 0x1
 
-    goto :goto_6
+    :goto_c
+    return v0
 .end method
 
 .method private isNonList()Z
     .registers 2
 
-    .prologue
     .line 55
     sget-boolean v0, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_NON_LIST:Z
 
@@ -124,7 +127,6 @@
 .method private isScroll()Z
     .registers 2
 
-    .prologue
     .line 47
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MoveNextState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
@@ -140,7 +142,6 @@
 .method protected getNextState()Lcom/oneplus/screenshot/longshot/state/LongshotState;
     .registers 5
 
-    .prologue
     .line 24
     invoke-direct {p0}, Lcom/oneplus/screenshot/longshot/state/MoveNextState;->getShotNextState()Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
@@ -148,17 +149,15 @@
 
     .line 25
     .local v0, "state":Lcom/oneplus/screenshot/longshot/state/LongshotState;
-    const-string/jumbo v1, "Longshot.MoveNextState"
+    const-string v1, "Longshot.MoveNextState"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v3, "getNextState, "
+    const-string v3, "getNextState, "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
 
     invoke-direct {p0}, Lcom/oneplus/screenshot/longshot/state/MoveNextState;->isNonList()Z
 
@@ -166,13 +165,9 @@
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
-    move-result-object v2
-
-    const-string/jumbo v3, ", "
+    const-string v3, ", "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
 
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/state/MoveNextState;->isOverScroll()Z
 
@@ -180,13 +175,9 @@
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
-    move-result-object v2
-
-    const-string/jumbo v3, ", "
+    const-string v3, ", "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
 
     invoke-direct {p0}, Lcom/oneplus/screenshot/longshot/state/MoveNextState;->isScroll()Z
 
@@ -194,21 +185,15 @@
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
-    move-result-object v2
-
-    const-string/jumbo v3, ", "
+    const-string v3, ", "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
 
     invoke-direct {p0}, Lcom/oneplus/screenshot/longshot/state/MoveNextState;->isList()Z
 
     move-result v3
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
-
-    move-result-object v2
 
     invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -221,19 +206,17 @@
 
     move-result v1
 
-    if-eqz v1, :cond_5f
+    if-eqz v1, :cond_50
 
     sget-boolean v1, Lcom/oneplus/screenshot/longshot/util/Configs;->STOP_BY_USER:Z
 
-    xor-int/lit8 v1, v1, 0x1
-
-    if-eqz v1, :cond_5f
+    if-nez v1, :cond_50
 
     invoke-direct {p0}, Lcom/oneplus/screenshot/longshot/state/MoveNextState;->getShotLastState()Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     move-result-object v0
 
     .line 40
-    :cond_5f
+    :cond_50
     return-object v0
 .end method

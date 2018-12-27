@@ -25,9 +25,9 @@
 
 .field public static final black_list_window:I = 0x7f080000
 
-.field public static final config_line_sample_bglist:I = 0x7f080029
+.field public static final config_line_sample_bglist:I = 0x7f08002a
 
-.field public static final config_line_sample_list:I = 0x7f080028
+.field public static final config_line_sample_list:I = 0x7f080029
 
 .field public static final customize_move_app:I = 0x7f080002
 
@@ -45,9 +45,9 @@
 
 .field public static final level2_scrollbar_activity:I = 0x7f080025
 
-.field public static final level3_scrollbar_activity:I = 0x7f080026
+.field public static final level3_scrollbar_activity:I = 0x7f080027
 
-.field public static final level4_scrollbar_activity:I = 0x7f080027
+.field public static final level4_scrollbar_activity:I = 0x7f080028
 
 .field public static final level_1_list_activity:I = 0x7f080004
 
@@ -99,12 +99,13 @@
 
 .field public static final strict_list_activity:I = 0x7f080015
 
+.field public static final with_issue_report_activity:I = 0x7f080026
+
 
 # direct methods
 .method public constructor <init>()V
     .registers 1
 
-    .prologue
     .line 20
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 

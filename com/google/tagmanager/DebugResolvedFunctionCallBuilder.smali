@@ -15,7 +15,6 @@
     .registers 2
     .param p1, "functionCall"    # Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
-    .prologue
     .line 15
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -23,7 +22,9 @@
     iput-object p1, p0, Lcom/google/tagmanager/DebugResolvedFunctionCallBuilder;->resolvedFunctionCall:Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
     .line 17
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -32,7 +33,6 @@
     .registers 5
     .param p1, "key"    # Ljava/lang/String;
 
-    .prologue
     .line 21
     new-instance v0, Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
 
@@ -67,7 +67,6 @@
     .registers 4
     .param p1, "functionResult"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    .prologue
     .line 30
     iget-object v0, p0, Lcom/google/tagmanager/DebugResolvedFunctionCallBuilder;->resolvedFunctionCall:Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
@@ -78,5 +77,7 @@
     iput-object v1, v0, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;->result:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 31
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

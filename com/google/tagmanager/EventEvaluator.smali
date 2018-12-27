@@ -15,12 +15,11 @@
     .param p1, "runtime"    # Lcom/google/tagmanager/Runtime;
     .param p2, "resource"    # Lcom/google/tagmanager/ResourceUtil$ExpandedResource;
 
-    .prologue
     .line 12
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 13
-    if-eqz p1, :cond_14
+    if-eqz p1, :cond_1c
 
     .line 16
     iput-object p1, p0, Lcom/google/tagmanager/EventEvaluator;->mRuntime:Lcom/google/tagmanager/Runtime;
@@ -30,7 +29,7 @@
 
     move-result-object v0
 
-    if-ne p2, v0, :cond_1d
+    if-ne p2, v0, :cond_14
 
     .line 21
     invoke-virtual {p1}, Lcom/google/tagmanager/Runtime;->getResource()Lcom/google/tagmanager/ResourceUtil$ExpandedResource;
@@ -42,23 +41,23 @@
     .line 22
     return-void
 
-    .line 14
+    .line 19
     :cond_14
-    new-instance v0, Ljava/lang/NullPointerException;
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string/jumbo v1, "runtime cannot be null"
+    const-string v1, "resource must be the same as the resource in runtime"
 
-    invoke-direct {v0, v1}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 19
-    :cond_1d
-    new-instance v0, Ljava/lang/IllegalArgumentException;
+    .line 14
+    :cond_1c
+    new-instance v0, Ljava/lang/NullPointerException;
 
-    const-string/jumbo v1, "resource must be the same as the resource in runtime"
+    const-string v1, "runtime cannot be null"
 
-    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v1}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
 
     throw v0
 .end method
@@ -69,11 +68,10 @@
     .registers 4
     .param p1, "eventName"    # Ljava/lang/String;
 
-    .prologue
     .line 31
     new-instance v0, Ljava/lang/UnsupportedOperationException;
 
-    const-string/jumbo v1, "this code not yet written"
+    const-string v1, "this code not yet written"
 
     invoke-direct {v0, v1}, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V
 

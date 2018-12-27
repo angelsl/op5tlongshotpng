@@ -14,8 +14,7 @@
 .field private mCache:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Landroid/graphics/Bitmap;",
             ">;"
         }
@@ -27,17 +26,14 @@
 .method static constructor <clinit>()V
     .registers 2
 
-    .prologue
     .line 16
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v1, "Longshot."
+    const-string v1, "Longshot."
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     const-class v1, Lcom/oneplus/screenshot/ScreenshotApplication;
 
@@ -47,22 +43,20 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0
 
     sput-object v0, Lcom/oneplus/screenshot/ScreenshotApplication;->TAG:Ljava/lang/String;
 
-    .line 14
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>()V
     .registers 2
 
-    .prologue
     .line 14
     invoke-direct {p0}, Landroid/app/Application;-><init>()V
 
@@ -73,8 +67,9 @@
 
     iput-object v0, p0, Lcom/oneplus/screenshot/ScreenshotApplication;->mCache:Ljava/util/List;
 
-    .line 14
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -82,11 +77,10 @@
 .method public clearCache()V
     .registers 3
 
-    .prologue
     .line 50
     sget-object v0, Lcom/oneplus/screenshot/ScreenshotApplication;->TAG:Ljava/lang/String;
 
-    const-string/jumbo v1, "clearCache"
+    const-string v1, "clearCache"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
@@ -96,7 +90,9 @@
     invoke-interface {v0}, Ljava/util/List;->clear()V
 
     .line 52
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public getCache()Ljava/util/List;
@@ -104,14 +100,12 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Landroid/graphics/Bitmap;",
             ">;"
         }
     .end annotation
 
-    .prologue
     .line 38
     iget-object v0, p0, Lcom/oneplus/screenshot/ScreenshotApplication;->mCache:Ljava/util/List;
 
@@ -121,11 +115,10 @@
 .method public onCreate()V
     .registers 3
 
-    .prologue
     .line 22
     sget-object v0, Lcom/oneplus/screenshot/ScreenshotApplication;->TAG:Ljava/lang/String;
 
-    const-string/jumbo v1, "onCreate"
+    const-string v1, "onCreate"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
@@ -140,17 +133,18 @@
     invoke-super {p0}, Landroid/app/Application;->onCreate()V
 
     .line 26
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public onTerminate()V
     .registers 3
 
-    .prologue
     .line 30
     sget-object v0, Lcom/oneplus/screenshot/ScreenshotApplication;->TAG:Ljava/lang/String;
 
-    const-string/jumbo v1, "onTerminate"
+    const-string v1, "onTerminate"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
@@ -161,7 +155,9 @@
     invoke-super {p0}, Landroid/app/Application;->onTerminate()V
 
     .line 34
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public setCache(Ljava/util/List;)V
@@ -169,14 +165,12 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Landroid/graphics/Bitmap;",
             ">;)V"
         }
     .end annotation
 
-    .prologue
     .line 43
     .local p1, "cache":Ljava/util/List;, "Ljava/util/List<Landroid/graphics/Bitmap;>;"
     sget-object v0, Lcom/oneplus/screenshot/ScreenshotApplication;->TAG:Ljava/lang/String;
@@ -185,19 +179,15 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v2, "setCache , "
+    const-string v2, "setCache , "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
 
     invoke-interface {p1}, Ljava/util/List;->size()I
 
     move-result v2
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v1
 
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -214,5 +204,7 @@
     invoke-interface {v0, p1}, Ljava/util/List;->addAll(Ljava/util/Collection;)Z
 
     .line 46
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

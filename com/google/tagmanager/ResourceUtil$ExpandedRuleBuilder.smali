@@ -18,8 +18,7 @@
 .field private final mAddMacroRuleNames:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -29,8 +28,7 @@
 .field private final mAddMacros:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;",
             ">;"
         }
@@ -40,8 +38,7 @@
 .field private final mAddTagRuleNames:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -51,8 +48,7 @@
 .field private final mAddTags:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;",
             ">;"
         }
@@ -62,8 +58,7 @@
 .field private final mNegativePredicates:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;",
             ">;"
         }
@@ -73,8 +68,7 @@
 .field private final mPositivePredicates:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;",
             ">;"
         }
@@ -84,8 +78,7 @@
 .field private final mRemoveMacroRuleNames:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -95,8 +88,7 @@
 .field private final mRemoveMacros:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;",
             ">;"
         }
@@ -106,8 +98,7 @@
 .field private final mRemoveTagRuleNames:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -117,8 +108,7 @@
 .field private final mRemoveTags:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;",
             ">;"
         }
@@ -130,7 +120,6 @@
 .method private constructor <init>()V
     .registers 2
 
-    .prologue
     .line 132
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -212,7 +201,6 @@
     .registers 2
     .param p1, "x0"    # Lcom/google/tagmanager/ResourceUtil$1;
 
-    .prologue
     .line 120
     invoke-direct {p0}, Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;-><init>()V
 
@@ -225,7 +213,6 @@
     .registers 3
     .param p1, "f"    # Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
 
-    .prologue
     .line 176
     iget-object v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;->mAddMacros:Ljava/util/List;
 
@@ -239,7 +226,6 @@
     .registers 3
     .param p1, "ruleName"    # Ljava/lang/String;
 
-    .prologue
     .line 181
     iget-object v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;->mAddMacroRuleNames:Ljava/util/List;
 
@@ -253,7 +239,6 @@
     .registers 3
     .param p1, "f"    # Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
 
-    .prologue
     .line 156
     iget-object v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;->mAddTags:Ljava/util/List;
 
@@ -267,7 +252,6 @@
     .registers 3
     .param p1, "ruleName"    # Ljava/lang/String;
 
-    .prologue
     .line 161
     iget-object v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;->mAddTagRuleNames:Ljava/util/List;
 
@@ -281,7 +265,6 @@
     .registers 3
     .param p1, "f"    # Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
 
-    .prologue
     .line 151
     iget-object v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;->mNegativePredicates:Ljava/util/List;
 
@@ -295,7 +278,6 @@
     .registers 3
     .param p1, "f"    # Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
 
-    .prologue
     .line 146
     iget-object v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;->mPositivePredicates:Ljava/util/List;
 
@@ -309,7 +291,6 @@
     .registers 3
     .param p1, "f"    # Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
 
-    .prologue
     .line 186
     iget-object v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;->mRemoveMacros:Ljava/util/List;
 
@@ -323,7 +304,6 @@
     .registers 3
     .param p1, "ruleName"    # Ljava/lang/String;
 
-    .prologue
     .line 191
     iget-object v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;->mRemoveMacroRuleNames:Ljava/util/List;
 
@@ -337,7 +317,6 @@
     .registers 3
     .param p1, "f"    # Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
 
-    .prologue
     .line 166
     iget-object v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;->mRemoveTags:Ljava/util/List;
 
@@ -351,7 +330,6 @@
     .registers 3
     .param p1, "ruleName"    # Ljava/lang/String;
 
-    .prologue
     .line 171
     iget-object v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;->mRemoveTagRuleNames:Ljava/util/List;
 
@@ -362,11 +340,10 @@
 .end method
 
 .method public build()Lcom/google/tagmanager/ResourceUtil$ExpandedRule;
-    .registers 13
+    .registers 14
 
-    .prologue
     .line 196
-    new-instance v0, Lcom/google/tagmanager/ResourceUtil$ExpandedRule;
+    new-instance v12, Lcom/google/tagmanager/ResourceUtil$ExpandedRule;
 
     iget-object v1, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;->mPositivePredicates:Ljava/util/List;
 
@@ -390,7 +367,9 @@
 
     const/4 v11, 0x0
 
+    move-object v0, v12
+
     invoke-direct/range {v0 .. v11}, Lcom/google/tagmanager/ResourceUtil$ExpandedRule;-><init>(Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Lcom/google/tagmanager/ResourceUtil$1;)V
 
-    return-object v0
+    return-object v12
 .end method

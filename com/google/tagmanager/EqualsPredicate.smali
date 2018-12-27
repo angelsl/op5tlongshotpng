@@ -11,7 +11,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 13
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->EQUALS:Lcom/google/analytics/containertag/common/FunctionType;
 
@@ -21,26 +20,28 @@
 
     sput-object v0, Lcom/google/tagmanager/EqualsPredicate;->ID:Ljava/lang/String;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>()V
     .registers 2
 
-    .prologue
     .line 20
     sget-object v0, Lcom/google/tagmanager/EqualsPredicate;->ID:Ljava/lang/String;
 
     invoke-direct {p0, v0}, Lcom/google/tagmanager/StringPredicate;-><init>(Ljava/lang/String;)V
 
     .line 21
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
     .registers 1
 
-    .prologue
     .line 16
     sget-object v0, Lcom/google/tagmanager/EqualsPredicate;->ID:Ljava/lang/String;
 
@@ -58,15 +59,13 @@
             "(",
             "Ljava/lang/String;",
             "Ljava/lang/String;",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;)Z"
         }
     .end annotation
 
-    .prologue
     .line 25
     .local p3, "parameters":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
     invoke-virtual {p1, p2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z

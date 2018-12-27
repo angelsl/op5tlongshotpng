@@ -21,7 +21,6 @@
 .method constructor <init>()V
     .registers 2
 
-    .prologue
     .line 20
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -31,14 +30,15 @@
     iput-object v0, p0, Lcom/google/analytics/tracking/android/DefaultLoggerImpl;->mLogLevel:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
     .line 21
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private formatMessage(Ljava/lang/String;)Ljava/lang/String;
     .registers 4
     .param p1, "msg"    # Ljava/lang/String;
 
-    .prologue
     .line 69
     new-instance v0, Ljava/lang/StringBuilder;
 
@@ -54,17 +54,11 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
-    const-string/jumbo v1, ": "
+    const-string v1, ": "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
     invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -79,7 +73,6 @@
     .registers 4
     .param p1, "exception"    # Ljava/lang/Exception;
 
-    .prologue
     .line 53
     iget-object v0, p0, Lcom/google/analytics/tracking/android/DefaultLoggerImpl;->mLogLevel:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
@@ -93,28 +86,26 @@
 
     move-result v1
 
-    if-le v0, v1, :cond_f
-
-    .line 56
-    :goto_e
-    return-void
+    if-gt v0, v1, :cond_14
 
     .line 54
-    :cond_f
-    const-string/jumbo v0, "GAV3"
+    const-string v0, "GAV3"
 
     const/4 v1, 0x0
 
     invoke-static {v0, v1, p1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    goto :goto_e
+    .line 56
+    :cond_14
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public error(Ljava/lang/String;)V
     .registers 4
     .param p1, "msg"    # Ljava/lang/String;
 
-    .prologue
     .line 46
     iget-object v0, p0, Lcom/google/analytics/tracking/android/DefaultLoggerImpl;->mLogLevel:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
@@ -128,29 +119,27 @@
 
     move-result v1
 
-    if-le v0, v1, :cond_f
-
-    .line 49
-    :goto_e
-    return-void
+    if-gt v0, v1, :cond_17
 
     .line 47
-    :cond_f
+    const-string v0, "GAV3"
+
     invoke-direct {p0, p1}, Lcom/google/analytics/tracking/android/DefaultLoggerImpl;->formatMessage(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v1
 
-    const-string/jumbo v1, "GAV3"
+    invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    invoke-static {v1, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_e
+    .line 49
+    :cond_17
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public getLogLevel()Lcom/google/analytics/tracking/android/Logger$LogLevel;
     .registers 2
 
-    .prologue
     .line 65
     iget-object v0, p0, Lcom/google/analytics/tracking/android/DefaultLoggerImpl;->mLogLevel:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
@@ -161,7 +150,6 @@
     .registers 4
     .param p1, "msg"    # Ljava/lang/String;
 
-    .prologue
     .line 32
     iget-object v0, p0, Lcom/google/analytics/tracking/android/DefaultLoggerImpl;->mLogLevel:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
@@ -175,42 +163,41 @@
 
     move-result v1
 
-    if-le v0, v1, :cond_f
-
-    .line 35
-    :goto_e
-    return-void
+    if-gt v0, v1, :cond_17
 
     .line 33
-    :cond_f
+    const-string v0, "GAV3"
+
     invoke-direct {p0, p1}, Lcom/google/analytics/tracking/android/DefaultLoggerImpl;->formatMessage(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v1
 
-    const-string/jumbo v1, "GAV3"
+    invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    invoke-static {v1, v0}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_e
+    .line 35
+    :cond_17
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public setLogLevel(Lcom/google/analytics/tracking/android/Logger$LogLevel;)V
     .registers 2
     .param p1, "level"    # Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
-    .prologue
     .line 60
     iput-object p1, p0, Lcom/google/analytics/tracking/android/DefaultLoggerImpl;->mLogLevel:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
     .line 61
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public verbose(Ljava/lang/String;)V
     .registers 4
     .param p1, "msg"    # Ljava/lang/String;
 
-    .prologue
     .line 25
     iget-object v0, p0, Lcom/google/analytics/tracking/android/DefaultLoggerImpl;->mLogLevel:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
@@ -224,30 +211,28 @@
 
     move-result v1
 
-    if-le v0, v1, :cond_f
-
-    .line 28
-    :goto_e
-    return-void
+    if-gt v0, v1, :cond_17
 
     .line 26
-    :cond_f
+    const-string v0, "GAV3"
+
     invoke-direct {p0, p1}, Lcom/google/analytics/tracking/android/DefaultLoggerImpl;->formatMessage(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v1
 
-    const-string/jumbo v1, "GAV3"
+    invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    invoke-static {v1, v0}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_e
+    .line 28
+    :cond_17
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public warn(Ljava/lang/String;)V
     .registers 4
     .param p1, "msg"    # Ljava/lang/String;
 
-    .prologue
     .line 39
     iget-object v0, p0, Lcom/google/analytics/tracking/android/DefaultLoggerImpl;->mLogLevel:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
@@ -261,21 +246,20 @@
 
     move-result v1
 
-    if-le v0, v1, :cond_f
-
-    .line 42
-    :goto_e
-    return-void
+    if-gt v0, v1, :cond_17
 
     .line 40
-    :cond_f
+    const-string v0, "GAV3"
+
     invoke-direct {p0, p1}, Lcom/google/analytics/tracking/android/DefaultLoggerImpl;->formatMessage(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v1
 
-    const-string/jumbo v1, "GAV3"
+    invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    invoke-static {v1, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_e
+    .line 42
+    :cond_17
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

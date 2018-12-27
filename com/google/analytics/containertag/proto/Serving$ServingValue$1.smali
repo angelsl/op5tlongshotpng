@@ -1,4 +1,4 @@
-.class Lcom/google/analytics/containertag/proto/Serving$ServingValue$1;
+.class final Lcom/google/analytics/containertag/proto/Serving$ServingValue$1;
 .super Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;
 .source "Serving.java"
 
@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral",
-        "<",
+        "Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral<",
         "Lcom/google/analytics/containertag/proto/Serving$ServingValue;",
         ">;"
     }
@@ -27,7 +26,6 @@
 .method constructor <init>()V
     .registers 1
 
-    .prologue
     .line 174
     invoke-direct {p0}, Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;-><init>()V
 

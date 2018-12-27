@@ -7,7 +7,6 @@
 .method public constructor <init>()V
     .registers 1
 
-    .prologue
     .line 3
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -18,7 +17,6 @@
     .registers 2
     .param p0, "size"    # I
 
-    .prologue
     .line 6
     new-instance v0, Lcom/oneplus/screenshot/longshot/transform/JTFFT;
 

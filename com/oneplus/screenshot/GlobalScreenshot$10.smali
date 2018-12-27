@@ -26,14 +26,11 @@
     .registers 2
     .param p1, "this$0"    # Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .prologue
-    .line 1
+    .line 1452
     iput-object p1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$10;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .line 1310
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1
     return-void
 .end method
 
@@ -43,20 +40,19 @@
     .registers 4
     .param p1, "x"    # F
 
-    .prologue
-    .line 1314
+    .line 1456
     const v0, 0x3e9aca6b
 
     cmpg-float v0, p1, v0
 
     if-gez v0, :cond_9
 
-    .line 1315
+    .line 1457
     const/4 v0, 0x0
 
     return v0
 
-    .line 1317
+    .line 1459
     :cond_9
     const v0, 0x3f1aca6b
 

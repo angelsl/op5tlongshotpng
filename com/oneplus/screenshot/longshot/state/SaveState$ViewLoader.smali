@@ -25,20 +25,18 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/longshot/state/SaveState;Landroid/view/View;)V
-    .registers 4
-    .param p1, "this$0"    # Lcom/oneplus/screenshot/longshot/state/SaveState;
+    .registers 3
     .param p2, "decor"    # Landroid/view/View;
 
-    .prologue
     .line 114
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/SaveState$ViewLoader;->this$0:Lcom/oneplus/screenshot/longshot/state/SaveState;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 112
-    const/4 v0, 0x0
+    const/4 p1, 0x0
 
-    iput-object v0, p0, Lcom/oneplus/screenshot/longshot/state/SaveState$ViewLoader;->mDecor:Landroid/view/View;
+    iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/SaveState$ViewLoader;->mDecor:Landroid/view/View;
 
     .line 115
     iput-object p2, p0, Lcom/oneplus/screenshot/longshot/state/SaveState$ViewLoader;->mDecor:Landroid/view/View;
@@ -53,7 +51,6 @@
     .registers 3
     .param p1, "id"    # I
 
-    .prologue
     .line 120
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/SaveState$ViewLoader;->mDecor:Landroid/view/View;
 

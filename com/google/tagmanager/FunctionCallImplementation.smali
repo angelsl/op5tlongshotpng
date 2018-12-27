@@ -13,8 +13,7 @@
 .field private final mRequiredKeys:Ljava/util/Set;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/Set",
-            "<",
+            "Ljava/util/Set<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -24,11 +23,10 @@
 
 # direct methods
 .method public varargs constructor <init>(Ljava/lang/String;[Ljava/lang/String;)V
-    .registers 9
+    .registers 8
     .param p1, "functionId"    # Ljava/lang/String;
     .param p2, "requiredKeys"    # [Ljava/lang/String;
 
-    .prologue
     .line 32
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -36,33 +34,28 @@
     iput-object p1, p0, Lcom/google/tagmanager/FunctionCallImplementation;->mFunctionId:Ljava/lang/String;
 
     .line 34
-    new-instance v4, Ljava/util/HashSet;
+    new-instance v0, Ljava/util/HashSet;
 
-    array-length v5, p2
+    array-length v1, p2
 
-    invoke-direct {v4, v5}, Ljava/util/HashSet;-><init>(I)V
+    invoke-direct {v0, v1}, Ljava/util/HashSet;-><init>(I)V
 
-    iput-object v4, p0, Lcom/google/tagmanager/FunctionCallImplementation;->mRequiredKeys:Ljava/util/Set;
+    iput-object v0, p0, Lcom/google/tagmanager/FunctionCallImplementation;->mRequiredKeys:Ljava/util/Set;
 
     .line 35
     move-object v0, p2
 
     .local v0, "arr$":[Ljava/lang/String;
-    array-length v2, p2
+    array-length v1, v0
 
-    .local v2, "len$":I
-    const/4 v1, 0x0
+    .local v1, "len$":I
+    const/4 v2, 0x0
 
-    .local v1, "i$":I
+    .local v2, "i$":I
     :goto_10
-    if-lt v1, v2, :cond_13
+    if-ge v2, v1, :cond_1c
 
-    .line 38
-    return-void
-
-    .line 35
-    :cond_13
-    aget-object v3, p2, v1
+    aget-object v3, v0, v2
 
     .line 36
     .local v3, "requiredKey":Ljava/lang/String;
@@ -71,17 +64,24 @@
     invoke-interface {v4, v3}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
 
     .line 35
-    add-int/lit8 v1, v1, 0x1
+    .end local v3    # "requiredKey":Ljava/lang/String;
+    add-int/lit8 v2, v2, 0x1
 
     goto :goto_10
+
+    .line 38
+    .end local v0    # "arr$":[Ljava/lang/String;
+    .end local v1    # "len$":I
+    .end local v2    # "i$":I
+    :cond_1c
+    return-void
 .end method
 
 .method public static getFunctionKey()Ljava/lang/String;
     .registers 1
 
-    .prologue
     .line 19
-    const-string/jumbo v0, "function"
+    const-string v0, "function"
 
     return-object v0
 .end method
@@ -92,8 +92,7 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;)",
@@ -105,7 +104,6 @@
 .method public getInstanceFunctionId()Ljava/lang/String;
     .registers 2
 
-    .prologue
     .line 26
     iget-object v0, p0, Lcom/google/tagmanager/FunctionCallImplementation;->mFunctionId:Ljava/lang/String;
 
@@ -117,14 +115,12 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
-            "Ljava/util/Set",
-            "<",
+            "Ljava/util/Set<",
             "Ljava/lang/String;",
             ">;"
         }
     .end annotation
 
-    .prologue
     .line 55
     iget-object v0, p0, Lcom/google/tagmanager/FunctionCallImplementation;->mRequiredKeys:Ljava/util/Set;
 
@@ -136,14 +132,12 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Set",
-            "<",
+            "Ljava/util/Set<",
             "Ljava/lang/String;",
             ">;)Z"
         }
     .end annotation
 
-    .prologue
     .line 62
     .local p1, "keys":Ljava/util/Set;, "Ljava/util/Set<Ljava/lang/String;>;"
     iget-object v0, p0, Lcom/google/tagmanager/FunctionCallImplementation;->mRequiredKeys:Ljava/util/Set;

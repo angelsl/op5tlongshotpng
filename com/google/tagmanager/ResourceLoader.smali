@@ -23,8 +23,7 @@
 .field private mCallback:Lcom/google/tagmanager/LoadCallback;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Lcom/google/tagmanager/LoadCallback",
-            "<",
+            "Lcom/google/tagmanager/LoadCallback<",
             "Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;",
             ">;"
         }
@@ -53,7 +52,6 @@
     .param p2, "containerId"    # Ljava/lang/String;
     .param p3, "ctfeHost"    # Lcom/google/tagmanager/CtfeHost;
 
-    .prologue
     .line 39
     new-instance v0, Lcom/google/tagmanager/NetworkClientFactory;
 
@@ -74,7 +72,6 @@
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 45
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -95,15 +92,11 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v1, "/r?id="
+    const-string v1, "/r?id="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
     invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -126,362 +119,326 @@
 .end method
 
 .method private loadResource()V
-    .registers 11
+    .registers 8
 
-    .prologue
     .line 92
     invoke-direct {p0}, Lcom/google/tagmanager/ResourceLoader;->okToLoad()Z
 
-    move-result v8
+    move-result v0
 
-    if-eqz v8, :cond_55
+    if-nez v0, :cond_e
+
+    .line 93
+    iget-object v0, p0, Lcom/google/tagmanager/ResourceLoader;->mCallback:Lcom/google/tagmanager/LoadCallback;
+
+    sget-object v1, Lcom/google/tagmanager/LoadCallback$Failure;->NOT_AVAILABLE:Lcom/google/tagmanager/LoadCallback$Failure;
+
+    invoke-interface {v0, v1}, Lcom/google/tagmanager/LoadCallback;->onFailure(Lcom/google/tagmanager/LoadCallback$Failure;)V
+
+    .line 94
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 
     .line 97
-    const-string/jumbo v8, "Start loading resource from network ..."
+    :cond_e
+    const-string v0, "Start loading resource from network ..."
 
-    invoke-static {v8}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
+    invoke-static {v0}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
 
     .line 99
     invoke-virtual {p0}, Lcom/google/tagmanager/ResourceLoader;->getCtfeUrl()Ljava/lang/String;
 
-    move-result-object v7
+    move-result-object v0
 
     .line 100
-    .local v7, "url":Ljava/lang/String;
-    iget-object v8, p0, Lcom/google/tagmanager/ResourceLoader;->mClientFactory:Lcom/google/tagmanager/NetworkClientFactory;
+    .local v0, "url":Ljava/lang/String;
+    iget-object v1, p0, Lcom/google/tagmanager/ResourceLoader;->mClientFactory:Lcom/google/tagmanager/NetworkClientFactory;
 
-    invoke-virtual {v8}, Lcom/google/tagmanager/NetworkClientFactory;->createNetworkClient()Lcom/google/tagmanager/NetworkClient;
+    invoke-virtual {v1}, Lcom/google/tagmanager/NetworkClientFactory;->createNetworkClient()Lcom/google/tagmanager/NetworkClient;
+
+    move-result-object v1
+
+    .line 101
+    .local v1, "networkClient":Lcom/google/tagmanager/NetworkClient;
+    const/4 v2, 0x0
+
+    .line 105
+    .local v2, "inputStream":Ljava/io/InputStream;
+    :try_start_1e
+    invoke-interface {v1, v0}, Lcom/google/tagmanager/NetworkClient;->getInputStream(Ljava/lang/String;)Ljava/io/InputStream;
+
+    move-result-object v3
+    :try_end_22
+    .catch Ljava/io/FileNotFoundException; {:try_start_1e .. :try_end_22} :catch_c9
+    .catch Ljava/io/IOException; {:try_start_1e .. :try_end_22} :catch_a0
+    .catchall {:try_start_1e .. :try_end_22} :catchall_9e
+
+    move-object v2, v3
+
+    .line 115
+    nop
+
+    .line 119
+    :try_start_24
+    new-instance v3, Ljava/io/ByteArrayOutputStream;
+
+    invoke-direct {v3}, Ljava/io/ByteArrayOutputStream;-><init>()V
+
+    .line 120
+    .local v3, "outputStream":Ljava/io/ByteArrayOutputStream;
+    invoke-static {v2, v3}, Lcom/google/tagmanager/ResourceUtil;->copyStream(Ljava/io/InputStream;Ljava/io/OutputStream;)V
+
+    .line 121
+    invoke-virtual {v3}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
 
     move-result-object v4
 
-    .line 101
-    .local v4, "networkClient":Lcom/google/tagmanager/NetworkClient;
-    const/4 v3, 0x0
+    invoke-static {v4}, Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;->parseFrom([B)Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
 
-    .line 105
-    .local v3, "inputStream":Ljava/io/InputStream;
-    :try_start_17
-    invoke-interface {v4, v7}, Lcom/google/tagmanager/NetworkClient;->getInputStream(Ljava/lang/String;)Ljava/io/InputStream;
-    :try_end_1a
-    .catch Ljava/io/FileNotFoundException; {:try_start_17 .. :try_end_1a} :catch_5d
-    .catch Ljava/io/IOException; {:try_start_17 .. :try_end_1a} :catch_94
-    .catchall {:try_start_17 .. :try_end_1a} :catchall_113
-
-    move-result-object v3
-
-    .line 119
-    :try_start_1b
-    new-instance v5, Ljava/io/ByteArrayOutputStream;
-
-    invoke-direct {v5}, Ljava/io/ByteArrayOutputStream;-><init>()V
-
-    .line 120
-    .local v5, "outputStream":Ljava/io/ByteArrayOutputStream;
-    invoke-static {v3, v5}, Lcom/google/tagmanager/ResourceUtil;->copyStream(Ljava/io/InputStream;Ljava/io/OutputStream;)V
-
-    .line 121
-    invoke-virtual {v5}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
-
-    move-result-object v8
-
-    invoke-static {v8}, Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;->parseFrom([B)Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
-
-    move-result-object v6
+    move-result-object v4
 
     .line 124
-    .local v6, "resource":Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
-    new-instance v8, Ljava/lang/StringBuilder;
+    .local v4, "resource":Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
+    new-instance v5, Ljava/lang/StringBuilder;
 
-    invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v9, "Successfully loaded supplemented resource: "
+    const-string v6, "Successfully loaded supplemented resource: "
 
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v8
+    invoke-virtual {v5, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v8, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v8
+    move-result-object v5
 
-    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v8
-
-    invoke-static {v8}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
+    invoke-static {v5}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
 
     .line 126
-    iget-object v8, v6, Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
+    iget-object v5, v4, Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
 
-    if-eqz v8, :cond_c6
-
-    .line 130
-    :goto_46
-    iget-object v8, p0, Lcom/google/tagmanager/ResourceLoader;->mCallback:Lcom/google/tagmanager/LoadCallback;
-
-    invoke-interface {v8, v6}, Lcom/google/tagmanager/LoadCallback;->onSuccess(Ljava/lang/Object;)V
-    :try_end_4b
-    .catch Ljava/io/IOException; {:try_start_1b .. :try_end_4b} :catch_e1
-    .catchall {:try_start_1b .. :try_end_4b} :catchall_113
-
-    .line 137
-    invoke-interface {v4}, Lcom/google/tagmanager/NetworkClient;->close()V
-
-    .line 140
-    const-string/jumbo v8, "Load resource from network finished."
-
-    invoke-static {v8}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
-
-    .line 141
-    return-void
-
-    .line 93
-    .end local v3    # "inputStream":Ljava/io/InputStream;
-    .end local v4    # "networkClient":Lcom/google/tagmanager/NetworkClient;
-    .end local v5    # "outputStream":Ljava/io/ByteArrayOutputStream;
-    .end local v6    # "resource":Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
-    .end local v7    # "url":Ljava/lang/String;
-    :cond_55
-    iget-object v8, p0, Lcom/google/tagmanager/ResourceLoader;->mCallback:Lcom/google/tagmanager/LoadCallback;
-
-    sget-object v9, Lcom/google/tagmanager/LoadCallback$Failure;->NOT_AVAILABLE:Lcom/google/tagmanager/LoadCallback$Failure;
-
-    invoke-interface {v8, v9}, Lcom/google/tagmanager/LoadCallback;->onFailure(Lcom/google/tagmanager/LoadCallback$Failure;)V
-
-    .line 94
-    return-void
-
-    .line 106
-    .restart local v3    # "inputStream":Ljava/io/InputStream;
-    .restart local v4    # "networkClient":Lcom/google/tagmanager/NetworkClient;
-    .restart local v7    # "url":Ljava/lang/String;
-    :catch_5d
-    move-exception v1
-
-    .line 107
-    .local v1, "e":Ljava/io/FileNotFoundException;
-    :try_start_5e
-    new-instance v8, Ljava/lang/StringBuilder;
-
-    invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v9, "No data is retrieved from the given url: "
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    invoke-virtual {v8, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    const-string/jumbo v9, ". Make sure container_id: "
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    iget-object v9, p0, Lcom/google/tagmanager/ResourceLoader;->mContainerId:Ljava/lang/String;
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    const-string/jumbo v9, " is correct."
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v8
-
-    invoke-static {v8}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
-
-    .line 109
-    iget-object v8, p0, Lcom/google/tagmanager/ResourceLoader;->mCallback:Lcom/google/tagmanager/LoadCallback;
-
-    sget-object v9, Lcom/google/tagmanager/LoadCallback$Failure;->SERVER_ERROR:Lcom/google/tagmanager/LoadCallback$Failure;
-
-    invoke-interface {v8, v9}, Lcom/google/tagmanager/LoadCallback;->onFailure(Lcom/google/tagmanager/LoadCallback$Failure;)V
-    :try_end_90
-    .catchall {:try_start_5e .. :try_end_90} :catchall_113
-
-    .line 137
-    invoke-interface {v4}, Lcom/google/tagmanager/NetworkClient;->close()V
-
-    return-void
-
-    .line 111
-    .end local v1    # "e":Ljava/io/FileNotFoundException;
-    :catch_94
-    move-exception v2
-
-    .line 112
-    .local v2, "e":Ljava/io/IOException;
-    :try_start_95
-    new-instance v8, Ljava/lang/StringBuilder;
-
-    invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v9, "Error when loading resources from url: "
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    invoke-virtual {v8, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    const-string/jumbo v9, " "
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    invoke-virtual {v2}, Ljava/io/IOException;->getMessage()Ljava/lang/String;
-
-    move-result-object v9
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v8
-
-    invoke-static {v8, v2}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)V
-
-    .line 113
-    iget-object v8, p0, Lcom/google/tagmanager/ResourceLoader;->mCallback:Lcom/google/tagmanager/LoadCallback;
-
-    sget-object v9, Lcom/google/tagmanager/LoadCallback$Failure;->IO_ERROR:Lcom/google/tagmanager/LoadCallback$Failure;
-
-    invoke-interface {v8, v9}, Lcom/google/tagmanager/LoadCallback;->onFailure(Lcom/google/tagmanager/LoadCallback$Failure;)V
-    :try_end_c2
-    .catchall {:try_start_95 .. :try_end_c2} :catchall_113
-
-    .line 137
-    invoke-interface {v4}, Lcom/google/tagmanager/NetworkClient;->close()V
-
-    return-void
+    if-nez v5, :cond_62
 
     .line 127
-    .end local v2    # "e":Ljava/io/IOException;
-    .restart local v5    # "outputStream":Ljava/io/ByteArrayOutputStream;
-    .restart local v6    # "resource":Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
-    :cond_c6
-    :try_start_c6
-    new-instance v8, Ljava/lang/StringBuilder;
+    new-instance v5, Ljava/lang/StringBuilder;
 
-    invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v9, "No change for container: "
+    const-string v6, "No change for container: "
 
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v8
+    iget-object v6, p0, Lcom/google/tagmanager/ResourceLoader;->mContainerId:Ljava/lang/String;
 
-    iget-object v9, p0, Lcom/google/tagmanager/ResourceLoader;->mContainerId:Ljava/lang/String;
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v8
+    move-result-object v5
 
-    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-static {v5}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
 
-    move-result-object v8
+    .line 130
+    :cond_62
+    iget-object v5, p0, Lcom/google/tagmanager/ResourceLoader;->mCallback:Lcom/google/tagmanager/LoadCallback;
 
-    invoke-static {v8}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
-    :try_end_df
-    .catch Ljava/io/IOException; {:try_start_c6 .. :try_end_df} :catch_e1
-    .catchall {:try_start_c6 .. :try_end_df} :catchall_113
+    invoke-interface {v5, v4}, Lcom/google/tagmanager/LoadCallback;->onSuccess(Ljava/lang/Object;)V
+    :try_end_67
+    .catch Ljava/io/IOException; {:try_start_24 .. :try_end_67} :catch_72
+    .catchall {:try_start_24 .. :try_end_67} :catchall_9e
 
-    goto/16 :goto_46
-
-    .line 131
-    .end local v5    # "outputStream":Ljava/io/ByteArrayOutputStream;
-    .end local v6    # "resource":Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
-    :catch_e1
-    move-exception v2
-
-    .line 132
-    .restart local v2    # "e":Ljava/io/IOException;
-    :try_start_e2
-    new-instance v8, Ljava/lang/StringBuilder;
-
-    invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v9, "Error when parsing downloaded resources from url: "
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    invoke-virtual {v8, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    const-string/jumbo v9, " "
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    invoke-virtual {v2}, Ljava/io/IOException;->getMessage()Ljava/lang/String;
-
-    move-result-object v9
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v8
-
-    invoke-static {v8, v2}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)V
-
-    .line 133
-    iget-object v8, p0, Lcom/google/tagmanager/ResourceLoader;->mCallback:Lcom/google/tagmanager/LoadCallback;
-
-    sget-object v9, Lcom/google/tagmanager/LoadCallback$Failure;->SERVER_ERROR:Lcom/google/tagmanager/LoadCallback$Failure;
-
-    invoke-interface {v8, v9}, Lcom/google/tagmanager/LoadCallback;->onFailure(Lcom/google/tagmanager/LoadCallback$Failure;)V
-    :try_end_10f
-    .catchall {:try_start_e2 .. :try_end_10f} :catchall_113
+    .line 135
+    .end local v3    # "outputStream":Ljava/io/ByteArrayOutputStream;
+    .end local v4    # "resource":Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
+    nop
 
     .line 137
-    invoke-interface {v4}, Lcom/google/tagmanager/NetworkClient;->close()V
+    invoke-interface {v1}, Lcom/google/tagmanager/NetworkClient;->close()V
 
-    return-void
+    .line 138
+    nop
 
-    .end local v2    # "e":Ljava/io/IOException;
-    .end local v3    # "inputStream":Ljava/io/InputStream;
-    :catchall_113
-    move-exception v0
+    .line 140
+    const-string v3, "Load resource from network finished."
 
-    .local v0, "-l_6_R":Ljava/lang/Object;
-    invoke-interface {v4}, Lcom/google/tagmanager/NetworkClient;->close()V
+    invoke-static {v3}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
 
-    throw v0
+    .line 141
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
+
+    .line 131
+    :catch_72
+    move-exception v3
+
+    .line 132
+    .local v3, "e":Ljava/io/IOException;
+    :try_start_73
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v5, "Error when parsing downloaded resources from url: "
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v5, " "
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v3}, Ljava/io/IOException;->getMessage()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v4, v3}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    .line 133
+    iget-object v4, p0, Lcom/google/tagmanager/ResourceLoader;->mCallback:Lcom/google/tagmanager/LoadCallback;
+
+    sget-object v5, Lcom/google/tagmanager/LoadCallback$Failure;->SERVER_ERROR:Lcom/google/tagmanager/LoadCallback$Failure;
+
+    invoke-interface {v4, v5}, Lcom/google/tagmanager/LoadCallback;->onFailure(Lcom/google/tagmanager/LoadCallback$Failure;)V
+    :try_end_9a
+    .catchall {:try_start_73 .. :try_end_9a} :catchall_9e
+
+    .line 137
+    .end local v0    # "url":Ljava/lang/String;
+    .end local v1    # "networkClient":Lcom/google/tagmanager/NetworkClient;
+    .end local v2    # "inputStream":Ljava/io/InputStream;
+    .end local v3    # "e":Ljava/io/IOException;
+    .end local p0    # "this":Lcom/google/tagmanager/ResourceLoader;
+    :goto_9a
+    invoke-interface {v1}, Lcom/google/tagmanager/NetworkClient;->close()V
+
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
+
+    .restart local v0    # "url":Ljava/lang/String;
+    .restart local v1    # "networkClient":Lcom/google/tagmanager/NetworkClient;
+    .restart local v2    # "inputStream":Ljava/io/InputStream;
+    .restart local p0    # "this":Lcom/google/tagmanager/ResourceLoader;
+    :catchall_9e
+    move-exception v3
+
+    goto :goto_f5
+
+    .line 111
+    :catch_a0
+    move-exception v3
+
+    .line 112
+    .restart local v3    # "e":Ljava/io/IOException;
+    :try_start_a1
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v5, "Error when loading resources from url: "
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v5, " "
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v3}, Ljava/io/IOException;->getMessage()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v4, v3}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    .line 113
+    iget-object v4, p0, Lcom/google/tagmanager/ResourceLoader;->mCallback:Lcom/google/tagmanager/LoadCallback;
+
+    sget-object v5, Lcom/google/tagmanager/LoadCallback$Failure;->IO_ERROR:Lcom/google/tagmanager/LoadCallback$Failure;
+
+    invoke-interface {v4, v5}, Lcom/google/tagmanager/LoadCallback;->onFailure(Lcom/google/tagmanager/LoadCallback$Failure;)V
+
+    goto :goto_9a
+
+    .line 106
+    .end local v3    # "e":Ljava/io/IOException;
+    :catch_c9
+    move-exception v3
+
+    .line 107
+    .local v3, "e":Ljava/io/FileNotFoundException;
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v5, "No data is retrieved from the given url: "
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v5, ". Make sure container_id: "
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v5, p0, Lcom/google/tagmanager/ResourceLoader;->mContainerId:Ljava/lang/String;
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v5, " is correct."
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v4}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
+
+    .line 109
+    iget-object v4, p0, Lcom/google/tagmanager/ResourceLoader;->mCallback:Lcom/google/tagmanager/LoadCallback;
+
+    sget-object v5, Lcom/google/tagmanager/LoadCallback$Failure;->SERVER_ERROR:Lcom/google/tagmanager/LoadCallback$Failure;
+
+    invoke-interface {v4, v5}, Lcom/google/tagmanager/LoadCallback;->onFailure(Lcom/google/tagmanager/LoadCallback$Failure;)V
+    :try_end_f4
+    .catchall {:try_start_a1 .. :try_end_f4} :catchall_9e
+
+    goto :goto_9a
+
+    .line 137
+    .end local v3    # "e":Ljava/io/FileNotFoundException;
+    :goto_f5
+    invoke-interface {v1}, Lcom/google/tagmanager/NetworkClient;->close()V
+
+    throw v3
 .end method
 
 .method private okToLoad()Z
-    .registers 6
-
-    .prologue
-    const/4 v4, 0x0
+    .registers 4
 
     .line 73
-    iget-object v2, p0, Lcom/google/tagmanager/ResourceLoader;->mContext:Landroid/content/Context;
+    iget-object v0, p0, Lcom/google/tagmanager/ResourceLoader;->mContext:Landroid/content/Context;
 
-    const-string/jumbo v3, "connectivity"
+    const-string v1, "connectivity"
 
-    invoke-virtual {v2, v3}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+    invoke-virtual {v0, v1}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
     move-result-object v0
 
@@ -495,27 +452,31 @@
 
     .line 77
     .local v1, "network":Landroid/net/NetworkInfo;
-    if-nez v1, :cond_19
+    if-eqz v1, :cond_19
 
-    .line 78
-    :cond_12
-    const-string/jumbo v2, "...no network connectivity"
-
-    invoke-static {v2}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
-
-    .line 79
-    return v4
-
-    .line 77
-    :cond_19
     invoke-virtual {v1}, Landroid/net/NetworkInfo;->isConnected()Z
 
     move-result v2
 
-    if-eqz v2, :cond_12
+    if-nez v2, :cond_17
+
+    goto :goto_19
 
     .line 81
+    :cond_17
     const/4 v2, 0x1
+
+    return v2
+
+    .line 78
+    :cond_19
+    :goto_19
+    const-string v2, "...no network connectivity"
+
+    invoke-static {v2}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
+
+    .line 79
+    const/4 v2, 0x0
 
     return v2
 .end method
@@ -527,35 +488,28 @@
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 145
-    new-instance v1, Ljava/lang/StringBuilder;
+    new-instance v0, Ljava/lang/StringBuilder;
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    iget-object v2, p0, Lcom/google/tagmanager/ResourceLoader;->mCtfeHost:Lcom/google/tagmanager/CtfeHost;
+    iget-object v1, p0, Lcom/google/tagmanager/ResourceLoader;->mCtfeHost:Lcom/google/tagmanager/CtfeHost;
 
-    invoke-virtual {v2}, Lcom/google/tagmanager/CtfeHost;->getCtfeServerAddress()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1}, Lcom/google/tagmanager/CtfeHost;->getCtfeServerAddress()Ljava/lang/String;
 
     move-result-object v1
 
-    iget-object v2, p0, Lcom/google/tagmanager/ResourceLoader;->mCtfeUrlPathAndQuery:Ljava/lang/String;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    iget-object v1, p0, Lcom/google/tagmanager/ResourceLoader;->mCtfeUrlPathAndQuery:Ljava/lang/String;
 
-    move-result-object v1
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string/jumbo v2, "&v=a62676326"
+    const-string v1, "&v=a62676326"
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0
 
@@ -563,11 +517,43 @@
     .local v0, "url":Ljava/lang/String;
     iget-object v1, p0, Lcom/google/tagmanager/ResourceLoader;->mPreviousVersion:Ljava/lang/String;
 
-    if-nez v1, :cond_35
+    if-eqz v1, :cond_44
+
+    iget-object v1, p0, Lcom/google/tagmanager/ResourceLoader;->mPreviousVersion:Ljava/lang/String;
+
+    invoke-virtual {v1}, Ljava/lang/String;->trim()Ljava/lang/String;
+
+    move-result-object v1
+
+    const-string v2, ""
+
+    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_44
+
+    .line 147
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v2, "&pv="
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v2, p0, Lcom/google/tagmanager/ResourceLoader;->mPreviousVersion:Ljava/lang/String;
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
 
     .line 149
-    :cond_24
-    :goto_24
+    :cond_44
     invoke-static {}, Lcom/google/tagmanager/PreviewManager;->getInstance()Lcom/google/tagmanager/PreviewManager;
 
     move-result-object v1
@@ -582,82 +568,31 @@
 
     move-result v1
 
-    if-nez v1, :cond_5f
-
-    .line 153
-    :goto_34
-    return-object v0
-
-    .line 146
-    :cond_35
-    iget-object v1, p0, Lcom/google/tagmanager/ResourceLoader;->mPreviousVersion:Ljava/lang/String;
-
-    invoke-virtual {v1}, Ljava/lang/String;->trim()Ljava/lang/String;
-
-    move-result-object v1
-
-    const-string/jumbo v2, ""
-
-    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-nez v1, :cond_24
-
-    .line 147
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    const-string/jumbo v2, "&pv="
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    iget-object v2, p0, Lcom/google/tagmanager/ResourceLoader;->mPreviousVersion:Ljava/lang/String;
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v0
-
-    goto :goto_24
+    if-eqz v1, :cond_65
 
     .line 151
-    :cond_5f
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
     invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
-
-    const-string/jumbo v2, "&gtm_debug=x"
+    const-string v2, "&gtm_debug=x"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
 
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0
 
-    goto :goto_34
+    .line 153
+    :cond_65
+    return-object v0
 .end method
 
 .method public run()V
     .registers 3
 
-    .prologue
     .line 60
     iget-object v0, p0, Lcom/google/tagmanager/ResourceLoader;->mCallback:Lcom/google/tagmanager/LoadCallback;
 
@@ -672,13 +607,15 @@
     invoke-direct {p0}, Lcom/google/tagmanager/ResourceLoader;->loadResource()V
 
     .line 67
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 
     .line 63
     :cond_d
     new-instance v0, Ljava/lang/IllegalStateException;
 
-    const-string/jumbo v1, "callback must be set before execute"
+    const-string v1, "callback must be set before execute"
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
@@ -691,24 +628,27 @@
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 159
-    if-eqz p1, :cond_1c
+    if-nez p1, :cond_7
+
+    .line 160
+    iget-object v0, p0, Lcom/google/tagmanager/ResourceLoader;->mDefaultCtfeUrlPathAndQuery:Ljava/lang/String;
+
+    iput-object v0, p0, Lcom/google/tagmanager/ResourceLoader;->mCtfeUrlPathAndQuery:Ljava/lang/String;
+
+    goto :goto_1d
 
     .line 162
+    :cond_7
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v1, "Setting CTFE URL path: "
+    const-string v1, "Setting CTFE URL path: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
     invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -720,16 +660,10 @@
     iput-object p1, p0, Lcom/google/tagmanager/ResourceLoader;->mCtfeUrlPathAndQuery:Ljava/lang/String;
 
     .line 165
-    :goto_1b
-    return-void
-
-    .line 160
-    :cond_1c
-    iget-object v0, p0, Lcom/google/tagmanager/ResourceLoader;->mDefaultCtfeUrlPathAndQuery:Ljava/lang/String;
-
-    iput-object v0, p0, Lcom/google/tagmanager/ResourceLoader;->mCtfeUrlPathAndQuery:Ljava/lang/String;
-
-    goto :goto_1b
+    :goto_1d
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method setLoadCallback(Lcom/google/tagmanager/LoadCallback;)V
@@ -737,20 +671,20 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Lcom/google/tagmanager/LoadCallback",
-            "<",
+            "Lcom/google/tagmanager/LoadCallback<",
             "Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;",
             ">;)V"
         }
     .end annotation
 
-    .prologue
     .line 85
     .local p1, "callback":Lcom/google/tagmanager/LoadCallback;, "Lcom/google/tagmanager/LoadCallback<Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;>;"
     iput-object p1, p0, Lcom/google/tagmanager/ResourceLoader;->mCallback:Lcom/google/tagmanager/LoadCallback;
 
     .line 86
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method setPreviousVersion(Ljava/lang/String;)V
@@ -759,21 +693,16 @@
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 169
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v1, "Setting previous container version: "
+    const-string v1, "Setting previous container version: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
     invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -785,5 +714,7 @@
     iput-object p1, p0, Lcom/google/tagmanager/ResourceLoader;->mPreviousVersion:Ljava/lang/String;
 
     .line 171
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

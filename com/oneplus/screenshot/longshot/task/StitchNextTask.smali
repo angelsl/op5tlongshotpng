@@ -19,7 +19,6 @@
     .param p3, "context"    # Landroid/content/Context;
     .param p4, "index"    # I
 
-    .prologue
     .line 25
     const/4 v5, 0x1
 
@@ -43,7 +42,9 @@
     .line 26
     sget v0, Lcom/oneplus/screenshot/longshot/util/Configs;->LEVEL_STITCH_MATCH:I
 
-    packed-switch v0, :pswitch_data_4c
+    const/4 v1, 0x4
+
+    if-eq v0, v1, :cond_1a
 
     .line 33
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->STITCH_NEXT_MATCH_LEVEL_1:Lcom/oneplus/screenshot/longshot/util/Configs;
@@ -54,49 +55,10 @@
 
     iput v0, p0, Lcom/oneplus/screenshot/longshot/task/StitchNextTask;->mMatchedSize:I
 
-    .line 36
-    :goto_19
-    const-string/jumbo v0, "Longshot.StitchNextTask"
-
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v2, "LEVEL_STITCH_MATCH:"
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    sget v2, Lcom/oneplus/screenshot/longshot/util/Configs;->LEVEL_STITCH_MATCH:I
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    const-string/jumbo v2, " mMatchedSize:"
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    iget v2, p0, Lcom/oneplus/screenshot/longshot/task/StitchNextTask;->mMatchedSize:I
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 37
-    return-void
+    goto :goto_23
 
     .line 28
-    :pswitch_43
+    :cond_1a
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->STITCH_NEXT_MATCH_LEVEL_2:Lcom/oneplus/screenshot/longshot/util/Configs;
 
     invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/util/Configs;->getValue()I
@@ -105,61 +67,93 @@
 
     iput v0, p0, Lcom/oneplus/screenshot/longshot/task/StitchNextTask;->mMatchedSize:I
 
-    goto :goto_19
+    .line 29
+    nop
 
-    .line 26
-    :pswitch_data_4c
-    .packed-switch 0x4
-        :pswitch_43
-    .end packed-switch
+    .line 36
+    :goto_23
+    const-string v0, "Longshot.StitchNextTask"
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "LEVEL_STITCH_MATCH:"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    sget v2, Lcom/oneplus/screenshot/longshot/util/Configs;->LEVEL_STITCH_MATCH:I
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v2, " mMatchedSize:"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget v2, p0, Lcom/oneplus/screenshot/longshot/task/StitchNextTask;->mMatchedSize:I
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 37
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private isLegalPosition(Lcom/oneplus/screenshot/longshot/match/MatchData;)Z
     .registers 5
     .param p1, "data"    # Lcom/oneplus/screenshot/longshot/match/MatchData;
 
-    .prologue
-    const/4 v0, 0x0
-
     .line 68
+    invoke-virtual {p1}, Lcom/oneplus/screenshot/longshot/match/MatchData;->getLastRange()Lcom/oneplus/screenshot/longshot/match/MatchRange;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/match/MatchRange;->getEnd()I
+
+    move-result v0
+
     invoke-virtual {p1}, Lcom/oneplus/screenshot/longshot/match/MatchData;->getLastRange()Lcom/oneplus/screenshot/longshot/match/MatchRange;
 
     move-result-object v1
 
-    invoke-virtual {v1}, Lcom/oneplus/screenshot/longshot/match/MatchRange;->getEnd()I
+    invoke-virtual {v1}, Lcom/oneplus/screenshot/longshot/match/MatchRange;->getLines()[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
 
-    move-result v1
+    move-result-object v1
 
-    invoke-virtual {p1}, Lcom/oneplus/screenshot/longshot/match/MatchData;->getLastRange()Lcom/oneplus/screenshot/longshot/match/MatchRange;
+    array-length v1, v1
 
-    move-result-object v2
+    const/4 v2, 0x1
 
-    invoke-virtual {v2}, Lcom/oneplus/screenshot/longshot/match/MatchRange;->getLines()[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
+    sub-int/2addr v1, v2
 
-    move-result-object v2
-
-    array-length v2, v2
-
-    add-int/lit8 v2, v2, -0x1
-
-    if-ne v1, v2, :cond_21
+    if-ne v0, v1, :cond_20
 
     .line 69
     invoke-virtual {p1}, Lcom/oneplus/screenshot/longshot/match/MatchData;->getCurrRange()Lcom/oneplus/screenshot/longshot/match/MatchRange;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-virtual {v1}, Lcom/oneplus/screenshot/longshot/match/MatchRange;->getStart()I
+    invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/match/MatchRange;->getStart()I
 
-    move-result v1
+    move-result v0
 
-    if-nez v1, :cond_21
+    if-nez v0, :cond_20
 
-    const/4 v0, 0x1
+    goto :goto_21
+
+    :cond_20
+    const/4 v2, 0x0
 
     .line 68
-    :cond_21
-    return v0
+    :goto_21
+    return v2
 .end method
 
 .method private stitchForCurr(Lcom/oneplus/screenshot/longshot/match/MatchData;Lcom/oneplus/screenshot/longshot/cache/BitmapCache;)V
@@ -167,87 +161,86 @@
     .param p1, "data"    # Lcom/oneplus/screenshot/longshot/match/MatchData;
     .param p2, "cache"    # Lcom/oneplus/screenshot/longshot/cache/BitmapCache;
 
-    .prologue
-    const/4 v8, 0x0
-
     .line 91
-    const-string/jumbo v6, "StitchNextTask.stitchForCurr"
+    const-string v0, "StitchNextTask.stitchForCurr"
 
-    invoke-static {v6}, Landroid/os/Trace;->beginSection(Ljava/lang/String;)V
+    invoke-static {v0}, Landroid/os/Trace;->beginSection(Ljava/lang/String;)V
 
     .line 92
     invoke-virtual {p1}, Lcom/oneplus/screenshot/longshot/match/MatchData;->getRate()I
 
-    move-result v3
+    move-result v0
 
     .line 93
-    .local v3, "rate":I
+    .local v0, "rate":I
     invoke-virtual {p1}, Lcom/oneplus/screenshot/longshot/match/MatchData;->getOffset()I
+
+    move-result v1
+
+    .line 94
+    .local v1, "offset":I
+    invoke-virtual {p2}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->getBitmap()Landroid/graphics/Bitmap;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Landroid/graphics/Bitmap;->getWidth()I
 
     move-result v2
 
-    .line 94
-    .local v2, "offset":I
-    invoke-virtual {p2}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->getBitmap()Landroid/graphics/Bitmap;
+    .line 95
+    .local v2, "width":I
+    invoke-virtual {p1}, Lcom/oneplus/screenshot/longshot/match/MatchData;->getCurrRange()Lcom/oneplus/screenshot/longshot/match/MatchRange;
 
-    move-result-object v6
+    move-result-object v3
 
-    invoke-virtual {v6}, Landroid/graphics/Bitmap;->getWidth()I
+    invoke-virtual {v3}, Lcom/oneplus/screenshot/longshot/match/MatchRange;->getEnd()I
+
+    move-result v3
+
+    mul-int/2addr v3, v0
+
+    iget-object v4, p0, Lcom/oneplus/screenshot/longshot/task/StitchNextTask;->mMatcher:Lcom/oneplus/screenshot/longshot/match/Matcher;
+
+    invoke-interface {v4}, Lcom/oneplus/screenshot/longshot/match/Matcher;->getOffsetCurr()I
 
     move-result v4
 
-    .line 95
-    .local v4, "width":I
-    invoke-virtual {p1}, Lcom/oneplus/screenshot/longshot/match/MatchData;->getCurrRange()Lcom/oneplus/screenshot/longshot/match/MatchRange;
-
-    move-result-object v6
-
-    invoke-virtual {v6}, Lcom/oneplus/screenshot/longshot/match/MatchRange;->getEnd()I
-
-    move-result v6
-
-    mul-int/2addr v6, v3
-
-    iget-object v7, p0, Lcom/oneplus/screenshot/longshot/task/StitchNextTask;->mMatcher:Lcom/oneplus/screenshot/longshot/match/Matcher;
-
-    invoke-interface {v7}, Lcom/oneplus/screenshot/longshot/match/Matcher;->getOffsetCurr()I
-
-    move-result v7
-
-    add-int v5, v6, v7
+    add-int/2addr v3, v4
 
     .line 96
-    .local v5, "yCurr":I
+    .local v3, "yCurr":I
     invoke-virtual {p2}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->getBitmap()Landroid/graphics/Bitmap;
 
-    move-result-object v6
+    move-result-object v4
 
-    invoke-virtual {v6}, Landroid/graphics/Bitmap;->getHeight()I
+    invoke-virtual {v4}, Landroid/graphics/Bitmap;->getHeight()I
 
-    move-result v6
+    move-result v4
 
-    sub-int v1, v6, v5
+    sub-int/2addr v4, v3
 
     .line 97
-    .local v1, "hCurr":I
-    if-lez v1, :cond_54
+    .local v4, "hCurr":I
+    if-lez v4, :cond_50
 
     .line 98
-    const-string/jumbo v6, "StitchNextTask.stitchForCurr.createbmpResult"
+    const-string v5, "StitchNextTask.stitchForCurr.createbmpResult"
 
-    invoke-static {v6}, Landroid/os/Trace;->beginSection(Ljava/lang/String;)V
+    invoke-static {v5}, Landroid/os/Trace;->beginSection(Ljava/lang/String;)V
 
     .line 99
     invoke-virtual {p2}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->getBitmap()Landroid/graphics/Bitmap;
 
-    move-result-object v6
+    move-result-object v5
 
-    invoke-static {v6, v8, v5, v4, v1}, Landroid/graphics/Bitmap;->createBitmap(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
+    const/4 v6, 0x0
 
-    move-result-object v0
+    invoke-static {v5, v6, v3, v2, v4}, Landroid/graphics/Bitmap;->createBitmap(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
+
+    move-result-object v5
 
     .line 100
-    .local v0, "bmpResult":Landroid/graphics/Bitmap;
+    .local v5, "bmpResult":Landroid/graphics/Bitmap;
     invoke-static {}, Landroid/os/Trace;->endSection()V
 
     .line 101
@@ -255,26 +248,28 @@
 
     new-instance v7, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;
 
+    const/4 v8, 0x0
+
     invoke-virtual {p2}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->removeBottom()Landroid/graphics/Bitmap;
 
-    move-result-object v8
+    move-result-object v9
 
-    const/4 v9, 0x0
-
-    invoke-direct {v7, v0, v9, v8}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;-><init>(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;)V
+    invoke-direct {v7, v5, v8, v9}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;-><init>(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;)V
 
     invoke-virtual {v6, v7}, Lcom/oneplus/screenshot/longshot/cache/JoinCache;->addLast(Ljava/lang/Object;)V
 
     .line 103
-    .end local v0    # "bmpResult":Landroid/graphics/Bitmap;
-    :cond_54
+    .end local v5    # "bmpResult":Landroid/graphics/Bitmap;
+    :cond_50
     invoke-virtual {p2}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->recycle()V
 
     .line 104
     invoke-static {}, Landroid/os/Trace;->endSection()V
 
     .line 105
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private stitchForLast(Lcom/oneplus/screenshot/longshot/match/MatchData;Lcom/oneplus/screenshot/longshot/cache/BitmapCache;)V
@@ -282,37 +277,34 @@
     .param p1, "data"    # Lcom/oneplus/screenshot/longshot/match/MatchData;
     .param p2, "cache"    # Lcom/oneplus/screenshot/longshot/cache/BitmapCache;
 
-    .prologue
-    const/4 v8, 0x0
-
     .line 73
-    const-string/jumbo v6, "StitchNextTask.stitchForLast"
+    const-string v0, "StitchNextTask.stitchForLast"
 
-    invoke-static {v6}, Landroid/os/Trace;->beginSection(Ljava/lang/String;)V
+    invoke-static {v0}, Landroid/os/Trace;->beginSection(Ljava/lang/String;)V
 
     .line 74
     invoke-virtual {p1}, Lcom/oneplus/screenshot/longshot/match/MatchData;->getRate()I
 
-    move-result v4
+    move-result v0
 
     .line 75
-    .local v4, "rate":I
+    .local v0, "rate":I
     invoke-virtual {p1}, Lcom/oneplus/screenshot/longshot/match/MatchData;->getOffset()I
+
+    move-result v1
+
+    .line 76
+    .local v1, "offset":I
+    invoke-virtual {p2}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->getBitmap()Landroid/graphics/Bitmap;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Landroid/graphics/Bitmap;->getWidth()I
 
     move-result v2
 
-    .line 76
-    .local v2, "offset":I
-    invoke-virtual {p2}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->getBitmap()Landroid/graphics/Bitmap;
-
-    move-result-object v6
-
-    invoke-virtual {v6}, Landroid/graphics/Bitmap;->getWidth()I
-
-    move-result v5
-
     .line 77
-    .local v5, "width":I
+    .local v2, "width":I
     invoke-virtual {p1}, Lcom/oneplus/screenshot/longshot/match/MatchData;->getLastRange()Lcom/oneplus/screenshot/longshot/match/MatchRange;
 
     move-result-object v3
@@ -321,64 +313,63 @@
     .local v3, "rangeLast":Lcom/oneplus/screenshot/longshot/match/MatchRange;
     invoke-virtual {p2}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->getBitmap()Landroid/graphics/Bitmap;
 
-    move-result-object v6
+    move-result-object v4
 
-    invoke-virtual {v6}, Landroid/graphics/Bitmap;->getHeight()I
+    invoke-virtual {v4}, Landroid/graphics/Bitmap;->getHeight()I
 
-    move-result v6
+    move-result v4
 
     invoke-virtual {v3}, Lcom/oneplus/screenshot/longshot/match/MatchRange;->getLines()[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
 
-    move-result-object v7
+    move-result-object v5
 
-    array-length v7, v7
+    array-length v5, v5
 
-    mul-int/2addr v7, v4
+    mul-int/2addr v5, v0
 
-    sub-int/2addr v6, v7
+    sub-int/2addr v4, v5
 
     .line 79
     invoke-virtual {v3}, Lcom/oneplus/screenshot/longshot/match/MatchRange;->getEnd()I
 
-    move-result v7
+    move-result v5
 
-    mul-int/2addr v7, v4
+    mul-int/2addr v5, v0
 
-    .line 78
-    add-int/2addr v6, v7
+    add-int/2addr v4, v5
 
-    add-int/2addr v6, v2
+    add-int/2addr v4, v1
 
-    .line 79
-    iget-object v7, p0, Lcom/oneplus/screenshot/longshot/task/StitchNextTask;->mMatcher:Lcom/oneplus/screenshot/longshot/match/Matcher;
+    iget-object v5, p0, Lcom/oneplus/screenshot/longshot/task/StitchNextTask;->mMatcher:Lcom/oneplus/screenshot/longshot/match/Matcher;
 
-    invoke-interface {v7}, Lcom/oneplus/screenshot/longshot/match/Matcher;->getOffsetLast()I
+    invoke-interface {v5}, Lcom/oneplus/screenshot/longshot/match/Matcher;->getOffsetLast()I
 
-    move-result v7
+    move-result v5
 
-    .line 78
-    sub-int v1, v6, v7
+    sub-int/2addr v4, v5
 
     .line 80
-    .local v1, "hLast":I
-    if-lez v1, :cond_5b
+    .local v4, "hLast":I
+    if-lez v4, :cond_58
 
     .line 81
-    const-string/jumbo v6, "StitchNextTask.stitchForLast.createbmpResult"
+    const-string v5, "StitchNextTask.stitchForLast.createbmpResult"
 
-    invoke-static {v6}, Landroid/os/Trace;->beginSection(Ljava/lang/String;)V
+    invoke-static {v5}, Landroid/os/Trace;->beginSection(Ljava/lang/String;)V
 
     .line 82
     invoke-virtual {p2}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->getBitmap()Landroid/graphics/Bitmap;
 
-    move-result-object v6
+    move-result-object v5
 
-    invoke-static {v6, v8, v8, v5, v1}, Landroid/graphics/Bitmap;->createBitmap(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
+    const/4 v6, 0x0
 
-    move-result-object v0
+    invoke-static {v5, v6, v6, v2, v4}, Landroid/graphics/Bitmap;->createBitmap(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
+
+    move-result-object v5
 
     .line 83
-    .local v0, "bmpResult":Landroid/graphics/Bitmap;
+    .local v5, "bmpResult":Landroid/graphics/Bitmap;
     invoke-static {}, Landroid/os/Trace;->endSection()V
 
     .line 84
@@ -392,20 +383,22 @@
 
     const/4 v9, 0x0
 
-    invoke-direct {v7, v0, v8, v9}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;-><init>(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;)V
+    invoke-direct {v7, v5, v8, v9}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;-><init>(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;)V
 
     invoke-virtual {v6, v7}, Lcom/oneplus/screenshot/longshot/cache/JoinCache;->addLast(Ljava/lang/Object;)V
 
     .line 86
-    .end local v0    # "bmpResult":Landroid/graphics/Bitmap;
-    :cond_5b
+    .end local v5    # "bmpResult":Landroid/graphics/Bitmap;
+    :cond_58
     invoke-virtual {p2}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->recycle()V
 
     .line 87
     invoke-static {}, Landroid/os/Trace;->endSection()V
 
     .line 88
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -415,7 +408,6 @@
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "index"    # I
 
-    .prologue
     .line 44
     new-instance v0, Lcom/oneplus/screenshot/longshot/match/StitchNextMatcher;
 
@@ -429,36 +421,35 @@
     .param p1, "last"    # Lcom/oneplus/screenshot/longshot/cache/BitmapCache;
     .param p2, "curr"    # Lcom/oneplus/screenshot/longshot/cache/BitmapCache;
 
-    .prologue
     .line 49
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/task/StitchNextTask;->checkMatcher()Z
 
-    move-result v2
+    move-result v0
 
-    if-nez v2, :cond_11
+    const/4 v1, 0x0
+
+    if-nez v0, :cond_f
 
     .line 50
-    const-string/jumbo v2, "Longshot.StitchNextTask"
+    const-string v0, "Longshot.StitchNextTask"
 
-    const-string/jumbo v3, "check matcher fail"
+    const-string v2, "check matcher fail"
 
-    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 51
-    const/4 v2, 0x0
-
-    return v2
+    return v1
 
     .line 53
-    :cond_11
-    const-string/jumbo v2, "StitchNextTask.MatchData"
+    :cond_f
+    const-string v0, "StitchNextTask.MatchData"
 
-    invoke-static {v2}, Landroid/os/Trace;->beginSection(Ljava/lang/String;)V
+    invoke-static {v0}, Landroid/os/Trace;->beginSection(Ljava/lang/String;)V
 
     .line 54
-    iget-object v2, p0, Lcom/oneplus/screenshot/longshot/task/StitchNextTask;->mMatcher:Lcom/oneplus/screenshot/longshot/match/Matcher;
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/task/StitchNextTask;->mMatcher:Lcom/oneplus/screenshot/longshot/match/Matcher;
 
-    invoke-interface {v2, p1, p2}, Lcom/oneplus/screenshot/longshot/match/Matcher;->run(Lcom/oneplus/screenshot/longshot/cache/BitmapCache;Lcom/oneplus/screenshot/longshot/cache/BitmapCache;)Lcom/oneplus/screenshot/longshot/match/MatchData;
+    invoke-interface {v0, p1, p2}, Lcom/oneplus/screenshot/longshot/match/Matcher;->run(Lcom/oneplus/screenshot/longshot/cache/BitmapCache;Lcom/oneplus/screenshot/longshot/cache/BitmapCache;)Lcom/oneplus/screenshot/longshot/match/MatchData;
 
     move-result-object v0
 
@@ -470,18 +461,25 @@
 
     iget v3, p0, Lcom/oneplus/screenshot/longshot/task/StitchNextTask;->mMatchedSize:I
 
-    if-le v2, v3, :cond_35
+    if-le v2, v3, :cond_2a
 
     invoke-direct {p0, v0}, Lcom/oneplus/screenshot/longshot/task/StitchNextTask;->isLegalPosition(Lcom/oneplus/screenshot/longshot/match/MatchData;)Z
 
-    move-result v1
+    move-result v2
+
+    if-eqz v2, :cond_2a
+
+    const/4 v1, 0x1
+
+    nop
 
     .line 56
-    :goto_29
+    .local v1, "result":Z
+    :cond_2a
     invoke-static {}, Landroid/os/Trace;->endSection()V
 
     .line 57
-    if-eqz v1, :cond_34
+    if-eqz v1, :cond_35
 
     .line 58
     invoke-direct {p0, v0, p1}, Lcom/oneplus/screenshot/longshot/task/StitchNextTask;->stitchForLast(Lcom/oneplus/screenshot/longshot/match/MatchData;Lcom/oneplus/screenshot/longshot/cache/BitmapCache;)V
@@ -490,13 +488,6 @@
     invoke-direct {p0, v0, p2}, Lcom/oneplus/screenshot/longshot/task/StitchNextTask;->stitchForCurr(Lcom/oneplus/screenshot/longshot/match/MatchData;Lcom/oneplus/screenshot/longshot/cache/BitmapCache;)V
 
     .line 61
-    :cond_34
-    return v1
-
-    .line 55
     :cond_35
-    const/4 v1, 0x0
-
-    .local v1, "result":Z
-    goto :goto_29
+    return v1
 .end method

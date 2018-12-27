@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Ljava/lang/Enum",
-        "<",
+        "Ljava/lang/Enum<",
         "Lcom/google/analytics/tracking/android/Logger$LogLevel;",
         ">;"
     }
@@ -39,19 +38,12 @@
 .method static constructor <clinit>()V
     .registers 6
 
-    .prologue
-    const/4 v5, 0x3
-
-    const/4 v4, 0x2
-
-    const/4 v3, 0x1
-
-    const/4 v2, 0x0
-
     .line 21
     new-instance v0, Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
-    const-string/jumbo v1, "VERBOSE"
+    const-string v1, "VERBOSE"
+
+    const/4 v2, 0x0
 
     invoke-direct {v0, v1, v2}, Lcom/google/analytics/tracking/android/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
 
@@ -59,7 +51,9 @@
 
     new-instance v0, Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
-    const-string/jumbo v1, "INFO"
+    const-string v1, "INFO"
+
+    const/4 v3, 0x1
 
     invoke-direct {v0, v1, v3}, Lcom/google/analytics/tracking/android/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
 
@@ -67,7 +61,9 @@
 
     new-instance v0, Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
-    const-string/jumbo v1, "WARNING"
+    const-string v1, "WARNING"
+
+    const/4 v4, 0x2
 
     invoke-direct {v0, v1, v4}, Lcom/google/analytics/tracking/android/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
 
@@ -75,7 +71,9 @@
 
     new-instance v0, Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
-    const-string/jumbo v1, "ERROR"
+    const-string v1, "ERROR"
+
+    const/4 v5, 0x3
 
     invoke-direct {v0, v1, v5}, Lcom/google/analytics/tracking/android/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
 
@@ -104,7 +102,9 @@
 
     sput-object v0, Lcom/google/analytics/tracking/android/Logger$LogLevel;->$VALUES:[Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V
@@ -115,7 +115,6 @@
         }
     .end annotation
 
-    .prologue
     .line 20
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
@@ -126,7 +125,6 @@
     .registers 2
     .param p0, "name"    # Ljava/lang/String;
 
-    .prologue
     .line 20
     const-class v0, Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
@@ -142,11 +140,10 @@
 .method public static values()[Lcom/google/analytics/tracking/android/Logger$LogLevel;
     .registers 1
 
-    .prologue
     .line 20
     sget-object v0, Lcom/google/analytics/tracking/android/Logger$LogLevel;->$VALUES:[Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
-    invoke-virtual {v0}, Ljava/lang/Object;->clone()Ljava/lang/Object;
+    invoke-virtual {v0}, [Lcom/google/analytics/tracking/android/Logger$LogLevel;->clone()Ljava/lang/Object;
 
     move-result-object v0
 

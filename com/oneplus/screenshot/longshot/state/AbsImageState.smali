@@ -18,13 +18,12 @@
     .registers 3
     .param p1, "stateContext"    # Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
-    .prologue
-    const/4 v0, 0x0
-
     .line 23
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/longshot/state/AbsViewState;-><init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;)V
 
     .line 16
+    const/4 v0, 0x0
+
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsImageState;->mImageCache:Lcom/oneplus/screenshot/longshot/cache/ImageCache;
 
     .line 17
@@ -40,7 +39,9 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsImageState;->mImageCache:Lcom/oneplus/screenshot/longshot/cache/ImageCache;
 
     .line 25
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -50,19 +51,19 @@
     .param p1, "oldState"    # Lcom/oneplus/screenshot/longshot/state/LongshotState;
     .param p2, "listener"    # Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;
 
-    .prologue
     .line 32
     invoke-super {p0, p1, p2}, Lcom/oneplus/screenshot/longshot/state/AbsViewState;->enter(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
 
     .line 34
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public exit(Lcom/oneplus/screenshot/longshot/state/LongshotState;)V
     .registers 3
     .param p1, "newState"    # Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    .prologue
     .line 38
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsImageState;->mImageCache:Lcom/oneplus/screenshot/longshot/cache/ImageCache;
 
@@ -72,27 +73,28 @@
     invoke-super {p0, p1}, Lcom/oneplus/screenshot/longshot/state/AbsViewState;->exit(Lcom/oneplus/screenshot/longshot/state/LongshotState;)V
 
     .line 40
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method protected initViews(Landroid/widget/FrameLayout;)V
     .registers 4
     .param p1, "content"    # Landroid/widget/FrameLayout;
 
-    .prologue
     .line 44
-    iget-object v1, p0, Lcom/oneplus/screenshot/longshot/state/AbsImageState;->mImageCache:Lcom/oneplus/screenshot/longshot/cache/ImageCache;
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsImageState;->mImageCache:Lcom/oneplus/screenshot/longshot/cache/ImageCache;
 
-    invoke-virtual {v1}, Lcom/oneplus/screenshot/longshot/cache/ImageCache;->size()I
+    invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/cache/ImageCache;->size()I
 
-    move-result v1
+    move-result v0
 
-    if-lez v1, :cond_1f
+    if-lez v0, :cond_1f
 
     .line 45
-    const v1, 0x7f0b002b
+    const v0, 0x7f0b002b
 
-    invoke-virtual {p1, v1}, Landroid/widget/FrameLayout;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p1, v0}, Landroid/widget/FrameLayout;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
 
@@ -116,5 +118,7 @@
     .line 49
     .end local v0    # "imageView":Lcom/oneplus/screenshot/longshot/widget/ImageView;
     :cond_1f
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

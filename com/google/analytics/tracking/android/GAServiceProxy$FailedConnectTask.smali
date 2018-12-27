@@ -22,7 +22,6 @@
 .method private constructor <init>(Lcom/google/analytics/tracking/android/GAServiceProxy;)V
     .registers 2
 
-    .prologue
     .line 402
     iput-object p1, p0, Lcom/google/analytics/tracking/android/GAServiceProxy$FailedConnectTask;->this$0:Lcom/google/analytics/tracking/android/GAServiceProxy;
 
@@ -36,7 +35,6 @@
     .param p1, "x0"    # Lcom/google/analytics/tracking/android/GAServiceProxy;
     .param p2, "x1"    # Lcom/google/analytics/tracking/android/GAServiceProxy$1;
 
-    .prologue
     .line 402
     invoke-direct {p0, p1}, Lcom/google/analytics/tracking/android/GAServiceProxy$FailedConnectTask;-><init>(Lcom/google/analytics/tracking/android/GAServiceProxy;)V
 
@@ -48,7 +46,6 @@
 .method public run()V
     .registers 3
 
-    .prologue
     .line 405
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy$FailedConnectTask;->this$0:Lcom/google/analytics/tracking/android/GAServiceProxy;
 
@@ -59,18 +56,16 @@
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->CONNECTING:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
-    if-eq v0, v1, :cond_b
-
-    .line 409
-    :goto_a
-    return-void
+    if-ne v0, v1, :cond_f
 
     .line 406
-    :cond_b
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy$FailedConnectTask;->this$0:Lcom/google/analytics/tracking/android/GAServiceProxy;
 
-    # invokes: Lcom/google/analytics/tracking/android/GAServiceProxy;->useStore()V
     invoke-static {v0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->access$500(Lcom/google/analytics/tracking/android/GAServiceProxy;)V
 
-    goto :goto_a
+    .line 409
+    :cond_f
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

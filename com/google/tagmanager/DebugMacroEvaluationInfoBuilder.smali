@@ -15,7 +15,6 @@
     .registers 2
     .param p1, "macroEvaluationInfo"    # Lcom/google/analytics/containertag/proto/Debug$MacroEvaluationInfo;
 
-    .prologue
     .line 15
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -23,7 +22,9 @@
     iput-object p1, p0, Lcom/google/tagmanager/DebugMacroEvaluationInfoBuilder;->macroEvaluationInfo:Lcom/google/analytics/containertag/proto/Debug$MacroEvaluationInfo;
 
     .line 17
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -31,7 +32,6 @@
 .method public createResult()Lcom/google/tagmanager/ResolvedFunctionCallBuilder;
     .registers 3
 
-    .prologue
     .line 21
     iget-object v0, p0, Lcom/google/tagmanager/DebugMacroEvaluationInfoBuilder;->macroEvaluationInfo:Lcom/google/analytics/containertag/proto/Debug$MacroEvaluationInfo;
 
@@ -56,7 +56,6 @@
 .method public createRulesEvaluation()Lcom/google/tagmanager/RuleEvaluationStepInfoBuilder;
     .registers 3
 
-    .prologue
     .line 27
     iget-object v0, p0, Lcom/google/tagmanager/DebugMacroEvaluationInfoBuilder;->macroEvaluationInfo:Lcom/google/analytics/containertag/proto/Debug$MacroEvaluationInfo;
 

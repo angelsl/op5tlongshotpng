@@ -11,7 +11,6 @@
 .method public constructor <init>()V
     .registers 1
 
-    .prologue
     .line 18
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -29,162 +28,167 @@
         }
     .end annotation
 
-    .prologue
     .line 65
-    const/4 v2, 0x0
+    const/4 v0, 0x0
 
     .line 69
-    .local v2, "interpolator":Landroid/view/animation/Interpolator;
+    .local v0, "interpolator":Landroid/view/animation/Interpolator;
     invoke-interface {p1}, Lorg/xmlpull/v1/XmlPullParser;->getDepth()I
 
     move-result v1
 
     .line 71
-    .end local v2    # "interpolator":Landroid/view/animation/Interpolator;
     .local v1, "depth":I
-    :cond_5
     :goto_5
     invoke-interface {p1}, Lorg/xmlpull/v1/XmlPullParser;->next()I
 
-    move-result v4
+    move-result v2
 
-    .local v4, "type":I
-    const/4 v5, 0x3
+    move v3, v2
 
-    if-ne v4, v5, :cond_12
+    .local v3, "type":I
+    const/4 v4, 0x3
+
+    if-ne v2, v4, :cond_13
 
     invoke-interface {p1}, Lorg/xmlpull/v1/XmlPullParser;->getDepth()I
 
-    move-result v5
+    move-result v2
 
-    if-le v5, v1, :cond_6b
+    if-le v2, v1, :cond_6d
 
-    .line 72
-    :cond_12
-    const/4 v5, 0x1
+    :cond_13
+    const/4 v2, 0x1
 
-    if-eq v4, v5, :cond_6b
+    if-eq v3, v2, :cond_6d
 
     .line 74
-    const/4 v5, 0x2
+    const/4 v2, 0x2
 
-    if-ne v4, v5, :cond_5
+    if-eq v3, v2, :cond_1a
+
+    .line 75
+    goto :goto_5
 
     .line 78
+    :cond_1a
     invoke-static {p1}, Landroid/util/Xml;->asAttributeSet(Lorg/xmlpull/v1/XmlPullParser;)Landroid/util/AttributeSet;
 
-    move-result-object v0
+    move-result-object v2
 
     .line 80
-    .local v0, "attrs":Landroid/util/AttributeSet;
+    .local v2, "attrs":Landroid/util/AttributeSet;
     invoke-interface {p1}, Lorg/xmlpull/v1/XmlPullParser;->getName()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v4
 
     .line 82
-    .local v3, "name":Ljava/lang/String;
-    const-string/jumbo v5, "factorLinearInterpolator"
+    .local v4, "name":Ljava/lang/String;
+    const-string v5, "factorLinearInterpolator"
 
-    invoke-virtual {v3, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v4, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v5
 
-    if-eqz v5, :cond_2f
+    if-eqz v5, :cond_31
 
     .line 83
-    new-instance v2, Lcom/oneplus/screenshot/anim/FactorLinearInterpolator;
+    new-instance v5, Lcom/oneplus/screenshot/anim/FactorLinearInterpolator;
 
-    invoke-direct {v2, p0, v0}, Lcom/oneplus/screenshot/anim/FactorLinearInterpolator;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+    invoke-direct {v5, p0, v2}, Lcom/oneplus/screenshot/anim/FactorLinearInterpolator;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .local v2, "interpolator":Landroid/view/animation/Interpolator;
-    goto :goto_5
+    move-object v0, v5
+
+    goto :goto_6c
 
     .line 84
-    .end local v2    # "interpolator":Landroid/view/animation/Interpolator;
-    :cond_2f
-    const-string/jumbo v5, "flashInterpolator"
+    :cond_31
+    const-string v5, "flashInterpolator"
 
-    invoke-virtual {v3, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v4, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v5
 
-    if-eqz v5, :cond_3e
+    if-eqz v5, :cond_40
 
     .line 85
-    new-instance v2, Lcom/oneplus/screenshot/anim/FlashInterpolator;
+    new-instance v5, Lcom/oneplus/screenshot/anim/FlashInterpolator;
 
-    invoke-direct {v2, p0, v0}, Lcom/oneplus/screenshot/anim/FlashInterpolator;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+    invoke-direct {v5, p0, v2}, Lcom/oneplus/screenshot/anim/FlashInterpolator;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .restart local v2    # "interpolator":Landroid/view/animation/Interpolator;
-    goto :goto_5
+    move-object v0, v5
+
+    goto :goto_6c
 
     .line 86
-    .end local v2    # "interpolator":Landroid/view/animation/Interpolator;
-    :cond_3e
-    const-string/jumbo v5, "backgroundInterpolator"
+    :cond_40
+    const-string v5, "backgroundInterpolator"
 
-    invoke-virtual {v3, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v4, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v5
 
-    if-eqz v5, :cond_4d
+    if-eqz v5, :cond_4f
 
     .line 87
-    new-instance v2, Lcom/oneplus/screenshot/anim/BackgroundInterpolator;
+    new-instance v5, Lcom/oneplus/screenshot/anim/BackgroundInterpolator;
 
-    invoke-direct {v2, p0, v0}, Lcom/oneplus/screenshot/anim/BackgroundInterpolator;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+    invoke-direct {v5, p0, v2}, Lcom/oneplus/screenshot/anim/BackgroundInterpolator;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .restart local v2    # "interpolator":Landroid/view/animation/Interpolator;
-    goto :goto_5
+    move-object v0, v5
+
+    goto :goto_6c
 
     .line 88
-    .end local v2    # "interpolator":Landroid/view/animation/Interpolator;
-    :cond_4d
-    const-string/jumbo v5, "scaleInInterpolator"
+    :cond_4f
+    const-string v5, "scaleInInterpolator"
 
-    invoke-virtual {v3, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v4, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v5
 
-    if-eqz v5, :cond_5c
+    if-eqz v5, :cond_5e
 
     .line 89
-    new-instance v2, Lcom/oneplus/screenshot/anim/ScaleInInterpolator;
+    new-instance v5, Lcom/oneplus/screenshot/anim/ScaleInInterpolator;
 
-    invoke-direct {v2, p0, v0}, Lcom/oneplus/screenshot/anim/ScaleInInterpolator;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+    invoke-direct {v5, p0, v2}, Lcom/oneplus/screenshot/anim/ScaleInInterpolator;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .restart local v2    # "interpolator":Landroid/view/animation/Interpolator;
-    goto :goto_5
+    move-object v0, v5
+
+    goto :goto_6c
 
     .line 90
-    .end local v2    # "interpolator":Landroid/view/animation/Interpolator;
-    :cond_5c
-    const-string/jumbo v5, "scaleOutInterpolator"
+    :cond_5e
+    const-string v5, "scaleOutInterpolator"
 
-    invoke-virtual {v3, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v4, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v5
 
-    if-eqz v5, :cond_5
+    if-eqz v5, :cond_6c
 
     .line 91
-    new-instance v2, Lcom/oneplus/screenshot/anim/ScaleOutInterpolator;
+    new-instance v5, Lcom/oneplus/screenshot/anim/ScaleOutInterpolator;
 
-    invoke-direct {v2, p0, v0}, Lcom/oneplus/screenshot/anim/ScaleOutInterpolator;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+    invoke-direct {v5, p0, v2}, Lcom/oneplus/screenshot/anim/ScaleOutInterpolator;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .restart local v2    # "interpolator":Landroid/view/animation/Interpolator;
+    move-object v0, v5
+
+    .line 93
+    .end local v2    # "attrs":Landroid/util/AttributeSet;
+    .end local v4    # "name":Ljava/lang/String;
+    :cond_6c
+    :goto_6c
     goto :goto_5
 
     .line 94
-    .end local v0    # "attrs":Landroid/util/AttributeSet;
-    .end local v2    # "interpolator":Landroid/view/animation/Interpolator;
-    .end local v3    # "name":Ljava/lang/String;
-    :cond_6b
-    return-object v2
+    :cond_6d
+    return-object v0
 .end method
 
 .method public static loadInterpolator(Landroid/content/Context;I)Landroid/view/animation/Interpolator;
-    .registers 9
+    .registers 7
     .param p0, "context"    # Landroid/content/Context;
     .param p1, "id"    # I
     .annotation system Ldalvik/annotation/Throws;
@@ -193,154 +197,149 @@
         }
     .end annotation
 
-    .prologue
     .line 34
-    const/4 v3, 0x0
+    const/4 v0, 0x0
 
     .line 36
-    .local v3, "parser":Landroid/content/res/XmlResourceParser;
+    .local v0, "parser":Landroid/content/res/XmlResourceParser;
     :try_start_1
     invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
-    move-result-object v5
+    move-result-object v1
 
-    invoke-virtual {v5, p1}, Landroid/content/res/Resources;->getAnimation(I)Landroid/content/res/XmlResourceParser;
+    invoke-virtual {v1, p1}, Landroid/content/res/Resources;->getAnimation(I)Landroid/content/res/XmlResourceParser;
 
-    move-result-object v3
+    move-result-object v1
+
+    move-object v0, v1
 
     .line 37
-    .local v3, "parser":Landroid/content/res/XmlResourceParser;
-    invoke-static {p0, v3}, Lcom/oneplus/screenshot/anim/InterpolatorUtils;->createInterpolatorFromXml(Landroid/content/Context;Lorg/xmlpull/v1/XmlPullParser;)Landroid/view/animation/Interpolator;
+    invoke-static {p0, v0}, Lcom/oneplus/screenshot/anim/InterpolatorUtils;->createInterpolatorFromXml(Landroid/content/Context;Lorg/xmlpull/v1/XmlPullParser;)Landroid/view/animation/Interpolator;
 
-    move-result-object v2
+    move-result-object v1
 
     .line 38
-    .local v2, "interpolator":Landroid/view/animation/Interpolator;
-    if-nez v2, :cond_13
+    .local v1, "interpolator":Landroid/view/animation/Interpolator;
+    if-nez v1, :cond_15
 
     .line 39
     invoke-static {p0, p1}, Landroid/view/animation/AnimationUtils;->loadInterpolator(Landroid/content/Context;I)Landroid/view/animation/Interpolator;
-    :try_end_12
-    .catch Lorg/xmlpull/v1/XmlPullParserException; {:try_start_1 .. :try_end_12} :catch_42
-    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_12} :catch_19
-    .catchall {:try_start_1 .. :try_end_12} :catchall_3b
 
     move-result-object v2
+    :try_end_14
+    .catch Lorg/xmlpull/v1/XmlPullParserException; {:try_start_1 .. :try_end_14} :catch_3d
+    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_14} :catch_1e
+    .catchall {:try_start_1 .. :try_end_14} :catchall_1c
 
-    .line 53
-    :cond_13
-    if-eqz v3, :cond_18
-
-    .line 54
-    invoke-interface {v3}, Landroid/content/res/XmlResourceParser;->close()V
+    move-object v1, v2
 
     .line 41
-    :cond_18
-    return-object v2
+    :cond_15
+    nop
+
+    .line 53
+    if-eqz v0, :cond_1b
+
+    .line 54
+    invoke-interface {v0}, Landroid/content/res/XmlResourceParser;->close()V
+
+    .line 41
+    :cond_1b
+    return-object v1
+
+    .line 53
+    .end local v1    # "interpolator":Landroid/view/animation/Interpolator;
+    :catchall_1c
+    move-exception v1
+
+    goto :goto_5c
 
     .line 47
-    .end local v2    # "interpolator":Landroid/view/animation/Interpolator;
-    .end local v3    # "parser":Landroid/content/res/XmlResourceParser;
-    :catch_19
-    move-exception v0
+    :catch_1e
+    move-exception v1
 
     .line 48
-    .local v0, "ex":Ljava/io/IOException;
-    :try_start_1a
-    new-instance v4, Landroid/content/res/Resources$NotFoundException;
+    .local v1, "ex":Ljava/io/IOException;
+    :try_start_1f
+    new-instance v2, Landroid/content/res/Resources$NotFoundException;
 
-    new-instance v5, Ljava/lang/StringBuilder;
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v6, "Can\'t load animation resource ID #0x"
+    const-string v4, "Can\'t load animation resource ID #0x"
 
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v5
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 49
     invoke-static {p1}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
 
-    move-result-object v6
+    move-result-object v4
 
-    .line 48
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v3
 
-    move-result-object v5
-
-    invoke-direct {v4, v5}, Landroid/content/res/Resources$NotFoundException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v2, v3}, Landroid/content/res/Resources$NotFoundException;-><init>(Ljava/lang/String;)V
 
     .line 50
-    .local v4, "rnf":Landroid/content/res/Resources$NotFoundException;
-    invoke-virtual {v4, v0}, Landroid/content/res/Resources$NotFoundException;->initCause(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    .local v2, "rnf":Landroid/content/res/Resources$NotFoundException;
+    invoke-virtual {v2, v1}, Landroid/content/res/Resources$NotFoundException;->initCause(Ljava/lang/Throwable;)Ljava/lang/Throwable;
 
     .line 51
-    throw v4
-    :try_end_3b
-    .catchall {:try_start_1a .. :try_end_3b} :catchall_3b
-
-    .line 52
-    .end local v0    # "ex":Ljava/io/IOException;
-    .end local v4    # "rnf":Landroid/content/res/Resources$NotFoundException;
-    :catchall_3b
-    move-exception v5
-
-    .line 53
-    if-eqz v3, :cond_41
-
-    .line 54
-    invoke-interface {v3}, Landroid/content/res/XmlResourceParser;->close()V
-
-    .line 52
-    :cond_41
-    throw v5
+    throw v2
 
     .line 42
-    :catch_42
+    .end local v1    # "ex":Ljava/io/IOException;
+    .end local v2    # "rnf":Landroid/content/res/Resources$NotFoundException;
+    :catch_3d
     move-exception v1
 
     .line 43
     .local v1, "ex":Lorg/xmlpull/v1/XmlPullParserException;
-    :try_start_43
-    new-instance v4, Landroid/content/res/Resources$NotFoundException;
+    new-instance v2, Landroid/content/res/Resources$NotFoundException;
 
-    new-instance v5, Ljava/lang/StringBuilder;
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v6, "Can\'t load animation resource ID #0x"
+    const-string v4, "Can\'t load animation resource ID #0x"
 
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v5
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 44
     invoke-static {p1}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
 
-    move-result-object v6
+    move-result-object v4
 
-    .line 43
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v3
 
-    move-result-object v5
-
-    invoke-direct {v4, v5}, Landroid/content/res/Resources$NotFoundException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v2, v3}, Landroid/content/res/Resources$NotFoundException;-><init>(Ljava/lang/String;)V
 
     .line 45
-    .restart local v4    # "rnf":Landroid/content/res/Resources$NotFoundException;
-    invoke-virtual {v4, v1}, Landroid/content/res/Resources$NotFoundException;->initCause(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    .restart local v2    # "rnf":Landroid/content/res/Resources$NotFoundException;
+    invoke-virtual {v2, v1}, Landroid/content/res/Resources$NotFoundException;->initCause(Ljava/lang/Throwable;)Ljava/lang/Throwable;
 
     .line 46
-    throw v4
-    :try_end_64
-    .catchall {:try_start_43 .. :try_end_64} :catchall_3b
+    throw v2
+    :try_end_5c
+    .catchall {:try_start_1f .. :try_end_5c} :catchall_1c
+
+    .line 53
+    .end local v1    # "ex":Lorg/xmlpull/v1/XmlPullParserException;
+    .end local v2    # "rnf":Landroid/content/res/Resources$NotFoundException;
+    :goto_5c
+    if-eqz v0, :cond_61
+
+    .line 54
+    invoke-interface {v0}, Landroid/content/res/XmlResourceParser;->close()V
+
+    :cond_61
+    throw v1
 .end method

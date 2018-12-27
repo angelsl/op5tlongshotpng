@@ -15,7 +15,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 16
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->RANDOM:Lcom/google/analytics/containertag/common/FunctionType;
 
@@ -43,13 +42,14 @@
 
     sput-object v0, Lcom/google/tagmanager/RandomMacro;->MAX:Ljava/lang/String;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>()V
     .registers 3
 
-    .prologue
     .line 25
     sget-object v0, Lcom/google/tagmanager/RandomMacro;->ID:Ljava/lang/String;
 
@@ -60,13 +60,14 @@
     invoke-direct {p0, v0, v1}, Lcom/google/tagmanager/FunctionCallImplementation;-><init>(Ljava/lang/String;[Ljava/lang/String;)V
 
     .line 26
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
     .registers 1
 
-    .prologue
     .line 21
     sget-object v0, Lcom/google/tagmanager/RandomMacro;->ID:Ljava/lang/String;
 
@@ -76,12 +77,11 @@
 
 # virtual methods
 .method public evaluate(Ljava/util/Map;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 20
+    .registers 15
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;)",
@@ -89,94 +89,60 @@
         }
     .end annotation
 
-    .prologue
     .line 33
     .local p1, "parameters":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
-    const-wide/16 v8, 0x0
+    const-wide/16 v0, 0x0
 
     .line 34
-    .local v8, "min":D
+    .local v0, "min":D
     const-wide v2, 0x41dfffffffc00000L    # 2.147483647E9
 
     .line 35
     .local v2, "max":D
-    sget-object v14, Lcom/google/tagmanager/RandomMacro;->MIN:Ljava/lang/String;
+    sget-object v4, Lcom/google/tagmanager/RandomMacro;->MIN:Ljava/lang/String;
 
-    move-object/from16 v0, p1
+    invoke-interface {p1, v4}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    invoke-interface {v0, v14}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    move-result-object v4
 
-    move-result-object v12
-
-    check-cast v12, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    check-cast v4, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 36
-    .local v12, "minParameter":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    sget-object v14, Lcom/google/tagmanager/RandomMacro;->MAX:Ljava/lang/String;
+    .local v4, "minParameter":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    sget-object v5, Lcom/google/tagmanager/RandomMacro;->MAX:Ljava/lang/String;
 
-    move-object/from16 v0, p1
+    invoke-interface {p1, v5}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    invoke-interface {v0, v14}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    move-result-object v5
+
+    check-cast v5, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+
+    .line 37
+    .local v5, "maxParameter":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    if-eqz v4, :cond_49
+
+    invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     move-result-object v6
 
-    check-cast v6, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    if-eq v4, v6, :cond_49
 
-    .line 37
-    .local v6, "maxParameter":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-nez v12, :cond_33
-
-    .line 52
-    :cond_1d
-    :goto_1d
-    invoke-static {}, Ljava/lang/Math;->random()D
-
-    move-result-wide v14
-
-    sub-double v16, v2, v8
-
-    mul-double v14, v14, v16
-
-    add-double/2addr v14, v8
-
-    invoke-static {v14, v15}, Ljava/lang/Math;->round(D)J
-
-    move-result-wide v14
-
-    invoke-static {v14, v15}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
-
-    move-result-object v14
-
-    invoke-static {v14}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    move-result-object v14
-
-    return-object v14
-
-    .line 37
-    :cond_33
-    invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    move-result-object v14
-
-    if-eq v12, v14, :cond_1d
-
-    if-eqz v6, :cond_1d
+    if-eqz v5, :cond_49
 
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    move-result-object v14
+    move-result-object v6
 
-    if-eq v6, v14, :cond_1d
+    if-eq v5, v6, :cond_49
 
     .line 39
-    invoke-static {v12}, Lcom/google/tagmanager/Types;->valueToNumber(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Lcom/google/tagmanager/TypedNumber;
+    invoke-static {v4}, Lcom/google/tagmanager/Types;->valueToNumber(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Lcom/google/tagmanager/TypedNumber;
 
-    move-result-object v13
+    move-result-object v6
 
     .line 40
-    .local v13, "minValue":Lcom/google/tagmanager/TypedNumber;
-    invoke-static {v6}, Lcom/google/tagmanager/Types;->valueToNumber(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Lcom/google/tagmanager/TypedNumber;
+    .local v6, "minValue":Lcom/google/tagmanager/TypedNumber;
+    invoke-static {v5}, Lcom/google/tagmanager/Types;->valueToNumber(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Lcom/google/tagmanager/TypedNumber;
 
     move-result-object v7
 
@@ -184,46 +150,73 @@
     .local v7, "maxValue":Lcom/google/tagmanager/TypedNumber;
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultNumber()Lcom/google/tagmanager/TypedNumber;
 
-    move-result-object v14
+    move-result-object v8
 
-    if-eq v13, v14, :cond_1d
+    if-eq v6, v8, :cond_49
 
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultNumber()Lcom/google/tagmanager/TypedNumber;
 
-    move-result-object v14
+    move-result-object v8
 
-    if-eq v7, v14, :cond_1d
+    if-eq v7, v8, :cond_49
 
     .line 42
-    invoke-virtual {v13}, Lcom/google/tagmanager/TypedNumber;->doubleValue()D
+    invoke-virtual {v6}, Lcom/google/tagmanager/TypedNumber;->doubleValue()D
+
+    move-result-wide v8
+
+    .line 43
+    .local v8, "minDouble":D
+    invoke-virtual {v7}, Lcom/google/tagmanager/TypedNumber;->doubleValue()D
 
     move-result-wide v10
 
-    .line 43
-    .local v10, "minDouble":D
-    invoke-virtual {v7}, Lcom/google/tagmanager/TypedNumber;->doubleValue()D
-
-    move-result-wide v4
-
     .line 44
-    .local v4, "maxDouble":D
-    cmpg-double v14, v10, v4
+    .local v10, "maxDouble":D
+    cmpg-double v12, v8, v10
 
-    if-gtz v14, :cond_1d
+    if-gtz v12, :cond_49
 
     .line 47
-    move-wide v8, v10
+    move-wide v0, v8
 
     .line 48
-    move-wide v2, v4
+    move-wide v2, v10
 
-    goto :goto_1d
+    .line 52
+    .end local v6    # "minValue":Lcom/google/tagmanager/TypedNumber;
+    .end local v7    # "maxValue":Lcom/google/tagmanager/TypedNumber;
+    .end local v8    # "minDouble":D
+    .end local v10    # "maxDouble":D
+    :cond_49
+    invoke-static {}, Ljava/lang/Math;->random()D
+
+    move-result-wide v6
+
+    sub-double v8, v2, v0
+
+    mul-double/2addr v6, v8
+
+    add-double/2addr v6, v0
+
+    invoke-static {v6, v7}, Ljava/lang/Math;->round(D)J
+
+    move-result-wide v6
+
+    invoke-static {v6, v7}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object v6
+
+    invoke-static {v6}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+
+    move-result-object v6
+
+    return-object v6
 .end method
 
 .method public isCacheable()Z
     .registers 2
 
-    .prologue
     .line 29
     const/4 v0, 0x0
 

@@ -26,10 +26,8 @@
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/anim/TargetAnimator;Ljava/lang/String;)V
     .registers 3
-    .param p1, "this$0"    # Lcom/oneplus/screenshot/anim/TargetAnimator;
     .param p2, "tag"    # Ljava/lang/String;
 
-    .prologue
     .line 162
     iput-object p1, p0, Lcom/oneplus/screenshot/anim/TargetAnimator$OnAnimRun;->this$0:Lcom/oneplus/screenshot/anim/TargetAnimator;
 
@@ -51,31 +49,31 @@
         value = {
             "(",
             "Landroid/view/View;",
-            "Ljava/util/Map$Entry",
-            "<",
+            "Ljava/util/Map$Entry<",
             "Ljava/lang/reflect/Method;",
             "Ljava/lang/Object;",
             ">;)V"
         }
     .end annotation
 
-    .prologue
     .line 172
     .local p2, "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/reflect/Method;Ljava/lang/Object;>;"
-    iget-object v1, p0, Lcom/oneplus/screenshot/anim/TargetAnimator$OnAnimRun;->this$0:Lcom/oneplus/screenshot/anim/TargetAnimator;
+    iget-object v0, p0, Lcom/oneplus/screenshot/anim/TargetAnimator$OnAnimRun;->this$0:Lcom/oneplus/screenshot/anim/TargetAnimator;
 
     invoke-interface {p2}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
 
-    move-result-object v0
+    move-result-object v1
 
-    check-cast v0, Ljava/lang/reflect/Method;
+    check-cast v1, Ljava/lang/reflect/Method;
 
     invoke-interface {p2}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
     move-result-object v2
 
-    invoke-static {v1, p1, v0, v2}, Lcom/oneplus/screenshot/anim/TargetAnimator;->-wrap0(Lcom/oneplus/screenshot/anim/TargetAnimator;Landroid/view/View;Ljava/lang/reflect/Method;Ljava/lang/Object;)V
+    invoke-static {v0, p1, v1, v2}, Lcom/oneplus/screenshot/anim/TargetAnimator;->access$100(Lcom/oneplus/screenshot/anim/TargetAnimator;Landroid/view/View;Ljava/lang/reflect/Method;Ljava/lang/Object;)V
 
     .line 173
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

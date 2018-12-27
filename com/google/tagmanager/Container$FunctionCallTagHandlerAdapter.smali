@@ -25,7 +25,6 @@
 .method private constructor <init>(Lcom/google/tagmanager/Container;)V
     .registers 2
 
-    .prologue
     .line 118
     iput-object p1, p0, Lcom/google/tagmanager/Container$FunctionCallTagHandlerAdapter;->this$0:Lcom/google/tagmanager/Container;
 
@@ -39,7 +38,6 @@
     .param p1, "x0"    # Lcom/google/tagmanager/Container;
     .param p2, "x1"    # Lcom/google/tagmanager/Container$1;
 
-    .prologue
     .line 118
     invoke-direct {p0, p1}, Lcom/google/tagmanager/Container$FunctionCallTagHandlerAdapter;-><init>(Lcom/google/tagmanager/Container;)V
 
@@ -55,8 +53,7 @@
         value = {
             "(",
             "Ljava/lang/String;",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Ljava/lang/Object;",
             ">;)",
@@ -64,12 +61,11 @@
         }
     .end annotation
 
-    .prologue
     .line 121
     .local p2, "parameters":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;"
-    iget-object v1, p0, Lcom/google/tagmanager/Container$FunctionCallTagHandlerAdapter;->this$0:Lcom/google/tagmanager/Container;
+    iget-object v0, p0, Lcom/google/tagmanager/Container$FunctionCallTagHandlerAdapter;->this$0:Lcom/google/tagmanager/Container;
 
-    invoke-virtual {v1, p1}, Lcom/google/tagmanager/Container;->getFunctionCallTagHandler(Ljava/lang/String;)Lcom/google/tagmanager/Container$FunctionCallTagHandler;
+    invoke-virtual {v0, p1}, Lcom/google/tagmanager/Container;->getFunctionCallTagHandler(Ljava/lang/String;)Lcom/google/tagmanager/Container$FunctionCallTagHandler;
 
     move-result-object v0
 

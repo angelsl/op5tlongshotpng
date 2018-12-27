@@ -25,7 +25,6 @@
 .method constructor <init>(Lcom/google/analytics/tracking/android/GAServiceManager;)V
     .registers 2
 
-    .prologue
     .line 105
     iput-object p1, p0, Lcom/google/analytics/tracking/android/GAServiceManager$2;->this$0:Lcom/google/analytics/tracking/android/GAServiceManager;
 
@@ -40,42 +39,32 @@
     .registers 7
     .param p1, "msg"    # Landroid/os/Message;
 
-    .prologue
-    const/4 v4, 0x1
-
-    const/4 v2, 0x0
-
     .line 109
     iget v0, p1, Landroid/os/Message;->what:I
 
-    if-eq v4, v0, :cond_7
+    const/4 v1, 0x1
 
-    .line 119
-    :cond_6
-    :goto_6
-    return v4
+    if-ne v1, v0, :cond_55
 
-    .line 109
-    :cond_7
     # getter for: Lcom/google/analytics/tracking/android/GAServiceManager;->MSG_OBJECT:Ljava/lang/Object;
     invoke-static {}, Lcom/google/analytics/tracking/android/GAServiceManager;->access$100()Ljava/lang/Object;
 
     move-result-object v0
 
-    iget-object v1, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+    iget-object v2, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
-    invoke-virtual {v0, v1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v0, v2}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
 
     move-result v0
 
-    if-eqz v0, :cond_6
+    if-eqz v0, :cond_55
 
     .line 110
     invoke-static {}, Lcom/google/analytics/tracking/android/GAUsage;->getInstance()Lcom/google/analytics/tracking/android/GAUsage;
 
     move-result-object v0
 
-    invoke-virtual {v0, v4}, Lcom/google/analytics/tracking/android/GAUsage;->setDisableUsage(Z)V
+    invoke-virtual {v0, v1}, Lcom/google/analytics/tracking/android/GAUsage;->setDisableUsage(Z)V
 
     .line 111
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager$2;->this$0:Lcom/google/analytics/tracking/android/GAServiceManager;
@@ -87,6 +76,8 @@
 
     move-result-object v0
 
+    const/4 v2, 0x0
+
     invoke-virtual {v0, v2}, Lcom/google/analytics/tracking/android/GAUsage;->setDisableUsage(Z)V
 
     .line 113
@@ -97,7 +88,7 @@
 
     move-result v0
 
-    if-lez v0, :cond_6
+    if-lez v0, :cond_55
 
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager$2;->this$0:Lcom/google/analytics/tracking/android/GAServiceManager;
 
@@ -106,7 +97,7 @@
 
     move-result v0
 
-    if-nez v0, :cond_6
+    if-nez v0, :cond_55
 
     .line 115
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager$2;->this$0:Lcom/google/analytics/tracking/android/GAServiceManager;
@@ -116,34 +107,36 @@
 
     move-result-object v0
 
-    iget-object v1, p0, Lcom/google/analytics/tracking/android/GAServiceManager$2;->this$0:Lcom/google/analytics/tracking/android/GAServiceManager;
+    iget-object v2, p0, Lcom/google/analytics/tracking/android/GAServiceManager$2;->this$0:Lcom/google/analytics/tracking/android/GAServiceManager;
 
     # getter for: Lcom/google/analytics/tracking/android/GAServiceManager;->handler:Landroid/os/Handler;
-    invoke-static {v1}, Lcom/google/analytics/tracking/android/GAServiceManager;->access$400(Lcom/google/analytics/tracking/android/GAServiceManager;)Landroid/os/Handler;
+    invoke-static {v2}, Lcom/google/analytics/tracking/android/GAServiceManager;->access$400(Lcom/google/analytics/tracking/android/GAServiceManager;)Landroid/os/Handler;
 
-    move-result-object v1
+    move-result-object v2
 
     # getter for: Lcom/google/analytics/tracking/android/GAServiceManager;->MSG_OBJECT:Ljava/lang/Object;
     invoke-static {}, Lcom/google/analytics/tracking/android/GAServiceManager;->access$100()Ljava/lang/Object;
 
+    move-result-object v3
+
+    invoke-virtual {v2, v1, v3}, Landroid/os/Handler;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
+
     move-result-object v2
 
-    invoke-virtual {v1, v4, v2}, Landroid/os/Handler;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
-
-    move-result-object v1
-
-    iget-object v2, p0, Lcom/google/analytics/tracking/android/GAServiceManager$2;->this$0:Lcom/google/analytics/tracking/android/GAServiceManager;
+    iget-object v3, p0, Lcom/google/analytics/tracking/android/GAServiceManager$2;->this$0:Lcom/google/analytics/tracking/android/GAServiceManager;
 
     # getter for: Lcom/google/analytics/tracking/android/GAServiceManager;->dispatchPeriodInSeconds:I
-    invoke-static {v2}, Lcom/google/analytics/tracking/android/GAServiceManager;->access$200(Lcom/google/analytics/tracking/android/GAServiceManager;)I
+    invoke-static {v3}, Lcom/google/analytics/tracking/android/GAServiceManager;->access$200(Lcom/google/analytics/tracking/android/GAServiceManager;)I
 
-    move-result v2
+    move-result v3
 
-    mul-int/lit16 v2, v2, 0x3e8
+    mul-int/lit16 v3, v3, 0x3e8
 
-    int-to-long v2, v2
+    int-to-long v3, v3
 
-    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message;J)Z
+    invoke-virtual {v0, v2, v3, v4}, Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message;J)Z
 
-    goto :goto_6
+    .line 119
+    :cond_55
+    return v1
 .end method

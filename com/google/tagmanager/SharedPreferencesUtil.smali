@@ -7,7 +7,6 @@
 .method constructor <init>()V
     .registers 1
 
-    .prologue
     .line 12
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -15,7 +14,7 @@
 .end method
 
 .method static saveAsync(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    .registers 7
+    .registers 6
     .param p0, "context"    # Landroid/content/Context;
     .param p1, "sharedPreferencesName"    # Ljava/lang/String;
     .param p2, "key"    # Ljava/lang/String;
@@ -26,44 +25,50 @@
         }
     .end annotation
 
-    .prologue
     .line 38
-    const/4 v2, 0x0
+    const/4 v0, 0x0
 
-    invoke-virtual {p0, p1, v2}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-
-    move-result-object v1
-
-    .line 39
-    .local v1, "settings":Landroid/content/SharedPreferences;
-    invoke-interface {v1}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+    invoke-virtual {p0, p1, v0}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
 
     move-result-object v0
 
+    .line 39
+    .local v0, "settings":Landroid/content/SharedPreferences;
+    invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    move-result-object v1
+
     .line 40
-    .local v0, "editor":Landroid/content/SharedPreferences$Editor;
-    invoke-interface {v0, p2, p3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+    .local v1, "editor":Landroid/content/SharedPreferences$Editor;
+    invoke-interface {v1, p2, p3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
     .line 41
-    invoke-static {v0}, Lcom/google/tagmanager/SharedPreferencesUtil;->saveEditorAsync(Landroid/content/SharedPreferences$Editor;)V
+    invoke-static {v1}, Lcom/google/tagmanager/SharedPreferencesUtil;->saveEditorAsync(Landroid/content/SharedPreferences$Editor;)V
 
     .line 42
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method static saveEditorAsync(Landroid/content/SharedPreferences$Editor;)V
     .registers 3
     .param p0, "editor"    # Landroid/content/SharedPreferences$Editor;
 
-    .prologue
     .line 19
     sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
 
     const/16 v1, 0x9
 
-    if-ge v0, v1, :cond_14
+    if-lt v0, v1, :cond_a
+
+    .line 20
+    invoke-interface {p0}, Landroid/content/SharedPreferences$Editor;->apply()V
+
+    goto :goto_17
 
     .line 22
+    :cond_a
     new-instance v0, Ljava/lang/Thread;
 
     new-instance v1, Lcom/google/tagmanager/SharedPreferencesUtil$1;
@@ -75,12 +80,8 @@
     invoke-virtual {v0}, Ljava/lang/Thread;->start()V
 
     .line 29
-    :goto_13
-    return-void
-
-    .line 20
-    :cond_14
-    invoke-interface {p0}, Landroid/content/SharedPreferences$Editor;->apply()V
-
-    goto :goto_13
+    :goto_17
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

@@ -9,12 +9,13 @@
     .param p1, "functionId"    # Ljava/lang/String;
     .param p2, "requiredKeys"    # [Ljava/lang/String;
 
-    .prologue
     .line 20
     invoke-direct {p0, p1, p2}, Lcom/google/tagmanager/FunctionCallImplementation;-><init>(Ljava/lang/String;[Ljava/lang/String;)V
 
     .line 21
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -24,8 +25,7 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;)",
@@ -33,7 +33,6 @@
         }
     .end annotation
 
-    .prologue
     .line 34
     .local p1, "parameters":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
     invoke-virtual {p0, p1}, Lcom/google/tagmanager/TrackingTag;->evaluateTrackingTag(Ljava/util/Map;)V
@@ -50,8 +49,7 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;)V"
@@ -62,7 +60,6 @@
 .method public isCacheable()Z
     .registers 2
 
-    .prologue
     .line 27
     const/4 v0, 0x0
 

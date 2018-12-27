@@ -25,7 +25,6 @@
 .method constructor <init>(Lcom/google/analytics/tracking/android/GAServiceManager;)V
     .registers 2
 
-    .prologue
     .line 57
     iput-object p1, p0, Lcom/google/analytics/tracking/android/GAServiceManager$1;->this$0:Lcom/google/analytics/tracking/android/GAServiceManager;
 
@@ -40,7 +39,6 @@
     .registers 4
     .param p1, "isEmpty"    # Z
 
-    .prologue
     .line 60
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager$1;->this$0:Lcom/google/analytics/tracking/android/GAServiceManager;
 
@@ -54,5 +52,7 @@
     invoke-virtual {v0, p1, v1}, Lcom/google/analytics/tracking/android/GAServiceManager;->updatePowerSaveMode(ZZ)V
 
     .line 61
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Ljava/util/HashMap",
-        "<",
+        "Ljava/util/HashMap<",
         "Ljava/lang/reflect/Method;",
         "Ljava/lang/Object;",
         ">;"
@@ -31,9 +30,7 @@
 # direct methods
 .method private constructor <init>(Lcom/oneplus/screenshot/anim/TargetAnimator;)V
     .registers 2
-    .param p1, "this$0"    # Lcom/oneplus/screenshot/anim/TargetAnimator;
 
-    .prologue
     .line 199
     iput-object p1, p0, Lcom/oneplus/screenshot/anim/TargetAnimator$PropSetter;->this$0:Lcom/oneplus/screenshot/anim/TargetAnimator;
 
@@ -42,12 +39,12 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Lcom/oneplus/screenshot/anim/TargetAnimator;Lcom/oneplus/screenshot/anim/TargetAnimator$PropSetter;)V
+.method synthetic constructor <init>(Lcom/oneplus/screenshot/anim/TargetAnimator;Lcom/oneplus/screenshot/anim/TargetAnimator$1;)V
     .registers 3
-    .param p1, "this$0"    # Lcom/oneplus/screenshot/anim/TargetAnimator;
-    .param p2, "-this1"    # Lcom/oneplus/screenshot/anim/TargetAnimator$PropSetter;
+    .param p1, "x0"    # Lcom/oneplus/screenshot/anim/TargetAnimator;
+    .param p2, "x1"    # Lcom/oneplus/screenshot/anim/TargetAnimator$1;
 
-    .prologue
+    .line 199
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/anim/TargetAnimator$PropSetter;-><init>(Lcom/oneplus/screenshot/anim/TargetAnimator;)V
 
     return-void

@@ -18,11 +18,9 @@
 .field private final mMacros:Ljava/util/Map;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;",
             ">;>;"
         }
@@ -34,8 +32,7 @@
 .field private final mRules:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedRule;",
             ">;"
         }
@@ -49,7 +46,6 @@
 .method private constructor <init>()V
     .registers 2
 
-    .prologue
     .line 318
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -68,7 +64,7 @@
     iput-object v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedResourceBuilder;->mMacros:Ljava/util/Map;
 
     .line 321
-    const-string/jumbo v0, ""
+    const-string v0, ""
 
     iput-object v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedResourceBuilder;->mVersion:Ljava/lang/String;
 
@@ -85,7 +81,6 @@
     .registers 2
     .param p1, "x0"    # Lcom/google/tagmanager/ResourceUtil$1;
 
-    .prologue
     .line 312
     invoke-direct {p0}, Lcom/google/tagmanager/ResourceUtil$ExpandedResourceBuilder;-><init>()V
 
@@ -95,73 +90,68 @@
 
 # virtual methods
 .method public addMacro(Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;)Lcom/google/tagmanager/ResourceUtil$ExpandedResourceBuilder;
-    .registers 6
+    .registers 5
     .param p1, "f"    # Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
 
-    .prologue
     .line 331
     invoke-virtual {p1}, Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;->getProperties()Ljava/util/Map;
 
-    move-result-object v2
+    move-result-object v0
 
-    sget-object v3, Lcom/google/analytics/containertag/common/Key;->INSTANCE_NAME:Lcom/google/analytics/containertag/common/Key;
+    sget-object v1, Lcom/google/analytics/containertag/common/Key;->INSTANCE_NAME:Lcom/google/analytics/containertag/common/Key;
 
-    invoke-virtual {v3}, Lcom/google/analytics/containertag/common/Key;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-interface {v2, v3}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    invoke-static {v2}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
+    invoke-virtual {v1}, Lcom/google/analytics/containertag/common/Key;->toString()Ljava/lang/String;
 
     move-result-object v1
 
-    .line 332
-    .local v1, "macroName":Ljava/lang/String;
-    iget-object v2, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedResourceBuilder;->mMacros:Ljava/util/Map;
-
-    invoke-interface {v2, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v0
 
-    check-cast v0, Ljava/util/List;
+    check-cast v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+
+    invoke-static {v0}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 332
+    .local v0, "macroName":Ljava/lang/String;
+    iget-object v1, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedResourceBuilder;->mMacros:Ljava/util/Map;
+
+    invoke-interface {v1, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Ljava/util/List;
 
     .line 333
-    .local v0, "macroList":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;>;"
-    if-eqz v0, :cond_22
+    .local v1, "macroList":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;>;"
+    if-nez v1, :cond_29
+
+    .line 334
+    new-instance v2, Ljava/util/ArrayList;
+
+    invoke-direct {v2}, Ljava/util/ArrayList;-><init>()V
+
+    move-object v1, v2
+
+    .line 335
+    iget-object v2, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedResourceBuilder;->mMacros:Ljava/util/Map;
+
+    invoke-interface {v2, v0, v1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 337
-    :goto_1e
-    invoke-interface {v0, p1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+    :cond_29
+    invoke-interface {v1, p1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     .line 338
     return-object p0
-
-    .line 334
-    :cond_22
-    new-instance v0, Ljava/util/ArrayList;
-
-    .end local v0    # "macroList":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;>;"
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
-
-    .line 335
-    .restart local v0    # "macroList":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;>;"
-    iget-object v2, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedResourceBuilder;->mMacros:Ljava/util/Map;
-
-    invoke-interface {v2, v1, v0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    goto :goto_1e
 .end method
 
 .method public addRule(Lcom/google/tagmanager/ResourceUtil$ExpandedRule;)Lcom/google/tagmanager/ResourceUtil$ExpandedResourceBuilder;
     .registers 3
     .param p1, "r"    # Lcom/google/tagmanager/ResourceUtil$ExpandedRule;
 
-    .prologue
     .line 326
     iget-object v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedResourceBuilder;->mRules:Ljava/util/List;
 
@@ -172,11 +162,10 @@
 .end method
 
 .method public build()Lcom/google/tagmanager/ResourceUtil$ExpandedResource;
-    .registers 7
+    .registers 8
 
-    .prologue
     .line 352
-    new-instance v0, Lcom/google/tagmanager/ResourceUtil$ExpandedResource;
+    new-instance v6, Lcom/google/tagmanager/ResourceUtil$ExpandedResource;
 
     iget-object v1, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedResourceBuilder;->mRules:Ljava/util/List;
 
@@ -188,16 +177,17 @@
 
     const/4 v5, 0x0
 
+    move-object v0, v6
+
     invoke-direct/range {v0 .. v5}, Lcom/google/tagmanager/ResourceUtil$ExpandedResource;-><init>(Ljava/util/List;Ljava/util/Map;Ljava/lang/String;ILcom/google/tagmanager/ResourceUtil$1;)V
 
-    return-object v0
+    return-object v6
 .end method
 
 .method public setResourceFormatVersion(I)Lcom/google/tagmanager/ResourceUtil$ExpandedResourceBuilder;
     .registers 2
     .param p1, "resourceFormatVersion"    # I
 
-    .prologue
     .line 347
     iput p1, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedResourceBuilder;->mResourceFormatVersion:I
 
@@ -209,7 +199,6 @@
     .registers 2
     .param p1, "version"    # Ljava/lang/String;
 
-    .prologue
     .line 342
     iput-object p1, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedResourceBuilder;->mVersion:Ljava/lang/String;
 

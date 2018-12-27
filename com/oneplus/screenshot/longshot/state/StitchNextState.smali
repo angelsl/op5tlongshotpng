@@ -12,7 +12,6 @@
     .registers 2
     .param p1, "stateContext"    # Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
-    .prologue
     .line 17
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/longshot/state/AbsJoinState;-><init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;)V
 
@@ -25,7 +24,6 @@
 .method protected createJoinTask()Lcom/oneplus/screenshot/longshot/task/JoinTask;
     .registers 5
 
-    .prologue
     .line 25
     new-instance v0, Lcom/oneplus/screenshot/longshot/task/StitchNextTask;
 
@@ -51,7 +49,6 @@
 .method protected getFailedText()Ljava/lang/String;
     .registers 2
 
-    .prologue
     .line 35
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Features;->SHOW_JOIN_ERROR:Lcom/oneplus/screenshot/longshot/util/Features;
 
@@ -80,17 +77,16 @@
 .method protected getPageText()Ljava/lang/String;
     .registers 5
 
-    .prologue
     .line 67
-    iget-object v2, p0, Lcom/oneplus/screenshot/longshot/state/StitchNextState;->mJoinCache:Lcom/oneplus/screenshot/longshot/cache/JoinCache;
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/StitchNextState;->mJoinCache:Lcom/oneplus/screenshot/longshot/cache/JoinCache;
 
-    invoke-virtual {v2}, Lcom/oneplus/screenshot/longshot/cache/JoinCache;->size()I
+    invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/cache/JoinCache;->size()I
 
     move-result v0
 
     .line 68
     .local v0, "pages":I
-    const-string/jumbo v1, ""
+    const-string v1, ""
 
     .line 70
     .local v1, "text":Ljava/lang/String;
@@ -98,7 +94,7 @@
 
     move-result v2
 
-    if-eqz v2, :cond_1c
+    if-eqz v2, :cond_1b
 
     .line 71
     iget-object v2, p0, Lcom/oneplus/screenshot/longshot/state/StitchNextState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
@@ -114,18 +110,17 @@
     move-result-object v1
 
     .line 73
-    :cond_1c
+    :cond_1b
     return-object v1
 .end method
 
 .method protected getStateOnFailed()Lcom/oneplus/screenshot/longshot/state/LongshotState;
     .registers 3
 
-    .prologue
     .line 49
-    const-string/jumbo v0, "Longshot.StitchNextState"
+    const-string v0, "Longshot.StitchNextState"
 
-    const-string/jumbo v1, "getStateOnFailed"
+    const-string v1, "getStateOnFailed"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
@@ -136,20 +131,27 @@
 
     move-result v0
 
-    if-nez v0, :cond_19
+    if-nez v0, :cond_1b
 
     sget-boolean v0, Lcom/oneplus/screenshot/longshot/util/Configs;->NOT_IGNORE_FAIL:Z
 
-    if-nez v0, :cond_19
+    if-nez v0, :cond_1b
 
-    .line 54
     sget-boolean v0, Lcom/oneplus/screenshot/longshot/util/Configs;->STOP_BY_USER:Z
 
-    .line 52
-    if-eqz v0, :cond_27
+    if-eqz v0, :cond_18
+
+    goto :goto_1b
+
+    .line 60
+    :cond_18
+    sget-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->MAIN:Lcom/oneplus/screenshot/longshot/state/LongshotState;
+
+    return-object v0
 
     .line 56
-    :cond_19
+    :cond_1b
+    :goto_1b
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/StitchNextState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     const/4 v1, 0x1
@@ -165,18 +167,11 @@
     sget-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_LAST:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     return-object v0
-
-    .line 60
-    :cond_27
-    sget-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->MAIN:Lcom/oneplus/screenshot/longshot/state/LongshotState;
-
-    return-object v0
 .end method
 
 .method protected getSuccessText()Ljava/lang/String;
     .registers 2
 
-    .prologue
     .line 30
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/state/StitchNextState;->getPageText()Ljava/lang/String;
 
@@ -188,7 +183,6 @@
 .method protected updateIndex()V
     .registers 3
 
-    .prologue
     .line 43
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/StitchNextState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
@@ -197,5 +191,7 @@
     invoke-interface {v0, v1}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->updateIndex(I)V
 
     .line 44
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

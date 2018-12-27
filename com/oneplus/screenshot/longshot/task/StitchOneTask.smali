@@ -15,12 +15,13 @@
     .param p3, "context"    # Landroid/content/Context;
     .param p4, "index"    # I
 
-    .prologue
     .line 17
     invoke-direct {p0, p1, p2, p3, p4}, Lcom/oneplus/screenshot/longshot/task/StitchOverTask;-><init>(Lcom/oneplus/screenshot/longshot/task/JoinTask$OnJoinListener;Lcom/oneplus/screenshot/longshot/cache/JoinCache;Landroid/content/Context;I)V
 
     .line 18
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -30,7 +31,6 @@
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "index"    # I
 
-    .prologue
     .line 25
     const/4 v0, 0x0
 
@@ -42,7 +42,6 @@
     .param p1, "last"    # Lcom/oneplus/screenshot/longshot/cache/BitmapCache;
     .param p2, "curr"    # Lcom/oneplus/screenshot/longshot/cache/BitmapCache;
 
-    .prologue
     .line 30
     if-eqz p1, :cond_5
 

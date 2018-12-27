@@ -15,7 +15,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 16
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->DEVICE_ID:Lcom/google/analytics/containertag/common/FunctionType;
 
@@ -25,14 +24,15 @@
 
     sput-object v0, Lcom/google/tagmanager/DeviceIdMacro;->ID:Ljava/lang/String;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>(Landroid/content/Context;)V
     .registers 4
     .param p1, "context"    # Landroid/content/Context;
 
-    .prologue
     .line 25
     sget-object v0, Lcom/google/tagmanager/DeviceIdMacro;->ID:Ljava/lang/String;
 
@@ -52,7 +52,6 @@
 .method public static getFunctionId()Ljava/lang/String;
     .registers 1
 
-    .prologue
     .line 21
     sget-object v0, Lcom/google/tagmanager/DeviceIdMacro;->ID:Ljava/lang/String;
 
@@ -66,8 +65,7 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;)",
@@ -75,32 +73,31 @@
         }
     .end annotation
 
-    .prologue
     .line 34
     .local p1, "parameters":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
-    iget-object v1, p0, Lcom/google/tagmanager/DeviceIdMacro;->mContext:Landroid/content/Context;
+    iget-object v0, p0, Lcom/google/tagmanager/DeviceIdMacro;->mContext:Landroid/content/Context;
 
-    invoke-virtual {p0, v1}, Lcom/google/tagmanager/DeviceIdMacro;->getAndroidId(Landroid/content/Context;)Ljava/lang/String;
+    invoke-virtual {p0, v0}, Lcom/google/tagmanager/DeviceIdMacro;->getAndroidId(Landroid/content/Context;)Ljava/lang/String;
 
     move-result-object v0
 
     .line 35
     .local v0, "androidId":Ljava/lang/String;
-    if-eqz v0, :cond_d
+    if-nez v0, :cond_d
 
-    invoke-static {v0}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    move-result-object v1
-
-    :goto_c
-    return-object v1
-
-    :cond_d
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     move-result-object v1
 
-    goto :goto_c
+    goto :goto_11
+
+    :cond_d
+    invoke-static {v0}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+
+    move-result-object v1
+
+    :goto_11
+    return-object v1
 .end method
 
 .method protected getAndroidId(Landroid/content/Context;)Ljava/lang/String;
@@ -109,13 +106,12 @@
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 42
     invoke-virtual {p1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v0
 
-    const-string/jumbo v1, "android_id"
+    const-string v1, "android_id"
 
     invoke-static {v0, v1}, Landroid/provider/Settings$Secure;->getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
 
@@ -127,7 +123,6 @@
 .method public isCacheable()Z
     .registers 2
 
-    .prologue
     .line 30
     const/4 v0, 0x1
 

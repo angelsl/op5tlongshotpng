@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Ljava/lang/Enum",
-        "<",
+        "Ljava/lang/Enum<",
         "Lcom/google/tagmanager/Container$RefreshType;",
         ">;"
     }
@@ -35,15 +34,12 @@
 .method static constructor <clinit>()V
     .registers 4
 
-    .prologue
-    const/4 v3, 0x1
-
-    const/4 v2, 0x0
-
     .line 31
     new-instance v0, Lcom/google/tagmanager/Container$RefreshType;
 
-    const-string/jumbo v1, "SAVED"
+    const-string v1, "SAVED"
+
+    const/4 v2, 0x0
 
     invoke-direct {v0, v1, v2}, Lcom/google/tagmanager/Container$RefreshType;-><init>(Ljava/lang/String;I)V
 
@@ -52,7 +48,9 @@
     .line 33
     new-instance v0, Lcom/google/tagmanager/Container$RefreshType;
 
-    const-string/jumbo v1, "NETWORK"
+    const-string v1, "NETWORK"
+
+    const/4 v3, 0x1
 
     invoke-direct {v0, v1, v3}, Lcom/google/tagmanager/Container$RefreshType;-><init>(Ljava/lang/String;I)V
 
@@ -73,7 +71,9 @@
 
     sput-object v0, Lcom/google/tagmanager/Container$RefreshType;->$VALUES:[Lcom/google/tagmanager/Container$RefreshType;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V
@@ -84,7 +84,6 @@
         }
     .end annotation
 
-    .prologue
     .line 29
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
@@ -95,7 +94,6 @@
     .registers 2
     .param p0, "name"    # Ljava/lang/String;
 
-    .prologue
     .line 29
     const-class v0, Lcom/google/tagmanager/Container$RefreshType;
 
@@ -111,11 +109,10 @@
 .method public static values()[Lcom/google/tagmanager/Container$RefreshType;
     .registers 1
 
-    .prologue
     .line 29
     sget-object v0, Lcom/google/tagmanager/Container$RefreshType;->$VALUES:[Lcom/google/tagmanager/Container$RefreshType;
 
-    invoke-virtual {v0}, Ljava/lang/Object;->clone()Ljava/lang/Object;
+    invoke-virtual {v0}, [Lcom/google/tagmanager/Container$RefreshType;->clone()Ljava/lang/Object;
 
     move-result-object v0
 

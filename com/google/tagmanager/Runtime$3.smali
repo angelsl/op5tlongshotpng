@@ -33,7 +33,6 @@
 .method constructor <init>(Lcom/google/tagmanager/Runtime;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)V
     .registers 6
 
-    .prologue
     .line 405
     iput-object p1, p0, Lcom/google/tagmanager/Runtime$3;->this$0:Lcom/google/tagmanager/Runtime;
 
@@ -60,12 +59,10 @@
         value = {
             "(",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedRule;",
-            "Ljava/util/Set",
-            "<",
+            "Ljava/util/Set<",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;",
             ">;",
-            "Ljava/util/Set",
-            "<",
+            "Ljava/util/Set<",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;",
             ">;",
             "Lcom/google/tagmanager/ResolvedRuleBuilder;",
@@ -73,13 +70,12 @@
         }
     .end annotation
 
-    .prologue
     .line 410
     .local p2, "add":Ljava/util/Set;, "Ljava/util/Set<Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;>;"
     .local p3, "remove":Ljava/util/Set;, "Ljava/util/Set<Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;>;"
-    iget-object v4, p0, Lcom/google/tagmanager/Runtime$3;->val$addMacros:Ljava/util/Map;
+    iget-object v0, p0, Lcom/google/tagmanager/Runtime$3;->val$addMacros:Ljava/util/Map;
 
-    invoke-interface {v4, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {v0, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v0
 
@@ -87,9 +83,9 @@
 
     .line 411
     .local v0, "thisAddMacro":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;>;"
-    iget-object v4, p0, Lcom/google/tagmanager/Runtime$3;->val$addMacroRuleNames:Ljava/util/Map;
+    iget-object v1, p0, Lcom/google/tagmanager/Runtime$3;->val$addMacroRuleNames:Ljava/util/Map;
 
-    invoke-interface {v4, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {v1, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v1
 
@@ -97,13 +93,23 @@
 
     .line 412
     .local v1, "thisMacroEnablingRuleNames":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
-    if-nez v0, :cond_25
+    if-eqz v0, :cond_1c
+
+    .line 413
+    invoke-interface {p2, v0}, Ljava/util/Set;->addAll(Ljava/util/Collection;)Z
+
+    .line 416
+    invoke-interface {p4}, Lcom/google/tagmanager/ResolvedRuleBuilder;->getAddedMacroFunctions()Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
+
+    move-result-object v2
+
+    invoke-interface {v2, v0, v1}, Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;->translateAndAddAll(Ljava/util/List;Ljava/util/List;)V
 
     .line 419
-    :goto_12
-    iget-object v4, p0, Lcom/google/tagmanager/Runtime$3;->val$removeMacros:Ljava/util/Map;
+    :cond_1c
+    iget-object v2, p0, Lcom/google/tagmanager/Runtime$3;->val$removeMacros:Ljava/util/Map;
 
-    invoke-interface {v4, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {v2, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v2
 
@@ -111,9 +117,9 @@
 
     .line 420
     .local v2, "thisRemoveMacro":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;>;"
-    iget-object v4, p0, Lcom/google/tagmanager/Runtime$3;->val$removeMacroRuleNames:Ljava/util/Map;
+    iget-object v3, p0, Lcom/google/tagmanager/Runtime$3;->val$removeMacroRuleNames:Ljava/util/Map;
 
-    invoke-interface {v4, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {v3, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v3
 
@@ -121,31 +127,9 @@
 
     .line 421
     .local v3, "thisRemoveMacroRuleNames":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
-    if-nez v2, :cond_30
-
-    .line 428
-    :goto_24
-    return-void
-
-    .line 413
-    .end local v2    # "thisRemoveMacro":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;>;"
-    .end local v3    # "thisRemoveMacroRuleNames":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
-    :cond_25
-    invoke-interface {p2, v0}, Ljava/util/Set;->addAll(Ljava/util/Collection;)Z
-
-    .line 416
-    invoke-interface {p4}, Lcom/google/tagmanager/ResolvedRuleBuilder;->getAddedMacroFunctions()Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
-
-    move-result-object v4
-
-    invoke-interface {v4, v0, v1}, Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;->translateAndAddAll(Ljava/util/List;Ljava/util/List;)V
-
-    goto :goto_12
+    if-eqz v2, :cond_38
 
     .line 422
-    .restart local v2    # "thisRemoveMacro":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;>;"
-    .restart local v3    # "thisRemoveMacroRuleNames":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
-    :cond_30
     invoke-interface {p3, v2}, Ljava/util/Set;->addAll(Ljava/util/Collection;)Z
 
     .line 425
@@ -155,5 +139,9 @@
 
     invoke-interface {v4, v2, v3}, Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;->translateAndAddAll(Ljava/util/List;Ljava/util/List;)V
 
-    goto :goto_24
+    .line 428
+    :cond_38
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

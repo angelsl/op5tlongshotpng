@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Ljava/lang/Enum",
-        "<",
+        "Ljava/lang/Enum<",
         "Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;",
         ">;"
     }
@@ -37,17 +36,12 @@
 .method static constructor <clinit>()V
     .registers 5
 
-    .prologue
-    const/4 v4, 0x2
-
-    const/4 v3, 0x1
-
-    const/4 v2, 0x0
-
     .line 6541
     new-instance v0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;
 
-    const-string/jumbo v1, "SPLIT_RADIX"
+    const-string v1, "SPLIT_RADIX"
+
+    const/4 v2, 0x0
 
     invoke-direct {v0, v1, v2}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;-><init>(Ljava/lang/String;I)V
 
@@ -55,7 +49,9 @@
 
     new-instance v0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;
 
-    const-string/jumbo v1, "MIXED_RADIX"
+    const-string v1, "MIXED_RADIX"
+
+    const/4 v3, 0x1
 
     invoke-direct {v0, v1, v3}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;-><init>(Ljava/lang/String;I)V
 
@@ -63,7 +59,9 @@
 
     new-instance v0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;
 
-    const-string/jumbo v1, "BLUESTEIN"
+    const-string v1, "BLUESTEIN"
+
+    const/4 v4, 0x2
 
     invoke-direct {v0, v1, v4}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;-><init>(Ljava/lang/String;I)V
 
@@ -88,13 +86,19 @@
 
     sput-object v0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;->$VALUES:[Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()V"
+        }
+    .end annotation
 
-    .prologue
     .line 6540
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
@@ -105,7 +109,6 @@
     .registers 2
     .param p0, "name"    # Ljava/lang/String;
 
-    .prologue
     .line 6540
     const-class v0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;
 
@@ -121,9 +124,14 @@
 .method public static values()[Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;
     .registers 1
 
-    .prologue
     .line 6540
     sget-object v0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;->$VALUES:[Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;
+
+    invoke-virtual {v0}, [Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;->clone()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, [Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;
 
     return-object v0
 .end method

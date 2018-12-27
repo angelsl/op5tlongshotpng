@@ -19,7 +19,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 11
     const-class v0, Lcom/oneplus/screenshot/util/SharedPrefs;
 
@@ -29,15 +28,15 @@
 
     sput-object v0, Lcom/oneplus/screenshot/util/SharedPrefs;->TAG:Ljava/lang/String;
 
-    .line 6
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>(Landroid/content/Context;)V
     .registers 4
     .param p1, "context"    # Landroid/content/Context;
 
-    .prologue
     .line 25
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -47,7 +46,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/util/SharedPrefs;->mSharedPrefs:Landroid/content/SharedPreferences;
 
     .line 26
-    const-string/jumbo v0, "com.color.screenshot"
+    const-string v0, "com.color.screenshot"
 
     const/4 v1, 0x0
 
@@ -58,7 +57,9 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/util/SharedPrefs;->mSharedPrefs:Landroid/content/SharedPreferences;
 
     .line 27
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -67,7 +68,6 @@
     .registers 4
     .param p1, "key"    # Ljava/lang/String;
 
-    .prologue
     .line 33
     iget-object v0, p0, Lcom/oneplus/screenshot/util/SharedPrefs;->mSharedPrefs:Landroid/content/SharedPreferences;
 
@@ -85,7 +85,6 @@
     .param p1, "key"    # Ljava/lang/String;
     .param p2, "value"    # Z
 
-    .prologue
     .line 37
     iget-object v0, p0, Lcom/oneplus/screenshot/util/SharedPrefs;->mSharedPrefs:Landroid/content/SharedPreferences;
 
@@ -100,5 +99,7 @@
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
     .line 38
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

@@ -10,7 +10,6 @@
 .method constructor <init>()V
     .registers 1
 
-    .prologue
     .line 9
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -23,7 +22,6 @@
     .registers 3
     .param p1, "key"    # Ljava/lang/String;
 
-    .prologue
     .line 13
     new-instance v0, Lcom/google/tagmanager/NoopResolvedPropertyBuilder;
 
@@ -36,7 +34,6 @@
     .registers 2
     .param p1, "functionResult"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    .prologue
     .line 18
     return-void
 .end method

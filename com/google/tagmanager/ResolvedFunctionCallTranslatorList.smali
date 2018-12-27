@@ -8,12 +8,10 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;",
             ">;",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;)V"
         }

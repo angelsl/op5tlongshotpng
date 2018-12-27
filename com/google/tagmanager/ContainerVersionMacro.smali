@@ -15,7 +15,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 14
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->CONTAINER_VERSION:Lcom/google/analytics/containertag/common/FunctionType;
 
@@ -25,14 +24,15 @@
 
     sput-object v0, Lcom/google/tagmanager/ContainerVersionMacro;->ID:Ljava/lang/String;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>(Lcom/google/tagmanager/Runtime;)V
     .registers 4
     .param p1, "runtime"    # Lcom/google/tagmanager/Runtime;
 
-    .prologue
     .line 23
     sget-object v0, Lcom/google/tagmanager/ContainerVersionMacro;->ID:Ljava/lang/String;
 
@@ -52,7 +52,6 @@
 .method public static getFunctionId()Ljava/lang/String;
     .registers 1
 
-    .prologue
     .line 19
     sget-object v0, Lcom/google/tagmanager/ContainerVersionMacro;->ID:Ljava/lang/String;
 
@@ -66,8 +65,7 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;)",
@@ -75,42 +73,40 @@
         }
     .end annotation
 
-    .prologue
     .line 32
     .local p1, "parameters":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
-    iget-object v1, p0, Lcom/google/tagmanager/ContainerVersionMacro;->mRuntime:Lcom/google/tagmanager/Runtime;
+    iget-object v0, p0, Lcom/google/tagmanager/ContainerVersionMacro;->mRuntime:Lcom/google/tagmanager/Runtime;
 
-    invoke-virtual {v1}, Lcom/google/tagmanager/Runtime;->getResource()Lcom/google/tagmanager/ResourceUtil$ExpandedResource;
+    invoke-virtual {v0}, Lcom/google/tagmanager/Runtime;->getResource()Lcom/google/tagmanager/ResourceUtil$ExpandedResource;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-virtual {v1}, Lcom/google/tagmanager/ResourceUtil$ExpandedResource;->getVersion()Ljava/lang/String;
+    invoke-virtual {v0}, Lcom/google/tagmanager/ResourceUtil$ExpandedResource;->getVersion()Ljava/lang/String;
 
     move-result-object v0
 
     .line 33
     .local v0, "containerVersion":Ljava/lang/String;
-    if-eqz v0, :cond_11
+    if-nez v0, :cond_11
 
-    invoke-static {v0}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    move-result-object v1
-
-    :goto_10
-    return-object v1
-
-    :cond_11
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     move-result-object v1
 
-    goto :goto_10
+    goto :goto_15
+
+    :cond_11
+    invoke-static {v0}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+
+    move-result-object v1
+
+    :goto_15
+    return-object v1
 .end method
 
 .method public isCacheable()Z
     .registers 2
 
-    .prologue
     .line 28
     const/4 v0, 0x1
 

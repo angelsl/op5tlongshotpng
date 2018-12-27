@@ -15,7 +15,6 @@
     .registers 2
     .param p1, "ruleEvaluationStepInfo"    # Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;
 
-    .prologue
     .line 18
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -23,7 +22,9 @@
     iput-object p1, p0, Lcom/google/tagmanager/DebugRuleEvaluationStepInfoBuilder;->ruleEvaluationStepInfo:Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;
 
     .line 20
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -31,7 +32,6 @@
 .method public createResolvedRuleBuilder()Lcom/google/tagmanager/ResolvedRuleBuilder;
     .registers 4
 
-    .prologue
     .line 33
     new-instance v0, Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
 
@@ -64,48 +64,41 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Set",
-            "<",
+            "Ljava/util/Set<",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;",
             ">;)V"
         }
     .end annotation
 
-    .prologue
     .line 24
     .local p1, "enabledFunctions":Ljava/util/Set;, "Ljava/util/Set<Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;>;"
     invoke-interface {p1}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
 
-    move-result-object v1
-
-    .local v1, "i$":Ljava/util/Iterator;
-    :goto_4
-    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v2
-
-    if-nez v2, :cond_b
-
-    .line 29
-    return-void
-
-    .line 24
-    :cond_b
-    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
     move-result-object v0
 
-    check-cast v0, Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
+    .local v0, "i$":Ljava/util/Iterator;
+    :goto_4
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_21
+
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
 
     .line 25
-    .local v0, "enabledFunction":Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
+    .local v1, "enabledFunction":Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
     iget-object v2, p0, Lcom/google/tagmanager/DebugRuleEvaluationStepInfoBuilder;->ruleEvaluationStepInfo:Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;
 
     iget-object v3, p0, Lcom/google/tagmanager/DebugRuleEvaluationStepInfoBuilder;->ruleEvaluationStepInfo:Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;
 
     iget-object v3, v3, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
-    invoke-static {v0}, Lcom/google/tagmanager/DebugResolvedRuleBuilder;->translateExpandedFunctionCall(Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;)Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    invoke-static {v1}, Lcom/google/tagmanager/DebugResolvedRuleBuilder;->translateExpandedFunctionCall(Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;)Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
     move-result-object v4
 
@@ -115,5 +108,14 @@
 
     iput-object v3, v2, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
+    .line 28
+    .end local v1    # "enabledFunction":Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
     goto :goto_4
+
+    .line 29
+    .end local v0    # "i$":Ljava/util/Iterator;
+    :cond_21
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

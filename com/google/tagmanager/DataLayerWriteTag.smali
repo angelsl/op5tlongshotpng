@@ -19,7 +19,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 15
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->DATA_LAYER_WRITE:Lcom/google/analytics/containertag/common/FunctionType;
 
@@ -47,14 +46,15 @@
 
     sput-object v0, Lcom/google/tagmanager/DataLayerWriteTag;->CLEAR_PERSISTENT_DATA_LAYER_PREFIX:Ljava/lang/String;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>(Lcom/google/tagmanager/DataLayer;)V
     .registers 6
     .param p1, "dataLayer"    # Lcom/google/tagmanager/DataLayer;
 
-    .prologue
     .line 26
     sget-object v0, Lcom/google/tagmanager/DataLayerWriteTag;->ID:Ljava/lang/String;
 
@@ -81,23 +81,19 @@
     .registers 4
     .param p1, "value"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    .prologue
     .line 37
-    if-nez p1, :cond_3
+    if-eqz p1, :cond_1a
 
-    .line 38
-    :cond_2
-    return-void
-
-    .line 37
-    :cond_3
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultObject()Ljava/lang/Object;
 
-    move-result-object v1
+    move-result-object v0
 
-    if-eq p1, v1, :cond_2
+    if-ne p1, v0, :cond_9
+
+    goto :goto_1a
 
     .line 40
+    :cond_9
     invoke-static {p1}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
 
     move-result-object v0
@@ -108,25 +104,36 @@
 
     move-result-object v1
 
-    if-eq v0, v1, :cond_19
+    if-ne v0, v1, :cond_14
+
+    .line 42
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 
     .line 44
+    :cond_14
     iget-object v1, p0, Lcom/google/tagmanager/DataLayerWriteTag;->mDataLayer:Lcom/google/tagmanager/DataLayer;
 
     invoke-virtual {v1, v0}, Lcom/google/tagmanager/DataLayer;->clearPersistentKeysWithPrefix(Ljava/lang/String;)V
 
     .line 45
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 
-    .line 42
-    :cond_19
-    return-void
+    .line 38
+    .end local v0    # "prefix":Ljava/lang/String;
+    :cond_1a
+    :goto_1a
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
     .registers 1
 
-    .prologue
     .line 22
     sget-object v0, Lcom/google/tagmanager/DataLayerWriteTag;->ID:Ljava/lang/String;
 
@@ -137,88 +144,99 @@
     .registers 8
     .param p1, "value"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    .prologue
     .line 48
-    if-nez p1, :cond_3
+    if-eqz p1, :cond_32
 
-    .line 49
-    :cond_2
-    return-void
-
-    .line 48
-    :cond_3
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultObject()Ljava/lang/Object;
 
-    move-result-object v5
+    move-result-object v0
 
-    if-eq p1, v5, :cond_2
+    if-ne p1, v0, :cond_9
+
+    goto :goto_32
 
     .line 51
+    :cond_9
     invoke-static {p1}, Lcom/google/tagmanager/Types;->valueToObject(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/Object;
 
-    move-result-object v3
+    move-result-object v0
 
     .line 52
-    .local v3, "o":Ljava/lang/Object;
-    instance-of v5, v3, Ljava/util/List;
+    .local v0, "o":Ljava/lang/Object;
+    instance-of v1, v0, Ljava/util/List;
 
-    if-eqz v5, :cond_1f
+    if-nez v1, :cond_12
 
-    move-object v1, v3
+    .line 53
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 
     .line 56
+    :cond_12
+    move-object v1, v0
+
     check-cast v1, Ljava/util/List;
 
     .line 57
     .local v1, "list":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Object;>;"
     invoke-interface {v1}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
-    move-result-object v0
+    move-result-object v2
 
-    .local v0, "i$":Ljava/util/Iterator;
-    :cond_18
-    :goto_18
-    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+    .local v2, "i$":Ljava/util/Iterator;
+    :goto_19
+    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
 
-    move-result v5
+    move-result v3
 
-    if-nez v5, :cond_20
+    if-eqz v3, :cond_31
 
-    .line 65
-    return-void
+    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
-    .line 53
-    .end local v0    # "i$":Ljava/util/Iterator;
-    .end local v1    # "list":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Object;>;"
-    :cond_1f
-    return-void
-
-    .line 57
-    .restart local v0    # "i$":Ljava/util/Iterator;
-    .restart local v1    # "list":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Object;>;"
-    :cond_20
-    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v4
+    move-result-object v3
 
     .line 58
-    .local v4, "obj":Ljava/lang/Object;
-    instance-of v5, v4, Ljava/util/Map;
+    .local v3, "obj":Ljava/lang/Object;
+    instance-of v4, v3, Ljava/util/Map;
 
-    if-eqz v5, :cond_18
+    if-nez v4, :cond_28
 
-    move-object v2, v4
+    .line 59
+    goto :goto_19
 
     .line 62
-    check-cast v2, Ljava/util/Map;
+    :cond_28
+    move-object v4, v3
+
+    check-cast v4, Ljava/util/Map;
 
     .line 63
-    .local v2, "map":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
+    .local v4, "map":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
     iget-object v5, p0, Lcom/google/tagmanager/DataLayerWriteTag;->mDataLayer:Lcom/google/tagmanager/DataLayer;
 
-    invoke-virtual {v5, v2}, Lcom/google/tagmanager/DataLayer;->push(Ljava/util/Map;)V
+    invoke-virtual {v5, v4}, Lcom/google/tagmanager/DataLayer;->push(Ljava/util/Map;)V
 
-    goto :goto_18
+    .line 64
+    .end local v3    # "obj":Ljava/lang/Object;
+    .end local v4    # "map":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
+    goto :goto_19
+
+    .line 65
+    .end local v2    # "i$":Ljava/util/Iterator;
+    :cond_31
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
+
+    .line 49
+    .end local v0    # "o":Ljava/lang/Object;
+    .end local v1    # "list":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Object;>;"
+    :cond_32
+    :goto_32
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -228,15 +246,13 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;)V"
         }
     .end annotation
 
-    .prologue
     .line 32
     .local p1, "tag":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
     sget-object v0, Lcom/google/tagmanager/DataLayerWriteTag;->VALUE:Ljava/lang/String;
@@ -261,5 +277,7 @@
     invoke-direct {p0, v0}, Lcom/google/tagmanager/DataLayerWriteTag;->clearPersistent(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)V
 
     .line 34
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

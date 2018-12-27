@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Ljava/lang/Enum",
-        "<",
+        "Ljava/lang/Enum<",
         "Lcom/oneplus/screenshot/statistics/EventStatistics$Action;",
         ">;"
     }
@@ -43,70 +42,69 @@
 .method static constructor <clinit>()V
     .registers 8
 
-    .prologue
-    const/4 v7, 0x4
-
-    const/4 v6, 0x3
-
-    const/4 v5, 0x2
-
-    const/4 v4, 0x1
-
-    const/4 v3, 0x0
-
     .line 98
     new-instance v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
 
-    const-string/jumbo v1, "CLICK_PREV"
+    const-string v1, "CLICK_PREV"
 
-    invoke-direct {v0, v1, v3}, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;-><init>(Ljava/lang/String;I)V
+    const/4 v2, 0x0
+
+    invoke-direct {v0, v1, v2}, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;->CLICK_PREV:Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
 
     .line 99
     new-instance v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
 
-    const-string/jumbo v1, "CLICK_NEXT"
+    const-string v1, "CLICK_NEXT"
 
-    invoke-direct {v0, v1, v4}, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;-><init>(Ljava/lang/String;I)V
+    const/4 v3, 0x1
+
+    invoke-direct {v0, v1, v3}, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;->CLICK_NEXT:Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
 
     .line 100
     new-instance v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
 
-    const-string/jumbo v1, "CLICK_EDIT"
+    const-string v1, "CLICK_EDIT"
 
-    invoke-direct {v0, v1, v5}, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;-><init>(Ljava/lang/String;I)V
+    const/4 v4, 0x2
+
+    invoke-direct {v0, v1, v4}, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;->CLICK_EDIT:Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
 
     .line 101
     new-instance v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
 
-    const-string/jumbo v1, "CLICK_SAVE"
+    const-string v1, "CLICK_SAVE"
 
-    invoke-direct {v0, v1, v6}, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;-><init>(Ljava/lang/String;I)V
+    const/4 v5, 0x3
+
+    invoke-direct {v0, v1, v5}, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;->CLICK_SAVE:Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
 
     .line 102
     new-instance v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
 
-    const-string/jumbo v1, "CLICK_MAIN"
+    const-string v1, "CLICK_MAIN"
 
-    invoke-direct {v0, v1, v7}, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;-><init>(Ljava/lang/String;I)V
+    const/4 v6, 0x4
+
+    invoke-direct {v0, v1, v6}, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;->CLICK_MAIN:Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
 
     .line 103
     new-instance v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
 
-    const-string/jumbo v1, "DRAG_EDIT"
+    const-string v1, "DRAG_EDIT"
 
-    const/4 v2, 0x5
+    const/4 v7, 0x5
 
-    invoke-direct {v0, v1, v2}, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v1, v7}, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;->DRAG_EDIT:Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
 
@@ -117,39 +115,43 @@
 
     sget-object v1, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;->CLICK_PREV:Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
 
-    aput-object v1, v0, v3
+    aput-object v1, v0, v2
 
     sget-object v1, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;->CLICK_NEXT:Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
 
-    aput-object v1, v0, v4
+    aput-object v1, v0, v3
 
     sget-object v1, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;->CLICK_EDIT:Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
 
-    aput-object v1, v0, v5
+    aput-object v1, v0, v4
 
     sget-object v1, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;->CLICK_SAVE:Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
 
-    aput-object v1, v0, v6
+    aput-object v1, v0, v5
 
     sget-object v1, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;->CLICK_MAIN:Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
 
-    aput-object v1, v0, v7
+    aput-object v1, v0, v6
 
     sget-object v1, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;->DRAG_EDIT:Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
 
-    const/4 v2, 0x5
-
-    aput-object v1, v0, v2
+    aput-object v1, v0, v7
 
     sput-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;->$VALUES:[Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()V"
+        }
+    .end annotation
 
-    .prologue
     .line 96
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
@@ -160,7 +162,6 @@
     .registers 2
     .param p0, "name"    # Ljava/lang/String;
 
-    .prologue
     .line 96
     const-class v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
 
@@ -176,9 +177,14 @@
 .method public static values()[Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
     .registers 1
 
-    .prologue
     .line 96
     sget-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;->$VALUES:[Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
+
+    invoke-virtual {v0}, [Lcom/oneplus/screenshot/statistics/EventStatistics$Action;->clone()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, [Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
 
     return-object v0
 .end method
@@ -188,13 +194,13 @@
 .method public valueOf()I
     .registers 3
 
-    .prologue
     .line 106
     invoke-virtual {p0}, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;->ordinal()I
 
     move-result v0
 
-    invoke-static {}, Lcom/oneplus/screenshot/statistics/EventStatistics;->-get0()I
+    # getter for: Lcom/oneplus/screenshot/statistics/EventStatistics;->APPBASE:I
+    invoke-static {}, Lcom/oneplus/screenshot/statistics/EventStatistics;->access$000()I
 
     move-result v1
 

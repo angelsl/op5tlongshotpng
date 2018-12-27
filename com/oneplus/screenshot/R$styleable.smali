@@ -54,76 +54,76 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 3
+    .registers 4
 
-    .prologue
-    .line 632
-    const v0, 0x7f010002
+    .line 634
+    const/4 v0, 0x2
 
-    const v1, 0x7f010003
+    new-array v1, v0, [I
 
-    .line 631
-    filled-new-array {v0, v1}, [I
+    fill-array-data v1, :array_2a
 
-    move-result-object v0
+    sput-object v1, Lcom/oneplus/screenshot/R$styleable;->EditView:[I
 
-    sput-object v0, Lcom/oneplus/screenshot/R$styleable;->EditView:[I
+    .line 669
+    const/4 v1, 0x1
 
-    .line 666
-    const/4 v0, 0x1
-
-    new-array v0, v0, [I
-
-    .line 667
-    const v1, 0x7f010004
+    new-array v1, v1, [I
 
     const/4 v2, 0x0
 
-    aput v1, v0, v2
+    const v3, 0x7f010004
 
-    .line 666
-    sput-object v0, Lcom/oneplus/screenshot/R$styleable;->GuideLayout:[I
+    aput v3, v1, v2
 
-    .line 696
-    const/high16 v0, 0x7f010000
+    sput-object v1, Lcom/oneplus/screenshot/R$styleable;->GuideLayout:[I
 
-    const v1, 0x7f010001
+    .line 698
+    new-array v1, v0, [I
 
-    .line 695
-    filled-new-array {v0, v1}, [I
+    fill-array-data v1, :array_32
 
-    move-result-object v0
+    sput-object v1, Lcom/oneplus/screenshot/R$styleable;->ImageView:[I
 
-    sput-object v0, Lcom/oneplus/screenshot/R$styleable;->ImageView:[I
+    .line 743
+    new-array v0, v0, [I
 
-    .line 741
-    const v0, 0x7f01000b
-
-    const v1, 0x7f01000c
-
-    .line 740
-    filled-new-array {v0, v1}, [I
-
-    move-result-object v0
+    fill-array-data v0, :array_3a
 
     sput-object v0, Lcom/oneplus/screenshot/R$styleable;->Interpolator:[I
 
-    .line 791
+    .line 794
     const/4 v0, 0x6
 
     new-array v0, v0, [I
 
-    fill-array-data v0, :array_38
+    fill-array-data v0, :array_42
 
     sput-object v0, Lcom/oneplus/screenshot/R$styleable;->Target:[I
 
-    .line 618
-    return-void
-
-    .line 791
+    #disallowed odex opcode
+    #return-void-no-barrier
     nop
 
-    :array_38
+    :array_2a
+    .array-data 4
+        0x7f010002
+        0x7f010003
+    .end array-data
+
+    :array_32
+    .array-data 4
+        0x7f010000
+        0x7f010001
+    .end array-data
+
+    :array_3a
+    .array-data 4
+        0x7f01000b
+        0x7f01000c
+    .end array-data
+
+    :array_42
     .array-data 4
         0x7f010005
         0x7f010006
@@ -137,8 +137,7 @@
 .method public constructor <init>()V
     .registers 1
 
-    .prologue
-    .line 618
+    .line 621
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

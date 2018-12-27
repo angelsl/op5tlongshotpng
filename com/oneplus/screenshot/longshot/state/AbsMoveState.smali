@@ -19,28 +19,17 @@
 
 
 # direct methods
-.method static synthetic -wrap0(Lcom/oneplus/screenshot/longshot/state/AbsMoveState;)V
-    .registers 1
-    .param p0, "-this"    # Lcom/oneplus/screenshot/longshot/state/AbsMoveState;
-
-    .prologue
-    invoke-direct {p0}, Lcom/oneplus/screenshot/longshot/state/AbsMoveState;->executeMove()V
-
-    return-void
-.end method
-
 .method public constructor <init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;Lcom/oneplus/screenshot/longshot/util/MovePoint;)V
     .registers 4
     .param p1, "stateContext"    # Lcom/oneplus/screenshot/longshot/state/LongshotContext;
     .param p2, "point"    # Lcom/oneplus/screenshot/longshot/util/MovePoint;
 
-    .prologue
-    const/4 v0, 0x0
-
     .line 28
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/longshot/state/BaseState;-><init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;)V
 
     .line 20
+    const/4 v0, 0x0
+
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsMoveState;->mMovePoint:Lcom/oneplus/screenshot/longshot/util/MovePoint;
 
     .line 21
@@ -62,13 +51,26 @@
     iput v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsMoveState;->mMoveKeep:I
 
     .line 31
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
+.end method
+
+.method static synthetic access$000(Lcom/oneplus/screenshot/longshot/state/AbsMoveState;)V
+    .registers 1
+    .param p0, "x0"    # Lcom/oneplus/screenshot/longshot/state/AbsMoveState;
+
+    .line 13
+    invoke-direct {p0}, Lcom/oneplus/screenshot/longshot/state/AbsMoveState;->executeMove()V
+
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private executeMove()V
     .registers 3
 
-    .prologue
     .line 62
     new-instance v0, Landroid/os/Handler;
 
@@ -81,13 +83,14 @@
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
     .line 68
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private getKeep()I
     .registers 2
 
-    .prologue
     .line 106
     sget-boolean v0, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_KEEP_LIST:Z
 
@@ -95,21 +98,20 @@
 
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->MOVE_KEEP_LONG:Lcom/oneplus/screenshot/longshot/util/Configs;
 
+    :goto_6
     invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/util/Configs;->getValue()I
 
     move-result v0
 
-    :goto_a
-    return v0
+    goto :goto_e
 
     :cond_b
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->MOVE_KEEP_SHORT:Lcom/oneplus/screenshot/longshot/util/Configs;
 
-    invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/util/Configs;->getValue()I
+    goto :goto_6
 
-    move-result v0
-
-    goto :goto_a
+    :goto_e
+    return v0
 .end method
 
 
@@ -119,14 +121,13 @@
     .param p1, "oldState"    # Lcom/oneplus/screenshot/longshot/state/LongshotState;
     .param p2, "listener"    # Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;
 
-    .prologue
-    const/4 v1, 0x0
-
     .line 38
     invoke-super {p0, p1, p2}, Lcom/oneplus/screenshot/longshot/state/BaseState;->enter(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
 
     .line 39
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsMoveState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
+
+    const/4 v1, 0x0
 
     invoke-interface {v0, v1}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->setOverScroll(Z)V
 
@@ -145,9 +146,9 @@
     invoke-static {v1, v0}, Lcom/oneplus/screenshot/longshot/util/Configs;->blockWindowTouch(ZLandroid/content/Context;)V
 
     .line 44
-    const-string/jumbo v0, "Longshot.AbsMoveState"
+    const-string v0, "Longshot.AbsMoveState"
 
-    const-string/jumbo v1, "prepare next Move"
+    const-string v1, "prepare next Move"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
@@ -171,7 +172,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_3a
+    if-eqz v0, :cond_38
 
     .line 48
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsMoveState;->mMoveTask:Lcom/oneplus/screenshot/longshot/task/MoveTask;
@@ -179,7 +180,7 @@
     invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/task/MoveTask;->checkTraceBitmap()V
 
     .line 51
-    :cond_3a
+    :cond_38
     new-instance v0, Landroid/os/Handler;
 
     invoke-direct {v0}, Landroid/os/Handler;-><init>()V
@@ -188,9 +189,9 @@
 
     invoke-direct {v1, p0}, Lcom/oneplus/screenshot/longshot/state/AbsMoveState$1;-><init>(Lcom/oneplus/screenshot/longshot/state/AbsMoveState;)V
 
-    .line 58
     sget-object v2, Lcom/oneplus/screenshot/longshot/util/Configs;->MOVE_DELAY:Lcom/oneplus/screenshot/longshot/util/Configs;
 
+    .line 58
     invoke-virtual {v2}, Lcom/oneplus/screenshot/longshot/util/Configs;->getValue()I
 
     move-result v2
@@ -201,17 +202,14 @@
     invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
 
     .line 59
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public exit(Lcom/oneplus/screenshot/longshot/state/LongshotState;)V
-    .registers 5
+    .registers 4
     .param p1, "newState"    # Lcom/oneplus/screenshot/longshot/state/LongshotState;
-
-    .prologue
-    const/4 v2, 0x0
-
-    const/4 v1, 0x1
 
     .line 73
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsMoveState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
@@ -219,6 +217,8 @@
     invoke-interface {v0}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->getContext()Landroid/content/Context;
 
     move-result-object v0
+
+    const/4 v1, 0x1
 
     invoke-static {v1, v0}, Lcom/oneplus/screenshot/longshot/util/Configs;->blockWindowTouch(ZLandroid/content/Context;)V
 
@@ -233,14 +233,18 @@
     invoke-virtual {v0, v1}, Lcom/oneplus/screenshot/longshot/task/MoveTask;->cancel(Z)Z
 
     .line 77
-    iput-object v2, p0, Lcom/oneplus/screenshot/longshot/state/AbsMoveState;->mMoveTask:Lcom/oneplus/screenshot/longshot/task/MoveTask;
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsMoveState;->mMoveTask:Lcom/oneplus/screenshot/longshot/task/MoveTask;
 
     .line 79
     :cond_16
     invoke-super {p0, p1}, Lcom/oneplus/screenshot/longshot/state/BaseState;->exit(Lcom/oneplus/screenshot/longshot/state/LongshotState;)V
 
     .line 80
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method protected abstract getNextState()Lcom/oneplus/screenshot/longshot/state/LongshotState;
@@ -249,7 +253,6 @@
 .method public isOverScroll()Z
     .registers 2
 
-    .prologue
     .line 89
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsMoveState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
@@ -263,7 +266,6 @@
 .method public onMoveFinished()V
     .registers 4
 
-    .prologue
     .line 84
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsMoveState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
@@ -276,28 +278,30 @@
     invoke-interface {v0, v1, v2}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->updateState(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
 
     .line 85
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public setOverScroll(Z)V
     .registers 3
     .param p1, "overScroll"    # Z
 
-    .prologue
     .line 94
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsMoveState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     invoke-interface {v0, p1}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->setOverScroll(Z)V
 
     .line 95
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public updateMovePoint(Lcom/oneplus/screenshot/longshot/util/MovePoint;)V
     .registers 4
     .param p1, "movenext"    # Lcom/oneplus/screenshot/longshot/util/MovePoint;
 
-    .prologue
     .line 110
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/AbsMoveState;->mMovePoint:Lcom/oneplus/screenshot/longshot/util/MovePoint;
 
@@ -315,5 +319,7 @@
 
     .line 114
     :cond_d
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

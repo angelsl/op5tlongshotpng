@@ -32,8 +32,7 @@
     .registers 5
     .param p1, "this$0"    # Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;
 
-    .prologue
-    .line 1
+    .line 1631
     iput-object p1, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$14;->this$0:Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;
 
     iput p2, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$14;->val$firstIdx:I
@@ -42,10 +41,8 @@
 
     iput-object p4, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$14;->val$ak:[D
 
-    .line 1631
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1
     return-void
 .end method
 
@@ -54,18 +51,19 @@
 .method public run()V
     .registers 13
 
-    .prologue
     .line 1633
     iget v0, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$14;->val$firstIdx:I
 
     .local v0, "i":I
     :goto_2
-    iget v3, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$14;->val$lastIdx:I
+    iget v1, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$14;->val$lastIdx:I
 
-    if-ge v0, v3, :cond_4d
+    if-ge v0, v1, :cond_4c
 
     .line 1634
-    mul-int/lit8 v1, v0, 0x2
+    const/4 v1, 0x2
+
+    mul-int/2addr v1, v0
 
     .line 1635
     .local v1, "idx1":I
@@ -75,39 +73,41 @@
     .local v2, "idx2":I
     iget-object v3, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$14;->val$ak:[D
 
-    aget-wide v6, v3, v1
+    aget-wide v3, v3, v1
 
-    neg-double v6, v6
+    neg-double v3, v3
 
-    iget-object v3, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$14;->this$0:Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;
+    iget-object v5, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$14;->this$0:Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;
 
-    invoke-static {v3}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->-get1(Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;)[D
+    # getter for: Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->bk2:[D
+    invoke-static {v5}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->access$100(Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;)[D
 
-    move-result-object v3
+    move-result-object v5
 
-    aget-wide v8, v3, v2
+    aget-wide v5, v5, v2
 
-    mul-double/2addr v6, v8
+    mul-double/2addr v3, v5
 
-    iget-object v3, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$14;->val$ak:[D
+    iget-object v5, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$14;->val$ak:[D
 
-    aget-wide v8, v3, v2
+    aget-wide v5, v5, v2
 
-    iget-object v3, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$14;->this$0:Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;
+    iget-object v7, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$14;->this$0:Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;
 
-    invoke-static {v3}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->-get1(Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;)[D
+    # getter for: Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->bk2:[D
+    invoke-static {v7}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->access$100(Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;)[D
 
-    move-result-object v3
+    move-result-object v7
 
-    aget-wide v10, v3, v1
+    aget-wide v7, v7, v1
 
-    mul-double/2addr v8, v10
+    mul-double/2addr v5, v7
 
-    add-double v4, v6, v8
+    add-double/2addr v3, v5
 
     .line 1637
-    .local v4, "im":D
-    iget-object v3, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$14;->val$ak:[D
+    .local v3, "im":D
+    iget-object v5, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$14;->val$ak:[D
 
     iget-object v6, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$14;->val$ak:[D
 
@@ -115,7 +115,8 @@
 
     iget-object v8, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$14;->this$0:Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;
 
-    invoke-static {v8}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->-get1(Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;)[D
+    # getter for: Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->bk2:[D
+    invoke-static {v8}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->access$100(Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;)[D
 
     move-result-object v8
 
@@ -129,7 +130,8 @@
 
     iget-object v10, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$14;->this$0:Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;
 
-    invoke-static {v10}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->-get1(Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;)[D
+    # getter for: Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->bk2:[D
+    invoke-static {v10}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->access$100(Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;)[D
 
     move-result-object v10
 
@@ -139,22 +141,25 @@
 
     add-double/2addr v6, v8
 
-    aput-wide v6, v3, v1
+    aput-wide v6, v5, v1
 
     .line 1638
-    iget-object v3, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$14;->val$ak:[D
+    iget-object v5, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$14;->val$ak:[D
 
-    aput-wide v4, v3, v2
+    aput-wide v3, v5, v2
 
     .line 1633
+    .end local v1    # "idx1":I
+    .end local v2    # "idx2":I
+    .end local v3    # "im":D
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_2
 
     .line 1640
-    .end local v1    # "idx1":I
-    .end local v2    # "idx2":I
-    .end local v4    # "im":D
-    :cond_4d
-    return-void
+    .end local v0    # "i":I
+    :cond_4c
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

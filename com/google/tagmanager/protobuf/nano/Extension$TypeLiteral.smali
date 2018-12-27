@@ -31,19 +31,16 @@
 .method protected constructor <init>()V
     .registers 4
 
-    .prologue
-    .local p0, "this":Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;, "Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral<TT;>;"
-    const/4 v2, 0x0
-
     .line 82
+    .local p0, "this":Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;, "Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral<TT;>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 83
     invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-virtual {v1}, Ljava/lang/Class;->getGenericSuperclass()Ljava/lang/reflect/Type;
+    invoke-virtual {v0}, Ljava/lang/Class;->getGenericSuperclass()Ljava/lang/reflect/Type;
 
     move-result-object v0
 
@@ -51,15 +48,18 @@
     .local v0, "superclass":Ljava/lang/reflect/Type;
     instance-of v1, v0, Ljava/lang/Class;
 
-    if-nez v1, :cond_1b
+    if-nez v1, :cond_1c
 
     .line 87
-    check-cast v0, Ljava/lang/reflect/ParameterizedType;
+    move-object v1, v0
 
-    .end local v0    # "superclass":Ljava/lang/reflect/Type;
-    invoke-interface {v0}, Ljava/lang/reflect/ParameterizedType;->getActualTypeArguments()[Ljava/lang/reflect/Type;
+    check-cast v1, Ljava/lang/reflect/ParameterizedType;
+
+    invoke-interface {v1}, Ljava/lang/reflect/ParameterizedType;->getActualTypeArguments()[Ljava/lang/reflect/Type;
 
     move-result-object v1
+
+    const/4 v2, 0x0
 
     aget-object v1, v1, v2
 
@@ -69,11 +69,10 @@
     return-void
 
     .line 85
-    .restart local v0    # "superclass":Ljava/lang/reflect/Type;
-    :cond_1b
+    :cond_1c
     new-instance v1, Ljava/lang/RuntimeException;
 
-    const-string/jumbo v2, "Missing type parameter"
+    const-string v2, "Missing type parameter"
 
     invoke-direct {v1, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -84,7 +83,6 @@
     .registers 2
     .param p0, "x0"    # Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;
 
-    .prologue
     .line 79
     invoke-direct {p0}, Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;->isList()Z
 
@@ -97,7 +95,6 @@
     .registers 2
     .param p0, "x0"    # Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;
 
-    .prologue
     .line 79
     invoke-direct {p0}, Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;->getTargetClass()Ljava/lang/Class;
 
@@ -110,7 +107,6 @@
     .registers 2
     .param p0, "x0"    # Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;
 
-    .prologue
     .line 79
     invoke-direct {p0}, Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;->getListType()Ljava/lang/Class;
 
@@ -124,12 +120,11 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
-            "Ljava/lang/Class",
-            "<TT;>;"
+            "Ljava/lang/Class<",
+            "TT;>;"
         }
     .end annotation
 
-    .prologue
     .line 99
     .local p0, "this":Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;, "Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral<TT;>;"
     iget-object v0, p0, Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;->type:Ljava/lang/reflect/Type;
@@ -150,31 +145,20 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
-            "Ljava/lang/Class",
-            "<TT;>;"
+            "Ljava/lang/Class<",
+            "TT;>;"
         }
     .end annotation
 
-    .prologue
-    .local p0, "this":Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;, "Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral<TT;>;"
-    const/4 v1, 0x0
-
     .line 108
+    .local p0, "this":Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;, "Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral<TT;>;"
     invoke-direct {p0}, Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;->isList()Z
 
     move-result v0
 
-    if-nez v0, :cond_c
-
-    .line 111
-    iget-object v0, p0, Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;->type:Ljava/lang/reflect/Type;
-
-    check-cast v0, Ljava/lang/Class;
-
-    return-object v0
+    if-eqz v0, :cond_14
 
     .line 109
-    :cond_c
     iget-object v0, p0, Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;->type:Ljava/lang/reflect/Type;
 
     check-cast v0, Ljava/lang/reflect/ParameterizedType;
@@ -183,7 +167,17 @@
 
     move-result-object v0
 
+    const/4 v1, 0x0
+
     aget-object v0, v0, v1
+
+    check-cast v0, Ljava/lang/Class;
+
+    return-object v0
+
+    .line 111
+    :cond_14
+    iget-object v0, p0, Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;->type:Ljava/lang/reflect/Type;
 
     check-cast v0, Ljava/lang/Class;
 
@@ -193,7 +187,6 @@
 .method private isList()Z
     .registers 2
 
-    .prologue
     .line 94
     .local p0, "this":Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;, "Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral<TT;>;"
     iget-object v0, p0, Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;->type:Ljava/lang/reflect/Type;

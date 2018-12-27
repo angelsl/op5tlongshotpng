@@ -23,7 +23,6 @@
     .registers 2
     .param p1, "this$0"    # Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
-    .prologue
     .line 228
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$ImageOnGestureListener;->this$0:Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
@@ -38,7 +37,6 @@
     .registers 3
     .param p1, "e"    # Landroid/view/MotionEvent;
 
-    .prologue
     .line 261
     const/4 v0, 0x1
 
@@ -46,16 +44,14 @@
 .end method
 
 .method public onDown(Landroid/view/MotionEvent;)Z
-    .registers 5
+    .registers 4
     .param p1, "e"    # Landroid/view/MotionEvent;
-
-    .prologue
-    const/4 v2, 0x1
 
     .line 233
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$ImageOnGestureListener;->this$0:Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
-    invoke-static {v0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->-get1(Lcom/oneplus/screenshot/longshot/widget/ImageView;)Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;
+    # getter for: Lcom/oneplus/screenshot/longshot/widget/ImageView;->mFlingRunnable:Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;
+    invoke-static {v0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->access$100(Lcom/oneplus/screenshot/longshot/widget/ImageView;)Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;
 
     move-result-object v0
 
@@ -75,10 +71,12 @@
     .line 236
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$ImageOnGestureListener;->this$0:Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
-    iput-boolean v2, v0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mIsFirstScroll:Z
+    const/4 v1, 0x1
+
+    iput-boolean v1, v0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mIsFirstScroll:Z
 
     .line 237
-    return v2
+    return v1
 .end method
 
 .method public onFling(Landroid/view/MotionEvent;Landroid/view/MotionEvent;FF)Z
@@ -88,84 +86,86 @@
     .param p3, "velocityX"    # F
     .param p4, "velocityY"    # F
 
-    .prologue
-    const/4 v2, 0x1
-
     .line 253
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$ImageOnGestureListener;->this$0:Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
     iget v0, v0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mTouchMode:I
 
-    if-ne v0, v2, :cond_17
+    const/4 v1, 0x1
+
+    if-ne v0, v1, :cond_17
 
     .line 254
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$ImageOnGestureListener;->this$0:Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
-    const/4 v1, 0x2
+    const/4 v2, 0x2
 
-    iput v1, v0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mTouchMode:I
+    iput v2, v0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mTouchMode:I
 
     .line 255
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$ImageOnGestureListener;->this$0:Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
-    invoke-static {v0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->-get1(Lcom/oneplus/screenshot/longshot/widget/ImageView;)Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;
+    # getter for: Lcom/oneplus/screenshot/longshot/widget/ImageView;->mFlingRunnable:Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;
+    invoke-static {v0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->access$100(Lcom/oneplus/screenshot/longshot/widget/ImageView;)Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;
 
     move-result-object v0
 
-    neg-float v1, p4
+    neg-float v2, p4
 
-    float-to-int v1, v1
+    float-to-int v2, v2
 
-    invoke-virtual {v0, v1}, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->startUsingVelocity(I)V
+    invoke-virtual {v0, v2}, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->startUsingVelocity(I)V
 
     .line 257
     :cond_17
-    return v2
+    return v1
 .end method
 
 .method public onScroll(Landroid/view/MotionEvent;Landroid/view/MotionEvent;FF)Z
-    .registers 8
+    .registers 9
     .param p1, "e1"    # Landroid/view/MotionEvent;
     .param p2, "e2"    # Landroid/view/MotionEvent;
     .param p3, "distanceX"    # F
     .param p4, "distanceY"    # F
 
-    .prologue
-    const/4 v2, 0x1
-
     .line 242
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$ImageOnGestureListener;->this$0:Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
-    invoke-static {v0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->-get2(Lcom/oneplus/screenshot/longshot/widget/ImageView;)Landroid/view/ViewParent;
+    # getter for: Lcom/oneplus/screenshot/longshot/widget/ImageView;->mParent:Landroid/view/ViewParent;
+    invoke-static {v0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->access$200(Lcom/oneplus/screenshot/longshot/widget/ImageView;)Landroid/view/ViewParent;
 
     move-result-object v0
 
-    invoke-interface {v0, v2}, Landroid/view/ViewParent;->requestDisallowInterceptTouchEvent(Z)V
+    const/4 v1, 0x1
+
+    invoke-interface {v0, v1}, Landroid/view/ViewParent;->requestDisallowInterceptTouchEvent(Z)V
 
     .line 243
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$ImageOnGestureListener;->this$0:Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
     iget v0, v0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mTouchMode:I
 
-    if-ne v0, v2, :cond_18
+    if-ne v0, v1, :cond_18
 
     .line 245
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$ImageOnGestureListener;->this$0:Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
-    float-to-int v1, p4
+    const/4 v2, -0x1
 
-    mul-int/lit8 v1, v1, -0x1
+    float-to-int v3, p4
 
-    invoke-static {v0, v1}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->-wrap1(Lcom/oneplus/screenshot/longshot/widget/ImageView;I)V
+    mul-int/2addr v2, v3
+
+    invoke-static {v0, v2}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->access$300(Lcom/oneplus/screenshot/longshot/widget/ImageView;I)V
 
     .line 247
     :cond_18
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$ImageOnGestureListener;->this$0:Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
-    const/4 v1, 0x0
+    const/4 v2, 0x0
 
-    iput-boolean v1, v0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mIsFirstScroll:Z
+    iput-boolean v2, v0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mIsFirstScroll:Z
 
     .line 248
-    return v2
+    return v1
 .end method

@@ -19,7 +19,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 15
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->CUSTOM_VAR:Lcom/google/analytics/containertag/common/FunctionType;
 
@@ -47,14 +46,15 @@
 
     sput-object v0, Lcom/google/tagmanager/DataLayerMacro;->DEFAULT_VALUE:Ljava/lang/String;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>(Lcom/google/tagmanager/DataLayer;)V
     .registers 6
     .param p1, "dataLayer"    # Lcom/google/tagmanager/DataLayer;
 
-    .prologue
     .line 26
     sget-object v0, Lcom/google/tagmanager/DataLayerMacro;->ID:Ljava/lang/String;
 
@@ -80,7 +80,6 @@
 .method public static getDefaultValueKey()Ljava/lang/String;
     .registers 1
 
-    .prologue
     .line 35
     sget-object v0, Lcom/google/tagmanager/DataLayerMacro;->DEFAULT_VALUE:Ljava/lang/String;
 
@@ -90,7 +89,6 @@
 .method public static getFunctionId()Ljava/lang/String;
     .registers 1
 
-    .prologue
     .line 22
     sget-object v0, Lcom/google/tagmanager/DataLayerMacro;->ID:Ljava/lang/String;
 
@@ -100,7 +98,6 @@
 .method public static getNameKey()Ljava/lang/String;
     .registers 1
 
-    .prologue
     .line 31
     sget-object v0, Lcom/google/tagmanager/DataLayerMacro;->NAME:Ljava/lang/String;
 
@@ -110,12 +107,11 @@
 
 # virtual methods
 .method public evaluate(Ljava/util/Map;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 6
+    .registers 5
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;)",
@@ -123,43 +119,34 @@
         }
     .end annotation
 
-    .prologue
     .line 43
     .local p1, "parameters":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
-    iget-object v3, p0, Lcom/google/tagmanager/DataLayerMacro;->mDataLayer:Lcom/google/tagmanager/DataLayer;
+    iget-object v0, p0, Lcom/google/tagmanager/DataLayerMacro;->mDataLayer:Lcom/google/tagmanager/DataLayer;
 
-    sget-object v2, Lcom/google/tagmanager/DataLayerMacro;->NAME:Ljava/lang/String;
+    sget-object v1, Lcom/google/tagmanager/DataLayerMacro;->NAME:Ljava/lang/String;
 
-    invoke-interface {p1, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {p1, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    move-result-object v2
+    move-result-object v1
 
-    check-cast v2, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    check-cast v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    invoke-static {v2}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
+    invoke-static {v1}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v1
 
-    invoke-virtual {v3, v2}, Lcom/google/tagmanager/DataLayer;->get(Ljava/lang/String;)Ljava/lang/Object;
+    invoke-virtual {v0, v1}, Lcom/google/tagmanager/DataLayer;->get(Ljava/lang/String;)Ljava/lang/Object;
 
     move-result-object v0
 
     .line 44
     .local v0, "dataLayerValue":Ljava/lang/Object;
-    if-eqz v0, :cond_19
-
-    .line 52
-    invoke-static {v0}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    move-result-object v2
-
-    return-object v2
+    if-nez v0, :cond_24
 
     .line 45
-    :cond_19
-    sget-object v2, Lcom/google/tagmanager/DataLayerMacro;->DEFAULT_VALUE:Ljava/lang/String;
+    sget-object v1, Lcom/google/tagmanager/DataLayerMacro;->DEFAULT_VALUE:Ljava/lang/String;
 
-    invoke-interface {p1, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {p1, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v1
 
@@ -167,24 +154,32 @@
 
     .line 46
     .local v1, "defaultValue":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-nez v1, :cond_28
+    if-eqz v1, :cond_1f
+
+    .line 47
+    return-object v1
 
     .line 49
+    :cond_1f
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     move-result-object v2
 
     return-object v2
 
-    .line 47
-    :cond_28
+    .line 52
+    .end local v1    # "defaultValue":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    :cond_24
+    invoke-static {v0}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+
+    move-result-object v1
+
     return-object v1
 .end method
 
 .method public isCacheable()Z
     .registers 2
 
-    .prologue
     .line 39
     const/4 v0, 0x0
 

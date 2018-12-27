@@ -25,7 +25,6 @@
 .method constructor <init>(Lcom/google/analytics/tracking/android/EasyTracker;)V
     .registers 2
 
-    .prologue
     .line 110
     iput-object p1, p0, Lcom/google/analytics/tracking/android/EasyTracker$1;->this$0:Lcom/google/analytics/tracking/android/EasyTracker;
 
@@ -39,7 +38,6 @@
 .method public currentTimeMillis()J
     .registers 3
 
-    .prologue
     .line 113
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 

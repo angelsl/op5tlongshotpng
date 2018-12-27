@@ -26,7 +26,6 @@
     .param p1, "key"    # Ljava/lang/String;
     .param p2, "value"    # Ljava/lang/Object;
 
-    .prologue
     .line 100
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -46,17 +45,20 @@
     .registers 6
     .param p1, "o"    # Ljava/lang/Object;
 
-    .prologue
+    .line 117
+    instance-of v0, p1, Lcom/google/tagmanager/DataLayer$KeyValue;
+
     const/4 v1, 0x0
 
-    .line 117
-    instance-of v2, p1, Lcom/google/tagmanager/DataLayer$KeyValue;
+    if-nez v0, :cond_6
 
-    if-eqz v2, :cond_13
-
-    move-object v0, p1
+    .line 118
+    return v1
 
     .line 120
+    :cond_6
+    move-object v0, p1
+
     check-cast v0, Lcom/google/tagmanager/DataLayer$KeyValue;
 
     .line 121
@@ -69,20 +71,8 @@
 
     move-result v2
 
-    if-nez v2, :cond_14
+    if-eqz v2, :cond_1f
 
-    :cond_12
-    :goto_12
-    return v1
-
-    .line 118
-    .end local v0    # "other":Lcom/google/tagmanager/DataLayer$KeyValue;
-    :cond_13
-    return v1
-
-    .line 121
-    .restart local v0    # "other":Lcom/google/tagmanager/DataLayer$KeyValue;
-    :cond_14
     iget-object v2, p0, Lcom/google/tagmanager/DataLayer$KeyValue;->mValue:Ljava/lang/Object;
 
     iget-object v3, v0, Lcom/google/tagmanager/DataLayer$KeyValue;->mValue:Ljava/lang/Object;
@@ -91,17 +81,19 @@
 
     move-result v2
 
-    if-eqz v2, :cond_12
+    if-eqz v2, :cond_1f
 
     const/4 v1, 0x1
 
-    goto :goto_12
+    nop
+
+    :cond_1f
+    return v1
 .end method
 
 .method public hashCode()I
     .registers 4
 
-    .prologue
     .line 112
     const/4 v0, 0x2
 
@@ -145,29 +137,22 @@
 .method public toString()Ljava/lang/String;
     .registers 3
 
-    .prologue
     .line 107
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v1, "Key: "
+    const-string v1, "Key: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     iget-object v1, p0, Lcom/google/tagmanager/DataLayer$KeyValue;->mKey:Ljava/lang/String;
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
-    const-string/jumbo v1, " value: "
+    const-string v1, " value: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     iget-object v1, p0, Lcom/google/tagmanager/DataLayer$KeyValue;->mValue:Ljava/lang/Object;
 
@@ -176,8 +161,6 @@
     move-result-object v1
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 

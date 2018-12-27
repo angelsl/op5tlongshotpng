@@ -15,7 +15,6 @@
     .param p3, "isNext"    # Z
     .param p4, "tag"    # Ljava/lang/String;
 
-    .prologue
     .line 15
     invoke-direct {p0, p1, p2, p3}, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;-><init>(Landroid/content/Context;IZ)V
 
@@ -23,7 +22,9 @@
     invoke-virtual {p0, p4}, Lcom/oneplus/screenshot/longshot/dump/SameDumper;->setTag(Ljava/lang/String;)V
 
     .line 17
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -31,7 +32,6 @@
 .method protected getTag()Ljava/lang/String;
     .registers 3
 
-    .prologue
     .line 24
     new-instance v0, Ljava/lang/StringBuilder;
 
@@ -43,13 +43,9 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
-    const-string/jumbo v1, "Same"
+    const-string v1, "Same"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 

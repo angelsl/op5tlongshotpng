@@ -28,7 +28,6 @@
 .method constructor <init>(Lcom/google/tagmanager/PersistentHitStore;)V
     .registers 2
 
-    .prologue
     .line 474
     iput-object p1, p0, Lcom/google/tagmanager/PersistentHitStore$StoreDispatchListener;->this$0:Lcom/google/tagmanager/PersistentHitStore;
 
@@ -40,57 +39,53 @@
 
 # virtual methods
 .method public onHitDispatched(Lcom/google/tagmanager/Hit;)V
-    .registers 6
+    .registers 5
     .param p1, "hit"    # Lcom/google/tagmanager/Hit;
 
-    .prologue
     .line 477
     iget-object v0, p0, Lcom/google/tagmanager/PersistentHitStore$StoreDispatchListener;->this$0:Lcom/google/tagmanager/PersistentHitStore;
 
     invoke-virtual {p1}, Lcom/google/tagmanager/Hit;->getHitId()J
 
-    move-result-wide v2
+    move-result-wide v1
 
     # invokes: Lcom/google/tagmanager/PersistentHitStore;->deleteHit(J)V
-    invoke-static {v0, v2, v3}, Lcom/google/tagmanager/PersistentHitStore;->access$000(Lcom/google/tagmanager/PersistentHitStore;J)V
+    invoke-static {v0, v1, v2}, Lcom/google/tagmanager/PersistentHitStore;->access$000(Lcom/google/tagmanager/PersistentHitStore;J)V
 
     .line 478
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public onHitPermanentDispatchFailure(Lcom/google/tagmanager/Hit;)V
-    .registers 6
+    .registers 5
     .param p1, "hit"    # Lcom/google/tagmanager/Hit;
 
-    .prologue
     .line 482
     iget-object v0, p0, Lcom/google/tagmanager/PersistentHitStore$StoreDispatchListener;->this$0:Lcom/google/tagmanager/PersistentHitStore;
 
     invoke-virtual {p1}, Lcom/google/tagmanager/Hit;->getHitId()J
 
-    move-result-wide v2
+    move-result-wide v1
 
     # invokes: Lcom/google/tagmanager/PersistentHitStore;->deleteHit(J)V
-    invoke-static {v0, v2, v3}, Lcom/google/tagmanager/PersistentHitStore;->access$000(Lcom/google/tagmanager/PersistentHitStore;J)V
+    invoke-static {v0, v1, v2}, Lcom/google/tagmanager/PersistentHitStore;->access$000(Lcom/google/tagmanager/PersistentHitStore;J)V
 
     .line 483
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v1, "Permanent failure dispatching hitId: "
+    const-string v1, "Permanent failure dispatching hitId: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
     invoke-virtual {p1}, Lcom/google/tagmanager/Hit;->getHitId()J
 
-    move-result-wide v2
+    move-result-wide v1
 
-    invoke-virtual {v0, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
-
-    move-result-object v0
+    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -99,14 +94,15 @@
     invoke-static {v0}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
 
     .line 484
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public onHitTransientDispatchFailure(Lcom/google/tagmanager/Hit;)V
-    .registers 10
+    .registers 9
     .param p1, "hit"    # Lcom/google/tagmanager/Hit;
 
-    .prologue
     .line 488
     invoke-virtual {p1}, Lcom/google/tagmanager/Hit;->getHitFirstDispatchTime()J
 
@@ -125,26 +121,23 @@
 
     invoke-virtual {p1}, Lcom/google/tagmanager/Hit;->getHitId()J
 
-    move-result-wide v4
+    move-result-wide v3
 
-    iget-object v3, p0, Lcom/google/tagmanager/PersistentHitStore$StoreDispatchListener;->this$0:Lcom/google/tagmanager/PersistentHitStore;
+    iget-object v5, p0, Lcom/google/tagmanager/PersistentHitStore$StoreDispatchListener;->this$0:Lcom/google/tagmanager/PersistentHitStore;
 
     # getter for: Lcom/google/tagmanager/PersistentHitStore;->mClock:Lcom/google/tagmanager/Clock;
-    invoke-static {v3}, Lcom/google/tagmanager/PersistentHitStore;->access$100(Lcom/google/tagmanager/PersistentHitStore;)Lcom/google/tagmanager/Clock;
+    invoke-static {v5}, Lcom/google/tagmanager/PersistentHitStore;->access$100(Lcom/google/tagmanager/PersistentHitStore;)Lcom/google/tagmanager/Clock;
 
-    move-result-object v3
+    move-result-object v5
 
-    invoke-interface {v3}, Lcom/google/tagmanager/Clock;->currentTimeMillis()J
+    invoke-interface {v5}, Lcom/google/tagmanager/Clock;->currentTimeMillis()J
 
-    move-result-wide v6
+    move-result-wide v5
 
     # invokes: Lcom/google/tagmanager/PersistentHitStore;->setHitFirstDispatchTime(JJ)V
-    invoke-static {v2, v4, v5, v6, v7}, Lcom/google/tagmanager/PersistentHitStore;->access$200(Lcom/google/tagmanager/PersistentHitStore;JJ)V
+    invoke-static {v2, v3, v4, v5, v6}, Lcom/google/tagmanager/PersistentHitStore;->access$200(Lcom/google/tagmanager/PersistentHitStore;JJ)V
 
-    .line 497
-    :cond_1d
-    :goto_1d
-    return-void
+    goto :goto_51
 
     .line 492
     :cond_1e
@@ -165,41 +158,32 @@
 
     cmp-long v2, v2, v4
 
-    if-ltz v2, :cond_58
-
-    const/4 v2, 0x1
-
-    :goto_31
-    if-nez v2, :cond_1d
+    if-gez v2, :cond_51
 
     .line 494
     iget-object v2, p0, Lcom/google/tagmanager/PersistentHitStore$StoreDispatchListener;->this$0:Lcom/google/tagmanager/PersistentHitStore;
 
     invoke-virtual {p1}, Lcom/google/tagmanager/Hit;->getHitId()J
 
-    move-result-wide v4
+    move-result-wide v3
 
     # invokes: Lcom/google/tagmanager/PersistentHitStore;->deleteHit(J)V
-    invoke-static {v2, v4, v5}, Lcom/google/tagmanager/PersistentHitStore;->access$000(Lcom/google/tagmanager/PersistentHitStore;J)V
+    invoke-static {v2, v3, v4}, Lcom/google/tagmanager/PersistentHitStore;->access$000(Lcom/google/tagmanager/PersistentHitStore;J)V
 
     .line 495
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v3, "Giving up on failed hitId: "
+    const-string v3, "Giving up on failed hitId: "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v2
-
     invoke-virtual {p1}, Lcom/google/tagmanager/Hit;->getHitId()J
 
-    move-result-wide v4
+    move-result-wide v3
 
-    invoke-virtual {v2, v4, v5}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
-
-    move-result-object v2
+    invoke-virtual {v2, v3, v4}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
     invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -207,11 +191,10 @@
 
     invoke-static {v2}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
 
-    goto :goto_1d
-
-    .line 492
-    :cond_58
-    const/4 v2, 0x0
-
-    goto :goto_31
+    .line 497
+    :cond_51
+    :goto_51
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

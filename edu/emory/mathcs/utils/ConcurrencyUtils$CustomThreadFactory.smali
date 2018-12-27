@@ -29,7 +29,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 291
     invoke-static {}, Ljava/util/concurrent/Executors;->defaultThreadFactory()Ljava/util/concurrent/ThreadFactory;
 
@@ -37,15 +36,15 @@
 
     sput-object v0, Ledu/emory/mathcs/utils/ConcurrencyUtils$CustomThreadFactory;->defaultFactory:Ljava/util/concurrent/ThreadFactory;
 
-    .line 290
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method constructor <init>(Ljava/lang/Thread$UncaughtExceptionHandler;)V
     .registers 2
     .param p1, "handler"    # Ljava/lang/Thread$UncaughtExceptionHandler;
 
-    .prologue
     .line 295
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -62,11 +61,10 @@
     .registers 4
     .param p1, "r"    # Ljava/lang/Runnable;
 
-    .prologue
     .line 300
-    sget-object v1, Ledu/emory/mathcs/utils/ConcurrencyUtils$CustomThreadFactory;->defaultFactory:Ljava/util/concurrent/ThreadFactory;
+    sget-object v0, Ledu/emory/mathcs/utils/ConcurrencyUtils$CustomThreadFactory;->defaultFactory:Ljava/util/concurrent/ThreadFactory;
 
-    invoke-interface {v1, p1}, Ljava/util/concurrent/ThreadFactory;->newThread(Ljava/lang/Runnable;)Ljava/lang/Thread;
+    invoke-interface {v0, p1}, Ljava/util/concurrent/ThreadFactory;->newThread(Ljava/lang/Runnable;)Ljava/lang/Thread;
 
     move-result-object v0
 

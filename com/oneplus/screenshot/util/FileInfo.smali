@@ -27,7 +27,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 12
     const-class v0, Lcom/oneplus/screenshot/util/FileInfo;
 
@@ -37,78 +36,74 @@
 
     sput-object v0, Lcom/oneplus/screenshot/util/FileInfo;->TAG:Ljava/lang/String;
 
-    .line 10
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;)V
-    .registers 11
+    .registers 9
     .param p1, "dirName"    # Ljava/lang/String;
     .param p2, "fileName"    # Ljava/lang/String;
-
-    .prologue
-    const/4 v7, 0x1
-
-    const/4 v6, 0x0
-
-    const/4 v4, 0x0
 
     .line 32
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 23
-    new-instance v2, Ljava/text/SimpleDateFormat;
+    new-instance v0, Ljava/text/SimpleDateFormat;
 
-    const-string/jumbo v3, "yyyyMMdd-HHmmss"
+    const-string v1, "yyyyMMdd-HHmmss"
 
-    invoke-direct {v2, v3}, Ljava/text/SimpleDateFormat;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v1}, Ljava/text/SimpleDateFormat;-><init>(Ljava/lang/String;)V
 
-    iput-object v2, p0, Lcom/oneplus/screenshot/util/FileInfo;->mFormatter:Ljava/text/DateFormat;
+    iput-object v0, p0, Lcom/oneplus/screenshot/util/FileInfo;->mFormatter:Ljava/text/DateFormat;
 
     .line 24
-    iput-object v4, p0, Lcom/oneplus/screenshot/util/FileInfo;->mUri:Landroid/net/Uri;
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Lcom/oneplus/screenshot/util/FileInfo;->mUri:Landroid/net/Uri;
 
     .line 25
-    iput-object v4, p0, Lcom/oneplus/screenshot/util/FileInfo;->mName:Ljava/lang/String;
+    iput-object v0, p0, Lcom/oneplus/screenshot/util/FileInfo;->mName:Ljava/lang/String;
 
     .line 26
-    iput-object v4, p0, Lcom/oneplus/screenshot/util/FileInfo;->mPath:Ljava/lang/String;
+    iput-object v0, p0, Lcom/oneplus/screenshot/util/FileInfo;->mPath:Ljava/lang/String;
 
     .line 27
-    const-wide/16 v2, 0x0
+    const-wide/16 v0, 0x0
 
-    iput-wide v2, p0, Lcom/oneplus/screenshot/util/FileInfo;->mTime:J
+    iput-wide v0, p0, Lcom/oneplus/screenshot/util/FileInfo;->mTime:J
 
     .line 33
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
-    move-result-wide v2
+    move-result-wide v0
 
-    iput-wide v2, p0, Lcom/oneplus/screenshot/util/FileInfo;->mTime:J
+    iput-wide v0, p0, Lcom/oneplus/screenshot/util/FileInfo;->mTime:J
 
     .line 34
-    iget-object v2, p0, Lcom/oneplus/screenshot/util/FileInfo;->mFormatter:Ljava/text/DateFormat;
+    iget-object v0, p0, Lcom/oneplus/screenshot/util/FileInfo;->mFormatter:Ljava/text/DateFormat;
 
-    new-instance v3, Ljava/util/Date;
+    new-instance v1, Ljava/util/Date;
 
-    iget-wide v4, p0, Lcom/oneplus/screenshot/util/FileInfo;->mTime:J
+    iget-wide v2, p0, Lcom/oneplus/screenshot/util/FileInfo;->mTime:J
 
-    invoke-direct {v3, v4, v5}, Ljava/util/Date;-><init>(J)V
+    invoke-direct {v1, v2, v3}, Ljava/util/Date;-><init>(J)V
 
-    invoke-virtual {v2, v3}, Ljava/text/DateFormat;->format(Ljava/util/Date;)Ljava/lang/String;
+    invoke-virtual {v0, v1}, Ljava/text/DateFormat;->format(Ljava/util/Date;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 36
-    .local v0, "date":Ljava/lang/String;
-    sget-object v2, Landroid/os/Environment;->DIRECTORY_PICTURES:Ljava/lang/String;
-
     .line 35
-    invoke-static {v2}, Landroid/os/Environment;->getExternalStoragePublicDirectory(Ljava/lang/String;)Ljava/io/File;
+    .local v0, "date":Ljava/lang/String;
+    sget-object v1, Landroid/os/Environment;->DIRECTORY_PICTURES:Ljava/lang/String;
 
-    move-result-object v2
+    invoke-static {v1}, Landroid/os/Environment;->getExternalStoragePublicDirectory(Ljava/lang/String;)Ljava/io/File;
 
-    invoke-virtual {v2}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
+    move-result-object v1
+
+    .line 36
+    invoke-virtual {v1}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
 
     move-result-object v1
 
@@ -120,13 +115,9 @@
 
     invoke-virtual {v2, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v2
-
-    const-string/jumbo v3, "_%s"
+    const-string v3, "_%s"
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
 
     invoke-virtual {p0}, Lcom/oneplus/screenshot/util/FileInfo;->getSuffix()Ljava/lang/String;
 
@@ -134,47 +125,51 @@
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v2
-
     invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v2
 
-    new-array v3, v7, [Ljava/lang/Object;
+    const/4 v3, 0x1
 
-    aput-object v0, v3, v6
+    new-array v4, v3, [Ljava/lang/Object;
 
-    invoke-static {v2, v3}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    const/4 v5, 0x0
+
+    aput-object v0, v4, v5
+
+    invoke-static {v2, v4}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v2
 
     iput-object v2, p0, Lcom/oneplus/screenshot/util/FileInfo;->mName:Ljava/lang/String;
 
     .line 38
-    const-string/jumbo v2, "%s/%s/%s"
+    const-string v2, "%s/%s/%s"
 
-    const/4 v3, 0x3
+    const/4 v4, 0x3
 
-    new-array v3, v3, [Ljava/lang/Object;
+    new-array v4, v4, [Ljava/lang/Object;
 
-    aput-object v1, v3, v6
+    aput-object v1, v4, v5
 
-    aput-object p1, v3, v7
+    aput-object p1, v4, v3
 
-    iget-object v4, p0, Lcom/oneplus/screenshot/util/FileInfo;->mName:Ljava/lang/String;
+    iget-object v3, p0, Lcom/oneplus/screenshot/util/FileInfo;->mName:Ljava/lang/String;
 
     const/4 v5, 0x2
 
-    aput-object v4, v3, v5
+    aput-object v3, v4, v5
 
-    invoke-static {v2, v3}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    invoke-static {v2, v4}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v2
 
     iput-object v2, p0, Lcom/oneplus/screenshot/util/FileInfo;->mPath:Ljava/lang/String;
 
     .line 39
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -182,7 +177,6 @@
 .method public getName()Ljava/lang/String;
     .registers 2
 
-    .prologue
     .line 53
     iget-object v0, p0, Lcom/oneplus/screenshot/util/FileInfo;->mName:Ljava/lang/String;
 
@@ -192,7 +186,6 @@
 .method public getPath()Ljava/lang/String;
     .registers 2
 
-    .prologue
     .line 57
     iget-object v0, p0, Lcom/oneplus/screenshot/util/FileInfo;->mPath:Ljava/lang/String;
 
@@ -205,7 +198,6 @@
 .method public getTime()J
     .registers 3
 
-    .prologue
     .line 61
     iget-wide v0, p0, Lcom/oneplus/screenshot/util/FileInfo;->mTime:J
 
@@ -215,7 +207,6 @@
 .method public getUri()Landroid/net/Uri;
     .registers 2
 
-    .prologue
     .line 45
     iget-object v0, p0, Lcom/oneplus/screenshot/util/FileInfo;->mUri:Landroid/net/Uri;
 
@@ -226,10 +217,11 @@
     .registers 2
     .param p1, "uri"    # Landroid/net/Uri;
 
-    .prologue
     .line 49
     iput-object p1, p0, Lcom/oneplus/screenshot/util/FileInfo;->mUri:Landroid/net/Uri;
 
     .line 50
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

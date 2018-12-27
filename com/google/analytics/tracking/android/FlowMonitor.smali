@@ -55,23 +55,20 @@
 
 # direct methods
 .method constructor <init>(Landroid/content/Context;)V
-    .registers 8
+    .registers 6
     .param p1, "context"    # Landroid/content/Context;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
-
-    .prologue
-    const-wide/16 v4, 0x0
-
-    const/4 v2, 0x0
 
     .line 65
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 66
-    const-string/jumbo v0, "GoogleAnalytics"
+    const-string v0, "GoogleAnalytics"
 
-    invoke-virtual {p1, v0, v2}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    const/4 v1, 0x0
+
+    invoke-virtual {p1, v0, v1}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
 
     move-result-object v0
 
@@ -89,9 +86,9 @@
     .line 69
     iget-object v0, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mPersistentStore:Landroid/content/SharedPreferences;
 
-    const-string/jumbo v1, "hitsGenerated"
+    const-string v2, "hitsGenerated"
 
-    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
+    invoke-interface {v0, v2, v1}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
 
     move-result v0
 
@@ -100,9 +97,9 @@
     .line 70
     iget-object v0, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mPersistentStore:Landroid/content/SharedPreferences;
 
-    const-string/jumbo v1, "hitsPastProxy"
+    const-string v2, "hitsPastProxy"
 
-    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
+    invoke-interface {v0, v2, v1}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
 
     move-result v0
 
@@ -111,9 +108,9 @@
     .line 71
     iget-object v0, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mPersistentStore:Landroid/content/SharedPreferences;
 
-    const-string/jumbo v1, "hitsStoredInDb"
+    const-string v2, "hitsStoredInDb"
 
-    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
+    invoke-interface {v0, v2, v1}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
 
     move-result v0
 
@@ -122,9 +119,9 @@
     .line 72
     iget-object v0, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mPersistentStore:Landroid/content/SharedPreferences;
 
-    const-string/jumbo v1, "hitsDispatched"
+    const-string v2, "hitsDispatched"
 
-    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
+    invoke-interface {v0, v2, v1}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
 
     move-result v0
 
@@ -133,9 +130,11 @@
     .line 73
     iget-object v0, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mPersistentStore:Landroid/content/SharedPreferences;
 
-    const-string/jumbo v1, "lastQueryTimestamp"
+    const-string v1, "lastQueryTimestamp"
 
-    invoke-interface {v0, v1, v4, v5}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J
+    const-wide/16 v2, 0x0
+
+    invoke-interface {v0, v1, v2, v3}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J
 
     move-result-wide v0
 
@@ -144,9 +143,9 @@
     .line 74
     iget-wide v0, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mLastQueryTimeStamp:J
 
-    cmp-long v0, v0, v4
+    cmp-long v0, v0, v2
 
-    if-nez v0, :cond_69
+    if-nez v0, :cond_62
 
     .line 75
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
@@ -158,9 +157,9 @@
     .line 76
     iget-object v0, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mEditor:Landroid/content/SharedPreferences$Editor;
 
-    iget-wide v2, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mLastQueryTimeStamp:J
+    const-string v1, "lastQueryTimestamp"
 
-    const-string/jumbo v1, "lastQueryTimestamp"
+    iget-wide v2, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mLastQueryTimeStamp:J
 
     invoke-interface {v0, v1, v2, v3}, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;
 
@@ -170,35 +169,33 @@
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
     .line 80
-    :cond_69
-    return-void
+    :cond_62
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public static getInstance(Landroid/content/Context;)Lcom/google/analytics/tracking/android/FlowMonitor;
     .registers 2
     .param p0, "context"    # Landroid/content/Context;
 
-    .prologue
     .line 49
     sget-object v0, Lcom/google/analytics/tracking/android/FlowMonitor;->sInstance:Lcom/google/analytics/tracking/android/FlowMonitor;
 
-    if-eqz v0, :cond_7
-
-    .line 52
-    :goto_4
-    sget-object v0, Lcom/google/analytics/tracking/android/FlowMonitor;->sInstance:Lcom/google/analytics/tracking/android/FlowMonitor;
-
-    return-object v0
+    if-nez v0, :cond_b
 
     .line 50
-    :cond_7
     new-instance v0, Lcom/google/analytics/tracking/android/FlowMonitor;
 
     invoke-direct {v0, p0}, Lcom/google/analytics/tracking/android/FlowMonitor;-><init>(Landroid/content/Context;)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/FlowMonitor;->sInstance:Lcom/google/analytics/tracking/android/FlowMonitor;
 
-    goto :goto_4
+    .line 52
+    :cond_b
+    sget-object v0, Lcom/google/analytics/tracking/android/FlowMonitor;->sInstance:Lcom/google/analytics/tracking/android/FlowMonitor;
+
+    return-object v0
 .end method
 
 
@@ -206,7 +203,6 @@
 .method public buildAndResetHitsDispatched()Ljava/lang/String;
     .registers 5
 
-    .prologue
     .line 153
     new-instance v0, Ljava/lang/StringBuilder;
 
@@ -214,21 +210,17 @@
 
     .line 154
     .local v0, "paramBuilder":Ljava/lang/StringBuilder;
-    const-string/jumbo v1, "_s"
+    const-string v1, "_s"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    const-string v1, "="
 
-    const-string/jumbo v2, "="
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    iget v1, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mHitsDispatched:I
 
-    move-result-object v1
-
-    iget v2, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mHitsDispatched:I
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     .line 155
     const/4 v1, 0x0
@@ -238,11 +230,11 @@
     .line 156
     iget-object v1, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mEditor:Landroid/content/SharedPreferences$Editor;
 
-    iget v2, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mHitsDispatched:I
+    const-string v2, "hitsDispatched"
 
-    const-string/jumbo v3, "hitsDispatched"
+    iget v3, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mHitsDispatched:I
 
-    invoke-interface {v1, v3, v2}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
+    invoke-interface {v1, v2, v3}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
 
     .line 157
     iget-object v1, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mEditor:Landroid/content/SharedPreferences$Editor;
@@ -262,15 +254,13 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Ljava/lang/String;",
             ">;"
         }
     .end annotation
 
-    .prologue
     .line 98
     new-instance v0, Ljava/util/HashMap;
 
@@ -278,47 +268,47 @@
 
     .line 99
     .local v0, "hit":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
-    const-string/jumbo v1, "_t"
+    const-string v1, "_t"
 
-    const-string/jumbo v2, "flow"
+    const-string v2, "flow"
 
     invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 100
+    const-string v1, "_ts"
+
     iget-wide v2, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mLastQueryTimeStamp:J
 
     invoke-static {v2, v3}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v2
 
-    const-string/jumbo v2, "_ts"
-
-    invoke-interface {v0, v2, v1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 101
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
-    move-result-wide v2
+    move-result-wide v1
 
-    iput-wide v2, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mLastQueryTimeStamp:J
+    iput-wide v1, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mLastQueryTimeStamp:J
 
     .line 102
     iget-object v1, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mEditor:Landroid/content/SharedPreferences$Editor;
 
-    iget-wide v2, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mLastQueryTimeStamp:J
+    const-string v2, "lastQueryTimestamp"
 
-    const-string/jumbo v4, "lastQueryTimestamp"
+    iget-wide v3, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mLastQueryTimeStamp:J
 
-    invoke-interface {v1, v4, v2, v3}, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;
+    invoke-interface {v1, v2, v3, v4}, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;
 
     .line 104
+    const-string v1, "_g"
+
     invoke-virtual {p0}, Lcom/google/analytics/tracking/android/FlowMonitor;->getAndResetHitsGeneratedParameter()Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v2
 
-    const-string/jumbo v2, "_g"
-
-    invoke-interface {v0, v2, v1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 105
     return-object v0
@@ -327,26 +317,25 @@
 .method getAndResetHitsGeneratedParameter()Ljava/lang/String;
     .registers 5
 
-    .prologue
-    const/4 v3, 0x0
-
     .line 204
-    iget v1, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mHitsGenerated:I
+    iget v0, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mHitsGenerated:I
 
-    invoke-static {v1}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+    invoke-static {v0}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
 
     move-result-object v0
 
     .line 205
     .local v0, "result":Ljava/lang/String;
-    iput v3, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mHitsGenerated:I
+    const/4 v1, 0x0
+
+    iput v1, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mHitsGenerated:I
 
     .line 206
-    iget-object v1, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mEditor:Landroid/content/SharedPreferences$Editor;
+    iget-object v2, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mEditor:Landroid/content/SharedPreferences$Editor;
 
-    const-string/jumbo v2, "hitsGenerated"
+    const-string v3, "hitsGenerated"
 
-    invoke-interface {v1, v2, v3}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
+    invoke-interface {v2, v3, v1}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
 
     .line 207
     iget-object v1, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mEditor:Landroid/content/SharedPreferences$Editor;
@@ -360,11 +349,10 @@
 .method public getAndResetHitsPastProxy()Ljava/lang/String;
     .registers 5
 
-    .prologue
     .line 179
-    iget v1, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mHitsPastProxy:I
+    iget v0, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mHitsPastProxy:I
 
-    invoke-static {v1}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+    invoke-static {v0}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
 
     move-result-object v0
 
@@ -377,11 +365,11 @@
     .line 181
     iget-object v1, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mEditor:Landroid/content/SharedPreferences$Editor;
 
-    iget v2, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mHitsPastProxy:I
+    const-string v2, "hitsPastProxy"
 
-    const-string/jumbo v3, "hitsPastProxy"
+    iget v3, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mHitsPastProxy:I
 
-    invoke-interface {v1, v3, v2}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
+    invoke-interface {v1, v2, v3}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
 
     .line 182
     iget-object v1, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mEditor:Landroid/content/SharedPreferences$Editor;
@@ -395,11 +383,10 @@
 .method public getAndResetHitsStoredInDb()Ljava/lang/String;
     .registers 5
 
-    .prologue
     .line 126
-    iget v1, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mHitsStoredInDb:I
+    iget v0, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mHitsStoredInDb:I
 
-    invoke-static {v1}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+    invoke-static {v0}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
 
     move-result-object v0
 
@@ -412,11 +399,11 @@
     .line 128
     iget-object v1, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mEditor:Landroid/content/SharedPreferences$Editor;
 
-    iget v2, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mHitsStoredInDb:I
+    const-string v2, "hitsStoredInDb"
 
-    const-string/jumbo v3, "hitsStoredInDb"
+    iget v3, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mHitsStoredInDb:I
 
-    invoke-interface {v1, v3, v2}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
+    invoke-interface {v1, v2, v3}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
 
     .line 129
     iget-object v1, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mEditor:Landroid/content/SharedPreferences$Editor;
@@ -431,7 +418,6 @@
     .registers 4
     .param p1, "value"    # I
 
-    .prologue
     .line 139
     iget v0, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mHitsDispatched:I
 
@@ -442,7 +428,7 @@
     .line 140
     iget-object v0, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mEditor:Landroid/content/SharedPreferences$Editor;
 
-    const-string/jumbo v1, "hitsDispatched"
+    const-string v1, "hitsDispatched"
 
     invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
 
@@ -452,14 +438,15 @@
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
     .line 142
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public incrementHitsGenerated(I)V
     .registers 4
     .param p1, "value"    # I
 
-    .prologue
     .line 192
     iget v0, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mHitsGenerated:I
 
@@ -470,7 +457,7 @@
     .line 193
     iget-object v0, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mEditor:Landroid/content/SharedPreferences$Editor;
 
-    const-string/jumbo v1, "hitsGenerated"
+    const-string v1, "hitsGenerated"
 
     invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
 
@@ -480,14 +467,15 @@
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
     .line 195
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public incrementHitsPastProxy(I)V
     .registers 4
     .param p1, "value"    # I
 
-    .prologue
     .line 167
     iget v0, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mHitsPastProxy:I
 
@@ -498,7 +486,7 @@
     .line 168
     iget-object v0, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mEditor:Landroid/content/SharedPreferences$Editor;
 
-    const-string/jumbo v1, "hitsPastProxy"
+    const-string v1, "hitsPastProxy"
 
     invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
 
@@ -508,14 +496,15 @@
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
     .line 170
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public incrementHitsStoredInDb(I)V
     .registers 4
     .param p1, "value"    # I
 
-    .prologue
     .line 114
     iget v0, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mHitsStoredInDb:I
 
@@ -526,7 +515,7 @@
     .line 115
     iget-object v0, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mEditor:Landroid/content/SharedPreferences$Editor;
 
-    const-string/jumbo v1, "hitsStoredInDb"
+    const-string v1, "hitsStoredInDb"
 
     invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
 
@@ -536,54 +525,42 @@
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
     .line 117
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public shouldReport()Z
-    .registers 7
-
-    .prologue
-    const/4 v0, 0x1
-
-    const/4 v1, 0x0
+    .registers 5
 
     .line 86
-    iget v2, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mHitsGenerated:I
+    iget v0, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mHitsGenerated:I
 
-    const/16 v3, 0x32
+    const/16 v1, 0x32
 
-    if-ge v2, v3, :cond_a
+    if-lt v0, v1, :cond_16
 
-    :cond_8
-    move v0, v1
-
-    :goto_9
-    return v0
-
-    :cond_a
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
-    move-result-wide v2
+    move-result-wide v0
 
-    iget-wide v4, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mLastQueryTimeStamp:J
+    iget-wide v2, p0, Lcom/google/analytics/tracking/android/FlowMonitor;->mLastQueryTimeStamp:J
 
-    sub-long/2addr v2, v4
+    sub-long/2addr v0, v2
 
-    const-wide/32 v4, 0xdbba00
+    const-wide/32 v2, 0xdbba00
 
-    cmp-long v2, v2, v4
+    cmp-long v0, v0, v2
 
-    if-gez v2, :cond_1c
+    if-ltz v0, :cond_16
 
-    move v2, v0
+    const/4 v0, 0x1
 
-    :goto_19
-    if-nez v2, :cond_8
+    goto :goto_17
 
-    goto :goto_9
+    :cond_16
+    const/4 v0, 0x0
 
-    :cond_1c
-    move v2, v1
-
-    goto :goto_19
+    :goto_17
+    return v0
 .end method

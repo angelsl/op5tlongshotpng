@@ -11,8 +11,7 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/analytics/tracking/android/Hit;",
             ">;)I"
         }

@@ -23,7 +23,6 @@
     .registers 2
     .param p1, "value"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    .prologue
     .line 19
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -31,45 +30,48 @@
     iput-object p1, p0, Lcom/google/tagmanager/DebugValueBuilder;->value:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 21
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public static copyImmutableValue(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .registers 4
     .param p0, "value"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    .prologue
     .line 30
-    new-instance v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    new-instance v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    invoke-direct {v1}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;-><init>()V
+    invoke-direct {v0}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;-><init>()V
 
     .line 32
-    .local v1, "result":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    .local v0, "result":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     :try_start_5
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/MessageNano;->toByteArray(Lcom/google/tagmanager/protobuf/nano/MessageNano;)[B
 
-    move-result-object v2
+    move-result-object v1
 
-    invoke-static {v1, v2}, Lcom/google/tagmanager/protobuf/nano/MessageNano;->mergeFrom(Lcom/google/tagmanager/protobuf/nano/MessageNano;[B)Lcom/google/tagmanager/protobuf/nano/MessageNano;
+    invoke-static {v0, v1}, Lcom/google/tagmanager/protobuf/nano/MessageNano;->mergeFrom(Lcom/google/tagmanager/protobuf/nano/MessageNano;[B)Lcom/google/tagmanager/protobuf/nano/MessageNano;
     :try_end_c
     .catch Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException; {:try_start_5 .. :try_end_c} :catch_d
 
-    .line 36
-    :goto_c
-    return-object v1
+    .line 35
+    goto :goto_13
 
     .line 33
     :catch_d
-    move-exception v0
+    move-exception v1
 
     .line 34
-    .local v0, "e":Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
-    const-string/jumbo v2, "Failed to copy runtime value into debug value"
+    .local v1, "e":Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
+    const-string v2, "Failed to copy runtime value into debug value"
 
     invoke-static {v2}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
 
-    goto :goto_c
+    .line 36
+    .end local v1    # "e":Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
+    :goto_13
+    return-object v0
 .end method
 
 .method private validateType(IILjava/lang/String;)V
@@ -78,12 +80,13 @@
     .param p2, "actual"    # I
     .param p3, "message"    # Ljava/lang/String;
 
-    .prologue
     .line 24
     if-ne p1, p2, :cond_3
 
     .line 27
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 
     .line 25
     :cond_3
@@ -97,19 +100,18 @@
 
 # virtual methods
 .method public createValueMacroEvaluationInfoExtension()Lcom/google/tagmanager/MacroEvaluationInfoBuilder;
-    .registers 6
+    .registers 4
 
-    .prologue
     .line 73
-    iget-object v2, p0, Lcom/google/tagmanager/DebugValueBuilder;->value:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    iget-object v0, p0, Lcom/google/tagmanager/DebugValueBuilder;->value:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    iget v2, v2, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->type:I
+    iget v0, v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->type:I
 
-    const-string/jumbo v3, "set macro evaluation extension"
+    const-string v1, "set macro evaluation extension"
 
-    const/4 v4, 0x4
+    const/4 v2, 0x4
 
-    invoke-direct {p0, v4, v2, v3}, Lcom/google/tagmanager/DebugValueBuilder;->validateType(IILjava/lang/String;)V
+    invoke-direct {p0, v2, v0, v1}, Lcom/google/tagmanager/DebugValueBuilder;->validateType(IILjava/lang/String;)V
 
     .line 74
     new-instance v0, Lcom/google/analytics/containertag/proto/Debug$MacroEvaluationInfo;
@@ -118,11 +120,11 @@
 
     .line 75
     .local v0, "info":Lcom/google/analytics/containertag/proto/Debug$MacroEvaluationInfo;
-    iget-object v2, p0, Lcom/google/tagmanager/DebugValueBuilder;->value:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    iget-object v1, p0, Lcom/google/tagmanager/DebugValueBuilder;->value:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    sget-object v3, Lcom/google/analytics/containertag/proto/Debug$MacroEvaluationInfo;->macro:Lcom/google/tagmanager/protobuf/nano/Extension;
+    sget-object v2, Lcom/google/analytics/containertag/proto/Debug$MacroEvaluationInfo;->macro:Lcom/google/tagmanager/protobuf/nano/Extension;
 
-    invoke-virtual {v2, v3, v0}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->setExtension(Lcom/google/tagmanager/protobuf/nano/Extension;Ljava/lang/Object;)V
+    invoke-virtual {v1, v2, v0}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->setExtension(Lcom/google/tagmanager/protobuf/nano/Extension;Ljava/lang/Object;)V
 
     .line 76
     new-instance v1, Lcom/google/tagmanager/DebugMacroEvaluationInfoBuilder;
@@ -135,20 +137,19 @@
 .end method
 
 .method public getListItem(I)Lcom/google/tagmanager/ValueBuilder;
-    .registers 6
+    .registers 5
     .param p1, "index"    # I
 
-    .prologue
     .line 41
-    iget-object v1, p0, Lcom/google/tagmanager/DebugValueBuilder;->value:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    iget-object v0, p0, Lcom/google/tagmanager/DebugValueBuilder;->value:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    iget v1, v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->type:I
+    iget v0, v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->type:I
 
-    const-string/jumbo v2, "add new list item"
+    const-string v1, "add new list item"
 
-    const/4 v3, 0x2
+    const/4 v2, 0x2
 
-    invoke-direct {p0, v3, v1, v2}, Lcom/google/tagmanager/DebugValueBuilder;->validateType(IILjava/lang/String;)V
+    invoke-direct {p0, v2, v0, v1}, Lcom/google/tagmanager/DebugValueBuilder;->validateType(IILjava/lang/String;)V
 
     .line 43
     new-instance v0, Lcom/google/tagmanager/DebugValueBuilder;
@@ -167,20 +168,19 @@
 .end method
 
 .method public getMapKey(I)Lcom/google/tagmanager/ValueBuilder;
-    .registers 6
+    .registers 5
     .param p1, "index"    # I
 
-    .prologue
     .line 49
-    iget-object v1, p0, Lcom/google/tagmanager/DebugValueBuilder;->value:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    iget-object v0, p0, Lcom/google/tagmanager/DebugValueBuilder;->value:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    iget v1, v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->type:I
+    iget v0, v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->type:I
 
-    const-string/jumbo v2, "add new map key"
+    const-string v1, "add new map key"
 
-    const/4 v3, 0x3
+    const/4 v2, 0x3
 
-    invoke-direct {p0, v3, v1, v2}, Lcom/google/tagmanager/DebugValueBuilder;->validateType(IILjava/lang/String;)V
+    invoke-direct {p0, v2, v0, v1}, Lcom/google/tagmanager/DebugValueBuilder;->validateType(IILjava/lang/String;)V
 
     .line 51
     new-instance v0, Lcom/google/tagmanager/DebugValueBuilder;
@@ -199,20 +199,19 @@
 .end method
 
 .method public getMapValue(I)Lcom/google/tagmanager/ValueBuilder;
-    .registers 6
+    .registers 5
     .param p1, "index"    # I
 
-    .prologue
     .line 57
-    iget-object v1, p0, Lcom/google/tagmanager/DebugValueBuilder;->value:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    iget-object v0, p0, Lcom/google/tagmanager/DebugValueBuilder;->value:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    iget v1, v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->type:I
+    iget v0, v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->type:I
 
-    const-string/jumbo v2, "add new map value"
+    const-string v1, "add new map value"
 
-    const/4 v3, 0x3
+    const/4 v2, 0x3
 
-    invoke-direct {p0, v3, v1, v2}, Lcom/google/tagmanager/DebugValueBuilder;->validateType(IILjava/lang/String;)V
+    invoke-direct {p0, v2, v0, v1}, Lcom/google/tagmanager/DebugValueBuilder;->validateType(IILjava/lang/String;)V
 
     .line 59
     new-instance v0, Lcom/google/tagmanager/DebugValueBuilder;
@@ -231,20 +230,19 @@
 .end method
 
 .method public getTemplateToken(I)Lcom/google/tagmanager/ValueBuilder;
-    .registers 6
+    .registers 5
     .param p1, "index"    # I
 
-    .prologue
     .line 65
-    iget-object v1, p0, Lcom/google/tagmanager/DebugValueBuilder;->value:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    iget-object v0, p0, Lcom/google/tagmanager/DebugValueBuilder;->value:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    iget v1, v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->type:I
+    iget v0, v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->type:I
 
-    const-string/jumbo v2, "add template token"
+    const-string v1, "add template token"
 
-    const/4 v3, 0x7
+    const/4 v2, 0x7
 
-    invoke-direct {p0, v3, v1, v2}, Lcom/google/tagmanager/DebugValueBuilder;->validateType(IILjava/lang/String;)V
+    invoke-direct {p0, v2, v0, v1}, Lcom/google/tagmanager/DebugValueBuilder;->validateType(IILjava/lang/String;)V
 
     .line 67
     new-instance v0, Lcom/google/tagmanager/DebugValueBuilder;

@@ -27,9 +27,8 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/DataLayerPersistentStoreImpl;Ljava/util/List;J)V
-    .registers 6
+    .registers 5
 
-    .prologue
     .line 78
     iput-object p1, p0, Lcom/google/tagmanager/DataLayerPersistentStoreImpl$2;->this$0:Lcom/google/tagmanager/DataLayerPersistentStoreImpl;
 
@@ -47,7 +46,6 @@
 .method public run()V
     .registers 5
 
-    .prologue
     .line 81
     iget-object v0, p0, Lcom/google/tagmanager/DataLayerPersistentStoreImpl$2;->this$0:Lcom/google/tagmanager/DataLayerPersistentStoreImpl;
 
@@ -55,9 +53,10 @@
 
     iget-wide v2, p0, Lcom/google/tagmanager/DataLayerPersistentStoreImpl$2;->val$lifetimeInMillis:J
 
-    # invokes: Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->saveSingleThreaded(Ljava/util/List;J)V
     invoke-static {v0, v1, v2, v3}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->access$000(Lcom/google/tagmanager/DataLayerPersistentStoreImpl;Ljava/util/List;J)V
 
     .line 82
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

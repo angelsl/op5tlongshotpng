@@ -13,7 +13,6 @@
 .method private constructor <init>()V
     .registers 1
 
-    .prologue
     .line 44
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -21,180 +20,178 @@
 .end method
 
 .method private static deCamelCaseify(Ljava/lang/String;)Ljava/lang/String;
-    .registers 6
+    .registers 5
     .param p0, "identifier"    # Ljava/lang/String;
 
-    .prologue
     .line 141
-    new-instance v2, Ljava/lang/StringBuffer;
+    new-instance v0, Ljava/lang/StringBuffer;
 
-    invoke-direct {v2}, Ljava/lang/StringBuffer;-><init>()V
+    invoke-direct {v0}, Ljava/lang/StringBuffer;-><init>()V
 
     .line 142
-    .local v2, "out":Ljava/lang/StringBuffer;
+    .local v0, "out":Ljava/lang/StringBuffer;
     const/4 v1, 0x0
 
     .local v1, "i":I
     :goto_6
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
-    move-result v3
+    move-result v2
 
-    if-lt v1, v3, :cond_11
-
-    .line 152
-    invoke-virtual {v2}, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    return-object v3
+    if-ge v1, v2, :cond_33
 
     .line 143
-    :cond_11
-    invoke-virtual {p0, v1}, Ljava/lang/String;->charAt(I)C
-
-    move-result v0
-
-    .line 144
-    .local v0, "currentChar":C
-    if-eqz v1, :cond_23
-
-    .line 146
-    invoke-static {v0}, Ljava/lang/Character;->isUpperCase(C)Z
-
-    move-result v3
-
-    if-nez v3, :cond_2b
-
-    .line 149
-    invoke-virtual {v2, v0}, Ljava/lang/StringBuffer;->append(C)Ljava/lang/StringBuffer;
-
-    .line 142
-    :goto_20
-    add-int/lit8 v1, v1, 0x1
-
-    goto :goto_6
-
-    .line 145
-    :cond_23
-    invoke-static {v0}, Ljava/lang/Character;->toLowerCase(C)C
-
-    move-result v3
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuffer;->append(C)Ljava/lang/StringBuffer;
-
-    goto :goto_20
-
-    .line 147
-    :cond_2b
-    const/16 v3, 0x5f
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuffer;->append(C)Ljava/lang/StringBuffer;
-
-    move-result-object v3
-
-    invoke-static {v0}, Ljava/lang/Character;->toLowerCase(C)C
-
-    move-result v4
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuffer;->append(C)Ljava/lang/StringBuffer;
-
-    goto :goto_20
-.end method
-
-.method private static escapeString(Ljava/lang/String;)Ljava/lang/String;
-    .registers 8
-    .param p0, "str"    # Ljava/lang/String;
-
-    .prologue
-    .line 170
-    invoke-virtual {p0}, Ljava/lang/String;->length()I
-
-    move-result v3
-
-    .line 171
-    .local v3, "strLen":I
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    invoke-direct {v0, v3}, Ljava/lang/StringBuilder;-><init>(I)V
-
-    .line 172
-    .local v0, "b":Ljava/lang/StringBuilder;
-    const/4 v1, 0x0
-
-    .local v1, "i":I
-    :goto_a
-    if-lt v1, v3, :cond_11
-
-    .line 180
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    return-object v4
-
-    .line 173
-    :cond_11
     invoke-virtual {p0, v1}, Ljava/lang/String;->charAt(I)C
 
     move-result v2
 
-    .line 174
-    .local v2, "original":C
-    const/16 v4, 0x20
+    .line 144
+    .local v2, "currentChar":C
+    if-nez v1, :cond_1a
 
-    if-ge v2, v4, :cond_30
+    .line 145
+    invoke-static {v2}, Ljava/lang/Character;->toLowerCase(C)C
+
+    move-result v3
+
+    invoke-virtual {v0, v3}, Ljava/lang/StringBuffer;->append(C)Ljava/lang/StringBuffer;
+
+    goto :goto_30
+
+    .line 146
+    :cond_1a
+    invoke-static {v2}, Ljava/lang/Character;->isUpperCase(C)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_2d
+
+    .line 147
+    const/16 v3, 0x5f
+
+    invoke-virtual {v0, v3}, Ljava/lang/StringBuffer;->append(C)Ljava/lang/StringBuffer;
+
+    invoke-static {v2}, Ljava/lang/Character;->toLowerCase(C)C
+
+    move-result v3
+
+    invoke-virtual {v0, v3}, Ljava/lang/StringBuffer;->append(C)Ljava/lang/StringBuffer;
+
+    goto :goto_30
+
+    .line 149
+    :cond_2d
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuffer;->append(C)Ljava/lang/StringBuffer;
+
+    .line 142
+    .end local v2    # "currentChar":C
+    :goto_30
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_6
+
+    .line 152
+    .end local v1    # "i":I
+    :cond_33
+    invoke-virtual {v0}, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    return-object v1
+.end method
+
+.method private static escapeString(Ljava/lang/String;)Ljava/lang/String;
+    .registers 9
+    .param p0, "str"    # Ljava/lang/String;
+
+    .line 170
+    invoke-virtual {p0}, Ljava/lang/String;->length()I
+
+    move-result v0
+
+    .line 171
+    .local v0, "strLen":I
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1, v0}, Ljava/lang/StringBuilder;-><init>(I)V
+
+    .line 172
+    .local v1, "b":Ljava/lang/StringBuilder;
+    const/4 v2, 0x0
+
+    move v3, v2
+
+    .local v3, "i":I
+    :goto_b
+    if-ge v3, v0, :cond_3a
+
+    .line 173
+    invoke-virtual {p0, v3}, Ljava/lang/String;->charAt(I)C
+
+    move-result v4
+
+    .line 174
+    .local v4, "original":C
+    const/16 v5, 0x20
+
+    if-lt v4, v5, :cond_25
+
+    const/16 v5, 0x7e
+
+    if-gt v4, v5, :cond_25
+
+    const/16 v5, 0x22
+
+    if-eq v4, v5, :cond_25
+
+    const/16 v5, 0x27
+
+    if-eq v4, v5, :cond_25
+
+    .line 175
+    invoke-virtual {v1, v4}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    goto :goto_37
 
     .line 177
-    :cond_19
-    const/4 v4, 0x1
+    :cond_25
+    const-string v5, "\\u%04x"
 
-    new-array v4, v4, [Ljava/lang/Object;
+    const/4 v6, 0x1
 
-    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    new-array v6, v6, [Ljava/lang/Object;
+
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v7
+
+    aput-object v7, v6, v2
+
+    invoke-static {v5, v6}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v5
 
-    const/4 v6, 0x0
-
-    aput-object v5, v4, v6
-
-    const-string/jumbo v5, "\\u%04x"
-
-    invoke-static {v5, v4}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 172
-    :goto_2d
-    add-int/lit8 v1, v1, 0x1
+    .end local v4    # "original":C
+    :goto_37
+    add-int/lit8 v3, v3, 0x1
 
-    goto :goto_a
+    goto :goto_b
 
-    .line 174
-    :cond_30
-    const/16 v4, 0x7e
+    .line 180
+    .end local v3    # "i":I
+    :cond_3a
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    if-gt v2, v4, :cond_19
+    move-result-object v2
 
-    const/16 v4, 0x22
-
-    if-eq v2, v4, :cond_19
-
-    const/16 v4, 0x27
-
-    if-eq v2, v4, :cond_19
-
-    .line 175
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
-
-    goto :goto_2d
+    return-object v2
 .end method
 
 .method public static print(Lcom/google/tagmanager/protobuf/nano/MessageNano;)Ljava/lang/String;
-    .registers 6
+    .registers 5
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "<T:",
@@ -204,55 +201,55 @@
         }
     .end annotation
 
-    .prologue
     .line 56
     .local p0, "message":Lcom/google/tagmanager/protobuf/nano/MessageNano;, "TT;"
-    if-eqz p0, :cond_20
+    if-nez p0, :cond_5
+
+    .line 57
+    const-string v0, "null"
+
+    return-object v0
 
     .line 60
+    :cond_5
     new-instance v0, Ljava/lang/StringBuffer;
 
     invoke-direct {v0}, Ljava/lang/StringBuffer;-><init>()V
 
     .line 62
     .local v0, "buf":Ljava/lang/StringBuffer;
-    :try_start_7
+    :try_start_a
+    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
+
+    move-result-object v1
+
     invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     move-result-object v2
 
-    invoke-virtual {v2}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
+    new-instance v3, Ljava/lang/StringBuffer;
 
-    move-result-object v2
+    invoke-direct {v3}, Ljava/lang/StringBuffer;-><init>()V
 
-    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    invoke-static {v1, v2, p0, v3, v0}, Lcom/google/tagmanager/protobuf/nano/MessageNanoPrinter;->print(Ljava/lang/String;Ljava/lang/Class;Ljava/lang/Object;Ljava/lang/StringBuffer;Ljava/lang/StringBuffer;)V
+    :try_end_1e
+    .catch Ljava/lang/IllegalAccessException; {:try_start_a .. :try_end_1e} :catch_24
 
-    move-result-object v3
-
-    new-instance v4, Ljava/lang/StringBuffer;
-
-    invoke-direct {v4}, Ljava/lang/StringBuffer;-><init>()V
-
-    invoke-static {v2, v3, p0, v4, v0}, Lcom/google/tagmanager/protobuf/nano/MessageNanoPrinter;->print(Ljava/lang/String;Ljava/lang/Class;Ljava/lang/Object;Ljava/lang/StringBuffer;Ljava/lang/StringBuffer;)V
-    :try_end_1b
-    .catch Ljava/lang/IllegalAccessException; {:try_start_7 .. :try_end_1b} :catch_24
+    .line 66
+    nop
 
     .line 67
     invoke-virtual {v0}, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v1
 
-    return-object v2
-
-    .line 57
-    .end local v0    # "buf":Ljava/lang/StringBuffer;
-    :cond_20
-    const-string/jumbo v2, "null"
-
-    return-object v2
+    return-object v1
 
     .line 64
-    .restart local v0    # "buf":Ljava/lang/StringBuffer;
     :catch_24
     move-exception v1
 
@@ -262,19 +259,15 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v3, "Error printing proto: "
+    const-string v3, "Error printing proto: "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
 
     invoke-virtual {v1}, Ljava/lang/IllegalAccessException;->getMessage()Ljava/lang/String;
 
     move-result-object v3
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
 
     invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -284,7 +277,7 @@
 .end method
 
 .method private static print(Ljava/lang/String;Ljava/lang/Class;Ljava/lang/Object;Ljava/lang/StringBuffer;Ljava/lang/StringBuffer;)V
-    .registers 22
+    .registers 24
     .param p0, "identifier"    # Ljava/lang/String;
     .param p2, "message"    # Ljava/lang/Object;
     .param p3, "indentBuf"    # Ljava/lang/StringBuffer;
@@ -293,8 +286,8 @@
         value = {
             "(",
             "Ljava/lang/String;",
-            "Ljava/lang/Class",
-            "<*>;",
+            "Ljava/lang/Class<",
+            "*>;",
             "Ljava/lang/Object;",
             "Ljava/lang/StringBuffer;",
             "Ljava/lang/StringBuffer;",
@@ -308,422 +301,377 @@
         }
     .end annotation
 
-    .prologue
-    .line 76
     .local p1, "clazz":Ljava/lang/Class;, "Ljava/lang/Class<*>;"
-    const-class v15, Lcom/google/tagmanager/protobuf/nano/MessageNano;
-
-    move-object/from16 v0, p1
-
-    invoke-virtual {v15, v0}, Ljava/lang/Class;->isAssignableFrom(Ljava/lang/Class;)Z
-
-    move-result v15
-
-    if-nez v15, :cond_3a
-
-    .line 120
-    if-eqz p2, :cond_f9
-
-    .line 125
-    invoke-static/range {p0 .. p0}, Lcom/google/tagmanager/protobuf/nano/MessageNanoPrinter;->deCamelCaseify(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object p0
-
-    .line 126
-    move-object/from16 v0, p4
-
-    move-object/from16 v1, p3
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/StringBuffer;)Ljava/lang/StringBuffer;
-
-    move-result-object v15
-
-    move-object/from16 v0, p0
-
-    invoke-virtual {v15, v0}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
-
-    move-result-object v15
-
-    const-string/jumbo v16, ": "
-
-    invoke-virtual/range {v15 .. v16}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
-
-    .line 127
     move-object/from16 v0, p2
 
-    instance-of v15, v0, Ljava/lang/String;
-
-    if-nez v15, :cond_fa
-
-    .line 131
-    move-object/from16 v0, p4
-
-    move-object/from16 v1, p2
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/Object;)Ljava/lang/StringBuffer;
-
-    .line 133
-    .end local p2    # "message":Ljava/lang/Object;
-    :goto_31
-    const-string/jumbo v15, "\n"
-
-    move-object/from16 v0, p4
-
-    invoke-virtual {v0, v15}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
-
-    .line 135
-    :goto_39
-    return-void
-
-    .line 77
-    .restart local p2    # "message":Ljava/lang/Object;
-    :cond_3a
-    if-eqz p2, :cond_88
-
-    .line 82
-    move-object/from16 v0, p4
-
     move-object/from16 v1, p3
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/StringBuffer;)Ljava/lang/StringBuffer;
+    .line 76
+    move-object/from16 v2, p4
 
-    move-result-object v15
+    const-class v3, Lcom/google/tagmanager/protobuf/nano/MessageNano;
 
-    move-object/from16 v0, p0
+    move-object/from16 v4, p1
 
-    invoke-virtual {v15, v0}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    invoke-virtual {v3, v4}, Ljava/lang/Class;->isAssignableFrom(Ljava/lang/Class;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_ad
+
+    .line 77
+    if-nez v0, :cond_13
+
+    .line 80
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
+
+    .line 82
+    :cond_13
+    invoke-virtual {v2, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/StringBuffer;)Ljava/lang/StringBuffer;
+
+    move-object/from16 v3, p0
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
     .line 84
-    const-string/jumbo v15, "  "
+    const-string v5, "  "
 
-    move-object/from16 v0, p3
-
-    invoke-virtual {v0, v15}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    invoke-virtual {v1, v5}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
     .line 85
-    const-string/jumbo v15, " <\n"
+    const-string v5, " <\n"
 
-    move-object/from16 v0, p4
-
-    invoke-virtual {v0, v15}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    invoke-virtual {v2, v5}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
     .line 86
     invoke-virtual/range {p1 .. p1}, Ljava/lang/Class;->getFields()[Ljava/lang/reflect/Field;
 
-    move-result-object v2
+    move-result-object v5
 
-    .local v2, "arr$":[Ljava/lang/reflect/Field;
-    array-length v11, v2
+    .local v5, "arr$":[Ljava/lang/reflect/Field;
+    array-length v6, v5
 
-    .local v11, "len$":I
-    const/4 v9, 0x0
+    .local v6, "len$":I
+    const/4 v8, 0x0
 
-    .local v9, "i$":I
-    :goto_5f
-    if-lt v9, v11, :cond_89
+    .local v8, "i$":I
+    :goto_2b
+    if-ge v8, v6, :cond_92
 
-    .line 116
-    invoke-virtual/range {p3 .. p3}, Ljava/lang/StringBuffer;->length()I
-
-    move-result v15
-
-    const-string/jumbo v16, "  "
-
-    invoke-virtual/range {v16 .. v16}, Ljava/lang/String;->length()I
-
-    move-result v16
-
-    sub-int v15, v15, v16
-
-    invoke-virtual/range {p3 .. p3}, Ljava/lang/StringBuffer;->length()I
-
-    move-result v16
-
-    move-object/from16 v0, p3
-
-    move/from16 v1, v16
-
-    invoke-virtual {v0, v15, v1}, Ljava/lang/StringBuffer;->delete(II)Ljava/lang/StringBuffer;
-
-    .line 117
-    move-object/from16 v0, p4
-
-    move-object/from16 v1, p3
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/StringBuffer;)Ljava/lang/StringBuffer;
-
-    move-result-object v15
-
-    const-string/jumbo v16, ">\n"
-
-    invoke-virtual/range {v15 .. v16}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
-
-    goto :goto_39
-
-    .line 80
-    .end local v2    # "arr$":[Ljava/lang/reflect/Field;
-    .end local v9    # "i$":I
-    .end local v11    # "len$":I
-    :cond_88
-    return-void
-
-    .line 86
-    .restart local v2    # "arr$":[Ljava/lang/reflect/Field;
-    .restart local v9    # "i$":I
-    .restart local v11    # "len$":I
-    :cond_89
-    aget-object v5, v2, v9
+    aget-object v9, v5, v8
 
     .line 88
-    .local v5, "field":Ljava/lang/reflect/Field;
-    invoke-virtual {v5}, Ljava/lang/reflect/Field;->getModifiers()I
-
-    move-result v12
-
-    .line 89
-    .local v12, "modifiers":I
-    invoke-virtual {v5}, Ljava/lang/reflect/Field;->getName()Ljava/lang/String;
-
-    move-result-object v6
-
-    .line 90
-    .local v6, "fieldName":Ljava/lang/String;
-    and-int/lit8 v15, v12, 0x1
-
-    const/16 v16, 0x1
-
-    move/from16 v0, v16
-
-    if-eq v15, v0, :cond_9e
-
-    .line 86
-    :cond_9b
-    :goto_9b
-    add-int/lit8 v9, v9, 0x1
-
-    goto :goto_5f
-
-    .line 90
-    :cond_9e
-    and-int/lit8 v15, v12, 0x8
-
-    const/16 v16, 0x8
-
-    move/from16 v0, v16
-
-    if-eq v15, v0, :cond_9b
-
-    const-string/jumbo v15, "_"
-
-    invoke-virtual {v6, v15}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
-
-    move-result v15
-
-    if-nez v15, :cond_9b
-
-    const-string/jumbo v15, "_"
-
-    invoke-virtual {v6, v15}, Ljava/lang/String;->endsWith(Ljava/lang/String;)Z
-
-    move-result v15
-
-    if-nez v15, :cond_9b
-
-    .line 96
-    invoke-virtual {v5}, Ljava/lang/reflect/Field;->getType()Ljava/lang/Class;
-
-    move-result-object v7
-
-    .line 97
-    .local v7, "fieldType":Ljava/lang/Class;, "Ljava/lang/Class<*>;"
-    move-object/from16 v0, p2
-
-    invoke-virtual {v5, v0}, Ljava/lang/reflect/Field;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v14
-
-    .line 99
-    .local v14, "value":Ljava/lang/Object;
-    invoke-virtual {v7}, Ljava/lang/Class;->isArray()Z
-
-    move-result v15
-
-    if-nez v15, :cond_d0
-
-    .line 113
-    move-object/from16 v0, p3
-
-    move-object/from16 v1, p4
-
-    invoke-static {v6, v7, v14, v0, v1}, Lcom/google/tagmanager/protobuf/nano/MessageNanoPrinter;->print(Ljava/lang/String;Ljava/lang/Class;Ljava/lang/Object;Ljava/lang/StringBuffer;Ljava/lang/StringBuffer;)V
-
-    goto :goto_9b
-
-    .line 100
-    :cond_d0
-    invoke-virtual {v7}, Ljava/lang/Class;->getComponentType()Ljava/lang/Class;
-
-    move-result-object v3
-
-    .line 103
-    .local v3, "arrayType":Ljava/lang/Class;, "Ljava/lang/Class<*>;"
-    sget-object v15, Ljava/lang/Byte;->TYPE:Ljava/lang/Class;
-
-    if-eq v3, v15, :cond_ef
-
-    .line 106
-    if-eqz v14, :cond_f7
-
-    invoke-static {v14}, Ljava/lang/reflect/Array;->getLength(Ljava/lang/Object;)I
+    .local v9, "field":Ljava/lang/reflect/Field;
+    invoke-virtual {v9}, Ljava/lang/reflect/Field;->getModifiers()I
 
     move-result v10
 
-    .line 107
-    .local v10, "len":I
-    :goto_de
-    const/4 v8, 0x0
+    .line 89
+    .local v10, "modifiers":I
+    invoke-virtual {v9}, Ljava/lang/reflect/Field;->getName()Ljava/lang/String;
 
-    .local v8, "i":I
-    :goto_df
-    if-ge v8, v10, :cond_9b
+    move-result-object v11
+
+    .line 90
+    .local v11, "fieldName":Ljava/lang/String;
+    and-int/lit8 v12, v10, 0x1
+
+    const/4 v13, 0x1
+
+    if-ne v12, v13, :cond_8d
+
+    and-int/lit8 v12, v10, 0x8
+
+    const/16 v13, 0x8
+
+    if-eq v12, v13, :cond_8d
+
+    const-string v12, "_"
+
+    invoke-virtual {v11, v12}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+
+    move-result v12
+
+    if-nez v12, :cond_8d
+
+    const-string v12, "_"
+
+    invoke-virtual {v11, v12}, Ljava/lang/String;->endsWith(Ljava/lang/String;)Z
+
+    move-result v12
+
+    if-eqz v12, :cond_53
+
+    .line 93
+    goto :goto_8d
+
+    .line 96
+    :cond_53
+    invoke-virtual {v9}, Ljava/lang/reflect/Field;->getType()Ljava/lang/Class;
+
+    move-result-object v12
+
+    .line 97
+    .local v12, "fieldType":Ljava/lang/Class;, "Ljava/lang/Class<*>;"
+    invoke-virtual {v9, v0}, Ljava/lang/reflect/Field;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v13
+
+    .line 99
+    .local v13, "value":Ljava/lang/Object;
+    invoke-virtual {v12}, Ljava/lang/Class;->isArray()Z
+
+    move-result v14
+
+    if-eqz v14, :cond_8a
+
+    .line 100
+    invoke-virtual {v12}, Ljava/lang/Class;->getComponentType()Ljava/lang/Class;
+
+    move-result-object v14
+
+    .line 103
+    .local v14, "arrayType":Ljava/lang/Class;, "Ljava/lang/Class<*>;"
+    sget-object v15, Ljava/lang/Byte;->TYPE:Ljava/lang/Class;
+
+    if-ne v14, v15, :cond_6d
+
+    .line 104
+    invoke-static {v11, v12, v13, v1, v2}, Lcom/google/tagmanager/protobuf/nano/MessageNanoPrinter;->print(Ljava/lang/String;Ljava/lang/Class;Ljava/lang/Object;Ljava/lang/StringBuffer;Ljava/lang/StringBuffer;)V
+
+    goto :goto_89
+
+    .line 106
+    :cond_6d
+    if-nez v13, :cond_71
+
+    const/4 v15, 0x0
+
+    goto :goto_75
+
+    :cond_71
+    invoke-static {v13}, Ljava/lang/reflect/Array;->getLength(Ljava/lang/Object;)I
+
+    move-result v15
+
+    .line 107
+    .local v15, "len":I
+    :goto_75
+    const/16 v16, 0x0
+
+    .local v16, "i":I
+    :goto_77
+    move/from16 v17, v16
+
+    .end local v16    # "i":I
+    .local v17, "i":I
+    move/from16 v7, v17
+
+    if-ge v7, v15, :cond_89
 
     .line 108
-    invoke-static {v14, v8}, Ljava/lang/reflect/Array;->get(Ljava/lang/Object;I)Ljava/lang/Object;
+    .end local v17    # "i":I
+    .local v7, "i":I
+    invoke-static {v13, v7}, Ljava/lang/reflect/Array;->get(Ljava/lang/Object;I)Ljava/lang/Object;
 
     move-result-object v4
 
     .line 109
     .local v4, "elem":Ljava/lang/Object;
-    move-object/from16 v0, p3
-
-    move-object/from16 v1, p4
-
-    invoke-static {v6, v3, v4, v0, v1}, Lcom/google/tagmanager/protobuf/nano/MessageNanoPrinter;->print(Ljava/lang/String;Ljava/lang/Class;Ljava/lang/Object;Ljava/lang/StringBuffer;Ljava/lang/StringBuffer;)V
+    invoke-static {v11, v14, v4, v1, v2}, Lcom/google/tagmanager/protobuf/nano/MessageNanoPrinter;->print(Ljava/lang/String;Ljava/lang/Class;Ljava/lang/Object;Ljava/lang/StringBuffer;Ljava/lang/StringBuffer;)V
 
     .line 107
+    .end local v4    # "elem":Ljava/lang/Object;
+    add-int/lit8 v16, v7, 0x1
+
+    .end local v7    # "i":I
+    .restart local v16    # "i":I
+    move-object/from16 v4, p1
+
+    goto :goto_77
+
+    .line 112
+    .end local v14    # "arrayType":Ljava/lang/Class;, "Ljava/lang/Class<*>;"
+    .end local v15    # "len":I
+    .end local v16    # "i":I
+    :cond_89
+    :goto_89
+    goto :goto_8d
+
+    .line 113
+    :cond_8a
+    invoke-static {v11, v12, v13, v1, v2}, Lcom/google/tagmanager/protobuf/nano/MessageNanoPrinter;->print(Ljava/lang/String;Ljava/lang/Class;Ljava/lang/Object;Ljava/lang/StringBuffer;Ljava/lang/StringBuffer;)V
+
+    .line 86
+    .end local v9    # "field":Ljava/lang/reflect/Field;
+    .end local v10    # "modifiers":I
+    .end local v11    # "fieldName":Ljava/lang/String;
+    .end local v12    # "fieldType":Ljava/lang/Class;, "Ljava/lang/Class<*>;"
+    .end local v13    # "value":Ljava/lang/Object;
+    :cond_8d
+    :goto_8d
     add-int/lit8 v8, v8, 0x1
 
-    goto :goto_df
+    move-object/from16 v4, p1
 
-    .line 104
-    .end local v4    # "elem":Ljava/lang/Object;
-    .end local v8    # "i":I
-    .end local v10    # "len":I
-    :cond_ef
-    move-object/from16 v0, p3
+    goto :goto_2b
 
-    move-object/from16 v1, p4
+    .line 116
+    .end local v5    # "arr$":[Ljava/lang/reflect/Field;
+    .end local v6    # "len$":I
+    .end local v8    # "i$":I
+    :cond_92
+    invoke-virtual/range {p3 .. p3}, Ljava/lang/StringBuffer;->length()I
 
-    invoke-static {v6, v7, v14, v0, v1}, Lcom/google/tagmanager/protobuf/nano/MessageNanoPrinter;->print(Ljava/lang/String;Ljava/lang/Class;Ljava/lang/Object;Ljava/lang/StringBuffer;Ljava/lang/StringBuffer;)V
+    move-result v4
 
-    goto :goto_9b
+    const-string v5, "  "
 
-    .line 106
-    :cond_f7
-    const/4 v10, 0x0
+    invoke-virtual {v5}, Ljava/lang/String;->length()I
 
-    goto :goto_de
+    move-result v5
+
+    sub-int/2addr v4, v5
+
+    invoke-virtual/range {p3 .. p3}, Ljava/lang/StringBuffer;->length()I
+
+    move-result v5
+
+    invoke-virtual {v1, v4, v5}, Ljava/lang/StringBuffer;->delete(II)Ljava/lang/StringBuffer;
+
+    .line 117
+    invoke-virtual {v2, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/StringBuffer;)Ljava/lang/StringBuffer;
+
+    const-string v4, ">\n"
+
+    invoke-virtual {v2, v4}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+
+    goto :goto_e2
+
+    .line 120
+    :cond_ad
+    move-object/from16 v3, p0
+
+    if-nez v0, :cond_b2
 
     .line 123
-    .end local v2    # "arr$":[Ljava/lang/reflect/Field;
-    .end local v3    # "arrayType":Ljava/lang/Class;, "Ljava/lang/Class<*>;"
-    .end local v5    # "field":Ljava/lang/reflect/Field;
-    .end local v6    # "fieldName":Ljava/lang/String;
-    .end local v7    # "fieldType":Ljava/lang/Class;, "Ljava/lang/Class<*>;"
-    .end local v9    # "i$":I
-    .end local v11    # "len$":I
-    .end local v12    # "modifiers":I
-    .end local v14    # "value":Ljava/lang/Object;
-    :cond_f9
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
+
+    .line 125
+    :cond_b2
+    invoke-static/range {p0 .. p0}, Lcom/google/tagmanager/protobuf/nano/MessageNanoPrinter;->deCamelCaseify(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v3
+
+    .line 126
+    .end local p0    # "identifier":Ljava/lang/String;
+    .local v3, "identifier":Ljava/lang/String;
+    invoke-virtual {v2, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/StringBuffer;)Ljava/lang/StringBuffer;
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+
+    const-string v4, ": "
+
+    invoke-virtual {v2, v4}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+
+    .line 127
+    instance-of v4, v0, Ljava/lang/String;
+
+    if-eqz v4, :cond_da
 
     .line 128
-    :cond_fa
-    check-cast p2, Ljava/lang/String;
+    move-object v4, v0
 
-    .end local p2    # "message":Ljava/lang/Object;
-    invoke-static/range {p2 .. p2}, Lcom/google/tagmanager/protobuf/nano/MessageNanoPrinter;->sanitizeString(Ljava/lang/String;)Ljava/lang/String;
+    check-cast v4, Ljava/lang/String;
 
-    move-result-object v13
+    invoke-static {v4}, Lcom/google/tagmanager/protobuf/nano/MessageNanoPrinter;->sanitizeString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v4
 
     .line 129
-    .local v13, "stringMessage":Ljava/lang/String;
-    const-string/jumbo v15, "\""
+    .local v4, "stringMessage":Ljava/lang/String;
+    const-string v5, "\""
 
-    move-object/from16 v0, p4
+    invoke-virtual {v2, v5}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
-    invoke-virtual {v0, v15}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    invoke-virtual {v2, v4}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
-    move-result-object v15
+    const-string v5, "\""
 
-    invoke-virtual {v15, v13}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    invoke-virtual {v2, v5}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
-    move-result-object v15
+    .line 130
+    .end local v4    # "stringMessage":Ljava/lang/String;
+    goto :goto_dd
 
-    const-string/jumbo v16, "\""
+    .line 131
+    :cond_da
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuffer;->append(Ljava/lang/Object;)Ljava/lang/StringBuffer;
 
-    invoke-virtual/range {v15 .. v16}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    .line 133
+    :goto_dd
+    const-string v4, "\n"
 
-    goto/16 :goto_31
+    invoke-virtual {v2, v4}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+
+    .line 135
+    :goto_e2
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private static sanitizeString(Ljava/lang/String;)Ljava/lang/String;
     .registers 4
     .param p0, "str"    # Ljava/lang/String;
 
-    .prologue
-    const/16 v2, 0xc8
-
-    const/4 v1, 0x0
-
     .line 159
-    const-string/jumbo v0, "http"
+    const-string v0, "http"
 
     invoke-virtual {p0, v0}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
     move-result v0
 
-    if-eqz v0, :cond_11
+    if-nez v0, :cond_26
 
-    .line 163
-    :cond_c
-    :goto_c
-    invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/MessageNanoPrinter;->escapeString(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v0
-
-    return-object v0
-
-    .line 159
-    :cond_11
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
     move-result v0
 
-    if-le v0, v2, :cond_c
+    const/16 v1, 0xc8
+
+    if-le v0, v1, :cond_26
 
     .line 161
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {p0, v1, v2}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+    const/4 v2, 0x0
+
+    invoke-virtual {p0, v2, v1}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
     move-result-object v1
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
-    const-string/jumbo v1, "[...]"
+    const-string v1, "[...]"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object p0
 
-    goto :goto_c
+    .line 163
+    :cond_26
+    invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/MessageNanoPrinter;->escapeString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
 .end method

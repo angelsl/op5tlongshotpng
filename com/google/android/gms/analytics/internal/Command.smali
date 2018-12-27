@@ -16,8 +16,7 @@
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator",
-            "<",
+            "Landroid/os/Parcelable$Creator<",
             "Lcom/google/android/gms/analytics/internal/Command;",
             ">;"
         }
@@ -37,7 +36,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 54
     new-instance v0, Lcom/google/android/gms/analytics/internal/Command$1;
 
@@ -45,13 +43,14 @@
 
     sput-object v0, Lcom/google/android/gms/analytics/internal/Command;->CREATOR:Landroid/os/Parcelable$Creator;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>()V
     .registers 1
 
-    .prologue
     .line 66
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -63,7 +62,6 @@
     .registers 2
     .param p1, "in"    # Landroid/os/Parcel;
 
-    .prologue
     .line 70
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -71,7 +69,9 @@
     invoke-direct {p0, p1}, Lcom/google/android/gms/analytics/internal/Command;->readFromParcel(Landroid/os/Parcel;)V
 
     .line 72
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
@@ -80,7 +80,6 @@
     .param p2, "urlParam"    # Ljava/lang/String;
     .param p3, "value"    # Ljava/lang/String;
 
-    .prologue
     .line 36
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -94,14 +93,15 @@
     iput-object p3, p0, Lcom/google/android/gms/analytics/internal/Command;->value:Ljava/lang/String;
 
     .line 40
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private readFromParcel(Landroid/os/Parcel;)V
     .registers 3
     .param p1, "in"    # Landroid/os/Parcel;
 
-    .prologue
     .line 87
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
@@ -124,7 +124,9 @@
     iput-object v0, p0, Lcom/google/android/gms/analytics/internal/Command;->value:Ljava/lang/String;
 
     .line 90
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -132,7 +134,6 @@
 .method public describeContents()I
     .registers 2
 
-    .prologue
     .line 76
     const/4 v0, 0x0
 
@@ -142,7 +143,6 @@
 .method public getId()Ljava/lang/String;
     .registers 2
 
-    .prologue
     .line 43
     iget-object v0, p0, Lcom/google/android/gms/analytics/internal/Command;->id:Ljava/lang/String;
 
@@ -152,7 +152,6 @@
 .method public getUrlParam()Ljava/lang/String;
     .registers 2
 
-    .prologue
     .line 47
     iget-object v0, p0, Lcom/google/android/gms/analytics/internal/Command;->urlParam:Ljava/lang/String;
 
@@ -162,7 +161,6 @@
 .method public getValue()Ljava/lang/String;
     .registers 2
 
-    .prologue
     .line 51
     iget-object v0, p0, Lcom/google/android/gms/analytics/internal/Command;->value:Ljava/lang/String;
 
@@ -174,7 +172,6 @@
     .param p1, "out"    # Landroid/os/Parcel;
     .param p2, "flags"    # I
 
-    .prologue
     .line 81
     iget-object v0, p0, Lcom/google/android/gms/analytics/internal/Command;->id:Ljava/lang/String;
 
@@ -191,5 +188,7 @@
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
     .line 84
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

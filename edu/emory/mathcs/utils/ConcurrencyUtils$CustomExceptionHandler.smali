@@ -21,21 +21,22 @@
 .method private constructor <init>()V
     .registers 1
 
-    .prologue
     .line 283
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method synthetic constructor <init>(Ledu/emory/mathcs/utils/ConcurrencyUtils$CustomExceptionHandler;)V
+.method synthetic constructor <init>(Ledu/emory/mathcs/utils/ConcurrencyUtils$1;)V
     .registers 2
-    .param p1, "-this0"    # Ledu/emory/mathcs/utils/ConcurrencyUtils$CustomExceptionHandler;
+    .param p1, "x0"    # Ledu/emory/mathcs/utils/ConcurrencyUtils$1;
 
-    .prologue
+    .line 283
     invoke-direct {p0}, Ledu/emory/mathcs/utils/ConcurrencyUtils$CustomExceptionHandler;-><init>()V
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -45,10 +46,11 @@
     .param p1, "t"    # Ljava/lang/Thread;
     .param p2, "e"    # Ljava/lang/Throwable;
 
-    .prologue
     .line 285
     invoke-virtual {p2}, Ljava/lang/Throwable;->printStackTrace()V
 
     .line 286
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

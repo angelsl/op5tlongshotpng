@@ -12,12 +12,13 @@
     .registers 2
     .param p1, "stateContext"    # Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
-    .prologue
     .line 14
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/longshot/state/StitchOverState;-><init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;)V
 
     .line 15
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -25,7 +26,6 @@
 .method protected createJoinTask()Lcom/oneplus/screenshot/longshot/task/JoinTask;
     .registers 5
 
-    .prologue
     .line 22
     new-instance v0, Lcom/oneplus/screenshot/longshot/task/StitchOneTask;
 

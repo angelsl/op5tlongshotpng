@@ -11,7 +11,6 @@
 .method private constructor <init>()V
     .registers 1
 
-    .prologue
     .line 20
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -24,21 +23,21 @@
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 104
     const/4 v0, 0x0
 
     sput-object v0, Lcom/google/analytics/tracking/android/Log;->sGaInstance:Lcom/google/analytics/tracking/android/GoogleAnalytics;
 
     .line 105
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public static e(Ljava/lang/Exception;)V
     .registers 2
     .param p0, "e"    # Ljava/lang/Exception;
 
-    .prologue
     .line 41
     invoke-static {}, Lcom/google/analytics/tracking/android/Log;->getLogger()Lcom/google/analytics/tracking/android/Logger;
 
@@ -46,24 +45,22 @@
 
     .line 42
     .local v0, "l":Lcom/google/analytics/tracking/android/Logger;
-    if-nez v0, :cond_7
-
-    .line 45
-    :goto_6
-    return-void
+    if-eqz v0, :cond_9
 
     .line 43
-    :cond_7
     invoke-interface {v0, p0}, Lcom/google/analytics/tracking/android/Logger;->error(Ljava/lang/Exception;)V
 
-    goto :goto_6
+    .line 45
+    :cond_9
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public static e(Ljava/lang/String;)V
     .registers 2
     .param p0, "msg"    # Ljava/lang/String;
 
-    .prologue
     .line 29
     invoke-static {}, Lcom/google/analytics/tracking/android/Log;->getLogger()Lcom/google/analytics/tracking/android/Logger;
 
@@ -71,56 +68,51 @@
 
     .line 30
     .local v0, "l":Lcom/google/analytics/tracking/android/Logger;
-    if-nez v0, :cond_7
-
-    .line 33
-    :goto_6
-    return-void
+    if-eqz v0, :cond_9
 
     .line 31
-    :cond_7
     invoke-interface {v0, p0}, Lcom/google/analytics/tracking/android/Logger;->error(Ljava/lang/String;)V
 
-    goto :goto_6
+    .line 33
+    :cond_9
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private static getLogger()Lcom/google/analytics/tracking/android/Logger;
-    .registers 2
-
-    .prologue
-    const/4 v1, 0x0
+    .registers 1
 
     .line 92
     sget-object v0, Lcom/google/analytics/tracking/android/Log;->sGaInstance:Lcom/google/analytics/tracking/android/GoogleAnalytics;
 
-    if-eqz v0, :cond_a
-
-    .line 96
-    :goto_5
-    sget-object v0, Lcom/google/analytics/tracking/android/Log;->sGaInstance:Lcom/google/analytics/tracking/android/GoogleAnalytics;
-
-    if-nez v0, :cond_11
-
-    .line 99
-    return-object v1
+    if-nez v0, :cond_a
 
     .line 93
-    :cond_a
     invoke-static {}, Lcom/google/analytics/tracking/android/GoogleAnalytics;->getInstance()Lcom/google/analytics/tracking/android/GoogleAnalytics;
 
     move-result-object v0
 
     sput-object v0, Lcom/google/analytics/tracking/android/Log;->sGaInstance:Lcom/google/analytics/tracking/android/GoogleAnalytics;
 
-    goto :goto_5
+    .line 96
+    :cond_a
+    sget-object v0, Lcom/google/analytics/tracking/android/Log;->sGaInstance:Lcom/google/analytics/tracking/android/GoogleAnalytics;
+
+    if-eqz v0, :cond_15
 
     .line 97
-    :cond_11
     sget-object v0, Lcom/google/analytics/tracking/android/Log;->sGaInstance:Lcom/google/analytics/tracking/android/GoogleAnalytics;
 
     invoke-virtual {v0}, Lcom/google/analytics/tracking/android/GoogleAnalytics;->getLogger()Lcom/google/analytics/tracking/android/Logger;
 
     move-result-object v0
+
+    return-object v0
+
+    .line 99
+    :cond_15
+    const/4 v0, 0x0
 
     return-object v0
 .end method
@@ -129,7 +121,6 @@
     .registers 2
     .param p0, "msg"    # Ljava/lang/String;
 
-    .prologue
     .line 53
     invoke-static {}, Lcom/google/analytics/tracking/android/Log;->getLogger()Lcom/google/analytics/tracking/android/Logger;
 
@@ -137,23 +128,21 @@
 
     .line 54
     .local v0, "l":Lcom/google/analytics/tracking/android/Logger;
-    if-nez v0, :cond_7
-
-    .line 57
-    :goto_6
-    return-void
+    if-eqz v0, :cond_9
 
     .line 55
-    :cond_7
     invoke-interface {v0, p0}, Lcom/google/analytics/tracking/android/Logger;->info(Ljava/lang/String;)V
 
-    goto :goto_6
+    .line 57
+    :cond_9
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public static isVerbose()Z
     .registers 3
 
-    .prologue
     .line 84
     invoke-static {}, Lcom/google/analytics/tracking/android/Log;->getLogger()Lcom/google/analytics/tracking/android/Logger;
 
@@ -161,15 +150,9 @@
 
     .line 85
     .local v0, "l":Lcom/google/analytics/tracking/android/Logger;
-    if-nez v0, :cond_8
-
-    .line 88
-    const/4 v1, 0x0
-
-    return v1
+    if-eqz v0, :cond_15
 
     .line 86
-    :cond_8
     sget-object v1, Lcom/google/analytics/tracking/android/Logger$LogLevel;->VERBOSE:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
     invoke-static {}, Lcom/google/analytics/tracking/android/Log;->getLogger()Lcom/google/analytics/tracking/android/Logger;
@@ -185,13 +168,18 @@
     move-result v1
 
     return v1
+
+    .line 88
+    :cond_15
+    const/4 v1, 0x0
+
+    return v1
 .end method
 
 .method public static v(Ljava/lang/String;)V
     .registers 2
     .param p0, "msg"    # Ljava/lang/String;
 
-    .prologue
     .line 65
     invoke-static {}, Lcom/google/analytics/tracking/android/Log;->getLogger()Lcom/google/analytics/tracking/android/Logger;
 
@@ -199,24 +187,22 @@
 
     .line 66
     .local v0, "l":Lcom/google/analytics/tracking/android/Logger;
-    if-nez v0, :cond_7
-
-    .line 69
-    :goto_6
-    return-void
+    if-eqz v0, :cond_9
 
     .line 67
-    :cond_7
     invoke-interface {v0, p0}, Lcom/google/analytics/tracking/android/Logger;->verbose(Ljava/lang/String;)V
 
-    goto :goto_6
+    .line 69
+    :cond_9
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public static w(Ljava/lang/String;)V
     .registers 2
     .param p0, "msg"    # Ljava/lang/String;
 
-    .prologue
     .line 77
     invoke-static {}, Lcom/google/analytics/tracking/android/Log;->getLogger()Lcom/google/analytics/tracking/android/Logger;
 
@@ -224,15 +210,14 @@
 
     .line 78
     .local v0, "l":Lcom/google/analytics/tracking/android/Logger;
-    if-nez v0, :cond_7
-
-    .line 81
-    :goto_6
-    return-void
+    if-eqz v0, :cond_9
 
     .line 79
-    :cond_7
     invoke-interface {v0, p0}, Lcom/google/analytics/tracking/android/Logger;->warn(Ljava/lang/String;)V
 
-    goto :goto_6
+    .line 81
+    :cond_9
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

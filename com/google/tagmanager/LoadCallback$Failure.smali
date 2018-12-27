@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Ljava/lang/Enum",
-        "<",
+        "Ljava/lang/Enum<",
         "Lcom/google/tagmanager/LoadCallback$Failure;",
         ">;"
     }
@@ -37,17 +36,12 @@
 .method static constructor <clinit>()V
     .registers 5
 
-    .prologue
-    const/4 v4, 0x2
-
-    const/4 v3, 0x1
-
-    const/4 v2, 0x0
-
     .line 11
     new-instance v0, Lcom/google/tagmanager/LoadCallback$Failure;
 
-    const-string/jumbo v1, "NOT_AVAILABLE"
+    const-string v1, "NOT_AVAILABLE"
+
+    const/4 v2, 0x0
 
     invoke-direct {v0, v1, v2}, Lcom/google/tagmanager/LoadCallback$Failure;-><init>(Ljava/lang/String;I)V
 
@@ -56,7 +50,9 @@
     .line 12
     new-instance v0, Lcom/google/tagmanager/LoadCallback$Failure;
 
-    const-string/jumbo v1, "IO_ERROR"
+    const-string v1, "IO_ERROR"
+
+    const/4 v3, 0x1
 
     invoke-direct {v0, v1, v3}, Lcom/google/tagmanager/LoadCallback$Failure;-><init>(Ljava/lang/String;I)V
 
@@ -65,7 +61,9 @@
     .line 13
     new-instance v0, Lcom/google/tagmanager/LoadCallback$Failure;
 
-    const-string/jumbo v1, "SERVER_ERROR"
+    const-string v1, "SERVER_ERROR"
+
+    const/4 v4, 0x2
 
     invoke-direct {v0, v1, v4}, Lcom/google/tagmanager/LoadCallback$Failure;-><init>(Ljava/lang/String;I)V
 
@@ -90,7 +88,9 @@
 
     sput-object v0, Lcom/google/tagmanager/LoadCallback$Failure;->$VALUES:[Lcom/google/tagmanager/LoadCallback$Failure;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V
@@ -101,7 +101,6 @@
         }
     .end annotation
 
-    .prologue
     .line 10
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
@@ -112,7 +111,6 @@
     .registers 2
     .param p0, "name"    # Ljava/lang/String;
 
-    .prologue
     .line 10
     const-class v0, Lcom/google/tagmanager/LoadCallback$Failure;
 
@@ -128,11 +126,10 @@
 .method public static values()[Lcom/google/tagmanager/LoadCallback$Failure;
     .registers 1
 
-    .prologue
     .line 10
     sget-object v0, Lcom/google/tagmanager/LoadCallback$Failure;->$VALUES:[Lcom/google/tagmanager/LoadCallback$Failure;
 
-    invoke-virtual {v0}, Ljava/lang/Object;->clone()Ljava/lang/Object;
+    invoke-virtual {v0}, [Lcom/google/tagmanager/LoadCallback$Failure;->clone()Ljava/lang/Object;
 
     move-result-object v0
 

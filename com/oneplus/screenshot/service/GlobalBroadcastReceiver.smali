@@ -29,17 +29,16 @@
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "listener"    # Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver$BroadcastListener;
 
-    .prologue
-    const/4 v1, 0x0
-
     .line 31
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
 
     .line 25
-    iput-object v1, p0, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;->mListener:Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver$BroadcastListener;
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;->mListener:Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver$BroadcastListener;
 
     .line 26
-    iput-object v1, p0, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;->mContext:Landroid/content/Context;
+    iput-object v0, p0, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;->mContext:Landroid/content/Context;
 
     .line 32
     iput-object p1, p0, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;->mContext:Landroid/content/Context;
@@ -54,17 +53,17 @@
 
     .line 35
     .local v0, "filter":Landroid/content/IntentFilter;
-    const-string/jumbo v1, "android.intent.action.CLOSE_SYSTEM_DIALOGS"
+    const-string v1, "android.intent.action.CLOSE_SYSTEM_DIALOGS"
 
     invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
     .line 36
-    const-string/jumbo v1, "android.intent.action.SCREEN_OFF"
+    const-string v1, "android.intent.action.SCREEN_OFF"
 
     invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
     .line 37
-    const-string/jumbo v1, "android.intent.action.PHONE_STATE"
+    const-string v1, "android.intent.action.PHONE_STATE"
 
     invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
@@ -74,7 +73,9 @@
     invoke-virtual {v1, p0, v0}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 
     .line 39
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -84,11 +85,10 @@
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "intent"    # Landroid/content/Intent;
 
-    .prologue
     .line 46
-    iget-object v3, p0, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;->mListener:Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver$BroadcastListener;
+    iget-object v0, p0, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;->mListener:Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver$BroadcastListener;
 
-    if-eqz v3, :cond_1d
+    if-eqz v0, :cond_69
 
     .line 47
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
@@ -97,110 +97,132 @@
 
     .line 48
     .local v0, "action":Ljava/lang/String;
-    const-string/jumbo v3, "android.intent.action.CLOSE_SYSTEM_DIALOGS"
+    const-string v1, "android.intent.action.CLOSE_SYSTEM_DIALOGS"
 
-    invoke-virtual {v3, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v3
+    move-result v1
 
-    if-eqz v3, :cond_1e
+    if-eqz v1, :cond_32
 
     .line 49
-    const-string/jumbo v3, "reason"
+    const-string v1, "reason"
 
-    invoke-virtual {p2, v3}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {p2, v1}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 
     .line 50
     .local v1, "reason":Ljava/lang/String;
-    iget-object v3, p0, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;->mListener:Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver$BroadcastListener;
+    const-string v2, "Longshot.GlobalBroadcastReceiver"
 
-    invoke-interface {v3}, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver$BroadcastListener;->onCloseSystemDialogs()V
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    .line 64
-    .end local v0    # "action":Ljava/lang/String;
-    .end local v1    # "reason":Ljava/lang/String;
-    :cond_1d
-    :goto_1d
-    return-void
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v4, "close sysdialog:"
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v3, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 51
-    .restart local v0    # "action":Ljava/lang/String;
-    :cond_1e
-    const-string/jumbo v3, "android.intent.action.SCREEN_OFF"
+    iget-object v2, p0, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;->mListener:Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver$BroadcastListener;
 
-    invoke-virtual {v3, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_36
+    invoke-interface {v2}, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver$BroadcastListener;->onCloseSystemDialogs()V
 
     .line 52
-    const-string/jumbo v3, "Longshot.GlobalBroadcastReceiver"
+    .end local v1    # "reason":Ljava/lang/String;
+    goto :goto_69
 
-    const-string/jumbo v4, "dimiss due to screenoff"
+    :cond_32
+    const-string v1, "android.intent.action.SCREEN_OFF"
 
-    invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_47
 
     .line 53
-    iget-object v3, p0, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;->mListener:Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver$BroadcastListener;
+    const-string v1, "Longshot.GlobalBroadcastReceiver"
 
-    invoke-interface {v3}, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver$BroadcastListener;->onCloseSystemDialogs()V
+    const-string v2, "dimiss due to screenoff"
 
-    goto :goto_1d
+    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 54
-    :cond_36
-    const-string/jumbo v3, "android.intent.action.PHONE_STATE"
+    iget-object v1, p0, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;->mListener:Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver$BroadcastListener;
 
-    invoke-virtual {v3, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-interface {v1}, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver$BroadcastListener;->onCloseSystemDialogs()V
 
-    move-result v3
-
-    if-eqz v3, :cond_1d
+    goto :goto_69
 
     .line 55
-    const-string/jumbo v3, "state"
+    :cond_47
+    const-string v1, "android.intent.action.PHONE_STATE"
 
-    invoke-virtual {p2, v3}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result-object v2
+    move-result v1
+
+    if-eqz v1, :cond_69
 
     .line 56
-    .local v2, "state":Ljava/lang/String;
-    sget-object v3, Landroid/telephony/TelephonyManager;->EXTRA_STATE_RINGING:Ljava/lang/String;
+    const-string v1, "state"
 
-    invoke-virtual {v3, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p2, v1}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result v3
-
-    if-eqz v3, :cond_1d
+    move-result-object v1
 
     .line 57
-    const-string/jumbo v3, "Longshot.GlobalBroadcastReceiver"
+    .local v1, "state":Ljava/lang/String;
+    sget-object v2, Landroid/telephony/TelephonyManager;->EXTRA_STATE_RINGING:Ljava/lang/String;
 
-    const-string/jumbo v4, "dimiss due to ringing"
+    invoke-virtual {v2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    move-result v2
 
-    .line 59
-    iget-object v3, p0, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;->mListener:Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver$BroadcastListener;
+    if-eqz v2, :cond_69
 
-    invoke-interface {v3}, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver$BroadcastListener;->onRinging()V
+    .line 58
+    const-string v2, "Longshot.GlobalBroadcastReceiver"
 
-    goto :goto_1d
+    const-string v3, "dimiss due to ringing"
+
+    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 60
+    iget-object v2, p0, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;->mListener:Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver$BroadcastListener;
+
+    invoke-interface {v2}, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver$BroadcastListener;->onRinging()V
+
+    .line 65
+    .end local v0    # "action":Ljava/lang/String;
+    .end local v1    # "state":Ljava/lang/String;
+    :cond_69
+    :goto_69
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public unregister()V
     .registers 2
 
-    .prologue
-    .line 70
+    .line 71
     iget-object v0, p0, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;->mContext:Landroid/content/Context;
 
     invoke-virtual {v0, p0}, Landroid/content/Context;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
 
-    .line 71
-    return-void
+    .line 72
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

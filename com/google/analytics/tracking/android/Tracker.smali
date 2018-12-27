@@ -15,8 +15,7 @@
 .field private final mParams:Ljava/util/Map;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Ljava/lang/String;",
             ">;"
@@ -36,7 +35,6 @@
     .param p2, "trackingId"    # Ljava/lang/String;
     .param p3, "handler"    # Lcom/google/analytics/tracking/android/TrackerHandler;
 
-    .prologue
     .line 54
     invoke-static {}, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->getProvider()Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;
 
@@ -80,7 +78,6 @@
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 63
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -96,7 +93,7 @@
 
     move-result v0
 
-    if-nez v0, :cond_30
+    if-nez v0, :cond_2d
 
     .line 67
     iput-object p1, p0, Lcom/google/analytics/tracking/android/Tracker;->mName:Ljava/lang/String;
@@ -107,16 +104,16 @@
     .line 69
     iget-object v0, p0, Lcom/google/analytics/tracking/android/Tracker;->mParams:Ljava/util/Map;
 
-    const-string/jumbo v1, "&tid"
+    const-string v1, "&tid"
 
     invoke-interface {v0, v1, p2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 72
     iget-object v0, p0, Lcom/google/analytics/tracking/android/Tracker;->mParams:Ljava/util/Map;
 
-    const-string/jumbo v1, "useSecure"
+    const-string v1, "useSecure"
 
-    const-string/jumbo v2, "1"
+    const-string v2, "1"
 
     invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -136,10 +133,10 @@
     return-void
 
     .line 65
-    :cond_30
+    :cond_2d
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string/jumbo v1, "Tracker name cannot be empty."
+    const-string v1, "Tracker name cannot be empty."
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -149,11 +146,8 @@
 
 # virtual methods
 .method public get(Ljava/lang/String;)Ljava/lang/String;
-    .registers 5
+    .registers 4
     .param p1, "key"    # Ljava/lang/String;
-
-    .prologue
-    const/4 v2, 0x0
 
     .line 136
     invoke-static {}, Lcom/google/analytics/tracking/android/GAUsage;->getInstance()Lcom/google/analytics/tracking/android/GAUsage;
@@ -169,53 +163,24 @@
 
     move-result v0
 
-    if-nez v0, :cond_2e
+    const/4 v1, 0x0
+
+    if-eqz v0, :cond_11
+
+    .line 138
+    return-object v1
 
     .line 143
+    :cond_11
     iget-object v0, p0, Lcom/google/analytics/tracking/android/Tracker;->mParams:Ljava/util/Map;
 
     invoke-interface {v0, p1}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
 
     move-result v0
 
-    if-nez v0, :cond_2f
-
-    .line 145
-    const-string/jumbo v0, "&ul"
-
-    invoke-virtual {p1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v0
-
-    if-nez v0, :cond_38
-
-    .line 147
-    iget-object v0, p0, Lcom/google/analytics/tracking/android/Tracker;->mClientIdDefaultProvider:Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;
-
-    if-nez v0, :cond_41
-
-    .line 150
-    :cond_25
-    iget-object v0, p0, Lcom/google/analytics/tracking/android/Tracker;->mScreenResolutionDefaultProvider:Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;
-
-    if-nez v0, :cond_50
-
-    .line 153
-    :cond_29
-    iget-object v0, p0, Lcom/google/analytics/tracking/android/Tracker;->mAppFieldsDefaultProvider:Lcom/google/analytics/tracking/android/AppFieldsDefaultProvider;
-
-    if-nez v0, :cond_5f
-
-    .line 157
-    :cond_2d
-    return-object v2
-
-    .line 138
-    :cond_2e
-    return-object v2
+    if-eqz v0, :cond_22
 
     .line 144
-    :cond_2f
     iget-object v0, p0, Lcom/google/analytics/tracking/android/Tracker;->mParams:Ljava/util/Map;
 
     invoke-interface {v0, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -226,8 +191,17 @@
 
     return-object v0
 
+    .line 145
+    :cond_22
+    const-string v0, "&ul"
+
+    invoke-virtual {p1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_33
+
     .line 146
-    :cond_38
     invoke-static {}, Ljava/util/Locale;->getDefault()Ljava/util/Locale;
 
     move-result-object v0
@@ -239,14 +213,18 @@
     return-object v0
 
     .line 147
-    :cond_41
+    :cond_33
+    iget-object v0, p0, Lcom/google/analytics/tracking/android/Tracker;->mClientIdDefaultProvider:Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;
+
+    if-eqz v0, :cond_46
+
     iget-object v0, p0, Lcom/google/analytics/tracking/android/Tracker;->mClientIdDefaultProvider:Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;
 
     invoke-virtual {v0, p1}, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->providesField(Ljava/lang/String;)Z
 
     move-result v0
 
-    if-eqz v0, :cond_25
+    if-eqz v0, :cond_46
 
     .line 149
     iget-object v0, p0, Lcom/google/analytics/tracking/android/Tracker;->mClientIdDefaultProvider:Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;
@@ -258,14 +236,18 @@
     return-object v0
 
     .line 150
-    :cond_50
+    :cond_46
+    iget-object v0, p0, Lcom/google/analytics/tracking/android/Tracker;->mScreenResolutionDefaultProvider:Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;
+
+    if-eqz v0, :cond_59
+
     iget-object v0, p0, Lcom/google/analytics/tracking/android/Tracker;->mScreenResolutionDefaultProvider:Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;
 
     invoke-virtual {v0, p1}, Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;->providesField(Ljava/lang/String;)Z
 
     move-result v0
 
-    if-eqz v0, :cond_29
+    if-eqz v0, :cond_59
 
     .line 152
     iget-object v0, p0, Lcom/google/analytics/tracking/android/Tracker;->mScreenResolutionDefaultProvider:Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;
@@ -277,14 +259,18 @@
     return-object v0
 
     .line 153
-    :cond_5f
+    :cond_59
+    iget-object v0, p0, Lcom/google/analytics/tracking/android/Tracker;->mAppFieldsDefaultProvider:Lcom/google/analytics/tracking/android/AppFieldsDefaultProvider;
+
+    if-eqz v0, :cond_6c
+
     iget-object v0, p0, Lcom/google/analytics/tracking/android/Tracker;->mAppFieldsDefaultProvider:Lcom/google/analytics/tracking/android/AppFieldsDefaultProvider;
 
     invoke-virtual {v0, p1}, Lcom/google/analytics/tracking/android/AppFieldsDefaultProvider;->providesField(Ljava/lang/String;)Z
 
     move-result v0
 
-    if-eqz v0, :cond_2d
+    if-eqz v0, :cond_6c
 
     .line 155
     iget-object v0, p0, Lcom/google/analytics/tracking/android/Tracker;->mAppFieldsDefaultProvider:Lcom/google/analytics/tracking/android/AppFieldsDefaultProvider;
@@ -294,12 +280,15 @@
     move-result-object v0
 
     return-object v0
+
+    .line 157
+    :cond_6c
+    return-object v1
 .end method
 
 .method public getName()Ljava/lang/String;
     .registers 3
 
-    .prologue
     .line 85
     invoke-static {}, Lcom/google/analytics/tracking/android/GAUsage;->getInstance()Lcom/google/analytics/tracking/android/GAUsage;
 
@@ -320,7 +309,6 @@
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 91
     iget-object v0, p0, Lcom/google/analytics/tracking/android/Tracker;->mRateLimiter:Lcom/google/analytics/tracking/android/RateLimiter;
 
@@ -332,153 +320,128 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Ljava/lang/String;",
             ">;)V"
         }
     .end annotation
 
-    .prologue
-    .local p1, "params":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
-    const/4 v5, 0x1
-
-    const/4 v4, 0x0
-
     .line 105
+    .local p1, "params":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     invoke-static {}, Lcom/google/analytics/tracking/android/GAUsage;->getInstance()Lcom/google/analytics/tracking/android/GAUsage;
-
-    move-result-object v2
-
-    sget-object v3, Lcom/google/analytics/tracking/android/GAUsage$Field;->SEND:Lcom/google/analytics/tracking/android/GAUsage$Field;
-
-    invoke-virtual {v2, v3}, Lcom/google/analytics/tracking/android/GAUsage;->setUsage(Lcom/google/analytics/tracking/android/GAUsage$Field;)V
-
-    .line 106
-    new-instance v1, Ljava/util/HashMap;
-
-    invoke-direct {v1}, Ljava/util/HashMap;-><init>()V
-
-    .line 107
-    .local v1, "paramsToSend":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
-    iget-object v2, p0, Lcom/google/analytics/tracking/android/Tracker;->mParams:Ljava/util/Map;
-
-    invoke-interface {v1, v2}, Ljava/util/Map;->putAll(Ljava/util/Map;)V
-
-    .line 108
-    if-nez p1, :cond_44
-
-    .line 112
-    :goto_17
-    const-string/jumbo v2, "&tid"
-
-    invoke-interface {v1, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Ljava/lang/CharSequence;
-
-    invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v2
-
-    if-nez v2, :cond_48
-
-    .line 116
-    :goto_26
-    const-string/jumbo v2, "&t"
-
-    invoke-interface {v1, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v0
 
-    check-cast v0, Ljava/lang/String;
+    sget-object v1, Lcom/google/analytics/tracking/android/GAUsage$Field;->SEND:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    .line 117
-    .local v0, "hitType":Ljava/lang/String;
-    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+    invoke-virtual {v0, v1}, Lcom/google/analytics/tracking/android/GAUsage;->setUsage(Lcom/google/analytics/tracking/android/GAUsage$Field;)V
 
-    move-result v2
+    .line 106
+    new-instance v0, Ljava/util/HashMap;
 
-    if-nez v2, :cond_5a
+    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
-    .line 123
-    :goto_35
-    const-string/jumbo v2, "transaction"
+    .line 107
+    .local v0, "paramsToSend":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    iget-object v1, p0, Lcom/google/analytics/tracking/android/Tracker;->mParams:Ljava/util/Map;
 
-    invoke-virtual {v0, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-interface {v0, v1}, Ljava/util/Map;->putAll(Ljava/util/Map;)V
 
-    move-result v2
-
-    if-eqz v2, :cond_6f
-
-    .line 128
-    :cond_3e
-    iget-object v2, p0, Lcom/google/analytics/tracking/android/Tracker;->mHandler:Lcom/google/analytics/tracking/android/TrackerHandler;
-
-    invoke-virtual {v2, v1}, Lcom/google/analytics/tracking/android/TrackerHandler;->sendHit(Ljava/util/Map;)V
-
-    .line 130
-    :goto_43
-    return-void
+    .line 108
+    if-eqz p1, :cond_18
 
     .line 109
-    .end local v0    # "hitType":Ljava/lang/String;
-    :cond_44
-    invoke-interface {v1, p1}, Ljava/util/Map;->putAll(Ljava/util/Map;)V
+    invoke-interface {v0, p1}, Ljava/util/Map;->putAll(Ljava/util/Map;)V
 
-    goto :goto_17
+    .line 112
+    :cond_18
+    const-string v1, "&tid"
+
+    invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Ljava/lang/CharSequence;
+
+    invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v1
+
+    const/4 v2, 0x0
+
+    const/4 v3, 0x1
+
+    if-eqz v1, :cond_37
 
     .line 113
-    :cond_48
-    new-array v2, v5, [Ljava/lang/Object;
+    const-string v1, "Missing tracking id (%s) parameter."
 
-    const-string/jumbo v3, "&tid"
+    new-array v4, v3, [Ljava/lang/Object;
 
-    aput-object v3, v2, v4
+    const-string v5, "&tid"
 
-    const-string/jumbo v3, "Missing tracking id (%s) parameter."
+    aput-object v5, v4, v2
 
-    invoke-static {v3, v2}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    invoke-static {v1, v4}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v1
 
-    invoke-static {v2}, Lcom/google/analytics/tracking/android/Log;->w(Ljava/lang/String;)V
+    invoke-static {v1}, Lcom/google/analytics/tracking/android/Log;->w(Ljava/lang/String;)V
 
-    goto :goto_26
+    .line 116
+    :cond_37
+    const-string v1, "&t"
+
+    invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Ljava/lang/String;
+
+    .line 117
+    .local v1, "hitType":Ljava/lang/String;
+    invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_56
 
     .line 118
-    .restart local v0    # "hitType":Ljava/lang/String;
-    :cond_5a
-    new-array v2, v5, [Ljava/lang/Object;
+    const-string v4, "Missing hit type (%s) parameter."
 
-    const-string/jumbo v3, "&t"
+    new-array v3, v3, [Ljava/lang/Object;
 
-    aput-object v3, v2, v4
+    const-string v5, "&t"
 
-    const-string/jumbo v3, "Missing hit type (%s) parameter."
+    aput-object v5, v3, v2
 
-    invoke-static {v3, v2}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    invoke-static {v4, v3}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v2
 
     invoke-static {v2}, Lcom/google/analytics/tracking/android/Log;->w(Ljava/lang/String;)V
 
     .line 119
-    const-string/jumbo v0, ""
-
-    goto :goto_35
+    const-string v1, ""
 
     .line 123
-    :cond_6f
-    const-string/jumbo v2, "item"
+    :cond_56
+    const-string v2, "transaction"
 
-    invoke-virtual {v0, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v2
 
-    if-nez v2, :cond_3e
+    if-nez v2, :cond_74
+
+    const-string v2, "item"
+
+    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_74
 
     iget-object v2, p0, Lcom/google/analytics/tracking/android/Tracker;->mRateLimiter:Lcom/google/analytics/tracking/android/RateLimiter;
 
@@ -486,14 +449,26 @@
 
     move-result v2
 
-    if-nez v2, :cond_3e
+    if-nez v2, :cond_74
 
     .line 126
-    const-string/jumbo v2, "Too many hits sent too quickly, rate limiting invoked."
+    const-string v2, "Too many hits sent too quickly, rate limiting invoked."
 
     invoke-static {v2}, Lcom/google/analytics/tracking/android/Log;->w(Ljava/lang/String;)V
 
-    goto :goto_43
+    goto :goto_79
+
+    .line 128
+    :cond_74
+    iget-object v2, p0, Lcom/google/analytics/tracking/android/Tracker;->mHandler:Lcom/google/analytics/tracking/android/TrackerHandler;
+
+    invoke-virtual {v2, v0}, Lcom/google/analytics/tracking/android/TrackerHandler;->sendHit(Ljava/util/Map;)V
+
+    .line 130
+    :goto_79
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public set(Ljava/lang/String;Ljava/lang/String;)V
@@ -501,7 +476,6 @@
     .param p1, "key"    # Ljava/lang/String;
     .param p2, "value"    # Ljava/lang/String;
 
-    .prologue
     .line 166
     invoke-static {}, Lcom/google/analytics/tracking/android/GAUsage;->getInstance()Lcom/google/analytics/tracking/android/GAUsage;
 
@@ -512,22 +486,24 @@
     invoke-virtual {v0, v1}, Lcom/google/analytics/tracking/android/GAUsage;->setUsage(Lcom/google/analytics/tracking/android/GAUsage$Field;)V
 
     .line 167
-    if-eqz p2, :cond_11
+    if-nez p2, :cond_11
+
+    .line 168
+    iget-object v0, p0, Lcom/google/analytics/tracking/android/Tracker;->mParams:Ljava/util/Map;
+
+    invoke-interface {v0, p1}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+
+    goto :goto_16
 
     .line 170
+    :cond_11
     iget-object v0, p0, Lcom/google/analytics/tracking/android/Tracker;->mParams:Ljava/util/Map;
 
     invoke-interface {v0, p1, p2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 172
-    :goto_10
-    return-void
-
-    .line 168
-    :cond_11
-    iget-object v0, p0, Lcom/google/analytics/tracking/android/Tracker;->mParams:Ljava/util/Map;
-
-    invoke-interface {v0, p1}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
-
-    goto :goto_10
+    :goto_16
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

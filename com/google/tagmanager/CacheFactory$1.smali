@@ -19,8 +19,8 @@
 .annotation system Ldalvik/annotation/Signature;
     value = {
         "Ljava/lang/Object;",
-        "Lcom/google/tagmanager/CacheFactory$CacheSizeManager",
-        "<TK;TV;>;"
+        "Lcom/google/tagmanager/CacheFactory$CacheSizeManager<",
+        "TK;TV;>;"
     }
 .end annotation
 
@@ -33,7 +33,6 @@
 .method constructor <init>(Lcom/google/tagmanager/CacheFactory;)V
     .registers 2
 
-    .prologue
     .line 30
     .local p0, "this":Lcom/google/tagmanager/CacheFactory$1;, "Lcom/google/tagmanager/CacheFactory.1;"
     iput-object p1, p0, Lcom/google/tagmanager/CacheFactory$1;->this$0:Lcom/google/tagmanager/CacheFactory;
@@ -53,7 +52,6 @@
         }
     .end annotation
 
-    .prologue
     .line 33
     .local p0, "this":Lcom/google/tagmanager/CacheFactory$1;, "Lcom/google/tagmanager/CacheFactory.1;"
     .local p1, "key":Ljava/lang/Object;, "TK;"

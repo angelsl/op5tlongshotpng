@@ -12,12 +12,13 @@
     .registers 2
     .param p1, "stateContext"    # Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
-    .prologue
     .line 16
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/longshot/state/StitchNextState;-><init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;)V
 
     .line 17
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -25,7 +26,6 @@
 .method protected createJoinTask()Lcom/oneplus/screenshot/longshot/task/JoinTask;
     .registers 5
 
-    .prologue
     .line 24
     new-instance v0, Lcom/oneplus/screenshot/longshot/task/StitchOverTask;
 
@@ -51,7 +51,6 @@
 .method protected getPageText()Ljava/lang/String;
     .registers 2
 
-    .prologue
     .line 39
     invoke-super {p0}, Lcom/oneplus/screenshot/longshot/state/StitchNextState;->getPageText()Ljava/lang/String;
 
@@ -63,7 +62,6 @@
 .method protected getSuccessText()Ljava/lang/String;
     .registers 2
 
-    .prologue
     .line 34
     invoke-super {p0}, Lcom/oneplus/screenshot/longshot/state/StitchNextState;->getSuccessText()Ljava/lang/String;
 
@@ -75,7 +73,6 @@
 .method protected prepareSuccess()V
     .registers 3
 
-    .prologue
     .line 29
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/StitchOverState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
@@ -84,5 +81,7 @@
     invoke-interface {v0, v1}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->setLast(Z)V
 
     .line 30
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

@@ -6,8 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Ljava/util/LinkedList",
-        "<",
+        "Ljava/util/LinkedList<",
         "Lcom/oneplus/screenshot/longshot/cache/BitmapCache;",
         ">;"
     }
@@ -18,7 +17,6 @@
 .method public constructor <init>()V
     .registers 1
 
-    .prologue
     .line 11
     invoke-direct {p0}, Ljava/util/LinkedList;-><init>()V
 
@@ -30,7 +28,6 @@
 .method public getImageHeight()I
     .registers 3
 
-    .prologue
     .line 17
     new-instance v0, Ljava/util/ArrayList;
 

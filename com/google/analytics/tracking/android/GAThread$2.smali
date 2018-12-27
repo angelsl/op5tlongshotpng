@@ -25,7 +25,6 @@
 .method constructor <init>(Lcom/google/analytics/tracking/android/GAThread;)V
     .registers 2
 
-    .prologue
     .line 248
     iput-object p1, p0, Lcom/google/analytics/tracking/android/GAThread$2;->this$0:Lcom/google/analytics/tracking/android/GAThread;
 
@@ -39,7 +38,6 @@
 .method public run()V
     .registers 2
 
-    .prologue
     .line 252
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAThread$2;->this$0:Lcom/google/analytics/tracking/android/GAThread;
 
@@ -51,5 +49,7 @@
     invoke-interface {v0}, Lcom/google/analytics/tracking/android/ServiceProxy;->dispatch()V
 
     .line 253
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

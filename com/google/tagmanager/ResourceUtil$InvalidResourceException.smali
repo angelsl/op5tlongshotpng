@@ -19,10 +19,11 @@
     .registers 2
     .param p1, "s"    # Ljava/lang/String;
 
-    .prologue
     .line 37
     invoke-direct {p0, p1}, Ljava/lang/Exception;-><init>(Ljava/lang/String;)V
 
     .line 38
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

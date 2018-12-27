@@ -15,7 +15,6 @@
     .param p3, "isNext"    # Z
     .param p4, "isCurr"    # Z
 
-    .prologue
     .line 15
     invoke-direct {p0, p1, p2, p3}, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;-><init>(Landroid/content/Context;IZ)V
 
@@ -24,20 +23,21 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v1, "Full"
+    const-string v1, "Full"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    if-eqz p4, :cond_12
 
-    if-eqz p4, :cond_1f
+    const-string v1, "Curr"
 
-    const-string/jumbo v0, "Curr"
+    goto :goto_14
+
+    :cond_12
+    const-string v1, "Last"
 
     :goto_14
-    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -46,11 +46,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/dump/FullDumper;->mTag:Ljava/lang/String;
 
     .line 17
-    return-void
-
-    .line 16
-    :cond_1f
-    const-string/jumbo v0, "Last"
-
-    goto :goto_14
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

@@ -10,7 +10,6 @@
 .method constructor <init>()V
     .registers 1
 
-    .prologue
     .line 7
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -22,7 +21,6 @@
 .method public createValueMacroEvaluationInfoExtension()Lcom/google/tagmanager/MacroEvaluationInfoBuilder;
     .registers 2
 
-    .prologue
     .line 31
     new-instance v0, Lcom/google/tagmanager/NoopMacroEvaluationInfoBuilder;
 
@@ -35,7 +33,6 @@
     .registers 3
     .param p1, "index"    # I
 
-    .prologue
     .line 11
     new-instance v0, Lcom/google/tagmanager/NoopValueBuilder;
 
@@ -48,7 +45,6 @@
     .registers 3
     .param p1, "index"    # I
 
-    .prologue
     .line 16
     new-instance v0, Lcom/google/tagmanager/NoopValueBuilder;
 
@@ -61,7 +57,6 @@
     .registers 3
     .param p1, "index"    # I
 
-    .prologue
     .line 21
     new-instance v0, Lcom/google/tagmanager/NoopValueBuilder;
 
@@ -74,7 +69,6 @@
     .registers 3
     .param p1, "index"    # I
 
-    .prologue
     .line 26
     new-instance v0, Lcom/google/tagmanager/NoopValueBuilder;
 

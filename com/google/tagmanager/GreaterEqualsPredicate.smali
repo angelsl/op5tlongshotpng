@@ -11,7 +11,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 13
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->GREATER_EQUALS:Lcom/google/analytics/containertag/common/FunctionType;
 
@@ -21,26 +20,28 @@
 
     sput-object v0, Lcom/google/tagmanager/GreaterEqualsPredicate;->ID:Ljava/lang/String;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>()V
     .registers 2
 
-    .prologue
     .line 20
     sget-object v0, Lcom/google/tagmanager/GreaterEqualsPredicate;->ID:Ljava/lang/String;
 
     invoke-direct {p0, v0}, Lcom/google/tagmanager/NumberPredicate;-><init>(Ljava/lang/String;)V
 
     .line 21
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
     .registers 1
 
-    .prologue
     .line 16
     sget-object v0, Lcom/google/tagmanager/GreaterEqualsPredicate;->ID:Ljava/lang/String;
 
@@ -50,7 +51,7 @@
 
 # virtual methods
 .method protected evaluateNumber(Lcom/google/tagmanager/TypedNumber;Lcom/google/tagmanager/TypedNumber;Ljava/util/Map;)Z
-    .registers 6
+    .registers 5
     .param p1, "arg0"    # Lcom/google/tagmanager/TypedNumber;
     .param p2, "arg1"    # Lcom/google/tagmanager/TypedNumber;
     .annotation system Ldalvik/annotation/Signature;
@@ -58,30 +59,28 @@
             "(",
             "Lcom/google/tagmanager/TypedNumber;",
             "Lcom/google/tagmanager/TypedNumber;",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;)Z"
         }
     .end annotation
 
-    .prologue
-    .local p3, "parameters":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
-    const/4 v0, 0x0
-
     .line 26
+    .local p3, "parameters":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
     invoke-virtual {p1, p2}, Lcom/google/tagmanager/TypedNumber;->compareTo(Lcom/google/tagmanager/TypedNumber;)I
 
-    move-result v1
+    move-result v0
 
-    if-gez v1, :cond_8
+    if-ltz v0, :cond_8
 
-    :goto_7
-    return v0
-
-    :cond_8
     const/4 v0, 0x1
 
-    goto :goto_7
+    goto :goto_9
+
+    :cond_8
+    const/4 v0, 0x0
+
+    :goto_9
+    return v0
 .end method

@@ -26,7 +26,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 23
     new-instance v0, Ljava/lang/Object;
 
@@ -34,14 +33,15 @@
 
     sput-object v0, Lcom/google/tagmanager/DelayedHitSender;->sInstanceLock:Ljava/lang/Object;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private constructor <init>(Landroid/content/Context;)V
     .registers 4
     .param p1, "context"    # Landroid/content/Context;
 
-    .prologue
     .line 32
     invoke-static {p1}, Lcom/google/tagmanager/HitSendingThreadImpl;->getInstance(Landroid/content/Context;)Lcom/google/tagmanager/HitSendingThreadImpl;
 
@@ -54,7 +54,9 @@
     invoke-direct {p0, v0, v1}, Lcom/google/tagmanager/DelayedHitSender;-><init>(Lcom/google/tagmanager/HitSendingThread;Lcom/google/tagmanager/RateLimiter;)V
 
     .line 33
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method constructor <init>(Lcom/google/tagmanager/HitSendingThread;Lcom/google/tagmanager/RateLimiter;)V
@@ -64,7 +66,6 @@
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 36
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -75,52 +76,48 @@
     iput-object p2, p0, Lcom/google/tagmanager/DelayedHitSender;->mRateLimiter:Lcom/google/tagmanager/RateLimiter;
 
     .line 39
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public static getInstance(Landroid/content/Context;)Lcom/google/tagmanager/HitSender;
-    .registers 4
+    .registers 3
     .param p0, "context"    # Landroid/content/Context;
 
-    .prologue
     .line 42
     sget-object v0, Lcom/google/tagmanager/DelayedHitSender;->sInstanceLock:Ljava/lang/Object;
 
-    .local v0, "-l_1_R":Ljava/lang/Object;
     monitor-enter v0
 
     .line 43
     :try_start_3
-    sget-object v2, Lcom/google/tagmanager/DelayedHitSender;->sInstance:Lcom/google/tagmanager/DelayedHitSender;
+    sget-object v1, Lcom/google/tagmanager/DelayedHitSender;->sInstance:Lcom/google/tagmanager/DelayedHitSender;
 
-    if-eqz v2, :cond_b
-
-    .line 46
-    :goto_7
-    sget-object v2, Lcom/google/tagmanager/DelayedHitSender;->sInstance:Lcom/google/tagmanager/DelayedHitSender;
-
-    monitor-exit v0
-
-    return-object v2
+    if-nez v1, :cond_e
 
     .line 44
-    :cond_b
-    new-instance v2, Lcom/google/tagmanager/DelayedHitSender;
+    new-instance v1, Lcom/google/tagmanager/DelayedHitSender;
 
-    invoke-direct {v2, p0}, Lcom/google/tagmanager/DelayedHitSender;-><init>(Landroid/content/Context;)V
+    invoke-direct {v1, p0}, Lcom/google/tagmanager/DelayedHitSender;-><init>(Landroid/content/Context;)V
 
-    sput-object v2, Lcom/google/tagmanager/DelayedHitSender;->sInstance:Lcom/google/tagmanager/DelayedHitSender;
+    sput-object v1, Lcom/google/tagmanager/DelayedHitSender;->sInstance:Lcom/google/tagmanager/DelayedHitSender;
 
-    goto :goto_7
+    .line 46
+    :cond_e
+    sget-object v1, Lcom/google/tagmanager/DelayedHitSender;->sInstance:Lcom/google/tagmanager/DelayedHitSender;
+
+    monitor-exit v0
+
+    return-object v1
 
     .line 47
-    :catchall_13
+    :catchall_12
     move-exception v1
 
-    .local v1, "-l_2_R":Ljava/lang/Object;
     monitor-exit v0
-    :try_end_15
-    .catchall {:try_start_3 .. :try_end_15} :catchall_13
+    :try_end_14
+    .catchall {:try_start_3 .. :try_end_14} :catchall_12
 
     throw v1
 .end method
@@ -128,134 +125,121 @@
 
 # virtual methods
 .method public sendHit(Ljava/lang/String;)Z
-    .registers 6
+    .registers 5
     .param p1, "url"    # Ljava/lang/String;
 
-    .prologue
-    const/4 v3, 0x0
-
     .line 63
-    iget-object v1, p0, Lcom/google/tagmanager/DelayedHitSender;->mRateLimiter:Lcom/google/tagmanager/RateLimiter;
+    iget-object v0, p0, Lcom/google/tagmanager/DelayedHitSender;->mRateLimiter:Lcom/google/tagmanager/RateLimiter;
 
-    invoke-interface {v1}, Lcom/google/tagmanager/RateLimiter;->tokenAvailable()Z
+    invoke-interface {v0}, Lcom/google/tagmanager/RateLimiter;->tokenAvailable()Z
 
-    move-result v1
+    move-result v0
 
-    if-eqz v1, :cond_14
+    const/4 v1, 0x0
 
-    .line 68
-    iget-object v1, p0, Lcom/google/tagmanager/DelayedHitSender;->mWrapperUrl:Ljava/lang/String;
-
-    if-nez v1, :cond_1b
-
-    .line 78
-    :cond_d
-    :goto_d
-    iget-object v1, p0, Lcom/google/tagmanager/DelayedHitSender;->mSendingThread:Lcom/google/tagmanager/HitSendingThread;
-
-    invoke-interface {v1, p1}, Lcom/google/tagmanager/HitSendingThread;->sendHit(Ljava/lang/String;)V
-
-    .line 79
-    const/4 v1, 0x1
-
-    return v1
+    if-nez v0, :cond_f
 
     .line 64
-    :cond_14
-    const-string/jumbo v1, "Too many urls sent too quickly with the TagManagerSender, rate limiting invoked."
+    const-string v0, "Too many urls sent too quickly with the TagManagerSender, rate limiting invoked."
 
-    invoke-static {v1}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
+    invoke-static {v0}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
 
     .line 65
-    return v3
+    return v1
 
     .line 68
-    :cond_1b
-    iget-object v1, p0, Lcom/google/tagmanager/DelayedHitSender;->mWrapperQueryParameter:Ljava/lang/String;
+    :cond_f
+    iget-object v0, p0, Lcom/google/tagmanager/DelayedHitSender;->mWrapperUrl:Ljava/lang/String;
 
-    if-eqz v1, :cond_d
+    if-eqz v0, :cond_5a
+
+    iget-object v0, p0, Lcom/google/tagmanager/DelayedHitSender;->mWrapperQueryParameter:Ljava/lang/String;
+
+    if-eqz v0, :cond_5a
 
     .line 70
-    :try_start_1f
-    new-instance v1, Ljava/lang/StringBuilder;
+    :try_start_17
+    new-instance v0, Ljava/lang/StringBuilder;
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
     iget-object v2, p0, Lcom/google/tagmanager/DelayedHitSender;->mWrapperUrl:Ljava/lang/String;
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    const-string v2, "?"
 
-    const-string/jumbo v2, "?"
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     iget-object v2, p0, Lcom/google/tagmanager/DelayedHitSender;->mWrapperQueryParameter:Ljava/lang/String;
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    const-string v2, "="
 
-    const-string/jumbo v2, "="
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    const-string/jumbo v2, "UTF-8"
+    const-string v2, "UTF-8"
 
     invoke-static {p1, v2}, Ljava/net/URLEncoder;->encode(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v0
 
-    move-result-object p1
+    move-object p1, v0
 
     .line 71
-    new-instance v1, Ljava/lang/StringBuilder;
+    new-instance v0, Ljava/lang/StringBuilder;
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v2, "Sending wrapped url hit: "
+    const-string v2, "Sending wrapped url hit: "
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-static {v0}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
+    :try_end_52
+    .catch Ljava/io/UnsupportedEncodingException; {:try_start_17 .. :try_end_52} :catch_53
 
-    move-result-object v1
-
-    invoke-static {v1}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
-    :try_end_64
-    .catch Ljava/io/UnsupportedEncodingException; {:try_start_1f .. :try_end_64} :catch_65
-
-    goto :goto_d
+    .line 75
+    goto :goto_5a
 
     .line 72
-    :catch_65
+    :catch_53
     move-exception v0
 
     .line 73
     .local v0, "e":Ljava/io/UnsupportedEncodingException;
-    const-string/jumbo v1, "Error wrapping URL for testing."
+    const-string v2, "Error wrapping URL for testing."
 
-    invoke-static {v1, v0}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)V
+    invoke-static {v2, v0}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)V
 
     .line 74
-    return v3
+    return v1
+
+    .line 78
+    .end local v0    # "e":Ljava/io/UnsupportedEncodingException;
+    :cond_5a
+    :goto_5a
+    iget-object v0, p0, Lcom/google/tagmanager/DelayedHitSender;->mSendingThread:Lcom/google/tagmanager/HitSendingThread;
+
+    invoke-interface {v0, p1}, Lcom/google/tagmanager/HitSendingThread;->sendHit(Ljava/lang/String;)V
+
+    .line 79
+    const/4 v0, 0x1
+
+    return v0
 .end method
 
 .method public setUrlWrapModeForTesting(Ljava/lang/String;Ljava/lang/String;)V
@@ -263,7 +247,6 @@
     .param p1, "url"    # Ljava/lang/String;
     .param p2, "queryParameter"    # Ljava/lang/String;
 
-    .prologue
     .line 51
     iput-object p1, p0, Lcom/google/tagmanager/DelayedHitSender;->mWrapperUrl:Ljava/lang/String;
 
@@ -271,5 +254,7 @@
     iput-object p2, p0, Lcom/google/tagmanager/DelayedHitSender;->mWrapperQueryParameter:Ljava/lang/String;
 
     .line 53
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

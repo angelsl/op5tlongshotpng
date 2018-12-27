@@ -28,15 +28,14 @@
     .param p3, "originalHandler"    # Ljava/lang/Thread$UncaughtExceptionHandler;
     .param p4, "context"    # Landroid/content/Context;
 
-    .prologue
     .line 48
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 49
-    if-eqz p1, :cond_3b
+    if-eqz p1, :cond_43
 
     .line 52
-    if-eqz p2, :cond_44
+    if-eqz p2, :cond_3b
 
     .line 55
     iput-object p3, p0, Lcom/google/analytics/tracking/android/ExceptionReporter;->mOriginalHandler:Ljava/lang/Thread$UncaughtExceptionHandler;
@@ -63,26 +62,27 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v1, "ExceptionReporter created, original handler is "
+    const-string v1, "ExceptionReporter created, original handler is "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    if-nez p3, :cond_28
 
-    if-eqz p3, :cond_4d
+    const-string v1, "null"
 
+    goto :goto_30
+
+    :cond_28
     invoke-virtual {p3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
-    move-result-object v0
+    move-result-object v1
 
-    invoke-virtual {v0}, Ljava/lang/Class;->getName()Ljava/lang/String;
+    invoke-virtual {v1}, Ljava/lang/Class;->getName()Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v1
 
-    :goto_2f
-    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
+    :goto_30
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -93,31 +93,25 @@
     .line 61
     return-void
 
-    .line 50
+    .line 53
     :cond_3b
     new-instance v0, Ljava/lang/NullPointerException;
 
-    const-string/jumbo v1, "tracker cannot be null"
+    const-string v1, "serviceManager cannot be null"
 
     invoke-direct {v0, v1}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 53
-    :cond_44
+    .line 50
+    :cond_43
     new-instance v0, Ljava/lang/NullPointerException;
 
-    const-string/jumbo v1, "serviceManager cannot be null"
+    const-string v1, "tracker cannot be null"
 
     invoke-direct {v0, v1}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
 
     throw v0
-
-    .line 59
-    :cond_4d
-    const-string/jumbo v0, "null"
-
-    goto :goto_2f
 .end method
 
 
@@ -125,7 +119,6 @@
 .method public getExceptionParser()Lcom/google/analytics/tracking/android/ExceptionParser;
     .registers 2
 
-    .prologue
     .line 64
     iget-object v0, p0, Lcom/google/analytics/tracking/android/ExceptionReporter;->mExceptionParser:Lcom/google/analytics/tracking/android/ExceptionParser;
 
@@ -136,120 +129,111 @@
     .registers 2
     .param p1, "exceptionParser"    # Lcom/google/analytics/tracking/android/ExceptionParser;
 
-    .prologue
     .line 68
     iput-object p1, p0, Lcom/google/analytics/tracking/android/ExceptionReporter;->mExceptionParser:Lcom/google/analytics/tracking/android/ExceptionParser;
 
     .line 69
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public uncaughtException(Ljava/lang/Thread;Ljava/lang/Throwable;)V
-    .registers 7
+    .registers 6
     .param p1, "t"    # Ljava/lang/Thread;
     .param p2, "e"    # Ljava/lang/Throwable;
 
-    .prologue
-    const/4 v1, 0x0
-
     .line 74
-    const-string/jumbo v0, "UncaughtException"
+    const-string v0, "UncaughtException"
 
     .line 75
     .local v0, "description":Ljava/lang/String;
-    iget-object v2, p0, Lcom/google/analytics/tracking/android/ExceptionReporter;->mExceptionParser:Lcom/google/analytics/tracking/android/ExceptionParser;
+    iget-object v1, p0, Lcom/google/analytics/tracking/android/ExceptionReporter;->mExceptionParser:Lcom/google/analytics/tracking/android/ExceptionParser;
 
-    if-nez v2, :cond_3b
-
-    .line 79
-    :goto_8
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v3, "Tracking Exception: "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-static {v2}, Lcom/google/analytics/tracking/android/Log;->v(Ljava/lang/String;)V
-
-    .line 80
-    iget-object v2, p0, Lcom/google/analytics/tracking/android/ExceptionReporter;->mTracker:Lcom/google/analytics/tracking/android/Tracker;
-
-    const/4 v3, 0x1
-
-    invoke-static {v3}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
-
-    move-result-object v3
-
-    invoke-static {v0, v3}, Lcom/google/analytics/tracking/android/MapBuilder;->createException(Ljava/lang/String;Ljava/lang/Boolean;)Lcom/google/analytics/tracking/android/MapBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Lcom/google/analytics/tracking/android/MapBuilder;->build()Ljava/util/Map;
-
-    move-result-object v3
-
-    invoke-virtual {v2, v3}, Lcom/google/analytics/tracking/android/Tracker;->send(Ljava/util/Map;)V
-
-    .line 82
-    iget-object v2, p0, Lcom/google/analytics/tracking/android/ExceptionReporter;->mServiceManager:Lcom/google/analytics/tracking/android/ServiceManager;
-
-    invoke-virtual {v2}, Lcom/google/analytics/tracking/android/ServiceManager;->dispatchLocalHits()V
-
-    .line 83
-    iget-object v2, p0, Lcom/google/analytics/tracking/android/ExceptionReporter;->mOriginalHandler:Ljava/lang/Thread$UncaughtExceptionHandler;
-
-    if-nez v2, :cond_49
-
-    .line 87
-    :goto_3a
-    return-void
+    if-eqz v1, :cond_14
 
     .line 76
-    :cond_3b
-    if-nez p1, :cond_44
+    if-eqz p1, :cond_d
+
+    invoke-virtual {p1}, Ljava/lang/Thread;->getName()Ljava/lang/String;
+
+    move-result-object v1
+
+    goto :goto_e
+
+    :cond_d
+    const/4 v1, 0x0
 
     .line 77
     .local v1, "threadName":Ljava/lang/String;
-    :goto_3d
+    :goto_e
     iget-object v2, p0, Lcom/google/analytics/tracking/android/ExceptionReporter;->mExceptionParser:Lcom/google/analytics/tracking/android/ExceptionParser;
 
     invoke-interface {v2, v1, p2}, Lcom/google/analytics/tracking/android/ExceptionParser;->getDescription(Ljava/lang/String;Ljava/lang/Throwable;)Ljava/lang/String;
 
     move-result-object v0
 
-    goto :goto_8
-
-    .line 76
+    .line 79
     .end local v1    # "threadName":Ljava/lang/String;
-    :cond_44
-    invoke-virtual {p1}, Ljava/lang/Thread;->getName()Ljava/lang/String;
+    :cond_14
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "Tracking Exception: "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1
 
-    goto :goto_3d
+    invoke-static {v1}, Lcom/google/analytics/tracking/android/Log;->v(Ljava/lang/String;)V
+
+    .line 80
+    iget-object v1, p0, Lcom/google/analytics/tracking/android/ExceptionReporter;->mTracker:Lcom/google/analytics/tracking/android/Tracker;
+
+    const/4 v2, 0x1
+
+    invoke-static {v2}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v2
+
+    invoke-static {v0, v2}, Lcom/google/analytics/tracking/android/MapBuilder;->createException(Ljava/lang/String;Ljava/lang/Boolean;)Lcom/google/analytics/tracking/android/MapBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Lcom/google/analytics/tracking/android/MapBuilder;->build()Ljava/util/Map;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Lcom/google/analytics/tracking/android/Tracker;->send(Ljava/util/Map;)V
+
+    .line 82
+    iget-object v1, p0, Lcom/google/analytics/tracking/android/ExceptionReporter;->mServiceManager:Lcom/google/analytics/tracking/android/ServiceManager;
+
+    invoke-virtual {v1}, Lcom/google/analytics/tracking/android/ServiceManager;->dispatchLocalHits()V
+
+    .line 83
+    iget-object v1, p0, Lcom/google/analytics/tracking/android/ExceptionReporter;->mOriginalHandler:Ljava/lang/Thread$UncaughtExceptionHandler;
+
+    if-eqz v1, :cond_4d
 
     .line 84
-    :cond_49
-    const-string/jumbo v2, "Passing exception to original handler."
+    const-string v1, "Passing exception to original handler."
 
-    invoke-static {v2}, Lcom/google/analytics/tracking/android/Log;->v(Ljava/lang/String;)V
+    invoke-static {v1}, Lcom/google/analytics/tracking/android/Log;->v(Ljava/lang/String;)V
 
     .line 85
-    iget-object v2, p0, Lcom/google/analytics/tracking/android/ExceptionReporter;->mOriginalHandler:Ljava/lang/Thread$UncaughtExceptionHandler;
+    iget-object v1, p0, Lcom/google/analytics/tracking/android/ExceptionReporter;->mOriginalHandler:Ljava/lang/Thread$UncaughtExceptionHandler;
 
-    invoke-interface {v2, p1, p2}, Ljava/lang/Thread$UncaughtExceptionHandler;->uncaughtException(Ljava/lang/Thread;Ljava/lang/Throwable;)V
+    invoke-interface {v1, p1, p2}, Ljava/lang/Thread$UncaughtExceptionHandler;->uncaughtException(Ljava/lang/Thread;Ljava/lang/Throwable;)V
 
-    goto :goto_3a
+    .line 87
+    :cond_4d
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

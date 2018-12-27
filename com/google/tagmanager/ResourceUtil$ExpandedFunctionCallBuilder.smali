@@ -18,8 +18,7 @@
 .field private final mPropertiesMap:Ljava/util/Map;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;"
@@ -34,7 +33,6 @@
 .method private constructor <init>()V
     .registers 2
 
-    .prologue
     .line 49
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -53,7 +51,6 @@
     .registers 2
     .param p1, "x0"    # Lcom/google/tagmanager/ResourceUtil$1;
 
-    .prologue
     .line 44
     invoke-direct {p0}, Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCallBuilder;-><init>()V
 
@@ -67,7 +64,6 @@
     .param p1, "key"    # Ljava/lang/String;
     .param p2, "value"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    .prologue
     .line 54
     iget-object v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCallBuilder;->mPropertiesMap:Ljava/util/Map;
 
@@ -80,7 +76,6 @@
 .method public build()Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
     .registers 5
 
-    .prologue
     .line 64
     new-instance v0, Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
 
@@ -99,7 +94,6 @@
     .registers 2
     .param p1, "value"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    .prologue
     .line 59
     iput-object p1, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCallBuilder;->mPushAfterEvaluate:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 

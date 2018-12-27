@@ -21,7 +21,6 @@
 .method constructor <init>()V
     .registers 1
 
-    .prologue
     .line 191
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -34,7 +33,6 @@
     .registers 2
     .param p1, "keyPrefix"    # Ljava/lang/String;
 
-    .prologue
     .line 203
     return-void
 .end method
@@ -43,7 +41,6 @@
     .registers 3
     .param p1, "callback"    # Lcom/google/tagmanager/DataLayer$PersistentStore$Callback;
 
-    .prologue
     .line 198
     new-instance v0, Ljava/util/ArrayList;
 
@@ -52,7 +49,9 @@
     invoke-interface {p1, v0}, Lcom/google/tagmanager/DataLayer$PersistentStore$Callback;->onKeyValuesLoaded(Ljava/util/List;)V
 
     .line 199
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public saveKeyValues(Ljava/util/List;J)V
@@ -61,15 +60,15 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/tagmanager/DataLayer$KeyValue;",
             ">;J)V"
         }
     .end annotation
 
-    .prologue
     .line 194
     .local p1, "keysAndValues":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/DataLayer$KeyValue;>;"
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

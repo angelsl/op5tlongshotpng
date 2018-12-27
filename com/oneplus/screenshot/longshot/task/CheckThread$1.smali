@@ -28,26 +28,20 @@
     .registers 3
     .param p1, "this$0"    # Lcom/oneplus/screenshot/longshot/task/CheckThread;
 
-    .prologue
-    .line 1
+    .line 47
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/task/CheckThread$1;->this$0:Lcom/oneplus/screenshot/longshot/task/CheckThread;
 
     iput-object p2, p0, Lcom/oneplus/screenshot/longshot/task/CheckThread$1;->val$context:Landroid/content/Context;
 
-    .line 47
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1
     return-void
 .end method
 
 
 # virtual methods
 .method public run()V
-    .registers 5
-
-    .prologue
-    const/4 v3, 0x1
+    .registers 4
 
     .line 51
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/task/CheckThread$1;->val$context:Landroid/content/Context;
@@ -60,17 +54,22 @@
 
     move-result-object v1
 
-    invoke-static {v0, v3, v1, v3}, Lcom/oneplus/screenshot/longshot/util/Configs;->notifyToast(Landroid/content/Context;ZLjava/lang/String;I)V
+    const/4 v2, 0x1
+
+    invoke-static {v0, v2, v1, v2}, Lcom/oneplus/screenshot/longshot/util/Configs;->notifyToast(Landroid/content/Context;ZLjava/lang/String;I)V
 
     .line 52
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/task/CheckThread$1;->this$0:Lcom/oneplus/screenshot/longshot/task/CheckThread;
 
-    invoke-static {v0}, Lcom/oneplus/screenshot/longshot/task/CheckThread;->-get0(Lcom/oneplus/screenshot/longshot/task/CheckThread;)Lcom/oneplus/screenshot/longshot/state/LongshotContext;
+    # getter for: Lcom/oneplus/screenshot/longshot/task/CheckThread;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
+    invoke-static {v0}, Lcom/oneplus/screenshot/longshot/task/CheckThread;->access$000(Lcom/oneplus/screenshot/longshot/task/CheckThread;)Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     move-result-object v0
 
     invoke-interface {v0}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->stop()V
 
     .line 53
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

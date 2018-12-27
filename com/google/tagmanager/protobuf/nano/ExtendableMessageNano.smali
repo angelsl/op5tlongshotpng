@@ -7,8 +7,7 @@
 .field protected unknownFieldData:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/tagmanager/protobuf/nano/UnknownFieldData;",
             ">;"
         }
@@ -20,11 +19,12 @@
 .method public constructor <init>()V
     .registers 1
 
-    .prologue
     .line 40
     invoke-direct {p0}, Lcom/google/tagmanager/protobuf/nano/MessageNano;-><init>()V
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -36,12 +36,11 @@
             "<T:",
             "Ljava/lang/Object;",
             ">(",
-            "Lcom/google/tagmanager/protobuf/nano/Extension",
-            "<TT;>;)TT;"
+            "Lcom/google/tagmanager/protobuf/nano/Extension<",
+            "TT;>;)TT;"
         }
     .end annotation
 
-    .prologue
     .line 59
     .local p1, "extension":Lcom/google/tagmanager/protobuf/nano/Extension;, "Lcom/google/tagmanager/protobuf/nano/Extension<TT;>;"
     iget-object v0, p0, Lcom/google/tagmanager/protobuf/nano/ExtendableMessageNano;->unknownFieldData:Ljava/util/List;
@@ -54,13 +53,12 @@
 .end method
 
 .method public getSerializedSize()I
-    .registers 3
+    .registers 2
 
-    .prologue
     .line 50
-    iget-object v1, p0, Lcom/google/tagmanager/protobuf/nano/ExtendableMessageNano;->unknownFieldData:Ljava/util/List;
+    iget-object v0, p0, Lcom/google/tagmanager/protobuf/nano/ExtendableMessageNano;->unknownFieldData:Ljava/util/List;
 
-    invoke-static {v1}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->computeWireSize(Ljava/util/List;)I
+    invoke-static {v0}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->computeWireSize(Ljava/util/List;)I
 
     move-result v0
 
@@ -79,35 +77,33 @@
             "<T:",
             "Ljava/lang/Object;",
             ">(",
-            "Lcom/google/tagmanager/protobuf/nano/Extension",
-            "<TT;>;TT;)V"
+            "Lcom/google/tagmanager/protobuf/nano/Extension<",
+            "TT;>;TT;)V"
         }
     .end annotation
 
-    .prologue
     .line 66
     .local p1, "extension":Lcom/google/tagmanager/protobuf/nano/Extension;, "Lcom/google/tagmanager/protobuf/nano/Extension<TT;>;"
     .local p2, "value":Ljava/lang/Object;, "TT;"
     iget-object v0, p0, Lcom/google/tagmanager/protobuf/nano/ExtendableMessageNano;->unknownFieldData:Ljava/util/List;
 
-    if-eqz v0, :cond_a
-
-    .line 69
-    :goto_4
-    iget-object v0, p0, Lcom/google/tagmanager/protobuf/nano/ExtendableMessageNano;->unknownFieldData:Ljava/util/List;
-
-    invoke-static {p1, p2, v0}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->setExtension(Lcom/google/tagmanager/protobuf/nano/Extension;Ljava/lang/Object;Ljava/util/List;)V
-
-    .line 70
-    return-void
+    if-nez v0, :cond_b
 
     .line 67
-    :cond_a
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lcom/google/tagmanager/protobuf/nano/ExtendableMessageNano;->unknownFieldData:Ljava/util/List;
 
-    goto :goto_4
+    .line 69
+    :cond_b
+    iget-object v0, p0, Lcom/google/tagmanager/protobuf/nano/ExtendableMessageNano;->unknownFieldData:Ljava/util/List;
+
+    invoke-static {p1, p2, v0}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->setExtension(Lcom/google/tagmanager/protobuf/nano/Extension;Ljava/lang/Object;Ljava/util/List;)V
+
+    .line 70
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

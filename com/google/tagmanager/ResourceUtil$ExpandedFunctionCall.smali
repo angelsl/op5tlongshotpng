@@ -18,8 +18,7 @@
 .field private final mPropertiesMap:Ljava/util/Map;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;"
@@ -37,8 +36,7 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;",
@@ -47,7 +45,6 @@
         }
     .end annotation
 
-    .prologue
     .line 79
     .local p1, "propertiesMap":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -68,7 +65,6 @@
     .param p2, "x1"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .param p3, "x2"    # Lcom/google/tagmanager/ResourceUtil$1;
 
-    .prologue
     .line 73
     invoke-direct {p0, p1, p2}, Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;-><init>(Ljava/util/Map;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)V
 
@@ -78,7 +74,6 @@
 .method public static newBuilder()Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCallBuilder;
     .registers 2
 
-    .prologue
     .line 85
     new-instance v0, Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCallBuilder;
 
@@ -96,15 +91,13 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;"
         }
     .end annotation
 
-    .prologue
     .line 101
     iget-object v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;->mPropertiesMap:Ljava/util/Map;
 
@@ -118,7 +111,6 @@
 .method public getPushAfterEvaluate()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .registers 2
 
-    .prologue
     .line 108
     iget-object v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;->mPushAfterEvaluate:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
@@ -128,17 +120,14 @@
 .method public toString()Ljava/lang/String;
     .registers 3
 
-    .prologue
     .line 113
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v1, "Properties: "
+    const-string v1, "Properties: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     invoke-virtual {p0}, Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;->getProperties()Ljava/util/Map;
 
@@ -146,19 +135,13 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
-    const-string/jumbo v1, " pushAfterEvaluate: "
+    const-string v1, " pushAfterEvaluate: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     iget-object v1, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;->mPushAfterEvaluate:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -172,12 +155,13 @@
     .param p1, "key"    # Ljava/lang/String;
     .param p2, "v"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    .prologue
     .line 94
     iget-object v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;->mPropertiesMap:Ljava/util/Map;
 
     invoke-interface {v0, p1, p2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 95
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

@@ -10,7 +10,6 @@
 .method constructor <init>()V
     .registers 1
 
-    .prologue
     .line 7
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -22,7 +21,6 @@
 .method public createDataLayerEventEvaluationInfoBuilder()Lcom/google/tagmanager/DataLayerEventEvaluationInfoBuilder;
     .registers 2
 
-    .prologue
     .line 16
     new-instance v0, Lcom/google/tagmanager/NoopDataLayerEventEvaluationInfoBuilder;
 
@@ -34,7 +32,6 @@
 .method public createMacroEvaluationInfoBuilder()Lcom/google/tagmanager/MacroEvaluationInfoBuilder;
     .registers 2
 
-    .prologue
     .line 11
     new-instance v0, Lcom/google/tagmanager/NoopMacroEvaluationInfoBuilder;
 
@@ -46,7 +43,6 @@
 .method public processEventInfo()V
     .registers 1
 
-    .prologue
     .line 21
     return-void
 .end method

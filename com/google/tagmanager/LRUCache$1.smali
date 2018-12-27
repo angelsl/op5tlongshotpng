@@ -15,8 +15,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Landroid/util/LruCache",
-        "<TK;TV;>;"
+        "Landroid/util/LruCache<",
+        "TK;TV;>;"
     }
 .end annotation
 
@@ -32,7 +32,6 @@
     .registers 4
     .param p2, "x0"    # I
 
-    .prologue
     .line 26
     .local p0, "this":Lcom/google/tagmanager/LRUCache$1;, "Lcom/google/tagmanager/LRUCache.1;"
     iput-object p1, p0, Lcom/google/tagmanager/LRUCache$1;->this$0:Lcom/google/tagmanager/LRUCache;
@@ -54,7 +53,6 @@
         }
     .end annotation
 
-    .prologue
     .line 29
     .local p0, "this":Lcom/google/tagmanager/LRUCache$1;, "Lcom/google/tagmanager/LRUCache.1;"
     .local p1, "key":Ljava/lang/Object;, "TK;"

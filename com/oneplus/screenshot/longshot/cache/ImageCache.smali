@@ -6,8 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Ljava/util/ArrayList",
-        "<",
+        "Ljava/util/ArrayList<",
         "Landroid/graphics/Bitmap;",
         ">;"
     }
@@ -26,7 +25,6 @@
 .method public constructor <init>()V
     .registers 2
 
-    .prologue
     .line 9
     invoke-direct {p0}, Ljava/util/ArrayList;-><init>()V
 
@@ -35,8 +33,9 @@
 
     iput-boolean v0, p0, Lcom/oneplus/screenshot/longshot/cache/ImageCache;->mCanClear:Z
 
-    .line 9
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -44,7 +43,6 @@
 .method public clear()V
     .registers 2
 
-    .prologue
     .line 23
     iget-boolean v0, p0, Lcom/oneplus/screenshot/longshot/cache/ImageCache;->mCanClear:Z
 
@@ -55,17 +53,20 @@
 
     .line 26
     :cond_7
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public setCanClear(Z)V
     .registers 2
     .param p1, "canClear"    # Z
 
-    .prologue
     .line 32
     iput-boolean p1, p0, Lcom/oneplus/screenshot/longshot/cache/ImageCache;->mCanClear:Z
 
     .line 33
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

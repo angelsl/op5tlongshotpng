@@ -15,7 +15,6 @@
     .registers 2
     .param p1, "resolvedProperty"    # Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
 
-    .prologue
     .line 16
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -23,7 +22,9 @@
     iput-object p1, p0, Lcom/google/tagmanager/DebugResolvedPropertyBuilder;->resolvedProperty:Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
 
     .line 18
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -32,7 +33,6 @@
     .registers 4
     .param p1, "propertyValue"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    .prologue
     .line 22
     invoke-static {p1}, Lcom/google/tagmanager/DebugValueBuilder;->copyImmutableValue(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 

@@ -26,14 +26,11 @@
     .registers 2
     .param p1, "this$0"    # Lcom/oneplus/screenshot/longshot/state/AbsShotState;
 
-    .prologue
-    .line 1
+    .line 36
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/AbsShotState$1;->this$0:Lcom/oneplus/screenshot/longshot/state/AbsShotState;
 
-    .line 36
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1
     return-void
 .end method
 
@@ -42,7 +39,6 @@
 .method public run()V
     .registers 6
 
-    .prologue
     .line 39
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsShotState$1;->this$0:Lcom/oneplus/screenshot/longshot/state/AbsShotState;
 
@@ -58,16 +54,15 @@
 
     move-result-object v3
 
-    .line 40
     iget-object v4, p0, Lcom/oneplus/screenshot/longshot/state/AbsShotState$1;->this$0:Lcom/oneplus/screenshot/longshot/state/AbsShotState;
 
     iget-object v4, v4, Lcom/oneplus/screenshot/longshot/state/AbsShotState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
+    .line 40
     invoke-interface {v4}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->getDisplayMetrics()Landroid/util/DisplayMetrics;
 
     move-result-object v4
 
-    .line 39
     invoke-direct {v1, v2, v3, v4}, Lcom/oneplus/screenshot/longshot/task/CaptureTask;-><init>(Lcom/oneplus/screenshot/longshot/task/CaptureTask$OnCaptureListener;Landroid/content/Context;Landroid/util/DisplayMetrics;)V
 
     iput-object v1, v0, Lcom/oneplus/screenshot/longshot/state/AbsShotState;->mCaptureTask:Lcom/oneplus/screenshot/longshot/task/CaptureTask;
@@ -96,5 +91,7 @@
     invoke-virtual {v0, v1}, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->execute([Ljava/lang/Object;)Landroid/os/AsyncTask;
 
     .line 43
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

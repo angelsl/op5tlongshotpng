@@ -13,12 +13,13 @@
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "attrs"    # Landroid/util/AttributeSet;
 
-    .prologue
     .line 14
     invoke-direct {p0, p1, p2}, Lcom/oneplus/screenshot/anim/FactorLinearInterpolator;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
     .line 15
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -27,7 +28,6 @@
     .registers 4
     .param p1, "x"    # F
 
-    .prologue
     .line 23
     invoke-super {p0, p1}, Lcom/oneplus/screenshot/anim/FactorLinearInterpolator;->getInterpolation(F)F
 
@@ -35,7 +35,7 @@
 
     const v1, 0x3f27ef9e    # 0.656f
 
-    add-float/2addr v0, v1
+    add-float/2addr v1, v0
 
-    return v0
+    return v1
 .end method

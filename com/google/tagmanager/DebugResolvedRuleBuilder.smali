@@ -31,7 +31,6 @@
     .registers 4
     .param p1, "rule"    # Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
 
-    .prologue
     .line 26
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -75,70 +74,66 @@
     iput-object v0, p0, Lcom/google/tagmanager/DebugResolvedRuleBuilder;->removeTagsHolder:Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
 
     .line 36
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public static translateExpandedFunctionCall(Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;)Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
     .registers 6
     .param p0, "f"    # Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
 
-    .prologue
     .line 83
-    new-instance v3, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    new-instance v0, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
-    invoke-direct {v3}, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;-><init>()V
+    invoke-direct {v0}, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;-><init>()V
 
     .line 84
-    .local v3, "result":Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    .local v0, "result":Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
     invoke-virtual {p0}, Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;->getProperties()Ljava/util/Map;
-
-    move-result-object v4
-
-    invoke-interface {v4}, Ljava/util/Map;->entrySet()Ljava/util/Set;
-
-    move-result-object v4
-
-    invoke-interface {v4}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
-
-    move-result-object v0
-
-    .local v0, "i$":Ljava/util/Iterator;
-    :goto_11
-    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v4
-
-    if-nez v4, :cond_18
-
-    .line 90
-    return-object v3
-
-    .line 84
-    :cond_18
-    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v1
 
-    check-cast v1, Ljava/util/Map$Entry;
+    invoke-interface {v1}, Ljava/util/Map;->entrySet()Ljava/util/Set;
+
+    move-result-object v1
+
+    invoke-interface {v1}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+
+    move-result-object v1
+
+    .local v1, "i$":Ljava/util/Iterator;
+    :goto_11
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_3f
+
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Ljava/util/Map$Entry;
 
     .line 85
-    .local v1, "originalParam":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
-    new-instance v2, Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
+    .local v2, "originalParam":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
+    new-instance v3, Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
 
-    invoke-direct {v2}, Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;-><init>()V
+    invoke-direct {v3}, Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;-><init>()V
 
     .line 86
-    .local v2, "prop":Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
-    invoke-interface {v1}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+    .local v3, "prop":Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
+    invoke-interface {v2}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
 
     move-result-object v4
 
     check-cast v4, Ljava/lang/String;
 
-    iput-object v4, v2, Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;->key:Ljava/lang/String;
+    iput-object v4, v3, Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;->key:Ljava/lang/String;
 
     .line 87
-    invoke-interface {v1}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+    invoke-interface {v2}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
     move-result-object v4
 
@@ -148,18 +143,26 @@
 
     move-result-object v4
 
-    iput-object v4, v2, Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;->value:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    iput-object v4, v3, Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;->value:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 88
-    iget-object v4, v3, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;->properties:[Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
+    iget-object v4, v0, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;->properties:[Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
 
-    invoke-static {v4, v2}, Lcom/google/tagmanager/ArrayUtils;->appendToArray([Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;)[Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
+    invoke-static {v4, v3}, Lcom/google/tagmanager/ArrayUtils;->appendToArray([Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;)[Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
 
     move-result-object v4
 
-    iput-object v4, v3, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;->properties:[Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
+    iput-object v4, v0, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;->properties:[Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
 
+    .line 89
+    .end local v2    # "originalParam":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
+    .end local v3    # "prop":Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
     goto :goto_11
+
+    .line 90
+    .end local v1    # "i$":Ljava/util/Iterator;
+    :cond_3f
+    return-object v0
 .end method
 
 
@@ -167,7 +170,6 @@
 .method public createNegativePredicate()Lcom/google/tagmanager/ResolvedFunctionCallBuilder;
     .registers 4
 
-    .prologue
     .line 40
     new-instance v0, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
@@ -198,7 +200,6 @@
 .method public createPositivePredicate()Lcom/google/tagmanager/ResolvedFunctionCallBuilder;
     .registers 4
 
-    .prologue
     .line 48
     new-instance v0, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
@@ -229,7 +230,6 @@
 .method public getAddedMacroFunctions()Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
     .registers 2
 
-    .prologue
     .line 56
     iget-object v0, p0, Lcom/google/tagmanager/DebugResolvedRuleBuilder;->addMacrosHolder:Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
 
@@ -239,7 +239,6 @@
 .method public getAddedTagFunctions()Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
     .registers 2
 
-    .prologue
     .line 66
     iget-object v0, p0, Lcom/google/tagmanager/DebugResolvedRuleBuilder;->addTagsHolder:Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
 
@@ -249,7 +248,6 @@
 .method public getRemovedMacroFunctions()Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
     .registers 2
 
-    .prologue
     .line 61
     iget-object v0, p0, Lcom/google/tagmanager/DebugResolvedRuleBuilder;->removeMacrosHolder:Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
 
@@ -259,7 +257,6 @@
 .method public getRemovedTagFunctions()Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
     .registers 2
 
-    .prologue
     .line 71
     iget-object v0, p0, Lcom/google/tagmanager/DebugResolvedRuleBuilder;->removeTagsHolder:Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
 
@@ -270,7 +267,6 @@
     .registers 4
     .param p1, "result"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    .prologue
     .line 76
     iget-object v0, p0, Lcom/google/tagmanager/DebugResolvedRuleBuilder;->resolvedRule:Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
 
@@ -281,5 +277,7 @@
     iput-object v1, v0, Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;->result:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 77
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

@@ -25,7 +25,6 @@
 .method constructor <init>(Lcom/google/analytics/tracking/android/GAServiceProxy;)V
     .registers 2
 
-    .prologue
     .line 79
     iput-object p1, p0, Lcom/google/analytics/tracking/android/GAServiceProxy$1;->this$0:Lcom/google/analytics/tracking/android/GAServiceProxy;
 
@@ -39,7 +38,6 @@
 .method public currentTimeMillis()J
     .registers 3
 
-    .prologue
     .line 82
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 

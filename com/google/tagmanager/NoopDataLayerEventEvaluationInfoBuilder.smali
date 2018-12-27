@@ -10,7 +10,6 @@
 .method constructor <init>()V
     .registers 1
 
-    .prologue
     .line 7
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -22,7 +21,6 @@
 .method public createAndAddResult()Lcom/google/tagmanager/ResolvedFunctionCallBuilder;
     .registers 2
 
-    .prologue
     .line 12
     new-instance v0, Lcom/google/tagmanager/NoopResolvedFunctionCallBuilder;
 
@@ -34,7 +32,6 @@
 .method public createRulesEvaluation()Lcom/google/tagmanager/RuleEvaluationStepInfoBuilder;
     .registers 2
 
-    .prologue
     .line 17
     new-instance v0, Lcom/google/tagmanager/NoopRuleEvaluationStepInfoBuilder;
 

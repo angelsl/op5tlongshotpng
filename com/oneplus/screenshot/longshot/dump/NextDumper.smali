@@ -15,7 +15,6 @@
     .param p3, "tag"    # Ljava/lang/String;
     .param p4, "isCurr"    # Z
 
-    .prologue
     .line 15
     const/4 v0, 0x1
 
@@ -28,16 +27,17 @@
 
     invoke-virtual {v0, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    if-eqz p4, :cond_11
 
-    if-eqz p4, :cond_1d
+    const-string v1, "Curr"
 
-    const-string/jumbo v0, "Curr"
+    goto :goto_13
 
-    :goto_12
-    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    :cond_11
+    const-string v1, "Last"
 
-    move-result-object v0
+    :goto_13
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -46,11 +46,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/dump/NextDumper;->mTag:Ljava/lang/String;
 
     .line 17
-    return-void
-
-    .line 16
-    :cond_1d
-    const-string/jumbo v0, "Last"
-
-    goto :goto_12
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

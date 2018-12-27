@@ -14,8 +14,7 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
-            "Ljava/util/concurrent/LinkedBlockingQueue",
-            "<",
+            "Ljava/util/concurrent/LinkedBlockingQueue<",
             "Ljava/lang/Runnable;",
             ">;"
         }
@@ -29,8 +28,7 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Ljava/lang/String;",
             ">;)V"

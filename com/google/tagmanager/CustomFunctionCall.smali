@@ -27,7 +27,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 23
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->FUNCTION_CALL:Lcom/google/analytics/containertag/common/FunctionType;
 
@@ -55,14 +54,15 @@
 
     sput-object v0, Lcom/google/tagmanager/CustomFunctionCall;->ADDITIONAL_PARAMS:Ljava/lang/String;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>(Lcom/google/tagmanager/CustomFunctionCall$CustomEvaluator;)V
     .registers 6
     .param p1, "functionCallEvaluator"    # Lcom/google/tagmanager/CustomFunctionCall$CustomEvaluator;
 
-    .prologue
     .line 42
     sget-object v0, Lcom/google/tagmanager/CustomFunctionCall;->ID:Ljava/lang/String;
 
@@ -88,7 +88,6 @@
 .method public static getAdditionalParamsKey()Ljava/lang/String;
     .registers 1
 
-    .prologue
     .line 38
     sget-object v0, Lcom/google/tagmanager/CustomFunctionCall;->ADDITIONAL_PARAMS:Ljava/lang/String;
 
@@ -98,7 +97,6 @@
 .method public static getFunctionCallNameKey()Ljava/lang/String;
     .registers 1
 
-    .prologue
     .line 34
     sget-object v0, Lcom/google/tagmanager/CustomFunctionCall;->FUNCTION_CALL_NAME:Ljava/lang/String;
 
@@ -108,7 +106,6 @@
 .method public static getFunctionId()Ljava/lang/String;
     .registers 1
 
-    .prologue
     .line 30
     sget-object v0, Lcom/google/tagmanager/CustomFunctionCall;->ID:Ljava/lang/String;
 
@@ -118,12 +115,11 @@
 
 # virtual methods
 .method public evaluate(Ljava/util/Map;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 12
+    .registers 11
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;)",
@@ -131,32 +127,31 @@
         }
     .end annotation
 
-    .prologue
     .line 51
     .local p1, "parameters":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
-    sget-object v8, Lcom/google/tagmanager/CustomFunctionCall;->FUNCTION_CALL_NAME:Ljava/lang/String;
+    sget-object v0, Lcom/google/tagmanager/CustomFunctionCall;->FUNCTION_CALL_NAME:Ljava/lang/String;
 
-    invoke-interface {p1, v8}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {p1, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    move-result-object v8
+    move-result-object v0
 
-    check-cast v8, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    check-cast v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    invoke-static {v8}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
+    invoke-static {v0}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
 
-    move-result-object v5
+    move-result-object v0
 
     .line 52
-    .local v5, "functionCallName":Ljava/lang/String;
-    new-instance v7, Ljava/util/HashMap;
+    .local v0, "functionCallName":Ljava/lang/String;
+    new-instance v1, Ljava/util/HashMap;
 
-    invoke-direct {v7}, Ljava/util/HashMap;-><init>()V
+    invoke-direct {v1}, Ljava/util/HashMap;-><init>()V
 
     .line 53
-    .local v7, "objectParams":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;"
-    sget-object v8, Lcom/google/tagmanager/CustomFunctionCall;->ADDITIONAL_PARAMS:Ljava/lang/String;
+    .local v1, "objectParams":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;"
+    sget-object v2, Lcom/google/tagmanager/CustomFunctionCall;->ADDITIONAL_PARAMS:Ljava/lang/String;
 
-    invoke-interface {p1, v8}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {p1, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v2
 
@@ -164,153 +159,145 @@
 
     .line 54
     .local v2, "additionalParamsValue":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-nez v2, :cond_26
-
-    .line 67
-    :cond_1b
-    :try_start_1b
-    iget-object v8, p0, Lcom/google/tagmanager/CustomFunctionCall;->mFunctionCallEvaluator:Lcom/google/tagmanager/CustomFunctionCall$CustomEvaluator;
-
-    invoke-interface {v8, v5, v7}, Lcom/google/tagmanager/CustomFunctionCall$CustomEvaluator;->evaluate(Ljava/lang/String;Ljava/util/Map;)Ljava/lang/Object;
-
-    move-result-object v8
-
-    invoke-static {v8}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    :try_end_24
-    .catch Ljava/lang/Exception; {:try_start_1b .. :try_end_24} :catch_60
-
-    move-result-object v8
-
-    return-object v8
+    if-eqz v2, :cond_54
 
     .line 55
-    :cond_26
     invoke-static {v2}, Lcom/google/tagmanager/Types;->valueToObject(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/Object;
 
-    move-result-object v1
+    move-result-object v3
 
     .line 56
-    .local v1, "additionalParamsObject":Ljava/lang/Object;
-    instance-of v8, v1, Ljava/util/Map;
+    .local v3, "additionalParamsObject":Ljava/lang/Object;
+    instance-of v4, v3, Ljava/util/Map;
 
-    if-eqz v8, :cond_55
-
-    move-object v0, v1
-
-    .line 61
-    check-cast v0, Ljava/util/Map;
-
-    .line 62
-    .local v0, "additionalParams":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
-    invoke-interface {v0}, Ljava/util/Map;->entrySet()Ljava/util/Set;
-
-    move-result-object v8
-
-    invoke-interface {v8}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
-
-    move-result-object v6
-
-    .local v6, "i$":Ljava/util/Iterator;
-    :goto_39
-    invoke-interface {v6}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v8
-
-    if-eqz v8, :cond_1b
-
-    invoke-interface {v6}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Ljava/util/Map$Entry;
-
-    .line 63
-    .local v4, "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/Object;Ljava/lang/Object;>;"
-    invoke-interface {v4}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
-
-    move-result-object v8
-
-    invoke-virtual {v8}, Ljava/lang/Object;->toString()Ljava/lang/String;
-
-    move-result-object v8
-
-    invoke-interface {v4}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
-
-    move-result-object v9
-
-    invoke-interface {v7, v8, v9}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    goto :goto_39
+    if-nez v4, :cond_2d
 
     .line 57
-    .end local v0    # "additionalParams":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
-    .end local v4    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/Object;Ljava/lang/Object;>;"
-    .end local v6    # "i$":Ljava/util/Iterator;
-    :cond_55
-    const-string/jumbo v8, "FunctionCallMacro: expected ADDITIONAL_PARAMS to be a map."
+    const-string v4, "FunctionCallMacro: expected ADDITIONAL_PARAMS to be a map."
 
-    invoke-static {v8}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
+    invoke-static {v4}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
 
     .line 58
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
+    move-result-object v4
+
+    return-object v4
+
+    .line 61
+    :cond_2d
+    move-object v4, v3
+
+    check-cast v4, Ljava/util/Map;
+
+    .line 62
+    .local v4, "additionalParams":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
+    invoke-interface {v4}, Ljava/util/Map;->entrySet()Ljava/util/Set;
+
+    move-result-object v5
+
+    invoke-interface {v5}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+
+    move-result-object v5
+
+    .local v5, "i$":Ljava/util/Iterator;
+    :goto_38
+    invoke-interface {v5}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v6
+
+    if-eqz v6, :cond_54
+
+    invoke-interface {v5}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v6
+
+    check-cast v6, Ljava/util/Map$Entry;
+
+    .line 63
+    .local v6, "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/Object;Ljava/lang/Object;>;"
+    invoke-interface {v6}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+
+    move-result-object v7
+
+    invoke-virtual {v7}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object v7
+
+    invoke-interface {v6}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+
     move-result-object v8
 
-    return-object v8
+    invoke-interface {v1, v7, v8}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 64
+    .end local v6    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/Object;Ljava/lang/Object;>;"
+    goto :goto_38
+
+    .line 67
+    .end local v3    # "additionalParamsObject":Ljava/lang/Object;
+    .end local v4    # "additionalParams":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
+    .end local v5    # "i$":Ljava/util/Iterator;
+    :cond_54
+    :try_start_54
+    iget-object v3, p0, Lcom/google/tagmanager/CustomFunctionCall;->mFunctionCallEvaluator:Lcom/google/tagmanager/CustomFunctionCall$CustomEvaluator;
+
+    invoke-interface {v3, v0, v1}, Lcom/google/tagmanager/CustomFunctionCall$CustomEvaluator;->evaluate(Ljava/lang/String;Ljava/util/Map;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    invoke-static {v3}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+
+    move-result-object v3
+    :try_end_5e
+    .catch Ljava/lang/Exception; {:try_start_54 .. :try_end_5e} :catch_5f
+
+    return-object v3
 
     .line 69
-    .end local v1    # "additionalParamsObject":Ljava/lang/Object;
-    :catch_60
+    :catch_5f
     move-exception v3
 
     .line 70
     .local v3, "e":Ljava/lang/Exception;
-    new-instance v8, Ljava/lang/StringBuilder;
+    new-instance v4, Ljava/lang/StringBuilder;
 
-    invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v9, "Custom macro/tag "
+    const-string v5, "Custom macro/tag "
 
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v8
+    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v8, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v5, " threw exception "
 
-    move-result-object v8
-
-    const-string/jumbo v9, " threw exception "
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v3}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
 
-    move-result-object v9
+    move-result-object v5
 
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v8
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v4
 
-    move-result-object v8
-
-    invoke-static {v8}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
+    invoke-static {v4}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
 
     .line 72
+    .end local v3    # "e":Ljava/lang/Exception;
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    move-result-object v8
+    move-result-object v3
 
-    return-object v8
+    return-object v3
 .end method
 
 .method public isCacheable()Z
     .registers 2
 
-    .prologue
     .line 47
     const/4 v0, 0x0
 

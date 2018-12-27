@@ -21,7 +21,6 @@
     .param p2, "containerVersion"    # Ljava/lang/String;
     .param p3, "containerId"    # Ljava/lang/String;
 
-    .prologue
     .line 15
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -35,18 +34,19 @@
     iput-object p3, p0, Lcom/google/tagmanager/DebugEventInfoDistributor;->containerId:Ljava/lang/String;
 
     .line 19
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
 # virtual methods
 .method public createDataLayerEventEvaluationEventInfo(Ljava/lang/String;)Lcom/google/tagmanager/EventInfoBuilder;
-    .registers 8
+    .registers 9
     .param p1, "event"    # Ljava/lang/String;
 
-    .prologue
     .line 29
-    new-instance v0, Lcom/google/tagmanager/DebugEventInfoBuilder;
+    new-instance v6, Lcom/google/tagmanager/DebugEventInfoBuilder;
 
     iget-object v2, p0, Lcom/google/tagmanager/DebugEventInfoDistributor;->containerVersion:Ljava/lang/String;
 
@@ -56,20 +56,21 @@
 
     const/4 v1, 0x1
 
+    move-object v0, v6
+
     move-object v4, p1
 
     invoke-direct/range {v0 .. v5}, Lcom/google/tagmanager/DebugEventInfoBuilder;-><init>(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/tagmanager/DebugInformationHandler;)V
 
-    return-object v0
+    return-object v6
 .end method
 
 .method public createMacroEvalutionEventInfo(Ljava/lang/String;)Lcom/google/tagmanager/EventInfoBuilder;
-    .registers 8
+    .registers 9
     .param p1, "key"    # Ljava/lang/String;
 
-    .prologue
     .line 23
-    new-instance v0, Lcom/google/tagmanager/DebugEventInfoBuilder;
+    new-instance v6, Lcom/google/tagmanager/DebugEventInfoBuilder;
 
     iget-object v2, p0, Lcom/google/tagmanager/DebugEventInfoDistributor;->containerVersion:Ljava/lang/String;
 
@@ -79,17 +80,18 @@
 
     const/4 v1, 0x2
 
+    move-object v0, v6
+
     move-object v4, p1
 
     invoke-direct/range {v0 .. v5}, Lcom/google/tagmanager/DebugEventInfoBuilder;-><init>(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/tagmanager/DebugInformationHandler;)V
 
-    return-object v0
+    return-object v6
 .end method
 
 .method public debugMode()Z
     .registers 2
 
-    .prologue
     .line 35
     const/4 v0, 0x1
 

@@ -18,7 +18,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 25
     const-class v0, Lcom/google/tagmanager/NetworkReceiver;
 
@@ -28,14 +27,15 @@
 
     sput-object v0, Lcom/google/tagmanager/NetworkReceiver;->SELF_IDENTIFYING_EXTRA:Ljava/lang/String;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method constructor <init>(Lcom/google/tagmanager/ServiceManager;)V
     .registers 2
     .param p1, "manager"    # Lcom/google/tagmanager/ServiceManager;
 
-    .prologue
     .line 29
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
 
@@ -50,11 +50,10 @@
     .registers 4
     .param p0, "context"    # Landroid/content/Context;
 
-    .prologue
     .line 70
     new-instance v0, Landroid/content/Intent;
 
-    const-string/jumbo v1, "com.google.analytics.RADIO_POWERED"
+    const-string v1, "com.google.analytics.RADIO_POWERED"
 
     invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
@@ -77,18 +76,17 @@
     invoke-virtual {p0, v0}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
 
     .line 74
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .registers 9
+    .registers 8
     .param p1, "ctx"    # Landroid/content/Context;
     .param p2, "intent"    # Landroid/content/Intent;
-
-    .prologue
-    const/4 v3, 0x0
 
     .line 35
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
@@ -97,30 +95,15 @@
 
     .line 36
     .local v0, "action":Ljava/lang/String;
-    const-string/jumbo v4, "android.net.conn.CONNECTIVITY_CHANGE"
+    const-string v1, "android.net.conn.CONNECTIVITY_CHANGE"
 
-    invoke-virtual {v4, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v4
+    move-result v1
 
-    if-nez v4, :cond_18
-
-    .line 43
-    const-string/jumbo v3, "com.google.analytics.RADIO_POWERED"
-
-    invoke-virtual {v3, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-nez v3, :cond_3e
-
-    .line 47
-    :cond_17
-    :goto_17
-    return-void
+    if-eqz v1, :cond_2e
 
     .line 37
-    :cond_18
     invoke-virtual {p2}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
 
     move-result-object v1
@@ -131,72 +114,74 @@
 
     .line 39
     .local v2, "notConnected":Ljava/lang/Boolean;
-    if-nez v1, :cond_2c
-
-    .line 42
-    :goto_20
-    iget-object v4, p0, Lcom/google/tagmanager/NetworkReceiver;->mManager:Lcom/google/tagmanager/ServiceManager;
-
-    invoke-virtual {v2}, Ljava/lang/Boolean;->booleanValue()Z
-
-    move-result v5
-
-    if-eqz v5, :cond_3c
-
-    :goto_28
-    invoke-virtual {v4, v3}, Lcom/google/tagmanager/ServiceManager;->updateConnectivityStatus(Z)V
-
-    goto :goto_17
+    if-eqz v1, :cond_22
 
     .line 40
-    :cond_2c
     invoke-virtual {p2}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
 
-    move-result-object v4
+    move-result-object v3
 
-    const-string/jumbo v5, "noConnectivity"
+    const-string v4, "noConnectivity"
 
-    invoke-virtual {v4, v5}, Landroid/os/Bundle;->getBoolean(Ljava/lang/String;)Z
+    invoke-virtual {v3, v4}, Landroid/os/Bundle;->getBoolean(Ljava/lang/String;)Z
 
-    move-result v4
+    move-result v3
 
-    invoke-static {v4}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+    invoke-static {v3}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
 
     move-result-object v2
 
-    goto :goto_20
-
     .line 42
-    :cond_3c
-    const/4 v3, 0x1
+    :cond_22
+    iget-object v3, p0, Lcom/google/tagmanager/NetworkReceiver;->mManager:Lcom/google/tagmanager/ServiceManager;
 
-    goto :goto_28
+    invoke-virtual {v2}, Ljava/lang/Boolean;->booleanValue()Z
+
+    move-result v4
+
+    xor-int/lit8 v4, v4, 0x1
+
+    invoke-virtual {v3, v4}, Lcom/google/tagmanager/ServiceManager;->updateConnectivityStatus(Z)V
 
     .line 43
     .end local v1    # "b":Landroid/os/Bundle;
     .end local v2    # "notConnected":Ljava/lang/Boolean;
-    :cond_3e
-    sget-object v3, Lcom/google/tagmanager/NetworkReceiver;->SELF_IDENTIFYING_EXTRA:Ljava/lang/String;
+    goto :goto_43
 
-    invoke-virtual {p2, v3}, Landroid/content/Intent;->hasExtra(Ljava/lang/String;)Z
+    :cond_2e
+    const-string v1, "com.google.analytics.RADIO_POWERED"
 
-    move-result v3
+    invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    if-nez v3, :cond_17
+    move-result v1
+
+    if-eqz v1, :cond_43
+
+    sget-object v1, Lcom/google/tagmanager/NetworkReceiver;->SELF_IDENTIFYING_EXTRA:Ljava/lang/String;
+
+    invoke-virtual {p2, v1}, Landroid/content/Intent;->hasExtra(Ljava/lang/String;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_43
 
     .line 45
-    iget-object v3, p0, Lcom/google/tagmanager/NetworkReceiver;->mManager:Lcom/google/tagmanager/ServiceManager;
+    iget-object v1, p0, Lcom/google/tagmanager/NetworkReceiver;->mManager:Lcom/google/tagmanager/ServiceManager;
 
-    invoke-virtual {v3}, Lcom/google/tagmanager/ServiceManager;->onRadioPowered()V
+    invoke-virtual {v1}, Lcom/google/tagmanager/ServiceManager;->onRadioPowered()V
 
-    goto :goto_17
+    .line 47
+    :cond_43
+    :goto_43
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public register(Landroid/content/Context;)V
     .registers 5
     .param p1, "context"    # Landroid/content/Context;
 
-    .prologue
     .line 53
     new-instance v0, Landroid/content/IntentFilter;
 
@@ -204,9 +189,9 @@
 
     .line 54
     .local v0, "connectivityFilter":Landroid/content/IntentFilter;
-    const-string/jumbo v2, "android.net.conn.CONNECTIVITY_CHANGE"
+    const-string v1, "android.net.conn.CONNECTIVITY_CHANGE"
 
-    invoke-virtual {v0, v2}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
     .line 55
     invoke-virtual {p1, p0, v0}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
@@ -218,7 +203,7 @@
 
     .line 57
     .local v1, "radioPoweredFilter":Landroid/content/IntentFilter;
-    const-string/jumbo v2, "com.google.analytics.RADIO_POWERED"
+    const-string v2, "com.google.analytics.RADIO_POWERED"
 
     invoke-virtual {v1, v2}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 

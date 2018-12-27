@@ -1,4 +1,4 @@
-.class Lcom/google/tagmanager/TagManager$2;
+.class final Lcom/google/tagmanager/TagManager$2;
 .super Ljava/lang/Object;
 .source "TagManager.java"
 
@@ -21,7 +21,6 @@
 .method constructor <init>()V
     .registers 1
 
-    .prologue
     .line 172
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -36,7 +35,6 @@
     .param p2, "containerId"    # Ljava/lang/String;
     .param p3, "tagManager"    # Lcom/google/tagmanager/TagManager;
 
-    .prologue
     .line 176
     new-instance v0, Lcom/google/tagmanager/Container;
 

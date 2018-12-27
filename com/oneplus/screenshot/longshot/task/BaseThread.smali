@@ -20,7 +20,6 @@
 .method public constructor <init>()V
     .registers 3
 
-    .prologue
     .line 3
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -34,8 +33,9 @@
 
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/task/BaseThread;->mThread:Ljava/lang/Thread;
 
-    .line 3
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -44,54 +44,56 @@
 .end method
 
 .method public run()V
-    .registers 5
+    .registers 4
 
-    .prologue
     .line 22
     invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
 
-    move-result-object v1
+    move-result-object v0
 
     .line 23
-    .local v1, "thisThread":Ljava/lang/Thread;
+    .local v0, "thisThread":Ljava/lang/Thread;
     :goto_4
-    iget-object v2, p0, Lcom/oneplus/screenshot/longshot/task/BaseThread;->mThread:Ljava/lang/Thread;
+    iget-object v1, p0, Lcom/oneplus/screenshot/longshot/task/BaseThread;->mThread:Ljava/lang/Thread;
 
-    if-ne v2, v1, :cond_16
+    if-ne v1, v0, :cond_16
 
     .line 25
     :try_start_8
-    iget-wide v2, p0, Lcom/oneplus/screenshot/longshot/task/BaseThread;->mDelay:J
+    iget-wide v1, p0, Lcom/oneplus/screenshot/longshot/task/BaseThread;->mDelay:J
 
-    invoke-static {v2, v3}, Ljava/lang/Thread;->sleep(J)V
+    invoke-static {v1, v2}, Ljava/lang/Thread;->sleep(J)V
 
     .line 26
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/task/BaseThread;->onRun()V
     :try_end_10
     .catch Ljava/lang/InterruptedException; {:try_start_8 .. :try_end_10} :catch_11
 
-    goto :goto_4
+    goto :goto_15
 
     .line 27
     :catch_11
-    move-exception v0
+    move-exception v1
 
     .line 28
-    .local v0, "e":Ljava/lang/InterruptedException;
-    invoke-virtual {v0}, Ljava/lang/InterruptedException;->printStackTrace()V
+    .local v1, "e":Ljava/lang/InterruptedException;
+    invoke-virtual {v1}, Ljava/lang/InterruptedException;->printStackTrace()V
 
+    .line 29
+    .end local v1    # "e":Ljava/lang/InterruptedException;
+    :goto_15
     goto :goto_4
 
     .line 31
-    .end local v0    # "e":Ljava/lang/InterruptedException;
     :cond_16
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public start()Lcom/oneplus/screenshot/longshot/task/BaseThread;
     .registers 2
 
-    .prologue
     .line 37
     new-instance v0, Ljava/lang/Thread;
 
@@ -111,14 +113,13 @@
 .method public declared-synchronized stop()V
     .registers 3
 
-    .prologue
     monitor-enter p0
 
     .line 43
     :try_start_1
-    iget-object v1, p0, Lcom/oneplus/screenshot/longshot/task/BaseThread;->mThread:Ljava/lang/Thread;
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/task/BaseThread;->mThread:Ljava/lang/Thread;
 
-    if-eqz v1, :cond_d
+    if-eqz v0, :cond_d
 
     .line 44
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/task/BaseThread;->mThread:Ljava/lang/Thread;
@@ -134,17 +135,21 @@
     :try_end_d
     .catchall {:try_start_1 .. :try_end_d} :catchall_f
 
+    .line 48
     .end local v0    # "lastThread":Ljava/lang/Thread;
     :cond_d
     monitor-exit p0
 
-    .line 48
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 
+    .line 42
     :catchall_f
-    move-exception v1
+    move-exception v0
 
     monitor-exit p0
 
-    throw v1
+    .end local p0    # "this":Lcom/oneplus/screenshot/longshot/task/BaseThread;
+    throw v0
 .end method

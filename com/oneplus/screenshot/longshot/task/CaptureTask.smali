@@ -12,8 +12,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Landroid/os/AsyncTask",
-        "<",
+        "Landroid/os/AsyncTask<",
         "Ljava/lang/Integer;",
         "Ljava/lang/Void;",
         "Landroid/graphics/Bitmap;",
@@ -48,88 +47,87 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/longshot/task/CaptureTask$OnCaptureListener;Landroid/content/Context;Landroid/util/DisplayMetrics;)V
-    .registers 6
+    .registers 5
     .param p1, "listener"    # Lcom/oneplus/screenshot/longshot/task/CaptureTask$OnCaptureListener;
     .param p2, "context"    # Landroid/content/Context;
     .param p3, "displayMetrics"    # Landroid/util/DisplayMetrics;
 
-    .prologue
-    const/4 v1, 0x0
-
-    .line 38
+    .line 40
     invoke-direct {p0}, Landroid/os/AsyncTask;-><init>()V
 
-    .line 29
+    .line 30
     new-instance v0, Landroid/graphics/Matrix;
 
     invoke-direct {v0}, Landroid/graphics/Matrix;-><init>()V
 
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->mMatrix:Landroid/graphics/Matrix;
 
-    .line 30
-    iput-object v1, p0, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->mContext:Landroid/content/Context;
-
     .line 31
-    iput-object v1, p0, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->mDisplayMetrics:Landroid/util/DisplayMetrics;
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->mContext:Landroid/content/Context;
 
     .line 32
-    iput-object v1, p0, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->mListener:Lcom/oneplus/screenshot/longshot/task/CaptureTask$OnCaptureListener;
+    iput-object v0, p0, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->mDisplayMetrics:Landroid/util/DisplayMetrics;
 
     .line 33
+    iput-object v0, p0, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->mListener:Lcom/oneplus/screenshot/longshot/task/CaptureTask$OnCaptureListener;
+
+    .line 34
     const/4 v0, 0x0
 
     iput v0, p0, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->mRotation:I
 
-    .line 40
+    .line 41
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->mListener:Lcom/oneplus/screenshot/longshot/task/CaptureTask$OnCaptureListener;
 
-    .line 41
+    .line 42
     iput-object p2, p0, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->mContext:Landroid/content/Context;
 
-    .line 42
+    .line 43
     iput-object p3, p0, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->mDisplayMetrics:Landroid/util/DisplayMetrics;
 
-    .line 43
-    return-void
+    .line 44
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private getDegreesForRotation(I)I
     .registers 3
     .param p1, "value"    # I
 
-    .prologue
-    .line 96
+    .line 105
     packed-switch p1, :pswitch_data_e
 
-    .line 104
+    .line 113
     const/4 v0, 0x0
 
     return v0
 
-    .line 98
+    .line 111
     :pswitch_5
-    const/16 v0, 0x10e
+    const/16 v0, 0x5a
 
     return v0
 
-    .line 100
+    .line 109
     :pswitch_8
     const/16 v0, 0xb4
 
     return v0
 
-    .line 102
+    .line 107
     :pswitch_b
-    const/16 v0, 0x5a
+    const/16 v0, 0x10e
 
     return v0
 
-    .line 96
     :pswitch_data_e
     .packed-switch 0x1
-        :pswitch_5
-        :pswitch_8
         :pswitch_b
+        :pswitch_8
+        :pswitch_5
     .end packed-switch
 .end method
 
@@ -137,8 +135,7 @@
     .registers 3
     .param p1, "size"    # F
 
-    .prologue
-    .line 92
+    .line 101
     float-to-int v0, p1
 
     return v0
@@ -147,226 +144,156 @@
 
 # virtual methods
 .method protected varargs doInBackground([Ljava/lang/Integer;)Landroid/graphics/Bitmap;
-    .registers 15
+    .registers 12
     .param p1, "params"    # [Ljava/lang/Integer;
 
-    .prologue
-    const/4 v12, 0x1
-
-    const/4 v11, 0x0
-
-    .line 50
+    .line 51
     invoke-static {}, Lcom/oneplus/screenshot/util/Utils;->setThreadPriority()V
 
-    .line 51
-    aget-object v8, p1, v11
-
-    invoke-virtual {v8}, Ljava/lang/Integer;->intValue()I
-
-    move-result v8
-
-    int-to-long v2, v8
-
     .line 52
-    .local v2, "delay":J
-    const-string/jumbo v8, "Longshot.CaptureTask"
+    const/4 v0, 0x0
 
-    new-instance v9, Ljava/lang/StringBuilder;
+    aget-object v1, p1, v0
 
-    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-virtual {v1}, Ljava/lang/Integer;->intValue()I
 
-    const-string/jumbo v10, "start , delay:"
+    move-result v1
 
-    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v9
-
-    invoke-virtual {v9, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
-
-    move-result-object v9
-
-    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v9
-
-    invoke-static {v8, v9}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    int-to-long v1, v1
 
     .line 53
-    const-wide/16 v8, 0x0
+    .local v1, "delay":J
+    const-string v3, "Longshot.CaptureTask"
 
-    cmp-long v8, v2, v8
+    new-instance v4, Ljava/lang/StringBuilder;
 
-    if-lez v8, :cond_2f
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 55
-    :try_start_2c
-    invoke-static {v2, v3}, Ljava/lang/Thread;->sleep(J)V
-    :try_end_2f
-    .catch Ljava/lang/InterruptedException; {:try_start_2c .. :try_end_2f} :catch_9f
+    const-string v5, "start , delay:"
 
-    .line 60
-    :cond_2f
-    :goto_2f
-    const/4 v8, 0x2
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    new-array v1, v8, [F
+    invoke-virtual {v4, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    iget-object v8, p0, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->mDisplayMetrics:Landroid/util/DisplayMetrics;
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    iget v8, v8, Landroid/util/DisplayMetrics;->widthPixels:I
+    move-result-object v4
 
-    int-to-float v8, v8
+    invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    aput v8, v1, v11
+    .line 54
+    const-wide/16 v3, 0x0
 
-    iget-object v8, p0, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->mDisplayMetrics:Landroid/util/DisplayMetrics;
+    cmp-long v3, v1, v3
 
-    iget v8, v8, Landroid/util/DisplayMetrics;->heightPixels:I
+    if-lez v3, :cond_2c
 
-    int-to-float v8, v8
+    .line 56
+    :try_start_27
+    invoke-static {v1, v2}, Ljava/lang/Thread;->sleep(J)V
+    :try_end_2a
+    .catch Ljava/lang/InterruptedException; {:try_start_27 .. :try_end_2a} :catch_2b
 
-    aput v8, v1, v12
+    .line 58
+    goto :goto_2c
 
-    .line 61
-    .local v1, "dims":[F
-    iget v8, p0, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->mRotation:I
+    .line 57
+    :catch_2b
+    move-exception v3
 
-    invoke-direct {p0, v8}, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->getDegreesForRotation(I)I
+    .line 74
+    :cond_2c
+    :goto_2c
+    new-instance v3, Landroid/graphics/Rect;
 
-    move-result v0
+    iget-object v4, p0, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->mDisplayMetrics:Landroid/util/DisplayMetrics;
 
-    .line 62
-    .local v0, "degree":I
-    if-eqz v0, :cond_69
+    iget v4, v4, Landroid/util/DisplayMetrics;->widthPixels:I
 
-    .line 63
-    iget-object v8, p0, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->mMatrix:Landroid/graphics/Matrix;
+    iget-object v5, p0, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->mDisplayMetrics:Landroid/util/DisplayMetrics;
 
-    invoke-virtual {v8}, Landroid/graphics/Matrix;->reset()V
+    iget v5, v5, Landroid/util/DisplayMetrics;->heightPixels:I
 
-    .line 64
-    iget-object v8, p0, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->mMatrix:Landroid/graphics/Matrix;
+    invoke-direct {v3, v0, v0, v4, v5}, Landroid/graphics/Rect;-><init>(IIII)V
 
-    neg-int v9, v0
+    .line 75
+    .local v3, "crop":Landroid/graphics/Rect;
+    invoke-virtual {v3}, Landroid/graphics/Rect;->width()I
 
-    int-to-float v9, v9
+    move-result v4
 
-    invoke-virtual {v8, v9}, Landroid/graphics/Matrix;->preRotate(F)Z
-
-    .line 65
-    iget-object v8, p0, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->mMatrix:Landroid/graphics/Matrix;
-
-    invoke-virtual {v8, v1}, Landroid/graphics/Matrix;->mapPoints([F)V
-
-    .line 66
-    aget v8, v1, v11
-
-    invoke-static {v8}, Ljava/lang/Math;->abs(F)F
-
-    move-result v8
-
-    aput v8, v1, v11
-
-    .line 67
-    aget v8, v1, v12
-
-    invoke-static {v8}, Ljava/lang/Math;->abs(F)F
-
-    move-result v8
-
-    aput v8, v1, v12
-
-    .line 69
-    :cond_69
-    aget v8, v1, v11
-
-    invoke-direct {p0, v8}, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->getQuality(F)I
-
-    move-result v7
-
-    .line 70
-    .local v7, "w":I
-    aget v8, v1, v12
-
-    invoke-direct {p0, v8}, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->getQuality(F)I
+    .line 76
+    .local v4, "width":I
+    invoke-virtual {v3}, Landroid/graphics/Rect;->height()I
 
     move-result v5
 
-    .line 71
-    .local v5, "h":I
-    invoke-static {v7, v5}, Landroid/view/SurfaceControl;->screenshot(II)Landroid/graphics/Bitmap;
+    .line 77
+    .local v5, "height":I
+    iget v6, p0, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->mRotation:I
+
+    invoke-static {v3, v4, v5, v6}, Landroid/view/SurfaceControl;->screenshot(Landroid/graphics/Rect;III)Landroid/graphics/Bitmap;
 
     move-result-object v6
 
-    .line 72
-    .local v6, "screen":Landroid/graphics/Bitmap;
-    const-string/jumbo v8, "Longshot.CaptureTask"
+    .line 78
+    .local v6, "hwBitmap":Landroid/graphics/Bitmap;
+    sget-object v7, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
 
-    new-instance v9, Ljava/lang/StringBuilder;
+    invoke-virtual {v6, v7, v0}, Landroid/graphics/Bitmap;->copy(Landroid/graphics/Bitmap$Config;Z)Landroid/graphics/Bitmap;
 
-    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
+    move-result-object v0
 
-    const-string/jumbo v10, "capture done w = "
+    .line 79
+    .local v0, "screen":Landroid/graphics/Bitmap;
+    invoke-virtual {v6}, Landroid/graphics/Bitmap;->recycle()V
 
-    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    .line 81
+    const-string v7, "Longshot.CaptureTask"
 
-    move-result-object v9
+    new-instance v8, Ljava/lang/StringBuilder;
 
-    invoke-virtual {v9, v7}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
 
-    move-result-object v9
+    const-string v9, "capture done w = "
 
-    const-string/jumbo v10, " h = "
+    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v8, v4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v9
+    const-string v9, " h = "
 
-    invoke-virtual {v9, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v9
+    invoke-virtual {v8, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v9
+    move-result-object v8
 
-    invoke-static {v8, v9}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v7, v8}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 73
-    return-object v6
-
-    .line 56
-    .end local v0    # "degree":I
-    .end local v1    # "dims":[F
-    .end local v5    # "h":I
-    .end local v6    # "screen":Landroid/graphics/Bitmap;
-    .end local v7    # "w":I
-    :catch_9f
-    move-exception v4
-
-    .local v4, "e":Ljava/lang/InterruptedException;
-    goto :goto_2f
+    .line 82
+    return-object v0
 .end method
 
 .method protected bridge synthetic doInBackground([Ljava/lang/Object;)Ljava/lang/Object;
-    .registers 3
+    .registers 2
 
-    .prologue
-    .line 45
+    .line 15
     check-cast p1, [Ljava/lang/Integer;
 
     invoke-virtual {p0, p1}, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->doInBackground([Ljava/lang/Integer;)Landroid/graphics/Bitmap;
 
-    move-result-object v0
+    move-result-object p1
 
-    return-object v0
+    return-object p1
 .end method
 
 .method protected onCancelled()V
     .registers 1
 
-    .prologue
-    .line 86
+    .line 95
     return-void
 .end method
 
@@ -374,37 +301,39 @@
     .registers 4
     .param p1, "result"    # Landroid/graphics/Bitmap;
 
-    .prologue
-    .line 78
+    .line 87
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->mListener:Lcom/oneplus/screenshot/longshot/task/CaptureTask$OnCaptureListener;
 
-    if-eqz v0, :cond_12
+    if-eqz v0, :cond_10
 
-    .line 79
-    const-string/jumbo v0, "Longshot.CaptureTask"
+    .line 88
+    const-string v0, "Longshot.CaptureTask"
 
-    const-string/jumbo v1, "onCaptureFinished"
+    const-string v1, "onCaptureFinished"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 80
+    .line 89
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->mListener:Lcom/oneplus/screenshot/longshot/task/CaptureTask$OnCaptureListener;
 
     invoke-interface {v0, p1}, Lcom/oneplus/screenshot/longshot/task/CaptureTask$OnCaptureListener;->onCaptureFinished(Landroid/graphics/Bitmap;)V
 
-    .line 82
-    :cond_12
-    return-void
+    .line 91
+    :cond_10
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method protected bridge synthetic onPostExecute(Ljava/lang/Object;)V
     .registers 2
 
-    .prologue
-    .line 76
+    .line 15
     check-cast p1, Landroid/graphics/Bitmap;
 
     invoke-virtual {p0, p1}, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->onPostExecute(Landroid/graphics/Bitmap;)V
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

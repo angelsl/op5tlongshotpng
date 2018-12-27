@@ -7,7 +7,6 @@
 .method constructor <init>()V
     .registers 1
 
-    .prologue
     .line 14
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -20,8 +19,7 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Ljava/lang/String;",
             ">;)V"

@@ -25,7 +25,6 @@
 .method constructor <init>(Lcom/google/tagmanager/ServiceManagerImpl;)V
     .registers 2
 
-    .prologue
     .line 52
     iput-object p1, p0, Lcom/google/tagmanager/ServiceManagerImpl$1;->this$0:Lcom/google/tagmanager/ServiceManagerImpl;
 
@@ -40,7 +39,6 @@
     .registers 4
     .param p1, "isEmpty"    # Z
 
-    .prologue
     .line 55
     iget-object v0, p0, Lcom/google/tagmanager/ServiceManagerImpl$1;->this$0:Lcom/google/tagmanager/ServiceManagerImpl;
 
@@ -54,5 +52,7 @@
     invoke-virtual {v0, p1, v1}, Lcom/google/tagmanager/ServiceManagerImpl;->updatePowerSaveMode(ZZ)V
 
     .line 56
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

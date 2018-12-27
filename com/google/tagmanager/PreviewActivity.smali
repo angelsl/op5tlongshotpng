@@ -7,11 +7,12 @@
 .method public constructor <init>()V
     .registers 1
 
-    .prologue
     .line 28
     invoke-direct {p0}, Landroid/app/Activity;-><init>()V
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private displayAlert(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
@@ -20,13 +21,12 @@
     .param p2, "message"    # Ljava/lang/String;
     .param p3, "buttonLabel"    # Ljava/lang/String;
 
-    .prologue
     .line 71
-    new-instance v1, Landroid/app/AlertDialog$Builder;
+    new-instance v0, Landroid/app/AlertDialog$Builder;
 
-    invoke-direct {v1, p0}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, p0}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
 
-    invoke-virtual {v1}, Landroid/app/AlertDialog$Builder;->create()Landroid/app/AlertDialog;
+    invoke-virtual {v0}, Landroid/app/AlertDialog$Builder;->create()Landroid/app/AlertDialog;
 
     move-result-object v0
 
@@ -50,31 +50,32 @@
     invoke-virtual {v0}, Landroid/app/AlertDialog;->show()V
 
     .line 81
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
 # virtual methods
 .method public onCreate(Landroid/os/Bundle;)V
-    .registers 8
+    .registers 6
     .param p1, "savedInstanceState"    # Landroid/os/Bundle;
 
-    .prologue
     .line 39
     :try_start_0
     invoke-super {p0, p1}, Landroid/app/Activity;->onCreate(Landroid/os/Bundle;)V
 
     .line 41
-    const-string/jumbo v4, "Preview activity"
+    const-string v0, "Preview activity"
 
-    invoke-static {v4}, Lcom/google/tagmanager/Log;->i(Ljava/lang/String;)V
+    invoke-static {v0}, Lcom/google/tagmanager/Log;->i(Ljava/lang/String;)V
 
     .line 43
     invoke-virtual {p0}, Lcom/google/tagmanager/PreviewActivity;->getIntent()Landroid/content/Intent;
 
-    move-result-object v4
+    move-result-object v0
 
-    invoke-virtual {v4}, Landroid/content/Intent;->getData()Landroid/net/Uri;
+    invoke-virtual {v0}, Landroid/content/Intent;->getData()Landroid/net/Uri;
 
     move-result-object v0
 
@@ -82,173 +83,149 @@
     .local v0, "data":Landroid/net/Uri;
     invoke-static {p0}, Lcom/google/tagmanager/TagManager;->getInstance(Landroid/content/Context;)Lcom/google/tagmanager/TagManager;
 
-    move-result-object v4
+    move-result-object v1
 
-    invoke-virtual {v4, v0}, Lcom/google/tagmanager/TagManager;->setPreviewData(Landroid/net/Uri;)Z
+    invoke-virtual {v1, v0}, Lcom/google/tagmanager/TagManager;->setPreviewData(Landroid/net/Uri;)Z
 
-    move-result v4
+    move-result v1
 
-    if-eqz v4, :cond_45
+    if-nez v1, :cond_3a
+
+    .line 45
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "Cannot preview the app with the uri: "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    const-string v2, ". Launching current version instead."
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    .line 47
+    .local v1, "message":Ljava/lang/String;
+    invoke-static {v1}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
+
+    .line 48
+    const-string v2, "Preview failure"
+
+    const-string v3, "Continue"
+
+    invoke-direct {p0, v2, v1, v3}, Lcom/google/tagmanager/PreviewActivity;->displayAlert(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
     .line 52
-    :goto_1b
+    .end local v1    # "message":Ljava/lang/String;
+    :cond_3a
     invoke-virtual {p0}, Lcom/google/tagmanager/PreviewActivity;->getPackageManager()Landroid/content/pm/PackageManager;
 
-    move-result-object v4
+    move-result-object v1
 
     invoke-virtual {p0}, Lcom/google/tagmanager/PreviewActivity;->getPackageName()Ljava/lang/String;
-
-    move-result-object v5
-
-    invoke-virtual {v4, v5}, Landroid/content/pm/PackageManager;->getLaunchIntentForPackage(Ljava/lang/String;)Landroid/content/Intent;
 
     move-result-object v2
 
+    invoke-virtual {v1, v2}, Landroid/content/pm/PackageManager;->getLaunchIntentForPackage(Ljava/lang/String;)Landroid/content/Intent;
+
+    move-result-object v1
+
     .line 53
-    .local v2, "intent":Landroid/content/Intent;
-    if-nez v2, :cond_8a
+    .local v1, "intent":Landroid/content/Intent;
+    if-eqz v1, :cond_64
 
-    .line 57
-    new-instance v4, Ljava/lang/StringBuilder;
+    .line 54
+    new-instance v2, Ljava/lang/StringBuilder;
 
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v5, "No launch activity found for package name: "
+    const-string v3, "Invoke the launch activity for package name: "
 
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {p0}, Lcom/google/tagmanager/PreviewActivity;->getPackageName()Ljava/lang/String;
-
-    move-result-object v5
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-static {v4}, Lcom/google/tagmanager/Log;->i(Ljava/lang/String;)V
-
-    .line 64
-    .end local v0    # "data":Landroid/net/Uri;
-    .end local v2    # "intent":Landroid/content/Intent;
-    :goto_44
-    return-void
-
-    .line 45
-    .restart local v0    # "data":Landroid/net/Uri;
-    :cond_45
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v5, "Cannot preview the app with the uri: "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    const-string/jumbo v5, ". Launching current version instead."
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v3
 
-    .line 47
-    .local v3, "message":Ljava/lang/String;
-    invoke-static {v3}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 48
-    const-string/jumbo v4, "Preview failure"
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    const-string/jumbo v5, "Continue"
+    move-result-object v2
 
-    invoke-direct {p0, v4, v3, v5}, Lcom/google/tagmanager/PreviewActivity;->displayAlert(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    :try_end_6c
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_6c} :catch_6d
+    invoke-static {v2}, Lcom/google/tagmanager/Log;->i(Ljava/lang/String;)V
 
-    goto :goto_1b
+    .line 55
+    invoke-virtual {p0, v1}, Lcom/google/tagmanager/PreviewActivity;->startActivity(Landroid/content/Intent;)V
 
-    .line 61
-    .end local v0    # "data":Landroid/net/Uri;
-    .end local v3    # "message":Ljava/lang/String;
-    :catch_6d
-    move-exception v1
+    goto :goto_7c
 
-    .line 62
-    .local v1, "e":Ljava/lang/Exception;
-    new-instance v4, Ljava/lang/StringBuilder;
+    .line 57
+    :cond_64
+    new-instance v2, Ljava/lang/StringBuilder;
 
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v5, "Calling preview threw an exception: "
+    const-string v3, "No launch activity found for package name: "
 
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v1}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
-
-    move-result-object v5
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-static {v4}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
-
-    goto :goto_44
-
-    .line 54
-    .end local v1    # "e":Ljava/lang/Exception;
-    .restart local v0    # "data":Landroid/net/Uri;
-    .restart local v2    # "intent":Landroid/content/Intent;
-    :cond_8a
-    :try_start_8a
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v5, "Invoke the launch activity for package name: "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {p0}, Lcom/google/tagmanager/PreviewActivity;->getPackageName()Ljava/lang/String;
 
-    move-result-object v5
+    move-result-object v3
 
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v4
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v2
 
-    move-result-object v4
+    invoke-static {v2}, Lcom/google/tagmanager/Log;->i(Ljava/lang/String;)V
+    :try_end_7c
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_7c} :catch_7d
 
-    invoke-static {v4}, Lcom/google/tagmanager/Log;->i(Ljava/lang/String;)V
+    .line 63
+    .end local v0    # "data":Landroid/net/Uri;
+    .end local v1    # "intent":Landroid/content/Intent;
+    :goto_7c
+    goto :goto_96
 
-    .line 55
-    invoke-virtual {p0, v2}, Lcom/google/tagmanager/PreviewActivity;->startActivity(Landroid/content/Intent;)V
-    :try_end_a8
-    .catch Ljava/lang/Exception; {:try_start_8a .. :try_end_a8} :catch_6d
+    .line 61
+    :catch_7d
+    move-exception v0
 
-    goto :goto_44
+    .line 62
+    .local v0, "e":Ljava/lang/Exception;
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "Calling preview threw an exception: "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v1}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
+
+    .line 64
+    .end local v0    # "e":Ljava/lang/Exception;
+    :goto_96
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

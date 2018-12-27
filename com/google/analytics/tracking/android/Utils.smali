@@ -9,119 +9,45 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 3
+    .registers 1
 
-    .prologue
     .line 20
     const/16 v0, 0x10
 
     new-array v0, v0, [C
 
-    const/16 v1, 0x30
-
-    const/4 v2, 0x0
-
-    aput-char v1, v0, v2
-
-    const/16 v1, 0x31
-
-    const/4 v2, 0x1
-
-    aput-char v1, v0, v2
-
-    const/16 v1, 0x32
-
-    const/4 v2, 0x2
-
-    aput-char v1, v0, v2
-
-    const/16 v1, 0x33
-
-    const/4 v2, 0x3
-
-    aput-char v1, v0, v2
-
-    const/16 v1, 0x34
-
-    const/4 v2, 0x4
-
-    aput-char v1, v0, v2
-
-    const/16 v1, 0x35
-
-    const/4 v2, 0x5
-
-    aput-char v1, v0, v2
-
-    const/16 v1, 0x36
-
-    const/4 v2, 0x6
-
-    aput-char v1, v0, v2
-
-    const/16 v1, 0x37
-
-    const/4 v2, 0x7
-
-    aput-char v1, v0, v2
-
-    const/16 v1, 0x38
-
-    const/16 v2, 0x8
-
-    aput-char v1, v0, v2
-
-    const/16 v1, 0x39
-
-    const/16 v2, 0x9
-
-    aput-char v1, v0, v2
-
-    const/16 v1, 0x41
-
-    const/16 v2, 0xa
-
-    aput-char v1, v0, v2
-
-    const/16 v1, 0x42
-
-    const/16 v2, 0xb
-
-    aput-char v1, v0, v2
-
-    const/16 v1, 0x43
-
-    const/16 v2, 0xc
-
-    aput-char v1, v0, v2
-
-    const/16 v1, 0x44
-
-    const/16 v2, 0xd
-
-    aput-char v1, v0, v2
-
-    const/16 v1, 0x45
-
-    const/16 v2, 0xe
-
-    aput-char v1, v0, v2
-
-    const/16 v1, 0x46
-
-    const/16 v2, 0xf
-
-    aput-char v1, v0, v2
+    fill-array-data v0, :array_a
 
     sput-object v0, Lcom/google/analytics/tracking/android/Utils;->HEXBYTES:[C
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
+
+    :array_a
+    .array-data 2
+        0x30s
+        0x31s
+        0x32s
+        0x33s
+        0x34s
+        0x35s
+        0x36s
+        0x37s
+        0x38s
+        0x39s
+        0x41s
+        0x42s
+        0x43s
+        0x44s
+        0x45s
+        0x46s
+    .end array-data
 .end method
 
 .method constructor <init>()V
     .registers 1
 
-    .prologue
     .line 18
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -132,268 +58,212 @@
     .registers 12
     .param p0, "campaign"    # Ljava/lang/String;
 
-    .prologue
-    const/4 v10, 0x0
-
-    const/4 v9, 0x1
-
-    const/4 v8, 0x0
-
     .line 98
     invoke-static {p0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    move-result v7
+    move-result v0
 
-    if-nez v7, :cond_70
-
-    .line 102
-    move-object v4, p0
-
-    .line 103
-    .local v4, "urlParameters":Ljava/lang/String;
-    const-string/jumbo v7, "?"
-
-    invoke-virtual {p0, v7}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
-
-    move-result v7
-
-    if-nez v7, :cond_71
-
-    .line 116
-    :cond_13
-    :goto_13
-    const-string/jumbo v7, "%3D"
-
-    invoke-virtual {v4, v7}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
-
-    move-result v7
-
-    if-nez v7, :cond_7e
-
-    .line 123
-    const-string/jumbo v7, "="
-
-    invoke-virtual {v4, v7}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
-
-    move-result v7
-
-    if-eqz v7, :cond_88
-
-    .line 128
-    :goto_25
-    invoke-static {v4}, Lcom/google/analytics/tracking/android/Utils;->parseURLParameters(Ljava/lang/String;)Ljava/util/Map;
-
-    move-result-object v3
-
-    .line 130
-    .local v3, "paramsMap":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
-    const/16 v7, 0x9
-
-    new-array v6, v7, [Ljava/lang/String;
-
-    const-string/jumbo v7, "dclid"
-
-    aput-object v7, v6, v8
-
-    const-string/jumbo v7, "utm_source"
-
-    aput-object v7, v6, v9
-
-    const-string/jumbo v7, "gclid"
-
-    const/4 v8, 0x2
-
-    aput-object v7, v6, v8
-
-    const-string/jumbo v7, "utm_campaign"
-
-    const/4 v8, 0x3
-
-    aput-object v7, v6, v8
-
-    const-string/jumbo v7, "utm_medium"
-
-    const/4 v8, 0x4
-
-    aput-object v7, v6, v8
-
-    const-string/jumbo v7, "utm_term"
-
-    const/4 v8, 0x5
-
-    aput-object v7, v6, v8
-
-    const-string/jumbo v7, "utm_content"
-
-    const/4 v8, 0x6
-
-    aput-object v7, v6, v8
-
-    const-string/jumbo v7, "utm_id"
-
-    const/4 v8, 0x7
-
-    aput-object v7, v6, v8
-
-    const-string/jumbo v7, "gmob_t"
-
-    const/16 v8, 0x8
-
-    aput-object v7, v6, v8
-
-    .line 142
-    .local v6, "validParameters":[Ljava/lang/String;
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    .line 143
-    .local v2, "params":Ljava/lang/StringBuilder;
     const/4 v1, 0x0
 
-    .local v1, "i":I
-    :goto_68
-    array-length v7, v6
-
-    if-lt v1, v7, :cond_89
-
-    .line 151
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v7
-
-    return-object v7
+    if-eqz v0, :cond_8
 
     .line 99
-    .end local v1    # "i":I
-    .end local v2    # "params":Ljava/lang/StringBuilder;
-    .end local v3    # "paramsMap":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
-    .end local v4    # "urlParameters":Ljava/lang/String;
-    .end local v6    # "validParameters":[Ljava/lang/String;
-    :cond_70
-    return-object v10
+    return-object v1
+
+    .line 102
+    :cond_8
+    move-object v0, p0
+
+    .line 103
+    .local v0, "urlParameters":Ljava/lang/String;
+    const-string v2, "?"
+
+    invoke-virtual {p0, v2}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_1d
 
     .line 105
-    .restart local v4    # "urlParameters":Ljava/lang/String;
-    :cond_71
-    const-string/jumbo v7, "[\\?]"
+    const-string v2, "[\\?]"
 
-    invoke-virtual {p0, v7}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
+    invoke-virtual {p0, v2}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
+
+    move-result-object v2
+
+    .line 106
+    .local v2, "urlParts":[Ljava/lang/String;
+    array-length v3, v2
+
+    const/4 v4, 0x1
+
+    if-le v3, v4, :cond_1d
+
+    .line 107
+    aget-object v0, v2, v4
+
+    .line 116
+    .end local v2    # "urlParts":[Ljava/lang/String;
+    :cond_1d
+    const-string v2, "%3D"
+
+    invoke-virtual {v0, v2}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_2f
+
+    .line 119
+    :try_start_25
+    const-string v2, "UTF-8"
+
+    invoke-static {v0, v2}, Ljava/net/URLDecoder;->decode(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+    :try_end_2b
+    .catch Ljava/io/UnsupportedEncodingException; {:try_start_25 .. :try_end_2b} :catch_2d
+
+    move-object v0, v2
+
+    .line 122
+    goto :goto_38
+
+    .line 120
+    :catch_2d
+    move-exception v2
+
+    .line 121
+    .local v2, "e":Ljava/io/UnsupportedEncodingException;
+    return-object v1
+
+    .line 123
+    .end local v2    # "e":Ljava/io/UnsupportedEncodingException;
+    :cond_2f
+    const-string v2, "="
+
+    invoke-virtual {v0, v2}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_38
+
+    .line 124
+    return-object v1
+
+    .line 128
+    :cond_38
+    :goto_38
+    invoke-static {v0}, Lcom/google/analytics/tracking/android/Utils;->parseURLParameters(Ljava/lang/String;)Ljava/util/Map;
+
+    move-result-object v1
+
+    .line 130
+    .local v1, "paramsMap":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    const-string v2, "dclid"
+
+    const-string v3, "utm_source"
+
+    const-string v4, "gclid"
+
+    const-string v5, "utm_campaign"
+
+    const-string v6, "utm_medium"
+
+    const-string v7, "utm_term"
+
+    const-string v8, "utm_content"
+
+    const-string v9, "utm_id"
+
+    const-string v10, "gmob_t"
+
+    filled-new-array/range {v2 .. v10}, [Ljava/lang/String;
+
+    move-result-object v2
+
+    .line 142
+    .local v2, "validParameters":[Ljava/lang/String;
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 143
+    .local v3, "params":Ljava/lang/StringBuilder;
+    const/4 v4, 0x0
+
+    .local v4, "i":I
+    :goto_58
+    array-length v5, v2
+
+    if-ge v4, v5, :cond_8c
+
+    .line 144
+    aget-object v5, v2, v4
+
+    invoke-interface {v1, v5}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v5
 
-    .line 106
-    .local v5, "urlParts":[Ljava/lang/String;
-    array-length v7, v5
+    check-cast v5, Ljava/lang/CharSequence;
 
-    if-le v7, v9, :cond_13
+    invoke-static {v5}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    .line 107
-    aget-object v4, v5, v9
+    move-result v5
 
-    goto :goto_13
+    if-nez v5, :cond_89
 
-    .line 119
-    .end local v5    # "urlParts":[Ljava/lang/String;
-    :cond_7e
-    :try_start_7e
-    const-string/jumbo v7, "UTF-8"
+    .line 145
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->length()I
 
-    invoke-static {v4, v7}, Ljava/net/URLDecoder;->decode(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    :try_end_84
-    .catch Ljava/io/UnsupportedEncodingException; {:try_start_7e .. :try_end_84} :catch_86
+    move-result v5
+
+    if-lez v5, :cond_74
+
+    .line 146
+    const-string v5, "&"
+
+    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 148
+    :cond_74
+    aget-object v5, v2, v4
+
+    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v5, "="
+
+    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    aget-object v5, v2, v4
+
+    invoke-interface {v1, v5}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v5
+
+    check-cast v5, Ljava/lang/String;
+
+    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 143
+    :cond_89
+    add-int/lit8 v4, v4, 0x1
+
+    goto :goto_58
+
+    .line 151
+    .end local v4    # "i":I
+    :cond_8c
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v4
 
-    goto :goto_25
-
-    .line 120
-    :catch_86
-    move-exception v0
-
-    .line 121
-    .local v0, "e":Ljava/io/UnsupportedEncodingException;
-    return-object v10
-
-    .line 124
-    .end local v0    # "e":Ljava/io/UnsupportedEncodingException;
-    :cond_88
-    return-object v10
-
-    .line 144
-    .restart local v1    # "i":I
-    .restart local v2    # "params":Ljava/lang/StringBuilder;
-    .restart local v3    # "paramsMap":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
-    .restart local v6    # "validParameters":[Ljava/lang/String;
-    :cond_89
-    aget-object v7, v6, v1
-
-    invoke-interface {v3, v7}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v7
-
-    check-cast v7, Ljava/lang/CharSequence;
-
-    invoke-static {v7}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v7
-
-    if-eqz v7, :cond_9a
-
-    .line 143
-    :goto_97
-    add-int/lit8 v1, v1, 0x1
-
-    goto :goto_68
-
-    .line 145
-    :cond_9a
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->length()I
-
-    move-result v7
-
-    if-gtz v7, :cond_b9
-
-    .line 148
-    :goto_a0
-    aget-object v7, v6, v1
-
-    invoke-virtual {v2, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v7
-
-    const-string/jumbo v8, "="
-
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    aget-object v7, v6, v1
-
-    invoke-interface {v3, v7}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v7
-
-    check-cast v7, Ljava/lang/String;
-
-    invoke-virtual {v8, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    goto :goto_97
-
-    .line 146
-    :cond_b9
-    const-string/jumbo v7, "&"
-
-    invoke-virtual {v2, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    goto :goto_a0
+    return-object v4
 .end method
 
 .method static fromHexDigit(C)I
     .registers 3
     .param p0, "hexDigit"    # C
 
-    .prologue
     .line 188
     add-int/lit8 v0, p0, -0x30
 
@@ -401,30 +271,30 @@
     .local v0, "value":I
     const/16 v1, 0x9
 
-    if-gt v0, v1, :cond_7
-
-    .line 194
-    :goto_6
-    return v0
+    if-le v0, v1, :cond_8
 
     .line 192
-    :cond_7
     add-int/lit8 v0, v0, -0x7
 
-    goto :goto_6
+    .line 194
+    :cond_8
+    return v0
 .end method
 
 .method static getLanguage(Ljava/util/Locale;)Ljava/lang/String;
-    .registers 4
+    .registers 3
     .param p0, "locale"    # Ljava/util/Locale;
 
-    .prologue
-    const/4 v2, 0x0
-
     .line 163
-    if-eqz p0, :cond_2c
+    const/4 v0, 0x0
+
+    if-nez p0, :cond_4
+
+    .line 164
+    return-object v0
 
     .line 166
+    :cond_4
     invoke-virtual {p0}, Ljava/util/Locale;->getLanguage()Ljava/lang/String;
 
     move-result-object v1
@@ -433,9 +303,13 @@
 
     move-result v1
 
-    if-nez v1, :cond_2d
+    if-eqz v1, :cond_f
+
+    .line 167
+    return-object v0
 
     .line 169
+    :cond_f
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -461,91 +335,59 @@
 
     move-result v1
 
-    if-eqz v1, :cond_2e
+    if-nez v1, :cond_39
+
+    .line 172
+    const-string v1, "-"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {p0}, Ljava/util/Locale;->getCountry()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/String;->toLowerCase()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 174
-    :goto_27
+    :cond_39
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1
 
     return-object v1
-
-    .line 164
-    .end local v0    # "lang":Ljava/lang/StringBuilder;
-    :cond_2c
-    return-object v2
-
-    .line 167
-    :cond_2d
-    return-object v2
-
-    .line 172
-    .restart local v0    # "lang":Ljava/lang/StringBuilder;
-    :cond_2e
-    const-string/jumbo v1, "-"
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {p0}, Ljava/util/Locale;->getCountry()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/String;->toLowerCase()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    goto :goto_27
 .end method
 
 .method static hexDecode(Ljava/lang/String;)[B
-    .registers 5
+    .registers 6
     .param p0, "s"    # Ljava/lang/String;
 
-    .prologue
     .line 198
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
-    move-result v2
+    move-result v0
 
-    div-int/lit8 v2, v2, 0x2
+    const/4 v1, 0x2
 
-    new-array v0, v2, [B
+    div-int/2addr v0, v1
+
+    new-array v0, v0, [B
 
     .line 199
     .local v0, "bytes":[B
-    const/4 v1, 0x0
+    const/4 v2, 0x0
 
-    .local v1, "i":I
+    .local v2, "i":I
     :goto_9
-    array-length v2, v0
+    array-length v3, v0
 
-    if-lt v1, v2, :cond_d
-
-    .line 203
-    return-object v0
+    if-ge v2, v3, :cond_2b
 
     .line 200
-    :cond_d
-    mul-int/lit8 v2, v1, 0x2
-
-    invoke-virtual {p0, v2}, Ljava/lang/String;->charAt(I)C
-
-    move-result v2
-
-    invoke-static {v2}, Lcom/google/analytics/tracking/android/Utils;->fromHexDigit(C)I
-
-    move-result v2
-
-    shl-int/lit8 v2, v2, 0x4
-
-    mul-int/lit8 v3, v1, 0x2
-
-    add-int/lit8 v3, v3, 0x1
+    mul-int v3, v1, v2
 
     invoke-virtual {p0, v3}, Ljava/lang/String;->charAt(I)C
 
@@ -555,199 +397,213 @@
 
     move-result v3
 
-    or-int/2addr v2, v3
+    shl-int/lit8 v3, v3, 0x4
 
-    int-to-byte v2, v2
+    mul-int v4, v1, v2
 
-    int-to-byte v2, v2
+    add-int/lit8 v4, v4, 0x1
 
-    aput-byte v2, v0, v1
+    invoke-virtual {p0, v4}, Ljava/lang/String;->charAt(I)C
+
+    move-result v4
+
+    invoke-static {v4}, Lcom/google/analytics/tracking/android/Utils;->fromHexDigit(C)I
+
+    move-result v4
+
+    or-int/2addr v3, v4
+
+    int-to-byte v3, v3
+
+    aput-byte v3, v0, v2
 
     .line 199
-    add-int/lit8 v1, v1, 0x1
+    add-int/lit8 v2, v2, 0x1
 
     goto :goto_9
+
+    .line 203
+    .end local v2    # "i":I
+    :cond_2b
+    return-object v0
 .end method
 
 .method static hexEncode([B)Ljava/lang/String;
-    .registers 7
+    .registers 8
     .param p0, "bytes"    # [B
 
-    .prologue
     .line 178
-    array-length v3, p0
+    array-length v0, p0
 
-    mul-int/lit8 v3, v3, 0x2
+    const/4 v1, 0x2
 
-    new-array v2, v3, [C
+    mul-int/2addr v0, v1
+
+    new-array v0, v0, [C
 
     .line 179
-    .local v2, "out":[C
-    const/4 v1, 0x0
+    .local v0, "out":[C
+    const/4 v2, 0x0
 
-    .local v1, "i":I
+    .local v2, "i":I
     :goto_6
     array-length v3, p0
 
-    if-lt v1, v3, :cond_f
-
-    .line 184
-    new-instance v3, Ljava/lang/String;
-
-    invoke-direct {v3, v2}, Ljava/lang/String;-><init>([C)V
-
-    return-object v3
+    if-ge v2, v3, :cond_26
 
     .line 180
-    :cond_f
-    aget-byte v3, p0, v1
+    aget-byte v3, p0, v2
 
-    and-int/lit16 v0, v3, 0xff
+    and-int/lit16 v3, v3, 0xff
 
     .line 181
-    .local v0, "b":I
-    mul-int/lit8 v3, v1, 0x2
+    .local v3, "b":I
+    mul-int v4, v1, v2
 
-    sget-object v4, Lcom/google/analytics/tracking/android/Utils;->HEXBYTES:[C
+    sget-object v5, Lcom/google/analytics/tracking/android/Utils;->HEXBYTES:[C
 
-    shr-int/lit8 v5, v0, 0x4
+    shr-int/lit8 v6, v3, 0x4
 
-    aget-char v4, v4, v5
+    aget-char v5, v5, v6
 
-    int-to-char v4, v4
-
-    aput-char v4, v2, v3
+    aput-char v5, v0, v4
 
     .line 182
-    mul-int/lit8 v3, v1, 0x2
+    mul-int v4, v1, v2
 
-    add-int/lit8 v3, v3, 0x1
+    add-int/lit8 v4, v4, 0x1
 
-    sget-object v4, Lcom/google/analytics/tracking/android/Utils;->HEXBYTES:[C
+    sget-object v5, Lcom/google/analytics/tracking/android/Utils;->HEXBYTES:[C
 
-    and-int/lit8 v5, v0, 0xf
+    and-int/lit8 v6, v3, 0xf
 
-    aget-char v4, v4, v5
+    aget-char v5, v5, v6
 
-    int-to-char v4, v4
-
-    aput-char v4, v2, v3
+    aput-char v5, v0, v4
 
     .line 179
-    add-int/lit8 v1, v1, 0x1
+    .end local v3    # "b":I
+    add-int/lit8 v2, v2, 0x1
 
     goto :goto_6
+
+    .line 184
+    .end local v2    # "i":I
+    :cond_26
+    new-instance v1, Ljava/lang/String;
+
+    invoke-direct {v1, v0}, Ljava/lang/String;-><init>([C)V
+
+    return-object v1
 .end method
 
 .method public static parseURLParameters(Ljava/lang/String;)Ljava/util/Map;
-    .registers 12
+    .registers 11
     .param p0, "parameterString"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
             "Ljava/lang/String;",
             ")",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Ljava/lang/String;",
             ">;"
         }
     .end annotation
 
-    .prologue
-    const/4 v10, 0x1
+    .line 24
+    new-instance v0, Ljava/util/HashMap;
+
+    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+
+    .line 25
+    .local v0, "parameters":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    const-string v1, "&"
+
+    invoke-virtual {p0, v1}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
+
+    move-result-object v1
+
+    .line 26
+    .local v1, "params":[Ljava/lang/String;
+    move-object v2, v1
+
+    .local v2, "arr$":[Ljava/lang/String;
+    array-length v3, v2
+
+    .local v3, "len$":I
+    const/4 v4, 0x0
+
+    move v5, v4
+
+    .local v5, "i$":I
+    :goto_f
+    if-ge v5, v3, :cond_39
+
+    aget-object v6, v2, v5
+
+    .line 27
+    .local v6, "s":Ljava/lang/String;
+    const-string v7, "="
+
+    invoke-virtual {v6, v7}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
+
+    move-result-object v7
+
+    .line 28
+    .local v7, "ss":[Ljava/lang/String;
+    array-length v8, v7
+
+    const/4 v9, 0x1
+
+    if-le v8, v9, :cond_25
+
+    .line 29
+    aget-object v8, v7, v4
+
+    aget-object v9, v7, v9
+
+    invoke-interface {v0, v8, v9}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    goto :goto_36
+
+    .line 30
+    :cond_25
+    array-length v8, v7
+
+    if-ne v8, v9, :cond_36
+
+    aget-object v8, v7, v4
+
+    invoke-virtual {v8}, Ljava/lang/String;->length()I
+
+    move-result v8
+
+    if-eqz v8, :cond_36
+
+    .line 31
+    aget-object v8, v7, v4
 
     const/4 v9, 0x0
 
-    .line 24
-    new-instance v3, Ljava/util/HashMap;
-
-    invoke-direct {v3}, Ljava/util/HashMap;-><init>()V
-
-    .line 25
-    .local v3, "parameters":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
-    const-string/jumbo v7, "&"
-
-    invoke-virtual {p0, v7}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
-
-    move-result-object v4
+    invoke-interface {v0, v8, v9}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 26
-    .local v4, "params":[Ljava/lang/String;
-    move-object v0, v4
+    .end local v6    # "s":Ljava/lang/String;
+    .end local v7    # "ss":[Ljava/lang/String;
+    :cond_36
+    :goto_36
+    add-int/lit8 v5, v5, 0x1
 
-    .local v0, "arr$":[Ljava/lang/String;
-    array-length v2, v0
-
-    .local v2, "len$":I
-    const/4 v1, 0x0
-
-    .local v1, "i$":I
-    :goto_11
-    if-lt v1, v2, :cond_14
+    goto :goto_f
 
     .line 34
-    return-object v3
-
-    .line 26
-    :cond_14
-    aget-object v5, v0, v1
-
-    .line 27
-    .local v5, "s":Ljava/lang/String;
-    const-string/jumbo v7, "="
-
-    invoke-virtual {v5, v7}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
-
-    move-result-object v6
-
-    .line 28
-    .local v6, "ss":[Ljava/lang/String;
-    array-length v7, v6
-
-    if-gt v7, v10, :cond_26
-
-    .line 30
-    array-length v7, v6
-
-    if-eq v7, v10, :cond_2e
-
-    .line 26
-    :cond_23
-    :goto_23
-    add-int/lit8 v1, v1, 0x1
-
-    goto :goto_11
-
-    .line 29
-    :cond_26
-    aget-object v7, v6, v9
-
-    aget-object v8, v6, v10
-
-    invoke-interface {v3, v7, v8}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    goto :goto_23
-
-    .line 30
-    :cond_2e
-    aget-object v7, v6, v9
-
-    invoke-virtual {v7}, Ljava/lang/String;->length()I
-
-    move-result v7
-
-    if-eqz v7, :cond_23
-
-    .line 31
-    aget-object v7, v6, v9
-
-    const/4 v8, 0x0
-
-    invoke-interface {v3, v7, v8}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    goto :goto_23
+    .end local v2    # "arr$":[Ljava/lang/String;
+    .end local v3    # "len$":I
+    .end local v5    # "i$":I
+    :cond_39
+    return-object v0
 .end method
 
 .method public static putIfAbsent(Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;)V
@@ -757,8 +613,7 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Ljava/lang/String;",
             ">;",
@@ -768,114 +623,107 @@
         }
     .end annotation
 
-    .prologue
     .line 207
     .local p0, "hit":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     invoke-interface {p0, p1}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
 
     move-result v0
 
-    if-eqz v0, :cond_7
-
-    .line 210
-    :goto_6
-    return-void
+    if-nez v0, :cond_9
 
     .line 208
-    :cond_7
     invoke-interface {p0, p1, p2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    goto :goto_6
+    .line 210
+    :cond_9
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public static safeParseBoolean(Ljava/lang/String;Z)Z
-    .registers 4
+    .registers 3
     .param p0, "s"    # Ljava/lang/String;
     .param p1, "defaultValue"    # Z
 
-    .prologue
-    const/4 v1, 0x0
-
     .line 72
-    if-nez p0, :cond_4
-
-    .line 83
-    :goto_3
-    return p1
+    if-eqz p0, :cond_37
 
     .line 73
-    :cond_4
-    const-string/jumbo v0, "true"
+    const-string v0, "true"
 
     invoke-virtual {p0, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
 
     move-result v0
 
-    if-eqz v0, :cond_f
+    if-nez v0, :cond_35
+
+    const-string v0, "yes"
+
+    invoke-virtual {p0, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_35
+
+    const-string v0, "1"
+
+    invoke-virtual {p0, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1b
+
+    goto :goto_35
+
+    .line 77
+    :cond_1b
+    const-string v0, "false"
+
+    invoke-virtual {p0, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_33
+
+    const-string v0, "no"
+
+    invoke-virtual {p0, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_33
+
+    const-string v0, "0"
+
+    invoke-virtual {p0, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_37
+
+    .line 80
+    :cond_33
+    const/4 v0, 0x0
+
+    return v0
 
     .line 76
-    :cond_d
+    :cond_35
+    :goto_35
     const/4 v0, 0x1
 
     return v0
 
-    .line 73
-    :cond_f
-    const-string/jumbo v0, "yes"
-
-    invoke-virtual {p0, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
-
-    move-result v0
-
-    if-nez v0, :cond_d
-
-    const-string/jumbo v0, "1"
-
-    invoke-virtual {p0, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
-
-    move-result v0
-
-    if-nez v0, :cond_d
-
-    .line 77
-    const-string/jumbo v0, "false"
-
-    invoke-virtual {p0, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_2b
-
-    .line 80
-    :cond_2a
-    return v1
-
-    .line 77
-    :cond_2b
-    const-string/jumbo v0, "no"
-
-    invoke-virtual {p0, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
-
-    move-result v0
-
-    if-nez v0, :cond_2a
-
-    const-string/jumbo v0, "0"
-
-    invoke-virtual {p0, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
-
-    move-result v0
-
-    if-nez v0, :cond_2a
-
-    goto :goto_3
+    .line 83
+    :cond_37
+    return p1
 .end method
 
 .method public static safeParseDouble(Ljava/lang/String;)D
     .registers 3
     .param p0, "s"    # Ljava/lang/String;
 
-    .prologue
     .line 39
     const-wide/16 v0, 0x0
 
@@ -887,27 +735,26 @@
 .end method
 
 .method public static safeParseDouble(Ljava/lang/String;D)D
-    .registers 8
+    .registers 5
     .param p0, "s"    # Ljava/lang/String;
     .param p1, "defaultValue"    # D
 
-    .prologue
     .line 44
-    if-eqz p0, :cond_7
-
-    .line 48
-    :try_start_2
-    invoke-static {p0}, Ljava/lang/Double;->parseDouble(Ljava/lang/String;)D
-    :try_end_5
-    .catch Ljava/lang/NumberFormatException; {:try_start_2 .. :try_end_5} :catch_8
-
-    move-result-wide v2
-
-    return-wide v2
+    if-nez p0, :cond_3
 
     .line 45
-    :cond_7
     return-wide p1
+
+    .line 48
+    :cond_3
+    :try_start_3
+    invoke-static {p0}, Ljava/lang/Double;->parseDouble(Ljava/lang/String;)D
+
+    move-result-wide v0
+    :try_end_7
+    .catch Ljava/lang/NumberFormatException; {:try_start_3 .. :try_end_7} :catch_8
+
+    return-wide v0
 
     .line 49
     :catch_8
@@ -922,31 +769,30 @@
     .registers 5
     .param p0, "s"    # Ljava/lang/String;
 
-    .prologue
-    const-wide/16 v2, 0x0
-
     .line 56
-    if-eqz p0, :cond_9
+    const-wide/16 v0, 0x0
 
-    .line 60
-    :try_start_4
-    invoke-static {p0}, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J
-    :try_end_7
-    .catch Ljava/lang/NumberFormatException; {:try_start_4 .. :try_end_7} :catch_a
-
-    move-result-wide v2
-
-    return-wide v2
+    if-nez p0, :cond_5
 
     .line 57
-    :cond_9
+    return-wide v0
+
+    .line 60
+    :cond_5
+    :try_start_5
+    invoke-static {p0}, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J
+
+    move-result-wide v2
+    :try_end_9
+    .catch Ljava/lang/NumberFormatException; {:try_start_5 .. :try_end_9} :catch_a
+
     return-wide v2
 
     .line 61
     :catch_a
-    move-exception v0
+    move-exception v2
 
     .line 62
-    .local v0, "e":Ljava/lang/NumberFormatException;
-    return-wide v2
+    .local v2, "e":Ljava/lang/NumberFormatException;
+    return-wide v0
 .end method

@@ -13,7 +13,6 @@
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "attrs"    # Landroid/util/AttributeSet;
 
-    .prologue
     .line 14
     invoke-direct {p0, p1, p2}, Lcom/oneplus/screenshot/anim/BaseInterpolator;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
@@ -27,9 +26,6 @@
     .registers 6
     .param p1, "x"    # F
 
-    .prologue
-    const/4 v3, 0x0
-
     .line 22
     iget v0, p0, Lcom/oneplus/screenshot/anim/DropInterpolator;->mDurationFactor:F
 
@@ -39,10 +35,12 @@
 
     cmpg-float v0, p1, v0
 
+    const/4 v1, 0x0
+
     if-gez v0, :cond_b
 
     .line 23
-    return v3
+    return v1
 
     .line 25
     :cond_b
@@ -50,27 +48,29 @@
 
     sub-float v0, p1, v0
 
-    iget v1, p0, Lcom/oneplus/screenshot/anim/DropInterpolator;->mDurationFactor:F
-
     const/high16 v2, 0x3f800000    # 1.0f
 
-    sub-float v1, v2, v1
+    iget v3, p0, Lcom/oneplus/screenshot/anim/DropInterpolator;->mDurationFactor:F
 
-    div-float/2addr v0, v1
+    sub-float/2addr v2, v3
 
-    iget v1, p0, Lcom/oneplus/screenshot/anim/DropInterpolator;->mFactor:F
+    div-float/2addr v0, v2
 
-    mul-float p1, v0, v1
+    iget v2, p0, Lcom/oneplus/screenshot/anim/DropInterpolator;->mFactor:F
+
+    mul-float/2addr v0, v2
 
     .line 26
-    cmpg-float v0, p1, v3
+    .end local p1    # "x":F
+    .local v0, "x":F
+    cmpg-float p1, v0, v1
 
-    if-gez v0, :cond_1f
+    if-gez p1, :cond_1d
 
     .line 27
-    const/4 p1, 0x0
+    const/4 v0, 0x0
 
     .line 29
-    :cond_1f
-    return p1
+    :cond_1d
+    return v0
 .end method

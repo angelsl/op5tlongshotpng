@@ -7,8 +7,8 @@
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/oneplus/screenshot/GlobalScreenshot;->startAnimation(Ljava/lang/Runnable;IIZZ)V
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/oneplus/screenshot/GlobalScreenshot;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -26,109 +26,26 @@
     .registers 2
     .param p1, "this$0"    # Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .prologue
-    .line 1
+    .line 1360
     iput-object p1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$8;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .line 1200
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1
     return-void
 .end method
 
 
 # virtual methods
 .method public run()V
-    .registers 5
+    .registers 2
 
-    .prologue
-    const/4 v3, 0x0
+    .line 1363
+    iget-object v0, p0, Lcom/oneplus/screenshot/GlobalScreenshot$8;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    const/4 v2, 0x1
+    invoke-static {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$2100(Lcom/oneplus/screenshot/GlobalScreenshot;)V
 
-    .line 1204
-    iget-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$8;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
-
-    invoke-static {v1}, Lcom/oneplus/screenshot/GlobalScreenshot;->-get10(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/graphics/Bitmap;
-
-    move-result-object v1
-
-    if-nez v1, :cond_14
-
-    .line 1205
-    const-string/jumbo v1, "Longshot.GlobalScreenshot"
-
-    const-string/jumbo v2, "mScreenBitmap is null"
-
-    invoke-static {v1, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 1206
-    return-void
-
-    .line 1213
-    :cond_14
-    iget-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$8;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
-
-    invoke-static {v1}, Lcom/oneplus/screenshot/GlobalScreenshot;->-get4(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/content/Context;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
-
-    move-result-object v0
-
-    .line 1214
-    .local v0, "cr":Landroid/content/ContentResolver;
-    const-string/jumbo v1, "oem_screenshot_sound_enable"
-
-    invoke-static {v0, v1, v2}, Landroid/provider/Settings$System;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
-
-    move-result v1
-
-    if-ne v1, v2, :cond_31
-
-    .line 1215
-    iget-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$8;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
-
-    invoke-static {v1}, Lcom/oneplus/screenshot/GlobalScreenshot;->-get2(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/media/MediaActionSound;
-
-    move-result-object v1
-
-    const/4 v2, 0x0
-
-    invoke-virtual {v1, v2}, Landroid/media/MediaActionSound;->play(I)V
-
-    .line 1219
-    :cond_31
-    iget-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$8;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
-
-    invoke-static {v1}, Lcom/oneplus/screenshot/GlobalScreenshot;->-get15(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageView;
-
-    move-result-object v1
-
-    const/4 v2, 0x2
-
-    invoke-virtual {v1, v2, v3}, Landroid/widget/ImageView;->setLayerType(ILandroid/graphics/Paint;)V
-
-    .line 1220
-    iget-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$8;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
-
-    invoke-static {v1}, Lcom/oneplus/screenshot/GlobalScreenshot;->-get15(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageView;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Landroid/widget/ImageView;->buildLayer()V
-
-    .line 1221
-    iget-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$8;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
-
-    invoke-static {v1}, Lcom/oneplus/screenshot/GlobalScreenshot;->-get11(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/animation/AnimatorSet;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Landroid/animation/AnimatorSet;->start()V
-
-    .line 1222
-    return-void
+    .line 1364
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

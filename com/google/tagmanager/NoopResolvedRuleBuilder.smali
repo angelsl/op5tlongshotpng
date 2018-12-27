@@ -18,7 +18,6 @@
 .method constructor <init>()V
     .registers 1
 
-    .prologue
     .line 12
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -31,7 +30,6 @@
 .method public createNegativePredicate()Lcom/google/tagmanager/ResolvedFunctionCallBuilder;
     .registers 2
 
-    .prologue
     .line 16
     new-instance v0, Lcom/google/tagmanager/NoopResolvedFunctionCallBuilder;
 
@@ -43,7 +41,6 @@
 .method public createPositivePredicate()Lcom/google/tagmanager/ResolvedFunctionCallBuilder;
     .registers 2
 
-    .prologue
     .line 21
     new-instance v0, Lcom/google/tagmanager/NoopResolvedFunctionCallBuilder;
 
@@ -55,7 +52,6 @@
 .method public getAddedMacroFunctions()Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
     .registers 2
 
-    .prologue
     .line 26
     new-instance v0, Lcom/google/tagmanager/NoopResolvedRuleBuilder$NoopResolvedFunctionCallTranslatorList;
 
@@ -67,7 +63,6 @@
 .method public getAddedTagFunctions()Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
     .registers 2
 
-    .prologue
     .line 36
     new-instance v0, Lcom/google/tagmanager/NoopResolvedRuleBuilder$NoopResolvedFunctionCallTranslatorList;
 
@@ -79,7 +74,6 @@
 .method public getRemovedMacroFunctions()Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
     .registers 2
 
-    .prologue
     .line 31
     new-instance v0, Lcom/google/tagmanager/NoopResolvedRuleBuilder$NoopResolvedFunctionCallTranslatorList;
 
@@ -91,7 +85,6 @@
 .method public getRemovedTagFunctions()Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
     .registers 2
 
-    .prologue
     .line 41
     new-instance v0, Lcom/google/tagmanager/NoopResolvedRuleBuilder$NoopResolvedFunctionCallTranslatorList;
 
@@ -104,7 +97,6 @@
     .registers 2
     .param p1, "result"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    .prologue
     .line 46
     return-void
 .end method

@@ -12,22 +12,22 @@
     .registers 2
     .param p1, "description"    # Ljava/lang/String;
 
-    .prologue
     .line 45
     invoke-direct {p0, p1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
 
     .line 46
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method static invalidEndTag()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
     .registers 2
 
-    .prologue
     .line 73
     new-instance v0, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
 
-    const-string/jumbo v1, "Protocol message end-group tag did not match expected tag."
+    const-string v1, "Protocol message end-group tag did not match expected tag."
 
     invoke-direct {v0, v1}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;-><init>(Ljava/lang/String;)V
 
@@ -37,11 +37,10 @@
 .method static invalidTag()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
     .registers 2
 
-    .prologue
     .line 68
     new-instance v0, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
 
-    const-string/jumbo v1, "Protocol message contained an invalid tag (zero)."
+    const-string v1, "Protocol message contained an invalid tag (zero)."
 
     invoke-direct {v0, v1}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;-><init>(Ljava/lang/String;)V
 
@@ -51,11 +50,10 @@
 .method static invalidWireType()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
     .registers 2
 
-    .prologue
     .line 78
     new-instance v0, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
 
-    const-string/jumbo v1, "Protocol message tag had invalid wire type."
+    const-string v1, "Protocol message tag had invalid wire type."
 
     invoke-direct {v0, v1}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;-><init>(Ljava/lang/String;)V
 
@@ -65,11 +63,10 @@
 .method static malformedVarint()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
     .registers 2
 
-    .prologue
     .line 63
     new-instance v0, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
 
-    const-string/jumbo v1, "CodedInputStream encountered a malformed varint."
+    const-string v1, "CodedInputStream encountered a malformed varint."
 
     invoke-direct {v0, v1}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;-><init>(Ljava/lang/String;)V
 
@@ -79,11 +76,10 @@
 .method static negativeSize()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
     .registers 2
 
-    .prologue
     .line 57
     new-instance v0, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
 
-    const-string/jumbo v1, "CodedInputStream encountered an embedded string or message which claimed to have negative size."
+    const-string v1, "CodedInputStream encountered an embedded string or message which claimed to have negative size."
 
     invoke-direct {v0, v1}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;-><init>(Ljava/lang/String;)V
 
@@ -93,11 +89,10 @@
 .method static recursionLimitExceeded()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
     .registers 2
 
-    .prologue
     .line 83
     new-instance v0, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
 
-    const-string/jumbo v1, "Protocol message had too many levels of nesting.  May be malicious.  Use CodedInputStream.setRecursionLimit() to increase the depth limit."
+    const-string v1, "Protocol message had too many levels of nesting.  May be malicious.  Use CodedInputStream.setRecursionLimit() to increase the depth limit."
 
     invoke-direct {v0, v1}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;-><init>(Ljava/lang/String;)V
 
@@ -107,11 +102,10 @@
 .method static sizeLimitExceeded()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
     .registers 2
 
-    .prologue
     .line 89
     new-instance v0, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
 
-    const-string/jumbo v1, "Protocol message was too large.  May be malicious.  Use CodedInputStream.setSizeLimit() to increase the size limit."
+    const-string v1, "Protocol message was too large.  May be malicious.  Use CodedInputStream.setSizeLimit() to increase the size limit."
 
     invoke-direct {v0, v1}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;-><init>(Ljava/lang/String;)V
 
@@ -121,11 +115,10 @@
 .method static truncatedMessage()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
     .registers 2
 
-    .prologue
     .line 49
     new-instance v0, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
 
-    const-string/jumbo v1, "While parsing a protocol message, the input ended unexpectedly in the middle of a field.  This could mean either than the input has been truncated or that an embedded message misreported its own length."
+    const-string v1, "While parsing a protocol message, the input ended unexpectedly in the middle of a field.  This could mean either than the input has been truncated or that an embedded message misreported its own length."
 
     invoke-direct {v0, v1}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;-><init>(Ljava/lang/String;)V
 

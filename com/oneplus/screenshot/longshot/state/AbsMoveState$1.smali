@@ -26,14 +26,11 @@
     .registers 2
     .param p1, "this$0"    # Lcom/oneplus/screenshot/longshot/state/AbsMoveState;
 
-    .prologue
-    .line 1
+    .line 51
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/AbsMoveState$1;->this$0:Lcom/oneplus/screenshot/longshot/state/AbsMoveState;
 
-    .line 51
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1
     return-void
 .end method
 
@@ -42,7 +39,6 @@
 .method public run()V
     .registers 2
 
-    .prologue
     .line 54
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsMoveState$1;->this$0:Lcom/oneplus/screenshot/longshot/state/AbsMoveState;
 
@@ -53,8 +49,10 @@
     .line 56
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsMoveState$1;->this$0:Lcom/oneplus/screenshot/longshot/state/AbsMoveState;
 
-    invoke-static {v0}, Lcom/oneplus/screenshot/longshot/state/AbsMoveState;->-wrap0(Lcom/oneplus/screenshot/longshot/state/AbsMoveState;)V
+    invoke-static {v0}, Lcom/oneplus/screenshot/longshot/state/AbsMoveState;->access$000(Lcom/oneplus/screenshot/longshot/state/AbsMoveState;)V
 
     .line 57
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

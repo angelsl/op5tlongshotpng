@@ -1,4 +1,4 @@
-.class final Lcom/oneplus/screenshot/longshot/util/Configs$1;
+.class Lcom/oneplus/screenshot/longshot/util/Configs$1;
 .super Ljava/lang/Object;
 .source "Configs.java"
 
@@ -12,7 +12,7 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x8
+    accessFlags = 0x0
     name = null
 .end annotation
 
@@ -25,14 +25,11 @@
 .method constructor <init>(Landroid/content/Context;)V
     .registers 2
 
-    .prologue
-    .line 1
+    .line 703
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/util/Configs$1;->val$context:Landroid/content/Context;
 
-    .line 683
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1
     return-void
 .end method
 
@@ -43,17 +40,14 @@
     .param p1, "v"    # Landroid/view/View;
     .param p2, "event"    # Landroid/view/MotionEvent;
 
-    .prologue
-    const/4 v4, 0x1
+    .line 706
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/util/Configs$1;->val$context:Landroid/content/Context;
 
-    .line 686
-    iget-object v1, p0, Lcom/oneplus/screenshot/longshot/util/Configs$1;->val$context:Landroid/content/Context;
-
-    invoke-static {v1}, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->getInstance(Landroid/content/Context;)Lcom/oneplus/screenshot/longshot/state/LongshotMode;
+    invoke-static {v0}, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->getInstance(Landroid/content/Context;)Lcom/oneplus/screenshot/longshot/state/LongshotMode;
 
     move-result-object v0
 
-    .line 687
+    .line 707
     .local v0, "lsm":Lcom/oneplus/screenshot/longshot/state/LongshotMode;
     const/4 v1, 0x0
 
@@ -61,49 +55,47 @@
 
     move-result v1
 
-    if-ne v1, v4, :cond_37
+    const/4 v2, 0x1
 
-    .line 688
-    const-string/jumbo v1, "Longshot.Configs"
+    if-ne v1, v2, :cond_33
 
-    new-instance v2, Ljava/lang/StringBuilder;
+    .line 708
+    const-string v1, "Longshot.Configs"
 
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    const-string/jumbo v3, "onTouch, "
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v4, "onTouch, "
 
-    move-result-object v2
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->isMoveState()Z
 
-    move-result v3
+    move-result v4
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
-    move-result-object v2
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v3
 
-    move-result-object v2
+    invoke-static {v1, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    .line 709
+    sput-boolean v2, Lcom/oneplus/screenshot/longshot/util/Configs;->STOP_BY_USER:Z
 
-    .line 689
-    sput-boolean v4, Lcom/oneplus/screenshot/longshot/util/Configs;->STOP_BY_USER:Z
-
-    .line 690
+    .line 710
     invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->isMoveState()Z
 
     move-result v1
 
-    if-nez v1, :cond_37
+    if-nez v1, :cond_33
 
-    .line 691
+    .line 711
     invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->onTouch()V
 
-    .line 694
-    :cond_37
-    return v4
+    .line 714
+    :cond_33
+    return v2
 .end method

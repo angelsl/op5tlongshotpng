@@ -11,7 +11,6 @@
 .method public constructor <init>()V
     .registers 1
 
-    .prologue
     .line 32
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
 
@@ -21,41 +20,37 @@
 
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .registers 7
+    .registers 6
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "intent"    # Landroid/content/Intent;
 
-    .prologue
     .line 37
-    const-string/jumbo v2, "referrer"
+    const-string v0, "referrer"
 
-    invoke-virtual {p2, v2}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {p2, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
     .line 38
     .local v0, "referrer":Ljava/lang/String;
+    const-string v1, "com.android.vending.INSTALL_REFERRER"
+
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v2
 
-    const-string/jumbo v3, "com.android.vending.INSTALL_REFERRER"
+    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    invoke-virtual {v3, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    move-result v1
 
-    move-result v2
+    if-eqz v1, :cond_28
 
-    if-nez v2, :cond_15
+    if-nez v0, :cond_15
 
-    .line 39
-    :cond_14
-    return-void
-
-    .line 38
-    :cond_15
-    if-eqz v0, :cond_14
+    goto :goto_28
 
     .line 42
+    :cond_15
     invoke-static {v0}, Lcom/google/tagmanager/InstallReferrerUtil;->cacheInstallReferrer(Ljava/lang/String;)V
 
     .line 45
@@ -67,7 +62,7 @@
 
     .line 46
     .local v1, "serviceIntent":Landroid/content/Intent;
-    const-string/jumbo v2, "referrer"
+    const-string v2, "referrer"
 
     invoke-virtual {v1, v2, v0}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
@@ -75,5 +70,15 @@
     invoke-virtual {p1, v1}, Landroid/content/Context;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;
 
     .line 48
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
+
+    .line 39
+    .end local v1    # "serviceIntent":Landroid/content/Intent;
+    :cond_28
+    :goto_28
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

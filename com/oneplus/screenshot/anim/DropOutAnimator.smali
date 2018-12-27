@@ -7,7 +7,6 @@
 .method public constructor <init>()V
     .registers 1
 
-    .prologue
     .line 3
     invoke-direct {p0}, Lcom/oneplus/screenshot/anim/TargetAnimator;-><init>()V
 

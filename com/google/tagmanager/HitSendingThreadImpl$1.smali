@@ -29,9 +29,8 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/HitSendingThreadImpl;Lcom/google/tagmanager/HitSendingThread;JLjava/lang/String;)V
-    .registers 7
+    .registers 6
 
-    .prologue
     .line 71
     iput-object p1, p0, Lcom/google/tagmanager/HitSendingThreadImpl$1;->this$0:Lcom/google/tagmanager/HitSendingThreadImpl;
 
@@ -49,39 +48,19 @@
 
 # virtual methods
 .method public run()V
-    .registers 6
+    .registers 5
 
-    .prologue
     .line 74
-    iget-object v1, p0, Lcom/google/tagmanager/HitSendingThreadImpl$1;->this$0:Lcom/google/tagmanager/HitSendingThreadImpl;
+    iget-object v0, p0, Lcom/google/tagmanager/HitSendingThreadImpl$1;->this$0:Lcom/google/tagmanager/HitSendingThreadImpl;
 
     # getter for: Lcom/google/tagmanager/HitSendingThreadImpl;->mUrlStore:Lcom/google/tagmanager/HitStore;
-    invoke-static {v1}, Lcom/google/tagmanager/HitSendingThreadImpl;->access$000(Lcom/google/tagmanager/HitSendingThreadImpl;)Lcom/google/tagmanager/HitStore;
+    invoke-static {v0}, Lcom/google/tagmanager/HitSendingThreadImpl;->access$000(Lcom/google/tagmanager/HitSendingThreadImpl;)Lcom/google/tagmanager/HitStore;
 
-    move-result-object v1
+    move-result-object v0
 
-    if-eqz v1, :cond_16
-
-    .line 79
-    :goto_8
-    iget-object v1, p0, Lcom/google/tagmanager/HitSendingThreadImpl$1;->this$0:Lcom/google/tagmanager/HitSendingThreadImpl;
-
-    # getter for: Lcom/google/tagmanager/HitSendingThreadImpl;->mUrlStore:Lcom/google/tagmanager/HitStore;
-    invoke-static {v1}, Lcom/google/tagmanager/HitSendingThreadImpl;->access$000(Lcom/google/tagmanager/HitSendingThreadImpl;)Lcom/google/tagmanager/HitStore;
-
-    move-result-object v1
-
-    iget-wide v2, p0, Lcom/google/tagmanager/HitSendingThreadImpl$1;->val$hitTime:J
-
-    iget-object v4, p0, Lcom/google/tagmanager/HitSendingThreadImpl$1;->val$url:Ljava/lang/String;
-
-    invoke-interface {v1, v2, v3, v4}, Lcom/google/tagmanager/HitStore;->putHit(JLjava/lang/String;)V
-
-    .line 80
-    return-void
+    if-nez v0, :cond_20
 
     .line 75
-    :cond_16
     invoke-static {}, Lcom/google/tagmanager/ServiceManagerImpl;->getInstance()Lcom/google/tagmanager/ServiceManagerImpl;
 
     move-result-object v0
@@ -109,5 +88,24 @@
     # setter for: Lcom/google/tagmanager/HitSendingThreadImpl;->mUrlStore:Lcom/google/tagmanager/HitStore;
     invoke-static {v1, v2}, Lcom/google/tagmanager/HitSendingThreadImpl;->access$002(Lcom/google/tagmanager/HitSendingThreadImpl;Lcom/google/tagmanager/HitStore;)Lcom/google/tagmanager/HitStore;
 
-    goto :goto_8
+    .line 79
+    .end local v0    # "instance":Lcom/google/tagmanager/ServiceManagerImpl;
+    :cond_20
+    iget-object v0, p0, Lcom/google/tagmanager/HitSendingThreadImpl$1;->this$0:Lcom/google/tagmanager/HitSendingThreadImpl;
+
+    # getter for: Lcom/google/tagmanager/HitSendingThreadImpl;->mUrlStore:Lcom/google/tagmanager/HitStore;
+    invoke-static {v0}, Lcom/google/tagmanager/HitSendingThreadImpl;->access$000(Lcom/google/tagmanager/HitSendingThreadImpl;)Lcom/google/tagmanager/HitStore;
+
+    move-result-object v0
+
+    iget-wide v1, p0, Lcom/google/tagmanager/HitSendingThreadImpl$1;->val$hitTime:J
+
+    iget-object v3, p0, Lcom/google/tagmanager/HitSendingThreadImpl$1;->val$url:Ljava/lang/String;
+
+    invoke-interface {v0, v1, v2, v3}, Lcom/google/tagmanager/HitStore;->putHit(JLjava/lang/String;)V
+
+    .line 80
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

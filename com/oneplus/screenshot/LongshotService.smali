@@ -23,39 +23,9 @@
 
 
 # direct methods
-.method static synthetic -get0()Ljava/lang/String;
-    .registers 1
-
-    sget-object v0, Lcom/oneplus/screenshot/LongshotService;->TAG:Ljava/lang/String;
-
-    return-object v0
-.end method
-
-.method static synthetic -get1(Lcom/oneplus/screenshot/LongshotService;)Lcom/oneplus/screenshot/longshot/state/LongshotMode;
-    .registers 2
-    .param p0, "-this"    # Lcom/oneplus/screenshot/LongshotService;
-
-    .prologue
-    iget-object v0, p0, Lcom/oneplus/screenshot/LongshotService;->mLongshotMode:Lcom/oneplus/screenshot/longshot/state/LongshotMode;
-
-    return-object v0
-.end method
-
-.method static synthetic -set0(Lcom/oneplus/screenshot/LongshotService;I)I
-    .registers 2
-    .param p0, "-this"    # Lcom/oneplus/screenshot/LongshotService;
-    .param p1, "-value"    # I
-
-    .prologue
-    iput p1, p0, Lcom/oneplus/screenshot/LongshotService;->mTargetViewTop:I
-
-    return p1
-.end method
-
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 25
     const-class v0, Lcom/oneplus/screenshot/LongshotService;
 
@@ -65,14 +35,14 @@
 
     sput-object v0, Lcom/oneplus/screenshot/LongshotService;->TAG:Ljava/lang/String;
 
-    .line 23
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>()V
     .registers 2
 
-    .prologue
     .line 23
     invoke-direct {p0}, Landroid/app/Service;-><init>()V
 
@@ -86,46 +56,76 @@
 
     iput v0, p0, Lcom/oneplus/screenshot/LongshotService;->mTargetViewTop:I
 
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
+.end method
+
+.method static synthetic access$000()Ljava/lang/String;
+    .registers 1
+
     .line 23
-    return-void
+    sget-object v0, Lcom/oneplus/screenshot/LongshotService;->TAG:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method static synthetic access$100(Lcom/oneplus/screenshot/LongshotService;)Lcom/oneplus/screenshot/longshot/state/LongshotMode;
+    .registers 2
+    .param p0, "x0"    # Lcom/oneplus/screenshot/LongshotService;
+
+    .line 23
+    iget-object v0, p0, Lcom/oneplus/screenshot/LongshotService;->mLongshotMode:Lcom/oneplus/screenshot/longshot/state/LongshotMode;
+
+    return-object v0
+.end method
+
+.method static synthetic access$202(Lcom/oneplus/screenshot/LongshotService;I)I
+    .registers 2
+    .param p0, "x0"    # Lcom/oneplus/screenshot/LongshotService;
+    .param p1, "x1"    # I
+
+    .line 23
+    iput p1, p0, Lcom/oneplus/screenshot/LongshotService;->mTargetViewTop:I
+
+    return p1
 .end method
 
 
 # virtual methods
 .method public onBind(Landroid/content/Intent;)Landroid/os/IBinder;
-    .registers 7
+    .registers 5
     .param p1, "intent"    # Landroid/content/Intent;
 
-    .prologue
-    const/4 v4, 0x0
-
     .line 59
-    sget-object v2, Lcom/oneplus/screenshot/LongshotService;->TAG:Ljava/lang/String;
+    sget-object v0, Lcom/oneplus/screenshot/LongshotService;->TAG:Ljava/lang/String;
 
-    const-string/jumbo v3, "onBind"
+    const-string v1, "onBind"
 
-    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 61
-    const-string/jumbo v2, "statusbar_visible"
+    const-string v0, "statusbar_visible"
 
-    invoke-virtual {p1, v2, v4}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
+    const/4 v1, 0x0
 
-    move-result v1
-
-    .line 62
-    .local v1, "statusBarVisible":Z
-    const-string/jumbo v2, "navigationbar_visible"
-
-    invoke-virtual {p1, v2, v4}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
+    invoke-virtual {p1, v0, v1}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
 
     move-result v0
 
+    .line 62
+    .local v0, "statusBarVisible":Z
+    const-string v2, "navigationbar_visible"
+
+    invoke-virtual {p1, v2, v1}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
+
+    move-result v1
+
     .line 64
-    .local v0, "navBarVisible":Z
+    .local v1, "navBarVisible":Z
     new-instance v2, Lcom/oneplus/screenshot/LongshotService$ServiceBinder;
 
-    invoke-direct {v2, p0, p0, v1, v0}, Lcom/oneplus/screenshot/LongshotService$ServiceBinder;-><init>(Lcom/oneplus/screenshot/LongshotService;Landroid/content/Context;ZZ)V
+    invoke-direct {v2, p0, p0, v0, v1}, Lcom/oneplus/screenshot/LongshotService$ServiceBinder;-><init>(Lcom/oneplus/screenshot/LongshotService;Landroid/content/Context;ZZ)V
 
     return-object v2
 .end method
@@ -133,14 +133,13 @@
 .method public onCreate()V
     .registers 3
 
-    .prologue
     .line 34
     invoke-super {p0}, Landroid/app/Service;->onCreate()V
 
     .line 36
     sget-object v0, Lcom/oneplus/screenshot/LongshotService;->TAG:Ljava/lang/String;
 
-    const-string/jumbo v1, "onCreate"
+    const-string v1, "onCreate"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
@@ -152,13 +151,14 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/LongshotService;->mLongshotMode:Lcom/oneplus/screenshot/longshot/state/LongshotMode;
 
     .line 38
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public onDestroy()V
     .registers 3
 
-    .prologue
     .line 42
     invoke-super {p0}, Landroid/app/Service;->onDestroy()V
 
@@ -174,12 +174,14 @@
     .line 48
     sget-object v0, Lcom/oneplus/screenshot/LongshotService;->TAG:Ljava/lang/String;
 
-    const-string/jumbo v1, "onDestroy"
+    const-string v1, "onDestroy"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 49
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public onStartCommand(Landroid/content/Intent;II)I
@@ -188,11 +190,10 @@
     .param p2, "flags"    # I
     .param p3, "startId"    # I
 
-    .prologue
     .line 53
     sget-object v0, Lcom/oneplus/screenshot/LongshotService;->TAG:Ljava/lang/String;
 
-    const-string/jumbo v1, "onStartCommand"
+    const-string v1, "onStartCommand"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
@@ -208,11 +209,10 @@
     .registers 4
     .param p1, "intent"    # Landroid/content/Intent;
 
-    .prologue
     .line 69
     sget-object v0, Lcom/oneplus/screenshot/LongshotService;->TAG:Ljava/lang/String;
 
-    const-string/jumbo v1, "onUnbind"
+    const-string v1, "onUnbind"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 

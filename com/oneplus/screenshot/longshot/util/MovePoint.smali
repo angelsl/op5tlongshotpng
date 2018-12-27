@@ -24,13 +24,12 @@
     .param p2, "start"    # Landroid/graphics/Point;
     .param p3, "end"    # Landroid/graphics/Point;
 
-    .prologue
-    const/4 v0, 0x0
-
     .line 20
     invoke-direct {p0}, Landroid/graphics/Point;-><init>()V
 
     .line 12
+    const/4 v0, 0x0
+
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/util/MovePoint;->mStart:Landroid/graphics/Point;
 
     .line 13
@@ -59,7 +58,9 @@
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/util/MovePoint;->reset()V
 
     .line 25
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -69,7 +70,6 @@
     .param p1, "x"    # I
     .param p2, "y"    # I
 
-    .prologue
     .line 80
     return-void
 .end method
@@ -80,7 +80,6 @@
 .method public getDistance()I
     .registers 2
 
-    .prologue
     .line 51
     iget v0, p0, Lcom/oneplus/screenshot/longshot/util/MovePoint;->mDistance:I
 
@@ -90,7 +89,6 @@
 .method public getDownTime()J
     .registers 3
 
-    .prologue
     .line 55
     iget-wide v0, p0, Lcom/oneplus/screenshot/longshot/util/MovePoint;->mDownTime:J
 
@@ -100,7 +98,6 @@
 .method public getEnd()Landroid/graphics/Point;
     .registers 2
 
-    .prologue
     .line 47
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/util/MovePoint;->mEnd:Landroid/graphics/Point;
 
@@ -110,7 +107,6 @@
 .method public getStart()Landroid/graphics/Point;
     .registers 2
 
-    .prologue
     .line 43
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/util/MovePoint;->mStart:Landroid/graphics/Point;
 
@@ -129,7 +125,6 @@
 .method public reset()V
     .registers 3
 
-    .prologue
     .line 39
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/util/MovePoint;->mStart:Landroid/graphics/Point;
 
@@ -142,25 +137,27 @@
     invoke-virtual {p0, v0, v1}, Lcom/oneplus/screenshot/longshot/util/MovePoint;->set(II)V
 
     .line 40
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public setDownTime(J)V
-    .registers 4
+    .registers 3
     .param p1, "downTime"    # J
 
-    .prologue
     .line 59
     iput-wide p1, p0, Lcom/oneplus/screenshot/longshot/util/MovePoint;->mDownTime:J
 
     .line 60
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public toString()Ljava/lang/String;
     .registers 3
 
-    .prologue
     .line 32
     new-instance v0, Ljava/lang/StringBuilder;
 
@@ -172,31 +169,21 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
-    const-string/jumbo v1, " : "
+    const-string v1, " : "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     iget-object v1, p0, Lcom/oneplus/screenshot/longshot/util/MovePoint;->mStart:Landroid/graphics/Point;
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
-    const-string/jumbo v1, "=>"
+    const-string v1, "=>"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     iget-object v1, p0, Lcom/oneplus/screenshot/longshot/util/MovePoint;->mEnd:Landroid/graphics/Point;
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -209,10 +196,11 @@
     .registers 2
     .param p1, "start"    # Landroid/graphics/Point;
 
-    .prologue
     .line 75
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/util/MovePoint;->mStart:Landroid/graphics/Point;
 
     .line 76
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

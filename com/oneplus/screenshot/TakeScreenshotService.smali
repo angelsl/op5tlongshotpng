@@ -3,14 +3,6 @@
 .source "TakeScreenshotService.java"
 
 
-# annotations
-.annotation system Ldalvik/annotation/MemberClasses;
-    value = {
-        Lcom/oneplus/screenshot/TakeScreenshotService$1;
-    }
-.end annotation
-
-
 # static fields
 .field private static final TAG:Ljava/lang/String; = "Longshot.TakeScreenshotService"
 
@@ -22,28 +14,9 @@
 
 
 # direct methods
-.method static synthetic -get0()Lcom/oneplus/screenshot/GlobalScreenshot;
-    .registers 1
-
-    sget-object v0, Lcom/oneplus/screenshot/TakeScreenshotService;->mScreenshot:Lcom/oneplus/screenshot/GlobalScreenshot;
-
-    return-object v0
-.end method
-
-.method static synthetic -set0(Lcom/oneplus/screenshot/GlobalScreenshot;)Lcom/oneplus/screenshot/GlobalScreenshot;
-    .registers 1
-    .param p0, "-value"    # Lcom/oneplus/screenshot/GlobalScreenshot;
-
-    .prologue
-    sput-object p0, Lcom/oneplus/screenshot/TakeScreenshotService;->mScreenshot:Lcom/oneplus/screenshot/GlobalScreenshot;
-
-    return-object p0
-.end method
-
 .method public constructor <init>()V
     .registers 2
 
-    .prologue
     .line 35
     invoke-direct {p0}, Landroid/app/Service;-><init>()V
 
@@ -54,8 +27,28 @@
 
     iput-object v0, p0, Lcom/oneplus/screenshot/TakeScreenshotService;->mHandler:Landroid/os/Handler;
 
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
+.end method
+
+.method static synthetic access$000()Lcom/oneplus/screenshot/GlobalScreenshot;
+    .registers 1
+
     .line 35
-    return-void
+    sget-object v0, Lcom/oneplus/screenshot/TakeScreenshotService;->mScreenshot:Lcom/oneplus/screenshot/GlobalScreenshot;
+
+    return-object v0
+.end method
+
+.method static synthetic access$002(Lcom/oneplus/screenshot/GlobalScreenshot;)Lcom/oneplus/screenshot/GlobalScreenshot;
+    .registers 1
+    .param p0, "x0"    # Lcom/oneplus/screenshot/GlobalScreenshot;
+
+    .line 35
+    sput-object p0, Lcom/oneplus/screenshot/TakeScreenshotService;->mScreenshot:Lcom/oneplus/screenshot/GlobalScreenshot;
+
+    return-object p0
 .end method
 
 
@@ -64,7 +57,6 @@
     .registers 4
     .param p1, "intent"    # Landroid/content/Intent;
 
-    .prologue
     .line 135
     new-instance v0, Landroid/os/Messenger;
 
@@ -83,7 +75,6 @@
     .registers 3
     .param p1, "newConfig"    # Landroid/content/res/Configuration;
 
-    .prologue
     .line 126
     sget-object v0, Lcom/oneplus/screenshot/TakeScreenshotService;->mScreenshot:Lcom/oneplus/screenshot/GlobalScreenshot;
 
@@ -99,14 +90,15 @@
     invoke-super {p0, p1}, Landroid/app/Service;->onConfigurationChanged(Landroid/content/res/Configuration;)V
 
     .line 130
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public onUnbind(Landroid/content/Intent;)Z
     .registers 3
     .param p1, "intent"    # Landroid/content/Intent;
 
-    .prologue
     .line 140
     sget-object v0, Lcom/oneplus/screenshot/TakeScreenshotService;->mScreenshot:Lcom/oneplus/screenshot/GlobalScreenshot;
 

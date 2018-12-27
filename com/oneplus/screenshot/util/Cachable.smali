@@ -11,8 +11,7 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Landroid/graphics/Bitmap;",
             ">;"
         }
@@ -23,8 +22,7 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Landroid/graphics/Bitmap;",
             ">;)V"
         }

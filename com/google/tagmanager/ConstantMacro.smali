@@ -13,7 +13,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 15
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->CONSTANT:Lcom/google/analytics/containertag/common/FunctionType;
 
@@ -32,13 +31,14 @@
 
     sput-object v0, Lcom/google/tagmanager/ConstantMacro;->VALUE:Ljava/lang/String;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>()V
     .registers 5
 
-    .prologue
     .line 23
     sget-object v0, Lcom/google/tagmanager/ConstantMacro;->ID:Ljava/lang/String;
 
@@ -55,13 +55,14 @@
     invoke-direct {p0, v0, v1}, Lcom/google/tagmanager/FunctionCallImplementation;-><init>(Ljava/lang/String;[Ljava/lang/String;)V
 
     .line 24
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
     .registers 1
 
-    .prologue
     .line 19
     sget-object v0, Lcom/google/tagmanager/ConstantMacro;->ID:Ljava/lang/String;
 
@@ -71,7 +72,6 @@
 .method public static getValueKey()Ljava/lang/String;
     .registers 1
 
-    .prologue
     .line 27
     sget-object v0, Lcom/google/tagmanager/ConstantMacro;->VALUE:Ljava/lang/String;
 
@@ -85,8 +85,7 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;)",
@@ -94,7 +93,6 @@
         }
     .end annotation
 
-    .prologue
     .line 35
     .local p1, "parameters":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
     sget-object v0, Lcom/google/tagmanager/ConstantMacro;->VALUE:Ljava/lang/String;
@@ -111,7 +109,6 @@
 .method public isCacheable()Z
     .registers 2
 
-    .prologue
     .line 31
     const/4 v0, 0x1
 

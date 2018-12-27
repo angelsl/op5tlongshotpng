@@ -7,21 +7,21 @@
 .method public constructor <init>()V
     .registers 2
 
-    .prologue
     .line 21
-    const-string/jumbo v0, "CampaignIntentService"
+    const-string v0, "CampaignIntentService"
 
     invoke-direct {p0, v0}, Landroid/app/IntentService;-><init>(Ljava/lang/String;)V
 
     .line 22
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>(Ljava/lang/String;)V
     .registers 2
     .param p1, "name"    # Ljava/lang/String;
 
-    .prologue
     .line 17
     invoke-direct {p0, p1}, Landroid/app/IntentService;-><init>(Ljava/lang/String;)V
 
@@ -35,65 +35,69 @@
     .registers 2
     .param p1, "intent"    # Landroid/content/Intent;
 
-    .prologue
     .line 27
     invoke-virtual {p0, p0, p1}, Lcom/google/analytics/tracking/android/CampaignTrackingService;->processIntent(Landroid/content/Context;Landroid/content/Intent;)V
 
     .line 28
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public processIntent(Landroid/content/Context;Landroid/content/Intent;)V
-    .registers 8
+    .registers 6
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "intent"    # Landroid/content/Intent;
 
-    .prologue
     .line 32
-    const-string/jumbo v3, "referrer"
+    const-string v0, "referrer"
 
-    invoke-virtual {p2, v3}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {p2, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
     .line 36
     .local v0, "campaign":Ljava/lang/String;
-    :try_start_7
-    const-string/jumbo v3, "gaInstallData"
+    :try_start_6
+    const-string v1, "gaInstallData"
 
-    const/4 v4, 0x0
+    const/4 v2, 0x0
 
-    invoke-virtual {p1, v3, v4}, Landroid/content/Context;->openFileOutput(Ljava/lang/String;I)Ljava/io/FileOutputStream;
+    invoke-virtual {p1, v1, v2}, Landroid/content/Context;->openFileOutput(Ljava/lang/String;I)Ljava/io/FileOutputStream;
+
+    move-result-object v1
+
+    .line 37
+    .local v1, "output":Ljava/io/OutputStream;
+    invoke-virtual {v0}, Ljava/lang/String;->getBytes()[B
 
     move-result-object v2
 
-    .line 37
-    .local v2, "output":Ljava/io/OutputStream;
-    invoke-virtual {v0}, Ljava/lang/String;->getBytes()[B
-
-    move-result-object v3
-
-    invoke-virtual {v2, v3}, Ljava/io/OutputStream;->write([B)V
+    invoke-virtual {v1, v2}, Ljava/io/OutputStream;->write([B)V
 
     .line 38
-    invoke-virtual {v2}, Ljava/io/OutputStream;->close()V
-    :try_end_19
-    .catch Ljava/io/IOException; {:try_start_7 .. :try_end_19} :catch_1a
+    invoke-virtual {v1}, Ljava/io/OutputStream;->close()V
+    :try_end_17
+    .catch Ljava/io/IOException; {:try_start_6 .. :try_end_17} :catch_18
 
-    .line 42
-    .end local v2    # "output":Ljava/io/OutputStream;
-    :goto_19
-    return-void
+    .line 41
+    .end local v1    # "output":Ljava/io/OutputStream;
+    goto :goto_1e
 
     .line 39
-    :catch_1a
+    :catch_18
     move-exception v1
 
     .line 40
     .local v1, "e":Ljava/io/IOException;
-    const-string/jumbo v3, "Error storing install campaign."
+    const-string v2, "Error storing install campaign."
 
-    invoke-static {v3}, Lcom/google/analytics/tracking/android/Log;->e(Ljava/lang/String;)V
+    invoke-static {v2}, Lcom/google/analytics/tracking/android/Log;->e(Ljava/lang/String;)V
 
-    goto :goto_19
+    .line 42
+    .end local v1    # "e":Ljava/io/IOException;
+    :goto_1e
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

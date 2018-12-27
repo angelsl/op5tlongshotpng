@@ -3,12 +3,12 @@
 .source "GlobalScreenshot.java"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Landroid/view/View$OnTouchListener;
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingClass;
-    value = Lcom/oneplus/screenshot/GlobalScreenshot;
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/oneplus/screenshot/GlobalScreenshot;-><init>(Landroid/content/Context;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -26,28 +26,23 @@
     .registers 2
     .param p1, "this$0"    # Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .prologue
-    .line 1
+    .line 758
     iput-object p1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$1;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .line 1227
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1
     return-void
 .end method
 
 
 # virtual methods
-.method public run()V
-    .registers 2
+.method public onTouch(Landroid/view/View;Landroid/view/MotionEvent;)Z
+    .registers 4
+    .param p1, "v"    # Landroid/view/View;
+    .param p2, "event"    # Landroid/view/MotionEvent;
 
-    .prologue
-    .line 1230
-    iget-object v0, p0, Lcom/oneplus/screenshot/GlobalScreenshot$1;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
+    .line 762
+    const/4 v0, 0x1
 
-    invoke-static {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->-wrap0(Lcom/oneplus/screenshot/GlobalScreenshot;)V
-
-    .line 1231
-    return-void
+    return v0
 .end method

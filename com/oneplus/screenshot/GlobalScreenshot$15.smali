@@ -26,55 +26,51 @@
     .registers 2
     .param p1, "this$0"    # Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .prologue
-    .line 1
+    .line 1552
     iput-object p1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$15;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .line 1410
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1
     return-void
 .end method
 
 
 # virtual methods
 .method public getInterpolation(F)F
-    .registers 6
+    .registers 9
     .param p1, "x"    # F
 
-    .prologue
+    .line 1555
+    const v0, 0x3f5c4771
+
+    cmpg-float v1, p1, v0
+
     const/high16 v2, 0x3f800000    # 1.0f
 
-    const v1, 0x3f5c4771
+    if-gez v1, :cond_18
 
-    .line 1413
-    cmpg-float v0, p1, v1
+    .line 1557
+    const-wide/high16 v3, 0x3ff0000000000000L    # 1.0
 
-    if-gez v0, :cond_1a
+    div-float v0, p1, v0
 
-    .line 1415
-    div-float v0, p1, v1
+    sub-float/2addr v2, v0
 
-    sub-float v0, v2, v0
+    float-to-double v0, v2
 
-    float-to-double v0, v0
+    const-wide/high16 v5, 0x4000000000000000L    # 2.0
 
-    const-wide/high16 v2, 0x4000000000000000L    # 2.0
-
-    invoke-static {v0, v1, v2, v3}, Ljava/lang/Math;->pow(DD)D
+    invoke-static {v0, v1, v5, v6}, Ljava/lang/Math;->pow(DD)D
 
     move-result-wide v0
 
-    const-wide/high16 v2, 0x3ff0000000000000L    # 1.0
+    sub-double/2addr v3, v0
 
-    sub-double v0, v2, v0
-
-    double-to-float v0, v0
+    double-to-float v0, v3
 
     return v0
 
-    .line 1417
-    :cond_1a
+    .line 1559
+    :cond_18
     return v2
 .end method

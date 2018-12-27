@@ -22,7 +22,6 @@
 .method private constructor <init>(Lcom/google/analytics/tracking/android/GAServiceProxy;)V
     .registers 2
 
-    .prologue
     .line 412
     iput-object p1, p0, Lcom/google/analytics/tracking/android/GAServiceProxy$ReconnectTask;->this$0:Lcom/google/analytics/tracking/android/GAServiceProxy;
 
@@ -36,7 +35,6 @@
     .param p1, "x0"    # Lcom/google/analytics/tracking/android/GAServiceProxy;
     .param p2, "x1"    # Lcom/google/analytics/tracking/android/GAServiceProxy$1;
 
-    .prologue
     .line 412
     invoke-direct {p0, p1}, Lcom/google/analytics/tracking/android/GAServiceProxy$ReconnectTask;-><init>(Lcom/google/analytics/tracking/android/GAServiceProxy;)V
 
@@ -48,13 +46,13 @@
 .method public run()V
     .registers 2
 
-    .prologue
     .line 415
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy$ReconnectTask;->this$0:Lcom/google/analytics/tracking/android/GAServiceProxy;
 
-    # invokes: Lcom/google/analytics/tracking/android/GAServiceProxy;->connectToService()V
     invoke-static {v0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->access$600(Lcom/google/analytics/tracking/android/GAServiceProxy;)V
 
     .line 416
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

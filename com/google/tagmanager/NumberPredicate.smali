@@ -8,7 +8,6 @@
     .registers 2
     .param p1, "functionId"    # Ljava/lang/String;
 
-    .prologue
     .line 15
     invoke-direct {p0, p1}, Lcom/google/tagmanager/Predicate;-><init>(Ljava/lang/String;)V
 
@@ -27,15 +26,13 @@
             "(",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;)Z"
         }
     .end annotation
 
-    .prologue
     .line 29
     .local p3, "parameters":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
     invoke-static {p1}, Lcom/google/tagmanager/Types;->valueToNumber(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Lcom/google/tagmanager/TypedNumber;
@@ -54,26 +51,29 @@
 
     move-result-object v2
 
-    if-ne v0, v2, :cond_10
+    if-eq v0, v2, :cond_1a
 
-    :cond_e
-    const/4 v2, 0x0
-
-    :goto_f
-    return v2
-
-    :cond_10
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultNumber()Lcom/google/tagmanager/TypedNumber;
 
     move-result-object v2
 
-    if-eq v1, v2, :cond_e
+    if-ne v1, v2, :cond_15
 
+    goto :goto_1a
+
+    :cond_15
     invoke-virtual {p0, v0, v1, p3}, Lcom/google/tagmanager/NumberPredicate;->evaluateNumber(Lcom/google/tagmanager/TypedNumber;Lcom/google/tagmanager/TypedNumber;Ljava/util/Map;)Z
 
     move-result v2
 
-    goto :goto_f
+    goto :goto_1b
+
+    :cond_1a
+    :goto_1a
+    const/4 v2, 0x0
+
+    :goto_1b
+    return v2
 .end method
 
 .method protected abstract evaluateNumber(Lcom/google/tagmanager/TypedNumber;Lcom/google/tagmanager/TypedNumber;Ljava/util/Map;)Z
@@ -82,8 +82,7 @@
             "(",
             "Lcom/google/tagmanager/TypedNumber;",
             "Lcom/google/tagmanager/TypedNumber;",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;)Z"

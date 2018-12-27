@@ -31,7 +31,6 @@
     .registers 2
     .param p1, "failure"    # Lcom/google/tagmanager/LoadCallback$Failure;
 
-    .prologue
     .line 12
     .local p0, "this":Lcom/google/tagmanager/TypeOrFailure;, "Lcom/google/tagmanager/TypeOrFailure<TT;>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -40,7 +39,9 @@
     iput-object p1, p0, Lcom/google/tagmanager/TypeOrFailure;->mFailure:Lcom/google/tagmanager/LoadCallback$Failure;
 
     .line 14
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>(Ljava/lang/Object;)V
@@ -51,7 +52,6 @@
         }
     .end annotation
 
-    .prologue
     .line 8
     .local p0, "this":Lcom/google/tagmanager/TypeOrFailure;, "Lcom/google/tagmanager/TypeOrFailure<TT;>;"
     .local p1, "type":Ljava/lang/Object;, "TT;"
@@ -61,7 +61,9 @@
     iput-object p1, p0, Lcom/google/tagmanager/TypeOrFailure;->mType:Ljava/lang/Object;
 
     .line 10
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -69,7 +71,6 @@
 .method public getFailure()Lcom/google/tagmanager/LoadCallback$Failure;
     .registers 2
 
-    .prologue
     .line 21
     .local p0, "this":Lcom/google/tagmanager/TypeOrFailure;, "Lcom/google/tagmanager/TypeOrFailure<TT;>;"
     iget-object v0, p0, Lcom/google/tagmanager/TypeOrFailure;->mFailure:Lcom/google/tagmanager/LoadCallback$Failure;
@@ -85,7 +86,6 @@
         }
     .end annotation
 
-    .prologue
     .line 17
     .local p0, "this":Lcom/google/tagmanager/TypeOrFailure;, "Lcom/google/tagmanager/TypeOrFailure<TT;>;"
     iget-object v0, p0, Lcom/google/tagmanager/TypeOrFailure;->mType:Ljava/lang/Object;

@@ -18,11 +18,9 @@
 .field private final mMacros:Ljava/util/Map;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;",
             ">;>;"
         }
@@ -34,8 +32,7 @@
 .field private final mRules:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedRule;",
             ">;"
         }
@@ -53,15 +50,12 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedRule;",
             ">;",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;",
             ">;>;",
             "Ljava/lang/String;",
@@ -69,7 +63,6 @@
         }
     .end annotation
 
-    .prologue
     .line 376
     .local p1, "rules":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/ResourceUtil$ExpandedRule;>;"
     .local p2, "macros":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/util/List<Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;>;>;"
@@ -107,7 +100,6 @@
     .param p4, "x3"    # I
     .param p5, "x4"    # Lcom/google/tagmanager/ResourceUtil$1;
 
-    .prologue
     .line 368
     invoke-direct {p0, p1, p2, p3, p4}, Lcom/google/tagmanager/ResourceUtil$ExpandedResource;-><init>(Ljava/util/List;Ljava/util/Map;Ljava/lang/String;I)V
 
@@ -117,7 +109,6 @@
 .method public static newBuilder()Lcom/google/tagmanager/ResourceUtil$ExpandedResourceBuilder;
     .registers 2
 
-    .prologue
     .line 384
     new-instance v0, Lcom/google/tagmanager/ResourceUtil$ExpandedResourceBuilder;
 
@@ -135,17 +126,14 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;",
             ">;>;"
         }
     .end annotation
 
-    .prologue
     .line 406
     iget-object v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedResource;->mMacros:Ljava/util/Map;
 
@@ -160,14 +148,12 @@
             "(",
             "Ljava/lang/String;",
             ")",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;",
             ">;"
         }
     .end annotation
 
-    .prologue
     .line 405
     iget-object v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedResource;->mMacros:Ljava/util/Map;
 
@@ -183,7 +169,6 @@
 .method public getResourceFormatVersion()I
     .registers 2
 
-    .prologue
     .line 400
     iget v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedResource;->mResourceFormatVersion:I
 
@@ -195,14 +180,12 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedRule;",
             ">;"
         }
     .end annotation
 
-    .prologue
     .line 390
     iget-object v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedResource;->mRules:Ljava/util/List;
 
@@ -212,7 +195,6 @@
 .method public getVersion()Ljava/lang/String;
     .registers 2
 
-    .prologue
     .line 395
     iget-object v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedResource;->mVersion:Ljava/lang/String;
 
@@ -222,17 +204,14 @@
 .method public toString()Ljava/lang/String;
     .registers 3
 
-    .prologue
     .line 410
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v1, "Rules: "
+    const-string v1, "Rules: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     invoke-virtual {p0}, Lcom/google/tagmanager/ResourceUtil$ExpandedResource;->getRules()Ljava/util/List;
 
@@ -240,19 +219,13 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
-    const-string/jumbo v1, "  Macros: "
+    const-string v1, "  Macros: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     iget-object v1, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedResource;->mMacros:Ljava/util/Map;
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 

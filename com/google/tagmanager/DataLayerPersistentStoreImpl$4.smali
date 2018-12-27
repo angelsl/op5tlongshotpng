@@ -27,7 +27,6 @@
 .method constructor <init>(Lcom/google/tagmanager/DataLayerPersistentStoreImpl;Ljava/lang/String;)V
     .registers 3
 
-    .prologue
     .line 96
     iput-object p1, p0, Lcom/google/tagmanager/DataLayerPersistentStoreImpl$4;->this$0:Lcom/google/tagmanager/DataLayerPersistentStoreImpl;
 
@@ -43,15 +42,15 @@
 .method public run()V
     .registers 3
 
-    .prologue
     .line 99
     iget-object v0, p0, Lcom/google/tagmanager/DataLayerPersistentStoreImpl$4;->this$0:Lcom/google/tagmanager/DataLayerPersistentStoreImpl;
 
     iget-object v1, p0, Lcom/google/tagmanager/DataLayerPersistentStoreImpl$4;->val$keyPrefix:Ljava/lang/String;
 
-    # invokes: Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->clearKeysWithPrefixSingleThreaded(Ljava/lang/String;)V
     invoke-static {v0, v1}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->access$200(Lcom/google/tagmanager/DataLayerPersistentStoreImpl;Ljava/lang/String;)V
 
     .line 100
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

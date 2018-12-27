@@ -29,8 +29,8 @@
 
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Lcom/google/tagmanager/CacheFactory$CacheSizeManager",
-            "<TK;TV;>;"
+            "Lcom/google/tagmanager/CacheFactory$CacheSizeManager<",
+            "TK;TV;>;"
         }
     .end annotation
 .end field
@@ -40,7 +40,6 @@
 .method public constructor <init>()V
     .registers 2
 
-    .prologue
     .line 29
     .local p0, "this":Lcom/google/tagmanager/CacheFactory;, "Lcom/google/tagmanager/CacheFactory<TK;TV;>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -64,12 +63,11 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(I)",
-            "Lcom/google/tagmanager/Cache",
-            "<TK;TV;>;"
+            "Lcom/google/tagmanager/Cache<",
+            "TK;TV;>;"
         }
     .end annotation
 
-    .prologue
     .line 44
     .local p0, "this":Lcom/google/tagmanager/CacheFactory;, "Lcom/google/tagmanager/CacheFactory<TK;TV;>;"
     iget-object v0, p0, Lcom/google/tagmanager/CacheFactory;->mDefaultSizeManager:Lcom/google/tagmanager/CacheFactory$CacheSizeManager;
@@ -87,18 +85,17 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(I",
-            "Lcom/google/tagmanager/CacheFactory$CacheSizeManager",
-            "<TK;TV;>;)",
-            "Lcom/google/tagmanager/Cache",
-            "<TK;TV;>;"
+            "Lcom/google/tagmanager/CacheFactory$CacheSizeManager<",
+            "TK;TV;>;)",
+            "Lcom/google/tagmanager/Cache<",
+            "TK;TV;>;"
         }
     .end annotation
 
-    .prologue
     .line 54
     .local p0, "this":Lcom/google/tagmanager/CacheFactory;, "Lcom/google/tagmanager/CacheFactory<TK;TV;>;"
     .local p2, "sizeManager":Lcom/google/tagmanager/CacheFactory$CacheSizeManager;, "Lcom/google/tagmanager/CacheFactory$CacheSizeManager<TK;TV;>;"
-    if-lez p1, :cond_10
+    if-lez p1, :cond_16
 
     .line 61
     invoke-virtual {p0}, Lcom/google/tagmanager/CacheFactory;->getSdkVersion()I
@@ -107,9 +104,17 @@
 
     const/16 v1, 0xc
 
-    if-lt v0, v1, :cond_19
+    if-ge v0, v1, :cond_10
+
+    .line 62
+    new-instance v0, Lcom/google/tagmanager/SimpleCache;
+
+    invoke-direct {v0, p1, p2}, Lcom/google/tagmanager/SimpleCache;-><init>(ILcom/google/tagmanager/CacheFactory$CacheSizeManager;)V
+
+    return-object v0
 
     .line 64
+    :cond_10
     new-instance v0, Lcom/google/tagmanager/LRUCache;
 
     invoke-direct {v0, p1, p2}, Lcom/google/tagmanager/LRUCache;-><init>(ILcom/google/tagmanager/CacheFactory$CacheSizeManager;)V
@@ -117,22 +122,14 @@
     return-object v0
 
     .line 55
-    :cond_10
+    :cond_16
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string/jumbo v1, "maxSize <= 0"
+    const-string v1, "maxSize <= 0"
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v0
-
-    .line 62
-    :cond_19
-    new-instance v0, Lcom/google/tagmanager/SimpleCache;
-
-    invoke-direct {v0, p1, p2}, Lcom/google/tagmanager/SimpleCache;-><init>(ILcom/google/tagmanager/CacheFactory$CacheSizeManager;)V
-
-    return-object v0
 .end method
 
 .method getSdkVersion()I
@@ -140,7 +137,6 @@
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 70
     .local p0, "this":Lcom/google/tagmanager/CacheFactory;, "Lcom/google/tagmanager/CacheFactory<TK;TV;>;"
     sget v0, Landroid/os/Build$VERSION;->SDK_INT:I

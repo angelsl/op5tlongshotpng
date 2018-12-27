@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Ljava/lang/Enum",
-        "<",
+        "Ljava/lang/Enum<",
         "Lcom/google/tagmanager/JoinerMacro$EscapeType;",
         ">;"
     }
@@ -37,17 +36,12 @@
 .method static constructor <clinit>()V
     .registers 5
 
-    .prologue
-    const/4 v4, 0x2
-
-    const/4 v3, 0x1
-
-    const/4 v2, 0x0
-
     .line 24
     new-instance v0, Lcom/google/tagmanager/JoinerMacro$EscapeType;
 
-    const-string/jumbo v1, "NONE"
+    const-string v1, "NONE"
+
+    const/4 v2, 0x0
 
     invoke-direct {v0, v1, v2}, Lcom/google/tagmanager/JoinerMacro$EscapeType;-><init>(Ljava/lang/String;I)V
 
@@ -55,7 +49,9 @@
 
     new-instance v0, Lcom/google/tagmanager/JoinerMacro$EscapeType;
 
-    const-string/jumbo v1, "URL"
+    const-string v1, "URL"
+
+    const/4 v3, 0x1
 
     invoke-direct {v0, v1, v3}, Lcom/google/tagmanager/JoinerMacro$EscapeType;-><init>(Ljava/lang/String;I)V
 
@@ -63,7 +59,9 @@
 
     new-instance v0, Lcom/google/tagmanager/JoinerMacro$EscapeType;
 
-    const-string/jumbo v1, "BACKSLASH"
+    const-string v1, "BACKSLASH"
+
+    const/4 v4, 0x2
 
     invoke-direct {v0, v1, v4}, Lcom/google/tagmanager/JoinerMacro$EscapeType;-><init>(Ljava/lang/String;I)V
 
@@ -87,7 +85,9 @@
 
     sput-object v0, Lcom/google/tagmanager/JoinerMacro$EscapeType;->$VALUES:[Lcom/google/tagmanager/JoinerMacro$EscapeType;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V
@@ -98,7 +98,6 @@
         }
     .end annotation
 
-    .prologue
     .line 24
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
@@ -109,7 +108,6 @@
     .registers 2
     .param p0, "name"    # Ljava/lang/String;
 
-    .prologue
     .line 24
     const-class v0, Lcom/google/tagmanager/JoinerMacro$EscapeType;
 
@@ -125,11 +123,10 @@
 .method public static values()[Lcom/google/tagmanager/JoinerMacro$EscapeType;
     .registers 1
 
-    .prologue
     .line 24
     sget-object v0, Lcom/google/tagmanager/JoinerMacro$EscapeType;->$VALUES:[Lcom/google/tagmanager/JoinerMacro$EscapeType;
 
-    invoke-virtual {v0}, Ljava/lang/Object;->clone()Ljava/lang/Object;
+    invoke-virtual {v0}, [Lcom/google/tagmanager/JoinerMacro$EscapeType;->clone()Ljava/lang/Object;
 
     move-result-object v0
 

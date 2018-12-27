@@ -34,8 +34,7 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Lcom/google/tagmanager/LoadCallback",
-            "<",
+            "Lcom/google/tagmanager/LoadCallback<",
             "Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;",
             ">;)V"
         }

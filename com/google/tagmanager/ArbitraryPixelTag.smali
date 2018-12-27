@@ -25,8 +25,7 @@
 .field private static final unrepeatableIds:Ljava/util/Set;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/Set",
-            "<",
+            "Ljava/util/Set<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -44,7 +43,6 @@
 .method static constructor <clinit>()V
     .registers 2
 
-    .prologue
     .line 21
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->ARBITRARY_PIXEL:Lcom/google/analytics/containertag/common/FunctionType;
 
@@ -86,23 +84,17 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v1, "gtm_"
+    const-string v1, "gtm_"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     sget-object v1, Lcom/google/tagmanager/ArbitraryPixelTag;->ID:Ljava/lang/String;
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
-    const-string/jumbo v1, "_unrepeatable"
+    const-string v1, "_unrepeatable"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -117,14 +109,15 @@
 
     sput-object v0, Lcom/google/tagmanager/ArbitraryPixelTag;->unrepeatableIds:Ljava/util/Set;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>(Landroid/content/Context;)V
     .registers 3
     .param p1, "context"    # Landroid/content/Context;
 
-    .prologue
     .line 45
     new-instance v0, Lcom/google/tagmanager/ArbitraryPixelTag$1;
 
@@ -143,7 +136,6 @@
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 55
     sget-object v0, Lcom/google/tagmanager/ArbitraryPixelTag;->ID:Ljava/lang/String;
 
@@ -172,7 +164,6 @@
 .method public static getFunctionId()Ljava/lang/String;
     .registers 1
 
-    .prologue
     .line 41
     sget-object v0, Lcom/google/tagmanager/ArbitraryPixelTag;->ID:Ljava/lang/String;
 
@@ -180,64 +171,66 @@
 .end method
 
 .method private declared-synchronized idProcessed(Ljava/lang/String;)Z
-    .registers 5
+    .registers 4
     .param p1, "unrepeatableId"    # Ljava/lang/String;
-
-    .prologue
-    const/4 v2, 0x1
-
-    const/4 v1, 0x0
 
     monitor-enter p0
 
     .line 119
-    :try_start_3
+    :try_start_1
     invoke-virtual {p0, p1}, Lcom/google/tagmanager/ArbitraryPixelTag;->idInCache(Ljava/lang/String;)Z
 
     move-result v0
+    :try_end_5
+    .catchall {:try_start_1 .. :try_end_5} :catchall_1a
 
-    if-nez v0, :cond_11
+    const/4 v1, 0x1
+
+    if-eqz v0, :cond_a
+
+    .line 120
+    monitor-exit p0
+
+    return v1
 
     .line 123
+    :cond_a
+    :try_start_a
     invoke-virtual {p0, p1}, Lcom/google/tagmanager/ArbitraryPixelTag;->idInSharedPreferences(Ljava/lang/String;)Z
-    :try_end_c
-    .catchall {:try_start_3 .. :try_end_c} :catchall_1a
 
     move-result v0
 
-    if-nez v0, :cond_13
-
-    monitor-exit p0
-
-    .line 129
-    return v1
-
-    :cond_11
-    monitor-exit p0
-
-    .line 120
-    return v2
+    if-eqz v0, :cond_17
 
     .line 125
-    :cond_13
-    :try_start_13
     sget-object v0, Lcom/google/tagmanager/ArbitraryPixelTag;->unrepeatableIds:Ljava/util/Set;
 
     invoke-interface {v0, p1}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
-    :try_end_18
-    .catchall {:try_start_13 .. :try_end_18} :catchall_1a
-
-    monitor-exit p0
+    :try_end_15
+    .catchall {:try_start_a .. :try_end_15} :catchall_1a
 
     .line 126
-    return v2
+    monitor-exit p0
 
-    :catchall_1a
-    move-exception v0
+    return v1
+
+    .line 129
+    :cond_17
+    const/4 v0, 0x0
 
     monitor-exit p0
 
-    throw v0
+    return v0
+
+    .line 118
+    .end local p1    # "unrepeatableId":Ljava/lang/String;
+    :catchall_1a
+    move-exception p1
+
+    monitor-exit p0
+
+    .end local p0    # "this":Lcom/google/tagmanager/ArbitraryPixelTag;
+    throw p1
 .end method
 
 
@@ -247,427 +240,358 @@
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 140
     sget-object v0, Lcom/google/tagmanager/ArbitraryPixelTag;->unrepeatableIds:Ljava/util/Set;
 
     invoke-interface {v0}, Ljava/util/Set;->clear()V
 
     .line 141
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public evaluateTrackingTag(Ljava/util/Map;)V
-    .registers 23
+    .registers 16
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;)V"
         }
     .end annotation
 
-    .prologue
     .line 62
     .local p1, "tag":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
-    sget-object v18, Lcom/google/tagmanager/ArbitraryPixelTag;->UNREPEATABLE:Ljava/lang/String;
+    sget-object v0, Lcom/google/tagmanager/ArbitraryPixelTag;->UNREPEATABLE:Ljava/lang/String;
 
-    move-object/from16 v0, p1
+    invoke-interface {p1, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    move-object/from16 v1, v18
+    move-result-object v0
 
-    invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    if-eqz v0, :cond_15
 
-    move-result-object v18
+    sget-object v0, Lcom/google/tagmanager/ArbitraryPixelTag;->UNREPEATABLE:Ljava/lang/String;
 
-    if-nez v18, :cond_68
+    invoke-interface {p1, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    const/4 v14, 0x0
+    move-result-object v0
+
+    check-cast v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+
+    invoke-static {v0}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
+
+    move-result-object v0
+
+    goto :goto_16
+
+    :cond_15
+    const/4 v0, 0x0
 
     .line 64
-    .local v14, "unrepeatableId":Ljava/lang/String;
-    :goto_d
-    if-nez v14, :cond_79
+    .local v0, "unrepeatableId":Ljava/lang/String;
+    :goto_16
+    if-eqz v0, :cond_1f
+
+    .line 66
+    invoke-direct {p0, v0}, Lcom/google/tagmanager/ArbitraryPixelTag;->idProcessed(Ljava/lang/String;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_1f
+
+    .line 67
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 
     .line 71
-    :cond_f
-    sget-object v18, Lcom/google/tagmanager/ArbitraryPixelTag;->URL:Ljava/lang/String;
+    :cond_1f
+    sget-object v1, Lcom/google/tagmanager/ArbitraryPixelTag;->URL:Ljava/lang/String;
 
-    move-object/from16 v0, p1
+    invoke-interface {p1, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    move-object/from16 v1, v18
+    move-result-object v1
 
-    invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    check-cast v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    move-result-object v18
+    invoke-static {v1}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
 
-    check-cast v18, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    invoke-static/range {v18 .. v18}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
-
-    move-result-object v17
+    move-result-object v1
 
     .line 72
-    .local v17, "url":Ljava/lang/String;
-    invoke-static/range {v17 .. v17}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
+    .local v1, "url":Ljava/lang/String;
+    invoke-static {v1}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
-    move-result-object v9
+    move-result-object v2
 
     .line 73
-    .local v9, "initialUri":Landroid/net/Uri;
-    invoke-virtual {v9}, Landroid/net/Uri;->buildUpon()Landroid/net/Uri$Builder;
+    .local v2, "initialUri":Landroid/net/Uri;
+    invoke-virtual {v2}, Landroid/net/Uri;->buildUpon()Landroid/net/Uri$Builder;
 
-    move-result-object v16
+    move-result-object v3
 
     .line 74
-    .local v16, "uriBuilder":Landroid/net/Uri$Builder;
-    sget-object v18, Lcom/google/tagmanager/ArbitraryPixelTag;->ADDITIONAL_PARAMS:Ljava/lang/String;
+    .local v3, "uriBuilder":Landroid/net/Uri$Builder;
+    sget-object v4, Lcom/google/tagmanager/ArbitraryPixelTag;->ADDITIONAL_PARAMS:Ljava/lang/String;
 
-    move-object/from16 v0, p1
+    invoke-interface {p1, v4}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    move-object/from16 v1, v18
+    move-result-object v4
 
-    invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    check-cast v4, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+
+    .line 75
+    .local v4, "additionalParamsList":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    if-eqz v4, :cond_c0
+
+    .line 76
+    invoke-static {v4}, Lcom/google/tagmanager/Types;->valueToObject(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/Object;
 
     move-result-object v5
 
-    check-cast v5, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    .line 75
-    .local v5, "additionalParamsList":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-nez v5, :cond_82
-
-    .line 99
-    :cond_35
-    invoke-virtual/range {v16 .. v16}, Landroid/net/Uri$Builder;->build()Landroid/net/Uri;
-
-    move-result-object v18
-
-    invoke-virtual/range {v18 .. v18}, Landroid/net/Uri;->toString()Ljava/lang/String;
-
-    move-result-object v15
-
-    .line 100
-    .local v15, "uri":Ljava/lang/String;
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/google/tagmanager/ArbitraryPixelTag;->mHitSenderProvider:Lcom/google/tagmanager/ArbitraryPixelTag$HitSenderProvider;
-
-    move-object/from16 v18, v0
-
-    invoke-interface/range {v18 .. v18}, Lcom/google/tagmanager/ArbitraryPixelTag$HitSenderProvider;->get()Lcom/google/tagmanager/HitSender;
-
-    move-result-object v18
-
-    move-object/from16 v0, v18
-
-    invoke-interface {v0, v15}, Lcom/google/tagmanager/HitSender;->sendHit(Ljava/lang/String;)Z
-
-    .line 101
-    new-instance v18, Ljava/lang/StringBuilder;
-
-    invoke-direct/range {v18 .. v18}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v19, "ArbitraryPixel: url = "
-
-    invoke-virtual/range {v18 .. v19}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v18
-
-    move-object/from16 v0, v18
-
-    invoke-virtual {v0, v15}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v18
-
-    invoke-virtual/range {v18 .. v18}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v18
-
-    invoke-static/range {v18 .. v18}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
-
-    .line 103
-    if-nez v14, :cond_114
-
-    .line 110
-    :goto_67
-    return-void
-
-    .line 62
-    .end local v5    # "additionalParamsList":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .end local v9    # "initialUri":Landroid/net/Uri;
-    .end local v14    # "unrepeatableId":Ljava/lang/String;
-    .end local v15    # "uri":Ljava/lang/String;
-    .end local v16    # "uriBuilder":Landroid/net/Uri$Builder;
-    .end local v17    # "url":Ljava/lang/String;
-    :cond_68
-    sget-object v18, Lcom/google/tagmanager/ArbitraryPixelTag;->UNREPEATABLE:Ljava/lang/String;
-
-    move-object/from16 v0, p1
-
-    move-object/from16 v1, v18
-
-    invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v18
-
-    check-cast v18, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    invoke-static/range {v18 .. v18}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
-
-    move-result-object v14
-
-    goto :goto_d
-
-    .line 66
-    .restart local v14    # "unrepeatableId":Ljava/lang/String;
-    :cond_79
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v14}, Lcom/google/tagmanager/ArbitraryPixelTag;->idProcessed(Ljava/lang/String;)Z
-
-    move-result v18
-
-    if-eqz v18, :cond_f
-
-    .line 67
-    return-void
-
-    .line 76
-    .restart local v5    # "additionalParamsList":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .restart local v9    # "initialUri":Landroid/net/Uri;
-    .restart local v16    # "uriBuilder":Landroid/net/Uri$Builder;
-    .restart local v17    # "url":Ljava/lang/String;
-    :cond_82
-    invoke-static {v5}, Lcom/google/tagmanager/Types;->valueToObject(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/Object;
-
-    move-result-object v10
-
     .line 77
-    .local v10, "l":Ljava/lang/Object;
-    instance-of v0, v10, Ljava/util/List;
+    .local v5, "l":Ljava/lang/Object;
+    instance-of v6, v5, Ljava/util/List;
 
-    move/from16 v18, v0
+    if-nez v6, :cond_62
 
-    if-eqz v18, :cond_d4
+    .line 78
+    new-instance v6, Ljava/lang/StringBuilder;
 
-    move-object v11, v10
+    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 83
-    check-cast v11, Ljava/util/List;
+    const-string v7, "ArbitraryPixel: additional params not a list: not sending partial hit: "
 
-    .line 84
-    .local v11, "list":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Object;>;"
-    invoke-interface {v11}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v3}, Landroid/net/Uri$Builder;->build()Landroid/net/Uri;
 
     move-result-object v7
 
-    :cond_93
-    invoke-interface {v7}, Ljava/util/Iterator;->hasNext()Z
+    invoke-virtual {v7}, Landroid/net/Uri;->toString()Ljava/lang/String;
 
-    move-result v18
+    move-result-object v7
 
-    if-eqz v18, :cond_35
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-interface {v7}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v12
-
-    .line 85
-    .local v12, "m":Ljava/lang/Object;
-    instance-of v0, v12, Ljava/util/Map;
-
-    move/from16 v18, v0
-
-    if-eqz v18, :cond_f4
-
-    move-object v13, v12
-
-    .line 91
-    check-cast v13, Ljava/util/Map;
-
-    .line 92
-    .local v13, "map":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
-    invoke-interface {v13}, Ljava/util/Map;->entrySet()Ljava/util/Set;
-
-    move-result-object v18
-
-    invoke-interface/range {v18 .. v18}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
-
-    move-result-object v8
-
-    .local v8, "i$":Ljava/util/Iterator;
-    :goto_ae
-    invoke-interface {v8}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v18
-
-    if-eqz v18, :cond_93
-
-    invoke-interface {v8}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v6
 
-    check-cast v6, Ljava/util/Map$Entry;
-
-    .line 94
-    .local v6, "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/Object;Ljava/lang/Object;>;"
-    invoke-interface {v6}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
-
-    move-result-object v18
-
-    invoke-virtual/range {v18 .. v18}, Ljava/lang/Object;->toString()Ljava/lang/String;
-
-    move-result-object v18
-
-    invoke-interface {v6}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
-
-    move-result-object v19
-
-    invoke-virtual/range {v19 .. v19}, Ljava/lang/Object;->toString()Ljava/lang/String;
-
-    move-result-object v19
-
-    move-object/from16 v0, v16
-
-    move-object/from16 v1, v18
-
-    move-object/from16 v2, v19
-
-    invoke-virtual {v0, v1, v2}, Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;
-
-    goto :goto_ae
-
-    .line 78
-    .end local v6    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/Object;Ljava/lang/Object;>;"
-    .end local v8    # "i$":Ljava/util/Iterator;
-    .end local v11    # "list":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Object;>;"
-    .end local v12    # "m":Ljava/lang/Object;
-    .end local v13    # "map":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
-    :cond_d4
-    new-instance v18, Ljava/lang/StringBuilder;
-
-    invoke-direct/range {v18 .. v18}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v19, "ArbitraryPixel: additional params not a list: not sending partial hit: "
-
-    invoke-virtual/range {v18 .. v19}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v18
-
-    invoke-virtual/range {v16 .. v16}, Landroid/net/Uri$Builder;->build()Landroid/net/Uri;
-
-    move-result-object v19
-
-    invoke-virtual/range {v19 .. v19}, Landroid/net/Uri;->toString()Ljava/lang/String;
-
-    move-result-object v19
-
-    invoke-virtual/range {v18 .. v19}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v18
-
-    invoke-virtual/range {v18 .. v18}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v18
-
-    invoke-static/range {v18 .. v18}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
+    invoke-static {v6}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
 
     .line 80
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
+
+    .line 83
+    :cond_62
+    move-object v6, v5
+
+    check-cast v6, Ljava/util/List;
+
+    .line 84
+    .local v6, "list":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Object;>;"
+    invoke-interface {v6}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+
+    move-result-object v7
+
+    .local v7, "i$":Ljava/util/Iterator;
+    :goto_69
+    invoke-interface {v7}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v8
+
+    if-eqz v8, :cond_c0
+
+    invoke-interface {v7}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v8
+
+    .line 85
+    .local v8, "m":Ljava/lang/Object;
+    instance-of v9, v8, Ljava/util/Map;
+
+    if-nez v9, :cond_94
 
     .line 86
-    .restart local v11    # "list":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Object;>;"
-    .restart local v12    # "m":Ljava/lang/Object;
-    :cond_f4
-    new-instance v18, Ljava/lang/StringBuilder;
+    new-instance v9, Ljava/lang/StringBuilder;
 
-    invoke-direct/range {v18 .. v18}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v19, "ArbitraryPixel: additional params contains non-map: not sending partial hit: "
+    const-string v10, "ArbitraryPixel: additional params contains non-map: not sending partial hit: "
 
-    invoke-virtual/range {v18 .. v19}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v18
+    invoke-virtual {v3}, Landroid/net/Uri$Builder;->build()Landroid/net/Uri;
 
-    invoke-virtual/range {v16 .. v16}, Landroid/net/Uri$Builder;->build()Landroid/net/Uri;
+    move-result-object v10
 
-    move-result-object v19
+    invoke-virtual {v10}, Landroid/net/Uri;->toString()Ljava/lang/String;
 
-    invoke-virtual/range {v19 .. v19}, Landroid/net/Uri;->toString()Ljava/lang/String;
+    move-result-object v10
 
-    move-result-object v19
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual/range {v18 .. v19}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v18
+    move-result-object v9
 
-    invoke-virtual/range {v18 .. v18}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v18
-
-    invoke-static/range {v18 .. v18}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
+    invoke-static {v9}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
 
     .line 88
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
+
+    .line 91
+    :cond_94
+    move-object v9, v8
+
+    check-cast v9, Ljava/util/Map;
+
+    .line 92
+    .local v9, "map":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
+    invoke-interface {v9}, Ljava/util/Map;->entrySet()Ljava/util/Set;
+
+    move-result-object v10
+
+    invoke-interface {v10}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+
+    move-result-object v10
+
+    .local v10, "i$":Ljava/util/Iterator;
+    :goto_9f
+    invoke-interface {v10}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v11
+
+    if-eqz v11, :cond_bf
+
+    invoke-interface {v10}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v11
+
+    check-cast v11, Ljava/util/Map$Entry;
+
+    .line 94
+    .local v11, "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/Object;Ljava/lang/Object;>;"
+    invoke-interface {v11}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+
+    move-result-object v12
+
+    invoke-virtual {v12}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object v12
+
+    invoke-interface {v11}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+
+    move-result-object v13
+
+    invoke-virtual {v13}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object v13
+
+    invoke-virtual {v3, v12, v13}, Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;
+
+    .line 95
+    .end local v11    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/Object;Ljava/lang/Object;>;"
+    goto :goto_9f
+
+    .line 96
+    .end local v8    # "m":Ljava/lang/Object;
+    .end local v9    # "map":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
+    .end local v10    # "i$":Ljava/util/Iterator;
+    :cond_bf
+    goto :goto_69
+
+    .line 99
+    .end local v5    # "l":Ljava/lang/Object;
+    .end local v6    # "list":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Object;>;"
+    .end local v7    # "i$":Ljava/util/Iterator;
+    :cond_c0
+    invoke-virtual {v3}, Landroid/net/Uri$Builder;->build()Landroid/net/Uri;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Landroid/net/Uri;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    .line 100
+    .local v5, "uri":Ljava/lang/String;
+    iget-object v6, p0, Lcom/google/tagmanager/ArbitraryPixelTag;->mHitSenderProvider:Lcom/google/tagmanager/ArbitraryPixelTag$HitSenderProvider;
+
+    invoke-interface {v6}, Lcom/google/tagmanager/ArbitraryPixelTag$HitSenderProvider;->get()Lcom/google/tagmanager/HitSender;
+
+    move-result-object v6
+
+    invoke-interface {v6, v5}, Lcom/google/tagmanager/HitSender;->sendHit(Ljava/lang/String;)Z
+
+    .line 101
+    new-instance v6, Ljava/lang/StringBuilder;
+
+    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v7, "ArbitraryPixel: url = "
+
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v6, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-static {v6}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
+
+    .line 103
+    if-eqz v0, :cond_fd
 
     .line 104
-    .end local v10    # "l":Ljava/lang/Object;
-    .end local v11    # "list":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Object;>;"
-    .end local v12    # "m":Ljava/lang/Object;
-    .restart local v15    # "uri":Ljava/lang/String;
-    :cond_114
-    const-class v4, Lcom/google/tagmanager/ArbitraryPixelTag;
+    const-class v6, Lcom/google/tagmanager/ArbitraryPixelTag;
 
-    .local v4, "-l_8_R":Ljava/lang/Object;
-    const-class v18, Lcom/google/tagmanager/ArbitraryPixelTag;
-
-    monitor-enter v18
+    monitor-enter v6
 
     .line 105
-    :try_start_119
-    sget-object v18, Lcom/google/tagmanager/ArbitraryPixelTag;->unrepeatableIds:Ljava/util/Set;
+    :try_start_ea
+    sget-object v7, Lcom/google/tagmanager/ArbitraryPixelTag;->unrepeatableIds:Ljava/util/Set;
 
-    move-object/from16 v0, v18
-
-    invoke-interface {v0, v14}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+    invoke-interface {v7, v0}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
 
     .line 106
-    move-object/from16 v0, p0
+    iget-object v7, p0, Lcom/google/tagmanager/ArbitraryPixelTag;->mContext:Landroid/content/Context;
 
-    iget-object v0, v0, Lcom/google/tagmanager/ArbitraryPixelTag;->mContext:Landroid/content/Context;
+    sget-object v8, Lcom/google/tagmanager/ArbitraryPixelTag;->ARBITRARY_PIXEL_UNREPEATABLE:Ljava/lang/String;
 
-    move-object/from16 v18, v0
+    const-string v9, "true"
 
-    sget-object v19, Lcom/google/tagmanager/ArbitraryPixelTag;->ARBITRARY_PIXEL_UNREPEATABLE:Ljava/lang/String;
-
-    const-string/jumbo v20, "true"
-
-    move-object/from16 v0, v18
-
-    move-object/from16 v1, v19
-
-    move-object/from16 v2, v20
-
-    invoke-static {v0, v1, v14, v2}, Lcom/google/tagmanager/SharedPreferencesUtil;->saveAsync(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v7, v8, v0, v9}, Lcom/google/tagmanager/SharedPreferencesUtil;->saveAsync(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
     .line 108
-    monitor-exit v4
+    monitor-exit v6
 
-    goto/16 :goto_67
+    goto :goto_fd
 
-    :catchall_137
-    move-exception v3
+    :catchall_fa
+    move-exception v7
 
-    .local v3, "-l_14_R":Ljava/lang/Object;
-    monitor-exit v4
-    :try_end_139
-    .catchall {:try_start_119 .. :try_end_139} :catchall_137
+    monitor-exit v6
+    :try_end_fc
+    .catchall {:try_start_ea .. :try_end_fc} :catchall_fa
 
-    throw v3
+    throw v7
+
+    .line 110
+    :cond_fd
+    :goto_fd
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method idInCache(Ljava/lang/String;)Z
@@ -676,7 +600,6 @@
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 145
     sget-object v0, Lcom/google/tagmanager/ArbitraryPixelTag;->unrepeatableIds:Ljava/util/Set;
 
@@ -688,20 +611,19 @@
 .end method
 
 .method idInSharedPreferences(Ljava/lang/String;)Z
-    .registers 6
+    .registers 5
     .param p1, "unrepeatableId"    # Ljava/lang/String;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 134
-    iget-object v1, p0, Lcom/google/tagmanager/ArbitraryPixelTag;->mContext:Landroid/content/Context;
+    iget-object v0, p0, Lcom/google/tagmanager/ArbitraryPixelTag;->mContext:Landroid/content/Context;
 
-    sget-object v2, Lcom/google/tagmanager/ArbitraryPixelTag;->ARBITRARY_PIXEL_UNREPEATABLE:Ljava/lang/String;
+    sget-object v1, Lcom/google/tagmanager/ArbitraryPixelTag;->ARBITRARY_PIXEL_UNREPEATABLE:Ljava/lang/String;
 
-    const/4 v3, 0x0
+    const/4 v2, 0x0
 
-    invoke-virtual {v1, v2, v3}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    invoke-virtual {v0, v1, v2}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
 
     move-result-object v0
 

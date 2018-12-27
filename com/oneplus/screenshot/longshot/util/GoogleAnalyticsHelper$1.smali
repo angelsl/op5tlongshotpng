@@ -1,4 +1,4 @@
-.class final Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper$1;
+.class Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper$1;
 .super Ljava/lang/Object;
 .source "GoogleAnalyticsHelper.java"
 
@@ -12,7 +12,7 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x8
+    accessFlags = 0x0
     name = null
 .end annotation
 
@@ -21,11 +21,9 @@
 .method constructor <init>()V
     .registers 1
 
-    .prologue
     .line 54
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1
     return-void
 .end method
 
@@ -34,21 +32,22 @@
 .method public run()V
     .registers 4
 
-    .prologue
     .line 58
-    invoke-static {}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->-get0()Ljava/lang/String;
+    # getter for: Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->TAG:Ljava/lang/String;
+    invoke-static {}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->access$000()Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v0
 
-    const-string/jumbo v2, "Take the initiative in retrieving online config"
+    const-string v1, "Take the initiative in retrieving online config"
 
-    invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 59
     new-instance v0, Lcom/oneplus/config/ConfigGrabber;
 
     .line 60
-    invoke-static {}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->-get1()Landroid/content/Context;
+    # getter for: Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sContext:Landroid/content/Context;
+    invoke-static {}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->access$100()Landroid/content/Context;
 
     move-result-object v1
 
@@ -56,9 +55,8 @@
 
     move-result-object v1
 
-    const-string/jumbo v2, "OPSystemUIGAConfig"
+    const-string v2, "OPSystemUIGAConfig"
 
-    .line 59
     invoke-direct {v0, v1, v2}, Lcom/oneplus/config/ConfigGrabber;-><init>(Landroid/content/Context;Ljava/lang/String;)V
 
     .line 61
@@ -67,8 +65,10 @@
 
     move-result-object v1
 
-    invoke-static {v1}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->-wrap0(Lorg/json/JSONArray;)V
+    invoke-static {v1}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->access$200(Lorg/json/JSONArray;)V
 
     .line 62
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Ljava/lang/Enum",
-        "<",
+        "Ljava/lang/Enum<",
         "Lcom/google/tagmanager/PreviewManager$PreviewMode;",
         ">;"
     }
@@ -37,17 +36,12 @@
 .method static constructor <clinit>()V
     .registers 5
 
-    .prologue
-    const/4 v4, 0x2
-
-    const/4 v3, 0x1
-
-    const/4 v2, 0x0
-
     .line 13
     new-instance v0, Lcom/google/tagmanager/PreviewManager$PreviewMode;
 
-    const-string/jumbo v1, "NONE"
+    const-string v1, "NONE"
+
+    const/4 v2, 0x0
 
     invoke-direct {v0, v1, v2}, Lcom/google/tagmanager/PreviewManager$PreviewMode;-><init>(Ljava/lang/String;I)V
 
@@ -56,7 +50,9 @@
     .line 14
     new-instance v0, Lcom/google/tagmanager/PreviewManager$PreviewMode;
 
-    const-string/jumbo v1, "CONTAINER"
+    const-string v1, "CONTAINER"
+
+    const/4 v3, 0x1
 
     invoke-direct {v0, v1, v3}, Lcom/google/tagmanager/PreviewManager$PreviewMode;-><init>(Ljava/lang/String;I)V
 
@@ -65,7 +61,9 @@
     .line 16
     new-instance v0, Lcom/google/tagmanager/PreviewManager$PreviewMode;
 
-    const-string/jumbo v1, "CONTAINER_DEBUG"
+    const-string v1, "CONTAINER_DEBUG"
+
+    const/4 v4, 0x2
 
     invoke-direct {v0, v1, v4}, Lcom/google/tagmanager/PreviewManager$PreviewMode;-><init>(Ljava/lang/String;I)V
 
@@ -90,7 +88,9 @@
 
     sput-object v0, Lcom/google/tagmanager/PreviewManager$PreviewMode;->$VALUES:[Lcom/google/tagmanager/PreviewManager$PreviewMode;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V
@@ -101,7 +101,6 @@
         }
     .end annotation
 
-    .prologue
     .line 12
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
@@ -112,7 +111,6 @@
     .registers 2
     .param p0, "name"    # Ljava/lang/String;
 
-    .prologue
     .line 12
     const-class v0, Lcom/google/tagmanager/PreviewManager$PreviewMode;
 
@@ -128,11 +126,10 @@
 .method public static values()[Lcom/google/tagmanager/PreviewManager$PreviewMode;
     .registers 1
 
-    .prologue
     .line 12
     sget-object v0, Lcom/google/tagmanager/PreviewManager$PreviewMode;->$VALUES:[Lcom/google/tagmanager/PreviewManager$PreviewMode;
 
-    invoke-virtual {v0}, Ljava/lang/Object;->clone()Ljava/lang/Object;
+    invoke-virtual {v0}, [Lcom/google/tagmanager/PreviewManager$PreviewMode;->clone()Ljava/lang/Object;
 
     move-result-object v0
 

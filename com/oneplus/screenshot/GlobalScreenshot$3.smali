@@ -1,11 +1,14 @@
 .class Lcom/oneplus/screenshot/GlobalScreenshot$3;
-.super Landroid/os/Handler;
+.super Ljava/lang/Object;
 .source "GlobalScreenshot.java"
+
+# interfaces
+.implements Landroid/view/View$OnTouchListener;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/oneplus/screenshot/GlobalScreenshot;->saveScreenshotInWorkerThread(Ljava/lang/Runnable;)V
+    value = Lcom/oneplus/screenshot/GlobalScreenshot;->takeScreenshotPartial(Ljava/lang/Runnable;ZZ)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -17,72 +20,170 @@
 # instance fields
 .field final synthetic this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
+.field final synthetic val$finisher:Ljava/lang/Runnable;
+
+.field final synthetic val$navBarVisible:Z
+
+.field final synthetic val$statusBarVisible:Z
+
 
 # direct methods
-.method constructor <init>(Lcom/oneplus/screenshot/GlobalScreenshot;)V
-    .registers 2
+.method constructor <init>(Lcom/oneplus/screenshot/GlobalScreenshot;Ljava/lang/Runnable;ZZ)V
+    .registers 5
     .param p1, "this$0"    # Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .prologue
-    .line 1
+    .line 1114
     iput-object p1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$3;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .line 822
-    invoke-direct {p0}, Landroid/os/Handler;-><init>()V
+    iput-object p2, p0, Lcom/oneplus/screenshot/GlobalScreenshot$3;->val$finisher:Ljava/lang/Runnable;
 
-    .line 1
+    iput-boolean p3, p0, Lcom/oneplus/screenshot/GlobalScreenshot$3;->val$statusBarVisible:Z
+
+    iput-boolean p4, p0, Lcom/oneplus/screenshot/GlobalScreenshot$3;->val$navBarVisible:Z
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
     return-void
 .end method
 
 
 # virtual methods
-.method public handleMessage(Landroid/os/Message;)V
-    .registers 4
-    .param p1, "msg"    # Landroid/os/Message;
+.method public onTouch(Landroid/view/View;Landroid/view/MotionEvent;)Z
+    .registers 8
+    .param p1, "v"    # Landroid/view/View;
+    .param p2, "event"    # Landroid/view/MotionEvent;
 
-    .prologue
-    const/4 v1, 0x1
+    .line 1117
+    move-object v0, p1
 
-    .line 825
-    iget-object v0, p0, Lcom/oneplus/screenshot/GlobalScreenshot$3;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
+    check-cast v0, Lcom/oneplus/screenshot/ScreenshotSelectorView;
 
-    invoke-static {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->-get16(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageButton;
+    .line 1118
+    .local v0, "view":Lcom/oneplus/screenshot/ScreenshotSelectorView;
+    invoke-virtual {p2}, Landroid/view/MotionEvent;->getAction()I
 
-    move-result-object v0
+    move-result v1
 
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setEnabled(Z)V
+    const/4 v2, 0x1
 
-    .line 826
-    iget-object v0, p0, Lcom/oneplus/screenshot/GlobalScreenshot$3;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
+    packed-switch v1, :pswitch_data_62
 
-    invoke-static {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->-get6(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageView;
+    .line 1145
+    const/4 v1, 0x0
 
-    move-result-object v0
+    return v1
 
-    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setEnabled(Z)V
+    .line 1123
+    :pswitch_d
+    invoke-virtual {p2}, Landroid/view/MotionEvent;->getX()F
 
-    .line 827
-    iget-object v0, p0, Lcom/oneplus/screenshot/GlobalScreenshot$3;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
+    move-result v1
 
-    invoke-static {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->-get5(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageView;
+    float-to-int v1, v1
 
-    move-result-object v0
+    invoke-virtual {p2}, Landroid/view/MotionEvent;->getY()F
 
-    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setEnabled(Z)V
+    move-result v3
 
-    .line 829
-    iget-object v0, p0, Lcom/oneplus/screenshot/GlobalScreenshot$3;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
+    float-to-int v3, v3
 
-    invoke-static {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->-get9(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageView;
+    invoke-virtual {v0, v1, v3}, Lcom/oneplus/screenshot/ScreenshotSelectorView;->updateSelection(II)V
 
-    move-result-object v0
+    .line 1124
+    return v2
 
-    sget-boolean v1, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_UNSUPPORTED:Z
+    .line 1126
+    :pswitch_1b
+    const/16 v1, 0x8
 
-    xor-int/lit8 v1, v1, 0x1
+    invoke-virtual {v0, v1}, Lcom/oneplus/screenshot/ScreenshotSelectorView;->setVisibility(I)V
 
-    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setEnabled(Z)V
+    .line 1127
+    iget-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$3;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .line 831
-    return-void
+    # getter for: Lcom/oneplus/screenshot/GlobalScreenshot;->mWindowManager:Landroid/view/WindowManager;
+    invoke-static {v1}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$700(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/view/WindowManager;
+
+    move-result-object v1
+
+    iget-object v3, p0, Lcom/oneplus/screenshot/GlobalScreenshot$3;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
+
+    # getter for: Lcom/oneplus/screenshot/GlobalScreenshot;->mScreenshotLayout:Lcom/oneplus/screenshot/longshot/app/GlobalScreenShotFrameLayout;
+    invoke-static {v3}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$600(Lcom/oneplus/screenshot/GlobalScreenshot;)Lcom/oneplus/screenshot/longshot/app/GlobalScreenShotFrameLayout;
+
+    move-result-object v3
+
+    invoke-interface {v1, v3}, Landroid/view/WindowManager;->removeView(Landroid/view/View;)V
+
+    .line 1128
+    invoke-virtual {v0}, Lcom/oneplus/screenshot/ScreenshotSelectorView;->getSelectionRect()Landroid/graphics/Rect;
+
+    move-result-object v1
+
+    .line 1129
+    .local v1, "rect":Landroid/graphics/Rect;
+    if-eqz v1, :cond_4f
+
+    .line 1130
+    invoke-virtual {v1}, Landroid/graphics/Rect;->width()I
+
+    move-result v3
+
+    if-eqz v3, :cond_4f
+
+    invoke-virtual {v1}, Landroid/graphics/Rect;->height()I
+
+    move-result v3
+
+    if-eqz v3, :cond_4f
+
+    .line 1132
+    iget-object v3, p0, Lcom/oneplus/screenshot/GlobalScreenshot$3;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
+
+    # getter for: Lcom/oneplus/screenshot/GlobalScreenshot;->mScreenshotLayout:Lcom/oneplus/screenshot/longshot/app/GlobalScreenShotFrameLayout;
+    invoke-static {v3}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$600(Lcom/oneplus/screenshot/GlobalScreenshot;)Lcom/oneplus/screenshot/longshot/app/GlobalScreenShotFrameLayout;
+
+    move-result-object v3
+
+    new-instance v4, Lcom/oneplus/screenshot/GlobalScreenshot$3$1;
+
+    invoke-direct {v4, p0, v1}, Lcom/oneplus/screenshot/GlobalScreenshot$3$1;-><init>(Lcom/oneplus/screenshot/GlobalScreenshot$3;Landroid/graphics/Rect;)V
+
+    invoke-virtual {v3, v4}, Lcom/oneplus/screenshot/longshot/app/GlobalScreenShotFrameLayout;->post(Ljava/lang/Runnable;)Z
+
+    .line 1141
+    :cond_4f
+    invoke-virtual {v0}, Lcom/oneplus/screenshot/ScreenshotSelectorView;->stopSelection()V
+
+    .line 1142
+    return v2
+
+    .line 1120
+    .end local v1    # "rect":Landroid/graphics/Rect;
+    :pswitch_53
+    invoke-virtual {p2}, Landroid/view/MotionEvent;->getX()F
+
+    move-result v1
+
+    float-to-int v1, v1
+
+    invoke-virtual {p2}, Landroid/view/MotionEvent;->getY()F
+
+    move-result v3
+
+    float-to-int v3, v3
+
+    invoke-virtual {v0, v1, v3}, Lcom/oneplus/screenshot/ScreenshotSelectorView;->startSelection(II)V
+
+    .line 1121
+    return v2
+
+    nop
+
+    :pswitch_data_62
+    .packed-switch 0x0
+        :pswitch_53
+        :pswitch_1b
+        :pswitch_d
+    .end packed-switch
 .end method

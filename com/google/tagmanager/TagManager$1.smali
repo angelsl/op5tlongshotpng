@@ -25,7 +25,6 @@
 .method constructor <init>(Lcom/google/tagmanager/TagManager;)V
     .registers 2
 
-    .prologue
     .line 147
     iput-object p1, p0, Lcom/google/tagmanager/TagManager$1;->this$0:Lcom/google/tagmanager/TagManager;
 
@@ -41,41 +40,37 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/Object;",
             "Ljava/lang/Object;",
             ">;)V"
         }
     .end annotation
 
-    .prologue
     .line 151
     .local p1, "update":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
-    const-string/jumbo v1, "event"
+    const-string v0, "event"
 
-    invoke-interface {p1, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {p1, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v0
 
     .line 152
     .local v0, "eventValue":Ljava/lang/Object;
-    if-nez v0, :cond_a
-
-    .line 155
-    :goto_9
-    return-void
+    if-eqz v0, :cond_11
 
     .line 153
-    :cond_a
     iget-object v1, p0, Lcom/google/tagmanager/TagManager$1;->this$0:Lcom/google/tagmanager/TagManager;
 
     invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
     move-result-object v2
 
-    # invokes: Lcom/google/tagmanager/TagManager;->refreshTagsInAllContainers(Ljava/lang/String;)V
     invoke-static {v1, v2}, Lcom/google/tagmanager/TagManager;->access$000(Lcom/google/tagmanager/TagManager;Ljava/lang/String;)V
 
-    goto :goto_9
+    .line 155
+    :cond_11
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

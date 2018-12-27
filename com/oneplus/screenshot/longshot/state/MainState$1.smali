@@ -26,14 +26,11 @@
     .registers 2
     .param p1, "this$0"    # Lcom/oneplus/screenshot/longshot/state/MainState;
 
-    .prologue
-    .line 1
+    .line 26
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/MainState$1;->this$0:Lcom/oneplus/screenshot/longshot/state/MainState;
 
-    .line 26
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1
     return-void
 .end method
 
@@ -42,7 +39,6 @@
 .method public updateState()V
     .registers 4
 
-    .prologue
     .line 29
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MainState$1;->this$0:Lcom/oneplus/screenshot/longshot/state/MainState;
 
@@ -55,5 +51,7 @@
     invoke-interface {v0, v1, v2}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->updateState(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
 
     .line 30
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

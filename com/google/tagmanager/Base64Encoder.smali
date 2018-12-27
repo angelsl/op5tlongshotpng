@@ -15,7 +15,6 @@
 .method constructor <init>()V
     .registers 1
 
-    .prologue
     .line 11
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -23,221 +22,189 @@
 .end method
 
 .method public static decode(Ljava/lang/String;I)[B
-    .registers 9
+    .registers 6
     .param p0, "s"    # Ljava/lang/String;
     .param p1, "flags"    # I
-
-    .prologue
-    const/4 v4, 0x1
-
-    const/4 v3, 0x0
 
     .line 43
     invoke-static {}, Lcom/google/tagmanager/Base64Encoder;->getSdkVersion()I
 
-    move-result v5
+    move-result v0
 
-    const/16 v6, 0x8
+    const/16 v1, 0x8
 
-    if-ge v5, v6, :cond_1b
-
-    .line 54
-    and-int/lit8 v5, p1, 0x1
-
-    if-eqz v5, :cond_2e
-
-    move v1, v3
-
-    .line 55
-    .local v1, "paddingDesired":Z
-    :goto_f
-    and-int/lit8 v5, p1, 0x2
-
-    if-nez v5, :cond_30
-
-    move v2, v3
-
-    .line 56
-    .local v2, "websafeDesired":Z
-    :goto_14
-    if-nez v2, :cond_32
-
-    .line 59
-    invoke-static {p0}, Lcom/google/tagmanager/Base64;->decode(Ljava/lang/String;)[B
-
-    move-result-object v3
-
-    return-object v3
+    if-lt v0, v1, :cond_1a
 
     .line 44
-    .end local v1    # "paddingDesired":Z
-    .end local v2    # "websafeDesired":Z
-    :cond_1b
     const/4 v0, 0x2
 
     .line 45
     .local v0, "newFlags":I
-    and-int/lit8 v3, p1, 0x1
+    and-int/lit8 v1, p1, 0x1
 
-    if-nez v3, :cond_29
-
-    .line 48
-    :goto_20
-    and-int/lit8 v3, p1, 0x2
-
-    if-nez v3, :cond_2b
-
-    .line 52
-    :goto_24
-    invoke-static {p0, v0}, Landroid/util/Base64;->decode(Ljava/lang/String;I)[B
-
-    move-result-object v3
-
-    return-object v3
+    if-eqz v1, :cond_f
 
     .line 46
-    :cond_29
-    const/4 v0, 0x3
+    or-int/lit8 v0, v0, 0x1
 
-    goto :goto_20
+    .line 48
+    :cond_f
+    and-int/lit8 v1, p1, 0x2
+
+    if-eqz v1, :cond_15
 
     .line 49
-    :cond_2b
     or-int/lit8 v0, v0, 0x8
 
-    goto :goto_24
+    .line 52
+    :cond_15
+    invoke-static {p0, v0}, Landroid/util/Base64;->decode(Ljava/lang/String;I)[B
 
-    .end local v0    # "newFlags":I
-    :cond_2e
-    move v1, v4
+    move-result-object v1
+
+    return-object v1
 
     .line 54
-    goto :goto_f
+    .end local v0    # "newFlags":I
+    :cond_1a
+    and-int/lit8 v0, p1, 0x1
 
-    .restart local v1    # "paddingDesired":Z
-    :cond_30
-    move v2, v4
+    const/4 v1, 0x0
+
+    const/4 v2, 0x1
+
+    if-nez v0, :cond_22
+
+    move v0, v2
+
+    goto :goto_23
+
+    :cond_22
+    move v0, v1
 
     .line 55
-    goto :goto_14
+    .local v0, "paddingDesired":Z
+    :goto_23
+    and-int/lit8 v3, p1, 0x2
+
+    if-eqz v3, :cond_29
+
+    move v1, v2
+
+    nop
+
+    .line 56
+    .local v1, "websafeDesired":Z
+    :cond_29
+    if-eqz v1, :cond_30
 
     .line 57
-    .restart local v2    # "websafeDesired":Z
-    :cond_32
     invoke-static {p0}, Lcom/google/tagmanager/Base64;->decodeWebSafe(Ljava/lang/String;)[B
 
-    move-result-object v3
+    move-result-object v2
 
-    return-object v3
+    return-object v2
+
+    .line 59
+    :cond_30
+    invoke-static {p0}, Lcom/google/tagmanager/Base64;->decode(Ljava/lang/String;)[B
+
+    move-result-object v2
+
+    return-object v2
 .end method
 
 .method public static encodeToString([BI)Ljava/lang/String;
-    .registers 9
+    .registers 6
     .param p0, "input"    # [B
     .param p1, "flags"    # I
-
-    .prologue
-    const/4 v4, 0x1
-
-    const/4 v3, 0x0
 
     .line 21
     invoke-static {}, Lcom/google/tagmanager/Base64Encoder;->getSdkVersion()I
 
-    move-result v5
+    move-result v0
 
-    const/16 v6, 0x8
+    const/16 v1, 0x8
 
-    if-ge v5, v6, :cond_1b
-
-    .line 32
-    and-int/lit8 v5, p1, 0x1
-
-    if-eqz v5, :cond_2e
-
-    move v1, v3
-
-    .line 33
-    .local v1, "paddingDesired":Z
-    :goto_f
-    and-int/lit8 v5, p1, 0x2
-
-    if-nez v5, :cond_30
-
-    move v2, v3
-
-    .line 34
-    .local v2, "websafeDesired":Z
-    :goto_14
-    if-nez v2, :cond_32
-
-    .line 37
-    invoke-static {p0, v1}, Lcom/google/tagmanager/Base64;->encode([BZ)Ljava/lang/String;
-
-    move-result-object v3
-
-    return-object v3
+    if-lt v0, v1, :cond_1a
 
     .line 22
-    .end local v1    # "paddingDesired":Z
-    .end local v2    # "websafeDesired":Z
-    :cond_1b
     const/4 v0, 0x2
 
     .line 23
     .local v0, "newFlags":I
-    and-int/lit8 v3, p1, 0x1
+    and-int/lit8 v1, p1, 0x1
 
-    if-nez v3, :cond_29
-
-    .line 26
-    :goto_20
-    and-int/lit8 v3, p1, 0x2
-
-    if-nez v3, :cond_2b
-
-    .line 30
-    :goto_24
-    invoke-static {p0, v0}, Landroid/util/Base64;->encodeToString([BI)Ljava/lang/String;
-
-    move-result-object v3
-
-    return-object v3
+    if-eqz v1, :cond_f
 
     .line 24
-    :cond_29
-    const/4 v0, 0x3
+    or-int/lit8 v0, v0, 0x1
 
-    goto :goto_20
+    .line 26
+    :cond_f
+    and-int/lit8 v1, p1, 0x2
+
+    if-eqz v1, :cond_15
 
     .line 27
-    :cond_2b
     or-int/lit8 v0, v0, 0x8
 
-    goto :goto_24
+    .line 30
+    :cond_15
+    invoke-static {p0, v0}, Landroid/util/Base64;->encodeToString([BI)Ljava/lang/String;
 
-    .end local v0    # "newFlags":I
-    :cond_2e
-    move v1, v4
+    move-result-object v1
+
+    return-object v1
 
     .line 32
-    goto :goto_f
+    .end local v0    # "newFlags":I
+    :cond_1a
+    and-int/lit8 v0, p1, 0x1
 
-    .restart local v1    # "paddingDesired":Z
-    :cond_30
-    move v2, v4
+    const/4 v1, 0x0
+
+    const/4 v2, 0x1
+
+    if-nez v0, :cond_22
+
+    move v0, v2
+
+    goto :goto_23
+
+    :cond_22
+    move v0, v1
 
     .line 33
-    goto :goto_14
+    .local v0, "paddingDesired":Z
+    :goto_23
+    and-int/lit8 v3, p1, 0x2
+
+    if-eqz v3, :cond_29
+
+    move v1, v2
+
+    nop
+
+    .line 34
+    .local v1, "websafeDesired":Z
+    :cond_29
+    if-eqz v1, :cond_30
 
     .line 35
-    .restart local v2    # "websafeDesired":Z
-    :cond_32
-    invoke-static {p0, v1}, Lcom/google/tagmanager/Base64;->encodeWebSafe([BZ)Ljava/lang/String;
+    invoke-static {p0, v0}, Lcom/google/tagmanager/Base64;->encodeWebSafe([BZ)Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v2
 
-    return-object v3
+    return-object v2
+
+    .line 37
+    :cond_30
+    invoke-static {p0, v0}, Lcom/google/tagmanager/Base64;->encode([BZ)Ljava/lang/String;
+
+    move-result-object v2
+
+    return-object v2
 .end method
 
 .method static getSdkVersion()I
@@ -245,7 +212,6 @@
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 66
     sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
 

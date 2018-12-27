@@ -22,7 +22,6 @@
 .method constructor <init>(Lcom/google/tagmanager/ContainerOpener;)V
     .registers 2
 
-    .prologue
     .line 387
     iput-object p1, p0, Lcom/google/tagmanager/ContainerOpener$3;->this$0:Lcom/google/tagmanager/ContainerOpener;
 
@@ -36,9 +35,8 @@
 .method public run()V
     .registers 3
 
-    .prologue
     .line 390
-    const-string/jumbo v0, "Timer expired."
+    const-string v0, "Timer expired."
 
     invoke-static {v0}, Lcom/google/tagmanager/Log;->i(Ljava/lang/String;)V
 
@@ -52,9 +50,10 @@
 
     move-result-object v1
 
-    # invokes: Lcom/google/tagmanager/ContainerOpener;->callNotifiers(Lcom/google/tagmanager/Container;)V
     invoke-static {v0, v1}, Lcom/google/tagmanager/ContainerOpener;->access$000(Lcom/google/tagmanager/ContainerOpener;Lcom/google/tagmanager/Container;)V
 
     .line 392
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

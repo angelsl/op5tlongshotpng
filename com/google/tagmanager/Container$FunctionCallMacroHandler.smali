@@ -20,8 +20,7 @@
         value = {
             "(",
             "Ljava/lang/String;",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Ljava/lang/Object;",
             ">;)",

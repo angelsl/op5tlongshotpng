@@ -13,7 +13,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 17
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->RUNTIME_VERSION:Lcom/google/analytics/containertag/common/FunctionType;
 
@@ -23,13 +22,14 @@
 
     sput-object v0, Lcom/google/tagmanager/RuntimeVersionMacro;->ID:Ljava/lang/String;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>()V
     .registers 3
 
-    .prologue
     .line 24
     sget-object v0, Lcom/google/tagmanager/RuntimeVersionMacro;->ID:Ljava/lang/String;
 
@@ -40,13 +40,14 @@
     invoke-direct {p0, v0, v1}, Lcom/google/tagmanager/FunctionCallImplementation;-><init>(Ljava/lang/String;[Ljava/lang/String;)V
 
     .line 25
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
     .registers 1
 
-    .prologue
     .line 20
     sget-object v0, Lcom/google/tagmanager/RuntimeVersionMacro;->ID:Ljava/lang/String;
 
@@ -60,8 +61,7 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;)",
@@ -69,7 +69,6 @@
         }
     .end annotation
 
-    .prologue
     .line 32
     .local p1, "parameters":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
     const-wide/32 v0, 0x3bc5d66
@@ -88,7 +87,6 @@
 .method public isCacheable()Z
     .registers 2
 
-    .prologue
     .line 28
     const/4 v0, 0x1
 

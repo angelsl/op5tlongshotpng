@@ -25,7 +25,6 @@
 .method constructor <init>(Lcom/google/tagmanager/ServiceManagerImpl;)V
     .registers 2
 
-    .prologue
     .line 100
     iput-object p1, p0, Lcom/google/tagmanager/ServiceManagerImpl$2;->this$0:Lcom/google/tagmanager/ServiceManagerImpl;
 
@@ -40,33 +39,25 @@
     .registers 7
     .param p1, "msg"    # Landroid/os/Message;
 
-    .prologue
-    const/4 v4, 0x1
-
     .line 104
     iget v0, p1, Landroid/os/Message;->what:I
 
-    if-eq v4, v0, :cond_6
+    const/4 v1, 0x1
 
-    .line 112
-    :cond_5
-    :goto_5
-    return v4
+    if-ne v1, v0, :cond_46
 
-    .line 104
-    :cond_6
     # getter for: Lcom/google/tagmanager/ServiceManagerImpl;->MSG_OBJECT:Ljava/lang/Object;
     invoke-static {}, Lcom/google/tagmanager/ServiceManagerImpl;->access$100()Ljava/lang/Object;
 
     move-result-object v0
 
-    iget-object v1, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+    iget-object v2, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
-    invoke-virtual {v0, v1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v0, v2}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
 
     move-result v0
 
-    if-eqz v0, :cond_5
+    if-eqz v0, :cond_46
 
     .line 105
     iget-object v0, p0, Lcom/google/tagmanager/ServiceManagerImpl$2;->this$0:Lcom/google/tagmanager/ServiceManagerImpl;
@@ -81,7 +72,7 @@
 
     move-result v0
 
-    if-lez v0, :cond_5
+    if-lez v0, :cond_46
 
     iget-object v0, p0, Lcom/google/tagmanager/ServiceManagerImpl$2;->this$0:Lcom/google/tagmanager/ServiceManagerImpl;
 
@@ -90,7 +81,7 @@
 
     move-result v0
 
-    if-nez v0, :cond_5
+    if-nez v0, :cond_46
 
     .line 108
     iget-object v0, p0, Lcom/google/tagmanager/ServiceManagerImpl$2;->this$0:Lcom/google/tagmanager/ServiceManagerImpl;
@@ -100,34 +91,36 @@
 
     move-result-object v0
 
-    iget-object v1, p0, Lcom/google/tagmanager/ServiceManagerImpl$2;->this$0:Lcom/google/tagmanager/ServiceManagerImpl;
+    iget-object v2, p0, Lcom/google/tagmanager/ServiceManagerImpl$2;->this$0:Lcom/google/tagmanager/ServiceManagerImpl;
 
     # getter for: Lcom/google/tagmanager/ServiceManagerImpl;->handler:Landroid/os/Handler;
-    invoke-static {v1}, Lcom/google/tagmanager/ServiceManagerImpl;->access$400(Lcom/google/tagmanager/ServiceManagerImpl;)Landroid/os/Handler;
+    invoke-static {v2}, Lcom/google/tagmanager/ServiceManagerImpl;->access$400(Lcom/google/tagmanager/ServiceManagerImpl;)Landroid/os/Handler;
 
-    move-result-object v1
+    move-result-object v2
 
     # getter for: Lcom/google/tagmanager/ServiceManagerImpl;->MSG_OBJECT:Ljava/lang/Object;
     invoke-static {}, Lcom/google/tagmanager/ServiceManagerImpl;->access$100()Ljava/lang/Object;
 
+    move-result-object v3
+
+    invoke-virtual {v2, v1, v3}, Landroid/os/Handler;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
+
     move-result-object v2
 
-    invoke-virtual {v1, v4, v2}, Landroid/os/Handler;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
-
-    move-result-object v1
-
-    iget-object v2, p0, Lcom/google/tagmanager/ServiceManagerImpl$2;->this$0:Lcom/google/tagmanager/ServiceManagerImpl;
+    iget-object v3, p0, Lcom/google/tagmanager/ServiceManagerImpl$2;->this$0:Lcom/google/tagmanager/ServiceManagerImpl;
 
     # getter for: Lcom/google/tagmanager/ServiceManagerImpl;->dispatchPeriodInSeconds:I
-    invoke-static {v2}, Lcom/google/tagmanager/ServiceManagerImpl;->access$200(Lcom/google/tagmanager/ServiceManagerImpl;)I
+    invoke-static {v3}, Lcom/google/tagmanager/ServiceManagerImpl;->access$200(Lcom/google/tagmanager/ServiceManagerImpl;)I
 
-    move-result v2
+    move-result v3
 
-    mul-int/lit16 v2, v2, 0x3e8
+    mul-int/lit16 v3, v3, 0x3e8
 
-    int-to-long v2, v2
+    int-to-long v3, v3
 
-    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message;J)Z
+    invoke-virtual {v0, v2, v3, v4}, Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message;J)Z
 
-    goto :goto_5
+    .line 112
+    :cond_46
+    return v1
 .end method

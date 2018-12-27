@@ -15,7 +15,6 @@
     .registers 2
     .param p1, "dataLayerEvent"    # Lcom/google/analytics/containertag/proto/Debug$DataLayerEventEvaluationInfo;
 
-    .prologue
     .line 16
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -23,7 +22,9 @@
     iput-object p1, p0, Lcom/google/tagmanager/DebugDataLayerEventEvaluationInfoBuilder;->dataLayerEvent:Lcom/google/analytics/containertag/proto/Debug$DataLayerEventEvaluationInfo;
 
     .line 18
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -31,7 +32,6 @@
 .method public createAndAddResult()Lcom/google/tagmanager/ResolvedFunctionCallBuilder;
     .registers 4
 
-    .prologue
     .line 22
     new-instance v0, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
@@ -62,7 +62,6 @@
 .method public createRulesEvaluation()Lcom/google/tagmanager/RuleEvaluationStepInfoBuilder;
     .registers 3
 
-    .prologue
     .line 29
     iget-object v0, p0, Lcom/google/tagmanager/DebugDataLayerEventEvaluationInfoBuilder;->dataLayerEvent:Lcom/google/analytics/containertag/proto/Debug$DataLayerEventEvaluationInfo;
 

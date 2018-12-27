@@ -25,7 +25,6 @@
 .method constructor <init>(Lcom/google/tagmanager/PersistentHitStore;)V
     .registers 2
 
-    .prologue
     .line 107
     iput-object p1, p0, Lcom/google/tagmanager/PersistentHitStore$1;->this$0:Lcom/google/tagmanager/PersistentHitStore;
 
@@ -39,7 +38,6 @@
 .method public currentTimeMillis()J
     .registers 3
 
-    .prologue
     .line 110
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 

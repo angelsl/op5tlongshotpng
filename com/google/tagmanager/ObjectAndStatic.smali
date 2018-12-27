@@ -36,7 +36,6 @@
         }
     .end annotation
 
-    .prologue
     .line 14
     .local p0, "this":Lcom/google/tagmanager/ObjectAndStatic;, "Lcom/google/tagmanager/ObjectAndStatic<TT;>;"
     .local p1, "object":Ljava/lang/Object;, "TT;"
@@ -62,7 +61,6 @@
         }
     .end annotation
 
-    .prologue
     .line 19
     .local p0, "this":Lcom/google/tagmanager/ObjectAndStatic;, "Lcom/google/tagmanager/ObjectAndStatic<TT;>;"
     iget-object v0, p0, Lcom/google/tagmanager/ObjectAndStatic;->mObject:Ljava/lang/Object;
@@ -73,7 +71,6 @@
 .method public isStatic()Z
     .registers 2
 
-    .prologue
     .line 20
     .local p0, "this":Lcom/google/tagmanager/ObjectAndStatic;, "Lcom/google/tagmanager/ObjectAndStatic<TT;>;"
     iget-boolean v0, p0, Lcom/google/tagmanager/ObjectAndStatic;->mIsStatic:Z

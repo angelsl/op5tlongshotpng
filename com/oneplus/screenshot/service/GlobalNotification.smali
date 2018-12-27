@@ -6,8 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Lcom/oneplus/screenshot/service/GlobalNotification$Builder;,
-        Lcom/oneplus/screenshot/service/GlobalNotification$SaveError;
+        Lcom/oneplus/screenshot/service/GlobalNotification$SaveError;,
+        Lcom/oneplus/screenshot/service/GlobalNotification$Builder;
     }
 .end annotation
 
@@ -31,40 +31,29 @@
 
 
 # direct methods
-.method static synthetic -get0(Lcom/oneplus/screenshot/service/GlobalNotification;)Landroid/content/Context;
-    .registers 2
-    .param p0, "-this"    # Lcom/oneplus/screenshot/service/GlobalNotification;
-
-    .prologue
-    iget-object v0, p0, Lcom/oneplus/screenshot/service/GlobalNotification;->mContext:Landroid/content/Context;
-
-    return-object v0
-.end method
-
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 32
     const/4 v0, 0x0
 
     sput-object v0, Lcom/oneplus/screenshot/service/GlobalNotification;->sInstance:Lcom/oneplus/screenshot/service/GlobalNotification;
 
-    .line 17
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private constructor <init>(Landroid/content/Context;)V
     .registers 3
     .param p1, "context"    # Landroid/content/Context;
 
-    .prologue
-    const/4 v0, 0x0
-
     .line 43
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 37
+    const/4 v0, 0x0
+
     iput-object v0, p0, Lcom/oneplus/screenshot/service/GlobalNotification;->mContext:Landroid/content/Context;
 
     .line 38
@@ -74,7 +63,7 @@
     iput-object p1, p0, Lcom/oneplus/screenshot/service/GlobalNotification;->mContext:Landroid/content/Context;
 
     .line 45
-    const-string/jumbo v0, "notification"
+    const-string v0, "notification"
 
     invoke-virtual {p1, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
@@ -85,7 +74,19 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/service/GlobalNotification;->mNotificationManager:Landroid/app/NotificationManager;
 
     .line 46
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
+.end method
+
+.method static synthetic access$000(Lcom/oneplus/screenshot/service/GlobalNotification;)Landroid/content/Context;
+    .registers 2
+    .param p0, "x0"    # Lcom/oneplus/screenshot/service/GlobalNotification;
+
+    .line 17
+    iget-object v0, p0, Lcom/oneplus/screenshot/service/GlobalNotification;->mContext:Landroid/content/Context;
+
+    return-object v0
 .end method
 
 .method private createNotification(ILandroid/graphics/Bitmap;Lcom/oneplus/screenshot/util/ImageInfo;)Landroid/app/Notification;
@@ -94,52 +95,49 @@
     .param p2, "preview"    # Landroid/graphics/Bitmap;
     .param p3, "imageInfo"    # Lcom/oneplus/screenshot/util/ImageInfo;
 
-    .prologue
-    const/4 v1, 0x0
-
     .line 80
     const/4 v0, 0x0
 
     .line 81
     .local v0, "builder":Lcom/oneplus/screenshot/service/GlobalNotification$Builder;
-    packed-switch p1, :pswitch_data_12
+    const/4 v1, 0x2
+
+    if-eq p1, v1, :cond_5
+
+    goto :goto_c
+
+    .line 83
+    :cond_5
+    new-instance v1, Lcom/oneplus/screenshot/service/GlobalNotification$SaveError;
+
+    invoke-direct {v1, p0, p2}, Lcom/oneplus/screenshot/service/GlobalNotification$SaveError;-><init>(Lcom/oneplus/screenshot/service/GlobalNotification;Landroid/graphics/Bitmap;)V
+
+    move-object v0, v1
+
+    .line 84
+    nop
 
     .line 88
-    .end local v0    # "builder":Lcom/oneplus/screenshot/service/GlobalNotification$Builder;
-    :goto_5
-    if-eqz v0, :cond_b
+    :goto_c
+    if-eqz v0, :cond_13
 
     invoke-virtual {v0}, Lcom/oneplus/screenshot/service/GlobalNotification$Builder;->build()Landroid/app/Notification;
 
     move-result-object v1
 
-    :cond_b
+    goto :goto_14
+
+    :cond_13
+    const/4 v1, 0x0
+
+    :goto_14
     return-object v1
-
-    .line 83
-    .restart local v0    # "builder":Lcom/oneplus/screenshot/service/GlobalNotification$Builder;
-    :pswitch_c
-    new-instance v0, Lcom/oneplus/screenshot/service/GlobalNotification$SaveError;
-
-    .end local v0    # "builder":Lcom/oneplus/screenshot/service/GlobalNotification$Builder;
-    invoke-direct {v0, p0, p2}, Lcom/oneplus/screenshot/service/GlobalNotification$SaveError;-><init>(Lcom/oneplus/screenshot/service/GlobalNotification;Landroid/graphics/Bitmap;)V
-
-    .line 84
-    .local v0, "builder":Lcom/oneplus/screenshot/service/GlobalNotification$Builder;
-    goto :goto_5
-
-    .line 81
-    :pswitch_data_12
-    .packed-switch 0x2
-        :pswitch_c
-    .end packed-switch
 .end method
 
 .method public static getInstance(Landroid/content/Context;)Lcom/oneplus/screenshot/service/GlobalNotification;
     .registers 2
     .param p0, "context"    # Landroid/content/Context;
 
-    .prologue
     .line 52
     sget-object v0, Lcom/oneplus/screenshot/service/GlobalNotification;->sInstance:Lcom/oneplus/screenshot/service/GlobalNotification;
 
@@ -160,10 +158,7 @@
 .end method
 
 .method public static recycle()V
-    .registers 2
-
-    .prologue
-    const/4 v1, 0x0
+    .registers 1
 
     .line 59
     sget-object v0, Lcom/oneplus/screenshot/service/GlobalNotification;->sInstance:Lcom/oneplus/screenshot/service/GlobalNotification;
@@ -171,11 +166,15 @@
     if-eqz v0, :cond_7
 
     .line 60
-    sput-object v1, Lcom/oneplus/screenshot/service/GlobalNotification;->sInstance:Lcom/oneplus/screenshot/service/GlobalNotification;
+    const/4 v0, 0x0
+
+    sput-object v0, Lcom/oneplus/screenshot/service/GlobalNotification;->sInstance:Lcom/oneplus/screenshot/service/GlobalNotification;
 
     .line 62
     :cond_7
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -183,14 +182,15 @@
 .method public cancelAll()V
     .registers 2
 
-    .prologue
     .line 73
     iget-object v0, p0, Lcom/oneplus/screenshot/service/GlobalNotification;->mNotificationManager:Landroid/app/NotificationManager;
 
     invoke-virtual {v0}, Landroid/app/NotificationManager;->cancelAll()V
 
     .line 74
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public notify(IILandroid/graphics/Bitmap;Lcom/oneplus/screenshot/util/ImageInfo;)V
@@ -200,7 +200,6 @@
     .param p3, "preview"    # Landroid/graphics/Bitmap;
     .param p4, "imageInfo"    # Lcom/oneplus/screenshot/util/ImageInfo;
 
-    .prologue
     .line 68
     invoke-direct {p0, p2, p3, p4}, Lcom/oneplus/screenshot/service/GlobalNotification;->createNotification(ILandroid/graphics/Bitmap;Lcom/oneplus/screenshot/util/ImageInfo;)Landroid/app/Notification;
 
@@ -210,10 +209,12 @@
     .local v0, "notification":Landroid/app/Notification;
     iget-object v1, p0, Lcom/oneplus/screenshot/service/GlobalNotification;->mNotificationManager:Landroid/app/NotificationManager;
 
-    const-string/jumbo v2, "Longshot"
+    const-string v2, "Longshot"
 
     invoke-virtual {v1, v2, p1, v0}, Landroid/app/NotificationManager;->notify(Ljava/lang/String;ILandroid/app/Notification;)V
 
     .line 70
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

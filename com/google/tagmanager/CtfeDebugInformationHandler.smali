@@ -33,7 +33,6 @@
     .registers 3
     .param p1, "host"    # Lcom/google/tagmanager/CtfeHost;
 
-    .prologue
     .line 35
     new-instance v0, Lcom/google/tagmanager/NetworkClientFactory;
 
@@ -46,7 +45,9 @@
     invoke-direct {p0, v0, p1}, Lcom/google/tagmanager/CtfeDebugInformationHandler;-><init>(Lcom/google/tagmanager/NetworkClient;Lcom/google/tagmanager/CtfeHost;)V
 
     .line 36
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method constructor <init>(Lcom/google/tagmanager/NetworkClient;Lcom/google/tagmanager/CtfeHost;)V
@@ -56,7 +57,6 @@
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 28
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -74,7 +74,9 @@
     iput-object v0, p0, Lcom/google/tagmanager/CtfeDebugInformationHandler;->mDebugEvents:Lcom/google/analytics/containertag/proto/Debug$DebugEvents;
 
     .line 32
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private getDebugEventsAsBytes()[B
@@ -85,7 +87,6 @@
         }
     .end annotation
 
-    .prologue
     .line 51
     iget-object v0, p0, Lcom/google/tagmanager/CtfeDebugInformationHandler;->mDebugEvents:Lcom/google/analytics/containertag/proto/Debug$DebugEvents;
 
@@ -97,37 +98,36 @@
 .end method
 
 .method private sendDebugInformationtoCtfe()Z
-    .registers 6
+    .registers 5
 
-    .prologue
     .line 56
     :try_start_0
-    iget-object v1, p0, Lcom/google/tagmanager/CtfeDebugInformationHandler;->mClient:Lcom/google/tagmanager/NetworkClient;
+    iget-object v0, p0, Lcom/google/tagmanager/CtfeDebugInformationHandler;->mClient:Lcom/google/tagmanager/NetworkClient;
 
-    iget-object v2, p0, Lcom/google/tagmanager/CtfeDebugInformationHandler;->mCtfeHost:Lcom/google/tagmanager/CtfeHost;
+    iget-object v1, p0, Lcom/google/tagmanager/CtfeDebugInformationHandler;->mCtfeHost:Lcom/google/tagmanager/CtfeHost;
 
-    iget v3, p0, Lcom/google/tagmanager/CtfeDebugInformationHandler;->currentDebugEventNumber:I
+    iget v2, p0, Lcom/google/tagmanager/CtfeDebugInformationHandler;->currentDebugEventNumber:I
 
-    add-int/lit8 v4, v3, 0x1
+    add-int/lit8 v3, v2, 0x1
 
-    iput v4, p0, Lcom/google/tagmanager/CtfeDebugInformationHandler;->currentDebugEventNumber:I
+    iput v3, p0, Lcom/google/tagmanager/CtfeDebugInformationHandler;->currentDebugEventNumber:I
 
-    invoke-virtual {v2, v3}, Lcom/google/tagmanager/CtfeHost;->constructCtfeDebugUrl(I)Ljava/lang/String;
+    invoke-virtual {v1, v2}, Lcom/google/tagmanager/CtfeHost;->constructCtfeDebugUrl(I)Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v1
 
     invoke-direct {p0}, Lcom/google/tagmanager/CtfeDebugInformationHandler;->getDebugEventsAsBytes()[B
 
-    move-result-object v3
+    move-result-object v2
 
-    invoke-interface {v1, v2, v3}, Lcom/google/tagmanager/NetworkClient;->sendPostRequest(Ljava/lang/String;[B)V
+    invoke-interface {v0, v1, v2}, Lcom/google/tagmanager/NetworkClient;->sendPostRequest(Ljava/lang/String;[B)V
     :try_end_15
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_15} :catch_17
 
     .line 59
-    const/4 v1, 0x1
+    const/4 v0, 0x1
 
-    return v1
+    return v0
 
     .line 60
     :catch_17
@@ -139,19 +139,15 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v2, "CtfeDebugInformationHandler: Error sending information to server that handles debug information: "
+    const-string v2, "CtfeDebugInformationHandler: Error sending information to server that handles debug information: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
 
     invoke-virtual {v0}, Ljava/io/IOException;->getMessage()Ljava/lang/String;
 
     move-result-object v2
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
 
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -171,7 +167,6 @@
     .registers 4
     .param p1, "event"    # Lcom/google/analytics/containertag/proto/Debug$EventInfo;
 
-    .prologue
     monitor-enter p0
 
     .line 42
@@ -194,42 +189,40 @@
     iget-object v0, v0, Lcom/google/analytics/containertag/proto/Debug$DebugEvents;->event:[Lcom/google/analytics/containertag/proto/Debug$EventInfo;
 
     array-length v0, v0
-    :try_end_12
-    .catchall {:try_start_1 .. :try_end_12} :catchall_23
 
     const/4 v1, 0x1
 
-    if-ge v0, v1, :cond_17
-
-    :cond_15
-    :goto_15
-    monitor-exit p0
-
-    .line 48
-    return-void
+    if-lt v0, v1, :cond_20
 
     .line 44
-    :cond_17
-    :try_start_17
     invoke-direct {p0}, Lcom/google/tagmanager/CtfeDebugInformationHandler;->sendDebugInformationtoCtfe()Z
 
     move-result v0
 
-    if-eqz v0, :cond_15
+    if-eqz v0, :cond_20
 
     .line 45
     iget-object v0, p0, Lcom/google/tagmanager/CtfeDebugInformationHandler;->mDebugEvents:Lcom/google/analytics/containertag/proto/Debug$DebugEvents;
 
     invoke-virtual {v0}, Lcom/google/analytics/containertag/proto/Debug$DebugEvents;->clear()Lcom/google/analytics/containertag/proto/Debug$DebugEvents;
-    :try_end_22
-    .catchall {:try_start_17 .. :try_end_22} :catchall_23
+    :try_end_20
+    .catchall {:try_start_1 .. :try_end_20} :catchall_22
 
-    goto :goto_15
+    .line 48
+    :cond_20
+    monitor-exit p0
 
-    :catchall_23
-    move-exception v0
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
+
+    .line 41
+    .end local p1    # "event":Lcom/google/analytics/containertag/proto/Debug$EventInfo;
+    :catchall_22
+    move-exception p1
 
     monitor-exit p0
 
-    throw v0
+    .end local p0    # "this":Lcom/google/tagmanager/CtfeDebugInformationHandler;
+    throw p1
 .end method

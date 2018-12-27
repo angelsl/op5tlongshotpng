@@ -28,8 +28,7 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Lcom/google/tagmanager/LoadCallback",
-            "<",
+            "Lcom/google/tagmanager/LoadCallback<",
             "Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;",
             ">;)V"
         }

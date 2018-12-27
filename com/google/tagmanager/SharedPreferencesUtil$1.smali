@@ -1,4 +1,4 @@
-.class Lcom/google/tagmanager/SharedPreferencesUtil$1;
+.class final Lcom/google/tagmanager/SharedPreferencesUtil$1;
 .super Ljava/lang/Object;
 .source "SharedPreferencesUtil.java"
 
@@ -25,7 +25,6 @@
 .method constructor <init>(Landroid/content/SharedPreferences$Editor;)V
     .registers 2
 
-    .prologue
     .line 22
     iput-object p1, p0, Lcom/google/tagmanager/SharedPreferencesUtil$1;->val$editor:Landroid/content/SharedPreferences$Editor;
 
@@ -39,12 +38,13 @@
 .method public run()V
     .registers 2
 
-    .prologue
     .line 25
     iget-object v0, p0, Lcom/google/tagmanager/SharedPreferencesUtil$1;->val$editor:Landroid/content/SharedPreferences$Editor;
 
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
     .line 26
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

@@ -31,11 +31,10 @@
 
 # direct methods
 .method constructor <init>(Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;II[DD)V
-    .registers 8
+    .registers 7
     .param p1, "this$0"    # Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;
 
-    .prologue
-    .line 1
+    .line 6522
     iput-object p1, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$17;->this$0:Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;
 
     iput p2, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$17;->val$firstIdx:I
@@ -46,10 +45,8 @@
 
     iput-wide p5, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$17;->val$norm:D
 
-    .line 6522
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1
     return-void
 .end method
 
@@ -58,7 +55,6 @@
 .method public run()V
     .registers 7
 
-    .prologue
     .line 6525
     iget v0, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$17;->val$firstIdx:I
 
@@ -85,6 +81,9 @@
     goto :goto_2
 
     .line 6528
+    .end local v0    # "i":I
     :cond_12
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

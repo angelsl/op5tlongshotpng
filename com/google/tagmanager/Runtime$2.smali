@@ -19,8 +19,7 @@
 .annotation system Ldalvik/annotation/Signature;
     value = {
         "Ljava/lang/Object;",
-        "Lcom/google/tagmanager/CacheFactory$CacheSizeManager",
-        "<",
+        "Lcom/google/tagmanager/CacheFactory$CacheSizeManager<",
         "Ljava/lang/String;",
         "Lcom/google/tagmanager/Runtime$CachedMacro;",
         ">;"
@@ -36,7 +35,6 @@
 .method constructor <init>(Lcom/google/tagmanager/Runtime;)V
     .registers 2
 
-    .prologue
     .line 205
     iput-object p1, p0, Lcom/google/tagmanager/Runtime$2;->this$0:Lcom/google/tagmanager/Runtime;
 
@@ -48,19 +46,20 @@
 
 # virtual methods
 .method public bridge synthetic sizeOf(Ljava/lang/Object;Ljava/lang/Object;)I
-    .registers 4
+    .registers 5
     .param p1, "x0"    # Ljava/lang/Object;
     .param p2, "x1"    # Ljava/lang/Object;
 
-    .prologue
     .line 205
-    check-cast p1, Ljava/lang/String;
+    move-object v0, p1
 
-    .end local p1    # "x0":Ljava/lang/Object;
-    check-cast p2, Lcom/google/tagmanager/Runtime$CachedMacro;
+    check-cast v0, Ljava/lang/String;
 
-    .end local p2    # "x1":Ljava/lang/Object;
-    invoke-virtual {p0, p1, p2}, Lcom/google/tagmanager/Runtime$2;->sizeOf(Ljava/lang/String;Lcom/google/tagmanager/Runtime$CachedMacro;)I
+    move-object v1, p2
+
+    check-cast v1, Lcom/google/tagmanager/Runtime$CachedMacro;
+
+    invoke-virtual {p0, v0, v1}, Lcom/google/tagmanager/Runtime$2;->sizeOf(Ljava/lang/String;Lcom/google/tagmanager/Runtime$CachedMacro;)I
 
     move-result v0
 
@@ -72,7 +71,6 @@
     .param p1, "key"    # Ljava/lang/String;
     .param p2, "value"    # Lcom/google/tagmanager/Runtime$CachedMacro;
 
-    .prologue
     .line 208
     invoke-virtual {p1}, Ljava/lang/String;->length()I
 

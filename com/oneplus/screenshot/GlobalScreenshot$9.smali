@@ -26,41 +26,37 @@
     .registers 2
     .param p1, "this$0"    # Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .prologue
-    .line 1
+    .line 1442
     iput-object p1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$9;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .line 1300
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1
     return-void
 .end method
 
 
 # virtual methods
 .method public getInterpolation(F)F
-    .registers 6
+    .registers 7
     .param p1, "x"    # F
 
-    .prologue
-    const v1, 0x3f1aca6b
+    .line 1446
+    const v0, 0x3f1aca6b
 
-    .line 1304
-    cmpg-float v0, p1, v1
+    cmpg-float v1, p1, v0
 
-    if-gtz v0, :cond_16
+    if-gtz v1, :cond_16
 
-    .line 1305
-    div-float v0, p1, v1
+    .line 1447
+    const-wide v1, 0x400921fb54442d18L    # Math.PI
 
-    float-to-double v0, v0
+    div-float v0, p1, v0
 
-    const-wide v2, 0x400921fb54442d18L    # Math.PI
+    float-to-double v3, v0
 
-    mul-double/2addr v0, v2
+    mul-double/2addr v1, v3
 
-    invoke-static {v0, v1}, Ljava/lang/Math;->sin(D)D
+    invoke-static {v1, v2}, Ljava/lang/Math;->sin(D)D
 
     move-result-wide v0
 
@@ -68,7 +64,7 @@
 
     return v0
 
-    .line 1307
+    .line 1449
     :cond_16
     const/4 v0, 0x0
 

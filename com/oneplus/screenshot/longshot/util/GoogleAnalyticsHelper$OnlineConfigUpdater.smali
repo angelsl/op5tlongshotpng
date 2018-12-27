@@ -21,21 +21,22 @@
 .method private constructor <init>()V
     .registers 1
 
-    .prologue
     .line 120
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method synthetic constructor <init>(Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper$OnlineConfigUpdater;)V
+.method synthetic constructor <init>(Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper$1;)V
     .registers 2
-    .param p1, "-this0"    # Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper$OnlineConfigUpdater;
+    .param p1, "x0"    # Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper$1;
 
-    .prologue
+    .line 120
     invoke-direct {p0}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper$OnlineConfigUpdater;-><init>()V
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -44,19 +45,21 @@
     .registers 4
     .param p1, "configJSONArray"    # Lorg/json/JSONArray;
 
-    .prologue
     .line 124
-    invoke-static {}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->-get0()Ljava/lang/String;
+    # getter for: Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->TAG:Ljava/lang/String;
+    invoke-static {}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->access$000()Ljava/lang/String;
 
     move-result-object v0
 
-    const-string/jumbo v1, "Receive online config update"
+    const-string v1, "Receive online config update"
 
     invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 125
-    invoke-static {p1}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->-wrap0(Lorg/json/JSONArray;)V
+    invoke-static {p1}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->access$200(Lorg/json/JSONArray;)V
 
     .line 126
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

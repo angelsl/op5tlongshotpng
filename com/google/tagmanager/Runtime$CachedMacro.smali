@@ -18,8 +18,7 @@
 .field private mObjectAndStatic:Lcom/google/tagmanager/ObjectAndStatic;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Lcom/google/tagmanager/ObjectAndStatic",
-            "<",
+            "Lcom/google/tagmanager/ObjectAndStatic<",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;"
         }
@@ -35,14 +34,12 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Lcom/google/tagmanager/ObjectAndStatic",
-            "<",
+            "Lcom/google/tagmanager/ObjectAndStatic<",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;)V"
         }
     .end annotation
 
-    .prologue
     .line 913
     .local p1, "objectAndStatic":Lcom/google/tagmanager/ObjectAndStatic;, "Lcom/google/tagmanager/ObjectAndStatic<Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
     const/4 v0, 0x0
@@ -50,7 +47,9 @@
     invoke-direct {p0, p1, v0}, Lcom/google/tagmanager/Runtime$CachedMacro;-><init>(Lcom/google/tagmanager/ObjectAndStatic;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)V
 
     .line 914
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>(Lcom/google/tagmanager/ObjectAndStatic;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)V
@@ -59,8 +58,7 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Lcom/google/tagmanager/ObjectAndStatic",
-            "<",
+            "Lcom/google/tagmanager/ObjectAndStatic<",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
@@ -68,7 +66,6 @@
         }
     .end annotation
 
-    .prologue
     .line 916
     .local p1, "objectAndStatic":Lcom/google/tagmanager/ObjectAndStatic;, "Lcom/google/tagmanager/ObjectAndStatic<Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -80,7 +77,9 @@
     iput-object p2, p0, Lcom/google/tagmanager/Runtime$CachedMacro;->mPushAfterEvaluate:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 919
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -90,14 +89,12 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
-            "Lcom/google/tagmanager/ObjectAndStatic",
-            "<",
+            "Lcom/google/tagmanager/ObjectAndStatic<",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;"
         }
     .end annotation
 
-    .prologue
     .line 922
     iget-object v0, p0, Lcom/google/tagmanager/Runtime$CachedMacro;->mObjectAndStatic:Lcom/google/tagmanager/ObjectAndStatic;
 
@@ -107,7 +104,6 @@
 .method public getPushAfterEvaluate()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .registers 2
 
-    .prologue
     .line 926
     iget-object v0, p0, Lcom/google/tagmanager/Runtime$CachedMacro;->mPushAfterEvaluate:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
@@ -117,7 +113,6 @@
 .method public getSize()I
     .registers 3
 
-    .prologue
     .line 930
     iget-object v0, p0, Lcom/google/tagmanager/Runtime$CachedMacro;->mObjectAndStatic:Lcom/google/tagmanager/ObjectAndStatic;
 
@@ -129,25 +124,25 @@
 
     invoke-virtual {v0}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->getCachedSize()I
 
-    move-result v1
-
-    iget-object v0, p0, Lcom/google/tagmanager/Runtime$CachedMacro;->mPushAfterEvaluate:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    if-eqz v0, :cond_18
-
-    iget-object v0, p0, Lcom/google/tagmanager/Runtime$CachedMacro;->mPushAfterEvaluate:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    invoke-virtual {v0}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->getCachedSize()I
-
     move-result v0
 
-    :goto_16
+    iget-object v1, p0, Lcom/google/tagmanager/Runtime$CachedMacro;->mPushAfterEvaluate:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+
+    if-nez v1, :cond_12
+
+    const/4 v1, 0x0
+
+    goto :goto_18
+
+    :cond_12
+    iget-object v1, p0, Lcom/google/tagmanager/Runtime$CachedMacro;->mPushAfterEvaluate:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+
+    invoke-virtual {v1}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->getCachedSize()I
+
+    move-result v1
+
+    :goto_18
     add-int/2addr v0, v1
 
     return v0
-
-    :cond_18
-    const/4 v0, 0x0
-
-    goto :goto_16
 .end method

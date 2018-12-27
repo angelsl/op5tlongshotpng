@@ -6,8 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Ljava/util/LinkedList",
-        "<",
+        "Ljava/util/LinkedList<",
         "Landroid/graphics/Bitmap;",
         ">;"
     }
@@ -18,7 +17,6 @@
 .method public constructor <init>()V
     .registers 1
 
-    .prologue
     .line 7
     invoke-direct {p0}, Ljava/util/LinkedList;-><init>()V
 

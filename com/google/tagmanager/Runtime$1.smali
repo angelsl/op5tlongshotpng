@@ -19,11 +19,9 @@
 .annotation system Ldalvik/annotation/Signature;
     value = {
         "Ljava/lang/Object;",
-        "Lcom/google/tagmanager/CacheFactory$CacheSizeManager",
-        "<",
+        "Lcom/google/tagmanager/CacheFactory$CacheSizeManager<",
         "Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;",
-        "Lcom/google/tagmanager/ObjectAndStatic",
-        "<",
+        "Lcom/google/tagmanager/ObjectAndStatic<",
         "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
         ">;>;"
     }
@@ -38,7 +36,6 @@
 .method constructor <init>(Lcom/google/tagmanager/Runtime;)V
     .registers 2
 
-    .prologue
     .line 193
     iput-object p1, p0, Lcom/google/tagmanager/Runtime$1;->this$0:Lcom/google/tagmanager/Runtime;
 
@@ -56,14 +53,12 @@
         value = {
             "(",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;",
-            "Lcom/google/tagmanager/ObjectAndStatic",
-            "<",
+            "Lcom/google/tagmanager/ObjectAndStatic<",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;)I"
         }
     .end annotation
 
-    .prologue
     .line 198
     .local p2, "value":Lcom/google/tagmanager/ObjectAndStatic;, "Lcom/google/tagmanager/ObjectAndStatic<Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
     invoke-virtual {p2}, Lcom/google/tagmanager/ObjectAndStatic;->getObject()Ljava/lang/Object;
@@ -80,19 +75,20 @@
 .end method
 
 .method public bridge synthetic sizeOf(Ljava/lang/Object;Ljava/lang/Object;)I
-    .registers 4
+    .registers 5
     .param p1, "x0"    # Ljava/lang/Object;
     .param p2, "x1"    # Ljava/lang/Object;
 
-    .prologue
     .line 193
-    check-cast p1, Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
+    move-object v0, p1
 
-    .end local p1    # "x0":Ljava/lang/Object;
-    check-cast p2, Lcom/google/tagmanager/ObjectAndStatic;
+    check-cast v0, Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
 
-    .end local p2    # "x1":Ljava/lang/Object;
-    invoke-virtual {p0, p1, p2}, Lcom/google/tagmanager/Runtime$1;->sizeOf(Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;Lcom/google/tagmanager/ObjectAndStatic;)I
+    move-object v1, p2
+
+    check-cast v1, Lcom/google/tagmanager/ObjectAndStatic;
+
+    invoke-virtual {p0, v0, v1}, Lcom/google/tagmanager/Runtime$1;->sizeOf(Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;Lcom/google/tagmanager/ObjectAndStatic;)I
 
     move-result v0
 

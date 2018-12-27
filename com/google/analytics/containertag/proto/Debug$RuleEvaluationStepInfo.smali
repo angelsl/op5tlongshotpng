@@ -28,7 +28,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 805
     const/4 v0, 0x0
 
@@ -36,13 +35,14 @@
 
     sput-object v0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->EMPTY_ARRAY:[Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>()V
     .registers 2
 
-    .prologue
     .line 806
     invoke-direct {p0}, Lcom/google/tagmanager/protobuf/nano/ExtendableMessageNano;-><init>()V
 
@@ -57,7 +57,9 @@
     iput-object v0, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
     .line 806
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public static parseFrom(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;)Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;
@@ -69,7 +71,6 @@
         }
     .end annotation
 
-    .prologue
     .line 954
     new-instance v0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;
 
@@ -91,7 +92,6 @@
         }
     .end annotation
 
-    .prologue
     .line 948
     new-instance v0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;
 
@@ -111,7 +111,6 @@
 .method public final clear()Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;
     .registers 2
 
-    .prologue
     .line 815
     sget-object v0, Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;->EMPTY_ARRAY:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
 
@@ -140,338 +139,353 @@
     .registers 7
     .param p1, "o"    # Ljava/lang/Object;
 
-    .prologue
-    const/4 v1, 0x1
+    .line 824
+    const/4 v0, 0x1
+
+    if-ne p1, p0, :cond_4
+
+    return v0
+
+    .line 825
+    :cond_4
+    instance-of v1, p1, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;
 
     const/4 v2, 0x0
 
-    .line 824
-    if-eq p1, p0, :cond_17
+    if-nez v1, :cond_a
 
-    .line 825
-    instance-of v3, p1, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;
-
-    if-eqz v3, :cond_18
-
-    move-object v0, p1
-
-    .line 826
-    check-cast v0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;
-
-    .line 827
-    .local v0, "other":Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;
-    iget-object v3, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-
-    iget-object v4, v0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-
-    invoke-static {v3, v4}, Ljava/util/Arrays;->equals([Ljava/lang/Object;[Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-nez v3, :cond_19
-
-    :cond_15
-    :goto_15
-    move v1, v2
-
-    :cond_16
-    return v1
-
-    .line 824
-    .end local v0    # "other":Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;
-    :cond_17
-    return v1
-
-    .line 825
-    :cond_18
     return v2
 
-    .line 827
-    .restart local v0    # "other":Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;
-    :cond_19
-    iget-object v3, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    .line 826
+    :cond_a
+    move-object v1, p1
 
-    iget-object v4, v0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    check-cast v1, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;
+
+    .line 827
+    .local v1, "other":Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;
+    iget-object v3, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+
+    iget-object v4, v1, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
 
     invoke-static {v3, v4}, Ljava/util/Arrays;->equals([Ljava/lang/Object;[Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-eqz v3, :cond_15
+    if-eqz v3, :cond_35
+
+    iget-object v3, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+
+    iget-object v4, v1, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+
+    invoke-static {v3, v4}, Ljava/util/Arrays;->equals([Ljava/lang/Object;[Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_35
 
     iget-object v3, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->unknownFieldData:Ljava/util/List;
 
-    if-eqz v3, :cond_32
+    if-nez v3, :cond_2a
 
+    iget-object v3, v1, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->unknownFieldData:Ljava/util/List;
+
+    if-nez v3, :cond_35
+
+    goto :goto_34
+
+    :cond_2a
     iget-object v3, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->unknownFieldData:Ljava/util/List;
 
-    iget-object v4, v0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->unknownFieldData:Ljava/util/List;
+    iget-object v4, v1, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->unknownFieldData:Ljava/util/List;
 
     invoke-interface {v3, v4}, Ljava/util/List;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-nez v3, :cond_16
+    if-eqz v3, :cond_35
 
-    goto :goto_15
+    :goto_34
+    goto :goto_36
 
-    :cond_32
-    iget-object v3, v0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->unknownFieldData:Ljava/util/List;
+    :cond_35
+    move v0, v2
 
-    if-eqz v3, :cond_16
-
-    goto :goto_15
+    :goto_36
+    return v0
 .end method
 
 .method public getSerializedSize()I
-    .registers 9
+    .registers 8
 
-    .prologue
     .line 868
-    const/4 v6, 0x0
+    const/4 v0, 0x0
 
     .line 869
-    .local v6, "size":I
-    iget-object v7, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+    .local v0, "size":I
+    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
 
-    if-nez v7, :cond_13
+    const/4 v2, 0x0
 
-    .line 875
-    :cond_5
-    iget-object v7, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
-
-    if-nez v7, :cond_24
-
-    .line 881
-    :cond_9
-    iget-object v7, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->unknownFieldData:Ljava/util/List;
-
-    invoke-static {v7}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->computeWireSize(Ljava/util/List;)I
-
-    move-result v7
-
-    add-int/2addr v6, v7
-
-    .line 882
-    iput v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->cachedSize:I
-
-    .line 883
-    return v6
+    if-eqz v1, :cond_19
 
     .line 870
-    :cond_13
     iget-object v1, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
 
     .local v1, "arr$":[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-    array-length v5, v1
+    array-length v3, v1
 
-    .local v5, "len$":I
-    const/4 v4, 0x0
+    .local v3, "len$":I
+    move v4, v0
 
-    .local v4, "i$":I
-    :goto_17
-    if-ge v4, v5, :cond_5
+    move v0, v2
 
-    aget-object v3, v1, v4
+    .local v0, "i$":I
+    .local v4, "size":I
+    :goto_b
+    if-ge v0, v3, :cond_18
+
+    aget-object v5, v1, v0
 
     .line 871
-    .local v3, "element":Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-    const/4 v7, 0x1
+    .local v5, "element":Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+    const/4 v6, 0x1
 
-    invoke-static {v7, v3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeMessageSize(ILcom/google/tagmanager/protobuf/nano/MessageNano;)I
+    invoke-static {v6, v5}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeMessageSize(ILcom/google/tagmanager/protobuf/nano/MessageNano;)I
 
-    move-result v7
+    move-result v6
 
-    add-int/2addr v6, v7
+    add-int/2addr v4, v6
 
     .line 870
-    add-int/lit8 v4, v4, 0x1
+    .end local v5    # "element":Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+    add-int/lit8 v0, v0, 0x1
 
-    goto :goto_17
+    goto :goto_b
+
+    .line 875
+    .end local v0    # "i$":I
+    .end local v1    # "arr$":[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+    .end local v3    # "len$":I
+    :cond_18
+    move v0, v4
+
+    .end local v4    # "size":I
+    .local v0, "size":I
+    :cond_19
+    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+
+    if-eqz v1, :cond_2d
 
     .line 876
-    .end local v1    # "arr$":[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-    .end local v3    # "element":Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-    .end local v4    # "i$":I
-    .end local v5    # "len$":I
-    :cond_24
-    iget-object v0, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
-    .local v0, "arr$":[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
-    array-length v5, v0
+    .local v1, "arr$":[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    array-length v3, v1
 
-    .restart local v5    # "len$":I
-    const/4 v4, 0x0
+    .local v2, "i$":I
+    .restart local v3    # "len$":I
+    :goto_20
+    if-ge v2, v3, :cond_2d
 
-    .restart local v4    # "i$":I
-    :goto_28
-    if-ge v4, v5, :cond_9
-
-    aget-object v2, v0, v4
+    aget-object v4, v1, v2
 
     .line 877
-    .local v2, "element":Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
-    const/4 v7, 0x2
+    .local v4, "element":Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    const/4 v5, 0x2
 
-    invoke-static {v7, v2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeMessageSize(ILcom/google/tagmanager/protobuf/nano/MessageNano;)I
+    invoke-static {v5, v4}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeMessageSize(ILcom/google/tagmanager/protobuf/nano/MessageNano;)I
 
-    move-result v7
+    move-result v5
 
-    add-int/2addr v6, v7
+    add-int/2addr v0, v5
 
     .line 876
-    add-int/lit8 v4, v4, 0x1
+    .end local v4    # "element":Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    add-int/lit8 v2, v2, 0x1
 
-    goto :goto_28
+    goto :goto_20
+
+    .line 881
+    .end local v1    # "arr$":[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    .end local v2    # "i$":I
+    .end local v3    # "len$":I
+    :cond_2d
+    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->unknownFieldData:Ljava/util/List;
+
+    invoke-static {v1}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->computeWireSize(Ljava/util/List;)I
+
+    move-result v1
+
+    add-int/2addr v0, v1
+
+    .line 882
+    iput v0, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->cachedSize:I
+
+    .line 883
+    return v0
 .end method
 
 .method public hashCode()I
-    .registers 6
-
-    .prologue
-    const/4 v3, 0x0
+    .registers 7
 
     .line 833
-    const/16 v1, 0x11
+    const/16 v0, 0x11
 
     .line 834
-    .local v1, "result":I
-    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+    .local v0, "result":I
+    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
 
-    if-eqz v2, :cond_26
+    const/4 v2, 0x0
+
+    const/16 v3, 0x1f
+
+    if-nez v1, :cond_b
+
+    mul-int/2addr v0, v3
+
+    goto :goto_2a
 
     .line 836
-    const/4 v0, 0x0
+    :cond_b
+    move v1, v0
+
+    move v0, v2
 
     .local v0, "i":I
-    :goto_8
-    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-
-    array-length v2, v2
-
-    if-lt v0, v2, :cond_29
-
-    .line 840
-    .end local v0    # "i":I
+    .local v1, "result":I
     :goto_d
-    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    iget-object v4, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
 
-    if-eqz v2, :cond_40
+    array-length v4, v4
 
-    .line 842
-    const/4 v0, 0x0
+    if-ge v0, v4, :cond_29
 
-    .restart local v0    # "i":I
-    :goto_12
-    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    .line 837
+    mul-int v4, v3, v1
 
-    array-length v2, v2
+    iget-object v5, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
 
-    if-lt v0, v2, :cond_43
+    aget-object v5, v5, v0
 
-    .line 846
-    .end local v0    # "i":I
-    :goto_17
-    mul-int/lit8 v2, v1, 0x1f
+    if-nez v5, :cond_1c
 
-    iget-object v4, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->unknownFieldData:Ljava/util/List;
+    move v5, v2
 
-    if-eqz v4, :cond_23
+    goto :goto_24
 
-    iget-object v3, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->unknownFieldData:Ljava/util/List;
+    :cond_1c
+    iget-object v5, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
 
-    invoke-interface {v3}, Ljava/util/List;->hashCode()I
+    aget-object v5, v5, v0
 
-    move-result v3
+    invoke-virtual {v5}, Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;->hashCode()I
 
-    :cond_23
-    add-int v1, v2, v3
+    move-result v5
 
-    .line 847
-    return v1
+    :goto_24
+    add-int v1, v4, v5
 
-    .line 834
-    :cond_26
-    const/16 v1, 0x20f
+    .line 836
+    add-int/lit8 v0, v0, 0x1
 
     goto :goto_d
 
-    .line 837
-    .restart local v0    # "i":I
-    :cond_29
-    mul-int/lit8 v4, v1, 0x1f
-
-    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-
-    aget-object v2, v2, v0
-
-    if-eqz v2, :cond_3e
-
-    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-
-    aget-object v2, v2, v0
-
-    invoke-virtual {v2}, Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;->hashCode()I
-
-    move-result v2
-
-    :goto_39
-    add-int v1, v4, v2
-
-    .line 836
-    add-int/lit8 v0, v0, 0x1
-
-    goto :goto_8
-
-    :cond_3e
-    move v2, v3
-
-    .line 837
-    goto :goto_39
-
     .line 840
     .end local v0    # "i":I
-    :cond_40
-    mul-int/lit8 v1, v1, 0x1f
+    :cond_29
+    move v0, v1
 
-    goto :goto_17
+    .end local v1    # "result":I
+    .local v0, "result":I
+    :goto_2a
+    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+
+    if-nez v1, :cond_30
+
+    mul-int/2addr v0, v3
+
+    goto :goto_4f
+
+    .line 842
+    :cond_30
+    move v1, v0
+
+    move v0, v2
+
+    .local v0, "i":I
+    .restart local v1    # "result":I
+    :goto_32
+    iget-object v4, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+
+    array-length v4, v4
+
+    if-ge v0, v4, :cond_4e
 
     .line 843
-    .restart local v0    # "i":I
-    :cond_43
-    mul-int/lit8 v4, v1, 0x1f
+    mul-int v4, v3, v1
 
-    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    iget-object v5, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
-    aget-object v2, v2, v0
+    aget-object v5, v5, v0
 
-    if-eqz v2, :cond_58
+    if-nez v5, :cond_41
 
-    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    move v5, v2
 
-    aget-object v2, v2, v0
+    goto :goto_49
 
-    invoke-virtual {v2}, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;->hashCode()I
+    :cond_41
+    iget-object v5, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
-    move-result v2
+    aget-object v5, v5, v0
 
-    :goto_53
-    add-int v1, v4, v2
+    invoke-virtual {v5}, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;->hashCode()I
+
+    move-result v5
+
+    :goto_49
+    add-int v1, v4, v5
 
     .line 842
     add-int/lit8 v0, v0, 0x1
 
-    goto :goto_12
+    goto :goto_32
 
-    :cond_58
-    move v2, v3
+    .line 846
+    .end local v0    # "i":I
+    :cond_4e
+    move v0, v1
 
-    .line 843
-    goto :goto_53
+    .end local v1    # "result":I
+    .local v0, "result":I
+    :goto_4f
+    mul-int/2addr v3, v0
+
+    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->unknownFieldData:Ljava/util/List;
+
+    if-nez v1, :cond_55
+
+    goto :goto_5b
+
+    :cond_55
+    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->unknownFieldData:Ljava/util/List;
+
+    invoke-interface {v1}, Ljava/util/List;->hashCode()I
+
+    move-result v2
+
+    :goto_5b
+    add-int/2addr v3, v2
+
+    .line 847
+    .end local v0    # "result":I
+    .local v3, "result":I
+    return v3
 .end method
 
 .method public mergeFrom(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;)Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;
-    .registers 10
+    .registers 8
     .param p1, "input"    # Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -479,276 +493,261 @@
         }
     .end annotation
 
-    .prologue
-    const/4 v5, 0x0
-
     .line 891
-    :cond_1
-    :goto_1
+    :goto_0
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readTag()I
 
-    move-result v4
+    move-result v0
 
     .line 892
-    .local v4, "tag":I
-    sparse-switch v4, :sswitch_data_ba
+    .local v0, "tag":I
+    if-eqz v0, :cond_b9
+
+    const/16 v1, 0xa
+
+    const/4 v2, 0x0
+
+    if-eq v0, v1, :cond_6d
+
+    const/16 v1, 0x12
+
+    if-eq v0, v1, :cond_23
 
     .line 896
-    iget-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->unknownFieldData:Ljava/util/List;
+    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->unknownFieldData:Ljava/util/List;
 
-    if-eqz v6, :cond_16
+    if-nez v1, :cond_1a
+
+    .line 897
+    new-instance v1, Ljava/util/ArrayList;
+
+    invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
+
+    iput-object v1, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->unknownFieldData:Ljava/util/List;
 
     .line 900
-    :goto_c
-    iget-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->unknownFieldData:Ljava/util/List;
+    :cond_1a
+    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->unknownFieldData:Ljava/util/List;
 
-    invoke-static {v6, p1, v4}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->storeUnknownField(Ljava/util/List;Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;I)Z
+    invoke-static {v1, p1, v0}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->storeUnknownField(Ljava/util/List;Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;I)Z
 
-    move-result v6
+    move-result v1
 
-    if-nez v6, :cond_1
+    if-nez v1, :cond_b7
 
     .line 902
     return-object p0
 
-    .line 894
-    :sswitch_15
-    return-object p0
-
-    .line 897
-    :cond_16
-    new-instance v6, Ljava/util/ArrayList;
-
-    invoke-direct {v6}, Ljava/util/ArrayList;-><init>()V
-
-    iput-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->unknownFieldData:Ljava/util/List;
-
-    goto :goto_c
-
-    .line 907
-    :sswitch_1e
-    const/16 v6, 0xa
-
-    invoke-static {p1, v6}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->getRepeatedFieldArrayLength(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;I)I
-
-    move-result v0
-
-    .line 908
-    .local v0, "arrayLength":I
-    iget-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-
-    if-eqz v6, :cond_4d
-
-    iget-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-
-    array-length v1, v6
-
-    .line 909
-    .local v1, "i":I
-    :goto_2b
-    add-int v6, v1, v0
-
-    new-array v3, v6, [Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-
-    .line 910
-    .local v3, "newArray":[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-    iget-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-
-    if-nez v6, :cond_4f
-
-    .line 913
-    :goto_33
-    iput-object v3, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-
-    .line 914
-    :goto_35
-    iget-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-
-    array-length v6, v6
-
-    add-int/lit8 v6, v6, -0x1
-
-    if-lt v1, v6, :cond_55
-
-    .line 920
-    iget-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-
-    new-instance v7, Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-
-    invoke-direct {v7}, Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;-><init>()V
-
-    aput-object v7, v6, v1
-
-    .line 921
-    iget-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-
-    aget-object v6, v6, v1
-
-    invoke-virtual {p1, v6}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readMessage(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
-
-    goto :goto_1
-
-    .end local v1    # "i":I
-    .end local v3    # "newArray":[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-    :cond_4d
-    move v1, v5
-
-    .line 908
-    goto :goto_2b
-
-    .line 911
-    .restart local v1    # "i":I
-    .restart local v3    # "newArray":[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-    :cond_4f
-    iget-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-
-    invoke-static {v6, v5, v3, v5, v1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
-
-    goto :goto_33
-
-    .line 915
-    :cond_55
-    iget-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-
-    new-instance v7, Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-
-    invoke-direct {v7}, Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;-><init>()V
-
-    aput-object v7, v6, v1
-
-    .line 916
-    iget-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-
-    aget-object v6, v6, v1
-
-    invoke-virtual {p1, v6}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readMessage(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
-
-    .line 917
-    invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readTag()I
-
-    .line 914
-    add-int/lit8 v1, v1, 0x1
-
-    goto :goto_35
-
     .line 925
-    .end local v0    # "arrayLength":I
-    .end local v1    # "i":I
-    .end local v3    # "newArray":[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-    :sswitch_6b
-    const/16 v6, 0x12
+    :cond_23
+    invoke-static {p1, v1}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->getRepeatedFieldArrayLength(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;I)I
 
-    invoke-static {p1, v6}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->getRepeatedFieldArrayLength(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;I)I
-
-    move-result v0
+    move-result v1
 
     .line 926
-    .restart local v0    # "arrayLength":I
-    iget-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    .local v1, "arrayLength":I
+    iget-object v3, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
-    if-eqz v6, :cond_9b
+    if-nez v3, :cond_2d
 
-    iget-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    move v3, v2
 
-    array-length v1, v6
+    goto :goto_30
+
+    :cond_2d
+    iget-object v3, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+
+    array-length v3, v3
 
     .line 927
-    .restart local v1    # "i":I
-    :goto_78
-    add-int v6, v1, v0
+    .local v3, "i":I
+    :goto_30
+    add-int v4, v3, v1
 
-    new-array v2, v6, [Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    new-array v4, v4, [Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
     .line 928
-    .local v2, "newArray":[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
-    iget-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    .local v4, "newArray":[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    iget-object v5, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
-    if-nez v6, :cond_9d
-
-    .line 931
-    :goto_80
-    iput-object v2, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
-
-    .line 932
-    :goto_82
-    iget-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
-
-    array-length v6, v6
-
-    add-int/lit8 v6, v6, -0x1
-
-    if-lt v1, v6, :cond_a3
-
-    .line 938
-    iget-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
-
-    new-instance v7, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
-
-    invoke-direct {v7}, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;-><init>()V
-
-    aput-object v7, v6, v1
-
-    .line 939
-    iget-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
-
-    aget-object v6, v6, v1
-
-    invoke-virtual {p1, v6}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readMessage(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
-
-    goto/16 :goto_1
-
-    .end local v1    # "i":I
-    .end local v2    # "newArray":[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
-    :cond_9b
-    move v1, v5
-
-    .line 926
-    goto :goto_78
+    if-eqz v5, :cond_3d
 
     .line 929
-    .restart local v1    # "i":I
-    .restart local v2    # "newArray":[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
-    :cond_9d
-    iget-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    iget-object v5, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
-    invoke-static {v6, v5, v2, v5, v1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {v5, v2, v4, v2, v3}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    goto :goto_80
+    .line 931
+    :cond_3d
+    iput-object v4, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+
+    .line 932
+    :goto_3f
+    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+
+    array-length v2, v2
+
+    add-int/lit8 v2, v2, -0x1
+
+    if-ge v3, v2, :cond_5c
 
     .line 933
-    :cond_a3
-    iget-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
-    new-instance v7, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    new-instance v5, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
-    invoke-direct {v7}, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;-><init>()V
+    invoke-direct {v5}, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;-><init>()V
 
-    aput-object v7, v6, v1
+    aput-object v5, v2, v3
 
     .line 934
-    iget-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
-    aget-object v6, v6, v1
+    aget-object v2, v2, v3
 
-    invoke-virtual {p1, v6}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readMessage(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
+    invoke-virtual {p1, v2}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readMessage(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
 
     .line 935
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readTag()I
 
     .line 932
-    add-int/lit8 v1, v1, 0x1
+    add-int/lit8 v3, v3, 0x1
 
-    goto :goto_82
+    goto :goto_3f
 
-    .line 892
+    .line 938
+    :cond_5c
+    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+
+    new-instance v5, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+
+    invoke-direct {v5}, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;-><init>()V
+
+    aput-object v5, v2, v3
+
+    .line 939
+    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+
+    aget-object v2, v2, v3
+
+    invoke-virtual {p1, v2}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readMessage(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
+
+    .line 940
+    goto :goto_b7
+
+    .line 907
+    .end local v1    # "arrayLength":I
+    .end local v3    # "i":I
+    .end local v4    # "newArray":[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    :cond_6d
+    invoke-static {p1, v1}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->getRepeatedFieldArrayLength(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;I)I
+
+    move-result v1
+
+    .line 908
+    .restart local v1    # "arrayLength":I
+    iget-object v3, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+
+    if-nez v3, :cond_77
+
+    move v3, v2
+
+    goto :goto_7a
+
+    :cond_77
+    iget-object v3, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+
+    array-length v3, v3
+
+    .line 909
+    .restart local v3    # "i":I
+    :goto_7a
+    add-int v4, v3, v1
+
+    new-array v4, v4, [Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+
+    .line 910
+    .local v4, "newArray":[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+    iget-object v5, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+
+    if-eqz v5, :cond_87
+
+    .line 911
+    iget-object v5, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+
+    invoke-static {v5, v2, v4, v2, v3}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 913
+    :cond_87
+    iput-object v4, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+
+    .line 914
+    :goto_89
+    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+
+    array-length v2, v2
+
+    add-int/lit8 v2, v2, -0x1
+
+    if-ge v3, v2, :cond_a6
+
+    .line 915
+    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+
+    new-instance v5, Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+
+    invoke-direct {v5}, Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;-><init>()V
+
+    aput-object v5, v2, v3
+
+    .line 916
+    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+
+    aget-object v2, v2, v3
+
+    invoke-virtual {p1, v2}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readMessage(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
+
+    .line 917
+    invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readTag()I
+
+    .line 914
+    add-int/lit8 v3, v3, 0x1
+
+    goto :goto_89
+
+    .line 920
+    :cond_a6
+    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+
+    new-instance v5, Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+
+    invoke-direct {v5}, Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;-><init>()V
+
+    aput-object v5, v2, v3
+
+    .line 921
+    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+
+    aget-object v2, v2, v3
+
+    invoke-virtual {p1, v2}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readMessage(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
+
+    .line 922
     nop
 
-    :sswitch_data_ba
-    .sparse-switch
-        0x0 -> :sswitch_15
-        0xa -> :sswitch_1e
-        0x12 -> :sswitch_6b
-    .end sparse-switch
+    .line 943
+    .end local v0    # "tag":I
+    .end local v1    # "arrayLength":I
+    .end local v3    # "i":I
+    .end local v4    # "newArray":[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+    :cond_b7
+    :goto_b7
+    goto/16 :goto_0
+
+    .line 894
+    .restart local v0    # "tag":I
+    :cond_b9
+    return-object p0
 .end method
 
 .method public bridge synthetic mergeFrom(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;)Lcom/google/tagmanager/protobuf/nano/MessageNano;
@@ -760,7 +759,6 @@
         }
     .end annotation
 
-    .prologue
     .line 802
     invoke-virtual {p0, p1}, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->mergeFrom(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;)Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;
 
@@ -770,7 +768,7 @@
 .end method
 
 .method public writeTo(Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;)V
-    .registers 9
+    .registers 8
     .param p1, "output"    # Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -778,82 +776,85 @@
         }
     .end annotation
 
-    .prologue
     .line 852
-    iget-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+    iget-object v0, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
 
-    if-nez v6, :cond_e
+    const/4 v1, 0x0
 
-    .line 857
-    :cond_4
-    iget-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
-
-    if-nez v6, :cond_1d
-
-    .line 862
-    :cond_8
-    iget-object v6, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->unknownFieldData:Ljava/util/List;
-
-    invoke-static {v6, p1}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->writeUnknownFields(Ljava/util/List;Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;)V
-
-    .line 864
-    return-void
+    if-eqz v0, :cond_14
 
     .line 853
-    :cond_e
-    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+    iget-object v0, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->rules:[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
 
-    .local v1, "arr$":[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-    array-length v5, v1
+    .local v0, "arr$":[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+    array-length v2, v0
 
-    .local v5, "len$":I
-    const/4 v4, 0x0
+    .local v2, "len$":I
+    move v3, v1
 
-    .local v4, "i$":I
-    :goto_12
-    if-ge v4, v5, :cond_4
+    .local v3, "i$":I
+    :goto_9
+    if-ge v3, v2, :cond_14
 
-    aget-object v3, v1, v4
+    aget-object v4, v0, v3
 
     .line 854
-    .local v3, "element":Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-    const/4 v6, 0x1
+    .local v4, "element":Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+    const/4 v5, 0x1
 
-    invoke-virtual {p1, v6, v3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeMessage(ILcom/google/tagmanager/protobuf/nano/MessageNano;)V
+    invoke-virtual {p1, v5, v4}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeMessage(ILcom/google/tagmanager/protobuf/nano/MessageNano;)V
 
     .line 853
-    add-int/lit8 v4, v4, 0x1
+    .end local v4    # "element":Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+    add-int/lit8 v3, v3, 0x1
 
-    goto :goto_12
+    goto :goto_9
+
+    .line 857
+    .end local v0    # "arr$":[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
+    .end local v2    # "len$":I
+    .end local v3    # "i$":I
+    :cond_14
+    iget-object v0, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+
+    if-eqz v0, :cond_26
 
     .line 858
-    .end local v1    # "arr$":[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-    .end local v3    # "element":Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-    .end local v4    # "i$":I
-    .end local v5    # "len$":I
-    :cond_1d
     iget-object v0, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->enabledFunctions:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
     .local v0, "arr$":[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
-    array-length v5, v0
+    array-length v2, v0
 
-    .restart local v5    # "len$":I
-    const/4 v4, 0x0
+    .local v1, "i$":I
+    .restart local v2    # "len$":I
+    :goto_1b
+    if-ge v1, v2, :cond_26
 
-    .restart local v4    # "i$":I
-    :goto_21
-    if-ge v4, v5, :cond_8
-
-    aget-object v2, v0, v4
+    aget-object v3, v0, v1
 
     .line 859
-    .local v2, "element":Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
-    const/4 v6, 0x2
+    .local v3, "element":Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    const/4 v4, 0x2
 
-    invoke-virtual {p1, v6, v2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeMessage(ILcom/google/tagmanager/protobuf/nano/MessageNano;)V
+    invoke-virtual {p1, v4, v3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeMessage(ILcom/google/tagmanager/protobuf/nano/MessageNano;)V
 
     .line 858
-    add-int/lit8 v4, v4, 0x1
+    .end local v3    # "element":Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    add-int/lit8 v1, v1, 0x1
 
-    goto :goto_21
+    goto :goto_1b
+
+    .line 862
+    .end local v0    # "arr$":[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    .end local v1    # "i$":I
+    .end local v2    # "len$":I
+    :cond_26
+    iget-object v0, p0, Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;->unknownFieldData:Ljava/util/List;
+
+    invoke-static {v0, p1}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->writeUnknownFields(Ljava/util/List;Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;)V
+
+    .line 864
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

@@ -25,7 +25,6 @@
 .method constructor <init>(Lcom/google/tagmanager/ServiceManagerImpl;)V
     .registers 2
 
-    .prologue
     .line 186
     iput-object p1, p0, Lcom/google/tagmanager/ServiceManagerImpl$3;->this$0:Lcom/google/tagmanager/ServiceManagerImpl;
 
@@ -39,7 +38,6 @@
 .method public run()V
     .registers 2
 
-    .prologue
     .line 189
     iget-object v0, p0, Lcom/google/tagmanager/ServiceManagerImpl$3;->this$0:Lcom/google/tagmanager/ServiceManagerImpl;
 
@@ -51,5 +49,7 @@
     invoke-interface {v0}, Lcom/google/tagmanager/HitStore;->dispatch()V
 
     .line 190
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

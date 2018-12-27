@@ -20,8 +20,7 @@
         value = {
             "(",
             "Landroid/view/View;",
-            "Ljava/util/Map$Entry",
-            "<",
+            "Ljava/util/Map$Entry<",
             "Ljava/lang/reflect/Method;",
             "Ljava/lang/Object;",
             ">;)V"

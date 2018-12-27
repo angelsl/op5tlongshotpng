@@ -22,13 +22,12 @@
     .param p2, "start"    # I
     .param p3, "end"    # I
 
-    .prologue
-    const/4 v0, 0x0
-
     .line 19
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 12
+    const/4 v0, 0x0
+
     iput v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchRange;->mStart:I
 
     .line 13
@@ -49,7 +48,9 @@
     iput p3, p0, Lcom/oneplus/screenshot/longshot/match/MatchRange;->mEnd:I
 
     .line 23
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -57,7 +58,6 @@
 .method public getEnd()I
     .registers 2
 
-    .prologue
     .line 44
     iget v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchRange;->mEnd:I
 
@@ -67,7 +67,6 @@
 .method public getLines()[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
     .registers 2
 
-    .prologue
     .line 52
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchRange;->mLines:[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
 
@@ -77,7 +76,6 @@
 .method public getSize()I
     .registers 3
 
-    .prologue
     .line 48
     iget v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchRange;->mEnd:I
 
@@ -93,7 +91,6 @@
 .method public getStart()I
     .registers 2
 
-    .prologue
     .line 40
     iget v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchRange;->mStart:I
 
@@ -103,13 +100,10 @@
 .method public toString()Ljava/lang/String;
     .registers 3
 
-    .prologue
-    const/4 v1, 0x0
-
     .line 30
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchRange;->mLines:[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
 
-    if-eqz v0, :cond_30
+    if-eqz v0, :cond_28
 
     .line 31
     new-instance v0, Ljava/lang/StringBuilder;
@@ -122,31 +116,21 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
-    const-string/jumbo v1, " : "
+    const-string v1, " : "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     iget v1, p0, Lcom/oneplus/screenshot/longshot/match/MatchRange;->mStart:I
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
-    const-string/jumbo v1, "=>"
+    const-string v1, "=>"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     iget v1, p0, Lcom/oneplus/screenshot/longshot/match/MatchRange;->mEnd:I
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -155,6 +139,8 @@
     return-object v0
 
     .line 33
-    :cond_30
-    return-object v1
+    :cond_28
+    const/4 v0, 0x0
+
+    return-object v0
 .end method

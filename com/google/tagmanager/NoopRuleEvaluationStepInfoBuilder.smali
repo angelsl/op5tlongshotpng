@@ -10,7 +10,6 @@
 .method constructor <init>()V
     .registers 1
 
-    .prologue
     .line 11
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -22,7 +21,6 @@
 .method public createResolvedRuleBuilder()Lcom/google/tagmanager/ResolvedRuleBuilder;
     .registers 2
 
-    .prologue
     .line 19
     new-instance v0, Lcom/google/tagmanager/NoopResolvedRuleBuilder;
 
@@ -36,14 +34,12 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Set",
-            "<",
+            "Ljava/util/Set<",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;",
             ">;)V"
         }
     .end annotation
 
-    .prologue
     .line 15
     .local p1, "enabledFunctions":Ljava/util/Set;, "Ljava/util/Set<Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;>;"
     return-void

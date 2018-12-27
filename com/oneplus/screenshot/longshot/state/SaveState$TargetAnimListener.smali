@@ -22,20 +22,18 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/longshot/state/SaveState;Landroid/view/View;)V
-    .registers 4
-    .param p1, "this$0"    # Lcom/oneplus/screenshot/longshot/state/SaveState;
+    .registers 3
     .param p2, "decor"    # Landroid/view/View;
 
-    .prologue
     .line 98
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/SaveState$TargetAnimListener;->this$0:Lcom/oneplus/screenshot/longshot/state/SaveState;
 
     invoke-direct {p0}, Landroid/animation/AnimatorListenerAdapter;-><init>()V
 
     .line 96
-    const/4 v0, 0x0
+    const/4 p1, 0x0
 
-    iput-object v0, p0, Lcom/oneplus/screenshot/longshot/state/SaveState$TargetAnimListener;->mDecor:Landroid/view/View;
+    iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/SaveState$TargetAnimListener;->mDecor:Landroid/view/View;
 
     .line 99
     iput-object p2, p0, Lcom/oneplus/screenshot/longshot/state/SaveState$TargetAnimListener;->mDecor:Landroid/view/View;
@@ -50,7 +48,6 @@
     .registers 5
     .param p1, "animation"    # Landroid/animation/Animator;
 
-    .prologue
     .line 104
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/SaveState$TargetAnimListener;->mDecor:Landroid/view/View;
 
@@ -75,5 +72,7 @@
     invoke-interface {v0}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->stop()V
 
     .line 107
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

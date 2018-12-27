@@ -29,10 +29,8 @@
 # direct methods
 .method private constructor <init>(Lcom/oneplus/screenshot/longshot/util/Configs;)V
     .registers 2
-    .param p1, "this$0"    # Lcom/oneplus/screenshot/longshot/util/Configs;
 
-    .prologue
-    .line 758
+    .line 781
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/util/Configs$Types;->this$0:Lcom/oneplus/screenshot/longshot/util/Configs;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V

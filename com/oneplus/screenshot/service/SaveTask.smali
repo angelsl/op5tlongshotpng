@@ -12,8 +12,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Landroid/os/AsyncTask",
-        "<",
+        "Landroid/os/AsyncTask<",
         "Ljava/lang/Void;",
         "Ljava/lang/Void;",
         "Ljava/lang/Boolean;",
@@ -44,8 +43,7 @@
 .field private mBitmaps:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Landroid/graphics/Bitmap;",
             ">;"
         }
@@ -69,17 +67,14 @@
 .method static constructor <clinit>()V
     .registers 2
 
-    .prologue
     .line 22
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v1, "Longshot."
+    const-string v1, "Longshot."
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     const-class v1, Lcom/oneplus/screenshot/service/SaveTask;
 
@@ -89,16 +84,15 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0
 
     sput-object v0, Lcom/oneplus/screenshot/service/SaveTask;->TAG:Ljava/lang/String;
 
-    .line 20
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>(Lcom/oneplus/screenshot/service/SaveTask$OnSaveListener;Landroid/content/Context;Ljava/util/List;I)V
@@ -111,21 +105,19 @@
             "(",
             "Lcom/oneplus/screenshot/service/SaveTask$OnSaveListener;",
             "Landroid/content/Context;",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Landroid/graphics/Bitmap;",
             ">;I)V"
         }
     .end annotation
 
-    .prologue
-    .local p3, "bitmaps":Ljava/util/List;, "Ljava/util/List<Landroid/graphics/Bitmap;>;"
-    const/4 v0, 0x0
-
     .line 50
+    .local p3, "bitmaps":Ljava/util/List;, "Ljava/util/List<Landroid/graphics/Bitmap;>;"
     invoke-direct {p0}, Landroid/os/AsyncTask;-><init>()V
 
     .line 39
+    const/4 v0, 0x0
+
     iput-object v0, p0, Lcom/oneplus/screenshot/service/SaveTask;->mListener:Lcom/oneplus/screenshot/service/SaveTask$OnSaveListener;
 
     .line 40
@@ -163,9 +155,9 @@
     .line 55
     new-instance v0, Lcom/oneplus/screenshot/util/ImageInfo;
 
-    const-string/jumbo v1, "Screenshots"
+    const-string v1, "Screenshots"
 
-    const-string/jumbo v2, "Screenshot"
+    const-string v2, "Screenshot"
 
     invoke-direct {v0, v1, v2}, Lcom/oneplus/screenshot/util/ImageInfo;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
@@ -174,7 +166,7 @@
     .line 56
     sget-object v0, Lcom/oneplus/screenshot/service/SaveTask;->TAG:Ljava/lang/String;
 
-    const-string/jumbo v1, "SaveTask"
+    const-string v1, "SaveTask"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
@@ -188,15 +180,16 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/service/SaveTask;->mNotification:Lcom/oneplus/screenshot/service/GlobalNotification;
 
     .line 58
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private notify(I)V
     .registers 6
     .param p1, "type"    # I
 
-    .prologue
-    .line 116
+    .line 111
     iget-object v0, p0, Lcom/oneplus/screenshot/service/SaveTask;->mNotification:Lcom/oneplus/screenshot/service/GlobalNotification;
 
     iget v1, p0, Lcom/oneplus/screenshot/service/SaveTask;->mNotificationId:I
@@ -207,8 +200,10 @@
 
     invoke-virtual {v0, v1, p1, v2, v3}, Lcom/oneplus/screenshot/service/GlobalNotification;->notify(IILandroid/graphics/Bitmap;Lcom/oneplus/screenshot/util/ImageInfo;)V
 
-    .line 117
-    return-void
+    .line 112
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -217,187 +212,20 @@
     .registers 8
     .param p1, "params"    # [Ljava/lang/Void;
 
-    .prologue
     .line 65
-    sget-object v3, Lcom/oneplus/screenshot/service/SaveTask;->TAG:Ljava/lang/String;
-
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v5, "doInBackground , "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    iget-object v5, p0, Lcom/oneplus/screenshot/service/SaveTask;->mBitmaps:Ljava/util/List;
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 67
-    const/4 v2, 0x0
-
-    .line 68
-    .local v2, "result":Z
-    invoke-static {}, Lcom/oneplus/screenshot/util/Utils;->setThreadPriority()V
-
-    .line 69
-    const/4 v1, 0x0
-
-    .line 71
-    .local v1, "image":Landroid/graphics/Bitmap;
-    :try_start_20
-    sget v3, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;->DIV_HEIGHT:I
-
-    iget-object v4, p0, Lcom/oneplus/screenshot/service/SaveTask;->mBitmaps:Ljava/util/List;
-
-    invoke-static {v3, v4}, Lcom/oneplus/screenshot/longshot/bitmap/BitmapUtils;->joinBitmaps(ILjava/util/List;)Landroid/graphics/Bitmap;
-    :try_end_27
-    .catch Ljava/lang/OutOfMemoryError; {:try_start_20 .. :try_end_27} :catch_40
-
-    move-result-object v1
-
-    .line 75
-    .end local v1    # "image":Landroid/graphics/Bitmap;
-    :goto_28
-    if-eqz v1, :cond_4c
-
-    .line 77
-    sget-boolean v3, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_CLOSE_BETA:Z
-
-    if-eqz v3, :cond_33
-
-    .line 78
-    iget-object v3, p0, Lcom/oneplus/screenshot/service/SaveTask;->mContext:Landroid/content/Context;
-
-    invoke-static {v1, v3}, Lcom/oneplus/screenshot/util/Utils;->addWatermarkForLongshot(Landroid/graphics/Bitmap;Landroid/content/Context;)V
-
-    .line 81
-    :cond_33
-    iget-object v3, p0, Lcom/oneplus/screenshot/service/SaveTask;->mContext:Landroid/content/Context;
-
-    iget-object v4, p0, Lcom/oneplus/screenshot/service/SaveTask;->mImageInfo:Lcom/oneplus/screenshot/util/ImageInfo;
-
-    invoke-static {v3, v4, v1}, Lcom/oneplus/screenshot/util/Utils;->saveToFile(Landroid/content/Context;Lcom/oneplus/screenshot/util/FileInfo;Landroid/graphics/Bitmap;)Z
-
-    move-result v2
-
-    .line 86
-    .end local v2    # "result":Z
-    :goto_3b
-    invoke-static {v2}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
-
-    move-result-object v3
-
-    return-object v3
-
-    .line 72
-    .restart local v1    # "image":Landroid/graphics/Bitmap;
-    .restart local v2    # "result":Z
-    :catch_40
-    move-exception v0
-
-    .line 73
-    .local v0, "e":Ljava/lang/OutOfMemoryError;
-    iget-object v3, p0, Lcom/oneplus/screenshot/service/SaveTask;->mContext:Landroid/content/Context;
-
-    sget-object v4, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;->MEMORY:Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
-
-    const-string/jumbo v5, "Save"
-
-    invoke-static {v3, v4, v5}, Lcom/oneplus/screenshot/statistics/EventStatistics;->addError(Landroid/content/Context;Lcom/oneplus/screenshot/statistics/EventStatistics$Error;Ljava/lang/String;)V
-
-    goto :goto_28
-
-    .line 83
-    .end local v0    # "e":Ljava/lang/OutOfMemoryError;
-    .end local v1    # "image":Landroid/graphics/Bitmap;
-    :cond_4c
-    sget-object v3, Lcom/oneplus/screenshot/service/SaveTask;->TAG:Ljava/lang/String;
-
-    const-string/jumbo v4, "image is null"
-
-    invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_3b
-.end method
-
-.method protected bridge synthetic doInBackground([Ljava/lang/Object;)Ljava/lang/Object;
-    .registers 3
-
-    .prologue
-    .line 60
-    check-cast p1, [Ljava/lang/Void;
-
-    invoke-virtual {p0, p1}, Lcom/oneplus/screenshot/service/SaveTask;->doInBackground([Ljava/lang/Void;)Ljava/lang/Boolean;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
-.method protected onCancelled()V
-    .registers 2
-
-    .prologue
-    .line 108
-    iget-object v0, p0, Lcom/oneplus/screenshot/service/SaveTask;->mListener:Lcom/oneplus/screenshot/service/SaveTask$OnSaveListener;
-
-    if-eqz v0, :cond_9
-
-    .line 109
-    iget-object v0, p0, Lcom/oneplus/screenshot/service/SaveTask;->mListener:Lcom/oneplus/screenshot/service/SaveTask$OnSaveListener;
-
-    invoke-interface {v0}, Lcom/oneplus/screenshot/service/SaveTask$OnSaveListener;->onSaveCancelled()V
-
-    .line 111
-    :cond_9
-    return-void
-.end method
-
-.method protected onPostExecute(Ljava/lang/Boolean;)V
-    .registers 9
-    .param p1, "result"    # Ljava/lang/Boolean;
-
-    .prologue
-    const/4 v5, 0x0
-
-    .line 91
-    invoke-virtual {p1}, Ljava/lang/Boolean;->booleanValue()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_3c
-
-    const/4 v6, 0x1
-
-    .line 92
-    .local v6, "type":I
-    :goto_8
     sget-object v0, Lcom/oneplus/screenshot/service/SaveTask;->TAG:Ljava/lang/String;
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v2, "onPostExecute, "
+    const-string v2, "doInBackground , "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    iget-object v2, p0, Lcom/oneplus/screenshot/service/SaveTask;->mBitmaps:Ljava/util/List;
 
-    invoke-virtual {v1, v6}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v1
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -405,75 +233,221 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 93
-    iget-object v0, p0, Lcom/oneplus/screenshot/service/SaveTask;->mContext:Landroid/content/Context;
+    .line 67
+    const/4 v0, 0x0
 
-    const-string/jumbo v1, ""
+    .line 68
+    .local v0, "result":Z
+    invoke-static {}, Lcom/oneplus/screenshot/util/Utils;->setThreadPriority()V
 
-    invoke-static {v0, v5, v1, v5}, Lcom/oneplus/screenshot/longshot/util/Configs;->notifyToast(Landroid/content/Context;ZLjava/lang/String;I)V
+    .line 69
+    const/4 v1, 0x0
 
-    .line 95
+    .line 71
+    .local v1, "image":Landroid/graphics/Bitmap;
+    :try_start_1d
+    sget v2, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;->DIV_HEIGHT:I
+
+    iget-object v3, p0, Lcom/oneplus/screenshot/service/SaveTask;->mBitmaps:Ljava/util/List;
+
+    invoke-static {v2, v3}, Lcom/oneplus/screenshot/longshot/bitmap/BitmapUtils;->joinBitmaps(ILjava/util/List;)Landroid/graphics/Bitmap;
+
+    move-result-object v2
+    :try_end_25
+    .catch Ljava/lang/OutOfMemoryError; {:try_start_1d .. :try_end_25} :catch_27
+
+    move-object v1, v2
+
+    .line 74
+    goto :goto_31
+
+    .line 72
+    :catch_27
+    move-exception v2
+
+    .line 73
+    .local v2, "e":Ljava/lang/OutOfMemoryError;
+    iget-object v3, p0, Lcom/oneplus/screenshot/service/SaveTask;->mContext:Landroid/content/Context;
+
+    sget-object v4, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;->MEMORY:Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
+
+    const-string v5, "Save"
+
+    invoke-static {v3, v4, v5}, Lcom/oneplus/screenshot/statistics/EventStatistics;->addError(Landroid/content/Context;Lcom/oneplus/screenshot/statistics/EventStatistics$Error;Ljava/lang/String;)V
+
+    .line 75
+    .end local v2    # "e":Ljava/lang/OutOfMemoryError;
+    :goto_31
+    if-eqz v1, :cond_3c
+
+    .line 76
+    iget-object v2, p0, Lcom/oneplus/screenshot/service/SaveTask;->mContext:Landroid/content/Context;
+
+    iget-object v3, p0, Lcom/oneplus/screenshot/service/SaveTask;->mImageInfo:Lcom/oneplus/screenshot/util/ImageInfo;
+
+    invoke-static {v2, v3, v1}, Lcom/oneplus/screenshot/util/Utils;->saveToFile(Landroid/content/Context;Lcom/oneplus/screenshot/util/FileInfo;Landroid/graphics/Bitmap;)Z
+
+    move-result v0
+
+    goto :goto_43
+
+    .line 78
+    :cond_3c
+    sget-object v2, Lcom/oneplus/screenshot/service/SaveTask;->TAG:Ljava/lang/String;
+
+    const-string v3, "image is null"
+
+    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 81
+    :goto_43
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v2
+
+    return-object v2
+.end method
+
+.method protected bridge synthetic doInBackground([Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 2
+
+    .line 20
+    check-cast p1, [Ljava/lang/Void;
+
+    invoke-virtual {p0, p1}, Lcom/oneplus/screenshot/service/SaveTask;->doInBackground([Ljava/lang/Void;)Ljava/lang/Boolean;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method protected onCancelled()V
+    .registers 2
+
+    .line 103
+    iget-object v0, p0, Lcom/oneplus/screenshot/service/SaveTask;->mListener:Lcom/oneplus/screenshot/service/SaveTask$OnSaveListener;
+
+    if-eqz v0, :cond_9
+
+    .line 104
+    iget-object v0, p0, Lcom/oneplus/screenshot/service/SaveTask;->mListener:Lcom/oneplus/screenshot/service/SaveTask$OnSaveListener;
+
+    invoke-interface {v0}, Lcom/oneplus/screenshot/service/SaveTask$OnSaveListener;->onSaveCancelled()V
+
+    .line 106
+    :cond_9
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
+.end method
+
+.method protected onPostExecute(Ljava/lang/Boolean;)V
+    .registers 10
+    .param p1, "result"    # Ljava/lang/Boolean;
+
+    .line 86
     invoke-virtual {p1}, Ljava/lang/Boolean;->booleanValue()Z
 
     move-result v0
 
-    if-nez v0, :cond_3e
+    if-eqz v0, :cond_8
 
-    .line 96
-    invoke-direct {p0, v6}, Lcom/oneplus/screenshot/service/SaveTask;->notify(I)V
+    const/4 v0, 0x1
 
-    .line 101
-    :goto_32
-    iget-object v0, p0, Lcom/oneplus/screenshot/service/SaveTask;->mListener:Lcom/oneplus/screenshot/service/SaveTask$OnSaveListener;
+    goto :goto_9
 
-    if-eqz v0, :cond_3b
+    :cond_8
+    const/4 v0, 0x2
 
-    .line 102
-    iget-object v0, p0, Lcom/oneplus/screenshot/service/SaveTask;->mListener:Lcom/oneplus/screenshot/service/SaveTask$OnSaveListener;
+    .line 87
+    .local v0, "type":I
+    :goto_9
+    sget-object v1, Lcom/oneplus/screenshot/service/SaveTask;->TAG:Ljava/lang/String;
 
-    invoke-interface {v0}, Lcom/oneplus/screenshot/service/SaveTask$OnSaveListener;->onSaveFinished()V
+    new-instance v2, Ljava/lang/StringBuilder;
 
-    .line 104
-    :cond_3b
-    return-void
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "onPostExecute, "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 88
+    iget-object v1, p0, Lcom/oneplus/screenshot/service/SaveTask;->mContext:Landroid/content/Context;
+
+    const-string v2, ""
+
+    const/4 v3, 0x0
+
+    invoke-static {v1, v3, v2, v3}, Lcom/oneplus/screenshot/longshot/util/Configs;->notifyToast(Landroid/content/Context;ZLjava/lang/String;I)V
+
+    .line 90
+    invoke-virtual {p1}, Ljava/lang/Boolean;->booleanValue()Z
+
+    move-result v1
+
+    if-nez v1, :cond_31
 
     .line 91
-    .end local v6    # "type":I
-    :cond_3c
-    const/4 v6, 0x2
+    invoke-direct {p0, v0}, Lcom/oneplus/screenshot/service/SaveTask;->notify(I)V
 
-    .restart local v6    # "type":I
-    goto :goto_8
+    goto :goto_43
 
-    .line 98
-    :cond_3e
-    iget-object v0, p0, Lcom/oneplus/screenshot/service/SaveTask;->mContext:Landroid/content/Context;
+    .line 93
+    :cond_31
+    iget-object v2, p0, Lcom/oneplus/screenshot/service/SaveTask;->mContext:Landroid/content/Context;
 
     iget-object v1, p0, Lcom/oneplus/screenshot/service/SaveTask;->mImageInfo:Lcom/oneplus/screenshot/util/ImageInfo;
 
     invoke-virtual {v1}, Lcom/oneplus/screenshot/util/ImageInfo;->getUri()Landroid/net/Uri;
 
-    move-result-object v1
+    move-result-object v3
 
-    const-string/jumbo v2, "com.oneplus.gallery"
+    const-string v4, "com.oneplus.gallery"
 
-    const-string/jumbo v3, "com.oneplus.gallery.PhotoViewerActivity"
+    const-string v5, "com.oneplus.gallery.PhotoViewerActivity"
 
-    const-string/jumbo v4, "isReadOnly"
+    const-string v6, "isReadOnly"
 
-    invoke-static/range {v0 .. v5}, Lcom/oneplus/screenshot/util/Utils;->launchGallery(Landroid/content/Context;Landroid/net/Uri;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
+    const/4 v7, 0x0
 
-    goto :goto_32
+    invoke-static/range {v2 .. v7}, Lcom/oneplus/screenshot/util/Utils;->launchGallery(Landroid/content/Context;Landroid/net/Uri;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
+
+    .line 96
+    :goto_43
+    iget-object v1, p0, Lcom/oneplus/screenshot/service/SaveTask;->mListener:Lcom/oneplus/screenshot/service/SaveTask$OnSaveListener;
+
+    if-eqz v1, :cond_4c
+
+    .line 97
+    iget-object v1, p0, Lcom/oneplus/screenshot/service/SaveTask;->mListener:Lcom/oneplus/screenshot/service/SaveTask$OnSaveListener;
+
+    invoke-interface {v1}, Lcom/oneplus/screenshot/service/SaveTask$OnSaveListener;->onSaveFinished()V
+
+    .line 99
+    :cond_4c
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method protected bridge synthetic onPostExecute(Ljava/lang/Object;)V
     .registers 2
 
-    .prologue
-    .line 89
+    .line 20
     check-cast p1, Ljava/lang/Boolean;
 
     invoke-virtual {p0, p1}, Lcom/oneplus/screenshot/service/SaveTask;->onPostExecute(Ljava/lang/Boolean;)V
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

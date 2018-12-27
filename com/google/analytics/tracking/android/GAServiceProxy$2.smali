@@ -25,7 +25,6 @@
 .method constructor <init>(Lcom/google/analytics/tracking/android/GAServiceProxy;)V
     .registers 2
 
-    .prologue
     .line 242
     iput-object p1, p0, Lcom/google/analytics/tracking/android/GAServiceProxy$2;->this$0:Lcom/google/analytics/tracking/android/GAServiceProxy;
 
@@ -39,13 +38,13 @@
 .method public run()V
     .registers 2
 
-    .prologue
     .line 245
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy$2;->this$0:Lcom/google/analytics/tracking/android/GAServiceProxy;
 
-    # invokes: Lcom/google/analytics/tracking/android/GAServiceProxy;->sendQueue()V
     invoke-static {v0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->access$000(Lcom/google/analytics/tracking/android/GAServiceProxy;)V
 
     .line 246
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

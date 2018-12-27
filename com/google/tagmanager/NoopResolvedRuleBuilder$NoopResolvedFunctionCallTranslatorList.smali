@@ -25,7 +25,6 @@
 .method public constructor <init>(Lcom/google/tagmanager/NoopResolvedRuleBuilder;)V
     .registers 2
 
-    .prologue
     .line 52
     iput-object p1, p0, Lcom/google/tagmanager/NoopResolvedRuleBuilder$NoopResolvedFunctionCallTranslatorList;->this$0:Lcom/google/tagmanager/NoopResolvedRuleBuilder;
 
@@ -41,18 +40,15 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;",
             ">;",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;)V"
         }
     .end annotation
 
-    .prologue
     .line 58
     .local p1, "functions":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;>;"
     .local p2, "ruleNames":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"

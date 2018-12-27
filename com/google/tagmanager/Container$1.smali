@@ -25,7 +25,6 @@
 .method constructor <init>(Lcom/google/tagmanager/Container;)V
     .registers 2
 
-    .prologue
     .line 385
     iput-object p1, p0, Lcom/google/tagmanager/Container$1;->this$0:Lcom/google/tagmanager/Container;
 
@@ -39,7 +38,6 @@
 .method public currentTimeMillis()J
     .registers 3
 
-    .prologue
     .line 388
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 

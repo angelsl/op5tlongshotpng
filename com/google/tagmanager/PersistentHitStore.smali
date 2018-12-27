@@ -9,8 +9,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Lcom/google/tagmanager/PersistentHitStore$StoreDispatchListener;,
-        Lcom/google/tagmanager/PersistentHitStore$UrlDatabaseHelper;
+        Lcom/google/tagmanager/PersistentHitStore$UrlDatabaseHelper;,
+        Lcom/google/tagmanager/PersistentHitStore$StoreDispatchListener;
     }
 .end annotation
 
@@ -68,47 +68,46 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 3
+    .registers 4
 
-    .prologue
     .line 55
-    const/4 v0, 0x5
+    const-string v0, "CREATE TABLE IF NOT EXISTS %s ( \'%s\' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \'%s\' INTEGER NOT NULL, \'%s\' TEXT NOT NULL,\'%s\' INTEGER NOT NULL);"
 
-    new-array v0, v0, [Ljava/lang/Object;
+    const/4 v1, 0x5
 
-    const-string/jumbo v1, "gtm_hits"
+    new-array v1, v1, [Ljava/lang/Object;
 
-    const/4 v2, 0x0
+    const-string v2, "gtm_hits"
 
-    aput-object v1, v0, v2
+    const/4 v3, 0x0
 
-    const-string/jumbo v1, "hit_id"
+    aput-object v2, v1, v3
 
-    const/4 v2, 0x1
+    const-string v2, "hit_id"
 
-    aput-object v1, v0, v2
+    const/4 v3, 0x1
 
-    const-string/jumbo v1, "hit_time"
+    aput-object v2, v1, v3
 
-    const/4 v2, 0x2
+    const-string v2, "hit_time"
 
-    aput-object v1, v0, v2
+    const/4 v3, 0x2
 
-    const-string/jumbo v1, "hit_url"
+    aput-object v2, v1, v3
 
-    const/4 v2, 0x3
+    const-string v2, "hit_url"
 
-    aput-object v1, v0, v2
+    const/4 v3, 0x3
 
-    const-string/jumbo v1, "hit_first_send_time"
+    aput-object v2, v1, v3
 
-    const/4 v2, 0x4
+    const-string v2, "hit_first_send_time"
 
-    aput-object v1, v0, v2
+    const/4 v3, 0x4
 
-    const-string/jumbo v1, "CREATE TABLE IF NOT EXISTS %s ( \'%s\' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \'%s\' INTEGER NOT NULL, \'%s\' TEXT NOT NULL,\'%s\' INTEGER NOT NULL);"
+    aput-object v2, v1, v3
 
-    invoke-static {v1, v0}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    invoke-static {v0, v1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v0
 
@@ -122,9 +121,8 @@
     .param p1, "listener"    # Lcom/google/tagmanager/HitStoreStateListener;
     .param p2, "ctx"    # Landroid/content/Context;
 
-    .prologue
     .line 91
-    const-string/jumbo v0, "gtm_urls.db"
+    const-string v0, "gtm_urls.db"
 
     invoke-direct {p0, p1, p2, v0}, Lcom/google/tagmanager/PersistentHitStore;-><init>(Lcom/google/tagmanager/HitStoreStateListener;Landroid/content/Context;Ljava/lang/String;)V
 
@@ -140,7 +138,6 @@
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 103
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -202,11 +199,10 @@
 .end method
 
 .method static synthetic access$000(Lcom/google/tagmanager/PersistentHitStore;J)V
-    .registers 4
+    .registers 3
     .param p0, "x0"    # Lcom/google/tagmanager/PersistentHitStore;
     .param p1, "x1"    # J
 
-    .prologue
     .line 37
     invoke-direct {p0, p1, p2}, Lcom/google/tagmanager/PersistentHitStore;->deleteHit(J)V
 
@@ -217,7 +213,6 @@
     .registers 2
     .param p0, "x0"    # Lcom/google/tagmanager/PersistentHitStore;
 
-    .prologue
     .line 37
     iget-object v0, p0, Lcom/google/tagmanager/PersistentHitStore;->mClock:Lcom/google/tagmanager/Clock;
 
@@ -225,12 +220,11 @@
 .end method
 
 .method static synthetic access$200(Lcom/google/tagmanager/PersistentHitStore;JJ)V
-    .registers 6
+    .registers 5
     .param p0, "x0"    # Lcom/google/tagmanager/PersistentHitStore;
     .param p1, "x1"    # J
     .param p3, "x2"    # J
 
-    .prologue
     .line 37
     invoke-direct {p0, p1, p2, p3, p4}, Lcom/google/tagmanager/PersistentHitStore;->setHitFirstDispatchTime(JJ)V
 
@@ -241,7 +235,6 @@
     .registers 2
     .param p0, "x0"    # Lcom/google/tagmanager/PersistentHitStore;
 
-    .prologue
     .line 37
     iget-object v0, p0, Lcom/google/tagmanager/PersistentHitStore;->mDatabaseName:Ljava/lang/String;
 
@@ -252,7 +245,6 @@
     .registers 2
     .param p0, "x0"    # Lcom/google/tagmanager/PersistentHitStore;
 
-    .prologue
     .line 37
     iget-object v0, p0, Lcom/google/tagmanager/PersistentHitStore;->mContext:Landroid/content/Context;
 
@@ -262,7 +254,6 @@
 .method static synthetic access$500()Ljava/lang/String;
     .registers 1
 
-    .prologue
     .line 37
     sget-object v0, Lcom/google/tagmanager/PersistentHitStore;->CREATE_HITS_TABLE:Ljava/lang/String;
 
@@ -273,7 +264,6 @@
     .registers 6
     .param p1, "hitId"    # J
 
-    .prologue
     .line 380
     const/4 v0, 0x1
 
@@ -297,63 +287,63 @@
     .registers 5
     .param p1, "errorMessage"    # Ljava/lang/String;
 
-    .prologue
     .line 529
     const/4 v0, 0x0
 
+    move-object v1, v0
+
     .line 531
-    .local v0, "db":Landroid/database/sqlite/SQLiteDatabase;
-    :try_start_1
+    .local v1, "db":Landroid/database/sqlite/SQLiteDatabase;
+    :try_start_2
     iget-object v2, p0, Lcom/google/tagmanager/PersistentHitStore;->mDbHelper:Lcom/google/tagmanager/PersistentHitStore$UrlDatabaseHelper;
 
     invoke-virtual {v2}, Lcom/google/tagmanager/PersistentHitStore$UrlDatabaseHelper;->getWritableDatabase()Landroid/database/sqlite/SQLiteDatabase;
-    :try_end_6
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_1 .. :try_end_6} :catch_8
 
-    move-result-object v0
+    move-result-object v2
+    :try_end_8
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_2 .. :try_end_8} :catch_b
+
+    move-object v0, v2
+
+    .line 535
+    .end local v1    # "db":Landroid/database/sqlite/SQLiteDatabase;
+    .local v0, "db":Landroid/database/sqlite/SQLiteDatabase;
+    nop
 
     .line 536
     return-object v0
 
     .line 532
-    :catch_8
-    move-exception v1
+    .end local v0    # "db":Landroid/database/sqlite/SQLiteDatabase;
+    .restart local v1    # "db":Landroid/database/sqlite/SQLiteDatabase;
+    :catch_b
+    move-exception v2
 
     .line 533
-    .local v1, "e":Landroid/database/sqlite/SQLiteException;
+    .local v2, "e":Landroid/database/sqlite/SQLiteException;
     invoke-static {p1}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
 
     .line 534
-    const/4 v2, 0x0
-
-    return-object v2
+    return-object v0
 .end method
 
 .method private removeOldHitIfFull()V
-    .registers 6
-
-    .prologue
-    const/4 v4, 0x0
+    .registers 5
 
     .line 153
     invoke-virtual {p0}, Lcom/google/tagmanager/PersistentHitStore;->getNumStoredHits()I
 
-    move-result v2
+    move-result v0
 
-    add-int/lit16 v2, v2, -0x7d0
+    add-int/lit16 v0, v0, -0x7d0
 
-    add-int/lit8 v0, v2, 0x1
+    add-int/lit8 v0, v0, 0x1
 
     .line 154
     .local v0, "hitsOverLimit":I
-    if-gtz v0, :cond_c
-
-    .line 159
-    :goto_b
-    return-void
+    if-lez v0, :cond_37
 
     .line 155
-    :cond_c
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/PersistentHitStore;->peekHitIds(I)Ljava/util/List;
 
     move-result-object v1
@@ -364,11 +354,9 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v3, "Store full, deleting "
+    const-string v3, "Store full, deleting "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
 
     invoke-interface {v1}, Ljava/util/List;->size()I
 
@@ -376,13 +364,9 @@
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v2
-
-    const-string/jumbo v3, " hits to make room."
+    const-string v3, " hits to make room."
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
 
     invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -391,7 +375,9 @@
     invoke-static {v2}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
 
     .line 157
-    new-array v2, v4, [Ljava/lang/String;
+    const/4 v2, 0x0
+
+    new-array v2, v2, [Ljava/lang/String;
 
     invoke-interface {v1, v2}, Ljava/util/List;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
 
@@ -401,7 +387,10 @@
 
     invoke-virtual {p0, v2}, Lcom/google/tagmanager/PersistentHitStore;->deleteHits([Ljava/lang/String;)V
 
-    goto :goto_b
+    .line 159
+    .end local v1    # "hitsToDelete":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
+    :cond_37
+    return-void
 .end method
 
 .method private setHitFirstDispatchTime(JJ)V
@@ -409,67 +398,63 @@
     .param p1, "hitId"    # J
     .param p3, "firstDispatchTime"    # J
 
-    .prologue
     .line 384
-    const-string/jumbo v3, "Error opening database for getNumStoredHits."
+    const-string v0, "Error opening database for getNumStoredHits."
 
-    invoke-direct {p0, v3}, Lcom/google/tagmanager/PersistentHitStore;->getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
+    invoke-direct {p0, v0}, Lcom/google/tagmanager/PersistentHitStore;->getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
 
-    move-result-object v1
+    move-result-object v0
 
     .line 385
-    .local v1, "db":Landroid/database/sqlite/SQLiteDatabase;
-    if-eqz v1, :cond_2c
+    .local v0, "db":Landroid/database/sqlite/SQLiteDatabase;
+    if-nez v0, :cond_9
+
+    .line 386
+    return-void
 
     .line 388
-    new-instance v0, Landroid/content/ContentValues;
+    :cond_9
+    new-instance v1, Landroid/content/ContentValues;
 
-    invoke-direct {v0}, Landroid/content/ContentValues;-><init>()V
+    invoke-direct {v1}, Landroid/content/ContentValues;-><init>()V
 
     .line 389
-    .local v0, "cv":Landroid/content/ContentValues;
+    .local v1, "cv":Landroid/content/ContentValues;
+    const-string v2, "hit_first_send_time"
+
     invoke-static {p3, p4}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
     move-result-object v3
 
-    const-string/jumbo v4, "hit_first_send_time"
-
-    invoke-virtual {v0, v4, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
+    invoke-virtual {v1, v2, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
     .line 391
-    const/4 v3, 0x1
+    :try_start_17
+    const-string v2, "gtm_hits"
 
-    :try_start_19
-    new-array v3, v3, [Ljava/lang/String;
+    const-string v3, "hit_id=?"
 
-    invoke-static {p1, p2}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
+    const/4 v4, 0x1
 
-    move-result-object v4
+    new-array v4, v4, [Ljava/lang/String;
 
     const/4 v5, 0x0
 
-    aput-object v4, v3, v5
+    invoke-static {p1, p2}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
 
-    const-string/jumbo v4, "gtm_hits"
+    move-result-object v6
 
-    const-string/jumbo v5, "hit_id=?"
+    aput-object v6, v4, v5
 
-    invoke-virtual {v1, v4, v0, v5, v3}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
-    :try_end_2b
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_19 .. :try_end_2b} :catch_2d
+    invoke-virtual {v0, v2, v1, v3, v4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    :try_end_28
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_17 .. :try_end_28} :catch_29
 
-    .line 400
-    :goto_2b
-    return-void
-
-    .line 386
-    .end local v0    # "cv":Landroid/content/ContentValues;
-    :cond_2c
-    return-void
+    .line 399
+    goto :goto_41
 
     .line 393
-    .restart local v0    # "cv":Landroid/content/ContentValues;
-    :catch_2d
+    :catch_29
     move-exception v2
 
     .line 394
@@ -478,15 +463,11 @@
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v4, "Error setting HIT_FIRST_DISPATCH_TIME for hitId: "
+    const-string v4, "Error setting HIT_FIRST_DISPATCH_TIME for hitId: "
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v3
-
     invoke-virtual {v3, p1, p2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
-
-    move-result-object v3
 
     invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -497,95 +478,95 @@
     .line 398
     invoke-direct {p0, p1, p2}, Lcom/google/tagmanager/PersistentHitStore;->deleteHit(J)V
 
-    goto :goto_2b
+    .line 400
+    .end local v2    # "e":Landroid/database/sqlite/SQLiteException;
+    :goto_41
+    return-void
 .end method
 
 .method private writeHitToDatabase(JLjava/lang/String;)V
-    .registers 11
+    .registers 9
     .param p1, "hitTimeInMilliseconds"    # J
     .param p3, "path"    # Ljava/lang/String;
 
-    .prologue
-    const/4 v5, 0x0
-
     .line 162
-    const-string/jumbo v3, "Error opening database for putHit"
+    const-string v0, "Error opening database for putHit"
 
-    invoke-direct {p0, v3}, Lcom/google/tagmanager/PersistentHitStore;->getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
+    invoke-direct {p0, v0}, Lcom/google/tagmanager/PersistentHitStore;->getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
 
-    move-result-object v1
+    move-result-object v0
 
     .line 163
-    .local v1, "db":Landroid/database/sqlite/SQLiteDatabase;
-    if-eqz v1, :cond_37
+    .local v0, "db":Landroid/database/sqlite/SQLiteDatabase;
+    if-nez v0, :cond_9
+
+    .line 164
+    return-void
 
     .line 167
-    new-instance v0, Landroid/content/ContentValues;
+    :cond_9
+    new-instance v1, Landroid/content/ContentValues;
 
-    invoke-direct {v0}, Landroid/content/ContentValues;-><init>()V
+    invoke-direct {v1}, Landroid/content/ContentValues;-><init>()V
 
     .line 170
-    .local v0, "content":Landroid/content/ContentValues;
+    .local v1, "content":Landroid/content/ContentValues;
+    const-string v2, "hit_time"
+
     invoke-static {p1, p2}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
     move-result-object v3
 
-    const-string/jumbo v4, "hit_time"
-
-    invoke-virtual {v0, v4, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
+    invoke-virtual {v1, v2, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
     .line 171
-    const-string/jumbo v3, "hit_url"
+    const-string v2, "hit_url"
 
-    invoke-virtual {v0, v3, p3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v1, v2, p3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 172
-    invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    const-string v2, "hit_first_send_time"
 
-    move-result-object v3
+    const/4 v3, 0x0
 
-    const-string/jumbo v4, "hit_first_send_time"
+    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    invoke-virtual {v0, v4, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
+    move-result-object v4
+
+    invoke-virtual {v1, v2, v4}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
     .line 174
-    :try_start_29
-    const-string/jumbo v3, "gtm_hits"
+    :try_start_26
+    const-string v2, "gtm_hits"
 
     const/4 v4, 0x0
 
-    invoke-virtual {v1, v3, v4, v0}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v2, v4, v1}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
     .line 177
-    iget-object v3, p0, Lcom/google/tagmanager/PersistentHitStore;->mListener:Lcom/google/tagmanager/HitStoreStateListener;
+    iget-object v2, p0, Lcom/google/tagmanager/PersistentHitStore;->mListener:Lcom/google/tagmanager/HitStoreStateListener;
 
-    const/4 v4, 0x0
+    invoke-interface {v2, v3}, Lcom/google/tagmanager/HitStoreStateListener;->reportStoreIsEmpty(Z)V
+    :try_end_31
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_26 .. :try_end_31} :catch_32
 
-    invoke-interface {v3, v4}, Lcom/google/tagmanager/HitStoreStateListener;->reportStoreIsEmpty(Z)V
-    :try_end_36
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_29 .. :try_end_36} :catch_38
-
-    .line 181
-    :goto_36
-    return-void
-
-    .line 164
-    .end local v0    # "content":Landroid/content/ContentValues;
-    :cond_37
-    return-void
+    .line 180
+    goto :goto_38
 
     .line 178
-    .restart local v0    # "content":Landroid/content/ContentValues;
-    :catch_38
+    :catch_32
     move-exception v2
 
     .line 179
     .local v2, "e":Landroid/database/sqlite/SQLiteException;
-    const-string/jumbo v3, "Error storing hit"
+    const-string v3, "Error storing hit"
 
     invoke-static {v3}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
 
-    goto :goto_36
+    .line 181
+    .end local v2    # "e":Landroid/database/sqlite/SQLiteException;
+    :goto_38
+    return-void
 .end method
 
 
@@ -593,34 +574,36 @@
 .method public close()V
     .registers 3
 
-    .prologue
     .line 508
     :try_start_0
-    iget-object v1, p0, Lcom/google/tagmanager/PersistentHitStore;->mDbHelper:Lcom/google/tagmanager/PersistentHitStore$UrlDatabaseHelper;
+    iget-object v0, p0, Lcom/google/tagmanager/PersistentHitStore;->mDbHelper:Lcom/google/tagmanager/PersistentHitStore$UrlDatabaseHelper;
 
-    invoke-virtual {v1}, Lcom/google/tagmanager/PersistentHitStore$UrlDatabaseHelper;->getWritableDatabase()Landroid/database/sqlite/SQLiteDatabase;
+    invoke-virtual {v0}, Lcom/google/tagmanager/PersistentHitStore$UrlDatabaseHelper;->getWritableDatabase()Landroid/database/sqlite/SQLiteDatabase;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-virtual {v1}, Landroid/database/sqlite/SQLiteDatabase;->close()V
+    invoke-virtual {v0}, Landroid/database/sqlite/SQLiteDatabase;->close()V
 
     .line 509
-    iget-object v1, p0, Lcom/google/tagmanager/PersistentHitStore;->mDispatcher:Lcom/google/tagmanager/Dispatcher;
+    iget-object v0, p0, Lcom/google/tagmanager/PersistentHitStore;->mDispatcher:Lcom/google/tagmanager/Dispatcher;
 
-    invoke-interface {v1}, Lcom/google/tagmanager/Dispatcher;->close()V
+    invoke-interface {v0}, Lcom/google/tagmanager/Dispatcher;->close()V
     :try_end_e
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_0 .. :try_end_e} :catch_f
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_0 .. :try_end_e} :catch_10
+
+    .line 513
+    nop
 
     .line 514
     return-void
 
     .line 510
-    :catch_f
+    :catch_10
     move-exception v0
 
     .line 511
     .local v0, "e":Landroid/database/sqlite/SQLiteException;
-    const-string/jumbo v1, "Error opening database for close"
+    const-string v1, "Error opening database for close"
 
     invoke-static {v1}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
 
@@ -629,251 +612,238 @@
 .end method
 
 .method deleteHits([Ljava/lang/String;)V
-    .registers 10
+    .registers 9
     .param p1, "hitIds"    # [Ljava/lang/String;
 
-    .prologue
-    const/4 v4, 0x1
-
-    const/4 v3, 0x0
-
     .line 362
-    if-nez p1, :cond_5
+    if-eqz p1, :cond_42
 
-    .line 363
-    :cond_4
-    return-void
+    array-length v0, p1
 
-    .line 362
-    :cond_5
-    array-length v5, p1
+    if-nez v0, :cond_6
 
-    if-eqz v5, :cond_4
+    goto :goto_42
 
     .line 365
-    const-string/jumbo v5, "Error opening database for deleteHits."
+    :cond_6
+    const-string v0, "Error opening database for deleteHits."
 
-    invoke-direct {p0, v5}, Lcom/google/tagmanager/PersistentHitStore;->getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
+    invoke-direct {p0, v0}, Lcom/google/tagmanager/PersistentHitStore;->getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
 
     move-result-object v0
 
     .line 366
     .local v0, "db":Landroid/database/sqlite/SQLiteDatabase;
-    if-eqz v0, :cond_3d
+    if-nez v0, :cond_f
+
+    .line 367
+    return-void
 
     .line 369
-    new-array v5, v4, [Ljava/lang/Object;
+    :cond_f
+    const-string v1, "HIT_ID in (%s)"
 
-    array-length v6, p1
+    const/4 v2, 0x1
 
-    const-string/jumbo v7, "?"
+    new-array v3, v2, [Ljava/lang/Object;
 
-    invoke-static {v6, v7}, Ljava/util/Collections;->nCopies(ILjava/lang/Object;)Ljava/util/List;
+    const-string v4, ","
 
-    move-result-object v6
+    array-length v5, p1
 
-    const-string/jumbo v7, ","
+    const-string v6, "?"
 
-    invoke-static {v7, v6}, Landroid/text/TextUtils;->join(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
+    invoke-static {v5, v6}, Ljava/util/Collections;->nCopies(ILjava/lang/Object;)Ljava/util/List;
 
-    move-result-object v6
+    move-result-object v5
 
-    aput-object v6, v5, v3
+    invoke-static {v4, v5}, Landroid/text/TextUtils;->join(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
 
-    const-string/jumbo v6, "HIT_ID in (%s)"
+    move-result-object v4
 
-    invoke-static {v6, v5}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    const/4 v5, 0x0
 
-    move-result-object v2
+    aput-object v4, v3, v5
+
+    invoke-static {v1, v3}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v1
 
     .line 372
-    .local v2, "whereClause":Ljava/lang/String;
-    :try_start_2b
-    const-string/jumbo v5, "gtm_hits"
+    .local v1, "whereClause":Ljava/lang/String;
+    :try_start_28
+    const-string v3, "gtm_hits"
 
-    invoke-virtual {v0, v5, v2, p1}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v0, v3, v1, p1}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     .line 373
-    iget-object v5, p0, Lcom/google/tagmanager/PersistentHitStore;->mListener:Lcom/google/tagmanager/HitStoreStateListener;
+    iget-object v3, p0, Lcom/google/tagmanager/PersistentHitStore;->mListener:Lcom/google/tagmanager/HitStoreStateListener;
 
     invoke-virtual {p0}, Lcom/google/tagmanager/PersistentHitStore;->getNumStoredHits()I
 
-    move-result v6
+    move-result v4
 
-    if-eqz v6, :cond_3e
+    if-nez v4, :cond_36
 
-    :goto_39
-    invoke-interface {v5, v3}, Lcom/google/tagmanager/HitStoreStateListener;->reportStoreIsEmpty(Z)V
-    :try_end_3c
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_2b .. :try_end_3c} :catch_40
+    goto :goto_37
 
-    .line 377
-    :goto_3c
-    return-void
+    :cond_36
+    move v2, v5
 
-    .line 367
-    .end local v2    # "whereClause":Ljava/lang/String;
-    :cond_3d
-    return-void
+    :goto_37
+    invoke-interface {v3, v2}, Lcom/google/tagmanager/HitStoreStateListener;->reportStoreIsEmpty(Z)V
+    :try_end_3a
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_28 .. :try_end_3a} :catch_3b
 
-    .restart local v2    # "whereClause":Ljava/lang/String;
-    :cond_3e
-    move v3, v4
-
-    .line 373
-    goto :goto_39
+    .line 376
+    goto :goto_41
 
     .line 374
-    :catch_40
-    move-exception v1
+    :catch_3b
+    move-exception v2
 
     .line 375
-    .local v1, "e":Landroid/database/sqlite/SQLiteException;
-    const-string/jumbo v3, "Error deleting hits"
+    .local v2, "e":Landroid/database/sqlite/SQLiteException;
+    const-string v3, "Error deleting hits"
 
     invoke-static {v3}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
 
-    goto :goto_3c
+    .line 377
+    .end local v2    # "e":Landroid/database/sqlite/SQLiteException;
+    :goto_41
+    return-void
+
+    .line 363
+    .end local v0    # "db":Landroid/database/sqlite/SQLiteDatabase;
+    .end local v1    # "whereClause":Ljava/lang/String;
+    :cond_42
+    :goto_42
+    return-void
 .end method
 
 .method deleteStaleHits()I
-    .registers 13
-
-    .prologue
-    const/4 v7, 0x1
-
-    const/4 v6, 0x0
+    .registers 12
 
     .line 339
-    iget-object v8, p0, Lcom/google/tagmanager/PersistentHitStore;->mClock:Lcom/google/tagmanager/Clock;
+    iget-object v0, p0, Lcom/google/tagmanager/PersistentHitStore;->mClock:Lcom/google/tagmanager/Clock;
 
-    invoke-interface {v8}, Lcom/google/tagmanager/Clock;->currentTimeMillis()J
+    invoke-interface {v0}, Lcom/google/tagmanager/Clock;->currentTimeMillis()J
+
+    move-result-wide v0
+
+    .line 342
+    .local v0, "now":J
+    iget-wide v2, p0, Lcom/google/tagmanager/PersistentHitStore;->mLastDeleteStaleHitsTime:J
+
+    const-wide/32 v4, 0x5265c00
+
+    add-long/2addr v2, v4
+
+    cmp-long v2, v0, v2
+
+    const/4 v3, 0x0
+
+    if-gtz v2, :cond_12
+
+    .line 343
+    return v3
+
+    .line 345
+    :cond_12
+    iput-wide v0, p0, Lcom/google/tagmanager/PersistentHitStore;->mLastDeleteStaleHitsTime:J
+
+    .line 346
+    const-string v2, "Error opening database for deleteStaleHits."
+
+    invoke-direct {p0, v2}, Lcom/google/tagmanager/PersistentHitStore;->getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
+
+    move-result-object v2
+
+    .line 347
+    .local v2, "db":Landroid/database/sqlite/SQLiteDatabase;
+    if-nez v2, :cond_1d
+
+    .line 348
+    return v3
+
+    .line 350
+    :cond_1d
+    iget-object v4, p0, Lcom/google/tagmanager/PersistentHitStore;->mClock:Lcom/google/tagmanager/Clock;
+
+    invoke-interface {v4}, Lcom/google/tagmanager/Clock;->currentTimeMillis()J
 
     move-result-wide v4
 
-    .line 342
-    .local v4, "now":J
-    iget-wide v8, p0, Lcom/google/tagmanager/PersistentHitStore;->mLastDeleteStaleHitsTime:J
+    const-wide v6, 0x9a7ec800L
 
-    const-wide/32 v10, 0x5265c00
-
-    add-long/2addr v8, v10
-
-    cmp-long v8, v4, v8
-
-    if-lez v8, :cond_16
-
-    move v8, v7
-
-    :goto_13
-    if-nez v8, :cond_18
-
-    .line 343
-    return v6
-
-    :cond_16
-    move v8, v6
-
-    .line 342
-    goto :goto_13
-
-    .line 345
-    :cond_18
-    iput-wide v4, p0, Lcom/google/tagmanager/PersistentHitStore;->mLastDeleteStaleHitsTime:J
-
-    .line 346
-    const-string/jumbo v8, "Error opening database for deleteStaleHits."
-
-    invoke-direct {p0, v8}, Lcom/google/tagmanager/PersistentHitStore;->getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
-
-    move-result-object v0
-
-    .line 347
-    .local v0, "db":Landroid/database/sqlite/SQLiteDatabase;
-    if-eqz v0, :cond_4e
-
-    .line 350
-    iget-object v8, p0, Lcom/google/tagmanager/PersistentHitStore;->mClock:Lcom/google/tagmanager/Clock;
-
-    invoke-interface {v8}, Lcom/google/tagmanager/Clock;->currentTimeMillis()J
-
-    move-result-wide v8
-
-    const-wide v10, 0x9a7ec800L
-
-    sub-long v2, v8, v10
+    sub-long/2addr v4, v6
 
     .line 351
-    .local v2, "lastGoodTime":J
-    new-array v8, v7, [Ljava/lang/String;
+    .local v4, "lastGoodTime":J
+    const-string v6, "gtm_hits"
 
-    invoke-static {v2, v3}, Ljava/lang/Long;->toString(J)Ljava/lang/String;
+    const-string v7, "HIT_TIME < ?"
 
-    move-result-object v9
+    const/4 v8, 0x1
 
-    aput-object v9, v8, v6
+    new-array v9, v8, [Ljava/lang/String;
 
-    const-string/jumbo v9, "gtm_hits"
+    invoke-static {v4, v5}, Ljava/lang/Long;->toString(J)Ljava/lang/String;
 
-    const-string/jumbo v10, "HIT_TIME < ?"
+    move-result-object v10
 
-    invoke-virtual {v0, v9, v10, v8}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    aput-object v10, v9, v3
 
-    move-result v1
+    invoke-virtual {v2, v6, v7, v9}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+
+    move-result v6
 
     .line 352
-    .local v1, "rslt":I
-    iget-object v8, p0, Lcom/google/tagmanager/PersistentHitStore;->mListener:Lcom/google/tagmanager/HitStoreStateListener;
+    .local v6, "rslt":I
+    iget-object v7, p0, Lcom/google/tagmanager/PersistentHitStore;->mListener:Lcom/google/tagmanager/HitStoreStateListener;
 
     invoke-virtual {p0}, Lcom/google/tagmanager/PersistentHitStore;->getNumStoredHits()I
 
     move-result v9
 
-    if-eqz v9, :cond_4f
+    if-nez v9, :cond_44
 
-    :goto_4a
-    invoke-interface {v8, v6}, Lcom/google/tagmanager/HitStoreStateListener;->reportStoreIsEmpty(Z)V
+    move v3, v8
+
+    nop
+
+    :cond_44
+    invoke-interface {v7, v3}, Lcom/google/tagmanager/HitStoreStateListener;->reportStoreIsEmpty(Z)V
 
     .line 353
-    return v1
-
-    .line 348
-    .end local v1    # "rslt":I
-    .end local v2    # "lastGoodTime":J
-    :cond_4e
     return v6
-
-    .restart local v1    # "rslt":I
-    .restart local v2    # "lastGoodTime":J
-    :cond_4f
-    move v6, v7
-
-    .line 352
-    goto :goto_4a
 .end method
 
 .method public dispatch()V
     .registers 4
 
-    .prologue
     .line 452
-    const-string/jumbo v1, "GTM Dispatch running..."
+    const-string v0, "GTM Dispatch running..."
 
-    invoke-static {v1}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
+    invoke-static {v0}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
 
     .line 454
-    iget-object v1, p0, Lcom/google/tagmanager/PersistentHitStore;->mDispatcher:Lcom/google/tagmanager/Dispatcher;
+    iget-object v0, p0, Lcom/google/tagmanager/PersistentHitStore;->mDispatcher:Lcom/google/tagmanager/Dispatcher;
 
-    invoke-interface {v1}, Lcom/google/tagmanager/Dispatcher;->okToDispatch()Z
+    invoke-interface {v0}, Lcom/google/tagmanager/Dispatcher;->okToDispatch()Z
 
-    move-result v1
+    move-result v0
 
-    if-eqz v1, :cond_26
+    if-nez v0, :cond_e
+
+    .line 455
+    return-void
 
     .line 458
-    const/16 v1, 0x28
+    :cond_e
+    const/16 v0, 0x28
 
-    invoke-virtual {p0, v1}, Lcom/google/tagmanager/PersistentHitStore;->peekHits(I)Ljava/util/List;
+    invoke-virtual {p0, v0}, Lcom/google/tagmanager/PersistentHitStore;->peekHits(I)Ljava/util/List;
 
     move-result-object v0
 
@@ -883,33 +853,10 @@
 
     move-result v1
 
-    if-nez v1, :cond_27
-
-    .line 464
-    iget-object v1, p0, Lcom/google/tagmanager/PersistentHitStore;->mDispatcher:Lcom/google/tagmanager/Dispatcher;
-
-    invoke-interface {v1, v0}, Lcom/google/tagmanager/Dispatcher;->dispatchHits(Ljava/util/List;)V
-
-    .line 468
-    invoke-virtual {p0}, Lcom/google/tagmanager/PersistentHitStore;->getNumStoredUntriedHits()I
-
-    move-result v1
-
-    if-gtz v1, :cond_34
-
-    .line 471
-    :goto_25
-    return-void
-
-    .line 455
-    .end local v0    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    :cond_26
-    return-void
+    if-eqz v1, :cond_26
 
     .line 460
-    .restart local v0    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    :cond_27
-    const-string/jumbo v1, "...nothing to dispatch"
+    const-string v1, "...nothing to dispatch"
 
     invoke-static {v1}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
 
@@ -923,15 +870,29 @@
     .line 462
     return-void
 
+    .line 464
+    :cond_26
+    iget-object v1, p0, Lcom/google/tagmanager/PersistentHitStore;->mDispatcher:Lcom/google/tagmanager/Dispatcher;
+
+    invoke-interface {v1, v0}, Lcom/google/tagmanager/Dispatcher;->dispatchHits(Ljava/util/List;)V
+
+    .line 468
+    invoke-virtual {p0}, Lcom/google/tagmanager/PersistentHitStore;->getNumStoredUntriedHits()I
+
+    move-result v1
+
+    if-lez v1, :cond_38
+
     .line 469
-    :cond_34
     invoke-static {}, Lcom/google/tagmanager/ServiceManagerImpl;->getInstance()Lcom/google/tagmanager/ServiceManagerImpl;
 
     move-result-object v1
 
     invoke-virtual {v1}, Lcom/google/tagmanager/ServiceManagerImpl;->dispatch()V
 
-    goto :goto_25
+    .line 471
+    :cond_38
+    return-void
 .end method
 
 .method public getDbHelper()Lcom/google/tagmanager/PersistentHitStore$UrlDatabaseHelper;
@@ -939,7 +900,6 @@
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 128
     iget-object v0, p0, Lcom/google/tagmanager/PersistentHitStore;->mDbHelper:Lcom/google/tagmanager/PersistentHitStore$UrlDatabaseHelper;
 
@@ -949,7 +909,6 @@
 .method public getDispatcher()Lcom/google/tagmanager/Dispatcher;
     .registers 2
 
-    .prologue
     .line 502
     iget-object v0, p0, Lcom/google/tagmanager/PersistentHitStore;->mDispatcher:Lcom/google/tagmanager/Dispatcher;
 
@@ -961,7 +920,6 @@
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 518
     iget-object v0, p0, Lcom/google/tagmanager/PersistentHitStore;->mDbHelper:Lcom/google/tagmanager/PersistentHitStore$UrlDatabaseHelper;
 
@@ -969,248 +927,229 @@
 .end method
 
 .method getNumStoredHits()I
-    .registers 9
-
-    .prologue
-    const/4 v6, 0x0
+    .registers 7
 
     .line 403
-    const/4 v4, 0x0
+    const/4 v0, 0x0
 
     .line 404
-    .local v4, "numStoredHits":I
-    const-string/jumbo v5, "Error opening database for getNumStoredHits."
-
-    invoke-direct {p0, v5}, Lcom/google/tagmanager/PersistentHitStore;->getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
-
-    move-result-object v2
-
-    .line 405
-    .local v2, "db":Landroid/database/sqlite/SQLiteDatabase;
-    if-eqz v2, :cond_1d
-
-    .line 408
-    const/4 v1, 0x0
-
-    .line 410
-    .local v1, "cursor":Landroid/database/Cursor;
-    :try_start_c
-    const-string/jumbo v5, "SELECT COUNT(*) from gtm_hits"
-
-    const/4 v6, 0x0
-
-    invoke-virtual {v2, v5, v6}, Landroid/database/sqlite/SQLiteDatabase;->rawQuery(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-
-    move-result-object v1
-
-    .line 411
-    invoke-interface {v1}, Landroid/database/Cursor;->moveToFirst()Z
-
-    move-result v5
-
-    if-nez v5, :cond_1e
-
-    .line 417
-    :goto_1a
-    if-nez v1, :cond_25
-
-    .line 421
-    .end local v1    # "cursor":Landroid/database/Cursor;
-    :cond_1c
-    :goto_1c
-    return v4
-
-    .line 406
-    :cond_1d
-    return v6
-
-    .line 412
-    .restart local v1    # "cursor":Landroid/database/Cursor;
-    :cond_1e
-    const/4 v5, 0x0
-
-    invoke-interface {v1, v5}, Landroid/database/Cursor;->getLong(I)J
-    :try_end_22
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_c .. :try_end_22} :catch_29
-    .catchall {:try_start_c .. :try_end_22} :catchall_36
-
-    move-result-wide v6
-
-    long-to-int v4, v6
-
-    goto :goto_1a
-
-    .line 418
-    :cond_25
-    invoke-interface {v1}, Landroid/database/Cursor;->close()V
-
-    goto :goto_1c
-
-    .line 414
-    .end local v1    # "cursor":Landroid/database/Cursor;
-    :catch_29
-    move-exception v3
-
-    .line 415
-    .local v3, "e":Landroid/database/sqlite/SQLiteException;
-    :try_start_2a
-    const-string/jumbo v5, "Error getting numStoredHits"
-
-    invoke-static {v5}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
-    :try_end_30
-    .catchall {:try_start_2a .. :try_end_30} :catchall_36
-
-    .line 417
-    if-eqz v1, :cond_1c
-
-    .line 418
-    invoke-interface {v1}, Landroid/database/Cursor;->close()V
-
-    goto :goto_1c
-
-    .line 417
-    .end local v3    # "e":Landroid/database/sqlite/SQLiteException;
-    :catchall_36
-    move-exception v0
-
-    .local v0, "-l_5_R":Ljava/lang/Object;
-    if-nez v1, :cond_3a
-
-    .line 418
-    :goto_39
-    throw v0
-
-    :cond_3a
-    invoke-interface {v1}, Landroid/database/Cursor;->close()V
-
-    goto :goto_39
-.end method
-
-.method getNumStoredUntriedHits()I
-    .registers 13
-
-    .prologue
-    const/4 v2, 0x0
-
-    .line 425
-    const/4 v11, 0x0
-
-    .line 426
-    .local v11, "numStoredHits":I
-    const-string/jumbo v1, "Error opening database for getNumStoredHits."
+    .local v0, "numStoredHits":I
+    const-string v1, "Error opening database for getNumStoredHits."
 
     invoke-direct {p0, v1}, Lcom/google/tagmanager/PersistentHitStore;->getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
 
-    move-result-object v0
+    move-result-object v1
+
+    .line 405
+    .local v1, "db":Landroid/database/sqlite/SQLiteDatabase;
+    if-nez v1, :cond_a
+
+    .line 406
+    return v0
+
+    .line 408
+    :cond_a
+    const/4 v2, 0x0
+
+    move-object v3, v2
+
+    .line 410
+    .local v3, "cursor":Landroid/database/Cursor;
+    :try_start_c
+    const-string v4, "SELECT COUNT(*) from gtm_hits"
+
+    invoke-virtual {v1, v4, v2}, Landroid/database/sqlite/SQLiteDatabase;->rawQuery(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+
+    move-result-object v2
+
+    move-object v3, v2
+
+    .line 411
+    invoke-interface {v3}, Landroid/database/Cursor;->moveToFirst()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_1f
+
+    .line 412
+    const/4 v2, 0x0
+
+    invoke-interface {v3, v2}, Landroid/database/Cursor;->getLong(I)J
+
+    move-result-wide v4
+    :try_end_1e
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_c .. :try_end_1e} :catch_27
+    .catchall {:try_start_c .. :try_end_1e} :catchall_25
+
+    long-to-int v0, v4
+
+    .line 417
+    :cond_1f
+    if-eqz v3, :cond_30
+
+    .line 418
+    :goto_21
+    invoke-interface {v3}, Landroid/database/Cursor;->close()V
+
+    goto :goto_30
+
+    .line 417
+    :catchall_25
+    move-exception v2
+
+    goto :goto_31
+
+    .line 414
+    :catch_27
+    move-exception v2
+
+    .line 415
+    .local v2, "e":Landroid/database/sqlite/SQLiteException;
+    :try_start_28
+    const-string v4, "Error getting numStoredHits"
+
+    invoke-static {v4}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
+    :try_end_2d
+    .catchall {:try_start_28 .. :try_end_2d} :catchall_25
+
+    .line 417
+    .end local v2    # "e":Landroid/database/sqlite/SQLiteException;
+    if-eqz v3, :cond_30
+
+    goto :goto_21
+
+    .line 421
+    :cond_30
+    :goto_30
+    return v0
+
+    .line 417
+    :goto_31
+    if-eqz v3, :cond_36
+
+    .line 418
+    invoke-interface {v3}, Landroid/database/Cursor;->close()V
+
+    :cond_36
+    throw v2
+.end method
+
+.method getNumStoredUntriedHits()I
+    .registers 12
+
+    .line 425
+    const/4 v0, 0x0
+
+    .line 426
+    .local v0, "numStoredHits":I
+    const-string v1, "Error opening database for getNumStoredHits."
+
+    invoke-direct {p0, v1}, Lcom/google/tagmanager/PersistentHitStore;->getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
+
+    move-result-object v1
 
     .line 427
-    .local v0, "db":Landroid/database/sqlite/SQLiteDatabase;
-    if-eqz v0, :cond_30
+    .local v1, "db":Landroid/database/sqlite/SQLiteDatabase;
+    if-nez v1, :cond_a
+
+    .line 428
+    return v0
 
     .line 430
-    const/4 v9, 0x0
+    :cond_a
+    const/4 v2, 0x0
+
+    move-object v10, v2
 
     .line 432
-    .local v9, "cursor":Landroid/database/Cursor;
-    const/4 v1, 0x2
+    .local v10, "cursor":Landroid/database/Cursor;
+    :try_start_c
+    const-string v3, "gtm_hits"
 
-    :try_start_d
-    new-array v2, v1, [Ljava/lang/String;
+    const-string v2, "hit_id"
 
-    const-string/jumbo v1, "hit_id"
+    const-string v4, "hit_first_send_time"
 
-    const/4 v3, 0x0
+    filled-new-array {v2, v4}, [Ljava/lang/String;
 
-    aput-object v1, v2, v3
+    move-result-object v4
 
-    const-string/jumbo v1, "hit_first_send_time"
-
-    const/4 v3, 0x1
-
-    aput-object v1, v2, v3
-
-    const-string/jumbo v1, "gtm_hits"
-
-    const-string/jumbo v3, "hit_first_send_time=0"
-
-    const/4 v4, 0x0
-
-    const/4 v5, 0x0
+    const-string v5, "hit_first_send_time=0"
 
     const/4 v6, 0x0
 
     const/4 v7, 0x0
 
-    invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    const/4 v8, 0x0
 
-    move-result-object v9
+    const/4 v9, 0x0
+
+    move-object v2, v1
+
+    invoke-virtual/range {v2 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+
+    move-result-object v2
+
+    move-object v10, v2
 
     .line 439
-    invoke-interface {v9}, Landroid/database/Cursor;->getCount()I
-    :try_end_2c
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_d .. :try_end_2c} :catch_35
-    .catchall {:try_start_d .. :try_end_2c} :catchall_42
+    invoke-interface {v10}, Landroid/database/Cursor;->getCount()I
 
-    move-result v11
+    move-result v2
+    :try_end_26
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_c .. :try_end_26} :catch_2f
+    .catchall {:try_start_c .. :try_end_26} :catchall_2d
+
+    move v0, v2
 
     .line 443
-    if-nez v9, :cond_31
-
-    .line 447
-    .end local v9    # "cursor":Landroid/database/Cursor;
-    :cond_2f
-    :goto_2f
-    return v11
-
-    .line 428
-    :cond_30
-    return v2
+    if-eqz v10, :cond_38
 
     .line 444
-    .restart local v9    # "cursor":Landroid/database/Cursor;
-    :cond_31
-    invoke-interface {v9}, Landroid/database/Cursor;->close()V
+    :goto_29
+    invoke-interface {v10}, Landroid/database/Cursor;->close()V
 
-    goto :goto_2f
+    goto :goto_38
+
+    .line 443
+    :catchall_2d
+    move-exception v2
+
+    goto :goto_39
 
     .line 440
-    .end local v9    # "cursor":Landroid/database/Cursor;
-    :catch_35
-    move-exception v10
+    :catch_2f
+    move-exception v2
 
     .line 441
-    .local v10, "e":Landroid/database/sqlite/SQLiteException;
-    :try_start_36
-    const-string/jumbo v1, "Error getting num untried hits"
+    .local v2, "e":Landroid/database/sqlite/SQLiteException;
+    :try_start_30
+    const-string v3, "Error getting num untried hits"
 
-    invoke-static {v1}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
-    :try_end_3c
-    .catchall {:try_start_36 .. :try_end_3c} :catchall_42
-
-    .line 443
-    if-eqz v9, :cond_2f
-
-    .line 444
-    invoke-interface {v9}, Landroid/database/Cursor;->close()V
-
-    goto :goto_2f
+    invoke-static {v3}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
+    :try_end_35
+    .catchall {:try_start_30 .. :try_end_35} :catchall_2d
 
     .line 443
-    .end local v10    # "e":Landroid/database/sqlite/SQLiteException;
-    :catchall_42
-    move-exception v8
+    .end local v2    # "e":Landroid/database/sqlite/SQLiteException;
+    if-eqz v10, :cond_38
 
-    .local v8, "-l_5_R":Ljava/lang/Object;
-    if-nez v9, :cond_46
+    goto :goto_29
+
+    .line 447
+    :cond_38
+    :goto_38
+    return v0
+
+    .line 443
+    :goto_39
+    if-eqz v10, :cond_3e
 
     .line 444
-    :goto_45
-    throw v8
+    invoke-interface {v10}, Landroid/database/Cursor;->close()V
 
-    :cond_46
-    invoke-interface {v9}, Landroid/database/Cursor;->close()V
-
-    goto :goto_45
+    :cond_3e
+    throw v2
 .end method
 
 .method peekHitIds(I)Ljava/util/List;
@@ -1219,296 +1158,60 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(I)",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;"
         }
     .end annotation
 
-    .prologue
     .line 191
-    new-instance v12, Ljava/util/ArrayList;
+    new-instance v0, Ljava/util/ArrayList;
 
-    invoke-direct {v12}, Ljava/util/ArrayList;-><init>()V
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     .line 192
-    .local v12, "hitIds":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
-    if-lez p1, :cond_42
-
-    .line 196
-    const-string/jumbo v1, "Error opening database for peekHitIds."
-
-    invoke-direct {p0, v1}, Lcom/google/tagmanager/PersistentHitStore;->getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
-
-    move-result-object v0
-
-    .line 197
-    .local v0, "db":Landroid/database/sqlite/SQLiteDatabase;
-    if-eqz v0, :cond_49
-
-    .line 201
-    const/4 v10, 0x0
-
-    .line 203
-    .local v10, "cursor":Landroid/database/Cursor;
-    const/4 v1, 0x1
-
-    :try_start_12
-    new-array v2, v1, [Ljava/lang/String;
-
-    const-string/jumbo v1, "hit_id"
-
-    const/4 v3, 0x0
-
-    aput-object v1, v2, v3
-
-    const/4 v1, 0x1
-
-    new-array v1, v1, [Ljava/lang/Object;
-
-    const-string/jumbo v3, "hit_id"
-
-    const/4 v4, 0x0
-
-    aput-object v3, v1, v4
-
-    const-string/jumbo v3, "%s ASC"
-
-    invoke-static {v3, v1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-static {p1}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
-
-    move-result-object v8
-
-    const-string/jumbo v1, "gtm_hits"
-
-    const/4 v3, 0x0
-
-    const/4 v4, 0x0
-
-    const/4 v5, 0x0
-
-    const/4 v6, 0x0
-
-    invoke-virtual/range {v0 .. v8}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-
-    move-result-object v10
-
-    .line 211
-    invoke-interface {v10}, Landroid/database/Cursor;->moveToFirst()Z
-    :try_end_3c
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_12 .. :try_end_3c} :catch_61
-    .catchall {:try_start_12 .. :try_end_3c} :catchall_83
-
-    move-result v1
-
-    if-nez v1, :cond_4a
-
-    .line 219
-    :cond_3f
-    if-nez v10, :cond_5d
-
-    .line 223
-    .end local v10    # "cursor":Landroid/database/Cursor;
-    :cond_41
-    :goto_41
-    return-object v12
+    .local v0, "hitIds":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
+    if-gtz p1, :cond_d
 
     .line 193
-    .end local v0    # "db":Landroid/database/sqlite/SQLiteDatabase;
-    :cond_42
-    const-string/jumbo v1, "Invalid maxHits specified. Skipping"
+    const-string v1, "Invalid maxHits specified. Skipping"
 
     invoke-static {v1}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
 
     .line 194
-    return-object v12
+    return-object v0
+
+    .line 196
+    :cond_d
+    const-string v1, "Error opening database for peekHitIds."
+
+    invoke-direct {p0, v1}, Lcom/google/tagmanager/PersistentHitStore;->getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
+
+    move-result-object v1
+
+    .line 197
+    .local v1, "db":Landroid/database/sqlite/SQLiteDatabase;
+    if-nez v1, :cond_16
 
     .line 198
-    .restart local v0    # "db":Landroid/database/sqlite/SQLiteDatabase;
-    :cond_49
-    return-object v12
+    return-object v0
 
-    .line 213
-    .restart local v10    # "cursor":Landroid/database/Cursor;
-    :cond_4a
-    :goto_4a
-    const/4 v1, 0x0
+    .line 201
+    :cond_16
+    const/4 v2, 0x0
 
-    :try_start_4b
-    invoke-interface {v10, v1}, Landroid/database/Cursor;->getLong(I)J
+    move-object v11, v2
 
-    move-result-wide v2
+    .line 203
+    .local v11, "cursor":Landroid/database/Cursor;
+    :try_start_18
+    const-string v3, "gtm_hits"
 
-    invoke-static {v2, v3}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
+    const-string v2, "hit_id"
 
-    move-result-object v1
+    filled-new-array {v2}, [Ljava/lang/String;
 
-    invoke-interface {v12, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
-
-    .line 214
-    invoke-interface {v10}, Landroid/database/Cursor;->moveToNext()Z
-    :try_end_59
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_4b .. :try_end_59} :catch_61
-    .catchall {:try_start_4b .. :try_end_59} :catchall_83
-
-    move-result v1
-
-    if-eqz v1, :cond_3f
-
-    goto :goto_4a
-
-    .line 220
-    :cond_5d
-    invoke-interface {v10}, Landroid/database/Cursor;->close()V
-
-    goto :goto_41
-
-    .line 216
-    .end local v10    # "cursor":Landroid/database/Cursor;
-    :catch_61
-    move-exception v11
-
-    .line 217
-    .local v11, "e":Landroid/database/sqlite/SQLiteException;
-    :try_start_62
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v2, "Error in peekHits fetching hitIds: "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v11}, Landroid/database/sqlite/SQLiteException;->getMessage()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-static {v1}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
-    :try_end_7d
-    .catchall {:try_start_62 .. :try_end_7d} :catchall_83
-
-    .line 219
-    if-eqz v10, :cond_41
-
-    .line 220
-    invoke-interface {v10}, Landroid/database/Cursor;->close()V
-
-    goto :goto_41
-
-    .line 219
-    .end local v11    # "e":Landroid/database/sqlite/SQLiteException;
-    :catchall_83
-    move-exception v9
-
-    .local v9, "-l_6_R":Ljava/lang/Object;
-    if-nez v10, :cond_87
-
-    .line 220
-    :goto_86
-    throw v9
-
-    :cond_87
-    invoke-interface {v10}, Landroid/database/Cursor;->close()V
-
-    goto :goto_86
-.end method
-
-.method public peekHits(I)Ljava/util/List;
-    .registers 28
-    .param p1, "maxHits"    # I
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(I)",
-            "Ljava/util/List",
-            "<",
-            "Lcom/google/tagmanager/Hit;",
-            ">;"
-        }
-    .end annotation
-
-    .prologue
-    .line 234
-    new-instance v22, Ljava/util/ArrayList;
-
-    invoke-direct/range {v22 .. v22}, Ljava/util/ArrayList;-><init>()V
-
-    .line 235
-    .local v22, "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    const-string/jumbo v4, "Error opening database for peekHits"
-
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v4}, Lcom/google/tagmanager/PersistentHitStore;->getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
-
-    move-result-object v2
-
-    .line 236
-    .local v2, "db":Landroid/database/sqlite/SQLiteDatabase;
-    if-eqz v2, :cond_8f
-
-    .line 240
-    const/16 v18, 0x0
-
-    .line 248
-    .local v18, "cursor":Landroid/database/Cursor;
-    const/4 v4, 0x3
-
-    :try_start_13
-    new-array v4, v4, [Ljava/lang/String;
-
-    const-string/jumbo v5, "hit_id"
-
-    const/4 v6, 0x0
-
-    aput-object v5, v4, v6
-
-    const-string/jumbo v5, "hit_time"
-
-    const/4 v6, 0x1
-
-    aput-object v5, v4, v6
-
-    const-string/jumbo v5, "hit_first_send_time"
-
-    const/4 v6, 0x2
-
-    aput-object v5, v4, v6
-
-    const/4 v5, 0x1
-
-    new-array v5, v5, [Ljava/lang/Object;
-
-    const-string/jumbo v6, "hit_id"
-
-    const/4 v7, 0x0
-
-    aput-object v6, v5, v7
-
-    const-string/jumbo v6, "%s ASC"
-
-    invoke-static {v6, v5}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-
-    move-result-object v9
-
-    invoke-static/range {p1 .. p1}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
-
-    move-result-object v10
-
-    const-string/jumbo v3, "gtm_hits"
+    move-result-object v4
 
     const/4 v5, 0x0
 
@@ -1518,79 +1221,188 @@
 
     const/4 v8, 0x0
 
+    const-string v2, "%s ASC"
+
+    const/4 v9, 0x1
+
+    new-array v9, v9, [Ljava/lang/Object;
+
+    const-string v10, "hit_id"
+
+    const/4 v12, 0x0
+
+    aput-object v10, v9, v12
+
+    invoke-static {v2, v9}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v9
+
+    invoke-static {p1}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
+
+    move-result-object v10
+
+    move-object v2, v1
+
     invoke-virtual/range {v2 .. v10}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v18
+    move-result-object v2
 
-    .line 257
-    new-instance v23, Ljava/util/ArrayList;
+    move-object v11, v2
 
-    invoke-direct/range {v23 .. v23}, Ljava/util/ArrayList;-><init>()V
-    :try_end_4b
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_13 .. :try_end_4b} :catch_ba
-    .catchall {:try_start_13 .. :try_end_4b} :catchall_df
+    .line 211
+    invoke-interface {v11}, Landroid/database/Cursor;->moveToFirst()Z
 
-    .line 258
-    .end local v22    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    .local v23, "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    :try_start_4b
-    invoke-interface/range {v18 .. v18}, Landroid/database/Cursor;->moveToFirst()Z
-    :try_end_4e
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_4b .. :try_end_4e} :catch_19d
-    .catchall {:try_start_4b .. :try_end_4e} :catchall_193
+    move-result v2
 
-    move-result v4
+    if-eqz v2, :cond_53
 
-    if-nez v4, :cond_90
+    .line 213
+    :cond_42
+    invoke-interface {v11, v12}, Landroid/database/Cursor;->getLong(I)J
 
-    .line 268
-    :cond_51
-    if-nez v18, :cond_b6
+    move-result-wide v2
 
-    .line 273
-    :goto_53
-    const/16 v17, 0x0
+    invoke-static {v2, v3}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
 
-    .line 275
-    .local v17, "count":I
-    const/4 v4, 0x2
+    move-result-object v2
 
-    :try_start_56
-    new-array v6, v4, [Ljava/lang/String;
+    invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    const-string/jumbo v4, "hit_id"
+    .line 214
+    invoke-interface {v11}, Landroid/database/Cursor;->moveToNext()Z
 
-    const/4 v5, 0x0
+    move-result v2
+    :try_end_51
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_18 .. :try_end_51} :catch_5b
+    .catchall {:try_start_18 .. :try_end_51} :catchall_59
 
-    aput-object v4, v6, v5
+    if-nez v2, :cond_42
 
-    const-string/jumbo v4, "hit_url"
+    .line 219
+    :cond_53
+    if-eqz v11, :cond_77
 
-    const/4 v5, 0x1
+    .line 220
+    :goto_55
+    invoke-interface {v11}, Landroid/database/Cursor;->close()V
 
-    aput-object v4, v6, v5
+    goto :goto_77
 
-    const/4 v4, 0x1
+    .line 219
+    :catchall_59
+    move-exception v2
 
-    new-array v4, v4, [Ljava/lang/Object;
+    goto :goto_78
 
-    const-string/jumbo v5, "hit_id"
+    .line 216
+    :catch_5b
+    move-exception v2
 
-    const/4 v7, 0x0
+    .line 217
+    .local v2, "e":Landroid/database/sqlite/SQLiteException;
+    :try_start_5c
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    aput-object v5, v4, v7
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v5, "%s ASC"
+    const-string v4, "Error in peekHits fetching hitIds: "
 
-    invoke-static {v5, v4}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v11
+    invoke-virtual {v2}, Landroid/database/sqlite/SQLiteException;->getMessage()Ljava/lang/String;
 
-    invoke-static/range {p1 .. p1}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-static {v3}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
+    :try_end_74
+    .catchall {:try_start_5c .. :try_end_74} :catchall_59
+
+    .line 219
+    .end local v2    # "e":Landroid/database/sqlite/SQLiteException;
+    if-eqz v11, :cond_77
+
+    goto :goto_55
+
+    .line 223
+    :cond_77
+    :goto_77
+    return-object v0
+
+    .line 219
+    :goto_78
+    if-eqz v11, :cond_7d
+
+    .line 220
+    invoke-interface {v11}, Landroid/database/Cursor;->close()V
+
+    :cond_7d
+    throw v2
+.end method
+
+.method public peekHits(I)Ljava/util/List;
+    .registers 19
+    .param p1, "maxHits"    # I
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(I)",
+            "Ljava/util/List<",
+            "Lcom/google/tagmanager/Hit;",
+            ">;"
+        }
+    .end annotation
+
+    .line 234
+    new-instance v0, Ljava/util/ArrayList;
+
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+
+    move-object v1, v0
+
+    .line 235
+    .local v1, "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
+    const-string v0, "Error opening database for peekHits"
+
+    move-object/from16 v2, p0
+
+    invoke-direct {v2, v0}, Lcom/google/tagmanager/PersistentHitStore;->getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
 
     move-result-object v12
 
-    const-string/jumbo v5, "gtm_hits"
+    .line 236
+    .local v12, "db":Landroid/database/sqlite/SQLiteDatabase;
+    if-nez v12, :cond_11
+
+    .line 237
+    return-object v1
+
+    .line 240
+    :cond_11
+    const/4 v0, 0x0
+
+    move-object v13, v0
+
+    .line 248
+    .local v13, "cursor":Landroid/database/Cursor;
+    :try_start_13
+    const-string v4, "gtm_hits"
+
+    const-string v0, "hit_id"
+
+    const-string v3, "hit_time"
+
+    const-string v5, "hit_first_send_time"
+
+    filled-new-array {v0, v3, v5}, [Ljava/lang/String;
+
+    move-result-object v5
+
+    const/4 v6, 0x0
 
     const/4 v7, 0x0
 
@@ -1598,504 +1410,457 @@
 
     const/4 v9, 0x0
 
-    const/4 v10, 0x0
+    const-string v0, "%s ASC"
 
-    move-object v4, v2
+    const/4 v14, 0x1
 
-    invoke-virtual/range {v4 .. v12}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    new-array v3, v14, [Ljava/lang/Object;
 
-    move-result-object v18
+    const-string v10, "hit_id"
 
-    .line 284
-    invoke-interface/range {v18 .. v18}, Landroid/database/Cursor;->moveToFirst()Z
-    :try_end_87
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_56 .. :try_end_87} :catch_135
-    .catchall {:try_start_56 .. :try_end_87} :catchall_182
+    const/4 v15, 0x0
 
-    move-result v4
+    aput-object v10, v3, v15
 
-    if-nez v4, :cond_103
+    invoke-static {v0, v3}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
-    .line 299
-    :cond_8a
-    move-object/from16 v14, v23
+    move-result-object v10
 
-    .line 323
-    .local v14, "-l_6_R":Ljava/lang/Object;
-    if-nez v18, :cond_167
+    invoke-static/range {p1 .. p1}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
 
-    .line 324
-    :goto_8e
-    return-object v23
+    move-result-object v11
 
-    .line 237
-    .end local v14    # "-l_6_R":Ljava/lang/Object;
-    .end local v17    # "count":I
-    .end local v18    # "cursor":Landroid/database/Cursor;
-    .end local v23    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    .restart local v22    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    :cond_8f
-    return-object v22
+    move-object v3, v12
+
+    invoke-virtual/range {v3 .. v11}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+
+    move-result-object v0
+
+    move-object v13, v0
+
+    .line 257
+    new-instance v0, Ljava/util/ArrayList;
+
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+
+    move-object v1, v0
+
+    .line 258
+    invoke-interface {v13}, Landroid/database/Cursor;->moveToFirst()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_63
 
     .line 260
-    .end local v22    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    .restart local v18    # "cursor":Landroid/database/Cursor;
-    .restart local v23    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    :cond_90
-    :goto_90
-    :try_start_90
-    new-instance v3, Lcom/google/tagmanager/Hit;
+    :cond_47
+    new-instance v0, Lcom/google/tagmanager/Hit;
 
-    const/4 v4, 0x0
-
-    move-object/from16 v0, v18
-
-    invoke-interface {v0, v4}, Landroid/database/Cursor;->getLong(I)J
+    invoke-interface {v13, v15}, Landroid/database/Cursor;->getLong(I)J
 
     move-result-wide v4
 
-    const/4 v6, 0x1
-
-    move-object/from16 v0, v18
-
-    invoke-interface {v0, v6}, Landroid/database/Cursor;->getLong(I)J
+    invoke-interface {v13, v14}, Landroid/database/Cursor;->getLong(I)J
 
     move-result-wide v6
 
-    const/4 v8, 0x2
+    const/4 v3, 0x2
 
-    move-object/from16 v0, v18
-
-    invoke-interface {v0, v8}, Landroid/database/Cursor;->getLong(I)J
+    invoke-interface {v13, v3}, Landroid/database/Cursor;->getLong(I)J
 
     move-result-wide v8
 
+    move-object v3, v0
+
     invoke-direct/range {v3 .. v9}, Lcom/google/tagmanager/Hit;-><init>(JJJ)V
-    :try_end_aa
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_90 .. :try_end_aa} :catch_19d
-    .catchall {:try_start_90 .. :try_end_aa} :catchall_193
 
     .line 261
-    .local v3, "hit":Lcom/google/tagmanager/Hit;
-    :try_start_aa
-    move-object/from16 v0, v23
-
-    invoke-interface {v0, v3}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+    .local v0, "hit":Lcom/google/tagmanager/Hit;
+    invoke-interface {v1, v0}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     .line 262
-    invoke-interface/range {v18 .. v18}, Landroid/database/Cursor;->moveToNext()Z
-    :try_end_b2
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_aa .. :try_end_b2} :catch_1a2
-    .catchall {:try_start_aa .. :try_end_b2} :catchall_198
+    .end local v0    # "hit":Lcom/google/tagmanager/Hit;
+    invoke-interface {v13}, Landroid/database/Cursor;->moveToNext()Z
 
-    move-result v4
+    move-result v0
+    :try_end_61
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_13 .. :try_end_61} :catch_138
+    .catchall {:try_start_13 .. :try_end_61} :catchall_136
 
-    if-eqz v4, :cond_51
+    if-nez v0, :cond_47
 
-    goto :goto_90
+    .line 268
+    :cond_63
+    if-eqz v13, :cond_68
 
     .line 269
-    .end local v3    # "hit":Lcom/google/tagmanager/Hit;
-    :cond_b6
-    invoke-interface/range {v18 .. v18}, Landroid/database/Cursor;->close()V
+    invoke-interface {v13}, Landroid/database/Cursor;->close()V
 
-    goto :goto_53
+    .line 273
+    :cond_68
+    move/from16 v16, v15
 
-    .line 264
-    .end local v18    # "cursor":Landroid/database/Cursor;
-    .end local v23    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    .restart local v22    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    :catch_ba
-    move-exception v20
+    .line 275
+    .local v16, "count":I
+    :try_start_6a
+    const-string v4, "gtm_hits"
 
-    .line 265
-    .local v20, "e":Landroid/database/sqlite/SQLiteException;
-    :goto_bb
-    :try_start_bb
-    new-instance v4, Ljava/lang/StringBuilder;
+    const-string v0, "hit_id"
 
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+    const-string v3, "hit_url"
 
-    const-string/jumbo v5, "Error in peekHits fetching hitIds: "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual/range {v20 .. v20}, Landroid/database/sqlite/SQLiteException;->getMessage()Ljava/lang/String;
+    filled-new-array {v0, v3}, [Ljava/lang/String;
 
     move-result-object v5
 
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const/4 v6, 0x0
 
-    move-result-object v4
+    const/4 v7, 0x0
 
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    const/4 v8, 0x0
 
-    move-result-object v4
+    const/4 v9, 0x0
 
-    invoke-static {v4}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
-    :try_end_d6
-    .catchall {:try_start_bb .. :try_end_d6} :catchall_df
+    const-string v0, "%s ASC"
 
-    .line 266
-    move-object/from16 v14, v22
+    new-array v3, v14, [Ljava/lang/Object;
 
-    .line 268
-    .restart local v14    # "-l_6_R":Ljava/lang/Object;
-    if-nez v18, :cond_db
+    const-string v10, "hit_id"
 
-    .line 269
-    :goto_da
-    return-object v14
+    aput-object v10, v3, v15
 
-    :cond_db
-    invoke-interface/range {v18 .. v18}, Landroid/database/Cursor;->close()V
+    invoke-static {v0, v3}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
-    goto :goto_da
+    move-result-object v10
 
-    .line 268
-    .end local v14    # "-l_6_R":Ljava/lang/Object;
-    .end local v20    # "e":Landroid/database/sqlite/SQLiteException;
-    :catchall_df
-    move-exception v15
+    invoke-static/range {p1 .. p1}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
 
-    .local v15, "-l_7_R":Ljava/lang/Object;
-    :goto_e0
-    if-nez v18, :cond_e3
+    move-result-object v11
 
-    .line 269
-    :goto_e2
-    throw v15
+    move-object v3, v12
 
-    :cond_e3
-    invoke-interface/range {v18 .. v18}, Landroid/database/Cursor;->close()V
+    invoke-virtual/range {v3 .. v11}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    goto :goto_e2
+    move-result-object v0
+
+    move-object v13, v0
+
+    .line 284
+    invoke-interface {v13}, Landroid/database/Cursor;->moveToFirst()Z
+
+    move-result v0
+    :try_end_92
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_6a .. :try_end_92} :catch_e8
+    .catchall {:try_start_6a .. :try_end_92} :catchall_e6
+
+    if-eqz v0, :cond_df
+
+    .line 286
+    move/from16 v3, v16
+
+    .end local v16    # "count":I
+    .local v3, "count":I
+    :cond_96
+    :try_start_96
+    move-object v0, v13
+
+    check-cast v0, Landroid/database/sqlite/SQLiteCursor;
+
+    invoke-virtual {v0}, Landroid/database/sqlite/SQLiteCursor;->getWindow()Landroid/database/CursorWindow;
+
+    move-result-object v0
+
+    .line 290
+    .local v0, "cw":Landroid/database/CursorWindow;
+    invoke-virtual {v0}, Landroid/database/CursorWindow;->getNumRows()I
+
+    move-result v4
+
+    if-lez v4, :cond_b1
 
     .line 291
-    .end local v15    # "-l_7_R":Ljava/lang/Object;
-    .end local v22    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    .restart local v17    # "count":I
-    .restart local v18    # "cursor":Landroid/database/Cursor;
-    .local v19, "cw":Landroid/database/CursorWindow;
-    .restart local v23    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    :cond_e7
-    :try_start_e7
-    move-object/from16 v0, v23
-
-    move/from16 v1, v17
-
-    invoke-interface {v0, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    invoke-interface {v1, v3}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     move-result-object v4
 
     check-cast v4, Lcom/google/tagmanager/Hit;
 
-    const/4 v5, 0x1
-
-    move-object/from16 v0, v18
-
-    invoke-interface {v0, v5}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+    invoke-interface {v13, v14}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
 
     move-result-object v5
 
     invoke-virtual {v4, v5}, Lcom/google/tagmanager/Hit;->setHitUrl(Ljava/lang/String;)V
 
-    .line 296
-    :goto_fb
-    add-int/lit8 v17, v17, 0x1
-
-    .line 297
-    invoke-interface/range {v18 .. v18}, Landroid/database/Cursor;->moveToNext()Z
-
-    move-result v4
-
-    if-eqz v4, :cond_8a
-
-    .line 286
-    .end local v19    # "cw":Landroid/database/CursorWindow;
-    :cond_103
-    move-object/from16 v0, v18
-
-    check-cast v0, Landroid/database/sqlite/SQLiteCursor;
-
-    move-object v4, v0
-
-    invoke-virtual {v4}, Landroid/database/sqlite/SQLiteCursor;->getWindow()Landroid/database/CursorWindow;
-
-    move-result-object v19
-
-    .line 290
-    .restart local v19    # "cw":Landroid/database/CursorWindow;
-    invoke-virtual/range {v19 .. v19}, Landroid/database/CursorWindow;->getNumRows()I
-
-    move-result v4
-
-    if-gtz v4, :cond_e7
+    goto :goto_cc
 
     .line 293
-    const/4 v4, 0x1
+    :cond_b1
+    const-string v4, "HitString for hitId %d too large.  Hit will be deleted."
 
-    new-array v5, v4, [Ljava/lang/Object;
+    new-array v5, v14, [Ljava/lang/Object;
 
-    move-object/from16 v0, v23
+    invoke-interface {v1, v3}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    move/from16 v1, v17
+    move-result-object v6
 
-    invoke-interface {v0, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    check-cast v6, Lcom/google/tagmanager/Hit;
 
-    move-result-object v4
-
-    check-cast v4, Lcom/google/tagmanager/Hit;
-
-    invoke-virtual {v4}, Lcom/google/tagmanager/Hit;->getHitId()J
+    invoke-virtual {v6}, Lcom/google/tagmanager/Hit;->getHitId()J
 
     move-result-wide v6
 
     invoke-static {v6, v7}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
-    move-result-object v4
+    move-result-object v6
 
-    const/4 v6, 0x0
-
-    aput-object v4, v5, v6
-
-    const-string/jumbo v4, "HitString for hitId %d too large.  Hit will be deleted."
+    aput-object v6, v5, v15
 
     invoke-static {v4, v5}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v4
 
     invoke-static {v4}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
-    :try_end_134
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_e7 .. :try_end_134} :catch_135
-    .catchall {:try_start_e7 .. :try_end_134} :catchall_182
 
-    goto :goto_fb
+    .line 296
+    :goto_cc
+    add-int/lit8 v3, v3, 0x1
 
-    .line 300
-    .end local v19    # "cw":Landroid/database/CursorWindow;
-    :catch_135
-    move-exception v20
+    .line 297
+    .end local v0    # "cw":Landroid/database/CursorWindow;
+    invoke-interface {v13}, Landroid/database/Cursor;->moveToNext()Z
 
-    .line 301
-    .restart local v20    # "e":Landroid/database/sqlite/SQLiteException;
-    :try_start_136
-    new-instance v4, Ljava/lang/StringBuilder;
+    move-result v0
+    :try_end_d2
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_96 .. :try_end_d2} :catch_db
+    .catchall {:try_start_96 .. :try_end_d2} :catchall_d7
 
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+    if-nez v0, :cond_96
 
-    const-string/jumbo v5, "Error in peekHits fetching hit url: "
+    .line 299
+    move/from16 v16, v3
 
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual/range {v20 .. v20}, Landroid/database/sqlite/SQLiteException;->getMessage()Ljava/lang/String;
-
-    move-result-object v5
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-static {v4}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
-
-    .line 309
-    new-instance v25, Ljava/util/ArrayList;
-
-    invoke-direct/range {v25 .. v25}, Ljava/util/ArrayList;-><init>()V
-
-    .line 310
-    .local v25, "partialHits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    const/16 v21, 0x0
-
-    .line 311
-    .local v21, "foundOneBadHit":Z
-    invoke-interface/range {v23 .. v23}, Ljava/util/List;->iterator()Ljava/util/Iterator;
-
-    move-result-object v24
-
-    .local v24, "i$":Ljava/util/Iterator;
-    :goto_15c
-    invoke-interface/range {v24 .. v24}, Ljava/util/Iterator;->hasNext()Z
-    :try_end_15f
-    .catchall {:try_start_136 .. :try_end_15f} :catchall_182
-
-    move-result v4
-
-    if-nez v4, :cond_16c
-
-    .line 321
-    :cond_162
-    move-object/from16 v16, v25
+    goto :goto_df
 
     .line 323
-    .local v16, "-l_9_R":Ljava/lang/Object;
-    if-nez v18, :cond_18b
+    :catchall_d7
+    move-exception v0
+
+    move/from16 v16, v3
+
+    goto :goto_130
+
+    .line 300
+    :catch_db
+    move-exception v0
+
+    move/from16 v16, v3
+
+    goto :goto_e9
+
+    .line 299
+    .end local v3    # "count":I
+    .restart local v16    # "count":I
+    :cond_df
+    :goto_df
+    nop
+
+    .line 323
+    if-eqz v13, :cond_e5
 
     .line 324
-    :goto_166
-    return-object v25
+    invoke-interface {v13}, Landroid/database/Cursor;->close()V
 
-    .end local v16    # "-l_9_R":Ljava/lang/Object;
-    .end local v20    # "e":Landroid/database/sqlite/SQLiteException;
-    .end local v21    # "foundOneBadHit":Z
-    .end local v24    # "i$":Ljava/util/Iterator;
-    .end local v25    # "partialHits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    .restart local v14    # "-l_6_R":Ljava/lang/Object;
-    :cond_167
-    invoke-interface/range {v18 .. v18}, Landroid/database/Cursor;->close()V
+    :cond_e5
+    return-object v1
 
-    goto/16 :goto_8e
+    .line 323
+    :catchall_e6
+    move-exception v0
 
-    .line 311
-    .end local v14    # "-l_6_R":Ljava/lang/Object;
-    .restart local v20    # "e":Landroid/database/sqlite/SQLiteException;
-    .restart local v21    # "foundOneBadHit":Z
-    .restart local v24    # "i$":Ljava/util/Iterator;
-    .restart local v25    # "partialHits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    :cond_16c
-    :try_start_16c
-    invoke-interface/range {v24 .. v24}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    goto :goto_130
+
+    .line 300
+    :catch_e8
+    move-exception v0
+
+    .line 301
+    .local v0, "e":Landroid/database/sqlite/SQLiteException;
+    :goto_e9
+    :try_start_e9
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v4, "Error in peekHits fetching hit url: "
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Landroid/database/sqlite/SQLiteException;->getMessage()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v3
 
-    check-cast v3, Lcom/google/tagmanager/Hit;
+    invoke-static {v3}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
+
+    .line 309
+    new-instance v3, Ljava/util/ArrayList;
+
+    invoke-direct {v3}, Ljava/util/ArrayList;-><init>()V
+
+    .line 310
+    .local v3, "partialHits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
+    const/4 v4, 0x0
+
+    .line 311
+    .local v4, "foundOneBadHit":Z
+    invoke-interface {v1}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+
+    move-result-object v5
+
+    .local v5, "i$":Ljava/util/Iterator;
+    :goto_10b
+    invoke-interface {v5}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v6
+
+    if-eqz v6, :cond_129
+
+    invoke-interface {v5}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v6
+
+    check-cast v6, Lcom/google/tagmanager/Hit;
 
     .line 312
-    .restart local v3    # "hit":Lcom/google/tagmanager/Hit;
-    invoke-virtual {v3}, Lcom/google/tagmanager/Hit;->getHitUrl()Ljava/lang/String;
+    .local v6, "hit":Lcom/google/tagmanager/Hit;
+    invoke-virtual {v6}, Lcom/google/tagmanager/Hit;->getHitUrl()Ljava/lang/String;
+
+    move-result-object v7
+
+    invoke-static {v7}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v7
+
+    if-eqz v7, :cond_125
+
+    .line 313
+    if-eqz v4, :cond_124
+
+    .line 314
+    goto :goto_129
+
+    .line 316
+    :cond_124
+    const/4 v4, 0x1
+
+    .line 319
+    :cond_125
+    invoke-interface {v3, v6}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+    :try_end_128
+    .catchall {:try_start_e9 .. :try_end_128} :catchall_e6
+
+    .line 320
+    .end local v6    # "hit":Lcom/google/tagmanager/Hit;
+    goto :goto_10b
+
+    .line 321
+    .end local v5    # "i$":Ljava/util/Iterator;
+    :cond_129
+    :goto_129
+    nop
+
+    .line 323
+    if-eqz v13, :cond_12f
+
+    .line 324
+    invoke-interface {v13}, Landroid/database/Cursor;->close()V
+
+    :cond_12f
+    return-object v3
+
+    .line 323
+    .end local v0    # "e":Landroid/database/sqlite/SQLiteException;
+    .end local v3    # "partialHits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
+    .end local v4    # "foundOneBadHit":Z
+    :goto_130
+    if-eqz v13, :cond_135
+
+    .line 324
+    invoke-interface {v13}, Landroid/database/Cursor;->close()V
+
+    :cond_135
+    throw v0
+
+    .line 268
+    .end local v16    # "count":I
+    :catchall_136
+    move-exception v0
+
+    goto :goto_158
+
+    .line 264
+    :catch_138
+    move-exception v0
+
+    .line 265
+    .restart local v0    # "e":Landroid/database/sqlite/SQLiteException;
+    :try_start_139
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v4, "Error in peekHits fetching hitIds: "
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Landroid/database/sqlite/SQLiteException;->getMessage()Ljava/lang/String;
 
     move-result-object v4
 
-    invoke-static {v4}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result v4
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    if-nez v4, :cond_186
+    move-result-object v3
 
-    .line 319
-    :goto_17c
-    move-object/from16 v0, v25
+    invoke-static {v3}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
+    :try_end_151
+    .catchall {:try_start_139 .. :try_end_151} :catchall_136
 
-    invoke-interface {v0, v3}, Ljava/util/List;->add(Ljava/lang/Object;)Z
-    :try_end_181
-    .catchall {:try_start_16c .. :try_end_181} :catchall_182
-
-    goto :goto_15c
-
-    .line 323
-    .end local v3    # "hit":Lcom/google/tagmanager/Hit;
-    .end local v20    # "e":Landroid/database/sqlite/SQLiteException;
-    .end local v21    # "foundOneBadHit":Z
-    .end local v24    # "i$":Ljava/util/Iterator;
-    .end local v25    # "partialHits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    :catchall_182
-    move-exception v13
-
-    .local v13, "-l_11_R":Ljava/lang/Object;
-    if-nez v18, :cond_18f
-
-    .line 324
-    :goto_185
-    throw v13
-
-    .line 313
-    .end local v13    # "-l_11_R":Ljava/lang/Object;
-    .restart local v3    # "hit":Lcom/google/tagmanager/Hit;
-    .restart local v20    # "e":Landroid/database/sqlite/SQLiteException;
-    .restart local v21    # "foundOneBadHit":Z
-    .restart local v24    # "i$":Ljava/util/Iterator;
-    .restart local v25    # "partialHits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    :cond_186
-    if-nez v21, :cond_162
-
-    .line 316
-    const/16 v21, 0x1
-
-    goto :goto_17c
-
-    .line 324
-    .end local v3    # "hit":Lcom/google/tagmanager/Hit;
-    .restart local v16    # "-l_9_R":Ljava/lang/Object;
-    :cond_18b
-    invoke-interface/range {v18 .. v18}, Landroid/database/Cursor;->close()V
-
-    goto :goto_166
-
-    .end local v16    # "-l_9_R":Ljava/lang/Object;
-    .end local v20    # "e":Landroid/database/sqlite/SQLiteException;
-    .end local v21    # "foundOneBadHit":Z
-    .end local v24    # "i$":Ljava/util/Iterator;
-    .end local v25    # "partialHits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    .restart local v13    # "-l_11_R":Ljava/lang/Object;
-    :cond_18f
-    invoke-interface/range {v18 .. v18}, Landroid/database/Cursor;->close()V
-
-    goto :goto_185
+    .line 266
+    nop
 
     .line 268
-    .end local v13    # "-l_11_R":Ljava/lang/Object;
-    .end local v17    # "count":I
-    :catchall_193
-    move-exception v15
+    if-eqz v13, :cond_157
 
-    move-object/from16 v22, v23
+    .line 269
+    invoke-interface {v13}, Landroid/database/Cursor;->close()V
 
-    .end local v23    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    .restart local v22    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    goto/16 :goto_e0
+    :cond_157
+    return-object v1
 
-    .end local v22    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    .restart local v3    # "hit":Lcom/google/tagmanager/Hit;
-    .restart local v23    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    :catchall_198
-    move-exception v15
+    .line 268
+    .end local v0    # "e":Landroid/database/sqlite/SQLiteException;
+    :goto_158
+    if-eqz v13, :cond_15d
 
-    move-object/from16 v22, v23
+    .line 269
+    invoke-interface {v13}, Landroid/database/Cursor;->close()V
 
-    .end local v23    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    .restart local v22    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    goto/16 :goto_e0
-
-    .line 264
-    .end local v3    # "hit":Lcom/google/tagmanager/Hit;
-    .end local v22    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    .restart local v23    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    :catch_19d
-    move-exception v20
-
-    move-object/from16 v22, v23
-
-    .end local v23    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    .restart local v22    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    goto/16 :goto_bb
-
-    .end local v22    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    .restart local v3    # "hit":Lcom/google/tagmanager/Hit;
-    .restart local v23    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    :catch_1a2
-    move-exception v20
-
-    move-object/from16 v22, v23
-
-    .end local v23    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    .restart local v22    # "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/Hit;>;"
-    goto/16 :goto_bb
+    :cond_15d
+    throw v0
 .end method
 
 .method public putHit(JLjava/lang/String;)V
-    .registers 5
+    .registers 4
     .param p1, "hitTimeInMilliseconds"    # J
     .param p3, "path"    # Ljava/lang/String;
 
-    .prologue
     .line 143
     invoke-virtual {p0}, Lcom/google/tagmanager/PersistentHitStore;->deleteStaleHits()I
 
@@ -2115,7 +1880,6 @@
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 123
     iput-object p1, p0, Lcom/google/tagmanager/PersistentHitStore;->mClock:Lcom/google/tagmanager/Clock;
 
@@ -2129,7 +1893,6 @@
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 133
     iput-object p1, p0, Lcom/google/tagmanager/PersistentHitStore;->mDispatcher:Lcom/google/tagmanager/Dispatcher;
 
@@ -2138,12 +1901,11 @@
 .end method
 
 .method setLastDeleteStaleHitsTime(J)V
-    .registers 4
+    .registers 3
     .param p1, "timeInMilliseconds"    # J
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 331
     iput-wide p1, p0, Lcom/google/tagmanager/PersistentHitStore;->mLastDeleteStaleHitsTime:J
 

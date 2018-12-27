@@ -25,20 +25,18 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/longshot/state/AbsShotState;Landroid/widget/FrameLayout;)V
-    .registers 4
-    .param p1, "this$0"    # Lcom/oneplus/screenshot/longshot/state/AbsShotState;
+    .registers 3
     .param p2, "decor"    # Landroid/widget/FrameLayout;
 
-    .prologue
     .line 157
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/AbsShotState$ClearDecorForegroundRunnable;->this$0:Lcom/oneplus/screenshot/longshot/state/AbsShotState;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 155
-    const/4 v0, 0x0
+    const/4 p1, 0x0
 
-    iput-object v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsShotState$ClearDecorForegroundRunnable;->mDecor:Landroid/widget/FrameLayout;
+    iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/AbsShotState$ClearDecorForegroundRunnable;->mDecor:Landroid/widget/FrameLayout;
 
     .line 158
     iput-object p2, p0, Lcom/oneplus/screenshot/longshot/state/AbsShotState$ClearDecorForegroundRunnable;->mDecor:Landroid/widget/FrameLayout;
@@ -52,7 +50,6 @@
 .method public run()V
     .registers 3
 
-    .prologue
     .line 163
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsShotState$ClearDecorForegroundRunnable;->this$0:Lcom/oneplus/screenshot/longshot/state/AbsShotState;
 
@@ -61,5 +58,7 @@
     invoke-virtual {v0, v1}, Lcom/oneplus/screenshot/longshot/state/AbsShotState;->clearDecorForeground(Landroid/widget/FrameLayout;)V
 
     .line 164
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

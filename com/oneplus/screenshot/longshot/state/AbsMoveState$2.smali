@@ -26,14 +26,11 @@
     .registers 2
     .param p1, "this$0"    # Lcom/oneplus/screenshot/longshot/state/AbsMoveState;
 
-    .prologue
-    .line 1
+    .line 62
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/AbsMoveState$2;->this$0:Lcom/oneplus/screenshot/longshot/state/AbsMoveState;
 
-    .line 62
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1
     return-void
 .end method
 
@@ -42,7 +39,6 @@
 .method public run()V
     .registers 5
 
-    .prologue
     .line 65
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsMoveState$2;->this$0:Lcom/oneplus/screenshot/longshot/state/AbsMoveState;
 
@@ -58,21 +54,23 @@
 
     new-array v1, v1, [Ljava/lang/Integer;
 
-    iget-object v2, p0, Lcom/oneplus/screenshot/longshot/state/AbsMoveState$2;->this$0:Lcom/oneplus/screenshot/longshot/state/AbsMoveState;
+    const/4 v2, 0x0
 
-    iget v2, v2, Lcom/oneplus/screenshot/longshot/state/AbsMoveState;->mMoveKeep:I
+    iget-object v3, p0, Lcom/oneplus/screenshot/longshot/state/AbsMoveState$2;->this$0:Lcom/oneplus/screenshot/longshot/state/AbsMoveState;
 
-    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    iget v3, v3, Lcom/oneplus/screenshot/longshot/state/AbsMoveState;->mMoveKeep:I
 
-    move-result-object v2
+    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    const/4 v3, 0x0
+    move-result-object v3
 
-    aput-object v2, v1, v3
+    aput-object v3, v1, v2
 
     invoke-virtual {v0, v1}, Lcom/oneplus/screenshot/longshot/task/MoveTask;->execute([Ljava/lang/Object;)Landroid/os/AsyncTask;
 
     .line 66
     :cond_1b
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

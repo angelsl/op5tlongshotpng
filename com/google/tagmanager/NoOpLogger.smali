@@ -10,7 +10,6 @@
 .method constructor <init>()V
     .registers 1
 
-    .prologue
     .line 6
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -23,7 +22,6 @@
     .registers 2
     .param p1, "message"    # Ljava/lang/String;
 
-    .prologue
     .line 34
     return-void
 .end method
@@ -33,7 +31,6 @@
     .param p1, "message"    # Ljava/lang/String;
     .param p2, "t"    # Ljava/lang/Throwable;
 
-    .prologue
     .line 38
     return-void
 .end method
@@ -42,7 +39,6 @@
     .registers 2
     .param p1, "message"    # Ljava/lang/String;
 
-    .prologue
     .line 10
     return-void
 .end method
@@ -52,7 +48,6 @@
     .param p1, "message"    # Ljava/lang/String;
     .param p2, "t"    # Ljava/lang/Throwable;
 
-    .prologue
     .line 14
     return-void
 .end method
@@ -60,7 +55,6 @@
 .method public getLogLevel()Lcom/google/tagmanager/Logger$LogLevel;
     .registers 2
 
-    .prologue
     .line 50
     sget-object v0, Lcom/google/tagmanager/Logger$LogLevel;->NONE:Lcom/google/tagmanager/Logger$LogLevel;
 
@@ -71,7 +65,6 @@
     .registers 2
     .param p1, "message"    # Ljava/lang/String;
 
-    .prologue
     .line 26
     return-void
 .end method
@@ -81,7 +74,6 @@
     .param p1, "message"    # Ljava/lang/String;
     .param p2, "t"    # Ljava/lang/Throwable;
 
-    .prologue
     .line 30
     return-void
 .end method
@@ -90,7 +82,6 @@
     .registers 2
     .param p1, "logLevel"    # Lcom/google/tagmanager/Logger$LogLevel;
 
-    .prologue
     .line 56
     return-void
 .end method
@@ -99,7 +90,6 @@
     .registers 2
     .param p1, "message"    # Ljava/lang/String;
 
-    .prologue
     .line 42
     return-void
 .end method
@@ -109,7 +99,6 @@
     .param p1, "message"    # Ljava/lang/String;
     .param p2, "t"    # Ljava/lang/Throwable;
 
-    .prologue
     .line 46
     return-void
 .end method
@@ -118,7 +107,6 @@
     .registers 2
     .param p1, "message"    # Ljava/lang/String;
 
-    .prologue
     .line 18
     return-void
 .end method
@@ -128,7 +116,6 @@
     .param p1, "message"    # Ljava/lang/String;
     .param p2, "t"    # Ljava/lang/Throwable;
 
-    .prologue
     .line 22
     return-void
 .end method

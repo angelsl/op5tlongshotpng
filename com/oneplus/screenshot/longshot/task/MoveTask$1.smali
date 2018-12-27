@@ -22,16 +22,13 @@
 .method constructor <init>(Lcom/oneplus/screenshot/longshot/task/MoveTask;Landroid/os/Looper;)V
     .registers 3
     .param p1, "this$0"    # Lcom/oneplus/screenshot/longshot/task/MoveTask;
-    .param p2, "$anonymous0"    # Landroid/os/Looper;
-
-    .prologue
-    .line 1
-    iput-object p1, p0, Lcom/oneplus/screenshot/longshot/task/MoveTask$1;->this$0:Lcom/oneplus/screenshot/longshot/task/MoveTask;
+    .param p2, "x0"    # Landroid/os/Looper;
 
     .line 49
+    iput-object p1, p0, Lcom/oneplus/screenshot/longshot/task/MoveTask$1;->this$0:Lcom/oneplus/screenshot/longshot/task/MoveTask;
+
     invoke-direct {p0, p2}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
 
-    .line 1
     return-void
 .end method
 
@@ -41,7 +38,6 @@
     .registers 6
     .param p1, "message"    # Landroid/os/Message;
 
-    .prologue
     .line 52
     iget v0, p1, Landroid/os/Message;->arg1:I
 
@@ -49,53 +45,55 @@
     .local v0, "count":I
     iget-object v1, p0, Lcom/oneplus/screenshot/longshot/task/MoveTask$1;->this$0:Lcom/oneplus/screenshot/longshot/task/MoveTask;
 
-    invoke-static {v1}, Lcom/oneplus/screenshot/longshot/task/MoveTask;->-get1(Lcom/oneplus/screenshot/longshot/task/MoveTask;)Landroid/graphics/Bitmap;
+    # getter for: Lcom/oneplus/screenshot/longshot/task/MoveTask;->mLastScreenPart:Landroid/graphics/Bitmap;
+    invoke-static {v1}, Lcom/oneplus/screenshot/longshot/task/MoveTask;->access$000(Lcom/oneplus/screenshot/longshot/task/MoveTask;)Landroid/graphics/Bitmap;
 
-    move-result-object v2
+    move-result-object v1
 
-    monitor-enter v2
+    monitor-enter v1
 
     .line 54
     :try_start_9
-    iget-object v1, p0, Lcom/oneplus/screenshot/longshot/task/MoveTask$1;->this$0:Lcom/oneplus/screenshot/longshot/task/MoveTask;
+    iget-object v2, p0, Lcom/oneplus/screenshot/longshot/task/MoveTask$1;->this$0:Lcom/oneplus/screenshot/longshot/task/MoveTask;
 
-    invoke-static {v1}, Lcom/oneplus/screenshot/longshot/task/MoveTask;->-get0(Lcom/oneplus/screenshot/longshot/task/MoveTask;)Z
+    # getter for: Lcom/oneplus/screenshot/longshot/task/MoveTask;->mCanRunTask:Z
+    invoke-static {v2}, Lcom/oneplus/screenshot/longshot/task/MoveTask;->access$100(Lcom/oneplus/screenshot/longshot/task/MoveTask;)Z
 
-    move-result v1
+    move-result v2
 
-    if-eqz v1, :cond_18
+    if-eqz v2, :cond_17
 
     .line 55
-    iget-object v1, p0, Lcom/oneplus/screenshot/longshot/task/MoveTask$1;->this$0:Lcom/oneplus/screenshot/longshot/task/MoveTask;
+    iget-object v2, p0, Lcom/oneplus/screenshot/longshot/task/MoveTask$1;->this$0:Lcom/oneplus/screenshot/longshot/task/MoveTask;
 
-    invoke-static {v1, v0}, Lcom/oneplus/screenshot/longshot/task/MoveTask;->-wrap0(Lcom/oneplus/screenshot/longshot/task/MoveTask;I)V
-    :try_end_16
-    .catchall {:try_start_9 .. :try_end_16} :catchall_22
+    invoke-static {v2, v0}, Lcom/oneplus/screenshot/longshot/task/MoveTask;->access$200(Lcom/oneplus/screenshot/longshot/task/MoveTask;I)V
 
-    :goto_16
-    monitor-exit v2
-
-    .line 60
-    return-void
+    goto :goto_1e
 
     .line 57
-    :cond_18
-    :try_start_18
-    const-string/jumbo v1, "Longshot.MoveTask"
+    :cond_17
+    const-string v2, "Longshot.MoveTask"
 
-    const-string/jumbo v3, "cancel this check"
+    const-string v3, "cancel this check"
 
-    invoke-static {v1, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-    :try_end_21
-    .catchall {:try_start_18 .. :try_end_21} :catchall_22
+    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    goto :goto_16
+    .line 59
+    :goto_1e
+    monitor-exit v1
 
-    .line 53
-    :catchall_22
-    move-exception v1
+    .line 60
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 
-    monitor-exit v2
+    .line 59
+    :catchall_20
+    move-exception v2
 
-    throw v1
+    monitor-exit v1
+    :try_end_22
+    .catchall {:try_start_9 .. :try_end_22} :catchall_20
+
+    throw v2
 .end method

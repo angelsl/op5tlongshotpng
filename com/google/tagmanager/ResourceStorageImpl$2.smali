@@ -27,7 +27,6 @@
 .method constructor <init>(Lcom/google/tagmanager/ResourceStorageImpl;Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;)V
     .registers 3
 
-    .prologue
     .line 119
     iput-object p1, p0, Lcom/google/tagmanager/ResourceStorageImpl$2;->this$0:Lcom/google/tagmanager/ResourceStorageImpl;
 
@@ -43,7 +42,6 @@
 .method public run()V
     .registers 3
 
-    .prologue
     .line 122
     iget-object v0, p0, Lcom/google/tagmanager/ResourceStorageImpl$2;->this$0:Lcom/google/tagmanager/ResourceStorageImpl;
 
@@ -52,5 +50,7 @@
     invoke-virtual {v0, v1}, Lcom/google/tagmanager/ResourceStorageImpl;->saveResourceToDisk(Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;)Z
 
     .line 123
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

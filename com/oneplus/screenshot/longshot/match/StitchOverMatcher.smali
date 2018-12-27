@@ -9,11 +9,10 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;I)V
-    .registers 4
+    .registers 5
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "index"    # I
 
-    .prologue
     .line 16
     invoke-direct {p0, p1, p2}, Lcom/oneplus/screenshot/longshot/match/StitchNextMatcher;-><init>(Landroid/content/Context;I)V
 
@@ -47,7 +46,9 @@
     .line 20
     sget v0, Lcom/oneplus/screenshot/longshot/util/Configs;->LEVEL_STITCH_LAST:I
 
-    packed-switch v0, :pswitch_data_42
+    const/4 v1, 0x2
+
+    if-eq v0, v1, :cond_31
 
     .line 26
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->LINES_STITCH_OVER_LEVEL_1:Lcom/oneplus/screenshot/longshot/util/Configs;
@@ -67,12 +68,10 @@
 
     iput v0, p0, Lcom/oneplus/screenshot/longshot/match/StitchOverMatcher;->mExtendCurr:I
 
-    .line 30
-    :goto_30
-    return-void
+    goto :goto_42
 
     .line 22
-    :pswitch_31
+    :cond_31
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->LINES_STITCH_OVER_LEVEL_2:Lcom/oneplus/screenshot/longshot/util/Configs;
 
     invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/util/Configs;->getValue()I
@@ -90,13 +89,14 @@
 
     iput v0, p0, Lcom/oneplus/screenshot/longshot/match/StitchOverMatcher;->mExtendCurr:I
 
-    goto :goto_30
+    .line 24
+    nop
 
-    .line 20
-    :pswitch_data_42
-    .packed-switch 0x2
-        :pswitch_31
-    .end packed-switch
+    .line 30
+    :goto_42
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -104,7 +104,6 @@
 .method protected canDump()Z
     .registers 2
 
-    .prologue
     .line 42
     sget-object v0, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper$Options;->OVER:Lcom/oneplus/screenshot/longshot/dump/BitmapDumper$Options;
 
@@ -116,13 +115,14 @@
 .end method
 
 .method protected getStep()I
-    .registers 2
+    .registers 3
 
-    .prologue
     .line 47
     sget v0, Lcom/oneplus/screenshot/longshot/util/Configs;->LEVEL_STITCH_LAST:I
 
-    packed-switch v0, :pswitch_data_14
+    const/4 v1, 0x2
+
+    if-eq v0, v1, :cond_c
 
     .line 51
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->STEP_STITCH_OVER_LEVEL_1:Lcom/oneplus/screenshot/longshot/util/Configs;
@@ -134,7 +134,7 @@
     return v0
 
     .line 49
-    :pswitch_c
+    :cond_c
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->STEP_STITCH_OVER_LEVEL_2:Lcom/oneplus/screenshot/longshot/util/Configs;
 
     invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/util/Configs;->getValue()I
@@ -142,22 +142,13 @@
     move-result v0
 
     return v0
-
-    .line 47
-    nop
-
-    :pswitch_data_14
-    .packed-switch 0x2
-        :pswitch_c
-    .end packed-switch
 .end method
 
 .method protected getTag()Ljava/lang/String;
     .registers 2
 
-    .prologue
     .line 37
-    const-string/jumbo v0, "StitchOver"
+    const-string v0, "StitchOver"
 
     return-object v0
 .end method

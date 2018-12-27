@@ -13,7 +13,6 @@
 .method public constructor <init>()V
     .registers 3
 
-    .prologue
     .line 15
     invoke-direct {p0}, Lcom/oneplus/screenshot/longshot/task/BaseThread;-><init>()V
 
@@ -23,7 +22,9 @@
     iput-wide v0, p0, Lcom/oneplus/screenshot/longshot/task/GcThread;->mDelay:J
 
     .line 17
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -31,10 +32,11 @@
 .method protected onRun()V
     .registers 1
 
-    .prologue
     .line 24
     invoke-static {}, Ljava/lang/System;->gc()V
 
     .line 25
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

@@ -19,7 +19,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 19
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->REGEX_GROUP:Lcom/google/analytics/containertag/common/FunctionType;
 
@@ -65,13 +64,14 @@
 
     sput-object v0, Lcom/google/tagmanager/RegexGroupMacro;->GROUP:Ljava/lang/String;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>()V
     .registers 5
 
-    .prologue
     .line 32
     sget-object v0, Lcom/google/tagmanager/RegexGroupMacro;->ID:Ljava/lang/String;
 
@@ -94,13 +94,14 @@
     invoke-direct {p0, v0, v1}, Lcom/google/tagmanager/FunctionCallImplementation;-><init>(Ljava/lang/String;[Ljava/lang/String;)V
 
     .line 33
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
     .registers 1
 
-    .prologue
     .line 28
     sget-object v0, Lcom/google/tagmanager/RegexGroupMacro;->ID:Ljava/lang/String;
 
@@ -110,12 +111,11 @@
 
 # virtual methods
 .method public evaluate(Ljava/util/Map;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 14
+    .registers 12
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;)",
@@ -123,248 +123,229 @@
         }
     .end annotation
 
-    .prologue
     .line 40
     .local p1, "parameters":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
-    sget-object v11, Lcom/google/tagmanager/RegexGroupMacro;->TO_MATCH:Ljava/lang/String;
+    sget-object v0, Lcom/google/tagmanager/RegexGroupMacro;->TO_MATCH:Ljava/lang/String;
 
-    invoke-interface {p1, v11}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {p1, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    move-result-object v9
+    move-result-object v0
 
-    check-cast v9, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    check-cast v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 41
-    .local v9, "toMatch":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    sget-object v11, Lcom/google/tagmanager/RegexGroupMacro;->REGEX:Ljava/lang/String;
+    .local v0, "toMatch":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    sget-object v1, Lcom/google/tagmanager/RegexGroupMacro;->REGEX:Ljava/lang/String;
 
-    invoke-interface {p1, v11}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {p1, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    move-result-object v7
+    move-result-object v1
 
-    check-cast v7, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    .line 42
-    .local v7, "regex":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-nez v9, :cond_17
-
-    .line 44
-    :cond_12
-    invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    move-result-object v11
-
-    return-object v11
+    check-cast v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 42
-    :cond_17
-    invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    move-result-object v11
-
-    if-eq v9, v11, :cond_12
-
-    if-eqz v7, :cond_12
+    .local v1, "regex":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    if-eqz v0, :cond_90
 
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    move-result-object v11
+    move-result-object v2
 
-    if-eq v7, v11, :cond_12
+    if-eq v0, v2, :cond_90
+
+    if-eqz v1, :cond_90
+
+    invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+
+    move-result-object v2
+
+    if-ne v1, v2, :cond_21
+
+    goto :goto_90
 
     .line 47
+    :cond_21
     const/16 v2, 0x40
 
     .line 48
     .local v2, "flags":I
-    sget-object v11, Lcom/google/tagmanager/RegexGroupMacro;->IGNORE_CASE:Ljava/lang/String;
+    sget-object v3, Lcom/google/tagmanager/RegexGroupMacro;->IGNORE_CASE:Ljava/lang/String;
 
-    invoke-interface {p1, v11}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {p1, v3}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    move-result-object v11
+    move-result-object v3
 
-    check-cast v11, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    check-cast v3, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    invoke-static {v11}, Lcom/google/tagmanager/Types;->valueToBoolean(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/Boolean;
+    invoke-static {v3}, Lcom/google/tagmanager/Types;->valueToBoolean(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/Boolean;
 
-    move-result-object v11
+    move-result-object v3
 
-    invoke-virtual {v11}, Ljava/lang/Boolean;->booleanValue()Z
+    invoke-virtual {v3}, Ljava/lang/Boolean;->booleanValue()Z
 
-    move-result v11
+    move-result v3
 
-    if-nez v11, :cond_62
+    if-eqz v3, :cond_37
+
+    .line 49
+    or-int/lit8 v2, v2, 0x2
 
     .line 51
-    :goto_39
+    :cond_37
     const/4 v3, 0x1
 
     .line 52
     .local v3, "groupNumber":I
-    sget-object v11, Lcom/google/tagmanager/RegexGroupMacro;->GROUP:Ljava/lang/String;
+    sget-object v4, Lcom/google/tagmanager/RegexGroupMacro;->GROUP:Ljava/lang/String;
 
-    invoke-interface {p1, v11}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v5
-
-    check-cast v5, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    .line 53
-    .local v5, "groupNumberValue":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-nez v5, :cond_65
-
-    .line 64
-    :cond_44
-    :try_start_44
-    invoke-static {v9}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
-
-    move-result-object v10
-
-    .line 65
-    .local v10, "toMatchString":Ljava/lang/String;
-    invoke-static {v7}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
-
-    move-result-object v8
-
-    .line 66
-    .local v8, "regexString":Ljava/lang/String;
-    const/4 v1, 0x0
-
-    .line 67
-    .local v1, "extracted":Ljava/lang/String;
-    invoke-static {v8, v2}, Ljava/util/regex/Pattern;->compile(Ljava/lang/String;I)Ljava/util/regex/Pattern;
-
-    move-result-object v11
-
-    invoke-virtual {v11, v10}, Ljava/util/regex/Pattern;->matcher(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
-
-    move-result-object v6
-
-    .line 68
-    .local v6, "m":Ljava/util/regex/Matcher;
-    invoke-virtual {v6}, Ljava/util/regex/Matcher;->find()Z
-
-    move-result v11
-
-    if-nez v11, :cond_7f
-
-    .line 71
-    .end local v1    # "extracted":Ljava/lang/String;
-    :cond_5b
-    :goto_5b
-    if-eqz v1, :cond_8a
-
-    invoke-static {v1}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    :try_end_60
-    .catch Ljava/util/regex/PatternSyntaxException; {:try_start_44 .. :try_end_60} :catch_8f
-
-    move-result-object v11
-
-    :goto_61
-    return-object v11
-
-    .line 49
-    .end local v3    # "groupNumber":I
-    .end local v5    # "groupNumberValue":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .end local v6    # "m":Ljava/util/regex/Matcher;
-    .end local v8    # "regexString":Ljava/lang/String;
-    .end local v10    # "toMatchString":Ljava/lang/String;
-    :cond_62
-    const/16 v2, 0x42
-
-    goto :goto_39
-
-    .line 54
-    .restart local v3    # "groupNumber":I
-    .restart local v5    # "groupNumberValue":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    :cond_65
-    invoke-static {v5}, Lcom/google/tagmanager/Types;->valueToInt64(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/Long;
+    invoke-interface {p1, v4}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v4
 
+    check-cast v4, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+
+    .line 53
+    .local v4, "groupNumberValue":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    if-eqz v4, :cond_5c
+
+    .line 54
+    invoke-static {v4}, Lcom/google/tagmanager/Types;->valueToInt64(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/Long;
+
+    move-result-object v5
+
     .line 55
-    .local v4, "groupNumberLong":Ljava/lang/Long;
+    .local v5, "groupNumberLong":Ljava/lang/Long;
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultInt64()Ljava/lang/Long;
 
-    move-result-object v11
+    move-result-object v6
 
-    if-eq v4, v11, :cond_7a
+    if-ne v5, v6, :cond_51
+
+    .line 56
+    invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+
+    move-result-object v6
+
+    return-object v6
 
     .line 58
-    invoke-virtual {v4}, Ljava/lang/Long;->intValue()I
+    :cond_51
+    invoke-virtual {v5}, Ljava/lang/Long;->intValue()I
 
     move-result v3
 
     .line 59
-    if-gez v3, :cond_44
+    if-gez v3, :cond_5c
 
     .line 60
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    move-result-object v11
+    move-result-object v6
 
-    return-object v11
+    return-object v6
 
-    .line 56
-    :cond_7a
-    invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    .line 64
+    .end local v5    # "groupNumberLong":Ljava/lang/Long;
+    :cond_5c
+    :try_start_5c
+    invoke-static {v0}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
 
-    move-result-object v11
+    move-result-object v5
 
-    return-object v11
+    .line 65
+    .local v5, "toMatchString":Ljava/lang/String;
+    invoke-static {v1}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
+
+    move-result-object v6
+
+    .line 66
+    .local v6, "regexString":Ljava/lang/String;
+    const/4 v7, 0x0
+
+    .line 67
+    .local v7, "extracted":Ljava/lang/String;
+    invoke-static {v6, v2}, Ljava/util/regex/Pattern;->compile(Ljava/lang/String;I)Ljava/util/regex/Pattern;
+
+    move-result-object v8
+
+    invoke-virtual {v8, v5}, Ljava/util/regex/Pattern;->matcher(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+
+    move-result-object v8
 
     .line 68
-    .end local v4    # "groupNumberLong":Ljava/lang/Long;
-    .restart local v1    # "extracted":Ljava/lang/String;
-    .restart local v6    # "m":Ljava/util/regex/Matcher;
-    .restart local v8    # "regexString":Ljava/lang/String;
-    .restart local v10    # "toMatchString":Ljava/lang/String;
-    :cond_7f
-    :try_start_7f
-    invoke-virtual {v6}, Ljava/util/regex/Matcher;->groupCount()I
+    .local v8, "m":Ljava/util/regex/Matcher;
+    invoke-virtual {v8}, Ljava/util/regex/Matcher;->find()Z
 
-    move-result v11
+    move-result v9
 
-    if-lt v11, v3, :cond_5b
+    if-eqz v9, :cond_7e
+
+    invoke-virtual {v8}, Ljava/util/regex/Matcher;->groupCount()I
+
+    move-result v9
+
+    if-lt v9, v3, :cond_7e
 
     .line 69
-    invoke-virtual {v6, v3}, Ljava/util/regex/Matcher;->group(I)Ljava/lang/String;
+    invoke-virtual {v8, v3}, Ljava/util/regex/Matcher;->group(I)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v9
 
-    goto :goto_5b
+    move-object v7, v9
 
     .line 71
-    .end local v1    # "extracted":Ljava/lang/String;
-    :cond_8a
+    :cond_7e
+    if-nez v7, :cond_85
+
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    :try_end_8d
-    .catch Ljava/util/regex/PatternSyntaxException; {:try_start_7f .. :try_end_8d} :catch_8f
 
-    move-result-object v11
+    move-result-object v9
 
-    goto :goto_61
+    goto :goto_89
+
+    :cond_85
+    invoke-static {v7}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+
+    move-result-object v9
+    :try_end_89
+    .catch Ljava/util/regex/PatternSyntaxException; {:try_start_5c .. :try_end_89} :catch_8a
+
+    :goto_89
+    return-object v9
 
     .line 74
-    .end local v6    # "m":Ljava/util/regex/Matcher;
-    .end local v8    # "regexString":Ljava/lang/String;
-    .end local v10    # "toMatchString":Ljava/lang/String;
-    :catch_8f
-    move-exception v0
+    .end local v5    # "toMatchString":Ljava/lang/String;
+    .end local v6    # "regexString":Ljava/lang/String;
+    .end local v7    # "extracted":Ljava/lang/String;
+    .end local v8    # "m":Ljava/util/regex/Matcher;
+    :catch_8a
+    move-exception v5
 
     .line 76
-    .local v0, "err":Ljava/util/regex/PatternSyntaxException;
+    .local v5, "err":Ljava/util/regex/PatternSyntaxException;
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    move-result-object v11
+    move-result-object v6
 
-    return-object v11
+    return-object v6
+
+    .line 44
+    .end local v2    # "flags":I
+    .end local v3    # "groupNumber":I
+    .end local v4    # "groupNumberValue":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    .end local v5    # "err":Ljava/util/regex/PatternSyntaxException;
+    :cond_90
+    :goto_90
+    invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+
+    move-result-object v2
+
+    return-object v2
 .end method
 
 .method public isCacheable()Z
     .registers 2
 
-    .prologue
     .line 36
     const/4 v0, 0x1
 

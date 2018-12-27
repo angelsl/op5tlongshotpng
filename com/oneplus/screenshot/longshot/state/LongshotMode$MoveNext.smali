@@ -21,19 +21,17 @@
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/longshot/state/LongshotMode;ILandroid/graphics/Point;Landroid/graphics/Point;)V
     .registers 5
-    .param p1, "this$0"    # Lcom/oneplus/screenshot/longshot/state/LongshotMode;
     .param p2, "distance"    # I
     .param p3, "start"    # Landroid/graphics/Point;
     .param p4, "end"    # Landroid/graphics/Point;
 
-    .prologue
-    .line 644
+    .line 659
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->this$0:Lcom/oneplus/screenshot/longshot/state/LongshotMode;
 
-    .line 645
+    .line 660
     invoke-direct {p0, p2, p3, p4}, Lcom/oneplus/screenshot/longshot/util/MovePoint;-><init>(ILandroid/graphics/Point;Landroid/graphics/Point;)V
 
-    .line 646
+    .line 661
     return-void
 .end method
 
@@ -44,22 +42,22 @@
     .param p1, "x"    # I
     .param p2, "y"    # I
 
-    .prologue
-    .line 669
+    .line 684
     iput p1, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->x:I
 
-    .line 670
+    .line 685
     iput p2, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->y:I
 
-    .line 671
-    return-void
+    .line 686
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public canMove()Z
     .registers 3
 
-    .prologue
-    .line 660
+    .line 675
     iget v0, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->y:I
 
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->getEnd()Landroid/graphics/Point;
@@ -72,21 +70,20 @@
 
     const/4 v0, 0x1
 
-    :goto_b
-    return v0
+    goto :goto_d
 
     :cond_c
     const/4 v0, 0x0
 
-    goto :goto_b
+    :goto_d
+    return v0
 .end method
 
 .method public getTag()Ljava/lang/String;
     .registers 2
 
-    .prologue
-    .line 650
-    const-string/jumbo v0, "Next"
+    .line 665
+    const-string v0, "Next"
 
     return-object v0
 .end method
@@ -94,8 +91,7 @@
 .method public isNext()Z
     .registers 2
 
-    .prologue
-    .line 665
+    .line 680
     const/4 v0, 0x1
 
     return v0
@@ -104,8 +100,7 @@
 .method public move()V
     .registers 3
 
-    .prologue
-    .line 655
+    .line 670
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->getDistance()I
 
     move-result v0
@@ -116,6 +111,8 @@
 
     invoke-virtual {p0, v1, v0}, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->offset(II)V
 
-    .line 656
-    return-void
+    .line 671
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

@@ -32,7 +32,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 24
     const/4 v0, 0x0
 
@@ -40,13 +39,14 @@
 
     sput-object v0, Lcom/google/analytics/containertag/proto/Serving$Container;->EMPTY_ARRAY:[Lcom/google/analytics/containertag/proto/Serving$Container;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>()V
     .registers 2
 
-    .prologue
     .line 25
     invoke-direct {p0}, Lcom/google/tagmanager/protobuf/nano/ExtendableMessageNano;-><init>()V
 
@@ -56,7 +56,7 @@
     iput-object v0, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->jsResource:Lcom/google/analytics/containertag/proto/Serving$Resource;
 
     .line 31
-    const-string/jumbo v0, ""
+    const-string v0, ""
 
     iput-object v0, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->containerId:Ljava/lang/String;
 
@@ -66,12 +66,14 @@
     iput v0, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->state:I
 
     .line 37
-    const-string/jumbo v0, ""
+    const-string v0, ""
 
     iput-object v0, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->version:Ljava/lang/String;
 
     .line 25
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public static parseFrom(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;)Lcom/google/analytics/containertag/proto/Serving$Container;
@@ -83,7 +85,6 @@
         }
     .end annotation
 
-    .prologue
     .line 160
     new-instance v0, Lcom/google/analytics/containertag/proto/Serving$Container;
 
@@ -105,7 +106,6 @@
         }
     .end annotation
 
-    .prologue
     .line 154
     new-instance v0, Lcom/google/analytics/containertag/proto/Serving$Container;
 
@@ -125,29 +125,28 @@
 .method public final clear()Lcom/google/analytics/containertag/proto/Serving$Container;
     .registers 3
 
-    .prologue
-    const/4 v1, 0x0
-
     .line 40
-    iput-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->jsResource:Lcom/google/analytics/containertag/proto/Serving$Resource;
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->jsResource:Lcom/google/analytics/containertag/proto/Serving$Resource;
 
     .line 41
-    const-string/jumbo v0, ""
+    const-string v1, ""
 
-    iput-object v0, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->containerId:Ljava/lang/String;
+    iput-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->containerId:Ljava/lang/String;
 
     .line 42
-    const/4 v0, 0x1
+    const/4 v1, 0x1
 
-    iput v0, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->state:I
+    iput v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->state:I
 
     .line 43
-    const-string/jumbo v0, ""
+    const-string v1, ""
 
-    iput-object v0, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->version:Ljava/lang/String;
+    iput-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->version:Ljava/lang/String;
 
     .line 44
-    iput-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->unknownFieldData:Ljava/util/List;
+    iput-object v0, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->unknownFieldData:Ljava/util/List;
 
     .line 45
     const/4 v0, -0x1
@@ -162,142 +161,137 @@
     .registers 7
     .param p1, "o"    # Ljava/lang/Object;
 
-    .prologue
-    const/4 v1, 0x1
+    .line 51
+    const/4 v0, 0x1
+
+    if-ne p1, p0, :cond_4
+
+    return v0
+
+    .line 52
+    :cond_4
+    instance-of v1, p1, Lcom/google/analytics/containertag/proto/Serving$Container;
 
     const/4 v2, 0x0
 
-    .line 51
-    if-eq p1, p0, :cond_1b
+    if-nez v1, :cond_a
 
-    .line 52
-    instance-of v3, p1, Lcom/google/analytics/containertag/proto/Serving$Container;
-
-    if-eqz v3, :cond_1c
-
-    move-object v0, p1
+    return v2
 
     .line 53
-    check-cast v0, Lcom/google/analytics/containertag/proto/Serving$Container;
+    :cond_a
+    move-object v1, p1
+
+    check-cast v1, Lcom/google/analytics/containertag/proto/Serving$Container;
 
     .line 54
-    .local v0, "other":Lcom/google/analytics/containertag/proto/Serving$Container;
+    .local v1, "other":Lcom/google/analytics/containertag/proto/Serving$Container;
     iget-object v3, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->jsResource:Lcom/google/analytics/containertag/proto/Serving$Resource;
 
-    if-eqz v3, :cond_1d
+    if-nez v3, :cond_16
 
+    iget-object v3, v1, Lcom/google/analytics/containertag/proto/Serving$Container;->jsResource:Lcom/google/analytics/containertag/proto/Serving$Resource;
+
+    if-nez v3, :cond_60
+
+    goto :goto_20
+
+    :cond_16
     iget-object v3, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->jsResource:Lcom/google/analytics/containertag/proto/Serving$Resource;
 
-    iget-object v4, v0, Lcom/google/analytics/containertag/proto/Serving$Container;->jsResource:Lcom/google/analytics/containertag/proto/Serving$Resource;
+    iget-object v4, v1, Lcom/google/analytics/containertag/proto/Serving$Container;->jsResource:Lcom/google/analytics/containertag/proto/Serving$Resource;
 
     invoke-virtual {v3, v4}, Lcom/google/analytics/containertag/proto/Serving$Resource;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-nez v3, :cond_21
+    if-eqz v3, :cond_60
 
-    :cond_19
-    :goto_19
-    move v1, v2
-
-    :cond_1a
-    return v1
-
-    .line 51
-    .end local v0    # "other":Lcom/google/analytics/containertag/proto/Serving$Container;
-    :cond_1b
-    return v1
-
-    .line 52
-    :cond_1c
-    return v2
-
-    .line 54
-    .restart local v0    # "other":Lcom/google/analytics/containertag/proto/Serving$Container;
-    :cond_1d
-    iget-object v3, v0, Lcom/google/analytics/containertag/proto/Serving$Container;->jsResource:Lcom/google/analytics/containertag/proto/Serving$Resource;
-
-    if-nez v3, :cond_19
-
-    :cond_21
+    :goto_20
     iget-object v3, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->containerId:Ljava/lang/String;
 
-    if-eqz v3, :cond_52
+    if-nez v3, :cond_29
 
+    iget-object v3, v1, Lcom/google/analytics/containertag/proto/Serving$Container;->containerId:Ljava/lang/String;
+
+    if-nez v3, :cond_60
+
+    goto :goto_33
+
+    :cond_29
     iget-object v3, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->containerId:Ljava/lang/String;
 
-    iget-object v4, v0, Lcom/google/analytics/containertag/proto/Serving$Container;->containerId:Ljava/lang/String;
+    iget-object v4, v1, Lcom/google/analytics/containertag/proto/Serving$Container;->containerId:Ljava/lang/String;
 
     invoke-virtual {v3, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-eqz v3, :cond_19
+    if-eqz v3, :cond_60
 
-    :cond_2f
+    :goto_33
     iget v3, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->state:I
 
-    iget v4, v0, Lcom/google/analytics/containertag/proto/Serving$Container;->state:I
+    iget v4, v1, Lcom/google/analytics/containertag/proto/Serving$Container;->state:I
 
-    if-ne v3, v4, :cond_19
-
-    iget-object v3, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->version:Ljava/lang/String;
-
-    if-eqz v3, :cond_57
+    if-ne v3, v4, :cond_60
 
     iget-object v3, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->version:Ljava/lang/String;
 
-    iget-object v4, v0, Lcom/google/analytics/containertag/proto/Serving$Container;->version:Ljava/lang/String;
+    if-nez v3, :cond_42
+
+    iget-object v3, v1, Lcom/google/analytics/containertag/proto/Serving$Container;->version:Ljava/lang/String;
+
+    if-nez v3, :cond_60
+
+    goto :goto_4c
+
+    :cond_42
+    iget-object v3, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->version:Ljava/lang/String;
+
+    iget-object v4, v1, Lcom/google/analytics/containertag/proto/Serving$Container;->version:Ljava/lang/String;
 
     invoke-virtual {v3, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-eqz v3, :cond_19
+    if-eqz v3, :cond_60
 
-    :cond_43
+    :goto_4c
     iget-object v3, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->unknownFieldData:Ljava/util/List;
 
-    if-eqz v3, :cond_5c
+    if-nez v3, :cond_55
 
+    iget-object v3, v1, Lcom/google/analytics/containertag/proto/Serving$Container;->unknownFieldData:Ljava/util/List;
+
+    if-nez v3, :cond_60
+
+    goto :goto_5f
+
+    :cond_55
     iget-object v3, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->unknownFieldData:Ljava/util/List;
 
-    iget-object v4, v0, Lcom/google/analytics/containertag/proto/Serving$Container;->unknownFieldData:Ljava/util/List;
+    iget-object v4, v1, Lcom/google/analytics/containertag/proto/Serving$Container;->unknownFieldData:Ljava/util/List;
 
     invoke-interface {v3, v4}, Ljava/util/List;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-nez v3, :cond_1a
+    if-eqz v3, :cond_60
 
-    goto :goto_19
+    :goto_5f
+    goto :goto_61
 
-    :cond_52
-    iget-object v3, v0, Lcom/google/analytics/containertag/proto/Serving$Container;->containerId:Ljava/lang/String;
+    :cond_60
+    move v0, v2
 
-    if-eqz v3, :cond_2f
-
-    goto :goto_19
-
-    :cond_57
-    iget-object v3, v0, Lcom/google/analytics/containertag/proto/Serving$Container;->version:Ljava/lang/String;
-
-    if-eqz v3, :cond_43
-
-    goto :goto_19
-
-    :cond_5c
-    iget-object v3, v0, Lcom/google/analytics/containertag/proto/Serving$Container;->unknownFieldData:Ljava/util/List;
-
-    if-eqz v3, :cond_1a
-
-    goto :goto_19
+    :goto_61
+    return v0
 .end method
 
 .method public getSerializedSize()I
     .registers 4
 
-    .prologue
     .line 87
     const/4 v0, 0x0
 
@@ -305,26 +299,37 @@
     .local v0, "size":I
     iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->jsResource:Lcom/google/analytics/containertag/proto/Serving$Resource;
 
-    if-nez v1, :cond_2a
+    if-eqz v1, :cond_d
+
+    .line 89
+    const/4 v1, 0x1
+
+    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->jsResource:Lcom/google/analytics/containertag/proto/Serving$Resource;
+
+    invoke-static {v1, v2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeMessageSize(ILcom/google/tagmanager/protobuf/nano/MessageNano;)I
+
+    move-result v1
+
+    add-int/2addr v0, v1
 
     .line 92
-    :goto_5
-    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->containerId:Ljava/lang/String;
+    :cond_d
+    const/4 v1, 0x3
 
-    const/4 v2, 0x3
+    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->containerId:Ljava/lang/String;
 
-    invoke-static {v2, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeStringSize(ILjava/lang/String;)I
+    invoke-static {v1, v2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeStringSize(ILjava/lang/String;)I
 
     move-result v1
 
     add-int/2addr v0, v1
 
     .line 94
-    iget v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->state:I
+    const/4 v1, 0x4
 
-    const/4 v2, 0x4
+    iget v2, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->state:I
 
-    invoke-static {v2, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeInt32Size(II)I
+    invoke-static {v1, v2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeInt32Size(II)I
 
     move-result v1
 
@@ -333,16 +338,27 @@
     .line 96
     iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->version:Ljava/lang/String;
 
-    const-string/jumbo v2, ""
+    const-string v2, ""
 
     invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
-    if-eqz v1, :cond_34
+    if-nez v1, :cond_2f
+
+    .line 97
+    const/4 v1, 0x5
+
+    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->version:Ljava/lang/String;
+
+    invoke-static {v1, v2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeStringSize(ILjava/lang/String;)I
+
+    move-result v1
+
+    add-int/2addr v0, v1
 
     .line 100
-    :goto_20
+    :cond_2f
     iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->unknownFieldData:Ljava/util/List;
 
     invoke-static {v1}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->computeWireSize(Ljava/util/List;)I
@@ -356,135 +372,120 @@
 
     .line 102
     return v0
-
-    .line 89
-    :cond_2a
-    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->jsResource:Lcom/google/analytics/containertag/proto/Serving$Resource;
-
-    const/4 v2, 0x1
-
-    invoke-static {v2, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeMessageSize(ILcom/google/tagmanager/protobuf/nano/MessageNano;)I
-
-    move-result v1
-
-    add-int/lit8 v0, v1, 0x0
-
-    goto :goto_5
-
-    .line 97
-    :cond_34
-    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->version:Ljava/lang/String;
-
-    const/4 v2, 0x5
-
-    invoke-static {v2, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeStringSize(ILjava/lang/String;)I
-
-    move-result v1
-
-    add-int/2addr v0, v1
-
-    goto :goto_20
 .end method
 
 .method public hashCode()I
-    .registers 5
-
-    .prologue
-    const/4 v2, 0x0
+    .registers 6
 
     .line 62
     const/16 v0, 0x11
 
     .line 63
     .local v0, "result":I
-    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->jsResource:Lcom/google/analytics/containertag/proto/Serving$Resource;
+    const/16 v1, 0x1f
 
-    if-eqz v1, :cond_40
+    mul-int v2, v1, v0
 
-    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->jsResource:Lcom/google/analytics/containertag/proto/Serving$Resource;
+    iget-object v3, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->jsResource:Lcom/google/analytics/containertag/proto/Serving$Resource;
 
-    invoke-virtual {v1}, Lcom/google/analytics/containertag/proto/Serving$Resource;->hashCode()I
+    const/4 v4, 0x0
 
-    move-result v1
+    if-nez v3, :cond_d
 
-    :goto_d
-    add-int/lit16 v0, v1, 0x20f
+    move v3, v4
+
+    goto :goto_13
+
+    :cond_d
+    iget-object v3, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->jsResource:Lcom/google/analytics/containertag/proto/Serving$Resource;
+
+    invoke-virtual {v3}, Lcom/google/analytics/containertag/proto/Serving$Resource;->hashCode()I
+
+    move-result v3
+
+    :goto_13
+    add-int/2addr v2, v3
 
     .line 64
-    mul-int/lit8 v3, v0, 0x1f
+    .end local v0    # "result":I
+    .local v2, "result":I
+    mul-int v0, v1, v2
 
-    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->containerId:Ljava/lang/String;
+    iget-object v3, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->containerId:Ljava/lang/String;
 
-    if-eqz v1, :cond_42
+    if-nez v3, :cond_1c
 
-    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->containerId:Ljava/lang/String;
+    move v3, v4
 
-    invoke-virtual {v1}, Ljava/lang/String;->hashCode()I
+    goto :goto_22
 
-    move-result v1
+    :cond_1c
+    iget-object v3, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->containerId:Ljava/lang/String;
 
-    :goto_1b
-    add-int v0, v3, v1
+    invoke-virtual {v3}, Ljava/lang/String;->hashCode()I
+
+    move-result v3
+
+    :goto_22
+    add-int/2addr v0, v3
 
     .line 65
-    mul-int/lit8 v1, v0, 0x1f
+    .end local v2    # "result":I
+    .restart local v0    # "result":I
+    mul-int v2, v1, v0
 
     iget v3, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->state:I
 
-    add-int v0, v1, v3
+    add-int/2addr v2, v3
 
     .line 66
-    mul-int/lit8 v3, v0, 0x1f
+    .end local v0    # "result":I
+    .restart local v2    # "result":I
+    mul-int v0, v1, v2
 
-    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->version:Ljava/lang/String;
+    iget-object v3, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->version:Ljava/lang/String;
 
-    if-eqz v1, :cond_44
+    if-nez v3, :cond_30
 
-    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->version:Ljava/lang/String;
+    move v3, v4
 
-    invoke-virtual {v1}, Ljava/lang/String;->hashCode()I
+    goto :goto_36
 
-    move-result v1
+    :cond_30
+    iget-object v3, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->version:Ljava/lang/String;
 
-    :goto_2f
-    add-int v0, v3, v1
+    invoke-virtual {v3}, Ljava/lang/String;->hashCode()I
+
+    move-result v3
+
+    :goto_36
+    add-int/2addr v0, v3
 
     .line 67
-    mul-int/lit8 v1, v0, 0x1f
+    .end local v2    # "result":I
+    .restart local v0    # "result":I
+    mul-int/2addr v1, v0
 
-    iget-object v3, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->unknownFieldData:Ljava/util/List;
+    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->unknownFieldData:Ljava/util/List;
 
-    if-eqz v3, :cond_3d
+    if-nez v2, :cond_3d
 
+    goto :goto_43
+
+    :cond_3d
     iget-object v2, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->unknownFieldData:Ljava/util/List;
 
     invoke-interface {v2}, Ljava/util/List;->hashCode()I
 
-    move-result v2
+    move-result v4
 
-    :cond_3d
-    add-int v0, v1, v2
+    :goto_43
+    add-int/2addr v1, v4
 
     .line 68
-    return v0
-
-    :cond_40
-    move v1, v2
-
-    .line 63
-    goto :goto_d
-
-    :cond_42
-    move v1, v2
-
-    .line 64
-    goto :goto_1b
-
-    :cond_44
-    move v1, v2
-
-    .line 66
-    goto :goto_2f
+    .end local v0    # "result":I
+    .local v1, "result":I
+    return v1
 .end method
 
 .method public mergeFrom(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;)Lcom/google/analytics/containertag/proto/Serving$Container;
@@ -496,124 +497,139 @@
         }
     .end annotation
 
-    .prologue
-    const/4 v3, 0x1
-
     .line 110
-    :cond_1
-    :goto_1
+    :goto_0
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readTag()I
 
     move-result v0
 
     .line 111
     .local v0, "tag":I
-    sparse-switch v0, :sswitch_data_48
+    if-eqz v0, :cond_57
+
+    const/16 v1, 0xa
+
+    if-eq v0, v1, :cond_49
+
+    const/16 v1, 0x1a
+
+    if-eq v0, v1, :cond_42
+
+    const/16 v1, 0x20
+
+    if-eq v0, v1, :cond_31
+
+    const/16 v1, 0x2a
+
+    if-eq v0, v1, :cond_2a
 
     .line 115
-    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->unknownFieldData:Ljava/util/List;
+    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->unknownFieldData:Ljava/util/List;
 
-    if-eqz v2, :cond_16
+    if-nez v1, :cond_21
+
+    .line 116
+    new-instance v1, Ljava/util/ArrayList;
+
+    invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
+
+    iput-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->unknownFieldData:Ljava/util/List;
 
     .line 119
-    :goto_c
-    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->unknownFieldData:Ljava/util/List;
+    :cond_21
+    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->unknownFieldData:Ljava/util/List;
 
-    invoke-static {v2, p1, v0}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->storeUnknownField(Ljava/util/List;Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;I)Z
+    invoke-static {v1, p1, v0}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->storeUnknownField(Ljava/util/List;Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;I)Z
 
-    move-result v2
+    move-result v1
 
-    if-nez v2, :cond_1
+    if-nez v1, :cond_56
 
     .line 121
     return-object p0
 
-    .line 113
-    :sswitch_15
-    return-object p0
-
-    .line 116
-    :cond_16
-    new-instance v2, Ljava/util/ArrayList;
-
-    invoke-direct {v2}, Ljava/util/ArrayList;-><init>()V
-
-    iput-object v2, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->unknownFieldData:Ljava/util/List;
-
-    goto :goto_c
-
-    .line 126
-    :sswitch_1e
-    new-instance v2, Lcom/google/analytics/containertag/proto/Serving$Resource;
-
-    invoke-direct {v2}, Lcom/google/analytics/containertag/proto/Serving$Resource;-><init>()V
-
-    iput-object v2, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->jsResource:Lcom/google/analytics/containertag/proto/Serving$Resource;
-
-    .line 127
-    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->jsResource:Lcom/google/analytics/containertag/proto/Serving$Resource;
-
-    invoke-virtual {p1, v2}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readMessage(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
-
-    goto :goto_1
-
-    .line 131
-    :sswitch_2b
+    .line 145
+    :cond_2a
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readString()Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v1
 
-    iput-object v2, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->containerId:Ljava/lang/String;
+    iput-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->version:Ljava/lang/String;
 
-    goto :goto_1
+    .end local v0    # "tag":I
+    goto :goto_56
 
     .line 135
-    :sswitch_32
+    .restart local v0    # "tag":I
+    :cond_31
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readInt32()I
 
     move-result v1
 
     .line 136
     .local v1, "temp":I
-    if-ne v1, v3, :cond_3b
+    const/4 v2, 0x1
 
-    .line 138
-    :cond_38
-    iput v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->state:I
+    if-eq v1, v2, :cond_3f
 
-    goto :goto_1
+    const/4 v3, 0x2
 
-    .line 136
-    :cond_3b
-    const/4 v2, 0x2
+    if-ne v1, v3, :cond_3c
 
-    if-eq v1, v2, :cond_38
+    goto :goto_3f
 
     .line 140
-    iput v3, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->state:I
+    :cond_3c
+    iput v2, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->state:I
 
-    goto :goto_1
+    .line 142
+    goto :goto_56
 
-    .line 145
+    .line 138
+    :cond_3f
+    :goto_3f
+    iput v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->state:I
+
+    goto :goto_56
+
+    .line 131
     .end local v1    # "temp":I
-    :sswitch_41
+    :cond_42
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readString()Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v1
 
-    iput-object v2, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->version:Ljava/lang/String;
+    iput-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->containerId:Ljava/lang/String;
 
-    goto :goto_1
+    .line 132
+    goto :goto_56
 
-    .line 111
-    :sswitch_data_48
-    .sparse-switch
-        0x0 -> :sswitch_15
-        0xa -> :sswitch_1e
-        0x1a -> :sswitch_2b
-        0x20 -> :sswitch_32
-        0x2a -> :sswitch_41
-    .end sparse-switch
+    .line 126
+    :cond_49
+    new-instance v1, Lcom/google/analytics/containertag/proto/Serving$Resource;
+
+    invoke-direct {v1}, Lcom/google/analytics/containertag/proto/Serving$Resource;-><init>()V
+
+    iput-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->jsResource:Lcom/google/analytics/containertag/proto/Serving$Resource;
+
+    .line 127
+    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->jsResource:Lcom/google/analytics/containertag/proto/Serving$Resource;
+
+    invoke-virtual {p1, v1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readMessage(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
+
+    .line 128
+    nop
+
+    .line 149
+    .end local v0    # "tag":I
+    :cond_56
+    :goto_56
+    goto :goto_0
+
+    .line 113
+    .restart local v0    # "tag":I
+    :cond_57
+    return-object p0
 .end method
 
 .method public bridge synthetic mergeFrom(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;)Lcom/google/tagmanager/protobuf/nano/MessageNano;
@@ -625,7 +641,6 @@
         }
     .end annotation
 
-    .prologue
     .line 21
     invoke-virtual {p0, p1}, Lcom/google/analytics/containertag/proto/Serving$Container;->mergeFrom(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;)Lcom/google/analytics/containertag/proto/Serving$Container;
 
@@ -643,64 +658,59 @@
         }
     .end annotation
 
-    .prologue
     .line 73
     iget-object v0, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->jsResource:Lcom/google/analytics/containertag/proto/Serving$Resource;
 
-    if-nez v0, :cond_21
+    if-eqz v0, :cond_a
+
+    .line 74
+    const/4 v0, 0x1
+
+    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->jsResource:Lcom/google/analytics/containertag/proto/Serving$Resource;
+
+    invoke-virtual {p1, v0, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeMessage(ILcom/google/tagmanager/protobuf/nano/MessageNano;)V
 
     .line 76
-    :goto_4
-    iget-object v0, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->containerId:Ljava/lang/String;
+    :cond_a
+    const/4 v0, 0x3
 
-    const/4 v1, 0x3
+    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->containerId:Ljava/lang/String;
 
-    invoke-virtual {p1, v1, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeString(ILjava/lang/String;)V
+    invoke-virtual {p1, v0, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeString(ILjava/lang/String;)V
 
     .line 77
-    iget v0, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->state:I
+    const/4 v0, 0x4
 
-    const/4 v1, 0x4
+    iget v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->state:I
 
-    invoke-virtual {p1, v1, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeInt32(II)V
+    invoke-virtual {p1, v0, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeInt32(II)V
 
     .line 78
     iget-object v0, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->version:Ljava/lang/String;
 
-    const-string/jumbo v1, ""
+    const-string v1, ""
 
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v0
 
-    if-eqz v0, :cond_28
+    if-nez v0, :cond_26
+
+    .line 79
+    const/4 v0, 0x5
+
+    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->version:Ljava/lang/String;
+
+    invoke-virtual {p1, v0, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeString(ILjava/lang/String;)V
 
     .line 81
-    :goto_1b
+    :cond_26
     iget-object v0, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->unknownFieldData:Ljava/util/List;
 
     invoke-static {v0, p1}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->writeUnknownFields(Ljava/util/List;Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;)V
 
     .line 83
-    return-void
-
-    .line 74
-    :cond_21
-    iget-object v0, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->jsResource:Lcom/google/analytics/containertag/proto/Serving$Resource;
-
-    const/4 v1, 0x1
-
-    invoke-virtual {p1, v1, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeMessage(ILcom/google/tagmanager/protobuf/nano/MessageNano;)V
-
-    goto :goto_4
-
-    .line 79
-    :cond_28
-    iget-object v0, p0, Lcom/google/analytics/containertag/proto/Serving$Container;->version:Ljava/lang/String;
-
-    const/4 v1, 0x5
-
-    invoke-virtual {p1, v1, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeString(ILjava/lang/String;)V
-
-    goto :goto_1b
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

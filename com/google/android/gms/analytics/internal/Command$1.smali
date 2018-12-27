@@ -1,4 +1,4 @@
-.class Lcom/google/android/gms/analytics/internal/Command$1;
+.class final Lcom/google/android/gms/analytics/internal/Command$1;
 .super Ljava/lang/Object;
 .source "Command.java"
 
@@ -19,8 +19,7 @@
 .annotation system Ldalvik/annotation/Signature;
     value = {
         "Ljava/lang/Object;",
-        "Landroid/os/Parcelable$Creator",
-        "<",
+        "Landroid/os/Parcelable$Creator<",
         "Lcom/google/android/gms/analytics/internal/Command;",
         ">;"
     }
@@ -31,7 +30,6 @@
 .method constructor <init>()V
     .registers 1
 
-    .prologue
     .line 54
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -44,7 +42,6 @@
     .registers 3
     .param p1, "in"    # Landroid/os/Parcel;
 
-    .prologue
     .line 57
     new-instance v0, Lcom/google/android/gms/analytics/internal/Command;
 
@@ -57,7 +54,6 @@
     .registers 3
     .param p1, "x0"    # Landroid/os/Parcel;
 
-    .prologue
     .line 54
     invoke-virtual {p0, p1}, Lcom/google/android/gms/analytics/internal/Command$1;->createFromParcel(Landroid/os/Parcel;)Lcom/google/android/gms/analytics/internal/Command;
 
@@ -70,7 +66,6 @@
     .registers 3
     .param p1, "size"    # I
 
-    .prologue
     .line 62
     new-array v0, p1, [Lcom/google/android/gms/analytics/internal/Command;
 
@@ -81,7 +76,6 @@
     .registers 3
     .param p1, "x0"    # I
 
-    .prologue
     .line 54
     invoke-virtual {p0, p1}, Lcom/google/android/gms/analytics/internal/Command$1;->newArray(I)[Lcom/google/android/gms/analytics/internal/Command;
 

@@ -13,7 +13,6 @@
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "index"    # I
 
-    .prologue
     .line 17
     invoke-direct {p0, p1, p2}, Lcom/oneplus/screenshot/longshot/match/StitchLastMatcher;-><init>(Landroid/content/Context;I)V
 
@@ -45,7 +44,9 @@
     iput v0, p0, Lcom/oneplus/screenshot/longshot/match/StitchSLastMatcher;->mOffsetCurr:I
 
     .line 21
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -54,7 +55,6 @@
     .registers 3
     .param p1, "cache"    # Lcom/oneplus/screenshot/longshot/cache/BitmapCache;
 
-    .prologue
     .line 43
     const/4 v0, 0x0
 
@@ -66,7 +66,6 @@
     .param p1, "offset"    # I
     .param p2, "cache"    # Lcom/oneplus/screenshot/longshot/cache/BitmapCache;
 
-    .prologue
     .line 38
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/match/StitchSLastMatcher;->mCurrDumper:Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;
 
@@ -110,7 +109,6 @@
 .method protected getStep()I
     .registers 2
 
-    .prologue
     .line 33
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->STEP_STITCH_SLAST:Lcom/oneplus/screenshot/longshot/util/Configs;
 
@@ -124,9 +122,8 @@
 .method protected getTag()Ljava/lang/String;
     .registers 2
 
-    .prologue
     .line 28
-    const-string/jumbo v0, "StitchSLast"
+    const-string v0, "StitchSLast"
 
     return-object v0
 .end method

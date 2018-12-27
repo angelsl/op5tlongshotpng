@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Ljava/lang/Enum",
-        "<",
+        "Ljava/lang/Enum<",
         "Lcom/oneplus/screenshot/statistics/EventStatistics$Error;",
         ">;"
     }
@@ -37,17 +36,12 @@
 .method static constructor <clinit>()V
     .registers 5
 
-    .prologue
-    const/4 v4, 0x2
-
-    const/4 v3, 0x1
-
-    const/4 v2, 0x0
-
     .line 87
     new-instance v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
 
-    const-string/jumbo v1, "CRASH"
+    const-string v1, "CRASH"
+
+    const/4 v2, 0x0
 
     invoke-direct {v0, v1, v2}, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;-><init>(Ljava/lang/String;I)V
 
@@ -56,7 +50,9 @@
     .line 88
     new-instance v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
 
-    const-string/jumbo v1, "MEMORY"
+    const-string v1, "MEMORY"
+
+    const/4 v3, 0x1
 
     invoke-direct {v0, v1, v3}, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;-><init>(Ljava/lang/String;I)V
 
@@ -65,7 +61,9 @@
     .line 89
     new-instance v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
 
-    const-string/jumbo v1, "JOIN"
+    const-string v1, "JOIN"
+
+    const/4 v4, 0x2
 
     invoke-direct {v0, v1, v4}, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;-><init>(Ljava/lang/String;I)V
 
@@ -90,13 +88,19 @@
 
     sput-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;->$VALUES:[Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()V"
+        }
+    .end annotation
 
-    .prologue
     .line 85
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
@@ -107,7 +111,6 @@
     .registers 2
     .param p0, "name"    # Ljava/lang/String;
 
-    .prologue
     .line 85
     const-class v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
 
@@ -123,9 +126,14 @@
 .method public static values()[Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
     .registers 1
 
-    .prologue
     .line 85
     sget-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;->$VALUES:[Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
+
+    invoke-virtual {v0}, [Lcom/oneplus/screenshot/statistics/EventStatistics$Error;->clone()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, [Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
 
     return-object v0
 .end method
@@ -135,13 +143,13 @@
 .method public valueOf()I
     .registers 3
 
-    .prologue
     .line 92
     invoke-virtual {p0}, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;->ordinal()I
 
     move-result v0
 
-    invoke-static {}, Lcom/oneplus/screenshot/statistics/EventStatistics;->-get0()I
+    # getter for: Lcom/oneplus/screenshot/statistics/EventStatistics;->APPBASE:I
+    invoke-static {}, Lcom/oneplus/screenshot/statistics/EventStatistics;->access$000()I
 
     move-result v1
 

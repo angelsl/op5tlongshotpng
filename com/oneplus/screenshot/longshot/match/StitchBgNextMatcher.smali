@@ -23,7 +23,6 @@
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "index"    # I
 
-    .prologue
     .line 36
     invoke-direct {p0, p1, p2}, Lcom/oneplus/screenshot/longshot/match/BaseMatcher;-><init>(Landroid/content/Context;I)V
 
@@ -92,145 +91,151 @@
     iput v0, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mOffsetCurr:I
 
     .line 41
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private findMisregistration([Lcom/oneplus/screenshot/longshot/transform/Complex;[Lcom/oneplus/screenshot/longshot/transform/Complex;II)V
-    .registers 15
+    .registers 13
     .param p1, "norPoc"    # [Lcom/oneplus/screenshot/longshot/transform/Complex;
     .param p2, "fftPoc"    # [Lcom/oneplus/screenshot/longshot/transform/Complex;
     .param p3, "w"    # I
     .param p4, "h"    # I
 
-    .prologue
     .line 188
-    const/4 v4, 0x0
+    const/4 v0, 0x0
 
-    .local v4, "y":I
-    :goto_1
-    if-ge v4, p4, :cond_32
+    move v1, v0
+
+    .local v1, "y":I
+    :goto_2
+    if-ge v1, p4, :cond_31
 
     .line 189
-    const/4 v1, 0x0
+    move v2, v0
 
-    .local v1, "x":I
-    :goto_4
-    if-ge v1, p3, :cond_2f
+    .local v2, "x":I
+    :goto_5
+    if-ge v2, p3, :cond_2e
 
     .line 190
-    mul-int v5, v4, p3
+    mul-int v3, v1, p3
 
-    add-int v0, v1, v5
+    add-int/2addr v3, v2
 
     .line 191
-    .local v0, "idx":I
-    aget-object v5, p1, v0
+    .local v3, "idx":I
+    aget-object v4, p1, v3
 
-    invoke-virtual {v5}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
+    invoke-virtual {v4}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
+
+    move-result-wide v4
+
+    aget-object v6, p2, v3
+
+    invoke-virtual {v6}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
 
     move-result-wide v6
 
-    aget-object v5, p2, v0
+    invoke-static {v6, v7}, Ljava/lang/Math;->abs(D)D
 
-    invoke-virtual {v5}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
+    move-result-wide v6
 
-    move-result-wide v8
-
-    invoke-static {v8, v9}, Ljava/lang/Math;->abs(D)D
-
-    move-result-wide v8
-
-    add-double v2, v6, v8
+    add-double/2addr v4, v6
 
     .line 192
-    .local v2, "spectrum":D
+    .local v4, "spectrum":D
     iget-wide v6, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPeak:D
 
-    cmpl-double v5, v2, v6
+    cmpl-double v6, v4, v6
 
-    if-lez v5, :cond_2c
+    if-lez v6, :cond_2b
 
     .line 193
-    iput-wide v2, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPeak:D
+    iput-wide v4, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPeak:D
 
     .line 194
-    iget-object v5, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
+    iget-object v6, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
 
-    iput v1, v5, Landroid/graphics/Point;->x:I
+    iput v2, v6, Landroid/graphics/Point;->x:I
 
     .line 195
-    iget-object v5, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
+    iget-object v6, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
 
-    iput v4, v5, Landroid/graphics/Point;->y:I
+    iput v1, v6, Landroid/graphics/Point;->y:I
 
     .line 189
-    :cond_2c
-    add-int/lit8 v1, v1, 0x1
+    .end local v3    # "idx":I
+    .end local v4    # "spectrum":D
+    :cond_2b
+    add-int/lit8 v2, v2, 0x1
 
-    goto :goto_4
+    goto :goto_5
 
     .line 188
-    .end local v0    # "idx":I
-    .end local v2    # "spectrum":D
-    :cond_2f
-    add-int/lit8 v4, v4, 0x1
+    .end local v2    # "x":I
+    :cond_2e
+    add-int/lit8 v1, v1, 0x1
 
-    goto :goto_1
+    goto :goto_2
 
     .line 199
-    .end local v1    # "x":I
-    :cond_32
-    iget-object v5, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
+    .end local v1    # "y":I
+    :cond_31
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
 
-    iget v5, v5, Landroid/graphics/Point;->x:I
+    iget v0, v0, Landroid/graphics/Point;->x:I
 
-    sub-int v5, p3, v5
+    sub-int v0, p3, v0
 
-    iget-object v6, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
+    iget-object v1, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
 
-    iget v6, v6, Landroid/graphics/Point;->x:I
+    iget v1, v1, Landroid/graphics/Point;->x:I
 
-    if-ge v5, v6, :cond_48
+    if-ge v0, v1, :cond_47
 
     .line 200
-    iget-object v5, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
 
-    iget-object v6, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
+    iget-object v1, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
 
-    iget v6, v6, Landroid/graphics/Point;->x:I
+    iget v1, v1, Landroid/graphics/Point;->x:I
 
-    sub-int v6, p3, v6
+    sub-int v1, p3, v1
 
-    iput v6, v5, Landroid/graphics/Point;->x:I
+    iput v1, v0, Landroid/graphics/Point;->x:I
 
     .line 202
-    :cond_48
-    iget-object v5, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
+    :cond_47
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
 
-    iget v5, v5, Landroid/graphics/Point;->y:I
+    iget v0, v0, Landroid/graphics/Point;->y:I
 
-    sub-int v5, p4, v5
+    sub-int v0, p4, v0
 
-    iget-object v6, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
+    iget-object v1, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
 
-    iget v6, v6, Landroid/graphics/Point;->y:I
+    iget v1, v1, Landroid/graphics/Point;->y:I
 
-    if-ge v5, v6, :cond_5e
+    if-ge v0, v1, :cond_5d
 
     .line 203
-    iget-object v5, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
 
-    iget-object v6, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
+    iget-object v1, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
 
-    iget v6, v6, Landroid/graphics/Point;->y:I
+    iget v1, v1, Landroid/graphics/Point;->y:I
 
-    sub-int v6, p4, v6
+    sub-int v1, p4, v1
 
-    iput v6, v5, Landroid/graphics/Point;->y:I
+    iput v1, v0, Landroid/graphics/Point;->y:I
 
     .line 205
-    :cond_5e
-    return-void
+    :cond_5d
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private getLines(II[ILcom/oneplus/screenshot/longshot/dump/BitmapDumper;Z)[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
@@ -241,58 +246,58 @@
     .param p4, "dumper"    # Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;
     .param p5, "isCurr"    # Z
 
-    .prologue
-    const/4 v4, 0x0
-
     .line 108
-    new-array v1, p2, [Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
+    new-array v0, p2, [Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
 
     .line 109
-    .local v1, "lines":[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
-    const/4 v0, 0x0
+    .local v0, "lines":[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
+    const/4 v1, 0x0
 
-    .local v0, "i":I
+    move v2, v1
+
+    .local v2, "i":I
     :goto_4
-    if-ge v0, p2, :cond_17
+    if-ge v2, p2, :cond_17
 
     .line 110
-    new-array v2, p1, [I
+    new-array v3, p1, [I
 
     .line 111
-    .local v2, "p":[I
-    mul-int v3, p1, v0
+    .local v3, "p":[I
+    mul-int v4, p1, v2
 
-    invoke-static {p3, v3, v2, v4, p1}, Ljava/lang/System;->arraycopy([II[III)V
+    invoke-static {p3, v4, v3, v1, p1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
     .line 112
-    new-instance v3, Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
+    new-instance v4, Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
 
-    invoke-direct {v3, v2}, Lcom/oneplus/screenshot/longshot/bitmap/Pixels;-><init>([I)V
+    invoke-direct {v4, v3}, Lcom/oneplus/screenshot/longshot/bitmap/Pixels;-><init>([I)V
 
-    aput-object v3, v1, v0
+    aput-object v4, v0, v2
 
     .line 109
-    add-int/lit8 v0, v0, 0x1
+    .end local v3    # "p":[I
+    add-int/lit8 v2, v2, 0x1
 
     goto :goto_4
 
     .line 114
-    .end local v2    # "p":[I
+    .end local v2    # "i":I
     :cond_17
     if-eqz p4, :cond_1d
 
     .line 115
-    array-length v3, v1
+    array-length v2, v0
 
-    invoke-virtual {p4, v1, v4, v3}, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;->dump([Lcom/oneplus/screenshot/longshot/bitmap/Pixels;II)V
+    invoke-virtual {p4, v0, v1, v2}, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;->dump([Lcom/oneplus/screenshot/longshot/bitmap/Pixels;II)V
 
     .line 117
     :cond_1d
-    return-object v1
+    return-object v0
 .end method
 
 .method private getPixels(IIILandroid/graphics/Bitmap;Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;Z)[D
-    .registers 25
+    .registers 27
     .param p1, "wSize"    # I
     .param p2, "hSize"    # I
     .param p3, "offset"    # I
@@ -300,287 +305,354 @@
     .param p5, "dumper"    # Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;
     .param p6, "isCurr"    # Z
 
-    .prologue
+    move-object/from16 v0, p0
+
+    move-object/from16 v2, p4
+
     .line 121
     invoke-virtual/range {p4 .. p4}, Landroid/graphics/Bitmap;->getWidth()I
 
-    move-result v11
+    move-result v3
 
     .line 122
-    .local v11, "w":I
+    .local v3, "w":I
     invoke-virtual/range {p4 .. p4}, Landroid/graphics/Bitmap;->getHeight()I
 
-    move-result v2
+    move-result v4
 
     .line 123
-    .local v2, "h":I
-    sget-object v15, Lcom/oneplus/screenshot/longshot/util/Configs;->BGLINE_SAMPLES:Ljava/util/List;
+    .local v4, "h":I
+    sget-object v5, Lcom/oneplus/screenshot/longshot/util/Configs;->BGLINE_SAMPLES:Ljava/util/List;
 
-    invoke-interface {v15}, Ljava/util/List;->size()I
+    invoke-interface {v5}, Ljava/util/List;->size()I
 
-    move-result v7
+    move-result v5
 
     .line 124
-    .local v7, "nLength":I
-    move-object/from16 v0, p0
+    .local v5, "nLength":I
+    iget v6, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mExtend:I
 
-    iget v15, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mExtend:I
+    sub-int v6, p1, v6
 
-    sub-int v15, p1, v15
-
-    div-int v12, v15, v7
+    div-int/2addr v6, v5
 
     .line 125
-    .local v12, "wLength":I
-    int-to-float v15, v11
+    .local v6, "wLength":I
+    int-to-float v7, v3
 
-    move-object/from16 v0, p0
+    iget v8, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mDensity:F
 
-    iget v0, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mDensity:F
+    div-float/2addr v7, v8
 
-    move/from16 v16, v0
+    iget v8, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mExtend:I
 
-    div-float v15, v15, v16
+    int-to-float v8, v8
 
-    move-object/from16 v0, p0
+    sub-float/2addr v7, v8
 
-    iget v0, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mExtend:I
-
-    move/from16 v16, v0
-
-    move/from16 v0, v16
-
-    int-to-float v0, v0
-
-    move/from16 v16, v0
-
-    sub-float v15, v15, v16
-
-    float-to-int v8, v15
+    float-to-int v7, v7
 
     .line 126
-    .local v8, "pExtend":I
-    move/from16 v0, p2
+    .local v7, "pExtend":I
+    move/from16 v8, p2
 
-    invoke-static {v2, v0}, Ljava/lang/Math;->min(II)I
+    invoke-static {v4, v8}, Ljava/lang/Math;->min(II)I
 
-    move-result p2
+    move-result v8
 
     .line 127
-    mul-int v15, p1, p2
+    .end local p2    # "hSize":I
+    .local v8, "hSize":I
+    mul-int v9, p1, v8
 
-    new-array v9, v15, [D
+    new-array v9, v9, [D
 
     .line 128
     .local v9, "pixels":[D
-    const/4 v3, 0x0
+    const/4 v11, 0x0
 
-    .local v3, "i":I
-    :goto_38
-    move/from16 v0, p2
-
-    if-ge v3, v0, :cond_c2
+    .local v11, "i":I
+    :goto_2b
+    if-ge v11, v8, :cond_b6
 
     .line 129
-    if-eqz p6, :cond_7d
+    if-eqz p6, :cond_32
 
-    add-int v14, v3, p3
+    add-int v12, v11, p3
+
+    goto :goto_36
+
+    :cond_32
+    sub-int v12, v11, p3
+
+    add-int/2addr v12, v4
+
+    sub-int/2addr v12, v8
 
     .line 130
-    .local v14, "y":I
-    :goto_40
-    const/4 v4, 0x0
+    .local v12, "y":I
+    :goto_36
+    const/4 v13, 0x0
 
-    .local v4, "j":I
-    :goto_41
-    if-ge v4, v7, :cond_86
+    .local v13, "j":I
+    :goto_37
+    if-ge v13, v5, :cond_80
 
     .line 131
-    sget-object v15, Lcom/oneplus/screenshot/longshot/util/Configs;->BGLINE_SAMPLES:Ljava/util/List;
+    sget-object v10, Lcom/oneplus/screenshot/longshot/util/Configs;->BGLINE_SAMPLES:Ljava/util/List;
 
-    invoke-interface {v15, v4}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    invoke-interface {v10, v13}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    move-result-object v15
+    move-result-object v10
 
-    check-cast v15, Ljava/lang/Integer;
+    check-cast v10, Ljava/lang/Integer;
 
-    invoke-virtual {v15}, Ljava/lang/Integer;->intValue()I
+    invoke-virtual {v10}, Ljava/lang/Integer;->intValue()I
 
     move-result v10
 
     .line 132
     .local v10, "pos":I
-    const/4 v5, 0x0
+    const/4 v14, 0x0
 
-    .local v5, "k":I
-    :goto_50
-    if-ge v5, v12, :cond_83
+    .local v14, "k":I
+    :goto_46
+    move v15, v14
+
+    .end local v14    # "k":I
+    .local v15, "k":I
+    move v1, v15
+
+    if-ge v1, v6, :cond_75
 
     .line 133
-    int-to-float v15, v10
+    .end local v15    # "k":I
+    .local v1, "k":I
+    move/from16 v16, v3
 
-    int-to-float v0, v5
+    int-to-float v3, v10
 
-    move/from16 v16, v0
+    .end local v3    # "w":I
+    .local v16, "w":I
+    move/from16 v17, v4
 
-    move-object/from16 v0, p0
+    int-to-float v4, v1
 
-    iget v0, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mDensity:F
+    .end local v4    # "h":I
+    .local v17, "h":I
+    move/from16 v18, v5
 
-    move/from16 v17, v0
+    iget v5, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mDensity:F
 
-    mul-float v16, v16, v17
+    .end local v5    # "nLength":I
+    .local v18, "nLength":I
+    mul-float/2addr v4, v5
 
-    add-float v15, v15, v16
+    add-float/2addr v3, v4
 
-    float-to-int v13, v15
+    float-to-int v3, v3
 
     .line 134
-    .local v13, "x":I
-    mul-int v15, v3, p1
+    .local v3, "x":I
+    mul-int v4, v11, p1
 
-    mul-int v16, v4, v12
+    mul-int v5, v13, v6
 
-    add-int v15, v15, v16
+    add-int/2addr v4, v5
 
-    add-int v6, v15, v5
+    add-int/2addr v4, v1
 
     .line 135
-    .local v6, "n":I
-    move-object/from16 v0, p4
+    .local v4, "n":I
+    invoke-virtual {v2, v3, v12}, Landroid/graphics/Bitmap;->getPixel(II)I
 
-    invoke-virtual {v0, v13, v14}, Landroid/graphics/Bitmap;->getPixel(II)I
+    move-result v5
 
-    move-result v15
+    invoke-direct {v0, v5}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->grayScale(I)I
 
-    move-object/from16 v0, p0
+    move-result v5
 
-    invoke-direct {v0, v15}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->grayScale(I)I
+    move/from16 v19, v6
 
-    move-result v15
+    int-to-double v5, v5
 
-    int-to-double v0, v15
-
-    move-wide/from16 v16, v0
-
-    aput-wide v16, v9, v6
+    .end local v6    # "wLength":I
+    .local v19, "wLength":I
+    aput-wide v5, v9, v4
 
     .line 132
-    add-int/lit8 v5, v5, 0x1
+    .end local v3    # "x":I
+    .end local v4    # "n":I
+    add-int/lit8 v14, v1, 0x1
 
-    goto :goto_50
+    .end local v1    # "k":I
+    .restart local v14    # "k":I
+    move/from16 v3, v16
 
-    .line 129
-    .end local v4    # "j":I
-    .end local v5    # "k":I
-    .end local v6    # "n":I
-    .end local v10    # "pos":I
-    .end local v13    # "x":I
-    .end local v14    # "y":I
-    :cond_7d
-    sub-int v15, v3, p3
+    move/from16 v4, v17
 
-    add-int/2addr v15, v2
+    move/from16 v5, v18
 
-    sub-int v14, v15, p2
+    move/from16 v6, v19
 
-    .restart local v14    # "y":I
-    goto :goto_40
+    goto :goto_46
 
     .line 130
-    .restart local v4    # "j":I
-    .restart local v5    # "k":I
-    .restart local v10    # "pos":I
-    :cond_83
-    add-int/lit8 v4, v4, 0x1
+    .end local v10    # "pos":I
+    .end local v14    # "k":I
+    .end local v16    # "w":I
+    .end local v17    # "h":I
+    .end local v18    # "nLength":I
+    .end local v19    # "wLength":I
+    .local v3, "w":I
+    .local v4, "h":I
+    .restart local v5    # "nLength":I
+    .restart local v6    # "wLength":I
+    :cond_75
+    move/from16 v16, v3
 
-    goto :goto_41
+    move/from16 v17, v4
+
+    move/from16 v18, v5
+
+    move/from16 v19, v6
+
+    .end local v3    # "w":I
+    .end local v4    # "h":I
+    .end local v5    # "nLength":I
+    .end local v6    # "wLength":I
+    .restart local v16    # "w":I
+    .restart local v17    # "h":I
+    .restart local v18    # "nLength":I
+    .restart local v19    # "wLength":I
+    add-int/lit8 v13, v13, 0x1
+
+    goto :goto_37
 
     .line 138
-    .end local v5    # "k":I
-    .end local v10    # "pos":I
-    :cond_86
-    const/4 v4, 0x0
+    .end local v13    # "j":I
+    .end local v16    # "w":I
+    .end local v17    # "h":I
+    .end local v18    # "nLength":I
+    .end local v19    # "wLength":I
+    .restart local v3    # "w":I
+    .restart local v4    # "h":I
+    .restart local v5    # "nLength":I
+    .restart local v6    # "wLength":I
+    :cond_80
+    move/from16 v16, v3
 
-    :goto_87
-    move-object/from16 v0, p0
+    move/from16 v17, v4
 
-    iget v15, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mExtend:I
+    move/from16 v18, v5
 
-    if-ge v4, v15, :cond_be
+    move/from16 v19, v6
+
+    .end local v3    # "w":I
+    .end local v4    # "h":I
+    .end local v5    # "nLength":I
+    .end local v6    # "wLength":I
+    .restart local v16    # "w":I
+    .restart local v17    # "h":I
+    .restart local v18    # "nLength":I
+    .restart local v19    # "wLength":I
+    const/4 v1, 0x0
+
+    .local v1, "j":I
+    :goto_89
+    iget v3, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mExtend:I
+
+    if-ge v1, v3, :cond_aa
 
     .line 139
-    int-to-float v15, v8
+    int-to-float v3, v7
 
-    int-to-float v0, v4
+    int-to-float v4, v1
 
-    move/from16 v16, v0
+    iget v5, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mDensity:F
 
-    move-object/from16 v0, p0
+    mul-float/2addr v4, v5
 
-    iget v0, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mDensity:F
+    add-float/2addr v3, v4
 
-    move/from16 v17, v0
-
-    mul-float v16, v16, v17
-
-    add-float v15, v15, v16
-
-    float-to-int v13, v15
+    float-to-int v3, v3
 
     .line 140
-    .restart local v13    # "x":I
-    mul-int v15, v3, p1
+    .local v3, "x":I
+    mul-int v4, v11, p1
 
-    add-int v15, v15, p1
+    add-int v4, v4, p1
 
-    move-object/from16 v0, p0
+    iget v5, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mExtend:I
 
-    iget v0, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mExtend:I
+    sub-int/2addr v4, v5
 
-    move/from16 v16, v0
-
-    sub-int v15, v15, v16
-
-    add-int v6, v15, v4
+    add-int/2addr v4, v1
 
     .line 141
-    .restart local v6    # "n":I
-    move-object/from16 v0, p4
+    .local v4, "n":I
+    invoke-virtual {v2, v3, v12}, Landroid/graphics/Bitmap;->getPixel(II)I
 
-    invoke-virtual {v0, v13, v14}, Landroid/graphics/Bitmap;->getPixel(II)I
+    move-result v5
 
-    move-result v15
+    invoke-direct {v0, v5}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->grayScale(I)I
 
-    move-object/from16 v0, p0
+    move-result v5
 
-    invoke-direct {v0, v15}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->grayScale(I)I
+    int-to-double v5, v5
 
-    move-result v15
-
-    int-to-double v0, v15
-
-    move-wide/from16 v16, v0
-
-    aput-wide v16, v9, v6
+    aput-wide v5, v9, v4
 
     .line 138
-    add-int/lit8 v4, v4, 0x1
+    .end local v3    # "x":I
+    .end local v4    # "n":I
+    add-int/lit8 v1, v1, 0x1
 
-    goto :goto_87
+    goto :goto_89
 
     .line 128
-    .end local v6    # "n":I
-    .end local v13    # "x":I
-    :cond_be
-    add-int/lit8 v3, v3, 0x1
+    .end local v1    # "j":I
+    .end local v12    # "y":I
+    :cond_aa
+    add-int/lit8 v11, v11, 0x1
 
-    goto/16 :goto_38
+    move/from16 v3, v16
+
+    move/from16 v4, v17
+
+    move/from16 v5, v18
+
+    move/from16 v6, v19
+
+    goto/16 :goto_2b
 
     .line 144
-    .end local v4    # "j":I
-    .end local v14    # "y":I
-    :cond_c2
+    .end local v11    # "i":I
+    .end local v16    # "w":I
+    .end local v17    # "h":I
+    .end local v18    # "nLength":I
+    .end local v19    # "wLength":I
+    .local v3, "w":I
+    .local v4, "h":I
+    .restart local v5    # "nLength":I
+    .restart local v6    # "wLength":I
+    :cond_b6
+    move/from16 v16, v3
+
+    move/from16 v17, v4
+
+    move/from16 v18, v5
+
+    move/from16 v19, v6
+
+    .end local v3    # "w":I
+    .end local v4    # "h":I
+    .end local v5    # "nLength":I
+    .end local v6    # "wLength":I
+    .restart local v16    # "w":I
+    .restart local v17    # "h":I
+    .restart local v18    # "nLength":I
+    .restart local v19    # "wLength":I
     return-object v9
 .end method
 
@@ -588,13 +660,12 @@
     .registers 2
     .param p1, "pixel"    # I
 
-    .prologue
     .line 159
     return p1
 .end method
 
 .method private spectrum([Lcom/oneplus/screenshot/longshot/transform/Complex;[Lcom/oneplus/screenshot/longshot/transform/Complex;[Lcom/oneplus/screenshot/longshot/transform/Complex;[Lcom/oneplus/screenshot/longshot/transform/Complex;[Lcom/oneplus/screenshot/longshot/transform/Complex;[Lcom/oneplus/screenshot/longshot/transform/Complex;)V
-    .registers 17
+    .registers 16
     .param p1, "dstNor"    # [Lcom/oneplus/screenshot/longshot/transform/Complex;
     .param p2, "dstFft"    # [Lcom/oneplus/screenshot/longshot/transform/Complex;
     .param p3, "norLast"    # [Lcom/oneplus/screenshot/longshot/transform/Complex;
@@ -602,120 +673,119 @@
     .param p5, "norCurr"    # [Lcom/oneplus/screenshot/longshot/transform/Complex;
     .param p6, "fftCurr"    # [Lcom/oneplus/screenshot/longshot/transform/Complex;
 
-    .prologue
     .line 170
-    const-wide/16 v2, 0x0
+    const-wide/16 v0, 0x0
 
     .line 172
-    .local v2, "spectrum":D
-    const/4 v0, 0x0
+    .local v0, "spectrum":D
+    const/4 v2, 0x0
 
-    .local v0, "i":I
+    .local v2, "i":I
     :goto_3
-    array-length v1, p3
+    array-length v3, p3
 
-    if-ge v0, v1, :cond_84
+    if-ge v2, v3, :cond_85
 
     .line 173
-    aget-object v1, p3, v0
+    aget-object v3, p3, v2
 
-    invoke-virtual {v1}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
+    invoke-virtual {v3}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
 
-    move-result-wide v4
+    move-result-wide v3
 
-    aget-object v1, p3, v0
+    aget-object v5, p3, v2
 
-    invoke-virtual {v1}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
+    invoke-virtual {v5}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
 
-    move-result-wide v6
+    move-result-wide v5
 
-    mul-double/2addr v4, v6
+    mul-double/2addr v3, v5
 
-    aget-object v1, p4, v0
+    aget-object v5, p4, v2
 
-    invoke-virtual {v1}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
+    invoke-virtual {v5}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
 
-    move-result-wide v6
+    move-result-wide v5
 
-    aget-object v1, p4, v0
+    aget-object v7, p4, v2
 
-    invoke-virtual {v1}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
+    invoke-virtual {v7}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
 
-    move-result-wide v8
+    move-result-wide v7
 
-    mul-double/2addr v6, v8
+    mul-double/2addr v5, v7
 
-    add-double/2addr v4, v6
+    add-double/2addr v3, v5
 
-    invoke-static {v4, v5}, Ljava/lang/Math;->sqrt(D)D
+    invoke-static {v3, v4}, Ljava/lang/Math;->sqrt(D)D
 
-    move-result-wide v2
+    move-result-wide v0
 
     .line 174
-    aget-object v1, p3, v0
+    aget-object v3, p3, v2
 
-    invoke-virtual {v1, v2, v3}, Lcom/oneplus/screenshot/longshot/transform/Complex;->divide(D)Lcom/oneplus/screenshot/longshot/transform/Complex;
+    invoke-virtual {v3, v0, v1}, Lcom/oneplus/screenshot/longshot/transform/Complex;->divide(D)Lcom/oneplus/screenshot/longshot/transform/Complex;
 
     .line 175
-    aget-object v1, p4, v0
+    aget-object v3, p4, v2
 
-    invoke-virtual {v1, v2, v3}, Lcom/oneplus/screenshot/longshot/transform/Complex;->divide(D)Lcom/oneplus/screenshot/longshot/transform/Complex;
+    invoke-virtual {v3, v0, v1}, Lcom/oneplus/screenshot/longshot/transform/Complex;->divide(D)Lcom/oneplus/screenshot/longshot/transform/Complex;
 
     .line 177
-    aget-object v1, p5, v0
+    aget-object v3, p5, v2
 
-    invoke-virtual {v1}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
+    invoke-virtual {v3}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
 
-    move-result-wide v4
+    move-result-wide v3
 
-    aget-object v1, p5, v0
+    aget-object v5, p5, v2
 
-    invoke-virtual {v1}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
+    invoke-virtual {v5}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
 
-    move-result-wide v6
+    move-result-wide v5
 
-    mul-double/2addr v4, v6
+    mul-double/2addr v3, v5
 
-    aget-object v1, p6, v0
+    aget-object v5, p6, v2
 
-    invoke-virtual {v1}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
+    invoke-virtual {v5}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
 
-    move-result-wide v6
+    move-result-wide v5
 
-    aget-object v1, p6, v0
+    aget-object v7, p6, v2
 
-    invoke-virtual {v1}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
+    invoke-virtual {v7}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
 
-    move-result-wide v8
+    move-result-wide v7
 
-    mul-double/2addr v6, v8
+    mul-double/2addr v5, v7
 
-    add-double/2addr v4, v6
+    add-double/2addr v3, v5
 
-    invoke-static {v4, v5}, Ljava/lang/Math;->sqrt(D)D
+    invoke-static {v3, v4}, Ljava/lang/Math;->sqrt(D)D
 
-    move-result-wide v2
+    move-result-wide v0
 
     .line 178
-    aget-object v1, p5, v0
+    aget-object v3, p5, v2
 
-    invoke-virtual {v1, v2, v3}, Lcom/oneplus/screenshot/longshot/transform/Complex;->divide(D)Lcom/oneplus/screenshot/longshot/transform/Complex;
+    invoke-virtual {v3, v0, v1}, Lcom/oneplus/screenshot/longshot/transform/Complex;->divide(D)Lcom/oneplus/screenshot/longshot/transform/Complex;
 
     .line 179
-    aget-object v1, p6, v0
+    aget-object v3, p6, v2
 
-    invoke-virtual {v1, v2, v3}, Lcom/oneplus/screenshot/longshot/transform/Complex;->divide(D)Lcom/oneplus/screenshot/longshot/transform/Complex;
+    invoke-virtual {v3, v0, v1}, Lcom/oneplus/screenshot/longshot/transform/Complex;->divide(D)Lcom/oneplus/screenshot/longshot/transform/Complex;
 
     .line 182
-    new-instance v1, Lcom/oneplus/screenshot/longshot/transform/Complex;
+    new-instance v3, Lcom/oneplus/screenshot/longshot/transform/Complex;
 
-    aget-object v4, p3, v0
+    aget-object v4, p3, v2
 
     invoke-virtual {v4}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
 
     move-result-wide v4
 
-    aget-object v6, p5, v0
+    aget-object v6, p5, v2
 
     invoke-virtual {v6}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
 
@@ -723,20 +793,20 @@
 
     mul-double/2addr v4, v6
 
-    invoke-direct {v1, v4, v5}, Lcom/oneplus/screenshot/longshot/transform/Complex;-><init>(D)V
+    invoke-direct {v3, v4, v5}, Lcom/oneplus/screenshot/longshot/transform/Complex;-><init>(D)V
 
-    aput-object v1, p1, v0
+    aput-object v3, p1, v2
 
     .line 183
-    new-instance v1, Lcom/oneplus/screenshot/longshot/transform/Complex;
+    new-instance v3, Lcom/oneplus/screenshot/longshot/transform/Complex;
 
-    aget-object v4, p4, v0
+    aget-object v4, p4, v2
 
     invoke-virtual {v4}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
 
     move-result-wide v4
 
-    aget-object v6, p6, v0
+    aget-object v6, p6, v2
 
     invoke-virtual {v6}, Lcom/oneplus/screenshot/longshot/transform/Complex;->getReal()D
 
@@ -746,55 +816,58 @@
 
     mul-double/2addr v4, v6
 
-    invoke-direct {v1, v4, v5}, Lcom/oneplus/screenshot/longshot/transform/Complex;-><init>(D)V
+    invoke-direct {v3, v4, v5}, Lcom/oneplus/screenshot/longshot/transform/Complex;-><init>(D)V
 
-    aput-object v1, p2, v0
+    aput-object v3, p2, v2
 
     .line 172
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v2, v2, 0x1
 
-    goto :goto_3
+    goto/16 :goto_3
 
     .line 185
-    :cond_84
-    return-void
+    .end local v2    # "i":I
+    :cond_85
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private toInt([D)[I
     .registers 6
     .param p1, "pixels"    # [D
 
-    .prologue
     .line 100
-    array-length v2, p1
+    array-length v0, p1
 
-    new-array v1, v2, [I
+    new-array v0, v0, [I
 
     .line 101
-    .local v1, "result":[I
-    const/4 v0, 0x0
+    .local v0, "result":[I
+    const/4 v1, 0x0
 
-    .local v0, "i":I
+    .local v1, "i":I
     :goto_4
     array-length v2, p1
 
-    if-ge v0, v2, :cond_f
+    if-ge v1, v2, :cond_f
 
     .line 102
-    aget-wide v2, p1, v0
+    aget-wide v2, p1, v1
 
     double-to-int v2, v2
 
-    aput v2, v1, v0
+    aput v2, v0, v1
 
     .line 101
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v1, v1, 0x1
 
     goto :goto_4
 
     .line 104
+    .end local v1    # "i":I
     :cond_f
-    return-object v1
+    return-object v0
 .end method
 
 .method private transComplex([Lcom/oneplus/screenshot/longshot/transform/Complex;[D)V
@@ -802,7 +875,6 @@
     .param p1, "complexs"    # [Lcom/oneplus/screenshot/longshot/transform/Complex;
     .param p2, "data"    # [D
 
-    .prologue
     .line 164
     const/4 v0, 0x0
 
@@ -827,8 +899,11 @@
     goto :goto_1
 
     .line 167
+    .end local v0    # "i":I
     :cond_10
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -836,7 +911,6 @@
 .method protected canDump()Z
     .registers 2
 
-    .prologue
     .line 60
     sget-object v0, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper$Options;->NEXT:Lcom/oneplus/screenshot/longshot/dump/BitmapDumper$Options;
 
@@ -848,10 +922,7 @@
 .end method
 
 .method protected createDumper()V
-    .registers 7
-
-    .prologue
-    const/4 v5, 0x1
+    .registers 6
 
     .line 53
     new-instance v0, Lcom/oneplus/screenshot/longshot/dump/NextDumper;
@@ -881,7 +952,9 @@
 
     move-result-object v3
 
-    invoke-direct {v0, v1, v2, v3, v5}, Lcom/oneplus/screenshot/longshot/dump/NextDumper;-><init>(Landroid/content/Context;ILjava/lang/String;Z)V
+    const/4 v4, 0x1
+
+    invoke-direct {v0, v1, v2, v3, v4}, Lcom/oneplus/screenshot/longshot/dump/NextDumper;-><init>(Landroid/content/Context;ILjava/lang/String;Z)V
 
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mCurrDumper:Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;
 
@@ -896,365 +969,359 @@
 
     move-result-object v3
 
-    invoke-direct {v0, v1, v2, v5, v3}, Lcom/oneplus/screenshot/longshot/dump/SameDumper;-><init>(Landroid/content/Context;IZLjava/lang/String;)V
+    invoke-direct {v0, v1, v2, v4, v3}, Lcom/oneplus/screenshot/longshot/dump/SameDumper;-><init>(Landroid/content/Context;IZLjava/lang/String;)V
 
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mSameDumper:Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;
 
     .line 56
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method protected getTag()Ljava/lang/String;
     .registers 2
 
-    .prologue
     .line 48
-    const-string/jumbo v0, "StitchBgNext"
+    const-string v0, "StitchBgNext"
 
     return-object v0
 .end method
 
 .method public run(Lcom/oneplus/screenshot/longshot/cache/BitmapCache;Lcom/oneplus/screenshot/longshot/cache/BitmapCache;)Lcom/oneplus/screenshot/longshot/match/MatchData;
-    .registers 35
+    .registers 37
     .param p1, "last"    # Lcom/oneplus/screenshot/longshot/cache/BitmapCache;
     .param p2, "curr"    # Lcom/oneplus/screenshot/longshot/cache/BitmapCache;
 
-    .prologue
+    move-object/from16 v7, p0
+
     .line 65
     invoke-virtual/range {p1 .. p1}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->getBitmap()Landroid/graphics/Bitmap;
 
-    move-result-object v2
+    move-result-object v0
 
-    invoke-virtual {v2}, Landroid/graphics/Bitmap;->getHeight()I
+    invoke-virtual {v0}, Landroid/graphics/Bitmap;->getHeight()I
 
-    move-result v2
+    move-result v0
 
-    move-object/from16 v0, p0
+    iget v1, v7, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mSize:I
 
-    iget v5, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mSize:I
+    invoke-static {v0, v1}, Ljava/lang/Math;->min(II)I
 
-    invoke-static {v2, v5}, Ljava/lang/Math;->min(II)I
+    move-result v0
 
-    move-result v2
+    iget v1, v7, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mStep:I
 
-    move-object/from16 v0, p0
-
-    iget v5, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mStep:I
-
-    div-int v31, v2, v5
+    div-int v8, v0, v1
 
     .line 66
-    .local v31, "sizeLast":I
+    .local v8, "sizeLast":I
     invoke-virtual/range {p2 .. p2}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->getBitmap()Landroid/graphics/Bitmap;
 
-    move-result-object v2
+    move-result-object v0
 
-    invoke-virtual {v2}, Landroid/graphics/Bitmap;->getHeight()I
+    invoke-virtual {v0}, Landroid/graphics/Bitmap;->getHeight()I
 
-    move-result v2
+    move-result v0
 
-    move-object/from16 v0, p0
+    iget v1, v7, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mSize:I
 
-    iget v5, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mSize:I
+    invoke-static {v0, v1}, Ljava/lang/Math;->min(II)I
 
-    invoke-static {v2, v5}, Ljava/lang/Math;->min(II)I
+    move-result v0
 
-    move-result v2
+    iget v1, v7, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mStep:I
 
-    move-object/from16 v0, p0
-
-    iget v5, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mStep:I
-
-    div-int v30, v2, v5
+    div-int v9, v0, v1
 
     .line 67
-    .local v30, "sizeCurr":I
+    .local v9, "sizeCurr":I
     const/16 v20, 0x0
 
     .line 68
     .local v20, "offset":I
-    sget-object v2, Lcom/oneplus/screenshot/longshot/util/Configs;->BGLINE_SAMPLES:Ljava/util/List;
+    sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->BGLINE_SAMPLES:Ljava/util/List;
 
-    invoke-interface {v2}, Ljava/util/List;->size()I
+    invoke-interface {v0}, Ljava/util/List;->size()I
 
-    move-result v23
+    move-result v21
 
     .line 69
-    .local v23, "length":I
-    sget-object v2, Lcom/oneplus/screenshot/longshot/util/Configs;->WIDTH_SAMPLE_LIST:Lcom/oneplus/screenshot/longshot/util/Configs;
+    .local v21, "length":I
+    sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->WIDTH_SAMPLE_LIST:Lcom/oneplus/screenshot/longshot/util/Configs;
 
-    invoke-virtual {v2}, Lcom/oneplus/screenshot/longshot/util/Configs;->getValue()I
+    invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/util/Configs;->getValue()I
 
-    move-result v2
+    move-result v0
 
-    div-int v2, v2, v23
+    div-int v0, v0, v21
 
-    mul-int v2, v2, v23
+    mul-int v0, v0, v21
 
-    move-object/from16 v0, p0
+    iget v1, v7, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mExtend:I
 
-    iget v5, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mExtend:I
-
-    add-int v3, v2, v5
+    add-int v15, v0, v1
 
     .line 70
-    .local v3, "wSize":I
-    move/from16 v0, v31
+    .local v15, "wSize":I
+    invoke-static {v8, v9}, Ljava/lang/Math;->min(II)I
 
-    move/from16 v1, v30
-
-    invoke-static {v0, v1}, Ljava/lang/Math;->min(II)I
-
-    move-result v4
+    move-result v14
 
     .line 71
-    .local v4, "hSize":I
-    mul-int v2, v3, v4
+    .local v14, "hSize":I
+    mul-int v0, v15, v14
 
-    invoke-static {v2}, Lcom/oneplus/screenshot/longshot/transform/Factory;->createTransform(I)Lcom/oneplus/screenshot/longshot/transform/FFT;
+    invoke-static {v0}, Lcom/oneplus/screenshot/longshot/transform/Factory;->createTransform(I)Lcom/oneplus/screenshot/longshot/transform/FFT;
 
-    move-result-object v22
+    move-result-object v13
 
     .line 72
-    .local v22, "fft":Lcom/oneplus/screenshot/longshot/transform/FFT;
-    move-object/from16 v0, p0
-
-    iget v5, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mOffsetLast:I
+    .local v13, "fft":Lcom/oneplus/screenshot/longshot/transform/FFT;
+    iget v3, v7, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mOffsetLast:I
 
     invoke-virtual/range {p1 .. p1}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->getBitmap()Landroid/graphics/Bitmap;
 
-    move-result-object v6
+    move-result-object v4
 
-    const/4 v7, 0x0
+    const/4 v5, 0x0
 
-    const/4 v8, 0x0
+    const/4 v6, 0x0
 
-    move-object/from16 v2, p0
+    move-object v0, v7
 
-    invoke-direct/range {v2 .. v8}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->getPixels(IIILandroid/graphics/Bitmap;Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;Z)[D
+    move v1, v15
 
-    move-result-object v26
+    move v2, v14
+
+    invoke-direct/range {v0 .. v6}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->getPixels(IIILandroid/graphics/Bitmap;Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;Z)[D
+
+    move-result-object v12
 
     .line 73
-    .local v26, "pLast":[D
-    move-object/from16 v0, p0
-
-    iget v5, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mOffsetCurr:I
+    .local v12, "pLast":[D
+    iget v3, v7, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mOffsetCurr:I
 
     invoke-virtual/range {p2 .. p2}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->getBitmap()Landroid/graphics/Bitmap;
 
-    move-result-object v6
+    move-result-object v4
 
-    const/4 v7, 0x0
+    const/4 v6, 0x1
 
-    const/4 v8, 0x1
-
-    move-object/from16 v2, p0
-
-    invoke-direct/range {v2 .. v8}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->getPixels(IIILandroid/graphics/Bitmap;Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;Z)[D
-
-    move-result-object v25
-
-    .line 74
-    .local v25, "pCurr":[D
-    mul-int v2, v3, v4
-
-    new-array v8, v2, [Lcom/oneplus/screenshot/longshot/transform/Complex;
-
-    .line 75
-    .local v8, "norLast":[Lcom/oneplus/screenshot/longshot/transform/Complex;
-    move-object/from16 v0, p0
-
-    move-object/from16 v1, v26
-
-    invoke-direct {v0, v8, v1}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->transComplex([Lcom/oneplus/screenshot/longshot/transform/Complex;[D)V
-
-    .line 76
-    move-object/from16 v0, v22
-
-    invoke-interface {v0, v8}, Lcom/oneplus/screenshot/longshot/transform/FFT;->transform([Lcom/oneplus/screenshot/longshot/transform/Complex;)[Lcom/oneplus/screenshot/longshot/transform/Complex;
-
-    move-result-object v9
-
-    .line 77
-    .local v9, "fftLast":[Lcom/oneplus/screenshot/longshot/transform/Complex;
-    mul-int v2, v3, v4
-
-    new-array v10, v2, [Lcom/oneplus/screenshot/longshot/transform/Complex;
-
-    .line 78
-    .local v10, "norCurr":[Lcom/oneplus/screenshot/longshot/transform/Complex;
-    move-object/from16 v0, p0
-
-    move-object/from16 v1, v25
-
-    invoke-direct {v0, v10, v1}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->transComplex([Lcom/oneplus/screenshot/longshot/transform/Complex;[D)V
-
-    .line 79
-    move-object/from16 v0, v22
-
-    invoke-interface {v0, v10}, Lcom/oneplus/screenshot/longshot/transform/FFT;->transform([Lcom/oneplus/screenshot/longshot/transform/Complex;)[Lcom/oneplus/screenshot/longshot/transform/Complex;
+    invoke-direct/range {v0 .. v6}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->getPixels(IIILandroid/graphics/Bitmap;Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;Z)[D
 
     move-result-object v11
 
-    .line 80
-    .local v11, "fftCurr":[Lcom/oneplus/screenshot/longshot/transform/Complex;
-    mul-int v2, v3, v4
+    .line 74
+    .local v11, "pCurr":[D
+    mul-int v0, v15, v14
 
-    new-array v6, v2, [Lcom/oneplus/screenshot/longshot/transform/Complex;
+    new-array v10, v0, [Lcom/oneplus/screenshot/longshot/transform/Complex;
+
+    .line 75
+    .local v10, "norLast":[Lcom/oneplus/screenshot/longshot/transform/Complex;
+    invoke-direct {v7, v10, v12}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->transComplex([Lcom/oneplus/screenshot/longshot/transform/Complex;[D)V
+
+    .line 76
+    invoke-interface {v13, v10}, Lcom/oneplus/screenshot/longshot/transform/FFT;->transform([Lcom/oneplus/screenshot/longshot/transform/Complex;)[Lcom/oneplus/screenshot/longshot/transform/Complex;
+
+    move-result-object v22
+
+    .line 77
+    .local v22, "fftLast":[Lcom/oneplus/screenshot/longshot/transform/Complex;
+    mul-int v0, v15, v14
+
+    new-array v6, v0, [Lcom/oneplus/screenshot/longshot/transform/Complex;
+
+    .line 78
+    .local v6, "norCurr":[Lcom/oneplus/screenshot/longshot/transform/Complex;
+    invoke-direct {v7, v6, v11}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->transComplex([Lcom/oneplus/screenshot/longshot/transform/Complex;[D)V
+
+    .line 79
+    invoke-interface {v13, v6}, Lcom/oneplus/screenshot/longshot/transform/FFT;->transform([Lcom/oneplus/screenshot/longshot/transform/Complex;)[Lcom/oneplus/screenshot/longshot/transform/Complex;
+
+    move-result-object v23
+
+    .line 80
+    .local v23, "fftCurr":[Lcom/oneplus/screenshot/longshot/transform/Complex;
+    mul-int v0, v15, v14
+
+    new-array v5, v0, [Lcom/oneplus/screenshot/longshot/transform/Complex;
 
     .line 81
-    .local v6, "dstNor":[Lcom/oneplus/screenshot/longshot/transform/Complex;
-    mul-int v2, v3, v4
+    .local v5, "dstNor":[Lcom/oneplus/screenshot/longshot/transform/Complex;
+    mul-int v0, v15, v14
 
-    new-array v7, v2, [Lcom/oneplus/screenshot/longshot/transform/Complex;
-
-    .local v7, "dstFft":[Lcom/oneplus/screenshot/longshot/transform/Complex;
-    move-object/from16 v5, p0
+    new-array v4, v0, [Lcom/oneplus/screenshot/longshot/transform/Complex;
 
     .line 82
-    invoke-direct/range {v5 .. v11}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->spectrum([Lcom/oneplus/screenshot/longshot/transform/Complex;[Lcom/oneplus/screenshot/longshot/transform/Complex;[Lcom/oneplus/screenshot/longshot/transform/Complex;[Lcom/oneplus/screenshot/longshot/transform/Complex;[Lcom/oneplus/screenshot/longshot/transform/Complex;[Lcom/oneplus/screenshot/longshot/transform/Complex;)V
+    .local v4, "dstFft":[Lcom/oneplus/screenshot/longshot/transform/Complex;
+    move-object v0, v7
+
+    move-object v1, v5
+
+    move-object v2, v4
+
+    move-object v3, v10
+
+    move/from16 v24, v8
+
+    move-object v8, v4
+
+    move-object/from16 v4, v22
+
+    .end local v4    # "dstFft":[Lcom/oneplus/screenshot/longshot/transform/Complex;
+    .local v8, "dstFft":[Lcom/oneplus/screenshot/longshot/transform/Complex;
+    .local v24, "sizeLast":I
+    move/from16 v25, v9
+
+    move-object v9, v5
+
+    move-object v5, v6
+
+    .end local v5    # "dstNor":[Lcom/oneplus/screenshot/longshot/transform/Complex;
+    .local v9, "dstNor":[Lcom/oneplus/screenshot/longshot/transform/Complex;
+    .local v25, "sizeCurr":I
+    move-object/from16 v26, v6
+
+    move-object/from16 v6, v23
+
+    .end local v6    # "norCurr":[Lcom/oneplus/screenshot/longshot/transform/Complex;
+    .local v26, "norCurr":[Lcom/oneplus/screenshot/longshot/transform/Complex;
+    invoke-direct/range {v0 .. v6}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->spectrum([Lcom/oneplus/screenshot/longshot/transform/Complex;[Lcom/oneplus/screenshot/longshot/transform/Complex;[Lcom/oneplus/screenshot/longshot/transform/Complex;[Lcom/oneplus/screenshot/longshot/transform/Complex;[Lcom/oneplus/screenshot/longshot/transform/Complex;[Lcom/oneplus/screenshot/longshot/transform/Complex;)V
 
     .line 83
-    move-object/from16 v0, v22
-
-    invoke-interface {v0, v6}, Lcom/oneplus/screenshot/longshot/transform/FFT;->reverse([Lcom/oneplus/screenshot/longshot/transform/Complex;)[Lcom/oneplus/screenshot/longshot/transform/Complex;
+    invoke-interface {v13, v9}, Lcom/oneplus/screenshot/longshot/transform/FFT;->reverse([Lcom/oneplus/screenshot/longshot/transform/Complex;)[Lcom/oneplus/screenshot/longshot/transform/Complex;
 
     move-result-object v6
 
     .line 84
-    move-object/from16 v0, v22
+    .end local v9    # "dstNor":[Lcom/oneplus/screenshot/longshot/transform/Complex;
+    .local v6, "dstNor":[Lcom/oneplus/screenshot/longshot/transform/Complex;
+    invoke-interface {v13, v8}, Lcom/oneplus/screenshot/longshot/transform/FFT;->reverse([Lcom/oneplus/screenshot/longshot/transform/Complex;)[Lcom/oneplus/screenshot/longshot/transform/Complex;
 
-    invoke-interface {v0, v7}, Lcom/oneplus/screenshot/longshot/transform/FFT;->reverse([Lcom/oneplus/screenshot/longshot/transform/Complex;)[Lcom/oneplus/screenshot/longshot/transform/Complex;
-
-    move-result-object v7
+    move-result-object v8
 
     .line 85
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v6, v7, v3, v4}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->findMisregistration([Lcom/oneplus/screenshot/longshot/transform/Complex;[Lcom/oneplus/screenshot/longshot/transform/Complex;II)V
+    invoke-direct {v7, v6, v8, v15, v14}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->findMisregistration([Lcom/oneplus/screenshot/longshot/transform/Complex;[Lcom/oneplus/screenshot/longshot/transform/Complex;II)V
 
     .line 86
-    move-object/from16 v0, p0
+    iget-object v0, v7, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
 
-    iget-object v2, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
+    iget v0, v0, Landroid/graphics/Point;->y:I
 
-    iget v2, v2, Landroid/graphics/Point;->y:I
+    sub-int v0, v14, v0
 
-    sub-int v2, v4, v2
-
-    add-int/lit8 v29, v2, -0x1
+    add-int/lit8 v9, v0, -0x1
 
     .line 87
-    .local v29, "posLast":I
-    add-int/lit8 v28, v4, -0x1
+    .local v9, "posLast":I
+    add-int/lit8 v27, v14, -0x1
 
     .line 88
-    .local v28, "posCurr":I
-    move-object/from16 v0, p0
+    .local v27, "posCurr":I
+    iget-object v0, v7, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
 
-    iget-object v2, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mPos:Landroid/graphics/Point;
+    iget v0, v0, Landroid/graphics/Point;->y:I
 
-    iget v2, v2, Landroid/graphics/Point;->y:I
-
-    sub-int v24, v4, v2
+    sub-int v28, v14, v0
 
     .line 89
-    .local v24, "matched":I
-    move-object/from16 v0, p0
+    .local v28, "matched":I
+    invoke-direct {v7, v12}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->toInt([D)[I
 
-    move-object/from16 v1, v26
+    move-result-object v3
 
-    invoke-direct {v0, v1}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->toInt([D)[I
+    iget-object v4, v7, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mLastDumper:Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;
 
-    move-result-object v15
+    const/4 v5, 0x0
 
-    move-object/from16 v0, p0
+    move-object v0, v7
 
-    iget-object v0, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mLastDumper:Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;
+    move v1, v15
 
-    move-object/from16 v16, v0
+    move v2, v14
 
-    const/16 v17, 0x0
+    invoke-direct/range {v0 .. v5}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->getLines(II[ILcom/oneplus/screenshot/longshot/dump/BitmapDumper;Z)[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
 
-    move-object/from16 v12, p0
-
-    move v13, v3
-
-    move v14, v4
-
-    invoke-direct/range {v12 .. v17}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->getLines(II[ILcom/oneplus/screenshot/longshot/dump/BitmapDumper;Z)[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
-
-    move-result-object v27
+    move-result-object v29
 
     .line 90
-    .local v27, "pixLast":[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
-    move-object/from16 v0, p0
+    .local v29, "pixLast":[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
+    invoke-direct {v7, v11}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->toInt([D)[I
 
-    move-object/from16 v1, v25
+    move-result-object v3
 
-    invoke-direct {v0, v1}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->toInt([D)[I
+    iget-object v4, v7, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mCurrDumper:Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;
 
-    move-result-object v15
+    const/4 v5, 0x1
 
-    move-object/from16 v0, p0
+    invoke-direct/range {v0 .. v5}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->getLines(II[ILcom/oneplus/screenshot/longshot/dump/BitmapDumper;Z)[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
 
-    iget-object v0, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mCurrDumper:Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;
-
-    move-object/from16 v16, v0
-
-    const/16 v17, 0x1
-
-    move-object/from16 v12, p0
-
-    move v13, v3
-
-    move v14, v4
-
-    invoke-direct/range {v12 .. v17}, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->getLines(II[ILcom/oneplus/screenshot/longshot/dump/BitmapDumper;Z)[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
-
-    move-result-object v17
+    move-result-object v0
 
     .line 91
-    .local v17, "pixCurr":[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
-    new-instance v12, Lcom/oneplus/screenshot/longshot/match/MatchData;
+    .local v0, "pixCurr":[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
+    new-instance v1, Lcom/oneplus/screenshot/longshot/match/MatchData;
 
-    move-object/from16 v0, p0
+    iget-object v2, v7, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mContext:Landroid/content/Context;
 
-    iget-object v2, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mContext:Landroid/content/Context;
+    iget v3, v7, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mIndex:I
 
-    move-object/from16 v0, p0
-
-    iget v5, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mIndex:I
-
-    invoke-direct {v12, v2, v5}, Lcom/oneplus/screenshot/longshot/match/MatchData;-><init>(Landroid/content/Context;I)V
+    invoke-direct {v1, v2, v3}, Lcom/oneplus/screenshot/longshot/match/MatchData;-><init>(Landroid/content/Context;I)V
 
     .line 92
-    .local v12, "data":Lcom/oneplus/screenshot/longshot/match/MatchData;
-    move-object/from16 v0, p0
+    .local v1, "data":Lcom/oneplus/screenshot/longshot/match/MatchData;
+    iget v2, v7, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mStep:I
 
-    iget v0, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mStep:I
+    iget-object v3, v7, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mSameDumper:Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;
 
-    move/from16 v19, v0
+    const/16 v16, 0x1
 
-    move-object/from16 v0, p0
+    move-object v4, v10
 
-    iget-object v0, v0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mSameDumper:Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;
+    move-object v10, v1
 
-    move-object/from16 v21, v0
+    .end local v10    # "norLast":[Lcom/oneplus/screenshot/longshot/transform/Complex;
+    .local v4, "norLast":[Lcom/oneplus/screenshot/longshot/transform/Complex;
+    move-object v5, v11
 
-    const/16 v18, 0x1
+    move/from16 v11, v28
 
-    move/from16 v13, v24
+    .end local v11    # "pCurr":[D
+    .local v5, "pCurr":[D
+    move-object/from16 v30, v12
 
-    move/from16 v14, v29
+    move v12, v9
 
-    move/from16 v15, v28
+    .end local v12    # "pLast":[D
+    .local v30, "pLast":[D
+    move-object/from16 v31, v13
 
-    move-object/from16 v16, v27
+    move/from16 v13, v27
 
-    invoke-virtual/range {v12 .. v21}, Lcom/oneplus/screenshot/longshot/match/MatchData;->init(III[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;ZIILcom/oneplus/screenshot/longshot/dump/BitmapDumper;)V
+    .end local v13    # "fft":Lcom/oneplus/screenshot/longshot/transform/FFT;
+    .local v31, "fft":Lcom/oneplus/screenshot/longshot/transform/FFT;
+    move/from16 v32, v14
+
+    move-object/from16 v14, v29
+
+    .end local v14    # "hSize":I
+    .local v32, "hSize":I
+    move/from16 v33, v15
+
+    move-object v15, v0
+
+    .end local v15    # "wSize":I
+    .local v33, "wSize":I
+    move/from16 v17, v2
+
+    move/from16 v18, v20
+
+    move-object/from16 v19, v3
+
+    invoke-virtual/range {v10 .. v19}, Lcom/oneplus/screenshot/longshot/match/MatchData;->init(III[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;ZIILcom/oneplus/screenshot/longshot/dump/BitmapDumper;)V
 
     .line 93
-    return-object v12
+    return-object v1
 .end method

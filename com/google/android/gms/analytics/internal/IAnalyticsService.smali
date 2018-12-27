@@ -30,8 +30,7 @@
             "Ljava/util/Map;",
             "J",
             "Ljava/lang/String;",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/android/gms/analytics/internal/Command;",
             ">;)V"
         }

@@ -32,7 +32,6 @@
     .param p2, "offset"    # I
     .param p3, "length"    # I
 
-    .prologue
     .line 56
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -56,7 +55,6 @@
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # Z
 
-    .prologue
     .line 430
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeTagSize(I)I
 
@@ -75,7 +73,6 @@
     .registers 2
     .param p0, "value"    # Z
 
-    .prologue
     .line 621
     const/4 v0, 0x1
 
@@ -87,7 +84,6 @@
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # [B
 
-    .prologue
     .line 475
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeTagSize(I)I
 
@@ -106,7 +102,6 @@
     .registers 3
     .param p0, "value"    # [B
 
-    .prologue
     .line 668
     array-length v0, p0
 
@@ -126,7 +121,6 @@
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # [B
 
-    .prologue
     .line 466
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeTagSize(I)I
 
@@ -145,7 +139,6 @@
     .registers 3
     .param p0, "value"    # [B
 
-    .prologue
     .line 660
     array-length v0, p0
 
@@ -161,11 +154,10 @@
 .end method
 
 .method public static computeDoubleSize(ID)I
-    .registers 6
+    .registers 5
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # D
 
-    .prologue
     .line 371
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeTagSize(I)I
 
@@ -184,7 +176,6 @@
     .registers 3
     .param p0, "value"    # D
 
-    .prologue
     .line 560
     const/16 v0, 0x8
 
@@ -196,7 +187,6 @@
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # I
 
-    .prologue
     .line 492
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeTagSize(I)I
 
@@ -215,7 +205,6 @@
     .registers 2
     .param p0, "value"    # I
 
-    .prologue
     .line 684
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeRawVarint32Size(I)I
 
@@ -229,7 +218,6 @@
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # I
 
-    .prologue
     .line 421
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeTagSize(I)I
 
@@ -248,7 +236,6 @@
     .registers 2
     .param p0, "value"    # I
 
-    .prologue
     .line 613
     const/4 v0, 0x4
 
@@ -256,11 +243,10 @@
 .end method
 
 .method public static computeFixed64Size(IJ)I
-    .registers 6
+    .registers 5
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # J
 
-    .prologue
     .line 412
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeTagSize(I)I
 
@@ -279,7 +265,6 @@
     .registers 3
     .param p0, "value"    # J
 
-    .prologue
     .line 605
     const/16 v0, 0x8
 
@@ -291,7 +276,6 @@
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # F
 
-    .prologue
     .line 379
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeTagSize(I)I
 
@@ -310,7 +294,6 @@
     .registers 2
     .param p0, "value"    # F
 
-    .prologue
     .line 568
     const/4 v0, 0x4
 
@@ -322,7 +305,6 @@
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # Lcom/google/tagmanager/protobuf/nano/MessageNano;
 
-    .prologue
     .line 448
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeTagSize(I)I
 
@@ -343,7 +325,6 @@
     .registers 2
     .param p0, "value"    # Lcom/google/tagmanager/protobuf/nano/MessageNano;
 
-    .prologue
     .line 643
     invoke-virtual {p0}, Lcom/google/tagmanager/protobuf/nano/MessageNano;->getSerializedSize()I
 
@@ -357,7 +338,6 @@
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # I
 
-    .prologue
     .line 403
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeTagSize(I)I
 
@@ -376,30 +356,28 @@
     .registers 2
     .param p0, "value"    # I
 
-    .prologue
     .line 592
-    if-gez p0, :cond_5
-
-    .line 596
-    const/16 v0, 0xa
-
-    return v0
+    if-ltz p0, :cond_7
 
     .line 593
-    :cond_5
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeRawVarint32Size(I)I
 
     move-result v0
 
     return v0
+
+    .line 596
+    :cond_7
+    const/16 v0, 0xa
+
+    return v0
 .end method
 
 .method public static computeInt64Size(IJ)I
-    .registers 6
+    .registers 5
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # J
 
-    .prologue
     .line 395
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeTagSize(I)I
 
@@ -415,10 +393,9 @@
 .end method
 
 .method public static computeInt64SizeNoTag(J)I
-    .registers 4
+    .registers 3
     .param p0, "value"    # J
 
-    .prologue
     .line 584
     invoke-static {p0, p1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeRawVarint64Size(J)I
 
@@ -432,7 +409,6 @@
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # Lcom/google/tagmanager/protobuf/nano/MessageNano;
 
-    .prologue
     .line 457
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeTagSize(I)I
 
@@ -451,7 +427,6 @@
     .registers 3
     .param p0, "value"    # Lcom/google/tagmanager/protobuf/nano/MessageNano;
 
-    .prologue
     .line 651
     invoke-virtual {p0}, Lcom/google/tagmanager/protobuf/nano/MessageNano;->getSerializedSize()I
 
@@ -472,57 +447,52 @@
     .registers 2
     .param p0, "value"    # I
 
-    .prologue
     .line 823
     and-int/lit8 v0, p0, -0x80
 
-    if-eqz v0, :cond_14
+    if-nez v0, :cond_6
 
-    .line 824
-    and-int/lit16 v0, p0, -0x4000
-
-    if-eqz v0, :cond_16
-
-    .line 825
-    const/high16 v0, -0x200000
-
-    and-int/2addr v0, p0
-
-    if-eqz v0, :cond_18
-
-    .line 826
-    const/high16 v0, -0x10000000
-
-    and-int/2addr v0, p0
-
-    if-eqz v0, :cond_1a
-
-    .line 827
-    const/4 v0, 0x5
-
-    return v0
-
-    .line 823
-    :cond_14
     const/4 v0, 0x1
 
     return v0
 
     .line 824
-    :cond_16
+    :cond_6
+    and-int/lit16 v0, p0, -0x4000
+
+    if-nez v0, :cond_c
+
     const/4 v0, 0x2
 
     return v0
 
     .line 825
-    :cond_18
+    :cond_c
+    const/high16 v0, -0x200000
+
+    and-int/2addr v0, p0
+
+    if-nez v0, :cond_13
+
     const/4 v0, 0x3
 
     return v0
 
     .line 826
-    :cond_1a
+    :cond_13
+    const/high16 v0, -0x10000000
+
+    and-int/2addr v0, p0
+
+    if-nez v0, :cond_1a
+
     const/4 v0, 0x4
+
+    return v0
+
+    .line 827
+    :cond_1a
+    const/4 v0, 0x5
 
     return v0
 .end method
@@ -531,13 +501,12 @@
     .registers 6
     .param p0, "value"    # J
 
-    .prologue
-    const-wide/16 v2, 0x0
-
     .line 845
     const-wide/16 v0, -0x80
 
     and-long/2addr v0, p0
+
+    const-wide/16 v2, 0x0
 
     cmp-long v0, v0, v2
 
@@ -671,7 +640,6 @@
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # I
 
-    .prologue
     .line 501
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeTagSize(I)I
 
@@ -690,7 +658,6 @@
     .registers 2
     .param p0, "value"    # I
 
-    .prologue
     .line 692
     const/4 v0, 0x4
 
@@ -698,11 +665,10 @@
 .end method
 
 .method public static computeSFixed64Size(IJ)I
-    .registers 6
+    .registers 5
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # J
 
-    .prologue
     .line 510
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeTagSize(I)I
 
@@ -721,7 +687,6 @@
     .registers 3
     .param p0, "value"    # J
 
-    .prologue
     .line 700
     const/16 v0, 0x8
 
@@ -733,7 +698,6 @@
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # I
 
-    .prologue
     .line 518
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeTagSize(I)I
 
@@ -752,7 +716,6 @@
     .registers 2
     .param p0, "value"    # I
 
-    .prologue
     .line 708
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->encodeZigZag32(I)I
 
@@ -766,11 +729,10 @@
 .end method
 
 .method public static computeSInt64Size(IJ)I
-    .registers 6
+    .registers 5
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # J
 
-    .prologue
     .line 526
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeTagSize(I)I
 
@@ -789,7 +751,6 @@
     .registers 4
     .param p0, "value"    # J
 
-    .prologue
     .line 716
     invoke-static {p0, p1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->encodeZigZag64(J)J
 
@@ -807,7 +768,6 @@
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # Ljava/lang/String;
 
-    .prologue
     .line 439
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeTagSize(I)I
 
@@ -823,55 +783,53 @@
 .end method
 
 .method public static computeStringSizeNoTag(Ljava/lang/String;)I
-    .registers 5
+    .registers 4
     .param p0, "value"    # Ljava/lang/String;
 
-    .prologue
     .line 630
     :try_start_0
-    const-string/jumbo v2, "UTF-8"
+    const-string v0, "UTF-8"
 
-    invoke-virtual {p0, v2}, Ljava/lang/String;->getBytes(Ljava/lang/String;)[B
+    invoke-virtual {p0, v0}, Ljava/lang/String;->getBytes(Ljava/lang/String;)[B
 
     move-result-object v0
 
     .line 631
     .local v0, "bytes":[B
+    array-length v1, v0
+
+    invoke-static {v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeRawVarint32Size(I)I
+
+    move-result v1
+
     array-length v2, v0
+    :try_end_c
+    .catch Ljava/io/UnsupportedEncodingException; {:try_start_0 .. :try_end_c} :catch_e
 
-    invoke-static {v2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeRawVarint32Size(I)I
+    add-int/2addr v1, v2
 
-    move-result v2
-
-    array-length v3, v0
-    :try_end_d
-    .catch Ljava/io/UnsupportedEncodingException; {:try_start_0 .. :try_end_d} :catch_f
-
-    add-int/2addr v2, v3
-
-    return v2
+    return v1
 
     .line 633
     .end local v0    # "bytes":[B
-    :catch_f
-    move-exception v1
+    :catch_e
+    move-exception v0
 
     .line 634
-    .local v1, "e":Ljava/io/UnsupportedEncodingException;
-    new-instance v2, Ljava/lang/RuntimeException;
+    .local v0, "e":Ljava/io/UnsupportedEncodingException;
+    new-instance v1, Ljava/lang/RuntimeException;
 
-    const-string/jumbo v3, "UTF-8 not supported."
+    const-string v2, "UTF-8 not supported."
 
-    invoke-direct {v2, v3}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v1, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
-    throw v2
+    throw v1
 .end method
 
 .method public static computeTagSize(I)I
     .registers 2
     .param p0, "fieldNumber"    # I
 
-    .prologue
     .line 798
     const/4 v0, 0x0
 
@@ -891,7 +849,6 @@
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # I
 
-    .prologue
     .line 483
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeTagSize(I)I
 
@@ -910,7 +867,6 @@
     .registers 2
     .param p0, "value"    # I
 
-    .prologue
     .line 676
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeRawVarint32Size(I)I
 
@@ -920,11 +876,10 @@
 .end method
 
 .method public static computeUInt64Size(IJ)I
-    .registers 6
+    .registers 5
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # J
 
-    .prologue
     .line 387
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeTagSize(I)I
 
@@ -940,10 +895,9 @@
 .end method
 
 .method public static computeUInt64SizeNoTag(J)I
-    .registers 4
+    .registers 3
     .param p0, "value"    # J
 
-    .prologue
     .line 576
     invoke-static {p0, p1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeRawVarint64Size(J)I
 
@@ -956,7 +910,6 @@
     .registers 3
     .param p0, "n"    # I
 
-    .prologue
     .line 893
     shl-int/lit8 v0, p0, 0x1
 
@@ -971,7 +924,6 @@
     .registers 6
     .param p0, "n"    # J
 
-    .prologue
     .line 908
     const/4 v0, 0x1
 
@@ -990,7 +942,6 @@
     .registers 3
     .param p0, "flatArray"    # [B
 
-    .prologue
     .line 69
     array-length v0, p0
 
@@ -1009,7 +960,6 @@
     .param p1, "offset"    # I
     .param p2, "length"    # I
 
-    .prologue
     .line 81
     new-instance v0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;
 
@@ -1023,7 +973,6 @@
 .method public checkNoSpaceLeft()V
     .registers 3
 
-    .prologue
     .line 737
     invoke-virtual {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->spaceLeft()I
 
@@ -1032,13 +981,15 @@
     if-nez v0, :cond_7
 
     .line 741
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 
     .line 738
     :cond_7
     new-instance v0, Ljava/lang/IllegalStateException;
 
-    const-string/jumbo v1, "Did not write as much data as expected."
+    const-string v1, "Did not write as much data as expected."
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
@@ -1048,7 +999,6 @@
 .method public spaceLeft()I
     .registers 3
 
-    .prologue
     .line 726
     iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->limit:I
 
@@ -1069,7 +1019,6 @@
         }
     .end annotation
 
-    .prologue
     .line 138
     const/4 v0, 0x0
 
@@ -1079,11 +1028,13 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeBoolNoTag(Z)V
 
     .line 140
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeBoolNoTag(Z)V
-    .registers 3
+    .registers 2
     .param p1, "value"    # Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1091,23 +1042,13 @@
         }
     .end annotation
 
-    .prologue
-    const/4 v0, 0x0
-
     .line 294
-    if-nez p1, :cond_7
-
-    :goto_3
-    invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawByte(I)V
+    invoke-virtual {p0, p1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawByte(I)V
 
     .line 295
-    return-void
-
-    .line 294
-    :cond_7
-    const/4 v0, 0x1
-
-    goto :goto_3
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeByteArray(I[B)V
@@ -1120,7 +1061,6 @@
         }
     .end annotation
 
-    .prologue
     .line 174
     const/4 v0, 0x2
 
@@ -1130,7 +1070,9 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeByteArrayNoTag([B)V
 
     .line 176
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeByteArrayNoTag([B)V
@@ -1142,7 +1084,6 @@
         }
     .end annotation
 
-    .prologue
     .line 326
     array-length v0, p1
 
@@ -1165,7 +1106,6 @@
         }
     .end annotation
 
-    .prologue
     .line 167
     const/4 v0, 0x2
 
@@ -1175,7 +1115,9 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeBytesNoTag([B)V
 
     .line 169
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeBytesNoTag([B)V
@@ -1187,7 +1129,6 @@
         }
     .end annotation
 
-    .prologue
     .line 320
     array-length v0, p1
 
@@ -1201,7 +1142,7 @@
 .end method
 
 .method public writeDouble(ID)V
-    .registers 6
+    .registers 5
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # D
     .annotation system Ldalvik/annotation/Throws;
@@ -1210,7 +1151,6 @@
         }
     .end annotation
 
-    .prologue
     .line 89
     const/4 v0, 0x1
 
@@ -1220,11 +1160,13 @@
     invoke-virtual {p0, p2, p3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeDoubleNoTag(D)V
 
     .line 91
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeDoubleNoTag(D)V
-    .registers 6
+    .registers 5
     .param p1, "value"    # D
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1232,7 +1174,6 @@
         }
     .end annotation
 
-    .prologue
     .line 254
     invoke-static {p1, p2}, Ljava/lang/Double;->doubleToLongBits(D)J
 
@@ -1241,7 +1182,9 @@
     invoke-virtual {p0, v0, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawLittleEndian64(J)V
 
     .line 255
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeEnum(II)V
@@ -1254,7 +1197,6 @@
         }
     .end annotation
 
-    .prologue
     .line 192
     const/4 v0, 0x0
 
@@ -1264,7 +1206,9 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeEnumNoTag(I)V
 
     .line 194
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeEnumNoTag(I)V
@@ -1276,7 +1220,6 @@
         }
     .end annotation
 
-    .prologue
     .line 340
     invoke-virtual {p0, p1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawVarint32(I)V
 
@@ -1294,7 +1237,6 @@
         }
     .end annotation
 
-    .prologue
     .line 131
     const/4 v0, 0x5
 
@@ -1304,7 +1246,9 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeFixed32NoTag(I)V
 
     .line 133
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeFixed32NoTag(I)V
@@ -1316,7 +1260,6 @@
         }
     .end annotation
 
-    .prologue
     .line 289
     invoke-virtual {p0, p1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawLittleEndian32(I)V
 
@@ -1325,7 +1268,7 @@
 .end method
 
 .method public writeFixed64(IJ)V
-    .registers 6
+    .registers 5
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
@@ -1334,7 +1277,6 @@
         }
     .end annotation
 
-    .prologue
     .line 124
     const/4 v0, 0x1
 
@@ -1344,11 +1286,13 @@
     invoke-virtual {p0, p2, p3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeFixed64NoTag(J)V
 
     .line 126
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeFixed64NoTag(J)V
-    .registers 4
+    .registers 3
     .param p1, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1356,7 +1300,6 @@
         }
     .end annotation
 
-    .prologue
     .line 284
     invoke-virtual {p0, p1, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawLittleEndian64(J)V
 
@@ -1374,7 +1317,6 @@
         }
     .end annotation
 
-    .prologue
     .line 96
     const/4 v0, 0x5
 
@@ -1384,7 +1326,9 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeFloatNoTag(F)V
 
     .line 98
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeFloatNoTag(F)V
@@ -1396,7 +1340,6 @@
         }
     .end annotation
 
-    .prologue
     .line 259
     invoke-static {p1}, Ljava/lang/Float;->floatToIntBits(F)I
 
@@ -1405,7 +1348,9 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawLittleEndian32(I)V
 
     .line 260
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeGroup(ILcom/google/tagmanager/protobuf/nano/MessageNano;)V
@@ -1418,7 +1363,6 @@
         }
     .end annotation
 
-    .prologue
     .line 152
     const/4 v0, 0x3
 
@@ -1433,7 +1377,9 @@
     invoke-virtual {p0, p1, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeTag(II)V
 
     .line 155
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeGroupNoTag(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
@@ -1445,12 +1391,13 @@
         }
     .end annotation
 
-    .prologue
     .line 309
     invoke-virtual {p1, p0}, Lcom/google/tagmanager/protobuf/nano/MessageNano;->writeTo(Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;)V
 
     .line 310
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeInt32(II)V
@@ -1463,7 +1410,6 @@
         }
     .end annotation
 
-    .prologue
     .line 117
     const/4 v0, 0x0
 
@@ -1473,7 +1419,9 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeInt32NoTag(I)V
 
     .line 119
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeInt32NoTag(I)V
@@ -1485,28 +1433,29 @@
         }
     .end annotation
 
-    .prologue
     .line 274
-    if-gez p1, :cond_7
+    if-ltz p1, :cond_6
+
+    .line 275
+    invoke-virtual {p0, p1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawVarint32(I)V
+
+    goto :goto_a
 
     .line 278
+    :cond_6
     int-to-long v0, p1
 
     invoke-virtual {p0, v0, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawVarint64(J)V
 
     .line 280
-    :goto_6
-    return-void
-
-    .line 275
-    :cond_7
-    invoke-virtual {p0, p1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawVarint32(I)V
-
-    goto :goto_6
+    :goto_a
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeInt64(IJ)V
-    .registers 6
+    .registers 5
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
@@ -1515,7 +1464,6 @@
         }
     .end annotation
 
-    .prologue
     .line 110
     const/4 v0, 0x0
 
@@ -1525,11 +1473,13 @@
     invoke-virtual {p0, p2, p3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeInt64NoTag(J)V
 
     .line 112
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeInt64NoTag(J)V
-    .registers 4
+    .registers 3
     .param p1, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1537,7 +1487,6 @@
         }
     .end annotation
 
-    .prologue
     .line 269
     invoke-virtual {p0, p1, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawVarint64(J)V
 
@@ -1555,7 +1504,6 @@
         }
     .end annotation
 
-    .prologue
     .line 160
     const/4 v0, 0x2
 
@@ -1565,7 +1513,9 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeMessageNoTag(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
 
     .line 162
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeMessageNoTag(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
@@ -1577,7 +1527,6 @@
         }
     .end annotation
 
-    .prologue
     .line 314
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/MessageNano;->getCachedSize()I
 
@@ -1589,7 +1538,9 @@
     invoke-virtual {p1, p0}, Lcom/google/tagmanager/protobuf/nano/MessageNano;->writeTo(Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;)V
 
     .line 316
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeRawByte(B)V
@@ -1601,13 +1552,12 @@
         }
     .end annotation
 
-    .prologue
     .line 759
     iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->position:I
 
     iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->limit:I
 
-    if-eq v0, v1, :cond_12
+    if-eq v0, v1, :cond_11
 
     .line 764
     iget-object v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->buffer:[B
@@ -1618,15 +1568,15 @@
 
     iput v2, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->position:I
 
-    int-to-byte v2, p1
-
-    aput-byte v2, v0, v1
+    aput-byte p1, v0, v1
 
     .line 765
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 
     .line 761
-    :cond_12
+    :cond_11
     new-instance v0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano$OutOfSpaceException;
 
     iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->position:I
@@ -1647,14 +1597,15 @@
         }
     .end annotation
 
-    .prologue
     .line 769
     int-to-byte v0, p1
 
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawByte(B)V
 
     .line 770
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeRawBytes([B)V
@@ -1666,7 +1617,6 @@
         }
     .end annotation
 
-    .prologue
     .line 774
     array-length v0, p1
 
@@ -1675,7 +1625,9 @@
     invoke-virtual {p0, p1, v1, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawBytes([BII)V
 
     .line 775
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeRawBytes([BII)V
@@ -1689,7 +1641,6 @@
         }
     .end annotation
 
-    .prologue
     .line 780
     iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->limit:I
 
@@ -1697,21 +1648,9 @@
 
     sub-int/2addr v0, v1
 
-    if-ge v0, p3, :cond_11
-
-    .line 786
-    new-instance v0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano$OutOfSpaceException;
-
-    iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->position:I
-
-    iget v2, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->limit:I
-
-    invoke-direct {v0, v1, v2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano$OutOfSpaceException;-><init>(II)V
-
-    throw v0
+    if-lt v0, p3, :cond_14
 
     .line 782
-    :cond_11
     iget-object v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->buffer:[B
 
     iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->position:I
@@ -1726,7 +1665,21 @@
     iput v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->position:I
 
     .line 788
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
+
+    .line 786
+    :cond_14
+    new-instance v0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano$OutOfSpaceException;
+
+    iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->position:I
+
+    iget v2, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->limit:I
+
+    invoke-direct {v0, v1, v2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano$OutOfSpaceException;-><init>(II)V
+
+    throw v0
 .end method
 
 .method public writeRawLittleEndian32(I)V
@@ -1738,7 +1691,6 @@
         }
     .end annotation
 
-    .prologue
     .line 859
     and-int/lit16 v0, p1, 0xff
 
@@ -1766,11 +1718,13 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawByte(I)V
 
     .line 863
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeRawLittleEndian64(J)V
-    .registers 6
+    .registers 5
     .param p1, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1778,7 +1732,6 @@
         }
     .end annotation
 
-    .prologue
     .line 869
     long-to-int v0, p1
 
@@ -1864,7 +1817,9 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawByte(I)V
 
     .line 877
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeRawVarint32(I)V
@@ -1876,14 +1831,22 @@
         }
     .end annotation
 
-    .prologue
     .line 807
     :goto_0
     and-int/lit8 v0, p1, -0x80
 
-    if-eqz v0, :cond_e
+    if-nez v0, :cond_8
+
+    .line 808
+    invoke-virtual {p0, p1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawByte(I)V
+
+    .line 809
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 
     .line 811
+    :cond_8
     and-int/lit8 v0, p1, 0x7f
 
     or-int/lit16 v0, v0, 0x80
@@ -1894,17 +1857,10 @@
     ushr-int/lit8 p1, p1, 0x7
 
     goto :goto_0
-
-    .line 808
-    :cond_e
-    invoke-virtual {p0, p1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawByte(I)V
-
-    .line 809
-    return-void
 .end method
 
 .method public writeRawVarint64(J)V
-    .registers 8
+    .registers 7
     .param p1, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1912,7 +1868,6 @@
         }
     .end annotation
 
-    .prologue
     .line 833
     :goto_0
     const-wide/16 v0, -0x80
@@ -1931,7 +1886,9 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawByte(I)V
 
     .line 835
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 
     .line 837
     :cond_e
@@ -1961,7 +1918,6 @@
         }
     .end annotation
 
-    .prologue
     .line 199
     const/4 v0, 0x5
 
@@ -1971,7 +1927,9 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeSFixed32NoTag(I)V
 
     .line 201
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeSFixed32NoTag(I)V
@@ -1983,7 +1941,6 @@
         }
     .end annotation
 
-    .prologue
     .line 345
     invoke-virtual {p0, p1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawLittleEndian32(I)V
 
@@ -1992,7 +1949,7 @@
 .end method
 
 .method public writeSFixed64(IJ)V
-    .registers 6
+    .registers 5
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
@@ -2001,7 +1958,6 @@
         }
     .end annotation
 
-    .prologue
     .line 206
     const/4 v0, 0x1
 
@@ -2011,11 +1967,13 @@
     invoke-virtual {p0, p2, p3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeSFixed64NoTag(J)V
 
     .line 208
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeSFixed64NoTag(J)V
-    .registers 4
+    .registers 3
     .param p1, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -2023,7 +1981,6 @@
         }
     .end annotation
 
-    .prologue
     .line 350
     invoke-virtual {p0, p1, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawLittleEndian64(J)V
 
@@ -2041,7 +1998,6 @@
         }
     .end annotation
 
-    .prologue
     .line 213
     const/4 v0, 0x0
 
@@ -2051,7 +2007,9 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeSInt32NoTag(I)V
 
     .line 215
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeSInt32NoTag(I)V
@@ -2063,7 +2021,6 @@
         }
     .end annotation
 
-    .prologue
     .line 355
     invoke-static {p1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->encodeZigZag32(I)I
 
@@ -2072,11 +2029,13 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawVarint32(I)V
 
     .line 356
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeSInt64(IJ)V
-    .registers 6
+    .registers 5
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
@@ -2085,7 +2044,6 @@
         }
     .end annotation
 
-    .prologue
     .line 220
     const/4 v0, 0x0
 
@@ -2095,11 +2053,13 @@
     invoke-virtual {p0, p2, p3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeSInt64NoTag(J)V
 
     .line 222
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeSInt64NoTag(J)V
-    .registers 6
+    .registers 5
     .param p1, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -2107,7 +2067,6 @@
         }
     .end annotation
 
-    .prologue
     .line 360
     invoke-static {p1, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->encodeZigZag64(J)J
 
@@ -2116,7 +2075,9 @@
     invoke-virtual {p0, v0, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawVarint64(J)V
 
     .line 361
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeString(ILjava/lang/String;)V
@@ -2129,7 +2090,6 @@
         }
     .end annotation
 
-    .prologue
     .line 145
     const/4 v0, 0x2
 
@@ -2139,7 +2099,9 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeStringNoTag(Ljava/lang/String;)V
 
     .line 147
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeStringNoTag(Ljava/lang/String;)V
@@ -2151,11 +2113,10 @@
         }
     .end annotation
 
-    .prologue
     .line 302
-    const-string/jumbo v1, "UTF-8"
+    const-string v0, "UTF-8"
 
-    invoke-virtual {p1, v1}, Ljava/lang/String;->getBytes(Ljava/lang/String;)[B
+    invoke-virtual {p1, v0}, Ljava/lang/String;->getBytes(Ljava/lang/String;)[B
 
     move-result-object v0
 
@@ -2169,7 +2130,9 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawBytes([B)V
 
     .line 305
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeTag(II)V
@@ -2182,7 +2145,6 @@
         }
     .end annotation
 
-    .prologue
     .line 793
     invoke-static {p1, p2}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->makeTag(II)I
 
@@ -2191,7 +2153,9 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawVarint32(I)V
 
     .line 794
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeUInt32(II)V
@@ -2204,7 +2168,6 @@
         }
     .end annotation
 
-    .prologue
     .line 182
     const/4 v0, 0x0
 
@@ -2214,7 +2177,9 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeUInt32NoTag(I)V
 
     .line 184
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeUInt32NoTag(I)V
@@ -2226,7 +2191,6 @@
         }
     .end annotation
 
-    .prologue
     .line 332
     invoke-virtual {p0, p1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawVarint32(I)V
 
@@ -2235,7 +2199,7 @@
 .end method
 
 .method public writeUInt64(IJ)V
-    .registers 6
+    .registers 5
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
@@ -2244,7 +2208,6 @@
         }
     .end annotation
 
-    .prologue
     .line 103
     const/4 v0, 0x0
 
@@ -2254,11 +2217,13 @@
     invoke-virtual {p0, p2, p3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeUInt64NoTag(J)V
 
     .line 105
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public writeUInt64NoTag(J)V
-    .registers 4
+    .registers 3
     .param p1, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -2266,7 +2231,6 @@
         }
     .end annotation
 
-    .prologue
     .line 264
     invoke-virtual {p0, p1, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawVarint64(J)V
 

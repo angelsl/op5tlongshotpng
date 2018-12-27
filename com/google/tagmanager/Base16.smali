@@ -7,7 +7,6 @@
 .method constructor <init>()V
     .registers 1
 
-    .prologue
     .line 6
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -15,179 +14,177 @@
 .end method
 
 .method public static decode(Ljava/lang/String;)[B
-    .registers 10
+    .registers 8
     .param p0, "s"    # Ljava/lang/String;
-
-    .prologue
-    const/16 v8, 0x10
-
-    const/4 v7, -0x1
 
     .line 34
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
-    move-result v3
+    move-result v0
 
     .line 35
-    .local v3, "len":I
-    rem-int/lit8 v5, v3, 0x2
+    .local v0, "len":I
+    rem-int/lit8 v1, v0, 0x2
 
-    if-nez v5, :cond_13
+    if-nez v1, :cond_3c
 
     .line 38
-    div-int/lit8 v5, v3, 0x2
+    div-int/lit8 v1, v0, 0x2
 
-    new-array v4, v5, [B
+    new-array v1, v1, [B
 
     .line 39
-    .local v4, "result":[B
+    .local v1, "result":[B
     const/4 v2, 0x0
 
     .local v2, "i":I
-    :goto_10
-    if-lt v2, v3, :cond_1c
-
-    .line 47
-    return-object v4
-
-    .line 36
-    .end local v2    # "i":I
-    .end local v4    # "result":[B
-    :cond_13
-    new-instance v5, Ljava/lang/IllegalArgumentException;
-
-    const-string/jumbo v6, "purported base16 string has odd number of characters"
-
-    invoke-direct {v5, v6}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    throw v5
+    :goto_d
+    if-ge v2, v0, :cond_3b
 
     .line 40
-    .restart local v2    # "i":I
-    .restart local v4    # "result":[B
-    :cond_1c
     invoke-virtual {p0, v2}, Ljava/lang/String;->charAt(I)C
 
-    move-result v5
+    move-result v3
 
-    invoke-static {v5, v8}, Ljava/lang/Character;->digit(CI)I
+    const/16 v4, 0x10
 
-    move-result v0
+    invoke-static {v3, v4}, Ljava/lang/Character;->digit(CI)I
+
+    move-result v3
 
     .line 41
-    .local v0, "c1":I
+    .local v3, "c1":I
     add-int/lit8 v5, v2, 0x1
 
     invoke-virtual {p0, v5}, Ljava/lang/String;->charAt(I)C
 
     move-result v5
 
-    invoke-static {v5, v8}, Ljava/lang/Character;->digit(CI)I
+    invoke-static {v5, v4}, Ljava/lang/Character;->digit(CI)I
 
-    move-result v1
+    move-result v4
 
     .line 42
-    .local v1, "c2":I
-    if-ne v0, v7, :cond_39
+    .local v4, "c2":I
+    const/4 v5, -0x1
+
+    if-eq v3, v5, :cond_33
+
+    if-eq v4, v5, :cond_33
+
+    .line 45
+    div-int/lit8 v5, v2, 0x2
+
+    shl-int/lit8 v6, v3, 0x4
+
+    add-int/2addr v6, v4
+
+    int-to-byte v6, v6
+
+    aput-byte v6, v1, v5
+
+    .line 39
+    .end local v3    # "c1":I
+    .end local v4    # "c2":I
+    add-int/lit8 v2, v2, 0x2
+
+    goto :goto_d
 
     .line 43
-    :cond_30
+    .restart local v3    # "c1":I
+    .restart local v4    # "c2":I
+    :cond_33
     new-instance v5, Ljava/lang/IllegalArgumentException;
 
-    const-string/jumbo v6, "purported base16 string has illegal char"
+    const-string v6, "purported base16 string has illegal char"
 
     invoke-direct {v5, v6}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v5
 
-    .line 42
-    :cond_39
-    if-eq v1, v7, :cond_30
+    .line 47
+    .end local v2    # "i":I
+    .end local v3    # "c1":I
+    .end local v4    # "c2":I
+    :cond_3b
+    return-object v1
 
-    .line 45
-    div-int/lit8 v5, v2, 0x2
+    .line 36
+    .end local v1    # "result":[B
+    :cond_3c
+    new-instance v1, Ljava/lang/IllegalArgumentException;
 
-    shl-int/lit8 v6, v0, 0x4
+    const-string v2, "purported base16 string has odd number of characters"
 
-    add-int/2addr v6, v1
+    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    int-to-byte v6, v6
-
-    int-to-byte v6, v6
-
-    aput-byte v6, v4, v5
-
-    .line 39
-    add-int/lit8 v2, v2, 0x2
-
-    goto :goto_10
+    throw v1
 .end method
 
 .method public static encode([B)Ljava/lang/String;
     .registers 7
     .param p0, "bytes"    # [B
 
-    .prologue
     .line 13
-    new-instance v4, Ljava/lang/StringBuilder;
+    new-instance v0, Ljava/lang/StringBuilder;
 
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
     .line 15
-    .local v4, "sb":Ljava/lang/StringBuilder;
-    move-object v0, p0
+    .local v0, "sb":Ljava/lang/StringBuilder;
+    move-object v1, p0
 
-    .local v0, "arr$":[B
-    array-length v3, p0
+    .local v1, "arr$":[B
+    array-length v2, v1
 
-    .local v3, "len$":I
-    const/4 v2, 0x0
+    .local v2, "len$":I
+    const/4 v3, 0x0
 
-    .local v2, "i$":I
+    .local v3, "i$":I
     :goto_8
-    if-lt v2, v3, :cond_13
+    if-ge v3, v2, :cond_21
 
-    .line 22
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v5
-
-    invoke-virtual {v5}, Ljava/lang/String;->toUpperCase()Ljava/lang/String;
-
-    move-result-object v5
-
-    return-object v5
-
-    .line 15
-    :cond_13
-    aget-byte v1, p0, v2
+    aget-byte v4, v1, v3
 
     .line 17
-    .local v1, "b":B
-    and-int/lit16 v5, v1, 0xf0
+    .local v4, "b":B
+    and-int/lit16 v5, v4, 0xf0
 
-    if-eqz v5, :cond_25
+    if-nez v5, :cond_15
+
+    .line 18
+    const-string v5, "0"
+
+    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 20
-    :goto_19
-    and-int/lit16 v5, v1, 0xff
+    :cond_15
+    and-int/lit16 v5, v4, 0xff
 
     invoke-static {v5}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
 
     move-result-object v5
 
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 15
-    add-int/lit8 v2, v2, 0x1
+    .end local v4    # "b":B
+    add-int/lit8 v3, v3, 0x1
 
     goto :goto_8
 
-    .line 18
-    :cond_25
-    const-string/jumbo v5, "0"
+    .line 22
+    .end local v1    # "arr$":[B
+    .end local v2    # "len$":I
+    .end local v3    # "i$":I
+    :cond_21
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v1
 
-    goto :goto_19
+    invoke-virtual {v1}, Ljava/lang/String;->toUpperCase()Ljava/lang/String;
+
+    move-result-object v1
+
+    return-object v1
 .end method

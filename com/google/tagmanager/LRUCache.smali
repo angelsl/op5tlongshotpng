@@ -19,8 +19,8 @@
         "Ljava/lang/Object;",
         ">",
         "Ljava/lang/Object;",
-        "Lcom/google/tagmanager/Cache",
-        "<TK;TV;>;"
+        "Lcom/google/tagmanager/Cache<",
+        "TK;TV;>;"
     }
 .end annotation
 
@@ -29,8 +29,8 @@
 .field private lruCache:Landroid/util/LruCache;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/util/LruCache",
-            "<TK;TV;>;"
+            "Landroid/util/LruCache<",
+            "TK;TV;>;"
         }
     .end annotation
 .end field
@@ -43,12 +43,11 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(I",
-            "Lcom/google/tagmanager/CacheFactory$CacheSizeManager",
-            "<TK;TV;>;)V"
+            "Lcom/google/tagmanager/CacheFactory$CacheSizeManager<",
+            "TK;TV;>;)V"
         }
     .end annotation
 
-    .prologue
     .line 25
     .local p0, "this":Lcom/google/tagmanager/LRUCache;, "Lcom/google/tagmanager/LRUCache<TK;TV;>;"
     .local p2, "sizeManager":Lcom/google/tagmanager/CacheFactory$CacheSizeManager;, "Lcom/google/tagmanager/CacheFactory$CacheSizeManager<TK;TV;>;"
@@ -62,7 +61,9 @@
     iput-object v0, p0, Lcom/google/tagmanager/LRUCache;->lruCache:Landroid/util/LruCache;
 
     .line 32
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -75,7 +76,6 @@
         }
     .end annotation
 
-    .prologue
     .line 41
     .local p0, "this":Lcom/google/tagmanager/LRUCache;, "Lcom/google/tagmanager/LRUCache<TK;TV;>;"
     .local p1, "key":Ljava/lang/Object;, "TK;"
@@ -96,7 +96,6 @@
         }
     .end annotation
 
-    .prologue
     .line 36
     .local p0, "this":Lcom/google/tagmanager/LRUCache;, "Lcom/google/tagmanager/LRUCache<TK;TV;>;"
     .local p1, "key":Ljava/lang/Object;, "TK;"
@@ -106,5 +105,7 @@
     invoke-virtual {v0, p1, p2}, Landroid/util/LruCache;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 37
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

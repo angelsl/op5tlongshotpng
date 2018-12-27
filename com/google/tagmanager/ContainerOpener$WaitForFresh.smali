@@ -28,7 +28,6 @@
     .registers 4
     .param p2, "oldestTimeToBeFresh"    # J
 
-    .prologue
     .line 141
     iput-object p1, p0, Lcom/google/tagmanager/ContainerOpener$WaitForFresh;->this$0:Lcom/google/tagmanager/ContainerOpener;
 
@@ -42,48 +41,35 @@
 .end method
 
 .method private isFresh()Z
-    .registers 7
-
-    .prologue
-    const/4 v0, 0x1
-
-    const/4 v1, 0x0
+    .registers 5
 
     .line 166
-    iget-wide v2, p0, Lcom/google/tagmanager/ContainerOpener$WaitForFresh;->mOldestTimeToBeFresh:J
+    iget-wide v0, p0, Lcom/google/tagmanager/ContainerOpener$WaitForFresh;->mOldestTimeToBeFresh:J
 
-    iget-object v4, p0, Lcom/google/tagmanager/ContainerOpener$WaitForFresh;->this$0:Lcom/google/tagmanager/ContainerOpener;
+    iget-object v2, p0, Lcom/google/tagmanager/ContainerOpener$WaitForFresh;->this$0:Lcom/google/tagmanager/ContainerOpener;
 
     # getter for: Lcom/google/tagmanager/ContainerOpener;->mContainer:Lcom/google/tagmanager/Container;
-    invoke-static {v4}, Lcom/google/tagmanager/ContainerOpener;->access$100(Lcom/google/tagmanager/ContainerOpener;)Lcom/google/tagmanager/Container;
+    invoke-static {v2}, Lcom/google/tagmanager/ContainerOpener;->access$100(Lcom/google/tagmanager/ContainerOpener;)Lcom/google/tagmanager/Container;
 
-    move-result-object v4
+    move-result-object v2
 
-    invoke-virtual {v4}, Lcom/google/tagmanager/Container;->getLastRefreshTime()J
+    invoke-virtual {v2}, Lcom/google/tagmanager/Container;->getLastRefreshTime()J
 
-    move-result-wide v4
+    move-result-wide v2
 
-    cmp-long v2, v2, v4
+    cmp-long v0, v0, v2
 
-    if-ltz v2, :cond_16
+    if-gez v0, :cond_12
 
-    move v2, v0
-
-    :goto_13
-    if-nez v2, :cond_18
-
-    :goto_15
-    return v0
-
-    :cond_16
-    move v2, v1
+    const/4 v0, 0x1
 
     goto :goto_13
 
-    :cond_18
-    move v0, v1
+    :cond_12
+    const/4 v0, 0x0
 
-    goto :goto_15
+    :goto_13
+    return v0
 .end method
 
 
@@ -93,7 +79,6 @@
     .param p1, "container"    # Lcom/google/tagmanager/Container;
     .param p2, "refreshType"    # Lcom/google/tagmanager/Container$RefreshType;
 
-    .prologue
     .line 148
     return-void
 .end method
@@ -104,24 +89,21 @@
     .param p2, "refreshType"    # Lcom/google/tagmanager/Container$RefreshType;
     .param p3, "refreshFailure"    # Lcom/google/tagmanager/Container$RefreshFailure;
 
-    .prologue
     .line 160
     sget-object v0, Lcom/google/tagmanager/Container$RefreshType;->NETWORK:Lcom/google/tagmanager/Container$RefreshType;
 
-    if-eq p2, v0, :cond_5
-
-    .line 163
-    :goto_4
-    return-void
+    if-ne p2, v0, :cond_9
 
     .line 161
-    :cond_5
     iget-object v0, p0, Lcom/google/tagmanager/ContainerOpener$WaitForFresh;->this$0:Lcom/google/tagmanager/ContainerOpener;
 
-    # invokes: Lcom/google/tagmanager/ContainerOpener;->callNotifiers(Lcom/google/tagmanager/Container;)V
     invoke-static {v0, p1}, Lcom/google/tagmanager/ContainerOpener;->access$000(Lcom/google/tagmanager/ContainerOpener;Lcom/google/tagmanager/Container;)V
 
-    goto :goto_4
+    .line 163
+    :cond_9
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public containerRefreshSuccess(Lcom/google/tagmanager/Container;Lcom/google/tagmanager/Container$RefreshType;)V
@@ -129,30 +111,26 @@
     .param p1, "container"    # Lcom/google/tagmanager/Container;
     .param p2, "refreshType"    # Lcom/google/tagmanager/Container$RefreshType;
 
-    .prologue
     .line 152
     sget-object v0, Lcom/google/tagmanager/Container$RefreshType;->NETWORK:Lcom/google/tagmanager/Container$RefreshType;
 
-    if-ne p2, v0, :cond_a
+    if-eq p2, v0, :cond_a
 
-    .line 153
-    :cond_4
-    iget-object v0, p0, Lcom/google/tagmanager/ContainerOpener$WaitForFresh;->this$0:Lcom/google/tagmanager/ContainerOpener;
-
-    # invokes: Lcom/google/tagmanager/ContainerOpener;->callNotifiers(Lcom/google/tagmanager/Container;)V
-    invoke-static {v0, p1}, Lcom/google/tagmanager/ContainerOpener;->access$000(Lcom/google/tagmanager/ContainerOpener;Lcom/google/tagmanager/Container;)V
-
-    .line 155
-    :goto_9
-    return-void
-
-    .line 152
-    :cond_a
     invoke-direct {p0}, Lcom/google/tagmanager/ContainerOpener$WaitForFresh;->isFresh()Z
 
     move-result v0
 
-    if-nez v0, :cond_4
+    if-eqz v0, :cond_f
 
-    goto :goto_9
+    .line 153
+    :cond_a
+    iget-object v0, p0, Lcom/google/tagmanager/ContainerOpener$WaitForFresh;->this$0:Lcom/google/tagmanager/ContainerOpener;
+
+    invoke-static {v0, p1}, Lcom/google/tagmanager/ContainerOpener;->access$000(Lcom/google/tagmanager/ContainerOpener;Lcom/google/tagmanager/Container;)V
+
+    .line 155
+    :cond_f
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

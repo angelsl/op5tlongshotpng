@@ -23,8 +23,7 @@
     .registers 2
     .param p1, "this$0"    # Lcom/oneplus/screenshot/longshot/state/LongshotMode;
 
-    .prologue
-    .line 106
+    .line 108
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MyHandler;->this$0:Lcom/oneplus/screenshot/longshot/state/LongshotMode;
 
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
@@ -38,35 +37,33 @@
     .registers 5
     .param p1, "msg"    # Landroid/os/Message;
 
-    .prologue
-    .line 109
+    .line 111
     iget v0, p1, Landroid/os/Message;->what:I
 
-    .line 111
-    .local v0, "action":I
-    packed-switch v0, :pswitch_data_10
-
-    .line 117
-    :goto_5
-    return-void
-
     .line 113
-    :pswitch_6
+    .local v0, "action":I
+    const/16 v1, 0x3e8
+
+    if-eq v0, v1, :cond_7
+
+    goto :goto_10
+
+    .line 115
+    :cond_7
     iget-object v1, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     check-cast v1, Ljava/lang/String;
 
-    .line 114
+    .line 116
     .local v1, "resion":Ljava/lang/String;
     iget-object v2, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MyHandler;->this$0:Lcom/oneplus/screenshot/longshot/state/LongshotMode;
 
     invoke-virtual {v2, v1}, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->handleReject(Ljava/lang/String;)V
 
-    goto :goto_5
-
-    .line 111
-    :pswitch_data_10
-    .packed-switch 0x3e8
-        :pswitch_6
-    .end packed-switch
+    .line 119
+    .end local v1    # "resion":Ljava/lang/String;
+    :goto_10
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

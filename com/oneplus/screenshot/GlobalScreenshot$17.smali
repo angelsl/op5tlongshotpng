@@ -20,34 +20,42 @@
 # instance fields
 .field final synthetic this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
+.field final synthetic val$v:Landroid/view/View;
+
 
 # direct methods
-.method constructor <init>(Lcom/oneplus/screenshot/GlobalScreenshot;)V
-    .registers 2
+.method constructor <init>(Lcom/oneplus/screenshot/GlobalScreenshot;Landroid/view/View;)V
+    .registers 3
     .param p1, "this$0"    # Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .prologue
-    .line 1
+    .line 1676
     iput-object p1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$17;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .line 1544
+    iput-object p2, p0, Lcom/oneplus/screenshot/GlobalScreenshot$17;->val$v:Landroid/view/View;
+
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1
     return-void
 .end method
 
 
 # virtual methods
 .method public run()V
-    .registers 2
+    .registers 3
 
-    .prologue
-    .line 1547
+    .line 1679
     iget-object v0, p0, Lcom/oneplus/screenshot/GlobalScreenshot$17;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    invoke-static {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->-wrap2(Lcom/oneplus/screenshot/GlobalScreenshot;)V
+    iget-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$17;->val$v:Landroid/view/View;
 
-    .line 1548
-    return-void
+    invoke-virtual {v1}, Landroid/view/View;->getContext()Landroid/content/Context;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$2600(Lcom/oneplus/screenshot/GlobalScreenshot;Landroid/content/Context;)V
+
+    .line 1680
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

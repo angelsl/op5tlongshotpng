@@ -29,7 +29,6 @@
 .method private constructor <init>()V
     .registers 3
 
-    .prologue
     .line 312
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -42,18 +41,21 @@
 
     iput-object v0, p0, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;->mContainerIsReady:Ljava/util/concurrent/Semaphore;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method synthetic constructor <init>(Lcom/google/tagmanager/ContainerOpener$1;)V
     .registers 2
     .param p1, "x0"    # Lcom/google/tagmanager/ContainerOpener$1;
 
-    .prologue
     .line 312
     invoke-direct {p0}, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;-><init>()V
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -61,22 +63,34 @@
 .method public get()Lcom/google/tagmanager/Container;
     .registers 2
 
-    .prologue
     .line 319
     iget-boolean v0, p0, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;->mHaveGotten:Z
 
-    if-nez v0, :cond_f
+    if-eqz v0, :cond_7
+
+    .line 320
+    iget-object v0, p0, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;->mContainer:Lcom/google/tagmanager/Container;
+
+    return-object v0
 
     .line 324
-    :try_start_4
+    :cond_7
+    :try_start_7
     iget-object v0, p0, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;->mContainerIsReady:Ljava/util/concurrent/Semaphore;
 
     invoke-virtual {v0}, Ljava/util/concurrent/Semaphore;->acquire()V
-    :try_end_9
-    .catch Ljava/lang/InterruptedException; {:try_start_4 .. :try_end_9} :catch_12
+    :try_end_c
+    .catch Ljava/lang/InterruptedException; {:try_start_7 .. :try_end_c} :catch_d
+
+    .line 327
+    goto :goto_e
+
+    .line 325
+    :catch_d
+    move-exception v0
 
     .line 328
-    :goto_9
+    :goto_e
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;->mHaveGotten:Z
@@ -85,54 +99,43 @@
     iget-object v0, p0, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;->mContainer:Lcom/google/tagmanager/Container;
 
     return-object v0
-
-    .line 320
-    :cond_f
-    iget-object v0, p0, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;->mContainer:Lcom/google/tagmanager/Container;
-
-    return-object v0
-
-    .line 325
-    :catch_12
-    move-exception v0
-
-    goto :goto_9
 .end method
 
 .method public isDone()Z
-    .registers 3
-
-    .prologue
-    const/4 v0, 0x0
+    .registers 2
 
     .line 339
-    iget-boolean v1, p0, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;->mHaveGotten:Z
+    iget-boolean v0, p0, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;->mHaveGotten:Z
 
-    if-eqz v1, :cond_7
+    if-nez v0, :cond_f
 
-    :cond_5
+    iget-object v0, p0, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;->mContainerIsReady:Ljava/util/concurrent/Semaphore;
+
+    invoke-virtual {v0}, Ljava/util/concurrent/Semaphore;->availablePermits()I
+
+    move-result v0
+
+    if-lez v0, :cond_d
+
+    goto :goto_f
+
+    :cond_d
+    const/4 v0, 0x0
+
+    goto :goto_10
+
+    :cond_f
+    :goto_f
     const/4 v0, 0x1
 
-    :goto_6
+    :goto_10
     return v0
-
-    :cond_7
-    iget-object v1, p0, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;->mContainerIsReady:Ljava/util/concurrent/Semaphore;
-
-    invoke-virtual {v1}, Ljava/util/concurrent/Semaphore;->availablePermits()I
-
-    move-result v1
-
-    if-gtz v1, :cond_5
-
-    goto :goto_6
 .end method
 
 .method public setContainer(Lcom/google/tagmanager/Container;)V
     .registers 3
     .param p1, "container"    # Lcom/google/tagmanager/Container;
 
-    .prologue
     .line 333
     iput-object p1, p0, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;->mContainer:Lcom/google/tagmanager/Container;
 
@@ -142,5 +145,7 @@
     invoke-virtual {v0}, Ljava/util/concurrent/Semaphore;->release()V
 
     .line 335
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

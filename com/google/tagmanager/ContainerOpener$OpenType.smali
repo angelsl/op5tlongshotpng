@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Ljava/lang/Enum",
-        "<",
+        "Ljava/lang/Enum<",
         "Lcom/google/tagmanager/ContainerOpener$OpenType;",
         ">;"
     }
@@ -35,15 +34,12 @@
 .method static constructor <clinit>()V
     .registers 4
 
-    .prologue
-    const/4 v3, 0x1
-
-    const/4 v2, 0x0
-
     .line 57
     new-instance v0, Lcom/google/tagmanager/ContainerOpener$OpenType;
 
-    const-string/jumbo v1, "PREFER_NON_DEFAULT"
+    const-string v1, "PREFER_NON_DEFAULT"
+
+    const/4 v2, 0x0
 
     invoke-direct {v0, v1, v2}, Lcom/google/tagmanager/ContainerOpener$OpenType;-><init>(Ljava/lang/String;I)V
 
@@ -52,7 +48,9 @@
     .line 62
     new-instance v0, Lcom/google/tagmanager/ContainerOpener$OpenType;
 
-    const-string/jumbo v1, "PREFER_FRESH"
+    const-string v1, "PREFER_FRESH"
+
+    const/4 v3, 0x1
 
     invoke-direct {v0, v1, v3}, Lcom/google/tagmanager/ContainerOpener$OpenType;-><init>(Ljava/lang/String;I)V
 
@@ -73,7 +71,9 @@
 
     sput-object v0, Lcom/google/tagmanager/ContainerOpener$OpenType;->$VALUES:[Lcom/google/tagmanager/ContainerOpener$OpenType;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V
@@ -84,7 +84,6 @@
         }
     .end annotation
 
-    .prologue
     .line 51
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
@@ -95,7 +94,6 @@
     .registers 2
     .param p0, "name"    # Ljava/lang/String;
 
-    .prologue
     .line 51
     const-class v0, Lcom/google/tagmanager/ContainerOpener$OpenType;
 
@@ -111,11 +109,10 @@
 .method public static values()[Lcom/google/tagmanager/ContainerOpener$OpenType;
     .registers 1
 
-    .prologue
     .line 51
     sget-object v0, Lcom/google/tagmanager/ContainerOpener$OpenType;->$VALUES:[Lcom/google/tagmanager/ContainerOpener$OpenType;
 
-    invoke-virtual {v0}, Ljava/lang/Object;->clone()Ljava/lang/Object;
+    invoke-virtual {v0}, [Lcom/google/tagmanager/ContainerOpener$OpenType;->clone()Ljava/lang/Object;
 
     move-result-object v0
 

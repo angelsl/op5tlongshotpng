@@ -15,8 +15,8 @@
         "Ljava/lang/Object;",
         ">",
         "Ljava/lang/Object;",
-        "Lcom/google/tagmanager/Cache",
-        "<TK;TV;>;"
+        "Lcom/google/tagmanager/Cache<",
+        "TK;TV;>;"
     }
 .end annotation
 
@@ -25,8 +25,8 @@
 .field private final mHashMap:Ljava/util/Map;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/Map",
-            "<TK;TV;>;"
+            "Ljava/util/Map<",
+            "TK;TV;>;"
         }
     .end annotation
 .end field
@@ -36,8 +36,8 @@
 .field private final mSizeManager:Lcom/google/tagmanager/CacheFactory$CacheSizeManager;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Lcom/google/tagmanager/CacheFactory$CacheSizeManager",
-            "<TK;TV;>;"
+            "Lcom/google/tagmanager/CacheFactory$CacheSizeManager<",
+            "TK;TV;>;"
         }
     .end annotation
 .end field
@@ -52,12 +52,11 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(I",
-            "Lcom/google/tagmanager/CacheFactory$CacheSizeManager",
-            "<TK;TV;>;)V"
+            "Lcom/google/tagmanager/CacheFactory$CacheSizeManager<",
+            "TK;TV;>;)V"
         }
     .end annotation
 
-    .prologue
     .line 26
     .local p0, "this":Lcom/google/tagmanager/SimpleCache;, "Lcom/google/tagmanager/SimpleCache<TK;TV;>;"
     .local p2, "sizeManager":Lcom/google/tagmanager/CacheFactory$CacheSizeManager;, "Lcom/google/tagmanager/CacheFactory$CacheSizeManager<TK;TV;>;"
@@ -90,7 +89,6 @@
         }
     .end annotation
 
-    .prologue
     .local p0, "this":Lcom/google/tagmanager/SimpleCache;, "Lcom/google/tagmanager/SimpleCache<TK;TV;>;"
     .local p1, "key":Ljava/lang/Object;, "TK;"
     monitor-enter p0
@@ -100,21 +98,23 @@
     iget-object v0, p0, Lcom/google/tagmanager/SimpleCache;->mHashMap:Ljava/util/Map;
 
     invoke-interface {v0, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-    :try_end_6
-    .catchall {:try_start_1 .. :try_end_6} :catchall_9
 
     move-result-object v0
+    :try_end_7
+    .catchall {:try_start_1 .. :try_end_7} :catchall_9
 
     monitor-exit p0
 
     return-object v0
 
+    .end local p1    # "key":Ljava/lang/Object;, "TK;"
     :catchall_9
-    move-exception v0
+    move-exception p1
 
     monitor-exit p0
 
-    throw v0
+    .end local p0    # "this":Lcom/google/tagmanager/SimpleCache;, "Lcom/google/tagmanager/SimpleCache<TK;TV;>;"
+    throw p1
 .end method
 
 .method public declared-synchronized put(Ljava/lang/Object;Ljava/lang/Object;)V
@@ -125,113 +125,75 @@
         }
     .end annotation
 
-    .prologue
     .local p0, "this":Lcom/google/tagmanager/SimpleCache;, "Lcom/google/tagmanager/SimpleCache<TK;TV;>;"
     .local p1, "key":Ljava/lang/Object;, "TK;"
     .local p2, "value":Ljava/lang/Object;, "TV;"
     monitor-enter p0
 
     .line 34
-    if-nez p1, :cond_f
+    if-eqz p1, :cond_51
 
-    .line 35
-    :cond_3
-    :try_start_3
-    new-instance v2, Ljava/lang/NullPointerException;
-
-    const-string/jumbo v3, "key == null || value == null"
-
-    invoke-direct {v2, v3}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
-
-    throw v2
-    :try_end_c
-    .catchall {:try_start_3 .. :try_end_c} :catchall_c
-
-    :catchall_c
-    move-exception v2
-
-    monitor-exit p0
-
-    throw v2
-
-    .line 34
-    :cond_f
-    if-eqz p2, :cond_3
+    if-eqz p2, :cond_51
 
     .line 38
-    :try_start_11
-    iget v2, p0, Lcom/google/tagmanager/SimpleCache;->mTotalSize:I
+    :try_start_5
+    iget v0, p0, Lcom/google/tagmanager/SimpleCache;->mTotalSize:I
 
-    iget-object v3, p0, Lcom/google/tagmanager/SimpleCache;->mSizeManager:Lcom/google/tagmanager/CacheFactory$CacheSizeManager;
+    iget-object v1, p0, Lcom/google/tagmanager/SimpleCache;->mSizeManager:Lcom/google/tagmanager/CacheFactory$CacheSizeManager;
 
-    invoke-interface {v3, p1, p2}, Lcom/google/tagmanager/CacheFactory$CacheSizeManager;->sizeOf(Ljava/lang/Object;Ljava/lang/Object;)I
+    invoke-interface {v1, p1, p2}, Lcom/google/tagmanager/CacheFactory$CacheSizeManager;->sizeOf(Ljava/lang/Object;Ljava/lang/Object;)I
 
-    move-result v3
+    move-result v1
 
-    add-int/2addr v2, v3
+    add-int/2addr v0, v1
 
-    iput v2, p0, Lcom/google/tagmanager/SimpleCache;->mTotalSize:I
+    iput v0, p0, Lcom/google/tagmanager/SimpleCache;->mTotalSize:I
 
     .line 39
-    iget v2, p0, Lcom/google/tagmanager/SimpleCache;->mTotalSize:I
+    iget v0, p0, Lcom/google/tagmanager/SimpleCache;->mTotalSize:I
 
-    iget v3, p0, Lcom/google/tagmanager/SimpleCache;->mMaxSize:I
+    iget v1, p0, Lcom/google/tagmanager/SimpleCache;->mMaxSize:I
 
-    if-gt v2, v3, :cond_29
-
-    .line 51
-    :cond_22
-    iget-object v2, p0, Lcom/google/tagmanager/SimpleCache;->mHashMap:Ljava/util/Map;
-
-    invoke-interface {v2, p1, p2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    :try_end_27
-    .catchall {:try_start_11 .. :try_end_27} :catchall_c
-
-    monitor-exit p0
-
-    .line 52
-    return-void
+    if-le v0, v1, :cond_4a
 
     .line 41
-    :cond_29
-    :try_start_29
-    iget-object v2, p0, Lcom/google/tagmanager/SimpleCache;->mHashMap:Ljava/util/Map;
+    iget-object v0, p0, Lcom/google/tagmanager/SimpleCache;->mHashMap:Ljava/util/Map;
 
-    invoke-interface {v2}, Ljava/util/Map;->entrySet()Ljava/util/Set;
-
-    move-result-object v2
-
-    invoke-interface {v2}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
-
-    move-result-object v1
-
-    .line 42
-    .local v1, "iter":Ljava/util/Iterator;, "Ljava/util/Iterator<Ljava/util/Map$Entry<TK;TV;>;>;"
-    :goto_33
-    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v2
-
-    if-eqz v2, :cond_22
-
-    .line 43
-    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {v0}, Ljava/util/Map;->entrySet()Ljava/util/Set;
 
     move-result-object v0
 
-    check-cast v0, Ljava/util/Map$Entry;
+    invoke-interface {v0}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+
+    move-result-object v0
+
+    .line 42
+    .local v0, "iter":Ljava/util/Iterator;, "Ljava/util/Iterator<Ljava/util/Map$Entry<TK;TV;>;>;"
+    :goto_20
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_4a
+
+    .line 43
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Ljava/util/Map$Entry;
 
     .line 44
-    .local v0, "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<TK;TV;>;"
+    .local v1, "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<TK;TV;>;"
     iget v2, p0, Lcom/google/tagmanager/SimpleCache;->mTotalSize:I
 
     iget-object v3, p0, Lcom/google/tagmanager/SimpleCache;->mSizeManager:Lcom/google/tagmanager/CacheFactory$CacheSizeManager;
 
-    invoke-interface {v0}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+    invoke-interface {v1}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
 
     move-result-object v4
 
-    invoke-interface {v0}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+    invoke-interface {v1}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
     move-result-object v5
 
@@ -244,16 +206,61 @@
     iput v2, p0, Lcom/google/tagmanager/SimpleCache;->mTotalSize:I
 
     .line 45
-    invoke-interface {v1}, Ljava/util/Iterator;->remove()V
+    invoke-interface {v0}, Ljava/util/Iterator;->remove()V
 
     .line 46
     iget v2, p0, Lcom/google/tagmanager/SimpleCache;->mTotalSize:I
 
     iget v3, p0, Lcom/google/tagmanager/SimpleCache;->mMaxSize:I
+
+    if-gt v2, v3, :cond_49
+
+    .line 47
+    goto :goto_4a
+
+    .line 49
+    .end local v1    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<TK;TV;>;"
+    :cond_49
+    goto :goto_20
+
+    .line 51
+    .end local v0    # "iter":Ljava/util/Iterator;, "Ljava/util/Iterator<Ljava/util/Map$Entry<TK;TV;>;>;"
+    :cond_4a
+    :goto_4a
+    iget-object v0, p0, Lcom/google/tagmanager/SimpleCache;->mHashMap:Ljava/util/Map;
+
+    invoke-interface {v0, p1, p2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    :try_end_4f
+    .catchall {:try_start_5 .. :try_end_4f} :catchall_59
+
+    .line 52
+    monitor-exit p0
+
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
+
+    .line 35
+    :cond_51
+    :try_start_51
+    new-instance v0, Ljava/lang/NullPointerException;
+
+    const-string v1, "key == null || value == null"
+
+    invoke-direct {v0, v1}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+
+    throw v0
     :try_end_59
-    .catchall {:try_start_29 .. :try_end_59} :catchall_c
+    .catchall {:try_start_51 .. :try_end_59} :catchall_59
 
-    if-le v2, v3, :cond_22
+    .line 33
+    .end local p1    # "key":Ljava/lang/Object;, "TK;"
+    .end local p2    # "value":Ljava/lang/Object;, "TV;"
+    :catchall_59
+    move-exception p1
 
-    goto :goto_33
+    monitor-exit p0
+
+    .end local p0    # "this":Lcom/google/tagmanager/SimpleCache;, "Lcom/google/tagmanager/SimpleCache<TK;TV;>;"
+    throw p1
 .end method

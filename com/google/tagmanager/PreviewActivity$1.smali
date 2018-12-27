@@ -25,7 +25,6 @@
 .method constructor <init>(Lcom/google/tagmanager/PreviewActivity;)V
     .registers 2
 
-    .prologue
     .line 75
     iput-object p1, p0, Lcom/google/tagmanager/PreviewActivity$1;->this$0:Lcom/google/tagmanager/PreviewActivity;
 
@@ -41,7 +40,6 @@
     .param p1, "dialog"    # Landroid/content/DialogInterface;
     .param p2, "which"    # I
 
-    .prologue
     .line 78
     return-void
 .end method

@@ -11,7 +11,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 14
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->DEVICE_NAME:Lcom/google/analytics/containertag/common/FunctionType;
 
@@ -21,13 +20,14 @@
 
     sput-object v0, Lcom/google/tagmanager/DeviceNameMacro;->ID:Ljava/lang/String;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>()V
     .registers 3
 
-    .prologue
     .line 21
     sget-object v0, Lcom/google/tagmanager/DeviceNameMacro;->ID:Ljava/lang/String;
 
@@ -38,13 +38,14 @@
     invoke-direct {p0, v0, v1}, Lcom/google/tagmanager/FunctionCallImplementation;-><init>(Ljava/lang/String;[Ljava/lang/String;)V
 
     .line 22
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
     .registers 1
 
-    .prologue
     .line 17
     sget-object v0, Lcom/google/tagmanager/DeviceNameMacro;->ID:Ljava/lang/String;
 
@@ -58,8 +59,7 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;)",
@@ -67,7 +67,6 @@
         }
     .end annotation
 
-    .prologue
     .line 29
     .local p1, "parameters":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
     sget-object v0, Landroid/os/Build;->MANUFACTURER:Ljava/lang/String;
@@ -82,26 +81,15 @@
 
     move-result v2
 
-    if-eqz v2, :cond_f
+    if-nez v2, :cond_26
 
-    .line 34
-    :cond_a
-    :goto_a
-    invoke-static {v1}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    move-result-object v2
-
-    return-object v2
-
-    .line 31
-    :cond_f
-    const-string/jumbo v2, "unknown"
+    const-string v2, "unknown"
 
     invoke-virtual {v0, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v2
 
-    if-nez v2, :cond_a
+    if-nez v2, :cond_26
 
     .line 32
     new-instance v2, Ljava/lang/StringBuilder;
@@ -110,29 +98,28 @@
 
     invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v2
-
-    const-string/jumbo v3, " "
+    const-string v3, " "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v2
-
     invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
 
     invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1
 
-    goto :goto_a
+    .line 34
+    :cond_26
+    invoke-static {v1}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+
+    move-result-object v2
+
+    return-object v2
 .end method
 
 .method public isCacheable()Z
     .registers 2
 
-    .prologue
     .line 25
     const/4 v0, 0x1
 

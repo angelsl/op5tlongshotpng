@@ -20,7 +20,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 18
     new-instance v0, Ljava/lang/Object;
 
@@ -28,7 +27,9 @@
 
     sput-object v0, Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;->sInstanceLock:Ljava/lang/Object;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method protected constructor <init>(Landroid/content/Context;)V
@@ -37,7 +38,6 @@
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 44
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -49,34 +49,33 @@
 .end method
 
 .method static dropInstance()V
-    .registers 3
+    .registers 2
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
-    .prologue
     .line 38
     sget-object v0, Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;->sInstanceLock:Ljava/lang/Object;
 
-    .local v0, "-l_0_R":Ljava/lang/Object;
     monitor-enter v0
 
     .line 39
-    const/4 v2, 0x0
+    const/4 v1, 0x0
 
     :try_start_4
-    sput-object v2, Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;->sInstance:Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;
+    sput-object v1, Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;->sInstance:Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;
 
     .line 40
     monitor-exit v0
 
     .line 41
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 
     .line 40
     :catchall_8
     move-exception v1
 
-    .local v1, "-l_1_R":Ljava/lang/Object;
     monitor-exit v0
     :try_end_a
     .catchall {:try_start_4 .. :try_end_a} :catchall_8
@@ -85,28 +84,25 @@
 .end method
 
 .method public static getProvider()Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;
-    .registers 3
+    .registers 2
 
-    .prologue
     .line 31
     sget-object v0, Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;->sInstanceLock:Ljava/lang/Object;
 
-    .local v0, "-l_0_R":Ljava/lang/Object;
     monitor-enter v0
 
     .line 32
     :try_start_3
-    sget-object v2, Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;->sInstance:Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;
+    sget-object v1, Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;->sInstance:Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;
 
     monitor-exit v0
 
-    return-object v2
+    return-object v1
 
     .line 33
     :catchall_7
     move-exception v1
 
-    .local v1, "-l_1_R":Ljava/lang/Object;
     monitor-exit v0
     :try_end_9
     .catchall {:try_start_3 .. :try_end_9} :catchall_7
@@ -115,47 +111,43 @@
 .end method
 
 .method public static initializeProvider(Landroid/content/Context;)V
-    .registers 4
+    .registers 3
     .param p0, "c"    # Landroid/content/Context;
 
-    .prologue
     .line 23
     sget-object v0, Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;->sInstanceLock:Ljava/lang/Object;
 
-    .local v0, "-l_1_R":Ljava/lang/Object;
     monitor-enter v0
 
     .line 24
     :try_start_3
-    sget-object v2, Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;->sInstance:Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;
+    sget-object v1, Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;->sInstance:Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;
 
-    if-eqz v2, :cond_9
+    if-nez v1, :cond_e
+
+    .line 25
+    new-instance v1, Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;
+
+    invoke-direct {v1, p0}, Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;-><init>(Landroid/content/Context;)V
+
+    sput-object v1, Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;->sInstance:Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;
 
     .line 27
-    :goto_7
+    :cond_e
     monitor-exit v0
 
     .line 28
-    return-void
-
-    .line 25
-    :cond_9
-    new-instance v2, Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;
-
-    invoke-direct {v2, p0}, Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;-><init>(Landroid/content/Context;)V
-
-    sput-object v2, Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;->sInstance:Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;
-
-    goto :goto_7
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 
     .line 27
-    :catchall_11
+    :catchall_10
     move-exception v1
 
-    .local v1, "-l_2_R":Ljava/lang/Object;
     monitor-exit v0
-    :try_end_13
-    .catchall {:try_start_3 .. :try_end_13} :catchall_11
+    :try_end_12
+    .catchall {:try_start_3 .. :try_end_12} :catchall_10
 
     throw v1
 .end method
@@ -165,15 +157,14 @@
 .method protected getScreenResolutionString()Ljava/lang/String;
     .registers 4
 
-    .prologue
     .line 67
-    iget-object v1, p0, Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;->mContext:Landroid/content/Context;
+    iget-object v0, p0, Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;->mContext:Landroid/content/Context;
 
-    invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    invoke-virtual {v0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-virtual {v1}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+    invoke-virtual {v0}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
 
     move-result-object v0
 
@@ -187,19 +178,13 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v1
-
-    const-string/jumbo v2, "x"
+    const-string v2, "x"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
 
     iget v2, v0, Landroid/util/DisplayMetrics;->heightPixels:I
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v1
 
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -212,34 +197,33 @@
     .registers 4
     .param p1, "field"    # Ljava/lang/String;
 
-    .prologue
-    const/4 v1, 0x0
-
     .line 56
-    if-eqz p1, :cond_d
+    const/4 v0, 0x0
 
-    .line 59
-    const-string/jumbo v0, "&sr"
-
-    invoke-virtual {p1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v0
-
-    if-nez v0, :cond_e
-
-    .line 62
-    return-object v1
+    if-nez p1, :cond_4
 
     .line 57
-    :cond_d
-    return-object v1
+    return-object v0
+
+    .line 59
+    :cond_4
+    const-string v1, "&sr"
+
+    invoke-virtual {p1, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_11
 
     .line 60
-    :cond_e
     invoke-virtual {p0}, Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;->getScreenResolutionString()Ljava/lang/String;
 
     move-result-object v0
 
+    return-object v0
+
+    .line 62
+    :cond_11
     return-object v0
 .end method
 
@@ -247,9 +231,8 @@
     .registers 3
     .param p1, "field"    # Ljava/lang/String;
 
-    .prologue
     .line 50
-    const-string/jumbo v0, "&sr"
+    const-string v0, "&sr"
 
     invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 

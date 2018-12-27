@@ -12,7 +12,6 @@
     .registers 2
     .param p1, "stateContext"    # Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
-    .prologue
     .line 15
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/longshot/state/AbsJoinState;-><init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;)V
 
@@ -25,7 +24,6 @@
 .method protected createJoinTask()Lcom/oneplus/screenshot/longshot/task/JoinTask;
     .registers 5
 
-    .prologue
     .line 23
     new-instance v0, Lcom/oneplus/screenshot/longshot/task/UndoTask;
 
@@ -51,9 +49,8 @@
 .method protected getSuccessText()Ljava/lang/String;
     .registers 2
 
-    .prologue
     .line 33
-    const-string/jumbo v0, ""
+    const-string v0, ""
 
     return-object v0
 .end method
@@ -61,7 +58,6 @@
 .method protected prepareSuccess()V
     .registers 3
 
-    .prologue
     .line 28
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/UndoState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
@@ -70,13 +66,14 @@
     invoke-interface {v0, v1}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->setLast(Z)V
 
     .line 29
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method protected updateIndex()V
     .registers 3
 
-    .prologue
     .line 38
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/UndoState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
@@ -85,5 +82,7 @@
     invoke-interface {v0, v1}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->updateIndex(I)V
 
     .line 39
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

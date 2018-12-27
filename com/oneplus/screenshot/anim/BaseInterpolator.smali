@@ -22,7 +22,6 @@
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "attrs"    # Landroid/util/AttributeSet;
 
-    .prologue
     .line 26
     invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
@@ -35,43 +34,56 @@
     invoke-direct {p0, v0, v1, p2}, Lcom/oneplus/screenshot/anim/BaseInterpolator;-><init>(Landroid/content/res/Resources;Landroid/content/res/Resources$Theme;Landroid/util/AttributeSet;)V
 
     .line 27
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private constructor <init>(Landroid/content/res/Resources;Landroid/content/res/Resources$Theme;Landroid/util/AttributeSet;)V
-    .registers 8
+    .registers 7
     .param p1, "res"    # Landroid/content/res/Resources;
     .param p2, "theme"    # Landroid/content/res/Resources$Theme;
     .param p3, "attrs"    # Landroid/util/AttributeSet;
-
-    .prologue
-    const/4 v3, 0x0
-
-    const/high16 v2, 0x3f800000    # 1.0f
 
     .line 29
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 19
-    iput v2, p0, Lcom/oneplus/screenshot/anim/BaseInterpolator;->mFactor:F
+    const/high16 v0, 0x3f800000    # 1.0f
+
+    iput v0, p0, Lcom/oneplus/screenshot/anim/BaseInterpolator;->mFactor:F
 
     .line 20
-    iput v2, p0, Lcom/oneplus/screenshot/anim/BaseInterpolator;->mDurationFactor:F
+    iput v0, p0, Lcom/oneplus/screenshot/anim/BaseInterpolator;->mDurationFactor:F
 
     .line 32
-    if-eqz p2, :cond_23
+    const/4 v1, 0x0
+
+    if-eqz p2, :cond_13
 
     .line 33
-    sget-object v1, Lcom/oneplus/screenshot/R$styleable;->Interpolator:[I
+    sget-object v2, Lcom/oneplus/screenshot/R$styleable;->Interpolator:[I
 
-    invoke-virtual {p2, p3, v1, v3, v3}, Landroid/content/res/Resources$Theme;->obtainStyledAttributes(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
+    invoke-virtual {p2, p3, v2, v1, v1}, Landroid/content/res/Resources$Theme;->obtainStyledAttributes(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
 
-    move-result-object v0
+    move-result-object v2
+
+    .local v2, "a":Landroid/content/res/TypedArray;
+    goto :goto_19
+
+    .line 35
+    .end local v2    # "a":Landroid/content/res/TypedArray;
+    :cond_13
+    sget-object v2, Lcom/oneplus/screenshot/R$styleable;->Interpolator:[I
+
+    invoke-virtual {p1, p3, v2}, Landroid/content/res/Resources;->obtainAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
+
+    move-result-object v2
 
     .line 38
-    .local v0, "a":Landroid/content/res/TypedArray;
-    :goto_12
-    invoke-virtual {v0, v3, v2}, Landroid/content/res/TypedArray;->getFloat(IF)F
+    .restart local v2    # "a":Landroid/content/res/TypedArray;
+    :goto_19
+    invoke-virtual {v2, v1, v0}, Landroid/content/res/TypedArray;->getFloat(IF)F
 
     move-result v1
 
@@ -80,27 +92,17 @@
     .line 40
     const/4 v1, 0x1
 
-    invoke-virtual {v0, v1, v2}, Landroid/content/res/TypedArray;->getFloat(IF)F
+    invoke-virtual {v2, v1, v0}, Landroid/content/res/TypedArray;->getFloat(IF)F
 
-    move-result v1
+    move-result v0
 
-    iput v1, p0, Lcom/oneplus/screenshot/anim/BaseInterpolator;->mDurationFactor:F
+    iput v0, p0, Lcom/oneplus/screenshot/anim/BaseInterpolator;->mDurationFactor:F
 
     .line 42
-    invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
+    invoke-virtual {v2}, Landroid/content/res/TypedArray;->recycle()V
 
     .line 43
-    return-void
-
-    .line 35
-    .end local v0    # "a":Landroid/content/res/TypedArray;
-    :cond_23
-    sget-object v1, Lcom/oneplus/screenshot/R$styleable;->Interpolator:[I
-
-    invoke-virtual {p1, p3, v1}, Landroid/content/res/Resources;->obtainAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
-
-    move-result-object v0
-
-    .restart local v0    # "a":Landroid/content/res/TypedArray;
-    goto :goto_12
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

@@ -21,7 +21,6 @@
 .method constructor <init>()V
     .registers 1
 
-    .prologue
     .line 59
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -33,7 +32,6 @@
 .method public currentTimeMillis()J
     .registers 3
 
-    .prologue
     .line 62
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 

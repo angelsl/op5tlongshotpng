@@ -15,7 +15,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 16
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->APP_VERSION:Lcom/google/analytics/containertag/common/FunctionType;
 
@@ -25,14 +24,15 @@
 
     sput-object v0, Lcom/google/tagmanager/AppVersionMacro;->ID:Ljava/lang/String;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>(Landroid/content/Context;)V
     .registers 4
     .param p1, "context"    # Landroid/content/Context;
 
-    .prologue
     .line 25
     sget-object v0, Lcom/google/tagmanager/AppVersionMacro;->ID:Ljava/lang/String;
 
@@ -52,7 +52,6 @@
 .method public static getFunctionId()Ljava/lang/String;
     .registers 1
 
-    .prologue
     .line 21
     sget-object v0, Lcom/google/tagmanager/AppVersionMacro;->ID:Ljava/lang/String;
 
@@ -62,12 +61,11 @@
 
 # virtual methods
 .method public evaluate(Ljava/util/Map;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 7
+    .registers 5
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;)",
@@ -75,103 +73,93 @@
         }
     .end annotation
 
-    .prologue
     .line 35
     .local p1, "parameters":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
     :try_start_0
-    iget-object v2, p0, Lcom/google/tagmanager/AppVersionMacro;->mContext:Landroid/content/Context;
+    iget-object v0, p0, Lcom/google/tagmanager/AppVersionMacro;->mContext:Landroid/content/Context;
 
-    invoke-virtual {v2}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+    invoke-virtual {v0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
 
-    move-result-object v2
+    move-result-object v0
 
-    iget-object v3, p0, Lcom/google/tagmanager/AppVersionMacro;->mContext:Landroid/content/Context;
+    iget-object v1, p0, Lcom/google/tagmanager/AppVersionMacro;->mContext:Landroid/content/Context;
 
-    invoke-virtual {v3}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
-
-    move-result-object v3
-
-    const/4 v4, 0x0
-
-    invoke-virtual {v2, v3, v4}, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
+    invoke-virtual {v1}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
 
     move-result-object v1
 
+    const/4 v2, 0x0
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
+
+    move-result-object v0
+
     .line 37
-    .local v1, "packageInfo":Landroid/content/pm/PackageInfo;
-    iget v2, v1, Landroid/content/pm/PackageInfo;->versionCode:I
+    .local v0, "packageInfo":Landroid/content/pm/PackageInfo;
+    iget v1, v0, Landroid/content/pm/PackageInfo;->versionCode:I
 
-    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v2
+    move-result-object v1
 
-    invoke-static {v2}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    :try_end_1a
-    .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_0 .. :try_end_1a} :catch_1c
+    invoke-static {v1}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    move-result-object v2
+    move-result-object v1
+    :try_end_1b
+    .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_0 .. :try_end_1b} :catch_1c
 
-    return-object v2
+    return-object v1
 
     .line 38
-    .end local v1    # "packageInfo":Landroid/content/pm/PackageInfo;
+    .end local v0    # "packageInfo":Landroid/content/pm/PackageInfo;
     :catch_1c
     move-exception v0
 
     .line 39
     .local v0, "e":Landroid/content/pm/PackageManager$NameNotFoundException;
-    new-instance v2, Ljava/lang/StringBuilder;
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v3, "Package name "
+    const-string v2, "Package name "
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v2
+    iget-object v2, p0, Lcom/google/tagmanager/AppVersionMacro;->mContext:Landroid/content/Context;
 
-    iget-object v3, p0, Lcom/google/tagmanager/AppVersionMacro;->mContext:Landroid/content/Context;
-
-    invoke-virtual {v3}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v2}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
 
     move-result-object v2
 
-    const-string/jumbo v3, " not found. "
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, " not found. "
 
-    move-result-object v2
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v0}, Landroid/content/pm/PackageManager$NameNotFoundException;->getMessage()Ljava/lang/String;
 
-    move-result-object v3
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
     move-result-object v2
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v2
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-static {v2}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
+    move-result-object v1
+
+    invoke-static {v1}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
 
     .line 40
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    move-result-object v2
+    move-result-object v1
 
-    return-object v2
+    return-object v1
 .end method
 
 .method public isCacheable()Z
     .registers 2
 
-    .prologue
     .line 30
     const/4 v0, 0x1
 

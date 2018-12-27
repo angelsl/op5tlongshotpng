@@ -25,7 +25,6 @@
 .method constructor <init>(Lcom/google/tagmanager/Runtime;)V
     .registers 2
 
-    .prologue
     .line 445
     iput-object p1, p0, Lcom/google/tagmanager/Runtime$4;->this$0:Lcom/google/tagmanager/Runtime;
 
@@ -44,12 +43,10 @@
         value = {
             "(",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedRule;",
-            "Ljava/util/Set",
-            "<",
+            "Ljava/util/Set<",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;",
             ">;",
-            "Ljava/util/Set",
-            "<",
+            "Ljava/util/Set<",
             "Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;",
             ">;",
             "Lcom/google/tagmanager/ResolvedRuleBuilder;",
@@ -57,7 +54,6 @@
         }
     .end annotation
 
-    .prologue
     .line 450
     .local p2, "add":Ljava/util/Set;, "Ljava/util/Set<Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;>;"
     .local p3, "remove":Ljava/util/Set;, "Ljava/util/Set<Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;>;"
@@ -105,5 +101,7 @@
     invoke-interface {v0, v1, v2}, Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;->translateAndAddAll(Ljava/util/List;Ljava/util/List;)V
 
     .line 458
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

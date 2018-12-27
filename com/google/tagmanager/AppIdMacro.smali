@@ -15,7 +15,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 14
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->APP_ID:Lcom/google/analytics/containertag/common/FunctionType;
 
@@ -25,14 +24,15 @@
 
     sput-object v0, Lcom/google/tagmanager/AppIdMacro;->ID:Ljava/lang/String;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>(Landroid/content/Context;)V
     .registers 4
     .param p1, "context"    # Landroid/content/Context;
 
-    .prologue
     .line 23
     sget-object v0, Lcom/google/tagmanager/AppIdMacro;->ID:Ljava/lang/String;
 
@@ -52,7 +52,6 @@
 .method public static getFunctionId()Ljava/lang/String;
     .registers 1
 
-    .prologue
     .line 19
     sget-object v0, Lcom/google/tagmanager/AppIdMacro;->ID:Ljava/lang/String;
 
@@ -66,8 +65,7 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Map",
-            "<",
+            "Ljava/util/Map<",
             "Ljava/lang/String;",
             "Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;",
             ">;)",
@@ -75,7 +73,6 @@
         }
     .end annotation
 
-    .prologue
     .line 32
     .local p1, "parameters":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
     iget-object v0, p0, Lcom/google/tagmanager/AppIdMacro;->mContext:Landroid/content/Context;
@@ -94,7 +91,6 @@
 .method public isCacheable()Z
     .registers 2
 
-    .prologue
     .line 28
     const/4 v0, 0x1
 

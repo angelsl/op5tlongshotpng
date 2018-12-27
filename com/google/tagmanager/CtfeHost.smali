@@ -22,17 +22,18 @@
 .method public constructor <init>()V
     .registers 2
 
-    .prologue
     .line 20
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 21
-    const-string/jumbo v0, "https://www.googletagmanager.com"
+    const-string v0, "https://www.googletagmanager.com"
 
     iput-object v0, p0, Lcom/google/tagmanager/CtfeHost;->mCtfeServerAddress:Ljava/lang/String;
 
     .line 22
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -41,7 +42,6 @@
     .registers 4
     .param p1, "currentEventNumber"    # I
 
-    .prologue
     .line 34
     new-instance v0, Ljava/lang/StringBuilder;
 
@@ -51,13 +51,9 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
-    const-string/jumbo v1, "/d?"
+    const-string v1, "/d?"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     invoke-static {}, Lcom/google/tagmanager/PreviewManager;->getInstance()Lcom/google/tagmanager/PreviewManager;
 
@@ -69,17 +65,11 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
-    const-string/jumbo v1, "&event_number="
+    const-string v1, "&event_number="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
     invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -91,7 +81,6 @@
 .method public getCtfeServerAddress()Ljava/lang/String;
     .registers 2
 
-    .prologue
     .line 30
     iget-object v0, p0, Lcom/google/tagmanager/CtfeHost;->mCtfeServerAddress:Ljava/lang/String;
 
@@ -102,7 +91,6 @@
     .registers 4
     .param p1, "newCtfeAddress"    # Ljava/lang/String;
 
-    .prologue
     .line 25
     iput-object p1, p0, Lcom/google/tagmanager/CtfeHost;->mCtfeServerAddress:Ljava/lang/String;
 
@@ -111,15 +99,11 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v1, "The Ctfe server endpoint was changed to: "
+    const-string v1, "The Ctfe server endpoint was changed to: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
     invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -128,5 +112,7 @@
     invoke-static {v0}, Lcom/google/tagmanager/Log;->i(Ljava/lang/String;)V
 
     .line 27
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

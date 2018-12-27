@@ -13,7 +13,6 @@
     .param p1, "stateContext"    # Lcom/oneplus/screenshot/longshot/state/LongshotContext;
     .param p2, "movePoint"    # Lcom/oneplus/screenshot/longshot/util/MovePoint;
 
-    .prologue
     .line 14
     invoke-direct {p0, p1, p2}, Lcom/oneplus/screenshot/longshot/state/ShotBgNextState;-><init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;Lcom/oneplus/screenshot/longshot/util/MovePoint;)V
 
@@ -36,7 +35,9 @@
     iput v0, p0, Lcom/oneplus/screenshot/longshot/state/ShotBgOverState;->mCaptureDelay:I
 
     .line 17
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -44,7 +45,6 @@
 .method protected getNextState()Lcom/oneplus/screenshot/longshot/state/LongshotState;
     .registers 2
 
-    .prologue
     .line 24
     sget-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->STITCH_BGOVER:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 

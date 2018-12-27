@@ -6,8 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Landroid/os/AsyncTask",
-        "<",
+        "Landroid/os/AsyncTask<",
         "Landroid/net/Uri;",
         "Ljava/lang/Void;",
         "Ljava/lang/Void;",
@@ -29,67 +28,66 @@
     .registers 2
     .param p1, "context"    # Landroid/content/Context;
 
-    .prologue
-    .line 488
+    .line 590
     invoke-direct {p0}, Landroid/os/AsyncTask;-><init>()V
 
-    .line 489
+    .line 591
     iput-object p1, p0, Lcom/oneplus/screenshot/DeleteImageInBackgroundTask;->mContext:Landroid/content/Context;
 
-    .line 490
-    return-void
+    .line 592
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
 # virtual methods
 .method protected bridge synthetic doInBackground([Ljava/lang/Object;)Ljava/lang/Object;
-    .registers 3
+    .registers 2
 
-    .prologue
-    .line 492
+    .line 585
     check-cast p1, [Landroid/net/Uri;
 
     invoke-virtual {p0, p1}, Lcom/oneplus/screenshot/DeleteImageInBackgroundTask;->doInBackground([Landroid/net/Uri;)Ljava/lang/Void;
 
-    move-result-object v0
+    move-result-object p1
 
-    return-object v0
+    return-object p1
 .end method
 
 .method protected varargs doInBackground([Landroid/net/Uri;)Ljava/lang/Void;
-    .registers 7
+    .registers 5
     .param p1, "params"    # [Landroid/net/Uri;
 
-    .prologue
-    const/4 v4, 0x0
+    .line 596
+    array-length v0, p1
 
-    .line 494
-    array-length v2, p1
+    const/4 v1, 0x0
 
-    const/4 v3, 0x1
+    const/4 v2, 0x1
 
-    if-eq v2, v3, :cond_6
+    if-eq v0, v2, :cond_6
 
-    return-object v4
+    return-object v1
 
-    .line 496
+    .line 598
     :cond_6
-    const/4 v2, 0x0
+    const/4 v0, 0x0
 
-    aget-object v1, p1, v2
+    aget-object v0, p1, v0
 
-    .line 497
-    .local v1, "screenshotUri":Landroid/net/Uri;
+    .line 599
+    .local v0, "screenshotUri":Landroid/net/Uri;
     iget-object v2, p0, Lcom/oneplus/screenshot/DeleteImageInBackgroundTask;->mContext:Landroid/content/Context;
 
     invoke-virtual {v2}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
-    move-result-object v0
+    move-result-object v2
 
-    .line 498
-    .local v0, "resolver":Landroid/content/ContentResolver;
-    invoke-virtual {v0, v1, v4, v4}, Landroid/content/ContentResolver;->delete(Landroid/net/Uri;Ljava/lang/String;[Ljava/lang/String;)I
+    .line 600
+    .local v2, "resolver":Landroid/content/ContentResolver;
+    invoke-virtual {v2, v0, v1, v1}, Landroid/content/ContentResolver;->delete(Landroid/net/Uri;Ljava/lang/String;[Ljava/lang/String;)I
 
-    .line 499
-    return-object v4
+    .line 601
+    return-object v1
 .end method

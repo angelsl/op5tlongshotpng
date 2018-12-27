@@ -1,4 +1,4 @@
-.class Lcom/google/tagmanager/ContainerOpener$2;
+.class final Lcom/google/tagmanager/ContainerOpener$2;
 .super Ljava/lang/Object;
 .source "ContainerOpener.java"
 
@@ -25,7 +25,6 @@
 .method constructor <init>(Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;)V
     .registers 2
 
-    .prologue
     .line 303
     iput-object p1, p0, Lcom/google/tagmanager/ContainerOpener$2;->val$future:Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;
 
@@ -40,12 +39,13 @@
     .registers 3
     .param p1, "container"    # Lcom/google/tagmanager/Container;
 
-    .prologue
     .line 306
     iget-object v0, p0, Lcom/google/tagmanager/ContainerOpener$2;->val$future:Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;
 
     invoke-virtual {v0, p1}, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;->setContainer(Lcom/google/tagmanager/Container;)V
 
     .line 307
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

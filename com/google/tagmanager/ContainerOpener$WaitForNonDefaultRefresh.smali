@@ -25,7 +25,6 @@
 .method public constructor <init>(Lcom/google/tagmanager/ContainerOpener;)V
     .registers 2
 
-    .prologue
     .line 106
     iput-object p1, p0, Lcom/google/tagmanager/ContainerOpener$WaitForNonDefaultRefresh;->this$0:Lcom/google/tagmanager/ContainerOpener;
 
@@ -42,7 +41,6 @@
     .param p1, "container"    # Lcom/google/tagmanager/Container;
     .param p2, "refreshType"    # Lcom/google/tagmanager/Container$RefreshType;
 
-    .prologue
     .line 112
     return-void
 .end method
@@ -53,24 +51,21 @@
     .param p2, "refreshType"    # Lcom/google/tagmanager/Container$RefreshType;
     .param p3, "refreshFailure"    # Lcom/google/tagmanager/Container$RefreshFailure;
 
-    .prologue
     .line 122
     sget-object v0, Lcom/google/tagmanager/Container$RefreshType;->NETWORK:Lcom/google/tagmanager/Container$RefreshType;
 
-    if-eq p2, v0, :cond_5
-
-    .line 125
-    :goto_4
-    return-void
+    if-ne p2, v0, :cond_9
 
     .line 123
-    :cond_5
     iget-object v0, p0, Lcom/google/tagmanager/ContainerOpener$WaitForNonDefaultRefresh;->this$0:Lcom/google/tagmanager/ContainerOpener;
 
-    # invokes: Lcom/google/tagmanager/ContainerOpener;->callNotifiers(Lcom/google/tagmanager/Container;)V
     invoke-static {v0, p1}, Lcom/google/tagmanager/ContainerOpener;->access$000(Lcom/google/tagmanager/ContainerOpener;Lcom/google/tagmanager/Container;)V
 
-    goto :goto_4
+    .line 125
+    :cond_9
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public containerRefreshSuccess(Lcom/google/tagmanager/Container;Lcom/google/tagmanager/Container$RefreshType;)V
@@ -78,13 +73,13 @@
     .param p1, "container"    # Lcom/google/tagmanager/Container;
     .param p2, "refreshType"    # Lcom/google/tagmanager/Container$RefreshType;
 
-    .prologue
     .line 116
     iget-object v0, p0, Lcom/google/tagmanager/ContainerOpener$WaitForNonDefaultRefresh;->this$0:Lcom/google/tagmanager/ContainerOpener;
 
-    # invokes: Lcom/google/tagmanager/ContainerOpener;->callNotifiers(Lcom/google/tagmanager/Container;)V
     invoke-static {v0, p1}, Lcom/google/tagmanager/ContainerOpener;->access$000(Lcom/google/tagmanager/ContainerOpener;Lcom/google/tagmanager/Container;)V
 
     .line 117
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

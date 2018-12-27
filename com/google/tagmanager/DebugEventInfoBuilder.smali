@@ -28,7 +28,6 @@
     .param p4, "key"    # Ljava/lang/String;
     .param p5, "handler"    # Lcom/google/tagmanager/DebugInformationHandler;
 
-    .prologue
     .line 23
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -65,9 +64,32 @@
     .line 30
     const/4 v0, 0x1
 
-    if-eq p1, v0, :cond_34
+    if-ne p1, v0, :cond_34
+
+    .line 31
+    iget-object v0, p0, Lcom/google/tagmanager/DebugEventInfoBuilder;->eventInfoBuilder:Lcom/google/analytics/containertag/proto/Debug$EventInfo;
+
+    new-instance v1, Lcom/google/analytics/containertag/proto/Debug$DataLayerEventEvaluationInfo;
+
+    invoke-direct {v1}, Lcom/google/analytics/containertag/proto/Debug$DataLayerEventEvaluationInfo;-><init>()V
+
+    iput-object v1, v0, Lcom/google/analytics/containertag/proto/Debug$EventInfo;->dataLayerEventResult:Lcom/google/analytics/containertag/proto/Debug$DataLayerEventEvaluationInfo;
+
+    .line 32
+    new-instance v0, Lcom/google/tagmanager/DebugDataLayerEventEvaluationInfoBuilder;
+
+    iget-object v1, p0, Lcom/google/tagmanager/DebugEventInfoBuilder;->eventInfoBuilder:Lcom/google/analytics/containertag/proto/Debug$EventInfo;
+
+    iget-object v1, v1, Lcom/google/analytics/containertag/proto/Debug$EventInfo;->dataLayerEventResult:Lcom/google/analytics/containertag/proto/Debug$DataLayerEventEvaluationInfo;
+
+    invoke-direct {v0, v1}, Lcom/google/tagmanager/DebugDataLayerEventEvaluationInfoBuilder;-><init>(Lcom/google/analytics/containertag/proto/Debug$DataLayerEventEvaluationInfo;)V
+
+    iput-object v0, p0, Lcom/google/tagmanager/DebugEventInfoBuilder;->dataLayerEventBuilder:Lcom/google/tagmanager/DebugDataLayerEventEvaluationInfoBuilder;
+
+    goto :goto_48
 
     .line 35
+    :cond_34
     iget-object v0, p0, Lcom/google/tagmanager/DebugEventInfoBuilder;->eventInfoBuilder:Lcom/google/analytics/containertag/proto/Debug$EventInfo;
 
     new-instance v1, Lcom/google/analytics/containertag/proto/Debug$MacroEvaluationInfo;
@@ -88,31 +110,10 @@
     iput-object v0, p0, Lcom/google/tagmanager/DebugEventInfoBuilder;->macroBuilder:Lcom/google/tagmanager/DebugMacroEvaluationInfoBuilder;
 
     .line 38
-    :goto_33
-    return-void
-
-    .line 31
-    :cond_34
-    iget-object v0, p0, Lcom/google/tagmanager/DebugEventInfoBuilder;->eventInfoBuilder:Lcom/google/analytics/containertag/proto/Debug$EventInfo;
-
-    new-instance v1, Lcom/google/analytics/containertag/proto/Debug$DataLayerEventEvaluationInfo;
-
-    invoke-direct {v1}, Lcom/google/analytics/containertag/proto/Debug$DataLayerEventEvaluationInfo;-><init>()V
-
-    iput-object v1, v0, Lcom/google/analytics/containertag/proto/Debug$EventInfo;->dataLayerEventResult:Lcom/google/analytics/containertag/proto/Debug$DataLayerEventEvaluationInfo;
-
-    .line 32
-    new-instance v0, Lcom/google/tagmanager/DebugDataLayerEventEvaluationInfoBuilder;
-
-    iget-object v1, p0, Lcom/google/tagmanager/DebugEventInfoBuilder;->eventInfoBuilder:Lcom/google/analytics/containertag/proto/Debug$EventInfo;
-
-    iget-object v1, v1, Lcom/google/analytics/containertag/proto/Debug$EventInfo;->dataLayerEventResult:Lcom/google/analytics/containertag/proto/Debug$DataLayerEventEvaluationInfo;
-
-    invoke-direct {v0, v1}, Lcom/google/tagmanager/DebugDataLayerEventEvaluationInfoBuilder;-><init>(Lcom/google/analytics/containertag/proto/Debug$DataLayerEventEvaluationInfo;)V
-
-    iput-object v0, p0, Lcom/google/tagmanager/DebugEventInfoBuilder;->dataLayerEventBuilder:Lcom/google/tagmanager/DebugDataLayerEventEvaluationInfoBuilder;
-
-    goto :goto_33
+    :goto_48
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -120,7 +121,6 @@
 .method public createDataLayerEventEvaluationInfoBuilder()Lcom/google/tagmanager/DataLayerEventEvaluationInfoBuilder;
     .registers 2
 
-    .prologue
     .line 47
     iget-object v0, p0, Lcom/google/tagmanager/DebugEventInfoBuilder;->dataLayerEventBuilder:Lcom/google/tagmanager/DebugDataLayerEventEvaluationInfoBuilder;
 
@@ -130,7 +130,6 @@
 .method public createMacroEvaluationInfoBuilder()Lcom/google/tagmanager/MacroEvaluationInfoBuilder;
     .registers 2
 
-    .prologue
     .line 42
     iget-object v0, p0, Lcom/google/tagmanager/DebugEventInfoBuilder;->macroBuilder:Lcom/google/tagmanager/DebugMacroEvaluationInfoBuilder;
 
@@ -140,7 +139,6 @@
 .method public processEventInfo()V
     .registers 3
 
-    .prologue
     .line 52
     iget-object v0, p0, Lcom/google/tagmanager/DebugEventInfoBuilder;->handler:Lcom/google/tagmanager/DebugInformationHandler;
 
@@ -149,5 +147,7 @@
     invoke-interface {v0, v1}, Lcom/google/tagmanager/DebugInformationHandler;->receiveEventInfo(Lcom/google/analytics/containertag/proto/Debug$EventInfo;)V
 
     .line 53
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

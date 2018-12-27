@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Ljava/lang/Enum",
-        "<",
+        "Ljava/lang/Enum<",
         "Lcom/oneplus/screenshot/statistics/EventStatistics$Base;",
         ">;"
     }
@@ -39,28 +38,27 @@
 .method static constructor <clinit>()V
     .registers 5
 
-    .prologue
-    const/4 v4, 0x1
-
-    const/4 v3, 0x0
-
     .line 71
     new-instance v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
 
-    const-string/jumbo v1, "ERROR"
+    const-string v1, "ERROR"
 
-    invoke-direct {v0, v1, v3, v3}, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;-><init>(Ljava/lang/String;II)V
+    const/4 v2, 0x0
+
+    invoke-direct {v0, v1, v2, v2}, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;-><init>(Ljava/lang/String;II)V
 
     sput-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;->ERROR:Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
 
     .line 72
     new-instance v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
 
-    const-string/jumbo v1, "ACTION"
+    const-string v1, "ACTION"
 
-    const/16 v2, 0x3e8
+    const/4 v3, 0x1
 
-    invoke-direct {v0, v1, v4, v2}, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;-><init>(Ljava/lang/String;II)V
+    const/16 v4, 0x3e8
+
+    invoke-direct {v0, v1, v3, v4}, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;-><init>(Ljava/lang/String;II)V
 
     sput-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;->ACTION:Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
 
@@ -71,42 +69,49 @@
 
     sget-object v1, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;->ERROR:Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
 
-    aput-object v1, v0, v3
+    aput-object v1, v0, v2
 
     sget-object v1, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;->ACTION:Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
 
-    aput-object v1, v0, v4
+    aput-object v1, v0, v3
 
     sput-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;->$VALUES:[Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method private constructor <init>(Ljava/lang/String;II)V
-    .registers 5
+    .registers 4
     .param p3, "value"    # I
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(I)V"
+        }
+    .end annotation
 
-    .prologue
     .line 76
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     .line 74
-    const/4 v0, 0x0
+    const/4 p1, 0x0
 
-    iput v0, p0, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;->mValue:I
+    iput p1, p0, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;->mValue:I
 
     .line 77
     iput p3, p0, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;->mValue:I
 
     .line 78
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
     .registers 2
     .param p0, "name"    # Ljava/lang/String;
 
-    .prologue
     .line 69
     const-class v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
 
@@ -122,9 +127,14 @@
 .method public static values()[Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
     .registers 1
 
-    .prologue
     .line 69
     sget-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;->$VALUES:[Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
+
+    invoke-virtual {v0}, [Lcom/oneplus/screenshot/statistics/EventStatistics$Base;->clone()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, [Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
 
     return-object v0
 .end method
@@ -134,7 +144,6 @@
 .method public valueOf()I
     .registers 2
 
-    .prologue
     .line 81
     iget v0, p0, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;->mValue:I
 

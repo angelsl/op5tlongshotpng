@@ -17,11 +17,12 @@
 .method public constructor <init>()V
     .registers 1
 
-    .prologue
     .line 8
     invoke-direct {p0}, Landroid/app/Service;-><init>()V
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 
@@ -30,11 +31,10 @@
     .registers 4
     .param p1, "intent"    # Landroid/content/Intent;
 
-    .prologue
     .line 47
-    const-string/jumbo v0, "Longshot.GlobalService"
+    const-string v0, "Longshot.GlobalService"
 
-    const-string/jumbo v1, "onBind"
+    const-string v1, "onBind"
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
@@ -47,37 +47,39 @@
 .method public onCreate()V
     .registers 3
 
-    .prologue
     .line 23
     invoke-super {p0}, Landroid/app/Service;->onCreate()V
 
     .line 24
-    const-string/jumbo v0, "Longshot.GlobalService"
+    const-string v0, "Longshot.GlobalService"
 
-    const-string/jumbo v1, "onCreate"
+    const-string v1, "onCreate"
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 25
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public onDestroy()V
     .registers 3
 
-    .prologue
     .line 29
     invoke-super {p0}, Landroid/app/Service;->onDestroy()V
 
     .line 30
-    const-string/jumbo v0, "Longshot.GlobalService"
+    const-string v0, "Longshot.GlobalService"
 
-    const-string/jumbo v1, "onDestroy"
+    const-string v1, "onDestroy"
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 31
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public onStartCommand(Landroid/content/Intent;II)I
@@ -86,16 +88,15 @@
     .param p2, "flags"    # I
     .param p3, "startId"    # I
 
-    .prologue
     .line 35
-    const-string/jumbo v1, "Longshot.GlobalService"
+    const-string v0, "Longshot.GlobalService"
 
-    const-string/jumbo v2, "onStartCommand"
+    const-string v1, "onStartCommand"
 
-    invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 36
-    if-eqz p1, :cond_24
+    if-eqz p1, :cond_21
 
     .line 37
     invoke-virtual {p1}, Landroid/content/Intent;->getAction()Ljava/lang/String;
@@ -104,13 +105,13 @@
 
     .line 38
     .local v0, "action":Ljava/lang/String;
-    const-string/jumbo v1, "com.oneplus.screenshot.GlobalService.save"
+    const-string v1, "com.oneplus.screenshot.GlobalService.save"
 
     invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
-    if-eqz v1, :cond_24
+    if-eqz v1, :cond_21
 
     .line 39
     new-instance v1, Lcom/oneplus/screenshot/service/GlobalSave;
@@ -125,10 +126,10 @@
 
     .line 42
     .end local v0    # "action":Ljava/lang/String;
-    :cond_24
+    :cond_21
     invoke-super {p0, p1, p2, p3}, Landroid/app/Service;->onStartCommand(Landroid/content/Intent;II)I
 
-    move-result v1
+    move-result v0
 
-    return v1
+    return v0
 .end method

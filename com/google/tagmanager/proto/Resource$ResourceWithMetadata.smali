@@ -30,7 +30,6 @@
 .method static constructor <clinit>()V
     .registers 1
 
-    .prologue
     .line 9
     const/4 v0, 0x0
 
@@ -38,14 +37,13 @@
 
     sput-object v0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->EMPTY_ARRAY:[Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;
 
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public constructor <init>()V
-    .registers 4
-
-    .prologue
-    const/4 v2, 0x0
+    .registers 3
 
     .line 10
     invoke-direct {p0}, Lcom/google/tagmanager/protobuf/nano/ExtendableMessageNano;-><init>()V
@@ -56,13 +54,17 @@
     iput-wide v0, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->timeStamp:J
 
     .line 16
-    iput-object v2, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
 
     .line 19
-    iput-object v2, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->supplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
+    iput-object v0, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->supplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
 
     .line 10
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method
 
 .method public static parseFrom(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;)Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;
@@ -74,7 +76,6 @@
         }
     .end annotation
 
-    .prologue
     .line 127
     new-instance v0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;
 
@@ -96,7 +97,6 @@
         }
     .end annotation
 
-    .prologue
     .line 121
     new-instance v0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;
 
@@ -114,10 +114,7 @@
 
 # virtual methods
 .method public final clear()Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;
-    .registers 4
-
-    .prologue
-    const/4 v2, 0x0
+    .registers 3
 
     .line 22
     const-wide/16 v0, 0x0
@@ -125,13 +122,15 @@
     iput-wide v0, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->timeStamp:J
 
     .line 23
-    iput-object v2, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
 
     .line 24
-    iput-object v2, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->supplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
+    iput-object v0, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->supplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
 
     .line 25
-    iput-object v2, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->unknownFieldData:Ljava/util/List;
+    iput-object v0, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->unknownFieldData:Ljava/util/List;
 
     .line 26
     const/4 v0, -0x1
@@ -143,153 +142,170 @@
 .end method
 
 .method public final equals(Ljava/lang/Object;)Z
-    .registers 10
+    .registers 9
     .param p1, "o"    # Ljava/lang/Object;
 
-    .prologue
-    const/4 v1, 0x1
+    .line 32
+    const/4 v0, 0x1
+
+    if-ne p1, p0, :cond_4
+
+    return v0
+
+    .line 33
+    :cond_4
+    instance-of v1, p1, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;
 
     const/4 v2, 0x0
 
-    .line 32
-    if-eq p1, p0, :cond_23
+    if-nez v1, :cond_a
 
-    .line 33
-    instance-of v3, p1, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;
-
-    if-eqz v3, :cond_24
-
-    move-object v0, p1
+    return v2
 
     .line 34
-    check-cast v0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;
+    :cond_a
+    move-object v1, p1
+
+    check-cast v1, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;
 
     .line 35
-    .local v0, "other":Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;
-    iget-wide v4, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->timeStamp:J
+    .local v1, "other":Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;
+    iget-wide v3, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->timeStamp:J
 
-    iget-wide v6, v0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->timeStamp:J
+    iget-wide v5, v1, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->timeStamp:J
 
-    cmp-long v3, v4, v6
+    cmp-long v3, v3, v5
 
-    if-nez v3, :cond_21
-
-    iget-object v3, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
-
-    if-eqz v3, :cond_25
+    if-nez v3, :cond_4f
 
     iget-object v3, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
 
-    iget-object v4, v0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
+    if-nez v3, :cond_1e
+
+    iget-object v3, v1, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
+
+    if-nez v3, :cond_4f
+
+    goto :goto_28
+
+    :cond_1e
+    iget-object v3, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
+
+    iget-object v4, v1, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
 
     invoke-virtual {v3, v4}, Lcom/google/analytics/containertag/proto/Serving$Resource;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-nez v3, :cond_29
+    if-eqz v3, :cond_4f
 
-    :cond_21
-    :goto_21
-    move v1, v2
-
-    :cond_22
-    return v1
-
-    .line 32
-    .end local v0    # "other":Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;
-    :cond_23
-    return v1
-
-    .line 33
-    :cond_24
-    return v2
-
-    .line 35
-    .restart local v0    # "other":Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;
-    :cond_25
-    iget-object v3, v0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
-
-    if-nez v3, :cond_21
-
-    :cond_29
+    :goto_28
     iget-object v3, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->supplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
 
-    if-eqz v3, :cond_46
+    if-nez v3, :cond_31
 
+    iget-object v3, v1, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->supplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
+
+    if-nez v3, :cond_4f
+
+    goto :goto_3b
+
+    :cond_31
     iget-object v3, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->supplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
 
-    iget-object v4, v0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->supplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
+    iget-object v4, v1, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->supplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
 
     invoke-virtual {v3, v4}, Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-eqz v3, :cond_21
+    if-eqz v3, :cond_4f
 
-    :cond_37
+    :goto_3b
     iget-object v3, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->unknownFieldData:Ljava/util/List;
 
-    if-eqz v3, :cond_4b
+    if-nez v3, :cond_44
 
+    iget-object v3, v1, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->unknownFieldData:Ljava/util/List;
+
+    if-nez v3, :cond_4f
+
+    goto :goto_4e
+
+    :cond_44
     iget-object v3, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->unknownFieldData:Ljava/util/List;
 
-    iget-object v4, v0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->unknownFieldData:Ljava/util/List;
+    iget-object v4, v1, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->unknownFieldData:Ljava/util/List;
 
     invoke-interface {v3, v4}, Ljava/util/List;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-nez v3, :cond_22
+    if-eqz v3, :cond_4f
 
-    goto :goto_21
+    :goto_4e
+    goto :goto_50
 
-    :cond_46
-    iget-object v3, v0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->supplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
+    :cond_4f
+    move v0, v2
 
-    if-eqz v3, :cond_37
-
-    goto :goto_21
-
-    :cond_4b
-    iget-object v3, v0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->unknownFieldData:Ljava/util/List;
-
-    if-eqz v3, :cond_22
-
-    goto :goto_21
+    :goto_50
+    return v0
 .end method
 
 .method public getSerializedSize()I
     .registers 5
 
-    .prologue
     .line 65
     const/4 v0, 0x0
 
     .line 66
     .local v0, "size":I
-    iget-wide v2, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->timeStamp:J
+    iget-wide v1, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->timeStamp:J
 
-    const/4 v1, 0x1
+    const/4 v3, 0x1
 
-    invoke-static {v1, v2, v3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeInt64Size(IJ)I
+    invoke-static {v3, v1, v2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeInt64Size(IJ)I
 
     move-result v1
 
-    add-int/lit8 v0, v1, 0x0
+    add-int/2addr v0, v1
 
     .line 68
     iget-object v1, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
 
-    if-nez v1, :cond_1c
+    if-eqz v1, :cond_15
+
+    .line 69
+    const/4 v1, 0x2
+
+    iget-object v2, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
+
+    invoke-static {v1, v2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeMessageSize(ILcom/google/tagmanager/protobuf/nano/MessageNano;)I
+
+    move-result v1
+
+    add-int/2addr v0, v1
 
     .line 72
-    :goto_e
+    :cond_15
     iget-object v1, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->supplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
 
-    if-nez v1, :cond_25
+    if-eqz v1, :cond_21
+
+    .line 73
+    const/4 v1, 0x3
+
+    iget-object v2, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->supplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
+
+    invoke-static {v1, v2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeMessageSize(ILcom/google/tagmanager/protobuf/nano/MessageNano;)I
+
+    move-result v1
+
+    add-int/2addr v0, v1
 
     .line 76
-    :goto_12
+    :cond_21
     iget-object v1, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->unknownFieldData:Ljava/util/List;
 
     invoke-static {v1}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->computeWireSize(Ljava/util/List;)I
@@ -303,127 +319,111 @@
 
     .line 78
     return v0
-
-    .line 69
-    :cond_1c
-    iget-object v1, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
-
-    const/4 v2, 0x2
-
-    invoke-static {v2, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeMessageSize(ILcom/google/tagmanager/protobuf/nano/MessageNano;)I
-
-    move-result v1
-
-    add-int/2addr v0, v1
-
-    goto :goto_e
-
-    .line 73
-    :cond_25
-    iget-object v1, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->supplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
-
-    const/4 v2, 0x3
-
-    invoke-static {v2, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeMessageSize(ILcom/google/tagmanager/protobuf/nano/MessageNano;)I
-
-    move-result v1
-
-    add-int/2addr v0, v1
-
-    goto :goto_12
 .end method
 
 .method public hashCode()I
     .registers 9
-
-    .prologue
-    const/4 v2, 0x0
 
     .line 42
     const/16 v0, 0x11
 
     .line 43
     .local v0, "result":I
-    iget-wide v4, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->timeStamp:J
+    const/16 v1, 0x1f
 
-    iget-wide v6, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->timeStamp:J
+    mul-int v2, v1, v0
 
-    const/16 v1, 0x20
+    iget-wide v3, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->timeStamp:J
 
-    ushr-long/2addr v6, v1
+    iget-wide v5, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->timeStamp:J
 
-    xor-long/2addr v4, v6
+    const/16 v7, 0x20
 
-    long-to-int v1, v4
+    ushr-long/2addr v5, v7
 
-    add-int/lit16 v0, v1, 0x20f
+    xor-long/2addr v3, v5
+
+    long-to-int v3, v3
+
+    add-int/2addr v2, v3
 
     .line 44
-    mul-int/lit8 v3, v0, 0x1f
+    .end local v0    # "result":I
+    .local v2, "result":I
+    mul-int v0, v1, v2
 
-    iget-object v1, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
+    iget-object v3, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
 
-    if-eqz v1, :cond_39
+    const/4 v4, 0x0
 
-    iget-object v1, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
+    if-nez v3, :cond_19
 
-    invoke-virtual {v1}, Lcom/google/analytics/containertag/proto/Serving$Resource;->hashCode()I
+    move v3, v4
 
-    move-result v1
+    goto :goto_1f
 
-    :goto_1a
-    add-int v0, v3, v1
+    :cond_19
+    iget-object v3, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
+
+    invoke-virtual {v3}, Lcom/google/analytics/containertag/proto/Serving$Resource;->hashCode()I
+
+    move-result v3
+
+    :goto_1f
+    add-int/2addr v0, v3
 
     .line 45
-    mul-int/lit8 v3, v0, 0x1f
+    .end local v2    # "result":I
+    .restart local v0    # "result":I
+    mul-int v2, v1, v0
 
-    iget-object v1, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->supplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
+    iget-object v3, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->supplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
 
-    if-eqz v1, :cond_3b
+    if-nez v3, :cond_28
 
-    iget-object v1, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->supplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
+    move v3, v4
 
-    invoke-virtual {v1}, Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;->hashCode()I
+    goto :goto_2e
 
-    move-result v1
+    :cond_28
+    iget-object v3, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->supplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
 
-    :goto_28
-    add-int v0, v3, v1
+    invoke-virtual {v3}, Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;->hashCode()I
+
+    move-result v3
+
+    :goto_2e
+    add-int/2addr v2, v3
 
     .line 46
-    mul-int/lit8 v1, v0, 0x1f
+    .end local v0    # "result":I
+    .restart local v2    # "result":I
+    mul-int/2addr v1, v2
 
-    iget-object v3, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->unknownFieldData:Ljava/util/List;
+    iget-object v0, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->unknownFieldData:Ljava/util/List;
 
-    if-eqz v3, :cond_36
+    if-nez v0, :cond_35
 
-    iget-object v2, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->unknownFieldData:Ljava/util/List;
+    goto :goto_3b
 
-    invoke-interface {v2}, Ljava/util/List;->hashCode()I
+    :cond_35
+    iget-object v0, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->unknownFieldData:Ljava/util/List;
 
-    move-result v2
+    invoke-interface {v0}, Ljava/util/List;->hashCode()I
 
-    :cond_36
-    add-int v0, v1, v2
+    move-result v4
+
+    :goto_3b
+    add-int/2addr v1, v4
 
     .line 47
-    return v0
-
-    :cond_39
-    move v1, v2
-
-    .line 44
-    goto :goto_1a
-
-    :cond_3b
-    move v1, v2
-
-    .line 45
-    goto :goto_28
+    .end local v2    # "result":I
+    .local v1, "result":I
+    return v1
 .end method
 
 .method public mergeFrom(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;)Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;
-    .registers 6
+    .registers 5
     .param p1, "input"    # Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -431,9 +431,7 @@
         }
     .end annotation
 
-    .prologue
     .line 86
-    :cond_0
     :goto_0
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readTag()I
 
@@ -441,67 +439,47 @@
 
     .line 87
     .local v0, "tag":I
-    sparse-switch v0, :sswitch_data_3e
+    if-eqz v0, :cond_48
+
+    const/16 v1, 0x8
+
+    if-eq v0, v1, :cond_40
+
+    const/16 v1, 0x12
+
+    if-eq v0, v1, :cond_33
+
+    const/16 v1, 0x1a
+
+    if-eq v0, v1, :cond_26
 
     .line 91
     iget-object v1, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->unknownFieldData:Ljava/util/List;
 
-    if-eqz v1, :cond_15
-
-    .line 95
-    :goto_b
-    iget-object v1, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->unknownFieldData:Ljava/util/List;
-
-    invoke-static {v1, p1, v0}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->storeUnknownField(Ljava/util/List;Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;I)Z
-
-    move-result v1
-
-    if-nez v1, :cond_0
-
-    .line 97
-    return-object p0
-
-    .line 89
-    :sswitch_14
-    return-object p0
+    if-nez v1, :cond_1d
 
     .line 92
-    :cond_15
     new-instance v1, Ljava/util/ArrayList;
 
     invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v1, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->unknownFieldData:Ljava/util/List;
 
-    goto :goto_b
+    .line 95
+    :cond_1d
+    iget-object v1, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->unknownFieldData:Ljava/util/List;
 
-    .line 102
-    :sswitch_1d
-    invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readInt64()J
+    invoke-static {v1, p1, v0}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->storeUnknownField(Ljava/util/List;Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;I)Z
 
-    move-result-wide v2
+    move-result v1
 
-    iput-wide v2, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->timeStamp:J
+    if-nez v1, :cond_47
 
-    goto :goto_0
-
-    .line 106
-    :sswitch_24
-    new-instance v1, Lcom/google/analytics/containertag/proto/Serving$Resource;
-
-    invoke-direct {v1}, Lcom/google/analytics/containertag/proto/Serving$Resource;-><init>()V
-
-    iput-object v1, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
-
-    .line 107
-    iget-object v1, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
-
-    invoke-virtual {p1, v1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readMessage(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
-
-    goto :goto_0
+    .line 97
+    return-object p0
 
     .line 111
-    :sswitch_31
+    :cond_26
     new-instance v1, Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
 
     invoke-direct {v1}, Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;-><init>()V
@@ -513,16 +491,47 @@
 
     invoke-virtual {p1, v1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readMessage(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
 
+    .end local v0    # "tag":I
+    goto :goto_47
+
+    .line 106
+    .restart local v0    # "tag":I
+    :cond_33
+    new-instance v1, Lcom/google/analytics/containertag/proto/Serving$Resource;
+
+    invoke-direct {v1}, Lcom/google/analytics/containertag/proto/Serving$Resource;-><init>()V
+
+    iput-object v1, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
+
+    .line 107
+    iget-object v1, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
+
+    invoke-virtual {p1, v1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readMessage(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
+
+    .line 108
+    goto :goto_47
+
+    .line 102
+    :cond_40
+    invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readInt64()J
+
+    move-result-wide v1
+
+    iput-wide v1, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->timeStamp:J
+
+    .line 103
+    nop
+
+    .line 116
+    .end local v0    # "tag":I
+    :cond_47
+    :goto_47
     goto :goto_0
 
-    .line 87
-    :sswitch_data_3e
-    .sparse-switch
-        0x0 -> :sswitch_14
-        0x8 -> :sswitch_1d
-        0x12 -> :sswitch_24
-        0x1a -> :sswitch_31
-    .end sparse-switch
+    .line 89
+    .restart local v0    # "tag":I
+    :cond_48
+    return-object p0
 .end method
 
 .method public bridge synthetic mergeFrom(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;)Lcom/google/tagmanager/protobuf/nano/MessageNano;
@@ -534,7 +543,6 @@
         }
     .end annotation
 
-    .prologue
     .line 6
     invoke-virtual {p0, p1}, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->mergeFrom(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;)Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;
 
@@ -552,7 +560,6 @@
         }
     .end annotation
 
-    .prologue
     .line 52
     iget-wide v0, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->timeStamp:J
 
@@ -563,40 +570,36 @@
     .line 53
     iget-object v0, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
 
-    if-nez v0, :cond_14
+    if-eqz v0, :cond_10
+
+    .line 54
+    const/4 v0, 0x2
+
+    iget-object v1, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
+
+    invoke-virtual {p1, v0, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeMessage(ILcom/google/tagmanager/protobuf/nano/MessageNano;)V
 
     .line 56
-    :goto_a
+    :cond_10
     iget-object v0, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->supplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
 
-    if-nez v0, :cond_1b
+    if-eqz v0, :cond_1a
+
+    .line 57
+    const/4 v0, 0x3
+
+    iget-object v1, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->supplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
+
+    invoke-virtual {p1, v0, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeMessage(ILcom/google/tagmanager/protobuf/nano/MessageNano;)V
 
     .line 59
-    :goto_e
+    :cond_1a
     iget-object v0, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->unknownFieldData:Ljava/util/List;
 
     invoke-static {v0, p1}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->writeUnknownFields(Ljava/util/List;Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;)V
 
     .line 61
-    return-void
-
-    .line 54
-    :cond_14
-    iget-object v0, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
-
-    const/4 v1, 0x2
-
-    invoke-virtual {p1, v1, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeMessage(ILcom/google/tagmanager/protobuf/nano/MessageNano;)V
-
-    goto :goto_a
-
-    .line 57
-    :cond_1b
-    iget-object v0, p0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->supplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
-
-    const/4 v1, 0x3
-
-    invoke-virtual {p1, v1, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeMessage(ILcom/google/tagmanager/protobuf/nano/MessageNano;)V
-
-    goto :goto_e
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

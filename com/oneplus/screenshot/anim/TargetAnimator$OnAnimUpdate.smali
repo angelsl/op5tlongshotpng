@@ -25,20 +25,18 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/anim/TargetAnimator;F)V
-    .registers 4
-    .param p1, "this$0"    # Lcom/oneplus/screenshot/anim/TargetAnimator;
+    .registers 3
     .param p2, "value"    # F
 
-    .prologue
     .line 180
     iput-object p1, p0, Lcom/oneplus/screenshot/anim/TargetAnimator$OnAnimUpdate;->this$0:Lcom/oneplus/screenshot/anim/TargetAnimator;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 178
-    const/4 v0, 0x0
+    const/4 p1, 0x0
 
-    iput v0, p0, Lcom/oneplus/screenshot/anim/TargetAnimator$OnAnimUpdate;->mValue:F
+    iput p1, p0, Lcom/oneplus/screenshot/anim/TargetAnimator$OnAnimUpdate;->mValue:F
 
     .line 181
     iput p2, p0, Lcom/oneplus/screenshot/anim/TargetAnimator$OnAnimUpdate;->mValue:F
@@ -56,52 +54,52 @@
         value = {
             "(",
             "Landroid/view/View;",
-            "Ljava/util/Map$Entry",
-            "<",
+            "Ljava/util/Map$Entry<",
             "Ljava/lang/reflect/Method;",
             "Ljava/lang/Object;",
             ">;)V"
         }
     .end annotation
 
-    .prologue
     .line 186
     .local p2, "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/reflect/Method;Ljava/lang/Object;>;"
-    iget v1, p0, Lcom/oneplus/screenshot/anim/TargetAnimator$OnAnimUpdate;->mValue:F
+    iget v0, p0, Lcom/oneplus/screenshot/anim/TargetAnimator$OnAnimUpdate;->mValue:F
 
     .line 187
-    .local v1, "value":F
+    .local v0, "value":F
     invoke-interface {p2}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
-    move-result-object v0
+    move-result-object v1
 
-    check-cast v0, Landroid/view/animation/Interpolator;
+    check-cast v1, Landroid/view/animation/Interpolator;
 
     .line 188
-    .local v0, "interpolator":Landroid/view/animation/Interpolator;
-    if-eqz v0, :cond_e
+    .local v1, "interpolator":Landroid/view/animation/Interpolator;
+    if-eqz v1, :cond_e
 
     .line 189
-    invoke-interface {v0, v1}, Landroid/view/animation/Interpolator;->getInterpolation(F)F
+    invoke-interface {v1, v0}, Landroid/view/animation/Interpolator;->getInterpolation(F)F
 
-    move-result v1
+    move-result v0
 
     .line 195
     :cond_e
-    iget-object v3, p0, Lcom/oneplus/screenshot/anim/TargetAnimator$OnAnimUpdate;->this$0:Lcom/oneplus/screenshot/anim/TargetAnimator;
+    iget-object v2, p0, Lcom/oneplus/screenshot/anim/TargetAnimator$OnAnimUpdate;->this$0:Lcom/oneplus/screenshot/anim/TargetAnimator;
 
     invoke-interface {p2}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
 
-    move-result-object v2
+    move-result-object v3
 
-    check-cast v2, Ljava/lang/reflect/Method;
+    check-cast v3, Ljava/lang/reflect/Method;
 
-    invoke-static {v1}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
+    invoke-static {v0}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
 
     move-result-object v4
 
-    invoke-static {v3, p1, v2, v4}, Lcom/oneplus/screenshot/anim/TargetAnimator;->-wrap0(Lcom/oneplus/screenshot/anim/TargetAnimator;Landroid/view/View;Ljava/lang/reflect/Method;Ljava/lang/Object;)V
+    invoke-static {v2, p1, v3, v4}, Lcom/oneplus/screenshot/anim/TargetAnimator;->access$100(Lcom/oneplus/screenshot/anim/TargetAnimator;Landroid/view/View;Ljava/lang/reflect/Method;Ljava/lang/Object;)V
 
     .line 196
-    return-void
+    #disallowed odex opcode
+    #return-void-no-barrier
+    nop
 .end method

@@ -13,7 +13,6 @@
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "attrs"    # Landroid/util/AttributeSet;
 
-    .prologue
     .line 14
     invoke-direct {p0, p1, p2}, Lcom/oneplus/screenshot/anim/DropInterpolator;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
@@ -27,7 +26,6 @@
     .registers 4
     .param p1, "x"    # F
 
-    .prologue
     .line 23
     invoke-super {p0, p1}, Lcom/oneplus/screenshot/anim/DropInterpolator;->getInterpolation(F)F
 
@@ -35,7 +33,7 @@
 
     const v1, 0x3f872b02    # 1.056f
 
-    sub-float v0, v1, v0
+    sub-float/2addr v1, v0
 
-    return v0
+    return v1
 .end method

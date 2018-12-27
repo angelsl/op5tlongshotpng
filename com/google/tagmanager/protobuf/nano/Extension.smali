@@ -26,8 +26,8 @@
 .field public fieldType:Ljava/lang/Class;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/lang/Class",
-            "<TT;>;"
+            "Ljava/lang/Class<",
+            "TT;>;"
         }
     .end annotation
 .end field
@@ -37,8 +37,8 @@
 .field public listType:Ljava/lang/Class;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/lang/Class",
-            "<TT;>;"
+            "Ljava/lang/Class<",
+            "TT;>;"
         }
     .end annotation
 .end field
@@ -51,12 +51,11 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(I",
-            "Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral",
-            "<TT;>;)V"
+            "Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral<",
+            "TT;>;)V"
         }
     .end annotation
 
-    .prologue
     .line 49
     .local p0, "this":Lcom/google/tagmanager/protobuf/nano/Extension;, "Lcom/google/tagmanager/protobuf/nano/Extension<TT;>;"
     .local p2, "type":Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;, "Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral<TT;>;"
@@ -84,24 +83,23 @@
     .line 53
     iget-boolean v0, p0, Lcom/google/tagmanager/protobuf/nano/Extension;->isRepeatedField:Z
 
-    if-nez v0, :cond_19
+    if-eqz v0, :cond_1a
 
-    const/4 v0, 0x0
-
-    :goto_16
-    iput-object v0, p0, Lcom/google/tagmanager/protobuf/nano/Extension;->listType:Ljava/lang/Class;
-
-    .line 54
-    return-void
-
-    .line 53
-    :cond_19
     # invokes: Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;->getListType()Ljava/lang/Class;
     invoke-static {p2}, Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;->access$200(Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;)Ljava/lang/Class;
 
     move-result-object v0
 
-    goto :goto_16
+    goto :goto_1b
+
+    :cond_1a
+    const/4 v0, 0x0
+
+    :goto_1b
+    iput-object v0, p0, Lcom/google/tagmanager/protobuf/nano/Extension;->listType:Ljava/lang/Class;
+
+    .line 54
+    return-void
 .end method
 
 .method public static create(ILcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;)Lcom/google/tagmanager/protobuf/nano/Extension;
@@ -112,14 +110,13 @@
             "<T:",
             "Ljava/lang/Object;",
             ">(I",
-            "Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral",
-            "<TT;>;)",
-            "Lcom/google/tagmanager/protobuf/nano/Extension",
-            "<TT;>;"
+            "Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral<",
+            "TT;>;)",
+            "Lcom/google/tagmanager/protobuf/nano/Extension<",
+            "TT;>;"
         }
     .end annotation
 
-    .prologue
     .line 61
     .local p1, "type":Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;, "Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral<TT;>;"
     new-instance v0, Lcom/google/tagmanager/protobuf/nano/Extension;
@@ -137,18 +134,15 @@
             "<T:",
             "Ljava/lang/Object;",
             ">(I",
-            "Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral",
-            "<",
-            "Ljava/util/List",
-            "<TT;>;>;)",
-            "Lcom/google/tagmanager/protobuf/nano/Extension",
-            "<",
-            "Ljava/util/List",
-            "<TT;>;>;"
+            "Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral<",
+            "Ljava/util/List<",
+            "TT;>;>;)",
+            "Lcom/google/tagmanager/protobuf/nano/Extension<",
+            "Ljava/util/List<",
+            "TT;>;>;"
         }
     .end annotation
 
-    .prologue
     .line 69
     .local p1, "type":Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;, "Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral<Ljava/util/List<TT;>;>;"
     new-instance v0, Lcom/google/tagmanager/protobuf/nano/Extension;

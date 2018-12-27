@@ -14,7 +14,6 @@
     .registers 3
     .param p1, "context"    # Landroid/content/Context;
 
-    .prologue
     .line 12
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -39,7 +38,6 @@
 .method public getReason()I
     .registers 2
 
-    .prologue
     .line 17
     const v0, 0x7f0c0013
 
