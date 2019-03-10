@@ -41,7 +41,7 @@
     if-nez v0, :cond_9
 
     .line 1651
-    return-void-no-barrier
+    return-void
 
     .line 1655
     :cond_9
@@ -86,5 +86,5 @@
     invoke-virtual {v3, v2}, Lcom/oneplus/screenshot/DeleteImageInBackgroundTask;->execute([Ljava/lang/Object;)Landroid/os/AsyncTask;
 
     .line 1662
-    return-void-no-barrier
+    return-void
 .end method

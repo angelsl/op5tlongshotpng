@@ -72,7 +72,7 @@
     iput-object p2, p0, Lcom/oneplus/screenshot/longshot/task/EditTask;->mBitmaps:Ljava/util/List;
 
     .line 27
-    return-void-no-barrier
+    return-void
 .end method
 
 
@@ -306,7 +306,7 @@
 
     .line 64
     :cond_d
-    return-void-no-barrier
+    return-void
 .end method
 
 .method protected bridge synthetic onPostExecute(Ljava/lang/Object;)V
@@ -317,5 +317,5 @@
 
     invoke-virtual {p0, p1}, Lcom/oneplus/screenshot/longshot/task/EditTask;->onPostExecute(Ljava/lang/Integer;)V
 
-    return-void-no-barrier
+    return-void
 .end method

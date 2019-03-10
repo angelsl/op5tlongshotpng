@@ -115,7 +115,7 @@
 
     sput-object v0, Lcom/google/tagmanager/Types;->DEFAULT_VALUE:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private constructor <init>()V

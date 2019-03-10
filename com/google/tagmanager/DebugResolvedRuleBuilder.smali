@@ -74,7 +74,7 @@
     iput-object v0, p0, Lcom/google/tagmanager/DebugResolvedRuleBuilder;->removeTagsHolder:Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
 
     .line 36
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static translateExpandedFunctionCall(Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;)Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
@@ -275,5 +275,5 @@
     iput-object v1, v0, Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;->result:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 77
-    return-void-no-barrier
+    return-void
 .end method

@@ -45,5 +45,5 @@
     invoke-virtual {v0, p1}, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;->setContainer(Lcom/google/tagmanager/Container;)V
 
     .line 307
-    return-void-no-barrier
+    return-void
 .end method

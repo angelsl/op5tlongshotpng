@@ -49,5 +49,5 @@
     invoke-interface {v0}, Lcom/google/analytics/tracking/android/ServiceProxy;->clearHits()V
 
     .line 263
-    return-void-no-barrier
+    return-void
 .end method

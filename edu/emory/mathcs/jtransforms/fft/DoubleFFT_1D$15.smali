@@ -205,5 +205,5 @@
     .restart local v2    # "k":I
     .restart local v11    # "j":I
     :cond_5f
-    return-void-no-barrier
+    return-void
 .end method

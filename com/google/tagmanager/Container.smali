@@ -220,7 +220,7 @@
     .line 27
     invoke-direct {p0, p1}, Lcom/google/tagmanager/Container;->callRefreshBegin(Lcom/google/tagmanager/Container$RefreshType;)V
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method static synthetic access$100(Lcom/google/tagmanager/Container;)Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
@@ -252,7 +252,7 @@
     .line 27
     invoke-direct {p0, p1}, Lcom/google/tagmanager/Container;->initEvaluators(Lcom/google/analytics/containertag/proto/Serving$Resource;)V
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method static synthetic access$300(Lcom/google/tagmanager/Container;[Lcom/google/analytics/containertag/proto/Serving$Supplemental;)V
@@ -263,7 +263,7 @@
     .line 27
     invoke-direct {p0, p1}, Lcom/google/tagmanager/Container;->setSupplementals([Lcom/google/analytics/containertag/proto/Serving$Supplemental;)V
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method static synthetic access$400(Lcom/google/tagmanager/Container;)J
@@ -295,7 +295,7 @@
     .line 27
     invoke-direct {p0, p1}, Lcom/google/tagmanager/Container;->callRefreshSuccess(Lcom/google/tagmanager/Container$RefreshType;)V
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method static synthetic access$600(Lcom/google/tagmanager/Container;Lcom/google/tagmanager/Container$RefreshType;Lcom/google/tagmanager/Container$RefreshFailure;)V
@@ -307,7 +307,7 @@
     .line 27
     invoke-direct {p0, p1, p2}, Lcom/google/tagmanager/Container;->callRefreshFailure(Lcom/google/tagmanager/Container$RefreshType;Lcom/google/tagmanager/Container$RefreshFailure;)V
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method static synthetic access$700(Lcom/google/tagmanager/Container;)Z
@@ -330,7 +330,7 @@
     .line 27
     invoke-direct {p0, p1}, Lcom/google/tagmanager/Container;->saveResourceToDisk(Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;)V
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private declared-synchronized callRefreshBegin(Lcom/google/tagmanager/Container$RefreshType;)V
@@ -356,7 +356,7 @@
     :cond_a
     monitor-exit p0
 
-    return-void-no-barrier
+    return-void
 
     .line 451
     .end local p1    # "refreshType":Lcom/google/tagmanager/Container$RefreshType;
@@ -393,7 +393,7 @@
     :cond_a
     monitor-exit p0
 
-    return-void-no-barrier
+    return-void
 
     .line 445
     .end local p1    # "refreshType":Lcom/google/tagmanager/Container$RefreshType;
@@ -455,7 +455,7 @@
     :cond_28
     monitor-exit p0
 
-    return-void-no-barrier
+    return-void
 
     .line 437
     .end local p1    # "refreshType":Lcom/google/tagmanager/Container$RefreshType;
@@ -504,7 +504,7 @@
     invoke-direct {p0, v1}, Lcom/google/tagmanager/Container;->initEvaluators(Lcom/google/analytics/containertag/proto/Serving$Resource;)V
 
     .line 738
-    return-void-no-barrier
+    return-void
 
     .line 740
     :cond_1f
@@ -551,7 +551,7 @@
     invoke-direct {p0, v2}, Lcom/google/tagmanager/Container;->initEvaluatorsWithExpandedResource(Lcom/google/tagmanager/ResourceUtil$ExpandedResource;)V
 
     .line 747
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private declared-synchronized getRuntime()Lcom/google/tagmanager/Runtime;
@@ -603,7 +603,7 @@
     invoke-direct {p0, v0}, Lcom/google/tagmanager/Container;->initEvaluatorsWithExpandedResource(Lcom/google/tagmanager/ResourceUtil$ExpandedResource;)V
 
     .line 656
-    return-void-no-barrier
+    return-void
 
     .line 651
     :catch_b
@@ -638,7 +638,7 @@
     invoke-static {v2}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
 
     .line 653
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private initEvaluatorsWithExpandedResource(Lcom/google/tagmanager/ResourceUtil$ExpandedResource;)V
@@ -701,7 +701,7 @@
     invoke-direct {p0, v1}, Lcom/google/tagmanager/Container;->setRuntime(Lcom/google/tagmanager/Runtime;)V
 
     .line 676
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private isContainerPreview()Z
@@ -826,7 +826,7 @@
     :cond_1e
     monitor-exit p0
 
-    return-void-no-barrier
+    return-void
 
     .line 637
     .end local p1    # "supplementedResource":Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
@@ -854,7 +854,7 @@
     .line 699
     monitor-exit p0
 
-    return-void-no-barrier
+    return-void
 
     .line 697
     .end local p1    # "runtime":Lcom/google/tagmanager/Runtime;
@@ -914,7 +914,7 @@
     invoke-virtual {v1, v0}, Lcom/google/tagmanager/Runtime;->setSupplementals(Ljava/util/List;)V
 
     .line 666
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private useAvailableToken(J)Z
@@ -1113,7 +1113,7 @@
     .line 369
     monitor-exit p0
 
-    return-void-no-barrier
+    return-void
 
     .line 354
     :goto_41
@@ -1164,7 +1164,7 @@
     invoke-virtual {v0, p1}, Lcom/google/tagmanager/Runtime;->evaluateTags(Ljava/lang/String;)V
 
     .line 460
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public getBoolean(Ljava/lang/String;)Z
@@ -1690,7 +1690,7 @@
     invoke-virtual {p0, p1, v1, v0}, Lcom/google/tagmanager/Container;->load(Lcom/google/tagmanager/Container$Callback;Lcom/google/tagmanager/Container$ResourceLoaderScheduler;Lcom/google/tagmanager/Clock;)V
 
     .line 393
-    return-void-no-barrier
+    return-void
 .end method
 
 .method declared-synchronized load(Lcom/google/tagmanager/Container$Callback;Lcom/google/tagmanager/Container$ResourceLoaderScheduler;Lcom/google/tagmanager/Clock;)V
@@ -1739,7 +1739,7 @@
     .line 534
     monitor-exit p0
 
-    return-void-no-barrier
+    return-void
 
     .line 537
     :cond_1d
@@ -1812,7 +1812,7 @@
     .line 623
     monitor-exit p0
 
-    return-void-no-barrier
+    return-void
 
     .line 466
     :cond_59
@@ -1889,7 +1889,7 @@
     :cond_14
     monitor-exit p0
 
-    return-void-no-barrier
+    return-void
 
     .line 631
     .end local p1    # "delay":J
@@ -1925,7 +1925,7 @@
     .line 328
     monitor-exit p0
 
-    return-void-no-barrier
+    return-void
 
     .line 331
     :cond_e
@@ -1947,7 +1947,7 @@
     .line 333
     monitor-exit p0
 
-    return-void-no-barrier
+    return-void
 
     .line 336
     :cond_1b
@@ -2029,7 +2029,7 @@
     :goto_53
     monitor-exit p0
 
-    return-void-no-barrier
+    return-void
 
     .line 325
     :catchall_55
@@ -2059,7 +2059,7 @@
     .line 407
     monitor-exit p0
 
-    return-void-no-barrier
+    return-void
 
     .line 405
     .end local p1    # "customMacroName":Ljava/lang/String;
@@ -2091,7 +2091,7 @@
     .line 428
     monitor-exit p0
 
-    return-void-no-barrier
+    return-void
 
     .line 426
     .end local p1    # "customTagName":Ljava/lang/String;
@@ -2131,7 +2131,7 @@
     :cond_a
     monitor-exit p0
 
-    return-void-no-barrier
+    return-void
 
     .line 706
     .end local p1    # "addr":Ljava/lang/String;
@@ -2172,7 +2172,7 @@
     :cond_c
     monitor-exit p0
 
-    return-void-no-barrier
+    return-void
 
     .line 714
     .end local p1    # "ctfeUrlPathAndQuery":Ljava/lang/String;

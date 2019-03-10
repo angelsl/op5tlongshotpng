@@ -58,5 +58,5 @@
     invoke-virtual {v0, v1}, Lcom/oneplus/screenshot/longshot/state/AbsShotState;->clearDecorForeground(Landroid/widget/FrameLayout;)V
 
     .line 164
-    return-void-no-barrier
+    return-void
 .end method

@@ -19,7 +19,7 @@
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/reject/ByKeyguard;->mContext:Landroid/content/Context;
 
     .line 14
-    return-void-no-barrier
+    return-void
 .end method
 
 

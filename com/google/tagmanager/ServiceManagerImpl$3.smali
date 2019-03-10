@@ -49,5 +49,5 @@
     invoke-interface {v0}, Lcom/google/tagmanager/HitStore;->dispatch()V
 
     .line 190
-    return-void-no-barrier
+    return-void
 .end method

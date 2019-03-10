@@ -21,7 +21,7 @@
 
     sput-object v0, Lcom/google/tagmanager/Log;->sLogger:Lcom/google/tagmanager/Logger;
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method constructor <init>()V
@@ -43,7 +43,7 @@
     invoke-interface {v0, p0}, Lcom/google/tagmanager/Logger;->d(Ljava/lang/String;)V
 
     .line 52
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static d(Ljava/lang/String;Ljava/lang/Throwable;)V
@@ -57,7 +57,7 @@
     invoke-interface {v0, p0, p1}, Lcom/google/tagmanager/Logger;->d(Ljava/lang/String;Ljava/lang/Throwable;)V
 
     .line 56
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static e(Ljava/lang/String;)V
@@ -70,7 +70,7 @@
     invoke-interface {v0, p0}, Lcom/google/tagmanager/Logger;->e(Ljava/lang/String;)V
 
     .line 28
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static e(Ljava/lang/String;Ljava/lang/Throwable;)V
@@ -84,7 +84,7 @@
     invoke-interface {v0, p0, p1}, Lcom/google/tagmanager/Logger;->e(Ljava/lang/String;Ljava/lang/Throwable;)V
 
     .line 32
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static getLogLevel()Lcom/google/tagmanager/Logger$LogLevel;
@@ -135,7 +135,7 @@
     invoke-interface {v0, p0}, Lcom/google/tagmanager/Logger;->i(Ljava/lang/String;)V
 
     .line 44
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static i(Ljava/lang/String;Ljava/lang/Throwable;)V
@@ -149,7 +149,7 @@
     invoke-interface {v0, p0, p1}, Lcom/google/tagmanager/Logger;->i(Ljava/lang/String;Ljava/lang/Throwable;)V
 
     .line 48
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static setLogger(Lcom/google/tagmanager/Logger;)V
@@ -174,7 +174,7 @@
 
     .line 20
     :goto_c
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static v(Ljava/lang/String;)V
@@ -187,7 +187,7 @@
     invoke-interface {v0, p0}, Lcom/google/tagmanager/Logger;->v(Ljava/lang/String;)V
 
     .line 60
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static v(Ljava/lang/String;Ljava/lang/Throwable;)V
@@ -201,7 +201,7 @@
     invoke-interface {v0, p0, p1}, Lcom/google/tagmanager/Logger;->v(Ljava/lang/String;Ljava/lang/Throwable;)V
 
     .line 64
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static w(Ljava/lang/String;)V
@@ -214,7 +214,7 @@
     invoke-interface {v0, p0}, Lcom/google/tagmanager/Logger;->w(Ljava/lang/String;)V
 
     .line 36
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static w(Ljava/lang/String;Ljava/lang/Throwable;)V
@@ -228,5 +228,5 @@
     invoke-interface {v0, p0, p1}, Lcom/google/tagmanager/Logger;->w(Ljava/lang/String;Ljava/lang/Throwable;)V
 
     .line 40
-    return-void-no-barrier
+    return-void
 .end method

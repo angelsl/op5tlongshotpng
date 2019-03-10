@@ -112,5 +112,5 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/cache/BitmapCache$BitmapHolder;->mBitmap:Landroid/graphics/Bitmap;
 
     .line 136
-    return-void-no-barrier
+    return-void
 .end method

@@ -44,7 +44,7 @@
     iput v0, p0, Lcom/oneplus/screenshot/longshot/match/StitchSLastMatcher;->mOffsetCurr:I
 
     .line 21
-    return-void-no-barrier
+    return-void
 .end method
 
 

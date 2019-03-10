@@ -41,7 +41,7 @@
 
     sput-object v0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->EMPTY_ARRAY:[Lcom/google/analytics/containertag/proto/Serving$FunctionCall;
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public constructor <init>()V
@@ -70,7 +70,7 @@
     iput-boolean v0, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->serverSide:Z
 
     .line 560
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static parseFrom(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;)Lcom/google/analytics/containertag/proto/Serving$FunctionCall;
@@ -841,5 +841,5 @@
     invoke-static {v0, p1}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->writeUnknownFields(Ljava/util/List;Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;)V
 
     .line 636
-    return-void-no-barrier
+    return-void
 .end method

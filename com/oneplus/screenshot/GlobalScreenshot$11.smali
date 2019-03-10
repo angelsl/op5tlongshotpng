@@ -68,7 +68,7 @@
 
     .line 1492
     :cond_19
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public onAnimationStart(Landroid/animation/Animator;)V
@@ -218,5 +218,5 @@
 
     .line 1483
     :cond_7b
-    return-void-no-barrier
+    return-void
 .end method

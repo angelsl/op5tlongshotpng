@@ -219,5 +219,5 @@
     .line 1260
     .end local v0    # "i":I
     :cond_6a
-    return-void-no-barrier
+    return-void
 .end method

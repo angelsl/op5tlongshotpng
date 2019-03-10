@@ -325,5 +325,5 @@
     iput-object p1, p0, Lcom/google/analytics/tracking/android/ParameterLoaderImpl;->mOverrideResourcePackageName:Ljava/lang/String;
 
     .line 107
-    return-void-no-barrier
+    return-void
 .end method

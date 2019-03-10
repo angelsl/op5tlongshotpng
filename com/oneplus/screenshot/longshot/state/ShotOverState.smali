@@ -58,7 +58,7 @@
     iput v0, p0, Lcom/oneplus/screenshot/longshot/state/ShotOverState;->mCaptureDelay:I
 
     .line 24
-    return-void-no-barrier
+    return-void
 .end method
 
 

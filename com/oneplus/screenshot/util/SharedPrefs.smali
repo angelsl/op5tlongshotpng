@@ -28,7 +28,7 @@
 
     sput-object v0, Lcom/oneplus/screenshot/util/SharedPrefs;->TAG:Ljava/lang/String;
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;)V
@@ -55,7 +55,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/util/SharedPrefs;->mSharedPrefs:Landroid/content/SharedPreferences;
 
     .line 27
-    return-void-no-barrier
+    return-void
 .end method
 
 
@@ -95,5 +95,5 @@
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
     .line 38
-    return-void-no-barrier
+    return-void
 .end method

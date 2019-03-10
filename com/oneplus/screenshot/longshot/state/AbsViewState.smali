@@ -34,7 +34,7 @@
     invoke-virtual {p1, v0}, Landroid/widget/FrameLayout;->setBackground(Landroid/graphics/drawable/Drawable;)V
 
     .line 53
-    return-void-no-barrier
+    return-void
 .end method
 
 .method protected clearDecorForeground(Landroid/widget/FrameLayout;)V
@@ -47,7 +47,7 @@
     invoke-virtual {p1, v0}, Landroid/widget/FrameLayout;->setForeground(Landroid/graphics/drawable/Drawable;)V
 
     .line 49
-    return-void-no-barrier
+    return-void
 .end method
 
 .method protected initContent(Landroid/widget/FrameLayout;)V
@@ -58,7 +58,7 @@
     invoke-virtual {p0, p1}, Lcom/oneplus/screenshot/longshot/state/AbsViewState;->clearContentBackground(Landroid/widget/FrameLayout;)V
 
     .line 44
-    return-void-no-barrier
+    return-void
 .end method
 
 .method protected initDecor(Landroid/widget/FrameLayout;)V
@@ -69,7 +69,7 @@
     invoke-virtual {p0, p1}, Lcom/oneplus/screenshot/longshot/state/AbsViewState;->clearDecorForeground(Landroid/widget/FrameLayout;)V
 
     .line 40
-    return-void-no-barrier
+    return-void
 .end method
 
 .method protected abstract initViews(Landroid/widget/FrameLayout;)V
@@ -111,5 +111,5 @@
     invoke-virtual {p0, v1}, Lcom/oneplus/screenshot/longshot/state/AbsViewState;->initViews(Landroid/widget/FrameLayout;)V
 
     .line 33
-    return-void-no-barrier
+    return-void
 .end method

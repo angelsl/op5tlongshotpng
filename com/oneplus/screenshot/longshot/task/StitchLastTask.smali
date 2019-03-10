@@ -44,7 +44,7 @@
     iput p5, p0, Lcom/oneplus/screenshot/longshot/task/StitchLastTask;->mDispH:I
 
     .line 31
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private lessThanScreenHeight(Lcom/oneplus/screenshot/longshot/cache/BitmapCache;Lcom/oneplus/screenshot/longshot/cache/BitmapCache;Lcom/oneplus/screenshot/longshot/match/MatchData;)Z
@@ -481,7 +481,7 @@
     invoke-static {}, Landroid/os/Trace;->endSection()V
 
     .line 111
-    return-void-no-barrier
+    return-void
 .end method
 
 .method protected stitchForLast(Lcom/oneplus/screenshot/longshot/match/MatchData;Lcom/oneplus/screenshot/longshot/cache/BitmapCache;)V
@@ -586,5 +586,5 @@
     invoke-static {}, Landroid/os/Trace;->endSection()V
 
     .line 84
-    return-void-no-barrier
+    return-void
 .end method

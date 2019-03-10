@@ -33,7 +33,7 @@
 
     iput-boolean v0, p0, Lcom/oneplus/screenshot/longshot/cache/ImageCache;->mCanClear:Z
 
-    return-void-no-barrier
+    return-void
 .end method
 
 
@@ -51,7 +51,7 @@
 
     .line 26
     :cond_7
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public setCanClear(Z)V
@@ -62,5 +62,5 @@
     iput-boolean p1, p0, Lcom/oneplus/screenshot/longshot/cache/ImageCache;->mCanClear:Z
 
     .line 33
-    return-void-no-barrier
+    return-void
 .end method

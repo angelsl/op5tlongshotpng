@@ -74,7 +74,7 @@
 
     sput v0, Ledu/emory/mathcs/utils/ConcurrencyUtils;->NTHREADS:I
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private constructor <init>()V
@@ -300,7 +300,7 @@
     sput v0, Ledu/emory/mathcs/utils/ConcurrencyUtils;->THREADS_BEGIN_N_3D:I
 
     .line 192
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static resetThreadsBeginN_FFT()V
@@ -317,7 +317,7 @@
     sput v0, Ledu/emory/mathcs/utils/ConcurrencyUtils;->THREADS_BEGIN_N_1D_FFT_4THREADS:I
 
     .line 184
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static setNumberOfThreads(I)V
@@ -332,7 +332,7 @@
     sput v0, Ledu/emory/mathcs/utils/ConcurrencyUtils;->NTHREADS:I
 
     .line 95
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static setThreadsBeginN_1D_FFT_2Threads(I)V
@@ -355,7 +355,7 @@
 
     .line 117
     :goto_9
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static setThreadsBeginN_1D_FFT_4Threads(I)V
@@ -378,7 +378,7 @@
 
     .line 139
     :goto_9
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static setThreadsBeginN_2D(I)V
@@ -389,7 +389,7 @@
     sput p0, Ledu/emory/mathcs/utils/ConcurrencyUtils;->THREADS_BEGIN_N_2D:I
 
     .line 157
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static setThreadsBeginN_3D(I)V
@@ -400,7 +400,7 @@
     sput p0, Ledu/emory/mathcs/utils/ConcurrencyUtils;->THREADS_BEGIN_N_3D:I
 
     .line 175
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static sleep(J)V
@@ -429,7 +429,7 @@
     .line 252
     .end local v0    # "e":Ljava/lang/InterruptedException;
     :goto_a
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static submit(Ljava/lang/Runnable;)Ljava/util/concurrent/Future;
@@ -518,5 +518,5 @@
 
     .line 281
     :goto_16
-    return-void-no-barrier
+    return-void
 .end method

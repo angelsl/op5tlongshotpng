@@ -159,5 +159,5 @@
     .line 1554
     .end local v0    # "i":I
     :cond_4c
-    return-void-no-barrier
+    return-void
 .end method

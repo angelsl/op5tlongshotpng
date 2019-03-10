@@ -53,5 +53,5 @@
     invoke-static {v0, v1}, Lcom/google/tagmanager/ContainerOpener;->access$000(Lcom/google/tagmanager/ContainerOpener;Lcom/google/tagmanager/Container;)V
 
     .line 392
-    return-void-no-barrier
+    return-void
 .end method

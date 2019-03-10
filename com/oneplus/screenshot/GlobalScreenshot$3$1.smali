@@ -65,5 +65,5 @@
     invoke-virtual {v0, v1, v2, v3, v4}, Lcom/oneplus/screenshot/GlobalScreenshot;->takeScreenshot(Ljava/lang/Runnable;ZZLandroid/graphics/Rect;)V
 
     .line 1136
-    return-void-no-barrier
+    return-void
 .end method

@@ -54,7 +54,7 @@
 
     sput-object v0, Lcom/google/tagmanager/CustomFunctionCall;->ADDITIONAL_PARAMS:Ljava/lang/String;
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public constructor <init>(Lcom/google/tagmanager/CustomFunctionCall$CustomEvaluator;)V

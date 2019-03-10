@@ -136,7 +136,7 @@
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/util/Features;->$VALUES:[Lcom/oneplus/screenshot/longshot/util/Features;
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private constructor <init>(Ljava/lang/String;IZZ)V
@@ -167,7 +167,7 @@
     iput-boolean p4, p0, Lcom/oneplus/screenshot/longshot/util/Features;->mValue:Z
 
     .line 43
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static load(Landroid/content/Context;)V
@@ -215,7 +215,7 @@
 
     .line 56
     :cond_1a
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Lcom/oneplus/screenshot/longshot/util/Features;

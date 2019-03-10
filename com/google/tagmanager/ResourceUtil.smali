@@ -61,7 +61,7 @@
     if-ne v1, v2, :cond_c
 
     .line 719
-    return-void-no-barrier
+    return-void
 
     .line 721
     :cond_c

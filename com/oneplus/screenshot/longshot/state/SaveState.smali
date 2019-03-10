@@ -51,7 +51,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/state/SaveState;->mContext:Landroid/content/Context;
 
     .line 43
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private startAnimation(Landroid/view/View;)V
@@ -107,7 +107,7 @@
     invoke-virtual {p1, v1, v2, v3}, Landroid/view/View;->postDelayed(Ljava/lang/Runnable;J)Z
 
     .line 89
-    return-void-no-barrier
+    return-void
 .end method
 
 
@@ -217,7 +217,7 @@
     invoke-interface {v2, v3, v4, p0}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->show(IILcom/oneplus/screenshot/longshot/app/LongshotDialog$OnShowListener;)V
 
     .line 62
-    return-void-no-barrier
+    return-void
 
     .line 55
     .end local v0    # "intent":Landroid/content/Intent;
@@ -246,7 +246,7 @@
     invoke-super {p0, p1}, Lcom/oneplus/screenshot/longshot/state/AbsImageState;->exit(Lcom/oneplus/screenshot/longshot/state/LongshotState;)V
 
     .line 68
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public onShow(Landroid/app/Dialog;)V
@@ -293,5 +293,5 @@
     invoke-direct {p0, v0}, Lcom/oneplus/screenshot/longshot/state/SaveState;->startAnimation(Landroid/view/View;)V
 
     .line 77
-    return-void-no-barrier
+    return-void
 .end method

@@ -81,7 +81,7 @@
     monitor-exit v0
 
     .line 138
-    return-void-no-barrier
+    return-void
 
     .line 137
     :catchall_23

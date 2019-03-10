@@ -10,7 +10,7 @@
     .line 28
     invoke-direct {p0}, Landroid/app/Activity;-><init>()V
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private displayAlert(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
@@ -48,7 +48,7 @@
     invoke-virtual {v0}, Landroid/app/AlertDialog;->show()V
 
     .line 81
-    return-void-no-barrier
+    return-void
 .end method
 
 
@@ -221,5 +221,5 @@
     .line 64
     .end local v0    # "e":Ljava/lang/Exception;
     :goto_96
-    return-void-no-barrier
+    return-void
 .end method

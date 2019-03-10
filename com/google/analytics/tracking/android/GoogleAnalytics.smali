@@ -138,7 +138,7 @@
     invoke-static {}, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->dropInstance()V
 
     .line 125
-    return-void-no-barrier
+    return-void
 .end method
 
 .method static clearInstance()V
@@ -164,7 +164,7 @@
     monitor-exit v0
 
     .line 118
-    return-void-no-barrier
+    return-void
 
     .line 117
     :catchall_b
@@ -348,7 +348,7 @@
     monitor-exit p0
 
     .line 230
-    return-void-no-barrier
+    return-void
 
     .line 229
     :catchall_1b
@@ -632,7 +632,7 @@
     monitor-exit p0
 
     .line 249
-    return-void-no-barrier
+    return-void
 
     .line 238
     :cond_3a
@@ -691,7 +691,7 @@
 
     .line 268
     :cond_1c
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public setDefaultTracker(Lcom/google/analytics/tracking/android/Tracker;)V
@@ -718,7 +718,7 @@
     monitor-exit p0
 
     .line 214
-    return-void-no-barrier
+    return-void
 
     .line 213
     :catchall_e
@@ -748,7 +748,7 @@
     iput-boolean p1, p0, Lcom/google/analytics/tracking/android/GoogleAnalytics;->mDryRun:Z
 
     .line 137
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public setLogger(Lcom/google/analytics/tracking/android/Logger;)V
@@ -768,5 +768,5 @@
     iput-object p1, p0, Lcom/google/analytics/tracking/android/GoogleAnalytics;->mLogger:Lcom/google/analytics/tracking/android/Logger;
 
     .line 294
-    return-void-no-barrier
+    return-void
 .end method

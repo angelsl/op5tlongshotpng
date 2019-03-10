@@ -94,7 +94,7 @@
     invoke-static {v0, p1}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;Ljava/lang/Throwable;)V
 
     .line 56
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public error(Ljava/lang/String;)V
@@ -105,7 +105,7 @@
     invoke-static {p1}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
 
     .line 51
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public getLogLevel()Lcom/google/analytics/tracking/android/Logger$LogLevel;
@@ -141,7 +141,7 @@
     invoke-static {p1}, Lcom/google/tagmanager/Log;->i(Ljava/lang/String;)V
 
     .line 61
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public setLogLevel(Lcom/google/analytics/tracking/android/Logger$LogLevel;)V
@@ -154,7 +154,7 @@
     invoke-static {v0}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
 
     .line 85
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public verbose(Ljava/lang/String;)V
@@ -165,7 +165,7 @@
     invoke-static {p1}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
 
     .line 66
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public warn(Ljava/lang/String;)V
@@ -176,5 +176,5 @@
     invoke-static {p1}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
 
     .line 71
-    return-void-no-barrier
+    return-void
 .end method

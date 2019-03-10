@@ -48,7 +48,7 @@
     invoke-virtual {p0}, Lcom/google/tagmanager/PreviewManager;->clear()V
 
     .line 55
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private getContainerId(Ljava/lang/String;)Ljava/lang/String;
@@ -163,7 +163,7 @@
     iput-object v0, p0, Lcom/google/tagmanager/PreviewManager;->mCTFEUrlQuery:Ljava/lang/String;
 
     .line 135
-    return-void-no-barrier
+    return-void
 .end method
 
 .method getCTFEUrlDebugQuery()Ljava/lang/String;

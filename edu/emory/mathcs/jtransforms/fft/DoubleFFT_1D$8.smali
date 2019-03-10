@@ -289,5 +289,5 @@
     .line 1318
     .end local v0    # "i":I
     :cond_a8
-    return-void-no-barrier
+    return-void
 .end method

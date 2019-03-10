@@ -557,5 +557,5 @@
     .line 105
     .end local v1    # "i$":Ljava/util/Iterator;
     :cond_85
-    return-void-no-barrier
+    return-void
 .end method

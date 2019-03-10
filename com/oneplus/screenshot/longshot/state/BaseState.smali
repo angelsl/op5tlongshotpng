@@ -36,7 +36,7 @@
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/BaseState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     .line 20
-    return-void-no-barrier
+    return-void
 .end method
 
 
@@ -50,7 +50,7 @@
     iput-object p2, p0, Lcom/oneplus/screenshot/longshot/state/BaseState;->mOnStateListener:Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;
 
     .line 33
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public exit(Lcom/oneplus/screenshot/longshot/state/LongshotState;)V

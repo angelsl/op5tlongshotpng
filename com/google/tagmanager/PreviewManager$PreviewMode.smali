@@ -88,7 +88,7 @@
 
     sput-object v0, Lcom/google/tagmanager/PreviewManager$PreviewMode;->$VALUES:[Lcom/google/tagmanager/PreviewManager$PreviewMode;
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V

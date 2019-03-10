@@ -85,7 +85,7 @@
 
     sput-object v0, Lcom/google/tagmanager/JoinerMacro$EscapeType;->$VALUES:[Lcom/google/tagmanager/JoinerMacro$EscapeType;
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V

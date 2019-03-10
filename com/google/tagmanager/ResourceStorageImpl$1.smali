@@ -44,5 +44,5 @@
     invoke-virtual {v0}, Lcom/google/tagmanager/ResourceStorageImpl;->loadResourceFromDisk()V
 
     .line 59
-    return-void-no-barrier
+    return-void
 .end method

@@ -167,7 +167,7 @@
     if-nez v1, :cond_89
 
     .line 53
-    return-void-no-barrier
+    return-void
 
     .line 56
     :cond_89
@@ -248,5 +248,5 @@
 
     .line 65
     :goto_cb
-    return-void-no-barrier
+    return-void
 .end method

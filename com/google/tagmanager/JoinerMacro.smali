@@ -76,7 +76,7 @@
 
     sput-object v0, Lcom/google/tagmanager/JoinerMacro;->ESCAPE:Ljava/lang/String;
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public constructor <init>()V
@@ -98,7 +98,7 @@
     invoke-direct {p0, v0, v1}, Lcom/google/tagmanager/FunctionCallImplementation;-><init>(Ljava/lang/String;[Ljava/lang/String;)V
 
     .line 32
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private addTo(Ljava/util/Set;Ljava/lang/String;)V
@@ -146,7 +146,7 @@
     .line 110
     .end local v0    # "i":I
     :cond_15
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private append(Ljava/lang/StringBuilder;Ljava/lang/String;Lcom/google/tagmanager/JoinerMacro$EscapeType;Ljava/util/Set;)V
@@ -175,7 +175,7 @@
     invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 115
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private escape(Ljava/lang/String;Lcom/google/tagmanager/JoinerMacro$EscapeType;Ljava/util/Set;)Ljava/lang/String;

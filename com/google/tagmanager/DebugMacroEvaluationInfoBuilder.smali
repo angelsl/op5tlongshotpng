@@ -22,7 +22,7 @@
     iput-object p1, p0, Lcom/google/tagmanager/DebugMacroEvaluationInfoBuilder;->macroEvaluationInfo:Lcom/google/analytics/containertag/proto/Debug$MacroEvaluationInfo;
 
     .line 17
-    return-void-no-barrier
+    return-void
 .end method
 
 

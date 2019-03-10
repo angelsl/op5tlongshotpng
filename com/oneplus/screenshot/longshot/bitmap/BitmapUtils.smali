@@ -37,7 +37,7 @@
     invoke-interface {p0, p1}, Ljava/util/List;->addAll(Ljava/util/Collection;)Z
 
     .line 134
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static createPreview(Ljava/util/List;I)Landroid/graphics/Bitmap;
@@ -271,7 +271,7 @@
 
     move-object/from16 v15, p5
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private static drawDivider(IIIZLandroid/graphics/Canvas;Landroid/graphics/Bitmap$Config;)I
@@ -910,5 +910,5 @@
 
     .line 130
     :cond_32
-    return-void-no-barrier
+    return-void
 .end method

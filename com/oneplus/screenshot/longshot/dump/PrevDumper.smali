@@ -46,5 +46,5 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/dump/PrevDumper;->mTag:Ljava/lang/String;
 
     .line 17
-    return-void-no-barrier
+    return-void
 .end method

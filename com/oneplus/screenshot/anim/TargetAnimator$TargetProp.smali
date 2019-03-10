@@ -30,5 +30,5 @@
     .line 155
     invoke-direct {p0}, Ljava/util/HashMap;-><init>()V
 
-    return-void-no-barrier
+    return-void
 .end method

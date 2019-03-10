@@ -129,7 +129,7 @@
 
     .line 515
     :cond_1a
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public onSuccess(Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;)V
@@ -310,7 +310,7 @@
     invoke-static {v0, v1}, Lcom/google/tagmanager/Container;->access$500(Lcom/google/tagmanager/Container;Lcom/google/tagmanager/Container$RefreshType;)V
 
     .line 504
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public bridge synthetic onSuccess(Ljava/lang/Object;)V
@@ -324,7 +324,7 @@
 
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/Container$2;->onSuccess(Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;)V
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public startLoad()V
@@ -338,5 +338,5 @@
     invoke-static {v0, v1}, Lcom/google/tagmanager/Container;->access$000(Lcom/google/tagmanager/Container;Lcom/google/tagmanager/Container$RefreshType;)V
 
     .line 475
-    return-void-no-barrier
+    return-void
 .end method

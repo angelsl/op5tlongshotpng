@@ -219,7 +219,7 @@
     .line 28
     invoke-direct {p0, p1}, Lcom/google/analytics/tracking/android/GAThread;->fillAppParameters(Ljava/util/Map;)V
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method static synthetic access$500(Lcom/google/analytics/tracking/android/GAThread;Ljava/util/Map;)Ljava/lang/String;
@@ -326,7 +326,7 @@
     invoke-interface {p1, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 244
-    return-void-no-barrier
+    return-void
 .end method
 
 .method static getAndClearCampaign(Landroid/content/Context;)Ljava/lang/String;
@@ -813,7 +813,7 @@
     invoke-virtual {p0, v0}, Lcom/google/analytics/tracking/android/GAThread;->queueToThread(Ljava/lang/Runnable;)V
 
     .line 265
-    return-void-no-barrier
+    return-void
 .end method
 
 .method close()V
@@ -830,7 +830,7 @@
     invoke-virtual {p0}, Lcom/google/analytics/tracking/android/GAThread;->interrupt()V
 
     .line 413
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public dispatch()V
@@ -844,7 +844,7 @@
     invoke-virtual {p0, v0}, Lcom/google/analytics/tracking/android/GAThread;->queueToThread(Ljava/lang/Runnable;)V
 
     .line 255
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public getQueue()Ljava/util/concurrent/LinkedBlockingQueue;
@@ -946,7 +946,7 @@
     invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     .line 107
-    return-void-no-barrier
+    return-void
 .end method
 
 .method isDisabled()Z
@@ -972,7 +972,7 @@
     invoke-virtual {v0, p1}, Ljava/util/concurrent/LinkedBlockingQueue;->add(Ljava/lang/Object;)Z
 
     .line 280
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public run()V
@@ -1194,7 +1194,7 @@
     .line 397
     .end local v0    # "r":Ljava/lang/Runnable;
     :cond_95
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public sendHit(Ljava/util/Map;)V
@@ -1281,7 +1281,7 @@
     invoke-virtual {p0, v2}, Lcom/google/analytics/tracking/android/GAThread;->queueToThread(Ljava/lang/Runnable;)V
 
     .line 161
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public setForceLocalDispatch()V
@@ -1295,5 +1295,5 @@
     invoke-virtual {p0, v0}, Lcom/google/analytics/tracking/android/GAThread;->queueToThread(Ljava/lang/Runnable;)V
 
     .line 275
-    return-void-no-barrier
+    return-void
 .end method

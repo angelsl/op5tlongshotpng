@@ -22,7 +22,7 @@
     iput-wide v0, p0, Lcom/oneplus/screenshot/longshot/task/GcThread;->mDelay:J
 
     .line 17
-    return-void-no-barrier
+    return-void
 .end method
 
 
@@ -34,5 +34,5 @@
     invoke-static {}, Ljava/lang/System;->gc()V
 
     .line 25
-    return-void-no-barrier
+    return-void
 .end method

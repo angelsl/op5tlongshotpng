@@ -39,7 +39,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsImageState;->mImageCache:Lcom/oneplus/screenshot/longshot/cache/ImageCache;
 
     .line 25
-    return-void-no-barrier
+    return-void
 .end method
 
 
@@ -53,7 +53,7 @@
     invoke-super {p0, p1, p2}, Lcom/oneplus/screenshot/longshot/state/AbsViewState;->enter(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
 
     .line 34
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public exit(Lcom/oneplus/screenshot/longshot/state/LongshotState;)V
@@ -69,7 +69,7 @@
     invoke-super {p0, p1}, Lcom/oneplus/screenshot/longshot/state/AbsViewState;->exit(Lcom/oneplus/screenshot/longshot/state/LongshotState;)V
 
     .line 40
-    return-void-no-barrier
+    return-void
 .end method
 
 .method protected initViews(Landroid/widget/FrameLayout;)V
@@ -112,5 +112,5 @@
     .line 49
     .end local v0    # "imageView":Lcom/oneplus/screenshot/longshot/widget/ImageView;
     :cond_1f
-    return-void-no-barrier
+    return-void
 .end method

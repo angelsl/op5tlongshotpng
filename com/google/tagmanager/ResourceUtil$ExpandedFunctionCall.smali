@@ -161,5 +161,5 @@
     invoke-interface {v0, p1, p2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 95
-    return-void-no-barrier
+    return-void
 .end method

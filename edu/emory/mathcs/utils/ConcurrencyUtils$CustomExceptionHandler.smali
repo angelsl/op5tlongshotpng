@@ -34,7 +34,7 @@
     .line 283
     invoke-direct {p0}, Ledu/emory/mathcs/utils/ConcurrencyUtils$CustomExceptionHandler;-><init>()V
 
-    return-void-no-barrier
+    return-void
 .end method
 
 
@@ -48,5 +48,5 @@
     invoke-virtual {p2}, Ljava/lang/Throwable;->printStackTrace()V
 
     .line 286
-    return-void-no-barrier
+    return-void
 .end method

@@ -91,7 +91,7 @@
     iput v0, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mOffsetCurr:I
 
     .line 41
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private findMisregistration([Lcom/oneplus/screenshot/longshot/transform/Complex;[Lcom/oneplus/screenshot/longshot/transform/Complex;II)V
@@ -231,7 +231,7 @@
 
     .line 205
     :cond_5d
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private getLines(II[ILcom/oneplus/screenshot/longshot/dump/BitmapDumper;Z)[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
@@ -824,7 +824,7 @@
     .line 185
     .end local v2    # "i":I
     :cond_85
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private toInt([D)[I
@@ -895,7 +895,7 @@
     .line 167
     .end local v0    # "i":I
     :cond_10
-    return-void-no-barrier
+    return-void
 .end method
 
 
@@ -966,7 +966,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/match/StitchBgNextMatcher;->mSameDumper:Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;
 
     .line 56
-    return-void-no-barrier
+    return-void
 .end method
 
 .method protected getTag()Ljava/lang/String;

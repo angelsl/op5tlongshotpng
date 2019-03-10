@@ -141,5 +141,5 @@
 
     .line 428
     :cond_38
-    return-void-no-barrier
+    return-void
 .end method

@@ -117,12 +117,12 @@
 
     .line 37
     :cond_38
-    return-void-no-barrier
+    return-void
 
     .line 30
     .end local v1    # "uri":Landroid/net/Uri;
     .end local v2    # "referrer":Ljava/lang/String;
     :cond_39
     :goto_39
-    return-void-no-barrier
+    return-void
 .end method

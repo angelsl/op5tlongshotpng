@@ -44,5 +44,5 @@
     invoke-direct {p0, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
     .line 88
-    return-void-no-barrier
+    return-void
 .end method

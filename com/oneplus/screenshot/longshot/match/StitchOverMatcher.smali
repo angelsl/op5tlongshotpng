@@ -94,7 +94,7 @@
 
     .line 30
     :goto_42
-    return-void-no-barrier
+    return-void
 .end method
 
 

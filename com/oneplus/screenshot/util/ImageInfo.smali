@@ -13,7 +13,7 @@
     invoke-direct {p0, p1, p2}, Lcom/oneplus/screenshot/util/FileInfo;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 10
-    return-void-no-barrier
+    return-void
 .end method
 
 

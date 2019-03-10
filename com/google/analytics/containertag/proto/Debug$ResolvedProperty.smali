@@ -35,7 +35,7 @@
 
     sput-object v0, Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;->EMPTY_ARRAY:[Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public constructor <init>()V
@@ -55,7 +55,7 @@
     iput-object v0, p0, Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;->value:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 1215
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static parseFrom(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;)Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
@@ -534,5 +534,5 @@
     invoke-static {v0, p1}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->writeUnknownFields(Ljava/util/List;Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;)V
 
     .line 1259
-    return-void-no-barrier
+    return-void
 .end method

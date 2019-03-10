@@ -159,5 +159,5 @@
     move-exception v0
 
     :goto_57
-    return-void-no-barrier
+    return-void
 .end method

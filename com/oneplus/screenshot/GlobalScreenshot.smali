@@ -180,7 +180,7 @@
 
     sput-object v0, Lcom/oneplus/screenshot/GlobalScreenshot;->ALERTS:Ljava/lang/String;
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;)V
@@ -792,7 +792,7 @@
     .line 606
     invoke-direct {p0}, Lcom/oneplus/screenshot/GlobalScreenshot;->hideScreenshotLayout()V
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method static synthetic access$100(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageView;
@@ -854,7 +854,7 @@
     .line 606
     invoke-direct {p0}, Lcom/oneplus/screenshot/GlobalScreenshot;->hideLongshotGuider()V
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method static synthetic access$1300(Lcom/oneplus/screenshot/GlobalScreenshot;)Ljava/lang/Runnable;
@@ -875,7 +875,7 @@
     .line 606
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/GlobalScreenshot;->saveScreenshotInWorkerThread(Ljava/lang/Runnable;)V
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method static synthetic access$1500(Lcom/oneplus/screenshot/GlobalScreenshot;)Lcom/oneplus/screenshot/GlobalScreenshot$closeReceiver;
@@ -977,7 +977,7 @@
     .line 606
     invoke-direct {p0}, Lcom/oneplus/screenshot/GlobalScreenshot;->endScreenshotAnim()V
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method static synthetic access$2200(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageView;
@@ -1028,7 +1028,7 @@
     .line 606
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/GlobalScreenshot;->shareVia(Landroid/content/Context;)V
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method static synthetic access$2700(Lcom/oneplus/screenshot/GlobalScreenshot;Landroid/content/Context;)V
@@ -1039,7 +1039,7 @@
     .line 606
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/GlobalScreenshot;->edit(Landroid/content/Context;)V
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method static synthetic access$300(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageView;
@@ -1099,7 +1099,7 @@
     .line 606
     invoke-direct {p0}, Lcom/oneplus/screenshot/GlobalScreenshot;->showLongshotGuider()V
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private createScreenshotDropInAnimation()Landroid/animation/ValueAnimator;
@@ -1392,7 +1392,7 @@
     .line 1764
     .end local v1    # "e":Landroid/app/PendingIntent$CanceledException;
     :goto_1c
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private edit(Landroid/content/Context;)V
@@ -1432,7 +1432,7 @@
     invoke-static/range {v1 .. v6}, Lcom/oneplus/screenshot/util/Utils;->launchGallery(Landroid/content/Context;Landroid/net/Uri;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
 
     .line 1772
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private endScreenshotAnim()V
@@ -1448,7 +1448,7 @@
     if-ltz v0, :cond_9
 
     .line 1369
-    return-void-no-barrier
+    return-void
 
     .line 1371
     :cond_9
@@ -1513,7 +1513,7 @@
 
     if-nez v0, :cond_4a
 
-    return-void-no-barrier
+    return-void
 
     .line 1384
     :cond_4a
@@ -1654,7 +1654,7 @@
     iput v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot;->mAnimScale:F
 
     .line 1435
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private getDegreesForRotation(I)F
@@ -1703,7 +1703,7 @@
 
     if-nez v0, :cond_5
 
-    return-void-no-barrier
+    return-void
 
     .line 1839
     :cond_5
@@ -1732,7 +1732,7 @@
 
     .line 1844
     :cond_1a
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private hideScreenshotLayout()V
@@ -1766,7 +1766,7 @@
     .line 1873
     :cond_15
     :goto_15
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private hideSoftInput()V
@@ -1815,7 +1815,7 @@
     .line 1801
     .end local v0    # "e":Ljava/lang/Exception;
     :goto_18
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private isBusy()Z
@@ -2093,7 +2093,7 @@
     invoke-virtual {p1, v3, v5}, Landroid/app/NotificationManager;->notify(ILandroid/app/Notification;)V
 
     .line 1629
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private saveScreenshotInWorkerThread(Ljava/lang/Runnable;)V
@@ -2106,7 +2106,7 @@
     invoke-direct {p0, p1, v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->saveScreenshotInWorkerThread(Ljava/lang/Runnable;Ljava/lang/Runnable;)V
 
     .line 911
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private saveScreenshotInWorkerThread(Ljava/lang/Runnable;Ljava/lang/Runnable;)V
@@ -2195,7 +2195,7 @@
     iput-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot;->mSaveInBgTask:Landroid/os/AsyncTask;
 
     .line 949
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private shareVia(Landroid/content/Context;)V
@@ -2241,7 +2241,7 @@
 
     .line 1750
     :goto_20
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private showLongshotGuider()V
@@ -2345,7 +2345,7 @@
     invoke-direct {p0, v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->writeGuiderPref(Z)V
 
     .line 1834
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private startAnimation(Ljava/lang/Runnable;IIZZ)V
@@ -2696,7 +2696,7 @@
     invoke-virtual {v0, v2}, Lcom/oneplus/screenshot/longshot/app/GlobalScreenShotFrameLayout;->post(Ljava/lang/Runnable;)Z
 
     .line 1357
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private takeLongshot()V
@@ -2772,7 +2772,7 @@
 
     .line 1789
     :goto_41
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private writeGuiderPref(Z)V
@@ -2821,7 +2821,7 @@
 
     .line 1856
     :goto_1f
-    return-void-no-barrier
+    return-void
 .end method
 
 
@@ -3011,7 +3011,7 @@
     invoke-direct {p0}, Lcom/oneplus/screenshot/GlobalScreenshot;->hideScreenshotLayout()V
 
     .line 1740
-    return-void-no-barrier
+    return-void
 
     .line 1727
     :cond_92
@@ -3029,7 +3029,7 @@
     invoke-virtual {v0, v1, v2, v3}, Lcom/oneplus/screenshot/longshot/app/GlobalScreenShotFrameLayout;->postDelayed(Ljava/lang/Runnable;J)Z
 
     .line 1734
-    return-void-no-barrier
+    return-void
 
     :pswitch_data_a2
     .packed-switch 0x7f0b000c
@@ -3063,7 +3063,7 @@
 
     .line 1888
     :cond_e
-    return-void-no-barrier
+    return-void
 .end method
 
 .method stopScreenshot()V
@@ -3092,7 +3092,7 @@
 
     .line 1166
     :cond_14
-    return-void-no-barrier
+    return-void
 .end method
 
 .method takeScreenshot(Ljava/lang/Runnable;ZZ)V
@@ -3126,7 +3126,7 @@
     invoke-virtual {p0, p1, p2, p3, v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->takeScreenshot(Ljava/lang/Runnable;ZZLandroid/graphics/Rect;)V
 
     .line 1106
-    return-void-no-barrier
+    return-void
 .end method
 
 .method takeScreenshot(Ljava/lang/Runnable;ZZLandroid/graphics/Rect;)V
@@ -3450,7 +3450,7 @@
     invoke-interface/range {p1 .. p1}, Ljava/lang/Runnable;->run()V
 
     .line 1031
-    return-void-no-barrier
+    return-void
 
     .line 1035
     :cond_e2
@@ -3695,7 +3695,7 @@
     invoke-direct/range {v0 .. v5}, Lcom/oneplus/screenshot/GlobalScreenshot;->startAnimation(Ljava/lang/Runnable;IIZZ)V
 
     .line 1101
-    return-void-no-barrier
+    return-void
 
     nop
 
@@ -3742,7 +3742,7 @@
     invoke-virtual {v0, v1}, Lcom/oneplus/screenshot/longshot/app/GlobalScreenShotFrameLayout;->post(Ljava/lang/Runnable;)Z
 
     .line 1155
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public updateLayout()V
@@ -4003,5 +4003,5 @@
     iput-object v2, p0, Lcom/oneplus/screenshot/GlobalScreenshot;->mGuideText:Landroid/widget/TextView;
 
     .line 901
-    return-void-no-barrier
+    return-void
 .end method

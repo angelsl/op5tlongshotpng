@@ -48,7 +48,7 @@
     iput p3, p0, Lcom/oneplus/screenshot/longshot/match/MatchRange;->mEnd:I
 
     .line 23
-    return-void-no-barrier
+    return-void
 .end method
 
 

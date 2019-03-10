@@ -226,7 +226,7 @@
 
     .line 148
     :goto_80
-    return-void-no-barrier
+    return-void
 
     nop
 

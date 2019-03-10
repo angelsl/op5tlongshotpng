@@ -71,7 +71,7 @@
 
     sput-object v0, Lcom/google/tagmanager/ContainerOpener$OpenType;->$VALUES:[Lcom/google/tagmanager/ContainerOpener$OpenType;
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V

@@ -136,7 +136,7 @@
     invoke-interface {v0, v1}, Lcom/google/tagmanager/LoadCallback;->onFailure(Lcom/google/tagmanager/LoadCallback$Failure;)V
 
     .line 94
-    return-void-no-barrier
+    return-void
 
     .line 97
     :cond_e
@@ -264,7 +264,7 @@
     invoke-static {v3}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
 
     .line 141
-    return-void-no-barrier
+    return-void
 
     .line 131
     :catch_72
@@ -317,7 +317,7 @@
     :goto_9a
     invoke-interface {v1}, Lcom/google/tagmanager/NetworkClient;->close()V
 
-    return-void-no-barrier
+    return-void
 
     .restart local v0    # "url":Ljava/lang/String;
     .restart local v1    # "networkClient":Lcom/google/tagmanager/NetworkClient;
@@ -601,7 +601,7 @@
     invoke-direct {p0}, Lcom/google/tagmanager/ResourceLoader;->loadResource()V
 
     .line 67
-    return-void-no-barrier
+    return-void
 
     .line 63
     :cond_d
@@ -653,7 +653,7 @@
 
     .line 165
     :goto_1d
-    return-void-no-barrier
+    return-void
 .end method
 
 .method setLoadCallback(Lcom/google/tagmanager/LoadCallback;)V
@@ -672,7 +672,7 @@
     iput-object p1, p0, Lcom/google/tagmanager/ResourceLoader;->mCallback:Lcom/google/tagmanager/LoadCallback;
 
     .line 86
-    return-void-no-barrier
+    return-void
 .end method
 
 .method setPreviousVersion(Ljava/lang/String;)V
@@ -702,5 +702,5 @@
     iput-object p1, p0, Lcom/google/tagmanager/ResourceLoader;->mPreviousVersion:Ljava/lang/String;
 
     .line 171
-    return-void-no-barrier
+    return-void
 .end method

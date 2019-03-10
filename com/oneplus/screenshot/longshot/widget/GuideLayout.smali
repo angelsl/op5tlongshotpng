@@ -44,7 +44,7 @@
     invoke-virtual {v1}, Landroid/content/res/TypedArray;->recycle()V
 
     .line 28
-    return-void-no-barrier
+    return-void
 .end method
 
 

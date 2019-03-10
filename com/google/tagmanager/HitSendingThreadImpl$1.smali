@@ -105,5 +105,5 @@
     invoke-interface {v0, v1, v2, v3}, Lcom/google/tagmanager/HitStore;->putHit(JLjava/lang/String;)V
 
     .line 80
-    return-void-no-barrier
+    return-void
 .end method

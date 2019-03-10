@@ -466,7 +466,7 @@
 
     .line 130
     :goto_79
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public set(Ljava/lang/String;Ljava/lang/String;)V
@@ -501,5 +501,5 @@
 
     .line 172
     :goto_16
-    return-void-no-barrier
+    return-void
 .end method

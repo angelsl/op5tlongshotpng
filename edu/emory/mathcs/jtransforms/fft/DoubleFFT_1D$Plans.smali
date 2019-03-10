@@ -86,7 +86,7 @@
 
     sput-object v0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;->$VALUES:[Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V

@@ -22,7 +22,7 @@
     iput-object p1, p0, Lcom/google/tagmanager/DebugRuleEvaluationStepInfoBuilder;->ruleEvaluationStepInfo:Lcom/google/analytics/containertag/proto/Debug$RuleEvaluationStepInfo;
 
     .line 20
-    return-void-no-barrier
+    return-void
 .end method
 
 
@@ -113,5 +113,5 @@
     .line 29
     .end local v0    # "i$":Ljava/util/Iterator;
     :cond_21
-    return-void-no-barrier
+    return-void
 .end method

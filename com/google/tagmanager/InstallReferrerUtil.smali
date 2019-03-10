@@ -40,7 +40,7 @@
 
     sput-object v0, Lcom/google/tagmanager/InstallReferrerUtil;->clickReferrers:Ljava/util/Map;
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method constructor <init>()V
@@ -86,7 +86,7 @@
 
     .line 78
     :cond_18
-    return-void-no-barrier
+    return-void
 .end method
 
 .method static cacheInstallReferrer(Ljava/lang/String;)V
@@ -106,7 +106,7 @@
     monitor-exit v0
 
     .line 35
-    return-void-no-barrier
+    return-void
 
     .line 34
     :catchall_7
@@ -332,5 +332,5 @@
     invoke-static {p0, p1}, Lcom/google/tagmanager/InstallReferrerUtil;->addClickReferrer(Landroid/content/Context;Ljava/lang/String;)V
 
     .line 44
-    return-void-no-barrier
+    return-void
 .end method

@@ -109,7 +109,7 @@
 
     sput-object v0, Lcom/google/tagmanager/ArbitraryPixelTag;->unrepeatableIds:Ljava/util/Set;
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;)V
@@ -244,7 +244,7 @@
     invoke-interface {v0}, Ljava/util/Set;->clear()V
 
     .line 141
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public evaluateTrackingTag(Ljava/util/Map;)V
@@ -299,7 +299,7 @@
     if-eqz v1, :cond_1f
 
     .line 67
-    return-void-no-barrier
+    return-void
 
     .line 71
     :cond_1f
@@ -378,7 +378,7 @@
     invoke-static {v6}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
 
     .line 80
-    return-void-no-barrier
+    return-void
 
     .line 83
     :cond_62
@@ -436,7 +436,7 @@
     invoke-static {v9}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
 
     .line 88
-    return-void-no-barrier
+    return-void
 
     .line 91
     :cond_94
@@ -579,7 +579,7 @@
     .line 110
     :cond_fd
     :goto_fd
-    return-void-no-barrier
+    return-void
 .end method
 
 .method idInCache(Ljava/lang/String;)Z

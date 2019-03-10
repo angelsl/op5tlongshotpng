@@ -52,5 +52,5 @@
     invoke-direct {p0, v0}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
 
     .line 754
-    return-void-no-barrier
+    return-void
 .end method

@@ -48,5 +48,5 @@
     invoke-virtual {v0, v1}, Landroid/app/NotificationManager;->cancel(I)V
 
     .line 1641
-    return-void-no-barrier
+    return-void
 .end method

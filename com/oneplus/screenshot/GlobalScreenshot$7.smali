@@ -57,7 +57,7 @@
     invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 1339
-    return-void-no-barrier
+    return-void
 
     .line 1346
     :cond_10
@@ -132,5 +132,5 @@
     invoke-virtual {v1}, Landroid/animation/AnimatorSet;->start()V
 
     .line 1355
-    return-void-no-barrier
+    return-void
 .end method

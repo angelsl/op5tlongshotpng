@@ -37,5 +37,5 @@
     invoke-static {p1, v0, v1}, Lcom/oneplus/screenshot/GlobalScreenshot;->notifyScreenshotError(Landroid/content/Context;Landroid/app/NotificationManager;I)V
 
     .line 39
-    return-void-no-barrier
+    return-void
 .end method

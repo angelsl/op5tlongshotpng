@@ -36,7 +36,7 @@
     invoke-direct {p0, p1, v0, v0}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;-><init>(Landroid/graphics/Bitmap;II)V
 
     .line 24
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public constructor <init>(Landroid/graphics/Bitmap;II)V
@@ -96,7 +96,7 @@
     invoke-direct {p0, p1, p2, p3}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->initMain(Landroid/graphics/Bitmap;II)V
 
     .line 34
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public constructor <init>(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;)V
@@ -150,7 +150,7 @@
     invoke-direct {p0, p1, v0, v0}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->initMain(Landroid/graphics/Bitmap;II)V
 
     .line 44
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private initMain(Landroid/graphics/Bitmap;II)V
@@ -175,7 +175,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->mBitmapMain:Lcom/oneplus/screenshot/longshot/cache/BitmapCache$BitmapHolder;
 
     .line 108
-    return-void-no-barrier
+    return-void
 .end method
 
 
@@ -300,7 +300,7 @@
 
     .line 101
     :cond_22
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public removeBitmap()Landroid/graphics/Bitmap;

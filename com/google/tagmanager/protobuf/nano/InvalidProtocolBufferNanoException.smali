@@ -16,7 +16,7 @@
     invoke-direct {p0, p1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
 
     .line 46
-    return-void-no-barrier
+    return-void
 .end method
 
 .method static invalidEndTag()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;

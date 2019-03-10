@@ -42,7 +42,7 @@
     iput-boolean v0, p0, Lcom/google/tagmanager/TypedNumber;->mIsInt64:Z
 
     .line 14
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private constructor <init>(J)V
@@ -61,7 +61,7 @@
     iput-boolean v0, p0, Lcom/google/tagmanager/TypedNumber;->mIsInt64:Z
 
     .line 19
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static numberWithDouble(Ljava/lang/Double;)Lcom/google/tagmanager/TypedNumber;

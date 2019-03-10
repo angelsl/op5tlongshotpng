@@ -87,7 +87,7 @@
     iput-object p1, p0, Lcom/google/analytics/tracking/android/Hit;->mHitString:Ljava/lang/String;
 
     .line 25
-    return-void-no-barrier
+    return-void
 .end method
 
 .method setHitUrl(Ljava/lang/String;)V
@@ -130,10 +130,10 @@
 
     .line 64
     :cond_1d
-    return-void-no-barrier
+    return-void
 
     .line 59
     :cond_1e
     :goto_1e
-    return-void-no-barrier
+    return-void
 .end method

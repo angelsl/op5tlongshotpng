@@ -42,7 +42,7 @@
 
     sput-object v0, Lcom/google/tagmanager/RandomMacro;->MAX:Ljava/lang/String;
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public constructor <init>()V
@@ -58,7 +58,7 @@
     invoke-direct {p0, v0, v1}, Lcom/google/tagmanager/FunctionCallImplementation;-><init>(Ljava/lang/String;[Ljava/lang/String;)V
 
     .line 26
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;

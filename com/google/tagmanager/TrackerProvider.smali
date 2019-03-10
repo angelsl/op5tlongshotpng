@@ -29,7 +29,7 @@
     iput-object p1, p0, Lcom/google/tagmanager/TrackerProvider;->mContext:Landroid/content/Context;
 
     .line 21
-    return-void-no-barrier
+    return-void
 .end method
 
 .method constructor <init>(Lcom/google/analytics/tracking/android/GoogleAnalytics;)V
@@ -54,7 +54,7 @@
     invoke-virtual {v0, v1}, Lcom/google/analytics/tracking/android/GoogleAnalytics;->setLogger(Lcom/google/analytics/tracking/android/Logger;)V
 
     .line 27
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private declared-synchronized initTrackProviderIfNecessary()V
@@ -92,7 +92,7 @@
     :cond_17
     monitor-exit p0
 
-    return-void-no-barrier
+    return-void
 
     .line 40
     :catchall_19
@@ -120,7 +120,7 @@
     invoke-virtual {v0, v1}, Lcom/google/analytics/tracking/android/GoogleAnalytics;->closeTracker(Ljava/lang/String;)V
 
     .line 37
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public getTracker(Ljava/lang/String;)Lcom/google/analytics/tracking/android/Tracker;

@@ -236,7 +236,7 @@
     .line 52
     monitor-exit p0
 
-    return-void-no-barrier
+    return-void
 
     .line 35
     :cond_51

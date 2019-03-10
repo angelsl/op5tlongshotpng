@@ -55,5 +55,5 @@
     invoke-static {v0, v1}, Lcom/google/analytics/tracking/android/EasyTracker;->access$102(Lcom/google/analytics/tracking/android/EasyTracker;Z)Z
 
     .line 456
-    return-void-no-barrier
+    return-void
 .end method

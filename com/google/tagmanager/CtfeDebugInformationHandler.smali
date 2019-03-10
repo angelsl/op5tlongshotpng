@@ -45,7 +45,7 @@
     invoke-direct {p0, v0, p1}, Lcom/google/tagmanager/CtfeDebugInformationHandler;-><init>(Lcom/google/tagmanager/NetworkClient;Lcom/google/tagmanager/CtfeHost;)V
 
     .line 36
-    return-void-no-barrier
+    return-void
 .end method
 
 .method constructor <init>(Lcom/google/tagmanager/NetworkClient;Lcom/google/tagmanager/CtfeHost;)V
@@ -72,7 +72,7 @@
     iput-object v0, p0, Lcom/google/tagmanager/CtfeDebugInformationHandler;->mDebugEvents:Lcom/google/analytics/containertag/proto/Debug$DebugEvents;
 
     .line 32
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private getDebugEventsAsBytes()[B
@@ -208,7 +208,7 @@
     :cond_20
     monitor-exit p0
 
-    return-void-no-barrier
+    return-void
 
     .line 41
     .end local p1    # "event":Lcom/google/analytics/containertag/proto/Debug$EventInfo;

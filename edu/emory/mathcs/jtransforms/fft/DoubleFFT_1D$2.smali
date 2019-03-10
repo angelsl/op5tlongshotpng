@@ -130,5 +130,5 @@
     .end local v1    # "idx1":I
     .end local v2    # "idx2":I
     :cond_2f
-    return-void-no-barrier
+    return-void
 .end method

@@ -31,7 +31,7 @@
     iput-object v0, p0, Lcom/google/tagmanager/CtfeHost;->mCtfeServerAddress:Ljava/lang/String;
 
     .line 22
-    return-void-no-barrier
+    return-void
 .end method
 
 
@@ -110,5 +110,5 @@
     invoke-static {v0}, Lcom/google/tagmanager/Log;->i(Ljava/lang/String;)V
 
     .line 27
-    return-void-no-barrier
+    return-void
 .end method

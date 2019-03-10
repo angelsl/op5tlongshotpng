@@ -51,7 +51,7 @@
 
     sput-object v0, Lcom/oneplus/screenshot/service/GlobalSave;->TAG:Ljava/lang/String;
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/os/Bundle;)V
@@ -99,7 +99,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mCachable:Lcom/oneplus/screenshot/util/Cachable;
 
     .line 39
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private nextNotificationId()I
@@ -153,7 +153,7 @@
     invoke-static {}, Lcom/oneplus/screenshot/service/GlobalNotification;->recycle()V
 
     .line 84
-    return-void-no-barrier
+    return-void
 
     .line 81
     :catchall_19
@@ -183,7 +183,7 @@
     invoke-direct {p0}, Lcom/oneplus/screenshot/service/GlobalSave;->onFinished()V
 
     .line 71
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public onSaveFinished()V
@@ -200,7 +200,7 @@
     invoke-direct {p0}, Lcom/oneplus/screenshot/service/GlobalSave;->onFinished()V
 
     .line 65
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public start()V
@@ -277,7 +277,7 @@
     invoke-virtual {v1, v2}, Lcom/oneplus/screenshot/service/SaveTask;->execute([Ljava/lang/Object;)Landroid/os/AsyncTask;
 
     .line 56
-    return-void-no-barrier
+    return-void
 
     .line 53
     :catchall_38

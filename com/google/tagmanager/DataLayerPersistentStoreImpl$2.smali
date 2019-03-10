@@ -56,5 +56,5 @@
     invoke-static {v0, v1, v2, v3}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->access$000(Lcom/google/tagmanager/DataLayerPersistentStoreImpl;Ljava/util/List;J)V
 
     .line 82
-    return-void-no-barrier
+    return-void
 .end method

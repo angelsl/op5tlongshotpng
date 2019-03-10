@@ -52,5 +52,5 @@
     invoke-virtual {v0, p1, v1}, Lcom/google/tagmanager/ServiceManagerImpl;->updatePowerSaveMode(ZZ)V
 
     .line 56
-    return-void-no-barrier
+    return-void
 .end method

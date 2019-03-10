@@ -117,7 +117,7 @@
     .line 13
     invoke-direct {p0, p1, p2, p3}, Lcom/oneplus/screenshot/anim/TargetAnimator;->invoke(Landroid/view/View;Ljava/lang/reflect/Method;Ljava/lang/Object;)V
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private addSetters(Landroid/view/View;Lcom/oneplus/screenshot/anim/TargetAnimator$TargetProp;Ljava/lang/Class;Ljava/util/Map;)V
@@ -263,7 +263,7 @@
     invoke-interface {p4, p1, v0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 107
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private getSetterName(Ljava/lang/String;)Ljava/lang/String;
@@ -383,7 +383,7 @@
 
     .line 131
     :goto_1e
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private invokeSetters(Lcom/oneplus/screenshot/anim/TargetAnimator$Runner;Ljava/util/Map;)V
@@ -479,7 +479,7 @@
 
     .line 117
     :cond_39
-    return-void-no-barrier
+    return-void
 .end method
 
 
@@ -497,7 +497,7 @@
     invoke-direct {p0, p1, p2, v0, v1}, Lcom/oneplus/screenshot/anim/TargetAnimator;->addSetters(Landroid/view/View;Lcom/oneplus/screenshot/anim/TargetAnimator$TargetProp;Ljava/lang/Class;Ljava/util/Map;)V
 
     .line 78
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public addPropEnd(Landroid/view/View;Lcom/oneplus/screenshot/anim/TargetAnimator$TargetProp;)V
@@ -513,7 +513,7 @@
     invoke-direct {p0, p1, p2, v0, v1}, Lcom/oneplus/screenshot/anim/TargetAnimator;->addSetters(Landroid/view/View;Lcom/oneplus/screenshot/anim/TargetAnimator$TargetProp;Ljava/lang/Class;Ljava/util/Map;)V
 
     .line 86
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public addPropStart(Landroid/view/View;Lcom/oneplus/screenshot/anim/TargetAnimator$TargetProp;)V
@@ -529,7 +529,7 @@
     invoke-direct {p0, p1, p2, v0, v1}, Lcom/oneplus/screenshot/anim/TargetAnimator;->addSetters(Landroid/view/View;Lcom/oneplus/screenshot/anim/TargetAnimator$TargetProp;Ljava/lang/Class;Ljava/util/Map;)V
 
     .line 82
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public getLoader()Lcom/oneplus/screenshot/anim/TargetAnimator$ViewLoader;
@@ -565,7 +565,7 @@
     invoke-direct {p0, v0, v1}, Lcom/oneplus/screenshot/anim/TargetAnimator;->invokeSetters(Lcom/oneplus/screenshot/anim/TargetAnimator$Runner;Ljava/util/Map;)V
 
     .line 49
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public onAnimationRepeat(Landroid/animation/Animator;)V
@@ -592,7 +592,7 @@
     invoke-direct {p0, v0, v1}, Lcom/oneplus/screenshot/anim/TargetAnimator;->invokeSetters(Lcom/oneplus/screenshot/anim/TargetAnimator$Runner;Ljava/util/Map;)V
 
     .line 44
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public onAnimationUpdate(Landroid/animation/ValueAnimator;)V
@@ -621,7 +621,7 @@
     invoke-direct {p0, v1, v2}, Lcom/oneplus/screenshot/anim/TargetAnimator;->invokeSetters(Lcom/oneplus/screenshot/anim/TargetAnimator$Runner;Ljava/util/Map;)V
 
     .line 63
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public setLoader(Lcom/oneplus/screenshot/anim/TargetAnimator$ViewLoader;)V
@@ -632,5 +632,5 @@
     iput-object p1, p0, Lcom/oneplus/screenshot/anim/TargetAnimator;->mLoader:Lcom/oneplus/screenshot/anim/TargetAnimator$ViewLoader;
 
     .line 74
-    return-void-no-barrier
+    return-void
 .end method

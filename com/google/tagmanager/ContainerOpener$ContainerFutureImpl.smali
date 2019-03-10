@@ -41,7 +41,7 @@
 
     iput-object v0, p0, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;->mContainerIsReady:Ljava/util/concurrent/Semaphore;
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method synthetic constructor <init>(Lcom/google/tagmanager/ContainerOpener$1;)V
@@ -51,7 +51,7 @@
     .line 312
     invoke-direct {p0}, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;-><init>()V
 
-    return-void-no-barrier
+    return-void
 .end method
 
 
@@ -141,5 +141,5 @@
     invoke-virtual {v0}, Ljava/util/concurrent/Semaphore;->release()V
 
     .line 335
-    return-void-no-barrier
+    return-void
 .end method

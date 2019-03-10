@@ -16,7 +16,7 @@
     .line 35
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
 
-    return-void-no-barrier
+    return-void
 .end method
 
 
@@ -69,11 +69,11 @@
     invoke-virtual {p1, v1}, Landroid/content/Context;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;
 
     .line 53
-    return-void-no-barrier
+    return-void
 
     .line 47
     .end local v1    # "serviceIntent":Landroid/content/Intent;
     :cond_25
     :goto_25
-    return-void-no-barrier
+    return-void
 .end method

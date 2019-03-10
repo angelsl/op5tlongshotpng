@@ -139,7 +139,7 @@
 
     sput-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Action;->$VALUES:[Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V

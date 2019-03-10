@@ -153,5 +153,5 @@
     invoke-virtual {v1, v3}, Landroid/widget/ImageView;->setAlpha(F)V
 
     .line 1506
-    return-void-no-barrier
+    return-void
 .end method

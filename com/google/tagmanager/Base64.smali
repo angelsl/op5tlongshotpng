@@ -65,7 +65,7 @@
 
     sput-object v0, Lcom/google/tagmanager/Base64;->WEBSAFE_DECODABET:[B
 
-    return-void-no-barrier
+    return-void
 
     nop
 

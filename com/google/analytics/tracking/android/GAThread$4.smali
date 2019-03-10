@@ -49,5 +49,5 @@
     invoke-interface {v0}, Lcom/google/analytics/tracking/android/ServiceProxy;->setForceLocalDispatch()V
 
     .line 273
-    return-void-no-barrier
+    return-void
 .end method

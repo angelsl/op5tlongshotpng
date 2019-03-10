@@ -82,5 +82,5 @@
     .line 152
     .end local v0    # "e":Landroid/os/RemoteException;
     :goto_13
-    return-void-no-barrier
+    return-void
 .end method

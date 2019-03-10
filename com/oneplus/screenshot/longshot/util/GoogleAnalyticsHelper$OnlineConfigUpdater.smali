@@ -34,7 +34,7 @@
     .line 120
     invoke-direct {p0}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper$OnlineConfigUpdater;-><init>()V
 
-    return-void-no-barrier
+    return-void
 .end method
 
 
@@ -57,5 +57,5 @@
     invoke-static {p1}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->access$200(Lorg/json/JSONArray;)V
 
     .line 126
-    return-void-no-barrier
+    return-void
 .end method

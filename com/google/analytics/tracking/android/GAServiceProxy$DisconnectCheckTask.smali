@@ -140,5 +140,5 @@
 
     .line 430
     :goto_52
-    return-void-no-barrier
+    return-void
 .end method

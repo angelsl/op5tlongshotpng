@@ -42,7 +42,7 @@
     invoke-direct/range {v0 .. v5}, Lcom/oneplus/screenshot/longshot/bitmap/Pixels;-><init>(Landroid/graphics/Bitmap;IIII)V
 
     .line 36
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public constructor <init>(Landroid/graphics/Bitmap;IIII)V
@@ -94,7 +94,7 @@
     invoke-direct {p0}, Lcom/oneplus/screenshot/longshot/bitmap/Pixels;->init()V
 
     .line 42
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public constructor <init>([I)V
@@ -116,7 +116,7 @@
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/bitmap/Pixels;->mPixels:[I
 
     .line 32
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private init()V
@@ -130,7 +130,7 @@
     invoke-virtual {p0, v0}, Lcom/oneplus/screenshot/longshot/bitmap/Pixels;->setComparable(Lcom/oneplus/screenshot/longshot/compare/Comparable;)V
 
     .line 153
-    return-void-no-barrier
+    return-void
 .end method
 
 
@@ -759,5 +759,5 @@
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/bitmap/Pixels;->mComparable:Lcom/oneplus/screenshot/longshot/compare/Comparable;
 
     .line 142
-    return-void-no-barrier
+    return-void
 .end method

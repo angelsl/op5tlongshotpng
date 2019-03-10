@@ -27,7 +27,7 @@
 
     iput-object v0, p0, Lcom/oneplus/screenshot/TakeScreenshotService;->mHandler:Landroid/os/Handler;
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method static synthetic access$000()Lcom/oneplus/screenshot/GlobalScreenshot;
@@ -88,7 +88,7 @@
     invoke-super {p0, p1}, Landroid/app/Service;->onConfigurationChanged(Landroid/content/res/Configuration;)V
 
     .line 130
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public onUnbind(Landroid/content/Intent;)Z

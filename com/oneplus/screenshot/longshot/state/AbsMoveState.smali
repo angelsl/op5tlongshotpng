@@ -51,7 +51,7 @@
     iput v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsMoveState;->mMoveKeep:I
 
     .line 31
-    return-void-no-barrier
+    return-void
 .end method
 
 .method static synthetic access$000(Lcom/oneplus/screenshot/longshot/state/AbsMoveState;)V
@@ -61,7 +61,7 @@
     .line 13
     invoke-direct {p0}, Lcom/oneplus/screenshot/longshot/state/AbsMoveState;->executeMove()V
 
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private executeMove()V
@@ -79,7 +79,7 @@
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
     .line 68
-    return-void-no-barrier
+    return-void
 .end method
 
 .method private getKeep()I
@@ -196,7 +196,7 @@
     invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
 
     .line 59
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public exit(Lcom/oneplus/screenshot/longshot/state/LongshotState;)V
@@ -234,7 +234,7 @@
     invoke-super {p0, p1}, Lcom/oneplus/screenshot/longshot/state/BaseState;->exit(Lcom/oneplus/screenshot/longshot/state/LongshotState;)V
 
     .line 80
-    return-void-no-barrier
+    return-void
 .end method
 
 .method protected abstract getNextState()Lcom/oneplus/screenshot/longshot/state/LongshotState;
@@ -268,7 +268,7 @@
     invoke-interface {v0, v1, v2}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->updateState(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
 
     .line 85
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public setOverScroll(Z)V
@@ -281,7 +281,7 @@
     invoke-interface {v0, p1}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->setOverScroll(Z)V
 
     .line 95
-    return-void-no-barrier
+    return-void
 .end method
 
 .method public updateMovePoint(Lcom/oneplus/screenshot/longshot/util/MovePoint;)V
@@ -305,5 +305,5 @@
 
     .line 114
     :cond_d
-    return-void-no-barrier
+    return-void
 .end method
