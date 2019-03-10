@@ -31,7 +31,7 @@
 
     sput-object v0, Lcom/google/tagmanager/RegexPredicate;->IGNORE_CASE:Ljava/lang/String;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public constructor <init>()V
@@ -43,7 +43,7 @@
     invoke-direct {p0, v0}, Lcom/google/tagmanager/StringPredicate;-><init>(Ljava/lang/String;)V
 
     .line 31
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;

@@ -136,7 +136,7 @@
     .line 202
     monitor-exit p0
 
-    return-void
+    return-void-no-barrier
 
     .line 200
     :catchall_8
@@ -717,7 +717,7 @@
     invoke-interface {v0, v1}, Lcom/google/tagmanager/LoadCallback;->onFailure(Lcom/google/tagmanager/LoadCallback$Failure;)V
 
     .line 83
-    return-void
+    return-void-no-barrier
 
     .line 86
     :cond_3e
@@ -834,7 +834,7 @@
     invoke-static {v1}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
 
     .line 111
-    return-void
+    return-void-no-barrier
 
     .line 103
     :goto_83
@@ -882,7 +882,7 @@
     invoke-interface {v2, v3}, Lcom/google/tagmanager/LoadCallback;->onFailure(Lcom/google/tagmanager/LoadCallback$Failure;)V
 
     .line 92
-    return-void
+    return-void-no-barrier
 
     .line 72
     .end local v0    # "stream":Ljava/io/FileInputStream;
@@ -910,7 +910,7 @@
     invoke-interface {v0, v1}, Ljava/util/concurrent/ExecutorService;->execute(Ljava/lang/Runnable;)V
 
     .line 61
-    return-void
+    return-void-no-barrier
 .end method
 
 .method saveResourceToDisk(Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;)Z
@@ -1088,7 +1088,7 @@
     invoke-interface {v0, v1}, Ljava/util/concurrent/ExecutorService;->execute(Ljava/lang/Runnable;)V
 
     .line 125
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public setLoadCallback(Lcom/google/tagmanager/LoadCallback;)V
@@ -1107,5 +1107,5 @@
     iput-object p1, p0, Lcom/google/tagmanager/ResourceStorageImpl;->mCallback:Lcom/google/tagmanager/LoadCallback;
 
     .line 51
-    return-void
+    return-void-no-barrier
 .end method

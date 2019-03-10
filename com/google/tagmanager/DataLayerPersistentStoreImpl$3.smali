@@ -55,5 +55,5 @@
     invoke-interface {v0, v1}, Lcom/google/tagmanager/DataLayer$PersistentStore$Callback;->onKeyValuesLoaded(Ljava/util/List;)V
 
     .line 91
-    return-void
+    return-void-no-barrier
 .end method

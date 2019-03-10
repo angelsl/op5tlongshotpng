@@ -187,7 +187,7 @@
 
     .line 502
     :goto_1e
-    return-void
+    return-void-no-barrier
 .end method
 
 
@@ -207,7 +207,7 @@
     if-ne v0, p1, :cond_5
 
     .line 97
-    return-void
+    return-void-no-barrier
 
     .line 95
     :cond_5
@@ -326,7 +326,7 @@
     invoke-direct {p0}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->recomputeBufferSizeAfterLimit()V
 
     .line 512
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public pushLimit(I)I
@@ -596,7 +596,7 @@
     iput v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->recursionDepth:I
 
     .line 213
-    return-void
+    return-void-no-barrier
 
     .line 206
     :cond_1e
@@ -693,7 +693,7 @@
     invoke-virtual {p0, v1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->popLimit(I)V
 
     .line 227
-    return-void
+    return-void-no-barrier
 
     .line 219
     .end local v1    # "oldLimit":I
@@ -1483,7 +1483,7 @@
     iput v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
 
     .line 572
-    return-void
+    return-void-no-barrier
 
     .line 569
     :cond_f
@@ -1755,7 +1755,7 @@
     .restart local v0    # "tag":I
     :cond_e
     :goto_e
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public skipRawBytes(I)V
@@ -1796,7 +1796,7 @@
     iput v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
 
     .line 640
-    return-void
+    return-void-no-barrier
 
     .line 638
     :cond_16

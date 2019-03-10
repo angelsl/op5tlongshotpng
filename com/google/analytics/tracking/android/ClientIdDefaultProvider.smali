@@ -33,7 +33,7 @@
 
     sput-object v0, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->sInstanceLock:Ljava/lang/Object;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected constructor <init>(Landroid/content/Context;)V
@@ -112,7 +112,7 @@
     invoke-virtual {v0}, Ljava/lang/Thread;->start()V
 
     .line 141
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private blockingGetClientId()Ljava/lang/String;
@@ -232,7 +232,7 @@
     monitor-exit v0
 
     .line 43
-    return-void
+    return-void-no-barrier
 
     .line 42
     :catchall_8
@@ -299,7 +299,7 @@
     monitor-exit v0
 
     .line 36
-    return-void
+    return-void-no-barrier
 
     .line 35
     :catchall_10

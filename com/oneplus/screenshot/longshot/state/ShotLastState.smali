@@ -129,7 +129,7 @@
 
     .line 41
     :goto_55
-    return-void
+    return-void-no-barrier
 
     :pswitch_data_56
     .packed-switch 0x2

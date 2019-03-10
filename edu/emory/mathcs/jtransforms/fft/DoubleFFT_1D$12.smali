@@ -129,5 +129,5 @@
     .line 1572
     .end local v0    # "i":I
     :cond_2f
-    return-void
+    return-void-no-barrier
 .end method

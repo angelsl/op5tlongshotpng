@@ -57,7 +57,7 @@
     .line 265
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->endFling(Z)V
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private endFling(Z)V
@@ -88,7 +88,7 @@
     iput v1, v0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mTouchMode:I
 
     .line 323
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private startCommon()V
@@ -100,7 +100,7 @@
     invoke-virtual {v0, p0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->removeCallbacks(Ljava/lang/Runnable;)Z
 
     .line 283
-    return-void
+    return-void-no-barrier
 .end method
 
 
@@ -156,7 +156,7 @@
 
     .line 344
     :goto_20
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public startUsingDistance(I)V
@@ -167,7 +167,7 @@
     if-nez p1, :cond_3
 
     .line 299
-    return-void
+    return-void-no-barrier
 
     .line 301
     :cond_3
@@ -204,7 +204,7 @@
     invoke-virtual {v0, p0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->post(Ljava/lang/Runnable;)Z
 
     .line 305
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public startUsingVelocity(I)V
@@ -215,7 +215,7 @@
     if-nez p1, :cond_3
 
     .line 287
-    return-void
+    return-void-no-barrier
 
     .line 289
     :cond_3
@@ -263,7 +263,7 @@
     invoke-virtual {v1, p0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->post(Ljava/lang/Runnable;)Z
 
     .line 295
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public stop(Z)V
@@ -279,5 +279,5 @@
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->endFling(Z)V
 
     .line 310
-    return-void
+    return-void-no-barrier
 .end method

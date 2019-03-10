@@ -113,7 +113,7 @@
     invoke-direct {p0}, Lcom/oneplus/screenshot/longshot/task/JoinTask;->createFullDumper()V
 
     .line 46
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private createFullDumper()V
@@ -160,7 +160,7 @@
 
     .line 156
     :cond_24
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private join(Lcom/oneplus/screenshot/longshot/cache/BitmapCache;Lcom/oneplus/screenshot/longshot/cache/BitmapCache;)Z
@@ -496,7 +496,7 @@
     .line 114
     .end local v0    # "bitmap":Landroid/graphics/Bitmap;
     :cond_27
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected abstract onJoin(Lcom/oneplus/screenshot/longshot/cache/BitmapCache;Lcom/oneplus/screenshot/longshot/cache/BitmapCache;)Z
@@ -542,7 +542,7 @@
     invoke-static {}, Landroid/os/Trace;->endSection()V
 
     .line 89
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected bridge synthetic onPostExecute(Ljava/lang/Object;)V
@@ -553,7 +553,7 @@
 
     invoke-virtual {p0, p1}, Lcom/oneplus/screenshot/longshot/task/JoinTask;->onPostExecute(Ljava/lang/Boolean;)V
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public toString()Ljava/lang/String;

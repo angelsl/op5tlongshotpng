@@ -26,7 +26,7 @@
     iput v0, p0, Lcom/oneplus/screenshot/longshot/state/ShotFirstState;->mCaptureDelay:I
 
     .line 18
-    return-void
+    return-void-no-barrier
 .end method
 
 
@@ -55,7 +55,7 @@
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/state/ShotFirstState;->updateState()V
 
     .line 30
-    return-void
+    return-void-no-barrier
 
     .line 28
     :catchall_d
@@ -77,7 +77,7 @@
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/ShotFirstState;->mMovePoint:Lcom/oneplus/screenshot/longshot/util/MovePoint;
 
     .line 43
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected updateState()V
@@ -107,5 +107,5 @@
 
     .line 38
     :goto_12
-    return-void
+    return-void-no-barrier
 .end method

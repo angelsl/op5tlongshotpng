@@ -77,7 +77,7 @@
 
     sput-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;->$VALUES:[Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private constructor <init>(Ljava/lang/String;II)V
@@ -101,7 +101,7 @@
     iput p3, p0, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;->mValue:I
 
     .line 78
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Lcom/oneplus/screenshot/statistics/EventStatistics$Base;

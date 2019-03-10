@@ -53,7 +53,7 @@
 
     sput v0, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;->DIV_COLOR:I
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public constructor <init>(Landroid/content/Context;IZ)V
@@ -93,7 +93,7 @@
     iput-boolean p3, p0, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;->mIsNext:Z
 
     .line 57
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private getCombinedTag()Ljava/lang/String;
@@ -194,7 +194,7 @@
 
     .line 71
     :cond_22
-    return-void
+    return-void-no-barrier
 .end method
 
 
@@ -217,7 +217,7 @@
     if-nez p1, :cond_c
 
     .line 76
-    return-void
+    return-void-no-barrier
 
     .line 78
     :cond_c
@@ -240,7 +240,7 @@
 
     .line 81
     :cond_1e
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public dump(Lcom/oneplus/screenshot/longshot/cache/BitmapCache;Z)V
@@ -449,7 +449,7 @@
     move-object/from16 v7, p0
 
     :goto_7e
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public dump([Lcom/oneplus/screenshot/longshot/bitmap/Pixels;II)V
@@ -557,7 +557,7 @@
     .end local v2    # "h":I
     .end local v3    # "pixels":[I
     :cond_46
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected getTag()Ljava/lang/String;
@@ -577,5 +577,5 @@
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;->mTag:Ljava/lang/String;
 
     .line 139
-    return-void
+    return-void-no-barrier
 .end method

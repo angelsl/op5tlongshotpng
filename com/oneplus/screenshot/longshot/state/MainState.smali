@@ -106,7 +106,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MainState;->mSharedPrefs:Lcom/oneplus/screenshot/util/SharedPrefs;
 
     .line 107
-    return-void
+    return-void-no-barrier
 .end method
 
 .method static synthetic access$000(Lcom/oneplus/screenshot/longshot/state/MainState;)Z
@@ -139,7 +139,7 @@
     .line 15
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/longshot/state/MainState;->gotToNextState(Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method static synthetic access$300(Lcom/oneplus/screenshot/longshot/state/MainState;)Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;
@@ -187,7 +187,7 @@
 
     .line 77
     :goto_19
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private hasNext()Z
@@ -354,7 +354,7 @@
 
     .line 125
     :goto_3d
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected initDecor(Landroid/widget/FrameLayout;)V
@@ -389,7 +389,7 @@
     invoke-super {p0, p1}, Lcom/oneplus/screenshot/longshot/state/AbsViewState;->onShow(Landroid/app/Dialog;)V
 
     .line 130
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected updateButtons(Landroid/widget/FrameLayout;)V

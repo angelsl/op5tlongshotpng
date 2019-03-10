@@ -83,7 +83,7 @@
     invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 63
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public constructor <init>()V
@@ -305,7 +305,7 @@
     invoke-virtual {v2}, Landroid/content/res/TypedArray;->recycle()V
 
     .line 397
-    return-void
+    return-void-no-barrier
 
     :pswitch_data_86
     .packed-switch 0x1

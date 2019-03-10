@@ -48,7 +48,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/SaveImageInBackgroundData;->context:Landroid/content/Context;
 
     .line 141
-    return-void
+    return-void-no-barrier
 .end method
 
 .method clearImage()V
@@ -68,7 +68,7 @@
     iput v0, p0, Lcom/oneplus/screenshot/SaveImageInBackgroundData;->iconSize:I
 
     .line 130
-    return-void
+    return-void-no-barrier
 .end method
 
 .method doDelayAction()V
@@ -86,5 +86,5 @@
 
     .line 137
     :cond_9
-    return-void
+    return-void-no-barrier
 .end method

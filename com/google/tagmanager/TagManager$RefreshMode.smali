@@ -71,7 +71,7 @@
 
     sput-object v0, Lcom/google/tagmanager/TagManager$RefreshMode;->$VALUES:[Lcom/google/tagmanager/TagManager$RefreshMode;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V

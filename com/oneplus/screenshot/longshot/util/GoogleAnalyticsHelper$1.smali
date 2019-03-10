@@ -68,5 +68,5 @@
     invoke-static {v1}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->access$200(Lorg/json/JSONArray;)V
 
     .line 62
-    return-void
+    return-void-no-barrier
 .end method

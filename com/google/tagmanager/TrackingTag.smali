@@ -13,7 +13,7 @@
     invoke-direct {p0, p1, p2}, Lcom/google/tagmanager/FunctionCallImplementation;-><init>(Ljava/lang/String;[Ljava/lang/String;)V
 
     .line 21
-    return-void
+    return-void-no-barrier
 .end method
 
 

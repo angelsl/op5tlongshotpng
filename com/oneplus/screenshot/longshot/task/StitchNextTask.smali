@@ -101,7 +101,7 @@
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 37
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private isLegalPosition(Lcom/oneplus/screenshot/longshot/match/MatchData;)Z
@@ -265,7 +265,7 @@
     invoke-static {}, Landroid/os/Trace;->endSection()V
 
     .line 105
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private stitchForLast(Lcom/oneplus/screenshot/longshot/match/MatchData;Lcom/oneplus/screenshot/longshot/cache/BitmapCache;)V
@@ -392,7 +392,7 @@
     invoke-static {}, Landroid/os/Trace;->endSection()V
 
     .line 88
-    return-void
+    return-void-no-barrier
 .end method
 
 

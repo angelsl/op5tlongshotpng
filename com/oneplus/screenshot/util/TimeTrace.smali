@@ -42,7 +42,7 @@
     .line 15
     sput-wide v0, Lcom/oneplus/screenshot/util/TimeTrace;->mMarkStart:J
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public constructor <init>()V
@@ -78,7 +78,7 @@
     sput-wide v0, Lcom/oneplus/screenshot/util/TimeTrace;->mMarkLast:J
 
     .line 80
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static log(Ljava/lang/String;Ljava/lang/String;)V
@@ -100,7 +100,7 @@
     invoke-static/range {v0 .. v5}, Lcom/oneplus/screenshot/util/TimeTrace;->log(Ljava/lang/String;Ljava/lang/String;JJ)V
 
     .line 39
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private static log(Ljava/lang/String;Ljava/lang/String;JJ)V
@@ -111,7 +111,7 @@
     .param p4, "curr"    # J
 
     .line 66
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static mark(Ljava/lang/String;Ljava/lang/String;)V
@@ -164,7 +164,7 @@
     .end local v8    # "curr":J
     .end local v10    # "length":J
     :cond_1c
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static reset()V
@@ -203,7 +203,7 @@
     sput-wide v0, Lcom/oneplus/screenshot/util/TimeTrace;->mMarkLast:J
 
     .line 73
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static start()V
@@ -223,5 +223,5 @@
     invoke-static {}, Lcom/oneplus/screenshot/util/TimeTrace;->clear()V
 
     .line 28
-    return-void
+    return-void-no-barrier
 .end method

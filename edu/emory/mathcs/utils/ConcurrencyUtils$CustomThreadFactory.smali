@@ -36,7 +36,7 @@
 
     sput-object v0, Ledu/emory/mathcs/utils/ConcurrencyUtils$CustomThreadFactory;->defaultFactory:Ljava/util/concurrent/ThreadFactory;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method constructor <init>(Ljava/lang/Thread$UncaughtExceptionHandler;)V

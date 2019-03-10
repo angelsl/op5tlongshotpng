@@ -130,5 +130,5 @@
     .line 847
     :cond_40
     :goto_40
-    return-void
+    return-void-no-barrier
 .end method

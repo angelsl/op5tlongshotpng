@@ -20,7 +20,7 @@
 
     sput-object v0, Lcom/google/tagmanager/StartsWithPredicate;->ID:Ljava/lang/String;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public constructor <init>()V
@@ -32,7 +32,7 @@
     invoke-direct {p0, v0}, Lcom/google/tagmanager/StringPredicate;-><init>(Ljava/lang/String;)V
 
     .line 21
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;

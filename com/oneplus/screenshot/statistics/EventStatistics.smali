@@ -37,7 +37,7 @@
 
     sput v0, Lcom/oneplus/screenshot/statistics/EventStatistics;->APPBASE:I
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public constructor <init>()V
@@ -138,7 +138,7 @@
 
     .line 57
     :goto_1f
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private static isDebuggable(Landroid/content/Context;)Z

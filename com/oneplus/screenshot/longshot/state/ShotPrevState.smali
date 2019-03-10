@@ -17,7 +17,7 @@
     invoke-direct {p0, p1, p2}, Lcom/oneplus/screenshot/longshot/state/AbsShotState;-><init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;Lcom/oneplus/screenshot/longshot/util/MovePoint;)V
 
     .line 18
-    return-void
+    return-void-no-barrier
 .end method
 
 
@@ -118,7 +118,7 @@
     invoke-interface {v2, v3, v4}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->updateState(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
 
     .line 35
-    return-void
+    return-void-no-barrier
 
     .line 32
     :catchall_49

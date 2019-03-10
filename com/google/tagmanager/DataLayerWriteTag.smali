@@ -46,7 +46,7 @@
 
     sput-object v0, Lcom/google/tagmanager/DataLayerWriteTag;->CLEAR_PERSISTENT_DATA_LAYER_PREFIX:Ljava/lang/String;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public constructor <init>(Lcom/google/tagmanager/DataLayer;)V
@@ -105,7 +105,7 @@
     if-ne v0, v1, :cond_14
 
     .line 42
-    return-void
+    return-void-no-barrier
 
     .line 44
     :cond_14
@@ -114,13 +114,13 @@
     invoke-virtual {v1, v0}, Lcom/google/tagmanager/DataLayer;->clearPersistentKeysWithPrefix(Ljava/lang/String;)V
 
     .line 45
-    return-void
+    return-void-no-barrier
 
     .line 38
     .end local v0    # "prefix":Ljava/lang/String;
     :cond_1a
     :goto_1a
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
@@ -160,7 +160,7 @@
     if-nez v1, :cond_12
 
     .line 53
-    return-void
+    return-void-no-barrier
 
     .line 56
     :cond_12
@@ -215,14 +215,14 @@
     .line 65
     .end local v2    # "i$":Ljava/util/Iterator;
     :cond_31
-    return-void
+    return-void-no-barrier
 
     .line 49
     .end local v0    # "o":Ljava/lang/Object;
     .end local v1    # "list":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Object;>;"
     :cond_32
     :goto_32
-    return-void
+    return-void-no-barrier
 .end method
 
 
@@ -263,5 +263,5 @@
     invoke-direct {p0, v0}, Lcom/google/tagmanager/DataLayerWriteTag;->clearPersistent(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)V
 
     .line 34
-    return-void
+    return-void-no-barrier
 .end method

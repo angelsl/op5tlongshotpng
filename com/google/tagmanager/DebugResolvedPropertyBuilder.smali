@@ -22,7 +22,7 @@
     iput-object p1, p0, Lcom/google/tagmanager/DebugResolvedPropertyBuilder;->resolvedProperty:Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
 
     .line 18
-    return-void
+    return-void-no-barrier
 .end method
 
 

@@ -13,7 +13,7 @@
     invoke-static {v0}, Ljava/lang/System;->loadLibrary(Ljava/lang/String;)V
 
     .line 12
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public constructor <init>()V

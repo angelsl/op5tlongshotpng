@@ -101,7 +101,7 @@
 
     sput-object v0, Lcom/oneplus/screenshot/R$styleable;->Target:[I
 
-    return-void
+    return-void-no-barrier
 
     :array_2a
     .array-data 4

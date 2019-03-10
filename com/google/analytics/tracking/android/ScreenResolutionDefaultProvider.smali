@@ -27,7 +27,7 @@
 
     sput-object v0, Lcom/google/analytics/tracking/android/ScreenResolutionDefaultProvider;->sInstanceLock:Ljava/lang/Object;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected constructor <init>(Landroid/content/Context;)V
@@ -66,7 +66,7 @@
     monitor-exit v0
 
     .line 41
-    return-void
+    return-void-no-barrier
 
     .line 40
     :catchall_8
@@ -133,7 +133,7 @@
     monitor-exit v0
 
     .line 28
-    return-void
+    return-void-no-barrier
 
     .line 27
     :catchall_10

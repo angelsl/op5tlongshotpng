@@ -56,7 +56,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsJoinState;->mRunnableCache:Lcom/oneplus/screenshot/longshot/cache/RunnableCache;
 
     .line 33
-    return-void
+    return-void-no-barrier
 .end method
 
 
@@ -97,7 +97,7 @@
     invoke-static {}, Landroid/os/Trace;->endSection()V
 
     .line 45
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public exit(Lcom/oneplus/screenshot/longshot/state/LongshotState;)V
@@ -129,7 +129,7 @@
     invoke-super {p0, p1}, Lcom/oneplus/screenshot/longshot/state/BaseState;->exit(Lcom/oneplus/screenshot/longshot/state/LongshotState;)V
 
     .line 55
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected getErrorText()Ljava/lang/String;
@@ -258,7 +258,7 @@
     invoke-interface {v1, v2, v3}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->updateState(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
 
     .line 73
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public onJoinSuccess()V
@@ -307,7 +307,7 @@
     invoke-interface {v0, v1, v2}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->updateState(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
 
     .line 64
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected prepareSuccess()V

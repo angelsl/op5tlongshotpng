@@ -88,7 +88,7 @@
 
     sput-object v0, Lcom/google/tagmanager/LoadCallback$Failure;->$VALUES:[Lcom/google/tagmanager/LoadCallback$Failure;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V

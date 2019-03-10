@@ -30,7 +30,7 @@
     iput-object p1, p0, Lcom/google/tagmanager/DebugValueBuilder;->value:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 21
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static copyImmutableValue(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -82,7 +82,7 @@
     if-ne p1, p2, :cond_3
 
     .line 27
-    return-void
+    return-void-no-barrier
 
     .line 25
     :cond_3

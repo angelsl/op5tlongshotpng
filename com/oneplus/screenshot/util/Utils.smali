@@ -22,7 +22,7 @@
 
     sput-object v0, Lcom/oneplus/screenshot/util/Utils;->WATER_MARK:Landroid/graphics/Bitmap;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public constructor <init>()V
@@ -281,7 +281,7 @@
     .line 454
     .end local v0    # "e":Ljava/lang/Exception;
     :goto_4e
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static dip2px(FF)I
@@ -1458,7 +1458,7 @@
     .end local v0    # "e":Ljava/lang/Exception;
     .end local v1    # "e2":Ljava/lang/Exception;
     :goto_82
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static saveToFile(Landroid/content/Context;Lcom/oneplus/screenshot/util/FileInfo;Landroid/graphics/Bitmap;)Z
@@ -1618,7 +1618,7 @@
     move-object v7, v0
 
     .line 120
-    sget-object v0, Landroid/graphics/Bitmap$CompressFormat;->PNG:Landroid/graphics/Bitmap$CompressFormat;
+    sget-object v0, Landroid/graphics/Bitmap$CompressFormat;->JPEG:Landroid/graphics/Bitmap$CompressFormat;
 
     const/16 v2, 0x64
 
@@ -1672,7 +1672,7 @@
 
     .line 128
     .local v5, "inputFilePath":Ljava/lang/StringBuffer;
-    const-string v0, ".png"
+    const-string v0, ".jpg"
 
     invoke-virtual {v5, v0}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -1977,7 +1977,7 @@
     :cond_14b
     const-string v0, "mime_type"
 
-    const-string v5, "image/png"
+    const-string v5, "image/jpeg"
 
     invoke-virtual {v9, v0, v5}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
@@ -2399,7 +2399,7 @@
     .registers 0
 
     .line 96
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static shouldDumpForMove()Z

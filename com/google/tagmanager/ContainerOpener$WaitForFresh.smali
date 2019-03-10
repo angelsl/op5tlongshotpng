@@ -101,7 +101,7 @@
 
     .line 163
     :cond_9
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public containerRefreshSuccess(Lcom/google/tagmanager/Container;Lcom/google/tagmanager/Container$RefreshType;)V
@@ -128,5 +128,5 @@
 
     .line 155
     :cond_f
-    return-void
+    return-void-no-barrier
 .end method

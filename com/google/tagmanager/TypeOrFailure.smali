@@ -39,7 +39,7 @@
     iput-object p1, p0, Lcom/google/tagmanager/TypeOrFailure;->mFailure:Lcom/google/tagmanager/LoadCallback$Failure;
 
     .line 14
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public constructor <init>(Ljava/lang/Object;)V
@@ -59,7 +59,7 @@
     iput-object p1, p0, Lcom/google/tagmanager/TypeOrFailure;->mType:Ljava/lang/Object;
 
     .line 10
-    return-void
+    return-void-no-barrier
 .end method
 
 

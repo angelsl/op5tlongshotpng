@@ -84,5 +84,5 @@
     invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setEnabled(Z)V
 
     .line 937
-    return-void
+    return-void-no-barrier
 .end method

@@ -25,7 +25,7 @@
     invoke-direct {p0, v0}, Landroid/app/IntentService;-><init>(Ljava/lang/String;)V
 
     .line 29
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public constructor <init>(Ljava/lang/String;)V
@@ -63,7 +63,7 @@
     invoke-virtual {v0, p1, p2}, Lcom/google/analytics/tracking/android/CampaignTrackingService;->processIntent(Landroid/content/Context;Landroid/content/Intent;)V
 
     .line 44
-    return-void
+    return-void-no-barrier
 .end method
 
 
@@ -103,5 +103,5 @@
     invoke-direct {p0, v1, p1}, Lcom/google/tagmanager/InstallReferrerService;->forwardToGoogleAnalytics(Landroid/content/Context;Landroid/content/Intent;)V
 
     .line 37
-    return-void
+    return-void-no-barrier
 .end method

@@ -118,7 +118,7 @@
 
     .line 81
     :cond_1d
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public getSelectionRect()Landroid/graphics/Rect;
@@ -150,7 +150,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/ScreenshotSelectorView;->mSelectionRect:Landroid/graphics/Rect;
 
     .line 54
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public stopSelection()V
@@ -165,7 +165,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/ScreenshotSelectorView;->mSelectionRect:Landroid/graphics/Rect;
 
     .line 73
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public updateSelection(II)V
@@ -235,5 +235,5 @@
 
     .line 64
     :cond_37
-    return-void
+    return-void-no-barrier
 .end method

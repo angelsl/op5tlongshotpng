@@ -121,10 +121,10 @@
     iput-object p1, p0, Lcom/google/tagmanager/Hit;->mHitUrl:Ljava/lang/String;
 
     .line 56
-    return-void
+    return-void-no-barrier
 
     .line 53
     :cond_10
     :goto_10
-    return-void
+    return-void-no-barrier
 .end method

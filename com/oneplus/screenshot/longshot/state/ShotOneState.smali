@@ -17,7 +17,7 @@
     invoke-direct {p0, p1, p2}, Lcom/oneplus/screenshot/longshot/state/ShotNextState;-><init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;Lcom/oneplus/screenshot/longshot/util/MovePoint;)V
 
     .line 14
-    return-void
+    return-void-no-barrier
 .end method
 
 

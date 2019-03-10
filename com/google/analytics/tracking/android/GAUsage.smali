@@ -44,7 +44,7 @@
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage;->INSTANCE:Lcom/google/analytics/tracking/android/GAUsage;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private constructor <init>()V
@@ -73,7 +73,7 @@
     iput-boolean v0, p0, Lcom/google/analytics/tracking/android/GAUsage;->mDisableUsage:Z
 
     .line 114
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static getInstance()Lcom/google/analytics/tracking/android/GAUsage;
@@ -319,7 +319,7 @@
     .line 118
     monitor-exit p0
 
-    return-void
+    return-void-no-barrier
 
     .line 116
     .end local p1    # "disableUsage":Z
@@ -370,7 +370,7 @@
     :cond_19
     monitor-exit p0
 
-    return-void
+    return-void-no-barrier
 
     .line 120
     .end local p1    # "field":Lcom/google/analytics/tracking/android/GAUsage$Field;

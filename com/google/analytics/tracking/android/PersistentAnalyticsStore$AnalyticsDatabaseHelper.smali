@@ -282,7 +282,7 @@
 
     .line 720
     :cond_55
-    return-void
+    return-void-no-barrier
 
     .line 714
     :cond_56
@@ -463,7 +463,7 @@
     invoke-static {v0}, Lcom/google/analytics/tracking/android/FutureApis;->setOwnerOnlyReadWrite(Ljava/lang/String;)Z
 
     .line 725
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public onOpen(Landroid/database/sqlite/SQLiteDatabase;)V
@@ -535,7 +535,7 @@
 
     .line 681
     :goto_2c
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public onUpgrade(Landroid/database/sqlite/SQLiteDatabase;II)V
@@ -556,5 +556,5 @@
     iput-boolean p1, p0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore$AnalyticsDatabaseHelper;->mBadDatabase:Z
 
     .line 590
-    return-void
+    return-void-no-barrier
 .end method

@@ -91,5 +91,5 @@
     invoke-virtual {v0, v1}, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->execute([Ljava/lang/Object;)Landroid/os/AsyncTask;
 
     .line 43
-    return-void
+    return-void-no-barrier
 .end method

@@ -119,7 +119,7 @@
     invoke-virtual {p0, v2}, Lcom/oneplus/screenshot/TakeScreenshotService$1;->post(Ljava/lang/Runnable;)Z
 
     .line 84
-    return-void
+    return-void-no-barrier
 
     .line 87
     :cond_44
@@ -183,7 +183,7 @@
     invoke-virtual {p0, v2}, Lcom/oneplus/screenshot/TakeScreenshotService$1;->post(Ljava/lang/Runnable;)Z
 
     .line 100
-    return-void
+    return-void-no-barrier
 
     .line 105
     :cond_77
@@ -318,7 +318,7 @@
 
     .line 120
     :goto_e1
-    return-void
+    return-void-no-barrier
 
     :pswitch_data_e2
     .packed-switch 0x1

@@ -22,7 +22,7 @@
     iput-object p1, p0, Lcom/google/tagmanager/DebugDataLayerEventEvaluationInfoBuilder;->dataLayerEvent:Lcom/google/analytics/containertag/proto/Debug$DataLayerEventEvaluationInfo;
 
     .line 18
-    return-void
+    return-void-no-barrier
 .end method
 
 

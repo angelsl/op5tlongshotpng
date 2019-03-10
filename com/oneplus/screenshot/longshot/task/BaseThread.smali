@@ -33,7 +33,7 @@
 
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/task/BaseThread;->mThread:Ljava/lang/Thread;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 
@@ -84,7 +84,7 @@
 
     .line 31
     :cond_16
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public start()Lcom/oneplus/screenshot/longshot/task/BaseThread;
@@ -136,7 +136,7 @@
     :cond_d
     monitor-exit p0
 
-    return-void
+    return-void-no-barrier
 
     .line 42
     :catchall_f

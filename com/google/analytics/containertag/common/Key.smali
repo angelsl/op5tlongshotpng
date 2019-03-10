@@ -4061,7 +4061,7 @@
 
     sput-object v0, Lcom/google/analytics/containertag/common/Key;->$VALUES:[Lcom/google/analytics/containertag/common/Key;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private constructor <init>(Ljava/lang/String;ILjava/lang/String;)V

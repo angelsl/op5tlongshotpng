@@ -29,7 +29,7 @@
     sput-object v0, Lcom/google/analytics/tracking/android/Log;->sGaInstance:Lcom/google/analytics/tracking/android/GoogleAnalytics;
 
     .line 105
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static e(Ljava/lang/Exception;)V
@@ -50,7 +50,7 @@
 
     .line 45
     :cond_9
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static e(Ljava/lang/String;)V
@@ -71,7 +71,7 @@
 
     .line 33
     :cond_9
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private static getLogger()Lcom/google/analytics/tracking/android/Logger;
@@ -129,7 +129,7 @@
 
     .line 57
     :cond_9
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static isVerbose()Z
@@ -186,7 +186,7 @@
 
     .line 69
     :cond_9
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static w(Ljava/lang/String;)V
@@ -207,5 +207,5 @@
 
     .line 81
     :cond_9
-    return-void
+    return-void-no-barrier
 .end method

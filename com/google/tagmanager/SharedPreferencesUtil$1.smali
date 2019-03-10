@@ -44,5 +44,5 @@
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
     .line 26
-    return-void
+    return-void-no-barrier
 .end method

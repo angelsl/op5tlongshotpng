@@ -88,7 +88,7 @@
 
     sput-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;->$VALUES:[Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V

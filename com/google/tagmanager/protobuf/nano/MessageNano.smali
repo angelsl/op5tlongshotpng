@@ -19,7 +19,7 @@
 
     iput v0, p0, Lcom/google/tagmanager/protobuf/nano/MessageNano;->cachedSize:I
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static final mergeFrom(Lcom/google/tagmanager/protobuf/nano/MessageNano;[B)Lcom/google/tagmanager/protobuf/nano/MessageNano;
@@ -231,7 +231,7 @@
     nop
 
     .line 110
-    return-void
+    return-void-no-barrier
 
     .line 106
     :catch_c

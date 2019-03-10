@@ -20,7 +20,7 @@
 
     sput-object v0, Lcom/google/tagmanager/GtmVersionMacro;->ID:Ljava/lang/String;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public constructor <init>()V
@@ -36,7 +36,7 @@
     invoke-direct {p0, v0, v1}, Lcom/google/tagmanager/FunctionCallImplementation;-><init>(Ljava/lang/String;[Ljava/lang/String;)V
 
     .line 20
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;

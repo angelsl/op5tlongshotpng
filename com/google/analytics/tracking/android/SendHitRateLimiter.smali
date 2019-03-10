@@ -77,7 +77,7 @@
     iput-wide p1, p0, Lcom/google/analytics/tracking/android/SendHitRateLimiter;->mLastTrackTime:J
 
     .line 45
-    return-void
+    return-void-no-barrier
 .end method
 
 .method setTokensAvailable(J)V
@@ -92,7 +92,7 @@
     iput-wide v0, p0, Lcom/google/analytics/tracking/android/SendHitRateLimiter;->mTokens:D
 
     .line 50
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public tokenAvailable()Z

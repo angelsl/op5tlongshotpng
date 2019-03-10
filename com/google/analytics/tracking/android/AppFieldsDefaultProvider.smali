@@ -33,7 +33,7 @@
 
     sput-object v0, Lcom/google/analytics/tracking/android/AppFieldsDefaultProvider;->sInstanceLock:Ljava/lang/Object;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected constructor <init>()V
@@ -157,7 +157,7 @@
     iput-object v2, p0, Lcom/google/analytics/tracking/android/AppFieldsDefaultProvider;->mAppVersion:Ljava/lang/String;
 
     .line 64
-    return-void
+    return-void-no-barrier
 .end method
 
 .method static dropInstance()V
@@ -180,7 +180,7 @@
     monitor-exit v0
 
     .line 39
-    return-void
+    return-void-no-barrier
 
     .line 38
     :catchall_8
@@ -229,7 +229,7 @@
     monitor-exit v0
 
     .line 32
-    return-void
+    return-void-no-barrier
 
     .line 31
     :catchall_10

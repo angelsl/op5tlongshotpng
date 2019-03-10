@@ -175,5 +175,5 @@
     invoke-virtual {v1, v3}, Landroid/widget/ImageView;->setTranslationY(F)V
 
     .line 1586
-    return-void
+    return-void-no-barrier
 .end method

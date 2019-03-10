@@ -44,5 +44,5 @@
     invoke-static {v0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->access$000(Lcom/google/analytics/tracking/android/GAServiceProxy;)V
 
     .line 246
-    return-void
+    return-void-no-barrier
 .end method

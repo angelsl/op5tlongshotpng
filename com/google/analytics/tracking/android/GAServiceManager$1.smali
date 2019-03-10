@@ -52,5 +52,5 @@
     invoke-virtual {v0, p1, v1}, Lcom/google/analytics/tracking/android/GAServiceManager;->updatePowerSaveMode(ZZ)V
 
     .line 61
-    return-void
+    return-void-no-barrier
 .end method

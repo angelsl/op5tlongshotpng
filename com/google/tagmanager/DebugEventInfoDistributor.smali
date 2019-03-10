@@ -34,7 +34,7 @@
     iput-object p3, p0, Lcom/google/tagmanager/DebugEventInfoDistributor;->containerId:Ljava/lang/String;
 
     .line 19
-    return-void
+    return-void-no-barrier
 .end method
 
 

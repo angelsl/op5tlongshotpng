@@ -122,5 +122,5 @@
     invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setScaleY(F)V
 
     .line 1546
-    return-void
+    return-void-no-barrier
 .end method

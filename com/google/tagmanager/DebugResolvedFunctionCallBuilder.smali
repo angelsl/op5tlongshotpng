@@ -22,7 +22,7 @@
     iput-object p1, p0, Lcom/google/tagmanager/DebugResolvedFunctionCallBuilder;->resolvedFunctionCall:Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
     .line 17
-    return-void
+    return-void-no-barrier
 .end method
 
 
@@ -75,5 +75,5 @@
     iput-object v1, v0, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;->result:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 31
-    return-void
+    return-void-no-barrier
 .end method

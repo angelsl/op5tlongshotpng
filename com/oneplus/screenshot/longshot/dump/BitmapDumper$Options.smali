@@ -177,7 +177,7 @@
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper$Options;->$VALUES:[Lcom/oneplus/screenshot/longshot/dump/BitmapDumper$Options;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private constructor <init>(Ljava/lang/String;IZ)V
@@ -201,7 +201,7 @@
     iput-boolean p3, p0, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper$Options;->mValue:Z
 
     .line 166
-    return-void
+    return-void-no-barrier
 .end method
 
 .method static synthetic access$002(Lcom/oneplus/screenshot/longshot/dump/BitmapDumper$Options;Z)Z

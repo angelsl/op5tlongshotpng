@@ -46,7 +46,7 @@
 
     sput-object v0, Lcom/google/tagmanager/AdwordsClickReferrerMacro;->CONVERSION_ID:Ljava/lang/String;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public constructor <init>(Landroid/content/Context;)V

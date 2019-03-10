@@ -73,5 +73,5 @@
     invoke-static {v0, p1, v1, v2}, Lcom/oneplus/screenshot/anim/TargetAnimator;->access$100(Lcom/oneplus/screenshot/anim/TargetAnimator;Landroid/view/View;Ljava/lang/reflect/Method;Ljava/lang/Object;)V
 
     .line 173
-    return-void
+    return-void-no-barrier
 .end method

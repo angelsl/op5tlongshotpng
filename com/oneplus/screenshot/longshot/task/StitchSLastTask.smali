@@ -20,7 +20,7 @@
     invoke-direct/range {p0 .. p5}, Lcom/oneplus/screenshot/longshot/task/StitchLastTask;-><init>(Lcom/oneplus/screenshot/longshot/task/JoinTask$OnJoinListener;Lcom/oneplus/screenshot/longshot/cache/JoinCache;Landroid/content/Context;II)V
 
     .line 24
-    return-void
+    return-void-no-barrier
 .end method
 
 
@@ -262,5 +262,5 @@
     invoke-virtual {p2}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->recycle()V
 
     .line 72
-    return-void
+    return-void-no-barrier
 .end method

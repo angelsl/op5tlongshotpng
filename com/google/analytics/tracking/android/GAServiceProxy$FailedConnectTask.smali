@@ -65,5 +65,5 @@
 
     .line 409
     :cond_f
-    return-void
+    return-void-no-barrier
 .end method

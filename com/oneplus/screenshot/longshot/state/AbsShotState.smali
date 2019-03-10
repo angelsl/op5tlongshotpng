@@ -145,7 +145,7 @@
     iput v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsShotState;->mEffectDelay:I
 
     .line 57
-    return-void
+    return-void-no-barrier
 .end method
 
 
@@ -165,7 +165,7 @@
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/state/AbsShotState;->startCapture()V
 
     .line 68
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public exit(Lcom/oneplus/screenshot/longshot/state/LongshotState;)V
@@ -194,7 +194,7 @@
     invoke-super {p0, p1}, Lcom/oneplus/screenshot/longshot/state/AbsViewState;->exit(Lcom/oneplus/screenshot/longshot/state/LongshotState;)V
 
     .line 77
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected firstToCache()V
@@ -210,7 +210,7 @@
     if-gtz v0, :cond_9
 
     .line 118
-    return-void
+    return-void-no-barrier
 
     .line 120
     :cond_9
@@ -327,7 +327,7 @@
     .end local v3    # "cache":Lcom/oneplus/screenshot/longshot/cache/BitmapCache;
     :cond_4d
     :goto_4d
-    return-void
+    return-void-no-barrier
 
     .line 123
     :catchall_4e
@@ -389,7 +389,7 @@
     .line 86
     .end local v0    # "border":Landroid/graphics/drawable/Drawable;
     :cond_26
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public initViews(Landroid/widget/FrameLayout;)V
@@ -413,7 +413,7 @@
     invoke-interface {v0, v1, v2}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->updateState(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
 
     .line 144
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public onCaptureFinished(Landroid/graphics/Bitmap;)V
@@ -443,7 +443,7 @@
 
     .line 100
     :goto_14
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected onCaptureSuccess(Landroid/graphics/Bitmap;)V
@@ -454,7 +454,7 @@
     invoke-virtual {p0, p1}, Lcom/oneplus/screenshot/longshot/state/AbsShotState;->recycleBitmap(Landroid/graphics/Bitmap;)V
 
     .line 140
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected onEnter()V
@@ -469,7 +469,7 @@
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/state/AbsShotState;->firstToCache()V
 
     .line 114
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected recycleBitmap(Landroid/graphics/Bitmap;)V
@@ -480,7 +480,7 @@
     invoke-virtual {p1}, Landroid/graphics/Bitmap;->recycle()V
 
     .line 148
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected startCapture()V
@@ -501,7 +501,7 @@
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
     .line 109
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public updateMovePoint(Lcom/oneplus/screenshot/longshot/util/MovePoint;)V
@@ -512,5 +512,5 @@
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/AbsShotState;->mMovePoint:Lcom/oneplus/screenshot/longshot/util/MovePoint;
 
     .line 169
-    return-void
+    return-void-no-barrier
 .end method

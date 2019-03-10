@@ -139,7 +139,7 @@
 
     sput-object v0, Lcom/google/tagmanager/Logger$LogLevel;->$VALUES:[Lcom/google/tagmanager/Logger$LogLevel;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V

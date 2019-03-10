@@ -170,7 +170,7 @@
 
     .line 80
     :cond_62
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static getInstance(Landroid/content/Context;)Lcom/google/analytics/tracking/android/FlowMonitor;
@@ -436,7 +436,7 @@
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
     .line 142
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public incrementHitsGenerated(I)V
@@ -463,7 +463,7 @@
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
     .line 195
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public incrementHitsPastProxy(I)V
@@ -490,7 +490,7 @@
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
     .line 170
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public incrementHitsStoredInDb(I)V
@@ -517,7 +517,7 @@
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
     .line 117
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public shouldReport()Z

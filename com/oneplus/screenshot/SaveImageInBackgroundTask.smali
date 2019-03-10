@@ -18,7 +18,7 @@
 # static fields
 .field private static final SCREENSHOTS_DIR_NAME:Ljava/lang/String; = "Screenshots"
 
-.field private static final SCREENSHOT_FILE_NAME_TEMPLATE:Ljava/lang/String; = "Screenshot_%s.png"
+.field private static final SCREENSHOT_FILE_NAME_TEMPLATE:Ljava/lang/String; = "Screenshot_%s.jpg"
 
 .field private static final SCREENSHOT_SHARE_SUBJECT_TEMPLATE:Ljava/lang/String; = "Screenshot (%s)"
 
@@ -135,7 +135,7 @@
 
     .line 191
     .local v12, "imageDate":Ljava/lang/String;
-    const-string v1, "Screenshot_%s.png"
+    const-string v1, "Screenshot_%s.jpg"
 
     const/4 v13, 0x1
 
@@ -830,7 +830,7 @@
 
     .line 359
     .local v11, "out":Ljava/io/OutputStream;
-    sget-object v0, Landroid/graphics/Bitmap$CompressFormat;->PNG:Landroid/graphics/Bitmap$CompressFormat;
+    sget-object v0, Landroid/graphics/Bitmap$CompressFormat;->JPEG:Landroid/graphics/Bitmap$CompressFormat;
 
     const/16 v12, 0x64
 
@@ -881,7 +881,7 @@
 
     .line 370
     .local v14, "inputFilePath":Ljava/lang/StringBuffer;
-    const-string v0, ".png"
+    const-string v0, ".jpg"
 
     invoke-virtual {v14, v0}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -1117,7 +1117,7 @@
     :cond_153
     const-string v7, "mime_type"
 
-    const-string v8, "image/png"
+    const-string v8, "image/jpeg"
 
     invoke-virtual {v0, v7, v8}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
@@ -1229,7 +1229,7 @@
 
     .line 427
     :cond_1b4
-    const-string v15, "image/png"
+    const-string v15, "image/jpeg"
 
     invoke-virtual {v14, v15}, Landroid/content/Intent;->setType(Ljava/lang/String;)Landroid/content/Intent;
 
@@ -1317,7 +1317,7 @@
     .local v3, "shareAction":Landroid/app/PendingIntent;
     new-instance v15, Landroid/app/Notification$Action$Builder;
 
-    const v0, 0x1040602
+    const v0, 0x1040603
 
     .line 451
     invoke-virtual {v6, v0}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
@@ -1379,7 +1379,7 @@
     .local v0, "deleteAction":Landroid/app/PendingIntent;
     new-instance v8, Landroid/app/Notification$Action$Builder;
 
-    const v15, 0x10401c1
+    const v15, 0x10401c2
 
     .line 461
     invoke-virtual {v6, v15}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
@@ -1620,7 +1620,7 @@
 
     invoke-virtual {p0, p1}, Lcom/oneplus/screenshot/SaveImageInBackgroundTask;->onCancelled(Ljava/lang/Void;)V
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected onCancelled(Ljava/lang/Void;)V
@@ -1652,7 +1652,7 @@
     invoke-virtual {v0, v1}, Landroid/app/NotificationManager;->cancel(I)V
 
     .line 565
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected bridge synthetic onPostExecute(Ljava/lang/Object;)V
@@ -1663,7 +1663,7 @@
 
     invoke-virtual {p0, p1}, Lcom/oneplus/screenshot/SaveImageInBackgroundTask;->onPostExecute(Ljava/lang/Void;)V
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected onPostExecute(Ljava/lang/Void;)V
@@ -1741,7 +1741,7 @@
 
     iget-object v3, v3, Lcom/oneplus/screenshot/SaveImageInBackgroundData;->imageUri:Landroid/net/Uri;
 
-    const-string v4, "image/png"
+    const-string v4, "image/jpeg"
 
     invoke-virtual {v2, v3, v4}, Landroid/content/Intent;->setDataAndType(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/Intent;
 
@@ -1915,5 +1915,5 @@
     invoke-virtual {v0}, Lcom/oneplus/screenshot/SaveImageInBackgroundData;->clearContext()V
 
     .line 552
-    return-void
+    return-void-no-barrier
 .end method

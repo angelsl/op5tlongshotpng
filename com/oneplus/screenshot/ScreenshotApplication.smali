@@ -49,7 +49,7 @@
 
     sput-object v0, Lcom/oneplus/screenshot/ScreenshotApplication;->TAG:Ljava/lang/String;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public constructor <init>()V
@@ -65,7 +65,7 @@
 
     iput-object v0, p0, Lcom/oneplus/screenshot/ScreenshotApplication;->mCache:Ljava/util/List;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 
@@ -86,7 +86,7 @@
     invoke-interface {v0}, Ljava/util/List;->clear()V
 
     .line 52
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public getCache()Ljava/util/List;
@@ -127,7 +127,7 @@
     invoke-super {p0}, Landroid/app/Application;->onCreate()V
 
     .line 26
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public onTerminate()V
@@ -147,7 +147,7 @@
     invoke-super {p0}, Landroid/app/Application;->onTerminate()V
 
     .line 34
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public setCache(Ljava/util/List;)V
@@ -194,5 +194,5 @@
     invoke-interface {v0, p1}, Ljava/util/List;->addAll(Ljava/util/Collection;)Z
 
     .line 46
-    return-void
+    return-void-no-barrier
 .end method

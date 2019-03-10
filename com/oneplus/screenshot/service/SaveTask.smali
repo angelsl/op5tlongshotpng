@@ -90,7 +90,7 @@
 
     sput-object v0, Lcom/oneplus/screenshot/service/SaveTask;->TAG:Ljava/lang/String;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public constructor <init>(Lcom/oneplus/screenshot/service/SaveTask$OnSaveListener;Landroid/content/Context;Ljava/util/List;I)V
@@ -178,7 +178,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/service/SaveTask;->mNotification:Lcom/oneplus/screenshot/service/GlobalNotification;
 
     .line 58
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private notify(I)V
@@ -197,7 +197,7 @@
     invoke-virtual {v0, v1, p1, v2, v3}, Lcom/oneplus/screenshot/service/GlobalNotification;->notify(IILandroid/graphics/Bitmap;Lcom/oneplus/screenshot/util/ImageInfo;)V
 
     .line 112
-    return-void
+    return-void-no-barrier
 .end method
 
 
@@ -330,7 +330,7 @@
 
     .line 106
     :cond_9
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected onPostExecute(Ljava/lang/Boolean;)V
@@ -426,7 +426,7 @@
 
     .line 99
     :cond_4c
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected bridge synthetic onPostExecute(Ljava/lang/Object;)V
@@ -437,5 +437,5 @@
 
     invoke-virtual {p0, p1}, Lcom/oneplus/screenshot/service/SaveTask;->onPostExecute(Ljava/lang/Boolean;)V
 
-    return-void
+    return-void-no-barrier
 .end method

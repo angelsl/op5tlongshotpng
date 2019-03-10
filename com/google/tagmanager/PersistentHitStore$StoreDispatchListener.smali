@@ -53,7 +53,7 @@
     invoke-static {v0, v1, v2}, Lcom/google/tagmanager/PersistentHitStore;->access$000(Lcom/google/tagmanager/PersistentHitStore;J)V
 
     .line 478
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public onHitPermanentDispatchFailure(Lcom/google/tagmanager/Hit;)V
@@ -92,7 +92,7 @@
     invoke-static {v0}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
 
     .line 484
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public onHitTransientDispatchFailure(Lcom/google/tagmanager/Hit;)V
@@ -190,5 +190,5 @@
     .line 497
     :cond_51
     :goto_51
-    return-void
+    return-void-no-barrier
 .end method

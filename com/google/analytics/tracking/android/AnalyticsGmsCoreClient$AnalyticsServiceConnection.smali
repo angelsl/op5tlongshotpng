@@ -103,7 +103,7 @@
     .catch Landroid/os/RemoteException; {:try_start_16 .. :try_end_36} :catch_38
 
     .line 182
-    return-void
+    return-void-no-barrier
 
     .line 186
     :cond_37
@@ -143,7 +143,7 @@
     invoke-interface {v2, v3, v0}, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient$OnConnectionFailedListener;->onConnectionFailed(ILandroid/content/Intent;)V
 
     .line 192
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public onServiceDisconnected(Landroid/content/ComponentName;)V
@@ -186,5 +186,5 @@
     invoke-interface {v0}, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient$OnConnectedListener;->onDisconnected()V
 
     .line 199
-    return-void
+    return-void-no-barrier
 .end method

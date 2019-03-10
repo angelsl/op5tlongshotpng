@@ -41,7 +41,7 @@
     if-nez p1, :cond_3
 
     .line 1808
-    return-void
+    return-void-no-barrier
 
     .line 1811
     :cond_3
@@ -60,5 +60,5 @@
 
     .line 1814
     :cond_f
-    return-void
+    return-void-no-barrier
 .end method

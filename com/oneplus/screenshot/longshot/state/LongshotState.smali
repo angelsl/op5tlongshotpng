@@ -462,7 +462,7 @@
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->$VALUES:[Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V
@@ -481,7 +481,7 @@
 
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->mState:Lcom/oneplus/screenshot/longshot/state/BaseState;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Lcom/oneplus/screenshot/longshot/state/LongshotState;
@@ -528,7 +528,7 @@
     invoke-virtual {v0, p1, p2}, Lcom/oneplus/screenshot/longshot/state/BaseState;->enter(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
 
     .line 50
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public exit(Lcom/oneplus/screenshot/longshot/state/LongshotState;)V
@@ -541,7 +541,7 @@
     invoke-virtual {v0, p1}, Lcom/oneplus/screenshot/longshot/state/BaseState;->exit(Lcom/oneplus/screenshot/longshot/state/LongshotState;)V
 
     .line 54
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public get()Lcom/oneplus/screenshot/longshot/state/BaseState;
@@ -561,7 +561,7 @@
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->mState:Lcom/oneplus/screenshot/longshot/state/BaseState;
 
     .line 58
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public toString()Ljava/lang/String;
@@ -587,5 +587,5 @@
     invoke-virtual {v0, p1}, Lcom/oneplus/screenshot/longshot/state/BaseState;->updateMovePoint(Lcom/oneplus/screenshot/longshot/util/MovePoint;)V
 
     .line 66
-    return-void
+    return-void-no-barrier
 .end method

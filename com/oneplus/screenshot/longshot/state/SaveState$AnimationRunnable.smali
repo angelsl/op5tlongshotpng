@@ -65,5 +65,5 @@
     invoke-virtual {v0}, Landroid/animation/Animator;->start()V
 
     .line 137
-    return-void
+    return-void-no-barrier
 .end method

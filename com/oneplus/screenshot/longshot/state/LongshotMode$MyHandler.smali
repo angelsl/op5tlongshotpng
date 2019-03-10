@@ -63,5 +63,5 @@
     .line 119
     .end local v1    # "resion":Ljava/lang/String;
     :goto_10
-    return-void
+    return-void-no-barrier
 .end method

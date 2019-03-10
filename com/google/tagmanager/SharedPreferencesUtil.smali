@@ -46,7 +46,7 @@
     invoke-static {v1}, Lcom/google/tagmanager/SharedPreferencesUtil;->saveEditorAsync(Landroid/content/SharedPreferences$Editor;)V
 
     .line 42
-    return-void
+    return-void-no-barrier
 .end method
 
 .method static saveEditorAsync(Landroid/content/SharedPreferences$Editor;)V
@@ -79,5 +79,5 @@
 
     .line 29
     :goto_17
-    return-void
+    return-void-no-barrier
 .end method

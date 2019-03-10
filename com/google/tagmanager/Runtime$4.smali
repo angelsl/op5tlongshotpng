@@ -101,5 +101,5 @@
     invoke-interface {v0, v1, v2}, Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;->translateAndAddAll(Ljava/util/List;Ljava/util/List;)V
 
     .line 458
-    return-void
+    return-void-no-barrier
 .end method

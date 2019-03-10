@@ -203,5 +203,5 @@
     .end local v10    # "isplt":I
     .restart local v12    # "j":I
     :cond_60
-    return-void
+    return-void-no-barrier
 .end method

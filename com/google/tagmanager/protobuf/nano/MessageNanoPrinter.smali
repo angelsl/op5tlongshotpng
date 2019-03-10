@@ -323,7 +323,7 @@
     if-nez v0, :cond_13
 
     .line 80
-    return-void
+    return-void-no-barrier
 
     .line 82
     :cond_13
@@ -555,7 +555,7 @@
     if-nez v0, :cond_b2
 
     .line 123
-    return-void
+    return-void-no-barrier
 
     .line 125
     :cond_b2
@@ -616,7 +616,7 @@
 
     .line 135
     :goto_e2
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private static sanitizeString(Ljava/lang/String;)Ljava/lang/String;

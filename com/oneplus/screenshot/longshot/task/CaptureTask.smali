@@ -88,7 +88,7 @@
     iput-object p3, p0, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->mDisplayMetrics:Landroid/util/DisplayMetrics;
 
     .line 44
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private getDegreesForRotation(I)I
@@ -318,7 +318,7 @@
 
     .line 91
     :cond_10
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected bridge synthetic onPostExecute(Ljava/lang/Object;)V
@@ -329,5 +329,5 @@
 
     invoke-virtual {p0, p1}, Lcom/oneplus/screenshot/longshot/task/CaptureTask;->onPostExecute(Landroid/graphics/Bitmap;)V
 
-    return-void
+    return-void-no-barrier
 .end method

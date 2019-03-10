@@ -13,7 +13,7 @@
     invoke-direct {p0, p1, p2}, Lcom/oneplus/screenshot/util/FileInfo;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 10
-    return-void
+    return-void-no-barrier
 .end method
 
 
@@ -22,7 +22,7 @@
     .registers 2
 
     .line 17
-    const-string v0, ".png"
+    const-string v0, ".jpg"
 
     return-object v0
 .end method

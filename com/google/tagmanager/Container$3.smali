@@ -119,7 +119,7 @@
     invoke-static {v0, v1, v2}, Lcom/google/tagmanager/Container;->access$600(Lcom/google/tagmanager/Container;Lcom/google/tagmanager/Container$RefreshType;Lcom/google/tagmanager/Container$RefreshFailure;)V
 
     .line 595
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public onSuccess(Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;)V
@@ -177,7 +177,7 @@
     .line 563
     monitor-exit v0
 
-    return-void
+    return-void-no-barrier
 
     .line 566
     :cond_26
@@ -338,7 +338,7 @@
     invoke-static {v0, v1}, Lcom/google/tagmanager/Container;->access$500(Lcom/google/tagmanager/Container;Lcom/google/tagmanager/Container$RefreshType;)V
 
     .line 589
-    return-void
+    return-void-no-barrier
 
     .line 587
     :catchall_af
@@ -363,7 +363,7 @@
 
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/Container$3;->onSuccess(Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;)V
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public startLoad()V
@@ -377,5 +377,5 @@
     invoke-static {v0, v1}, Lcom/google/tagmanager/Container;->access$000(Lcom/google/tagmanager/Container;Lcom/google/tagmanager/Container$RefreshType;)V
 
     .line 544
-    return-void
+    return-void-no-barrier
 .end method

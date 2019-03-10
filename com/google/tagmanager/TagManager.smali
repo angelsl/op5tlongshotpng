@@ -123,7 +123,7 @@
     .line 67
     invoke-direct {p0, p1}, Lcom/google/tagmanager/TagManager;->refreshTagsInAllContainers(Ljava/lang/String;)V
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method static clearInstance()V
@@ -146,7 +146,7 @@
     monitor-exit v0
 
     .line 192
-    return-void
+    return-void-no-barrier
 
     .line 191
     :catchall_8
@@ -277,7 +277,7 @@
     .line 317
     .end local v0    # "i$":Ljava/util/Iterator;
     :cond_1a
-    return-void
+    return-void-no-barrier
 .end method
 
 
@@ -438,7 +438,7 @@
     iput-object p1, p0, Lcom/google/tagmanager/TagManager;->mCtfeServerAddr:Ljava/lang/String;
 
     .line 307
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public setLogger(Lcom/google/tagmanager/Logger;)V
@@ -449,7 +449,7 @@
     invoke-static {p1}, Lcom/google/tagmanager/Log;->setLogger(Lcom/google/tagmanager/Logger;)V
 
     .line 245
-    return-void
+    return-void-no-barrier
 .end method
 
 .method declared-synchronized setPreviewData(Landroid/net/Uri;)Z
@@ -649,5 +649,5 @@
     iput-object p1, p0, Lcom/google/tagmanager/TagManager;->mRefreshMode:Lcom/google/tagmanager/TagManager$RefreshMode;
 
     .line 255
-    return-void
+    return-void-no-barrier
 .end method

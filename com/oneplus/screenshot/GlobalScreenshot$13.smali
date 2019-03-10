@@ -74,5 +74,5 @@
     invoke-virtual {v0, v1, v2}, Landroid/widget/ImageView;->setLayerType(ILandroid/graphics/Paint;)V
 
     .line 1530
-    return-void
+    return-void-no-barrier
 .end method

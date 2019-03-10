@@ -26,7 +26,7 @@
     iput v0, p0, Lcom/oneplus/screenshot/longshot/state/ShotSLastState;->mOffset:I
 
     .line 16
-    return-void
+    return-void-no-barrier
 .end method
 
 

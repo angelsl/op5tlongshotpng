@@ -92,7 +92,7 @@
 
     sput-object v0, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->CREATE_MAPS_TABLE:Ljava/lang/String;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public constructor <init>(Landroid/content/Context;)V
@@ -169,7 +169,7 @@
     .line 32
     invoke-direct {p0, p1, p2, p3}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->saveSingleThreaded(Ljava/util/List;J)V
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method static synthetic access$100(Lcom/google/tagmanager/DataLayerPersistentStoreImpl;)Ljava/util/List;
@@ -192,7 +192,7 @@
     .line 32
     invoke-direct {p0, p1}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->clearKeysWithPrefixSingleThreaded(Ljava/lang/String;)V
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method static synthetic access$300(Lcom/google/tagmanager/DataLayerPersistentStoreImpl;)Landroid/content/Context;
@@ -230,7 +230,7 @@
     if-nez v0, :cond_9
 
     .line 235
-    return-void
+    return-void-no-barrier
 
     .line 239
     :cond_9
@@ -347,7 +347,7 @@
     nop
 
     .line 247
-    return-void
+    return-void-no-barrier
 
     .line 245
     :goto_6e
@@ -376,7 +376,7 @@
 
     .line 378
     :goto_7
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private deleteEntries([Ljava/lang/String;)V
@@ -405,7 +405,7 @@
     if-nez v0, :cond_f
 
     .line 274
-    return-void
+    return-void-no-barrier
 
     .line 276
     :cond_f
@@ -484,14 +484,14 @@
     .line 283
     .end local v2    # "e":Landroid/database/sqlite/SQLiteException;
     :goto_4c
-    return-void
+    return-void-no-barrier
 
     .line 270
     .end local v0    # "db":Landroid/database/sqlite/SQLiteDatabase;
     .end local v1    # "whereClause":Ljava/lang/String;
     :cond_4d
     :goto_4d
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private deleteEntriesOlderThan(J)V
@@ -510,7 +510,7 @@
     if-nez v0, :cond_9
 
     .line 252
-    return-void
+    return-void-no-barrier
 
     .line 255
     :cond_9
@@ -576,7 +576,7 @@
     .line 261
     .end local v1    # "e":Landroid/database/sqlite/SQLiteException;
     :goto_3b
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private getNumStoredEntries()I
@@ -959,7 +959,7 @@
     .line 230
     .end local v1    # "entrysToDelete":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     :cond_37
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private peekEntryIds(I)Ljava/util/List;
@@ -1209,7 +1209,7 @@
     .line 187
     monitor-exit p0
 
-    return-void
+    return-void-no-barrier
 
     .line 185
     :catchall_1c
@@ -1723,7 +1723,7 @@
     if-nez v0, :cond_9
 
     .line 211
-    return-void
+    return-void-no-barrier
 
     .line 213
     :cond_9
@@ -1790,7 +1790,7 @@
     .line 220
     .end local v1    # "i$":Ljava/util/Iterator;
     :cond_3c
-    return-void
+    return-void-no-barrier
 .end method
 
 
@@ -1809,7 +1809,7 @@
     invoke-interface {v0, v1}, Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V
 
     .line 101
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public loadSaved(Lcom/google/tagmanager/DataLayer$PersistentStore$Callback;)V
@@ -1826,7 +1826,7 @@
     invoke-interface {v0, v1}, Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V
 
     .line 92
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public saveKeyValues(Ljava/util/List;J)V
@@ -1858,5 +1858,5 @@
     invoke-interface {v1, v2}, Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V
 
     .line 83
-    return-void
+    return-void-no-barrier
 .end method

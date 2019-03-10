@@ -16,7 +16,7 @@
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/longshot/state/MainState;-><init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;)V
 
     .line 18
-    return-void
+    return-void-no-barrier
 .end method
 
 
@@ -35,7 +35,7 @@
     invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/util/Features;->getValue()Z
 
     .line 28
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected initViews(Landroid/widget/FrameLayout;)V

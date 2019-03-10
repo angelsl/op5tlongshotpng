@@ -72,5 +72,5 @@
     invoke-interface {v0}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->stop()V
 
     .line 107
-    return-void
+    return-void-no-barrier
 .end method

@@ -71,7 +71,7 @@
     iput p2, p0, Lcom/oneplus/screenshot/longshot/match/MatchData;->mIndex:I
 
     .line 31
-    return-void
+    return-void-no-barrier
 .end method
 
 
@@ -195,7 +195,7 @@
 
     .line 54
     :cond_37
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public init(III[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;ZLcom/oneplus/screenshot/longshot/dump/BitmapDumper;)V
@@ -232,5 +232,5 @@
     invoke-virtual/range {v0 .. v9}, Lcom/oneplus/screenshot/longshot/match/MatchData;->init(III[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;ZIILcom/oneplus/screenshot/longshot/dump/BitmapDumper;)V
 
     .line 39
-    return-void
+    return-void-no-barrier
 .end method

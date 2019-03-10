@@ -981,7 +981,7 @@
     if-nez v0, :cond_7
 
     .line 741
-    return-void
+    return-void-no-barrier
 
     .line 738
     :cond_7
@@ -1026,7 +1026,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeBoolNoTag(Z)V
 
     .line 140
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeBoolNoTag(Z)V
@@ -1042,7 +1042,7 @@
     invoke-virtual {p0, p1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawByte(I)V
 
     .line 295
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeByteArray(I[B)V
@@ -1064,7 +1064,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeByteArrayNoTag([B)V
 
     .line 176
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeByteArrayNoTag([B)V
@@ -1107,7 +1107,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeBytesNoTag([B)V
 
     .line 169
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeBytesNoTag([B)V
@@ -1150,7 +1150,7 @@
     invoke-virtual {p0, p2, p3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeDoubleNoTag(D)V
 
     .line 91
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeDoubleNoTag(D)V
@@ -1170,7 +1170,7 @@
     invoke-virtual {p0, v0, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawLittleEndian64(J)V
 
     .line 255
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeEnum(II)V
@@ -1192,7 +1192,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeEnumNoTag(I)V
 
     .line 194
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeEnumNoTag(I)V
@@ -1230,7 +1230,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeFixed32NoTag(I)V
 
     .line 133
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeFixed32NoTag(I)V
@@ -1268,7 +1268,7 @@
     invoke-virtual {p0, p2, p3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeFixed64NoTag(J)V
 
     .line 126
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeFixed64NoTag(J)V
@@ -1306,7 +1306,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeFloatNoTag(F)V
 
     .line 98
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeFloatNoTag(F)V
@@ -1326,7 +1326,7 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawLittleEndian32(I)V
 
     .line 260
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeGroup(ILcom/google/tagmanager/protobuf/nano/MessageNano;)V
@@ -1353,7 +1353,7 @@
     invoke-virtual {p0, p1, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeTag(II)V
 
     .line 155
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeGroupNoTag(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
@@ -1369,7 +1369,7 @@
     invoke-virtual {p1, p0}, Lcom/google/tagmanager/protobuf/nano/MessageNano;->writeTo(Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;)V
 
     .line 310
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeInt32(II)V
@@ -1391,7 +1391,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeInt32NoTag(I)V
 
     .line 119
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeInt32NoTag(I)V
@@ -1419,7 +1419,7 @@
 
     .line 280
     :goto_a
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeInt64(IJ)V
@@ -1441,7 +1441,7 @@
     invoke-virtual {p0, p2, p3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeInt64NoTag(J)V
 
     .line 112
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeInt64NoTag(J)V
@@ -1479,7 +1479,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeMessageNoTag(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
 
     .line 162
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeMessageNoTag(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
@@ -1502,7 +1502,7 @@
     invoke-virtual {p1, p0}, Lcom/google/tagmanager/protobuf/nano/MessageNano;->writeTo(Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;)V
 
     .line 316
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeRawByte(B)V
@@ -1533,7 +1533,7 @@
     aput-byte p1, v0, v1
 
     .line 765
-    return-void
+    return-void-no-barrier
 
     .line 761
     :cond_11
@@ -1563,7 +1563,7 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawByte(B)V
 
     .line 770
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeRawBytes([B)V
@@ -1583,7 +1583,7 @@
     invoke-virtual {p0, p1, v1, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawBytes([BII)V
 
     .line 775
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeRawBytes([BII)V
@@ -1621,7 +1621,7 @@
     iput v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->position:I
 
     .line 788
-    return-void
+    return-void-no-barrier
 
     .line 786
     :cond_14
@@ -1672,7 +1672,7 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawByte(I)V
 
     .line 863
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeRawLittleEndian64(J)V
@@ -1769,7 +1769,7 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawByte(I)V
 
     .line 877
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeRawVarint32(I)V
@@ -1791,7 +1791,7 @@
     invoke-virtual {p0, p1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawByte(I)V
 
     .line 809
-    return-void
+    return-void-no-barrier
 
     .line 811
     :cond_8
@@ -1834,7 +1834,7 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawByte(I)V
 
     .line 835
-    return-void
+    return-void-no-barrier
 
     .line 837
     :cond_e
@@ -1873,7 +1873,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeSFixed32NoTag(I)V
 
     .line 201
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeSFixed32NoTag(I)V
@@ -1911,7 +1911,7 @@
     invoke-virtual {p0, p2, p3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeSFixed64NoTag(J)V
 
     .line 208
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeSFixed64NoTag(J)V
@@ -1949,7 +1949,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeSInt32NoTag(I)V
 
     .line 215
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeSInt32NoTag(I)V
@@ -1969,7 +1969,7 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawVarint32(I)V
 
     .line 356
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeSInt64(IJ)V
@@ -1991,7 +1991,7 @@
     invoke-virtual {p0, p2, p3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeSInt64NoTag(J)V
 
     .line 222
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeSInt64NoTag(J)V
@@ -2011,7 +2011,7 @@
     invoke-virtual {p0, v0, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawVarint64(J)V
 
     .line 361
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeString(ILjava/lang/String;)V
@@ -2033,7 +2033,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeStringNoTag(Ljava/lang/String;)V
 
     .line 147
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeStringNoTag(Ljava/lang/String;)V
@@ -2062,7 +2062,7 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawBytes([B)V
 
     .line 305
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeTag(II)V
@@ -2083,7 +2083,7 @@
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawVarint32(I)V
 
     .line 794
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeUInt32(II)V
@@ -2105,7 +2105,7 @@
     invoke-virtual {p0, p2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeUInt32NoTag(I)V
 
     .line 184
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeUInt32NoTag(I)V
@@ -2143,7 +2143,7 @@
     invoke-virtual {p0, p2, p3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeUInt64NoTag(J)V
 
     .line 105
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public writeUInt64NoTag(J)V

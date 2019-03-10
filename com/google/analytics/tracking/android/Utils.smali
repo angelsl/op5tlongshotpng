@@ -20,7 +20,7 @@
 
     sput-object v0, Lcom/google/analytics/tracking/android/Utils;->HEXBYTES:[C
 
-    return-void
+    return-void-no-barrier
 
     :array_a
     .array-data 2
@@ -634,7 +634,7 @@
 
     .line 210
     :cond_9
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static safeParseBoolean(Ljava/lang/String;Z)Z

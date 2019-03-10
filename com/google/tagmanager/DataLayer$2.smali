@@ -99,5 +99,5 @@
     invoke-virtual {v0}, Ljava/util/concurrent/CountDownLatch;->countDown()V
 
     .line 288
-    return-void
+    return-void-no-barrier
 .end method

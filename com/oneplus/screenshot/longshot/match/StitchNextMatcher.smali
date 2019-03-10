@@ -123,7 +123,7 @@
     iput v0, p0, Lcom/oneplus/screenshot/longshot/match/StitchNextMatcher;->mOffsetCurr:I
 
     .line 52
-    return-void
+    return-void-no-barrier
 
     :pswitch_data_52
     .packed-switch 0x2
@@ -312,7 +312,7 @@
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/match/StitchNextMatcher;->mSameDumper:Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;
 
     .line 67
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected getStep()I

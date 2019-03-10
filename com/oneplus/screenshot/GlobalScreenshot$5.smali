@@ -45,5 +45,5 @@
     invoke-static {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$900(Lcom/oneplus/screenshot/GlobalScreenshot;)V
 
     .line 1237
-    return-void
+    return-void-no-barrier
 .end method

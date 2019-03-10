@@ -34,7 +34,7 @@
     invoke-direct {p0, v0, v1, p2}, Lcom/oneplus/screenshot/anim/BaseInterpolator;-><init>(Landroid/content/res/Resources;Landroid/content/res/Resources$Theme;Landroid/util/AttributeSet;)V
 
     .line 27
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private constructor <init>(Landroid/content/res/Resources;Landroid/content/res/Resources$Theme;Landroid/util/AttributeSet;)V
@@ -100,5 +100,5 @@
     invoke-virtual {v2}, Landroid/content/res/TypedArray;->recycle()V
 
     .line 43
-    return-void
+    return-void-no-barrier
 .end method

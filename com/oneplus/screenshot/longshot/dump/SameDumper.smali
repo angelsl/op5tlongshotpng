@@ -22,7 +22,7 @@
     invoke-virtual {p0, p4}, Lcom/oneplus/screenshot/longshot/dump/SameDumper;->setTag(Ljava/lang/String;)V
 
     .line 17
-    return-void
+    return-void-no-barrier
 .end method
 
 

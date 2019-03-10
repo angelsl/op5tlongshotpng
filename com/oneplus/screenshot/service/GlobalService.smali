@@ -20,7 +20,7 @@
     .line 8
     invoke-direct {p0}, Landroid/app/Service;-><init>()V
 
-    return-void
+    return-void-no-barrier
 .end method
 
 
@@ -56,7 +56,7 @@
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 25
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public onDestroy()V
@@ -73,7 +73,7 @@
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 31
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public onStartCommand(Landroid/content/Intent;II)I

@@ -70,5 +70,5 @@
 
     .line 66
     :cond_1b
-    return-void
+    return-void-no-barrier
 .end method

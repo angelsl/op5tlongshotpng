@@ -46,7 +46,7 @@
 
     if-nez v0, :cond_5
 
-    return-void
+    return-void-no-barrier
 
     .line 1271
     :cond_5
@@ -329,5 +329,5 @@
     invoke-virtual {v1, v0}, Landroid/widget/ImageView;->setEnabled(Z)V
 
     .line 1327
-    return-void
+    return-void-no-barrier
 .end method

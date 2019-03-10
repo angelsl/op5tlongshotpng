@@ -23,5 +23,5 @@
     invoke-direct {p0, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     .line 605
-    return-void
+    return-void-no-barrier
 .end method

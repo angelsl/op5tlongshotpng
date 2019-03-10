@@ -66,7 +66,7 @@
     invoke-interface {v0, v1}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->setLast(Z)V
 
     .line 29
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected updateIndex()V
@@ -80,5 +80,5 @@
     invoke-interface {v0, v1}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->updateIndex(I)V
 
     .line 39
-    return-void
+    return-void-no-barrier
 .end method

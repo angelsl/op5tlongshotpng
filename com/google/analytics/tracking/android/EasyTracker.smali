@@ -206,7 +206,7 @@
     :cond_d
     monitor-exit p0
 
-    return-void
+    return-void-no-barrier
 
     .line 385
     :catchall_f
@@ -854,7 +854,7 @@
     invoke-virtual {v8, v7}, Lcom/google/analytics/tracking/android/GoogleAnalytics;->setDryRun(Z)V
 
     .line 284
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private setContext(Landroid/content/Context;Lcom/google/analytics/tracking/android/ParameterLoader;Lcom/google/analytics/tracking/android/ServiceManager;)V
@@ -889,7 +889,7 @@
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/EasyTracker;->loadParameters()V
 
     .line 315
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static setResourcePackageName(Ljava/lang/String;)V
@@ -900,7 +900,7 @@
     sput-object p0, Lcom/google/analytics/tracking/android/EasyTracker;->sResourcePackageName:Ljava/lang/String;
 
     .line 446
-    return-void
+    return-void-no-barrier
 .end method
 
 
@@ -1001,7 +1001,7 @@
     .line 346
     .end local v0    # "params":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     :cond_4f
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public activityStop(Landroid/app/Activity;)V
@@ -1081,7 +1081,7 @@
 
     .line 372
     :cond_41
-    return-void
+    return-void-no-barrier
 .end method
 
 .method checkForNewSession()Z
@@ -1144,7 +1144,7 @@
     invoke-virtual {v0}, Lcom/google/analytics/tracking/android/ServiceManager;->dispatchLocalHits()V
 
     .line 383
-    return-void
+    return-void-no-barrier
 .end method
 
 .method getActivitiesActive()I
@@ -1174,7 +1174,7 @@
 
     .line 300
     :cond_7
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public send(Ljava/util/Map;)V
@@ -1212,7 +1212,7 @@
     invoke-super {p0, p1}, Lcom/google/analytics/tracking/android/Tracker;->send(Ljava/util/Map;)V
 
     .line 432
-    return-void
+    return-void-no-barrier
 .end method
 
 .method setClock(Lcom/google/analytics/tracking/android/Clock;)V
@@ -1225,5 +1225,5 @@
     iput-object p1, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mClock:Lcom/google/analytics/tracking/android/Clock;
 
     .line 418
-    return-void
+    return-void-no-barrier
 .end method

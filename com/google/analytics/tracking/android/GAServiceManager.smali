@@ -50,7 +50,7 @@
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAServiceManager;->MSG_OBJECT:Ljava/lang/Object;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private constructor <init>()V
@@ -88,7 +88,7 @@
     iput-boolean v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->storeIsEmpty:Z
 
     .line 83
-    return-void
+    return-void-no-barrier
 .end method
 
 .method constructor <init>(Landroid/content/Context;Lcom/google/analytics/tracking/android/AnalyticsThread;Lcom/google/analytics/tracking/android/AnalyticsStore;Z)V
@@ -144,7 +144,7 @@
     invoke-virtual {p0, p1, p2}, Lcom/google/analytics/tracking/android/GAServiceManager;->initialize(Landroid/content/Context;Lcom/google/analytics/tracking/android/AnalyticsThread;)V
 
     .line 97
-    return-void
+    return-void-no-barrier
 .end method
 
 .method static synthetic access$000(Lcom/google/analytics/tracking/android/GAServiceManager;)Z
@@ -207,7 +207,7 @@
     sput-object v0, Lcom/google/analytics/tracking/android/GAServiceManager;->instance:Lcom/google/analytics/tracking/android/GAServiceManager;
 
     .line 88
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static getInstance()Lcom/google/analytics/tracking/android/GAServiceManager;
@@ -280,7 +280,7 @@
 
     .line 127
     :cond_29
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private initializeNetworkReceiver()V
@@ -301,7 +301,7 @@
     invoke-virtual {v0, v1}, Lcom/google/analytics/tracking/android/GANetworkReceiver;->register(Landroid/content/Context;)V
 
     .line 102
-    return-void
+    return-void-no-barrier
 .end method
 
 
@@ -334,7 +334,7 @@
     .line 210
     monitor-exit p0
 
-    return-void
+    return-void-no-barrier
 
     .line 213
     :cond_f
@@ -357,7 +357,7 @@
     .line 215
     monitor-exit p0
 
-    return-void
+    return-void-no-barrier
 
     .line 206
     :catchall_1f
@@ -501,7 +501,7 @@
     .line 140
     monitor-exit p0
 
-    return-void
+    return-void-no-barrier
 
     .line 142
     :cond_7
@@ -551,7 +551,7 @@
     :cond_26
     monitor-exit p0
 
-    return-void
+    return-void-no-barrier
 
     .line 138
     .end local p1    # "ctx":Landroid/content/Context;
@@ -612,7 +612,7 @@
     :cond_22
     monitor-exit p0
 
-    return-void
+    return-void-no-barrier
 
     .line 276
     :catchall_24
@@ -659,7 +659,7 @@
     :goto_11
     monitor-exit p0
 
-    return-void
+    return-void-no-barrier
 
     .line 194
     .end local p1    # "hostOverride":Ljava/lang/String;
@@ -693,7 +693,7 @@
     iput-boolean v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->pendingForceLocalDispatch:Z
 
     .line 246
-    return-void
+    return-void-no-barrier
 
     .line 248
     :cond_d
@@ -711,7 +711,7 @@
     invoke-interface {v0}, Lcom/google/analytics/tracking/android/AnalyticsThread;->setForceLocalDispatch()V
 
     .line 250
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public declared-synchronized setLocalDispatchPeriod(I)V
@@ -741,7 +741,7 @@
     .line 224
     monitor-exit p0
 
-    return-void
+    return-void-no-barrier
 
     .line 227
     :cond_e
@@ -814,7 +814,7 @@
     :cond_47
     monitor-exit p0
 
-    return-void
+    return-void-no-barrier
 
     .line 219
     .end local p1    # "dispatchPeriodInSeconds":I
@@ -844,7 +844,7 @@
     .line 273
     monitor-exit p0
 
-    return-void
+    return-void-no-barrier
 
     .line 271
     .end local p1    # "connected":Z
@@ -881,7 +881,7 @@
     .line 255
     monitor-exit p0
 
-    return-void
+    return-void-no-barrier
 
     .line 257
     :cond_b
@@ -978,7 +978,7 @@
     .line 268
     monitor-exit p0
 
-    return-void
+    return-void-no-barrier
 
     .line 253
     .end local p1    # "storeIsEmpty":Z

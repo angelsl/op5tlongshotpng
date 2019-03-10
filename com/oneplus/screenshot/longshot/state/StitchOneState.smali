@@ -16,7 +16,7 @@
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/longshot/state/StitchOverState;-><init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;)V
 
     .line 15
-    return-void
+    return-void-no-barrier
 .end method
 
 

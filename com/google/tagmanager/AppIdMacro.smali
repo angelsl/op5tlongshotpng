@@ -24,7 +24,7 @@
 
     sput-object v0, Lcom/google/tagmanager/AppIdMacro;->ID:Ljava/lang/String;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public constructor <init>(Landroid/content/Context;)V

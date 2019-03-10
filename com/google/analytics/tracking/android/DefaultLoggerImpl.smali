@@ -30,7 +30,7 @@
     iput-object v0, p0, Lcom/google/analytics/tracking/android/DefaultLoggerImpl;->mLogLevel:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
     .line 21
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private formatMessage(Ljava/lang/String;)Ljava/lang/String;
@@ -95,7 +95,7 @@
 
     .line 56
     :cond_14
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public error(Ljava/lang/String;)V
@@ -128,7 +128,7 @@
 
     .line 49
     :cond_17
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public getLogLevel()Lcom/google/analytics/tracking/android/Logger$LogLevel;
@@ -170,7 +170,7 @@
 
     .line 35
     :cond_17
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public setLogLevel(Lcom/google/analytics/tracking/android/Logger$LogLevel;)V
@@ -181,7 +181,7 @@
     iput-object p1, p0, Lcom/google/analytics/tracking/android/DefaultLoggerImpl;->mLogLevel:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
     .line 61
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public verbose(Ljava/lang/String;)V
@@ -214,7 +214,7 @@
 
     .line 28
     :cond_17
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public warn(Ljava/lang/String;)V
@@ -247,5 +247,5 @@
 
     .line 42
     :cond_17
-    return-void
+    return-void-no-barrier
 .end method

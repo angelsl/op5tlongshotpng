@@ -30,7 +30,7 @@
 
     iput-object v0, p0, Lcom/google/analytics/tracking/android/MapBuilder;->map:Ljava/util/Map;
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method static booleanToString(Ljava/lang/Boolean;)Ljava/lang/String;

@@ -210,7 +210,7 @@
 
     .line 148
     :goto_13
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected setIcon(Landroid/widget/RemoteViews;)V
@@ -239,5 +239,5 @@
 
     .line 140
     :goto_13
-    return-void
+    return-void-no-barrier
 .end method

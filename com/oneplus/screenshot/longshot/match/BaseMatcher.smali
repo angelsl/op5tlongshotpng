@@ -131,7 +131,7 @@
     iput v0, p0, Lcom/oneplus/screenshot/longshot/match/BaseMatcher;->mLeftSideOffset:I
 
     .line 44
-    return-void
+    return-void-no-barrier
 .end method
 
 

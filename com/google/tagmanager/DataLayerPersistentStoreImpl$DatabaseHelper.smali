@@ -254,7 +254,7 @@
     if-eqz v2, :cond_47
 
     .line 497
-    return-void
+    return-void-no-barrier
 
     .line 495
     :cond_47
@@ -427,7 +427,7 @@
 
     .line 465
     :goto_2c
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public onUpgrade(Landroid/database/sqlite/SQLiteDatabase;II)V

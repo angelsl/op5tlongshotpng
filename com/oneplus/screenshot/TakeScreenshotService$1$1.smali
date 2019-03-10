@@ -118,5 +118,5 @@
 
     .line 75
     :goto_33
-    return-void
+    return-void-no-barrier
 .end method

@@ -3809,7 +3809,7 @@
 
     sput-boolean v0, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_SUPPORT_CUSTOM_STATUS_BAR:Z
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private constructor <init>(Ljava/lang/String;ILjava/lang/String;I)V
@@ -3850,7 +3850,7 @@
     iput p4, p0, Lcom/oneplus/screenshot/longshot/util/Configs;->mResID:I
 
     .line 314
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static blockWindowTouch(ZLandroid/content/Context;)V
@@ -3911,7 +3911,7 @@
     .end local v0    # "wm":Landroid/view/WindowManager;
     .end local v1    # "lp":Landroid/view/WindowManager$LayoutParams;
     :cond_2f
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static caculateWaterMarkShowTimes(Landroid/content/Context;)V
@@ -3944,7 +3944,7 @@
 
     .line 901
     :cond_12
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private static getLayoutRtl(Landroid/content/Context;)Z
@@ -5694,7 +5694,7 @@
     invoke-static {p0}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->init(Landroid/content/Context;)V
 
     .line 439
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private static loadLineParams(Landroid/content/Context;)V
@@ -5845,7 +5845,7 @@
 
     .line 523
     :cond_69
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static noHWButton()Z
@@ -5932,7 +5932,7 @@
     .line 679
     :cond_35
     :goto_35
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static peekTopActivity()Landroid/content/ComponentName;
@@ -5982,7 +5982,7 @@
     invoke-interface {v0}, Ljava/util/List;->clear()V
 
     .line 506
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static sendAppTrackerEvent(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
@@ -6049,7 +6049,7 @@
 
     .line 777
     :cond_2f
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private static shouldAddWatermark(Landroid/content/Context;)Z
@@ -6299,7 +6299,7 @@
     .line 732
     :cond_8b
     :goto_8b
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Lcom/oneplus/screenshot/longshot/util/Configs;

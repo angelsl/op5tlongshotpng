@@ -56,7 +56,7 @@
 
     sput-object v0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->factors:[I
 
-    return-void
+    return-void-no-barrier
 
     nop
 
@@ -404,7 +404,7 @@
     .end local v1    # "twon":I
     :cond_fd
     :goto_fd
-    return-void
+    return-void-no-barrier
 
     .line 77
     :cond_fe
@@ -449,7 +449,7 @@
     .line 53
     invoke-direct/range {p0 .. p5}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->cftmdl1(I[DI[DI)V
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method static synthetic access$300(Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;II[DII[D)V
@@ -465,7 +465,7 @@
     .line 53
     invoke-direct/range {p0 .. p6}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->cftleaf(II[DII[D)V
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method static synthetic access$400(Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;III[DII[D)I
@@ -499,7 +499,7 @@
     .line 53
     invoke-direct/range {p0 .. p5}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->cftmdl2(I[DI[DI)V
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private bitrv2(I[I[DI)V
@@ -2155,7 +2155,7 @@
     .end local v17    # "yr":D
     .end local v19    # "yi":D
     :cond_444
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private bitrv208([DI)V
@@ -2252,7 +2252,7 @@
     aput-wide v6, p1, v16
 
     .line 4995
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private bitrv208neg([DI)V
@@ -2415,7 +2415,7 @@
     aput-wide v14, p1, v28
 
     .line 5028
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private bitrv216([DI)V
@@ -2688,7 +2688,7 @@
     aput-wide v22, p1, v48
 
     .line 4909
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private bitrv216neg([DI)V
@@ -3027,7 +3027,7 @@
     aput-wide v30, p1, v60
 
     .line 4974
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private bitrv2conj(I[I[DI)V
@@ -5429,7 +5429,7 @@
     .end local v3    # "m":I
     .restart local v131    # "m":I
     :goto_5b5
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private bluestein_complex([DII)V
@@ -6414,7 +6414,7 @@
     .end local v7    # "nthreads":I
     .restart local v19    # "nthreads":I
     :goto_254
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private bluestein_real_forward([DI)V
@@ -7179,7 +7179,7 @@
 
     .line 1473
     :cond_1fb
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private bluestein_real_full([DII)V
@@ -8102,7 +8102,7 @@
     .end local v7    # "nthreads":I
     .restart local v19    # "nthreads":I
     :goto_230
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private bluestein_real_inverse([DI)V
@@ -9109,7 +9109,7 @@
     .end local v17    # "i":I
     :cond_2ac
     :goto_2ac
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private bluestein_real_inverse2([DI)V
@@ -9866,7 +9866,7 @@
 
     .line 1688
     :cond_1f7
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private bluesteini()V
@@ -10108,7 +10108,7 @@
     invoke-direct/range {v0 .. v6}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->cftbsub(I[DI[II[D)V
 
     .line 960
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private cftb040([DI)V
@@ -10263,7 +10263,7 @@
     aput-wide v17, p1, v16
 
     .line 6421
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private cftb1st(I[DI[DI)V
@@ -12079,7 +12079,7 @@
     aput-wide v31, p2, v22
 
     .line 5465
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private cftbsub(I[DI[II[D)V
@@ -12266,7 +12266,7 @@
     .line 4024
     :cond_74
     :goto_74
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private cftf040([DI)V
@@ -12421,7 +12421,7 @@
     aput-wide v17, p1, v16
 
     .line 6400
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private cftf081([DI[DI)V
@@ -12828,7 +12828,7 @@
     aput-wide v51, p1, v0
 
     .line 6311
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private cftf082([DI[DI)V
@@ -13303,7 +13303,7 @@
     aput-wide v47, p1, v46
 
     .line 6379
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private cftf161([DI[DI)V
@@ -14292,7 +14292,7 @@
     aput-wide v87, p1, v86
 
     .line 6077
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private cftf162([DI[DI)V
@@ -15509,7 +15509,7 @@
     aput-wide v92, p1, v66
 
     .line 6253
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private cftf1st(I[DI[DI)V
@@ -17237,7 +17237,7 @@
     aput-wide v26, p2, v2
 
     .line 5246
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private cftfsub(I[DI[II[D)V
@@ -17424,7 +17424,7 @@
     .line 3996
     :cond_74
     :goto_74
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private cftfx41(I[DII[D)V
@@ -17497,7 +17497,7 @@
 
     .line 5924
     :goto_39
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private cftleaf(II[DII[D)V
@@ -17893,7 +17893,7 @@
 
     .line 5635
     :goto_15d
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private cftmdl1(I[DI[DI)V
@@ -18768,7 +18768,7 @@
     aput-wide v1, p2, v0
 
     .line 5760
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private cftmdl2(I[DI[DI)V
@@ -19790,7 +19790,7 @@
     aput-wide v44, p2, v40
 
     .line 5910
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private cftrec4(I[DII[D)V
@@ -19962,7 +19962,7 @@
 
     .end local v7    # "m":I
     .restart local v19    # "m":I
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private cftrec4_th(I[DII[D)V
@@ -20167,7 +20167,7 @@
     invoke-static {v0}, Ledu/emory/mathcs/utils/ConcurrencyUtils;->waitForCompletion([Ljava/util/concurrent/Future;)V
 
     .line 5528
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private cfttree(III[DII[D)I
@@ -20397,7 +20397,7 @@
     aput-wide v2, p1, v4
 
     .line 6431
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private cftxb020([DI)V
@@ -20462,7 +20462,7 @@
     aput-wide v2, p1, v4
 
     .line 6442
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private cftxc020([DI)V
@@ -20527,7 +20527,7 @@
     aput-wide v2, p1, v4
 
     .line 6452
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private static getReminder(I[I)I
@@ -20691,7 +20691,7 @@
     .end local v2    # "delta":D
     .end local v4    # "deltaj":D
     :cond_3c
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private makeipt(I)V
@@ -20791,7 +20791,7 @@
     .end local v4    # "q":I
     .end local v5    # "j":I
     :cond_35
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private makewt(I)V
@@ -21263,7 +21263,7 @@
     .end local v17    # "nw0":I
     .end local v26    # "delta":D
     :cond_13e
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private rftbsub(I[DII[DI)V
@@ -21416,7 +21416,7 @@
     .end local v15    # "yr":D
     .end local v17    # "yi":D
     :cond_56
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private rftfsub(I[DII[DI)V
@@ -21588,7 +21588,7 @@
     aput-wide v4, p2, v1
 
     .line 6479
-    return-void
+    return-void-no-barrier
 .end method
 
 .method private scale(D[DIZ)V
@@ -21795,7 +21795,7 @@
     .end local v0    # "i":I
     :cond_65
     :goto_65
-    return-void
+    return-void-no-barrier
 .end method
 
 
@@ -22408,7 +22408,7 @@
     if-nez v19, :cond_170
 
     .line 3359
-    return-void
+    return-void-no-barrier
 
     .line 3360
     :cond_170
@@ -22423,7 +22423,7 @@
     .line 3362
     .end local v29    # "ch":[D
     .local v2, "ch":[D
-    return-void
+    return-void-no-barrier
 
     :pswitch_data_17a
     .packed-switch 0x2
@@ -22447,7 +22447,7 @@
     if-ne v1, v2, :cond_8
 
     .line 774
-    return-void
+    return-void-no-barrier
 
     .line 776
     :cond_8
@@ -23035,7 +23035,7 @@
     .restart local v33    # "nq":I
     .restart local v34    # "nr":I
     .restart local v38    # "twon":I
-    return-void
+    return-void-no-barrier
 
     .line 799
     .end local v2    # "k1":I
@@ -23085,7 +23085,7 @@
     if-ne v1, v2, :cond_8
 
     .line 684
-    return-void
+    return-void-no-barrier
 
     .line 686
     :cond_8
@@ -23664,7 +23664,7 @@
     .restart local v29    # "nf":I
     .restart local v30    # "nl":I
     .restart local v31    # "argh":D
-    return-void
+    return-void-no-barrier
 
     .line 709
     .end local v11    # "nq":I
@@ -23713,7 +23713,7 @@
     invoke-virtual {p0, p1, v0}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->complexForward([DI)V
 
     .line 158
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public complexForward([DI)V
@@ -23729,7 +23729,7 @@
     if-ne v0, v1, :cond_6
 
     .line 177
-    return-void
+    return-void-no-barrier
 
     .line 178
     :cond_6
@@ -23789,7 +23789,7 @@
 
     .line 189
     :goto_2f
-    return-void
+    return-void-no-barrier
 
     :pswitch_data_30
     .packed-switch 0x1
@@ -23813,7 +23813,7 @@
     if-ne v0, v1, :cond_6
 
     .line 228
-    return-void
+    return-void-no-barrier
 
     .line 229
     :cond_6
@@ -23890,7 +23890,7 @@
 
     .line 243
     :cond_3a
-    return-void
+    return-void-no-barrier
 
     nop
 
@@ -23913,7 +23913,7 @@
     invoke-virtual {p0, p1, v0, p2}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->complexInverse([DIZ)V
 
     .line 208
-    return-void
+    return-void-no-barrier
 .end method
 
 .method passf2(II[DI[DIII)V
@@ -24216,7 +24216,7 @@
     :cond_a6
     move/from16 v5, p8
 
-    return-void
+    return-void-no-barrier
 .end method
 
 .method passf3(II[DI[DIII)V
@@ -24847,7 +24847,7 @@
     .end local v11    # "iw1":I
     .restart local v61    # "iw1":I
     :goto_16b
-    return-void
+    return-void-no-barrier
 .end method
 
 .method passf4(II[DI[DIII)V
@@ -25582,7 +25582,7 @@
     .restart local v66    # "iw1":I
     .restart local v67    # "iw2":I
     :goto_198
-    return-void
+    return-void-no-barrier
 .end method
 
 .method passf5(II[DI[DIII)V
@@ -26655,7 +26655,7 @@
     .end local v83    # "k":I
     :cond_293
     :goto_293
-    return-void
+    return-void-no-barrier
 .end method
 
 .method passfg([IIIII[DI[DIII)V
@@ -27788,7 +27788,7 @@
     if-ne v2, v4, :cond_271
 
     .line 3908
-    return-void
+    return-void-no-barrier
 
     .line 3909
     :cond_271
@@ -28329,7 +28329,7 @@
     .end local v60    # "idj":I
     :cond_396
     :goto_396
-    return-void
+    return-void-no-barrier
 .end method
 
 .method radb2(II[DI[DII)V
@@ -28434,7 +28434,7 @@
     if-ge v1, v7, :cond_30
 
     .line 1922
-    return-void
+    return-void-no-barrier
 
     .line 1923
     :cond_30
@@ -28649,7 +28649,7 @@
     if-ne v5, v8, :cond_a8
 
     .line 1955
-    return-void
+    return-void-no-barrier
 
     .line 1957
     :cond_a8
@@ -28723,7 +28723,7 @@
     .line 1965
     .end local v21    # "k":I
     :cond_cf
-    return-void
+    return-void-no-barrier
 .end method
 
 .method radb3(II[DI[DII)V
@@ -28868,7 +28868,7 @@
     if-ne v1, v10, :cond_59
 
     .line 2080
-    return-void
+    return-void-no-barrier
 
     .line 2081
     :cond_59
@@ -29200,7 +29200,7 @@
     .end local v9    # "k":I
     .end local v11    # "i":I
     :cond_113
-    return-void
+    return-void-no-barrier
 .end method
 
 .method radb4(II[DI[DII)V
@@ -29387,7 +29387,7 @@
     if-ge v1, v10, :cond_66
 
     .line 2314
-    return-void
+    return-void-no-barrier
 
     .line 2315
     :cond_66
@@ -29822,7 +29822,7 @@
     if-ne v9, v10, :cond_152
 
     .line 2386
-    return-void
+    return-void-no-barrier
 
     .line 2388
     :cond_152
@@ -29994,7 +29994,7 @@
     .end local v33    # "tr1":D
     .end local v35    # "tr2":D
     :cond_1b8
-    return-void
+    return-void-no-barrier
 .end method
 
 .method radb5(II[DI[DII)V
@@ -30276,7 +30276,7 @@
     if-ne v1, v3, :cond_c2
 
     .line 2608
-    return-void
+    return-void-no-barrier
 
     .line 2609
     :cond_c2
@@ -30864,7 +30864,7 @@
     .end local v2    # "i":I
     .end local v16    # "k":I
     :cond_215
-    return-void
+    return-void-no-barrier
 .end method
 
 .method radbg(IIII[DI[DII)V
@@ -32194,7 +32194,7 @@
     if-ne v1, v9, :cond_2e2
 
     .line 3170
-    return-void
+    return-void-no-barrier
 
     .line 3171
     :cond_2e2
@@ -33039,7 +33039,7 @@
     .end local v66    # "j":I
     :cond_4a5
     :goto_4a5
-    return-void
+    return-void-no-barrier
 .end method
 
 .method radf2(II[DI[DII)V
@@ -33138,7 +33138,7 @@
     if-ge v1, v5, :cond_30
 
     .line 1853
-    return-void
+    return-void-no-barrier
 
     .line 1854
     :cond_30
@@ -33339,7 +33339,7 @@
     if-ne v5, v9, :cond_9d
 
     .line 1887
-    return-void
+    return-void-no-barrier
 
     .line 1889
     :cond_9d
@@ -33415,7 +33415,7 @@
     .line 1898
     .end local v20    # "k":I
     :cond_c2
-    return-void
+    return-void-no-barrier
 .end method
 
 .method radf3(II[DI[DII)V
@@ -33569,7 +33569,7 @@
     if-ne v1, v10, :cond_5d
 
     .line 1996
-    return-void
+    return-void-no-barrier
 
     .line 1997
     :cond_5d
@@ -33901,7 +33901,7 @@
     .end local v2    # "i":I
     .end local v18    # "k":I
     :cond_115
-    return-void
+    return-void-no-barrier
 .end method
 
 .method radf4(II[DI[DII)V
@@ -34070,7 +34070,7 @@
     if-ge v1, v10, :cond_5b
 
     .line 2174
-    return-void
+    return-void-no-barrier
 
     .line 2175
     :cond_5b
@@ -34533,7 +34533,7 @@
     if-ne v3, v4, :cond_158
 
     .line 2245
-    return-void
+    return-void-no-barrier
 
     .line 2247
     .end local v37    # "hsqt2":D
@@ -34706,7 +34706,7 @@
     .end local v28    # "tr1":D
     .end local v35    # "k":I
     :cond_1bb
-    return-void
+    return-void-no-barrier
 .end method
 
 .method radf5(II[DI[DII)V
@@ -34978,7 +34978,7 @@
     if-ne v1, v3, :cond_b8
 
     .line 2465
-    return-void
+    return-void-no-barrier
 
     .line 2466
     :cond_b8
@@ -35628,7 +35628,7 @@
     .restart local v63    # "tr12":D
     .restart local v65    # "ti12":D
     .restart local v67    # "iw1":I
-    return-void
+    return-void-no-barrier
 .end method
 
 .method radfg(IIII[DI[DII)V
@@ -37229,7 +37229,7 @@
     if-ne v1, v4, :cond_37e
 
     .line 2925
-    return-void
+    return-void-no-barrier
 
     .line 2926
     :cond_37e
@@ -37681,7 +37681,7 @@
     .end local v10    # "j2":I
     :cond_46e
     :goto_46e
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public realForward([D)V
@@ -37694,7 +37694,7 @@
     invoke-virtual {p0, p1, v0}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->realForward([DI)V
 
     .line 274
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public realForward([DI)V
@@ -37710,7 +37710,7 @@
     if-ne v0, v1, :cond_6
 
     .line 306
-    return-void
+    return-void-no-barrier
 
     .line 308
     :cond_6
@@ -37862,7 +37862,7 @@
     .line 335
     .end local v0    # "xi":D
     :goto_6e
-    return-void
+    return-void-no-barrier
 
     nop
 
@@ -37884,7 +37884,7 @@
     invoke-virtual {p0, p1, v0}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->realForwardFull([DI)V
 
     .line 350
-    return-void
+    return-void-no-barrier
 .end method
 
 .method public realForwardFull([DI)V
@@ -38263,7 +38263,7 @@
     .line 428
     .end local v14    # "nthreads":I
     :goto_e5
-    return-void
+    return-void-no-barrier
 
     :pswitch_data_e6
     .packed-switch 0x1
@@ -38287,7 +38287,7 @@
     if-ne v0, v1, :cond_6
 
     .line 491
-    return-void
+    return-void-no-barrier
 
     .line 492
     :cond_6
@@ -38499,7 +38499,7 @@
     .line 526
     :cond_98
     :goto_98
-    return-void
+    return-void-no-barrier
 
     nop
 
@@ -38522,7 +38522,7 @@
     invoke-virtual {p0, p1, v0, p2}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->realInverse([DIZ)V
 
     .line 459
-    return-void
+    return-void-no-barrier
 .end method
 
 .method protected realInverse2([DIZ)V
@@ -38541,7 +38541,7 @@
     if-ne v0, v6, :cond_7
 
     .line 629
-    return-void
+    return-void-no-barrier
 
     .line 630
     :cond_7
@@ -38843,7 +38843,7 @@
     .end local v8    # "xi":D
     :cond_ca
     :goto_ca
-    return-void
+    return-void-no-barrier
 
     nop
 
@@ -39319,7 +39319,7 @@
     .line 625
     .end local v10    # "nthreads":I
     :goto_10c
-    return-void
+    return-void-no-barrier
 
     nop
 
@@ -39342,7 +39342,7 @@
     invoke-virtual {p0, p1, v0, p2}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->realInverseFull([DIZ)V
 
     .line 541
-    return-void
+    return-void-no-barrier
 .end method
 
 .method rfftb([DI)V
@@ -39360,7 +39360,7 @@
     if-ne v0, v11, :cond_8
 
     .line 1765
-    return-void
+    return-void-no-barrier
 
     .line 1768
     :cond_8
@@ -39853,7 +39853,7 @@
     if-nez v16, :cond_129
 
     .line 1826
-    return-void
+    return-void-no-barrier
 
     .line 1827
     :cond_129
@@ -39868,7 +39868,7 @@
     invoke-static {v12, v0, v2, v3, v1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
     .line 1828
-    return-void
+    return-void-no-barrier
 
     :pswitch_data_134
     .packed-switch 0x2
@@ -39894,7 +39894,7 @@
     if-ne v0, v11, :cond_8
 
     .line 1695
-    return-void
+    return-void-no-barrier
 
     .line 1698
     :cond_8
@@ -40377,7 +40377,7 @@
     if-ne v1, v11, :cond_133
 
     .line 1756
-    return-void
+    return-void-no-barrier
 
     .line 1757
     :cond_133
@@ -40392,7 +40392,7 @@
     invoke-static {v12, v0, v4, v5, v3}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
     .line 1758
-    return-void
+    return-void-no-barrier
 
     :pswitch_data_13e
     .packed-switch 0x2
@@ -40416,7 +40416,7 @@
     if-ne v1, v2, :cond_8
 
     .line 859
-    return-void
+    return-void-no-barrier
 
     .line 860
     :cond_8
@@ -40602,7 +40602,7 @@
     if-nez v12, :cond_74
 
     .line 909
-    return-void
+    return-void-no-barrier
 
     .line 910
     :cond_74
@@ -40888,7 +40888,7 @@
     .restart local v26    # "nl":I
     .restart local v27    # "nq":I
     .restart local v28    # "nr":I
-    return-void
+    return-void-no-barrier
 
     .line 883
     .end local v2    # "k1":I
