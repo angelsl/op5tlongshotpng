@@ -42,7 +42,7 @@ LATESTARTSERVICE=false
 
 # Construct your own list here
 REPLACE="
-/system/app/OPLongshot
+/system/app/OPLongshot/oat
 "
 
 ##########################################################################################
