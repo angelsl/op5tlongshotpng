@@ -22,7 +22,7 @@
     .locals 1
 
     .line 17
-    const-string v0, ".jpg"
+    const-string v0, ".png"
 
     return-object v0
 .end method
