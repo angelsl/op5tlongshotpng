@@ -41,7 +41,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 2
+    .locals 2
 
     .line 21
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->ARBITRARY_PIXEL:Lcom/google/analytics/containertag/common/FunctionType;
@@ -113,7 +113,7 @@
 .end method
 
 .method public constructor <init>(Landroid/content/Context;)V
-    .registers 3
+    .locals 1
     .param p1, "context"    # Landroid/content/Context;
 
     .line 45
@@ -128,7 +128,7 @@
 .end method
 
 .method constructor <init>(Landroid/content/Context;Lcom/google/tagmanager/ArbitraryPixelTag$HitSenderProvider;)V
-    .registers 7
+    .locals 4
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "hitSenderProvider"    # Lcom/google/tagmanager/ArbitraryPixelTag$HitSenderProvider;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
@@ -160,7 +160,7 @@
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 41
     sget-object v0, Lcom/google/tagmanager/ArbitraryPixelTag;->ID:Ljava/lang/String;
@@ -169,22 +169,22 @@
 .end method
 
 .method private declared-synchronized idProcessed(Ljava/lang/String;)Z
-    .registers 4
+    .locals 2
     .param p1, "unrepeatableId"    # Ljava/lang/String;
 
     monitor-enter p0
 
     .line 119
-    :try_start_1
+    :try_start_0
     invoke-virtual {p0, p1}, Lcom/google/tagmanager/ArbitraryPixelTag;->idInCache(Ljava/lang/String;)Z
 
     move-result v0
-    :try_end_5
-    .catchall {:try_start_1 .. :try_end_5} :catchall_1a
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     const/4 v1, 0x1
 
-    if-eqz v0, :cond_a
+    if-eqz v0, :cond_0
 
     .line 120
     monitor-exit p0
@@ -192,20 +192,20 @@
     return v1
 
     .line 123
-    :cond_a
-    :try_start_a
+    :cond_0
+    :try_start_1
     invoke-virtual {p0, p1}, Lcom/google/tagmanager/ArbitraryPixelTag;->idInSharedPreferences(Ljava/lang/String;)Z
 
     move-result v0
 
-    if-eqz v0, :cond_17
+    if-eqz v0, :cond_1
 
     .line 125
     sget-object v0, Lcom/google/tagmanager/ArbitraryPixelTag;->unrepeatableIds:Ljava/util/Set;
 
     invoke-interface {v0, p1}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
-    :try_end_15
-    .catchall {:try_start_a .. :try_end_15} :catchall_1a
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 126
     monitor-exit p0
@@ -213,7 +213,8 @@
     return v1
 
     .line 129
-    :cond_17
+    .end local p0    # "this":Lcom/google/tagmanager/ArbitraryPixelTag;
+    :cond_1
     const/4 v0, 0x0
 
     monitor-exit p0
@@ -222,19 +223,18 @@
 
     .line 118
     .end local p1    # "unrepeatableId":Ljava/lang/String;
-    :catchall_1a
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/ArbitraryPixelTag;
     throw p1
 .end method
 
 
 # virtual methods
 .method clearCache()V
-    .registers 2
+    .locals 1
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
@@ -248,7 +248,7 @@
 .end method
 
 .method public evaluateTrackingTag(Ljava/util/Map;)V
-    .registers 16
+    .locals 14
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -267,7 +267,7 @@
 
     move-result-object v0
 
-    if-eqz v0, :cond_15
+    if-eqz v0, :cond_0
 
     sget-object v0, Lcom/google/tagmanager/ArbitraryPixelTag;->UNREPEATABLE:Ljava/lang/String;
 
@@ -281,28 +281,28 @@
 
     move-result-object v0
 
-    goto :goto_16
+    goto :goto_0
 
-    :cond_15
+    :cond_0
     const/4 v0, 0x0
 
     .line 64
     .local v0, "unrepeatableId":Ljava/lang/String;
-    :goto_16
-    if-eqz v0, :cond_1f
+    :goto_0
+    if-eqz v0, :cond_1
 
     .line 66
     invoke-direct {p0, v0}, Lcom/google/tagmanager/ArbitraryPixelTag;->idProcessed(Ljava/lang/String;)Z
 
     move-result v1
 
-    if-eqz v1, :cond_1f
+    if-eqz v1, :cond_1
 
     .line 67
     return-void
 
     .line 71
-    :cond_1f
+    :cond_1
     sget-object v1, Lcom/google/tagmanager/ArbitraryPixelTag;->URL:Ljava/lang/String;
 
     invoke-interface {p1, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -339,7 +339,7 @@
 
     .line 75
     .local v4, "additionalParamsList":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-eqz v4, :cond_c0
+    if-eqz v4, :cond_5
 
     .line 76
     invoke-static {v4}, Lcom/google/tagmanager/Types;->valueToObject(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/Object;
@@ -350,7 +350,7 @@
     .local v5, "l":Ljava/lang/Object;
     instance-of v6, v5, Ljava/util/List;
 
-    if-nez v6, :cond_62
+    if-nez v6, :cond_2
 
     .line 78
     new-instance v6, Ljava/lang/StringBuilder;
@@ -381,7 +381,7 @@
     return-void
 
     .line 83
-    :cond_62
+    :cond_2
     move-object v6, v5
 
     check-cast v6, Ljava/util/List;
@@ -393,12 +393,12 @@
     move-result-object v7
 
     .local v7, "i$":Ljava/util/Iterator;
-    :goto_69
+    :goto_1
     invoke-interface {v7}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v8
 
-    if-eqz v8, :cond_c0
+    if-eqz v8, :cond_5
 
     invoke-interface {v7}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -408,7 +408,7 @@
     .local v8, "m":Ljava/lang/Object;
     instance-of v9, v8, Ljava/util/Map;
 
-    if-nez v9, :cond_94
+    if-nez v9, :cond_3
 
     .line 86
     new-instance v9, Ljava/lang/StringBuilder;
@@ -439,7 +439,7 @@
     return-void
 
     .line 91
-    :cond_94
+    :cond_3
     move-object v9, v8
 
     check-cast v9, Ljava/util/Map;
@@ -455,12 +455,12 @@
     move-result-object v10
 
     .local v10, "i$":Ljava/util/Iterator;
-    :goto_9f
+    :goto_2
     invoke-interface {v10}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v11
 
-    if-eqz v11, :cond_bf
+    if-eqz v11, :cond_4
 
     invoke-interface {v10}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -490,20 +490,20 @@
 
     .line 95
     .end local v11    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/Object;Ljava/lang/Object;>;"
-    goto :goto_9f
+    goto :goto_2
 
     .line 96
     .end local v8    # "m":Ljava/lang/Object;
     .end local v9    # "map":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
     .end local v10    # "i$":Ljava/util/Iterator;
-    :cond_bf
-    goto :goto_69
+    :cond_4
+    goto :goto_1
 
     .line 99
     .end local v5    # "l":Ljava/lang/Object;
     .end local v6    # "list":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Object;>;"
     .end local v7    # "i$":Ljava/util/Iterator;
-    :cond_c0
+    :cond_5
     invoke-virtual {v3}, Landroid/net/Uri$Builder;->build()Landroid/net/Uri;
 
     move-result-object v5
@@ -540,7 +540,7 @@
     invoke-static {v6}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
 
     .line 103
-    if-eqz v0, :cond_fd
+    if-eqz v0, :cond_6
 
     .line 104
     const-class v6, Lcom/google/tagmanager/ArbitraryPixelTag;
@@ -548,7 +548,7 @@
     monitor-enter v6
 
     .line 105
-    :try_start_ea
+    :try_start_0
     sget-object v7, Lcom/google/tagmanager/ArbitraryPixelTag;->unrepeatableIds:Ljava/util/Set;
 
     invoke-interface {v7, v0}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
@@ -565,25 +565,25 @@
     .line 108
     monitor-exit v6
 
-    goto :goto_fd
+    goto :goto_3
 
-    :catchall_fa
+    :catchall_0
     move-exception v7
 
     monitor-exit v6
-    :try_end_fc
-    .catchall {:try_start_ea .. :try_end_fc} :catchall_fa
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v7
 
     .line 110
-    :cond_fd
-    :goto_fd
+    :cond_6
+    :goto_3
     return-void
 .end method
 
 .method idInCache(Ljava/lang/String;)Z
-    .registers 3
+    .locals 1
     .param p1, "unrepeatableId"    # Ljava/lang/String;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
@@ -599,7 +599,7 @@
 .end method
 
 .method idInSharedPreferences(Ljava/lang/String;)Z
-    .registers 5
+    .locals 3
     .param p1, "unrepeatableId"    # Ljava/lang/String;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation

@@ -30,7 +30,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/google/tagmanager/CtfeHost;)V
-    .registers 3
+    .locals 1
     .param p1, "host"    # Lcom/google/tagmanager/CtfeHost;
 
     .line 35
@@ -49,7 +49,7 @@
 .end method
 
 .method constructor <init>(Lcom/google/tagmanager/NetworkClient;Lcom/google/tagmanager/CtfeHost;)V
-    .registers 4
+    .locals 1
     .param p1, "client"    # Lcom/google/tagmanager/NetworkClient;
     .param p2, "host"    # Lcom/google/tagmanager/CtfeHost;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
@@ -76,7 +76,7 @@
 .end method
 
 .method private getDebugEventsAsBytes()[B
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -94,7 +94,7 @@
 .end method
 
 .method private sendDebugInformationtoCtfe()Z
-    .registers 5
+    .locals 4
 
     .line 56
     :try_start_0
@@ -117,8 +117,8 @@
     move-result-object v2
 
     invoke-interface {v0, v1, v2}, Lcom/google/tagmanager/NetworkClient;->sendPostRequest(Ljava/lang/String;[B)V
-    :try_end_15
-    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_15} :catch_17
+    :try_end_0
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 59
     const/4 v0, 0x1
@@ -126,7 +126,7 @@
     return v0
 
     .line 60
-    :catch_17
+    :catch_0
     move-exception v0
 
     .line 61
@@ -160,13 +160,13 @@
 
 # virtual methods
 .method public declared-synchronized receiveEventInfo(Lcom/google/analytics/containertag/proto/Debug$EventInfo;)V
-    .registers 4
+    .locals 2
     .param p1, "event"    # Lcom/google/analytics/containertag/proto/Debug$EventInfo;
 
     monitor-enter p0
 
     .line 42
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/tagmanager/CtfeDebugInformationHandler;->mDebugEvents:Lcom/google/analytics/containertag/proto/Debug$DebugEvents;
 
     iget-object v1, p0, Lcom/google/tagmanager/CtfeDebugInformationHandler;->mDebugEvents:Lcom/google/analytics/containertag/proto/Debug$DebugEvents;
@@ -188,35 +188,35 @@
 
     const/4 v1, 0x1
 
-    if-lt v0, v1, :cond_20
+    if-lt v0, v1, :cond_0
 
     .line 44
     invoke-direct {p0}, Lcom/google/tagmanager/CtfeDebugInformationHandler;->sendDebugInformationtoCtfe()Z
 
     move-result v0
 
-    if-eqz v0, :cond_20
+    if-eqz v0, :cond_0
 
     .line 45
     iget-object v0, p0, Lcom/google/tagmanager/CtfeDebugInformationHandler;->mDebugEvents:Lcom/google/analytics/containertag/proto/Debug$DebugEvents;
 
     invoke-virtual {v0}, Lcom/google/analytics/containertag/proto/Debug$DebugEvents;->clear()Lcom/google/analytics/containertag/proto/Debug$DebugEvents;
-    :try_end_20
-    .catchall {:try_start_1 .. :try_end_20} :catchall_22
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 48
-    :cond_20
+    .end local p0    # "this":Lcom/google/tagmanager/CtfeDebugInformationHandler;
+    :cond_0
     monitor-exit p0
 
     return-void
 
     .line 41
     .end local p1    # "event":Lcom/google/analytics/containertag/proto/Debug$EventInfo;
-    :catchall_22
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/CtfeDebugInformationHandler;
     throw p1
 .end method

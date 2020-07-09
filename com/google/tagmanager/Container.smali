@@ -122,7 +122,7 @@
 
 # direct methods
 .method constructor <init>(Landroid/content/Context;Ljava/lang/String;Lcom/google/tagmanager/TagManager;)V
-    .registers 5
+    .locals 1
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "containerId"    # Ljava/lang/String;
     .param p3, "tagManager"    # Lcom/google/tagmanager/TagManager;
@@ -139,7 +139,7 @@
 .end method
 
 .method constructor <init>(Landroid/content/Context;Ljava/lang/String;Lcom/google/tagmanager/TagManager;Lcom/google/tagmanager/Container$ResourceStorage;)V
-    .registers 6
+    .locals 1
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "containerId"    # Ljava/lang/String;
     .param p3, "tagManager"    # Lcom/google/tagmanager/TagManager;
@@ -213,7 +213,7 @@
 .end method
 
 .method static synthetic access$000(Lcom/google/tagmanager/Container;Lcom/google/tagmanager/Container$RefreshType;)V
-    .registers 2
+    .locals 0
     .param p0, "x0"    # Lcom/google/tagmanager/Container;
     .param p1, "x1"    # Lcom/google/tagmanager/Container$RefreshType;
 
@@ -224,7 +224,7 @@
 .end method
 
 .method static synthetic access$100(Lcom/google/tagmanager/Container;)Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/tagmanager/Container;
 
     .line 27
@@ -234,7 +234,7 @@
 .end method
 
 .method static synthetic access$102(Lcom/google/tagmanager/Container;Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;)Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
-    .registers 2
+    .locals 0
     .param p0, "x0"    # Lcom/google/tagmanager/Container;
     .param p1, "x1"    # Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
 
@@ -245,7 +245,7 @@
 .end method
 
 .method static synthetic access$200(Lcom/google/tagmanager/Container;Lcom/google/analytics/containertag/proto/Serving$Resource;)V
-    .registers 2
+    .locals 0
     .param p0, "x0"    # Lcom/google/tagmanager/Container;
     .param p1, "x1"    # Lcom/google/analytics/containertag/proto/Serving$Resource;
 
@@ -256,7 +256,7 @@
 .end method
 
 .method static synthetic access$300(Lcom/google/tagmanager/Container;[Lcom/google/analytics/containertag/proto/Serving$Supplemental;)V
-    .registers 2
+    .locals 0
     .param p0, "x0"    # Lcom/google/tagmanager/Container;
     .param p1, "x1"    # [Lcom/google/analytics/containertag/proto/Serving$Supplemental;
 
@@ -267,7 +267,7 @@
 .end method
 
 .method static synthetic access$400(Lcom/google/tagmanager/Container;)J
-    .registers 3
+    .locals 2
     .param p0, "x0"    # Lcom/google/tagmanager/Container;
 
     .line 27
@@ -277,7 +277,7 @@
 .end method
 
 .method static synthetic access$402(Lcom/google/tagmanager/Container;J)J
-    .registers 3
+    .locals 0
     .param p0, "x0"    # Lcom/google/tagmanager/Container;
     .param p1, "x1"    # J
 
@@ -288,7 +288,7 @@
 .end method
 
 .method static synthetic access$500(Lcom/google/tagmanager/Container;Lcom/google/tagmanager/Container$RefreshType;)V
-    .registers 2
+    .locals 0
     .param p0, "x0"    # Lcom/google/tagmanager/Container;
     .param p1, "x1"    # Lcom/google/tagmanager/Container$RefreshType;
 
@@ -299,7 +299,7 @@
 .end method
 
 .method static synthetic access$600(Lcom/google/tagmanager/Container;Lcom/google/tagmanager/Container$RefreshType;Lcom/google/tagmanager/Container$RefreshFailure;)V
-    .registers 3
+    .locals 0
     .param p0, "x0"    # Lcom/google/tagmanager/Container;
     .param p1, "x1"    # Lcom/google/tagmanager/Container$RefreshType;
     .param p2, "x2"    # Lcom/google/tagmanager/Container$RefreshFailure;
@@ -311,7 +311,7 @@
 .end method
 
 .method static synthetic access$700(Lcom/google/tagmanager/Container;)Z
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/tagmanager/Container;
 
     .line 27
@@ -323,7 +323,7 @@
 .end method
 
 .method static synthetic access$800(Lcom/google/tagmanager/Container;Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;)V
-    .registers 2
+    .locals 0
     .param p0, "x0"    # Lcom/google/tagmanager/Container;
     .param p1, "x1"    # Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
 
@@ -334,63 +334,64 @@
 .end method
 
 .method private declared-synchronized callRefreshBegin(Lcom/google/tagmanager/Container$RefreshType;)V
-    .registers 3
+    .locals 1
     .param p1, "refreshType"    # Lcom/google/tagmanager/Container$RefreshType;
 
     monitor-enter p0
 
     .line 452
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mUserCallback:Lcom/google/tagmanager/Container$Callback;
 
-    if-eqz v0, :cond_a
+    if-eqz v0, :cond_0
 
     .line 453
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mUserCallback:Lcom/google/tagmanager/Container$Callback;
 
     invoke-interface {v0, p0, p1}, Lcom/google/tagmanager/Container$Callback;->containerRefreshBegin(Lcom/google/tagmanager/Container;Lcom/google/tagmanager/Container$RefreshType;)V
-    :try_end_a
-    .catchall {:try_start_1 .. :try_end_a} :catchall_c
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 455
-    :cond_a
+    .end local p0    # "this":Lcom/google/tagmanager/Container;
+    :cond_0
     monitor-exit p0
 
     return-void
 
     .line 451
     .end local p1    # "refreshType":Lcom/google/tagmanager/Container$RefreshType;
-    :catchall_c
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/Container;
     throw p1
 .end method
 
 .method private declared-synchronized callRefreshFailure(Lcom/google/tagmanager/Container$RefreshType;Lcom/google/tagmanager/Container$RefreshFailure;)V
-    .registers 4
+    .locals 1
     .param p1, "refreshType"    # Lcom/google/tagmanager/Container$RefreshType;
     .param p2, "refreshFailure"    # Lcom/google/tagmanager/Container$RefreshFailure;
 
     monitor-enter p0
 
     .line 446
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mUserCallback:Lcom/google/tagmanager/Container$Callback;
 
-    if-eqz v0, :cond_a
+    if-eqz v0, :cond_0
 
     .line 447
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mUserCallback:Lcom/google/tagmanager/Container$Callback;
 
     invoke-interface {v0, p0, p1, p2}, Lcom/google/tagmanager/Container$Callback;->containerRefreshFailure(Lcom/google/tagmanager/Container;Lcom/google/tagmanager/Container$RefreshType;Lcom/google/tagmanager/Container$RefreshFailure;)V
-    :try_end_a
-    .catchall {:try_start_1 .. :try_end_a} :catchall_c
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 449
-    :cond_a
+    .end local p0    # "this":Lcom/google/tagmanager/Container;
+    :cond_0
     monitor-exit p0
 
     return-void
@@ -398,23 +399,22 @@
     .line 445
     .end local p1    # "refreshType":Lcom/google/tagmanager/Container$RefreshType;
     .end local p2    # "refreshFailure":Lcom/google/tagmanager/Container$RefreshFailure;
-    :catchall_c
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/Container;
     throw p1
 .end method
 
 .method private declared-synchronized callRefreshSuccess(Lcom/google/tagmanager/Container$RefreshType;)V
-    .registers 4
+    .locals 2
     .param p1, "refreshType"    # Lcom/google/tagmanager/Container$RefreshType;
 
     monitor-enter p0
 
     .line 438
-    :try_start_1
+    :try_start_0
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -442,34 +442,34 @@
     .line 439
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mUserCallback:Lcom/google/tagmanager/Container$Callback;
 
-    if-eqz v0, :cond_28
+    if-eqz v0, :cond_0
 
     .line 440
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mUserCallback:Lcom/google/tagmanager/Container$Callback;
 
     invoke-interface {v0, p0, p1}, Lcom/google/tagmanager/Container$Callback;->containerRefreshSuccess(Lcom/google/tagmanager/Container;Lcom/google/tagmanager/Container$RefreshType;)V
-    :try_end_28
-    .catchall {:try_start_1 .. :try_end_28} :catchall_2a
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 442
-    :cond_28
+    .end local p0    # "this":Lcom/google/tagmanager/Container;
+    :cond_0
     monitor-exit p0
 
     return-void
 
     .line 437
     .end local p1    # "refreshType":Lcom/google/tagmanager/Container$RefreshType;
-    :catchall_2a
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/Container;
     throw p1
 .end method
 
 .method private createInitialContainer()V
-    .registers 6
+    .locals 5
 
     .line 733
     new-instance v0, Ljava/lang/StringBuilder;
@@ -498,7 +498,7 @@
 
     .line 736
     .local v1, "resource":Lcom/google/analytics/containertag/proto/Serving$Resource;
-    if-eqz v1, :cond_1f
+    if-eqz v1, :cond_0
 
     .line 737
     invoke-direct {p0, v1}, Lcom/google/tagmanager/Container;->initEvaluators(Lcom/google/analytics/containertag/proto/Serving$Resource;)V
@@ -507,7 +507,7 @@
     return-void
 
     .line 740
-    :cond_1f
+    :cond_0
     iget-object v2, p0, Lcom/google/tagmanager/Container;->mResourceStorage:Lcom/google/tagmanager/Container$ResourceStorage;
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -530,7 +530,7 @@
 
     .line 742
     .local v2, "expandedResource":Lcom/google/tagmanager/ResourceUtil$ExpandedResource;
-    if-nez v2, :cond_45
+    if-nez v2, :cond_1
 
     .line 743
     const-string v3, "No default container found; creating an empty container."
@@ -547,7 +547,7 @@
     move-result-object v2
 
     .line 746
-    :cond_45
+    :cond_1
     invoke-direct {p0, v2}, Lcom/google/tagmanager/Container;->initEvaluatorsWithExpandedResource(Lcom/google/tagmanager/ResourceUtil$ExpandedResource;)V
 
     .line 747
@@ -555,31 +555,31 @@
 .end method
 
 .method private declared-synchronized getRuntime()Lcom/google/tagmanager/Runtime;
-    .registers 2
+    .locals 1
 
     monitor-enter p0
 
     .line 702
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mRuntime:Lcom/google/tagmanager/Runtime;
-    :try_end_3
-    .catchall {:try_start_1 .. :try_end_3} :catchall_5
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     monitor-exit p0
 
     return-object v0
 
-    :catchall_5
+    .end local p0    # "this":Lcom/google/tagmanager/Container;
+    :catchall_0
     move-exception v0
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/Container;
     throw v0
 .end method
 
 .method private initEvaluators(Lcom/google/analytics/containertag/proto/Serving$Resource;)V
-    .registers 6
+    .locals 4
     .param p1, "resource"    # Lcom/google/analytics/containertag/proto/Serving$Resource;
 
     .line 648
@@ -587,12 +587,12 @@
 
     .line 650
     .local v0, "expandedResource":Lcom/google/tagmanager/ResourceUtil$ExpandedResource;
-    :try_start_1
+    :try_start_0
     invoke-static {p1}, Lcom/google/tagmanager/ResourceUtil;->getExpandedResource(Lcom/google/analytics/containertag/proto/Serving$Resource;)Lcom/google/tagmanager/ResourceUtil$ExpandedResource;
 
     move-result-object v1
-    :try_end_5
-    .catch Lcom/google/tagmanager/ResourceUtil$InvalidResourceException; {:try_start_1 .. :try_end_5} :catch_b
+    :try_end_0
+    .catch Lcom/google/tagmanager/ResourceUtil$InvalidResourceException; {:try_start_0 .. :try_end_0} :catch_0
 
     move-object v0, v1
 
@@ -606,7 +606,7 @@
     return-void
 
     .line 651
-    :catch_b
+    :catch_0
     move-exception v1
 
     .line 652
@@ -642,7 +642,7 @@
 .end method
 
 .method private initEvaluatorsWithExpandedResource(Lcom/google/tagmanager/ResourceUtil$ExpandedResource;)V
-    .registers 11
+    .locals 9
     .param p1, "expandedResource"    # Lcom/google/tagmanager/ResourceUtil$ExpandedResource;
 
     .line 669
@@ -705,7 +705,7 @@
 .end method
 
 .method private isContainerPreview()Z
-    .registers 4
+    .locals 3
 
     .line 726
     invoke-static {}, Lcom/google/tagmanager/PreviewManager;->getInstance()Lcom/google/tagmanager/PreviewManager;
@@ -720,7 +720,7 @@
 
     sget-object v2, Lcom/google/tagmanager/PreviewManager$PreviewMode;->CONTAINER:Lcom/google/tagmanager/PreviewManager$PreviewMode;
 
-    if-eq v1, v2, :cond_14
+    if-eq v1, v2, :cond_0
 
     invoke-virtual {v0}, Lcom/google/tagmanager/PreviewManager;->getPreviewMode()Lcom/google/tagmanager/PreviewManager$PreviewMode;
 
@@ -728,9 +728,9 @@
 
     sget-object v2, Lcom/google/tagmanager/PreviewManager$PreviewMode;->CONTAINER_DEBUG:Lcom/google/tagmanager/PreviewManager$PreviewMode;
 
-    if-ne v1, v2, :cond_22
+    if-ne v1, v2, :cond_1
 
-    :cond_14
+    :cond_0
     iget-object v1, p0, Lcom/google/tagmanager/Container;->mContainerId:Ljava/lang/String;
 
     invoke-virtual {v0}, Lcom/google/tagmanager/PreviewManager;->getContainerId()Ljava/lang/String;
@@ -741,21 +741,21 @@
 
     move-result v1
 
-    if-eqz v1, :cond_22
+    if-eqz v1, :cond_1
 
     const/4 v1, 0x1
 
-    goto :goto_23
+    goto :goto_0
 
-    :cond_22
+    :cond_1
     const/4 v1, 0x0
 
-    :goto_23
+    :goto_0
     return v1
 .end method
 
 .method private isDefaultContainerRefreshMode()Z
-    .registers 3
+    .locals 2
 
     .line 750
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mTagManager:Lcom/google/tagmanager/TagManager;
@@ -766,30 +766,30 @@
 
     sget-object v1, Lcom/google/tagmanager/TagManager$RefreshMode;->DEFAULT_CONTAINER:Lcom/google/tagmanager/TagManager$RefreshMode;
 
-    if-ne v0, v1, :cond_c
+    if-ne v0, v1, :cond_0
 
     const/4 v0, 0x1
 
-    goto :goto_d
+    goto :goto_0
 
-    :cond_c
+    :cond_0
     const/4 v0, 0x0
 
-    :goto_d
+    :goto_0
     return v0
 .end method
 
 .method private declared-synchronized saveResourceToDisk(Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;)V
-    .registers 5
+    .locals 3
     .param p1, "supplementedResource"    # Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
 
     monitor-enter p0
 
     .line 638
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mResourceStorage:Lcom/google/tagmanager/Container$ResourceStorage;
 
-    if-eqz v0, :cond_1e
+    if-eqz v0, :cond_0
 
     .line 639
     new-instance v0, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;
@@ -818,38 +818,38 @@
     iget-object v1, p0, Lcom/google/tagmanager/Container;->mResourceStorage:Lcom/google/tagmanager/Container$ResourceStorage;
 
     invoke-interface {v1, v0}, Lcom/google/tagmanager/Container$ResourceStorage;->saveResourceToDiskInBackground(Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;)V
-    :try_end_1e
-    .catchall {:try_start_1 .. :try_end_1e} :catchall_20
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 645
     .end local v0    # "resourceWithMetadata":Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;
-    :cond_1e
+    .end local p0    # "this":Lcom/google/tagmanager/Container;
+    :cond_0
     monitor-exit p0
 
     return-void
 
     .line 637
     .end local p1    # "supplementedResource":Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
-    :catchall_20
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/Container;
     throw p1
 .end method
 
 .method private declared-synchronized setRuntime(Lcom/google/tagmanager/Runtime;)V
-    .registers 2
+    .locals 0
     .param p1, "runtime"    # Lcom/google/tagmanager/Runtime;
 
     monitor-enter p0
 
     .line 698
-    :try_start_1
+    :try_start_0
     iput-object p1, p0, Lcom/google/tagmanager/Container;->mRuntime:Lcom/google/tagmanager/Runtime;
-    :try_end_3
-    .catchall {:try_start_1 .. :try_end_3} :catchall_5
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 699
     monitor-exit p0
@@ -857,18 +857,18 @@
     return-void
 
     .line 697
+    .end local p0    # "this":Lcom/google/tagmanager/Container;
     .end local p1    # "runtime":Lcom/google/tagmanager/Runtime;
-    :catchall_5
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/Container;
     throw p1
 .end method
 
 .method private setSupplementals([Lcom/google/analytics/containertag/proto/Serving$Supplemental;)V
-    .registers 7
+    .locals 5
     .param p1, "supplementals"    # [Lcom/google/analytics/containertag/proto/Serving$Supplemental;
 
     .line 660
@@ -887,8 +887,8 @@
     const/4 v3, 0x0
 
     .local v3, "i$":I
-    :goto_8
-    if-ge v3, v2, :cond_12
+    :goto_0
+    if-ge v3, v2, :cond_0
 
     aget-object v4, v1, v3
 
@@ -900,13 +900,13 @@
     .end local v4    # "supplemental":Lcom/google/analytics/containertag/proto/Serving$Supplemental;
     add-int/lit8 v3, v3, 0x1
 
-    goto :goto_8
+    goto :goto_0
 
     .line 665
     .end local v1    # "arr$":[Lcom/google/analytics/containertag/proto/Serving$Supplemental;
     .end local v2    # "len$":I
     .end local v3    # "i$":I
-    :cond_12
+    :cond_0
     invoke-direct {p0}, Lcom/google/tagmanager/Container;->getRuntime()Lcom/google/tagmanager/Runtime;
 
     move-result-object v1
@@ -918,7 +918,7 @@
 .end method
 
 .method private useAvailableToken(J)Z
-    .registers 11
+    .locals 8
     .param p1, "currentTime"    # J
 
     .line 754
@@ -930,7 +930,7 @@
 
     const/4 v1, 0x1
 
-    if-nez v0, :cond_f
+    if-nez v0, :cond_0
 
     .line 755
     iget v0, p0, Lcom/google/tagmanager/Container;->mNumTokens:I
@@ -943,7 +943,7 @@
     return v1
 
     .line 759
-    :cond_f
+    :cond_0
     iget-wide v2, p0, Lcom/google/tagmanager/Container;->mLastRefreshMethodCalledTime:J
 
     sub-long v2, p1, v2
@@ -956,18 +956,18 @@
 
     const/4 v4, 0x0
 
-    if-gez v0, :cond_1b
+    if-gez v0, :cond_1
 
     .line 761
     return v4
 
     .line 763
-    :cond_1b
+    :cond_1
     iget v0, p0, Lcom/google/tagmanager/Container;->mNumTokens:I
 
     const/16 v5, 0x1e
 
-    if-ge v0, v5, :cond_35
+    if-ge v0, v5, :cond_2
 
     .line 764
     const-wide/32 v6, 0xdbba0
@@ -996,10 +996,10 @@
 
     .line 768
     .end local v0    # "numAddedTokens":I
-    :cond_35
+    :cond_2
     iget v0, p0, Lcom/google/tagmanager/Container;->mNumTokens:I
 
-    if-lez v0, :cond_3f
+    if-lez v0, :cond_3
 
     .line 769
     iget v0, p0, Lcom/google/tagmanager/Container;->mNumTokens:I
@@ -1012,24 +1012,24 @@
     return v1
 
     .line 773
-    :cond_3f
+    :cond_3
     return v4
 .end method
 
 
 # virtual methods
 .method public declared-synchronized close()V
-    .registers 5
+    .locals 4
 
     monitor-enter p0
 
     .line 355
     const/4 v0, 0x0
 
-    :try_start_2
+    :try_start_0
     iget-object v1, p0, Lcom/google/tagmanager/Container;->mNetworkLoadScheduler:Lcom/google/tagmanager/Container$ResourceLoaderScheduler;
 
-    if-eqz v1, :cond_b
+    if-eqz v1, :cond_0
 
     .line 356
     iget-object v1, p0, Lcom/google/tagmanager/Container;->mNetworkLoadScheduler:Lcom/google/tagmanager/Container$ResourceLoaderScheduler;
@@ -1037,13 +1037,14 @@
     invoke-interface {v1}, Lcom/google/tagmanager/Container$ResourceLoaderScheduler;->close()V
 
     .line 358
-    :cond_b
+    .end local p0    # "this":Lcom/google/tagmanager/Container;
+    :cond_0
     iput-object v0, p0, Lcom/google/tagmanager/Container;->mNetworkLoadScheduler:Lcom/google/tagmanager/Container$ResourceLoaderScheduler;
 
     .line 359
     iget-object v1, p0, Lcom/google/tagmanager/Container;->mResourceStorage:Lcom/google/tagmanager/Container$ResourceStorage;
 
-    if-eqz v1, :cond_16
+    if-eqz v1, :cond_1
 
     .line 360
     iget-object v1, p0, Lcom/google/tagmanager/Container;->mResourceStorage:Lcom/google/tagmanager/Container$ResourceStorage;
@@ -1051,7 +1052,7 @@
     invoke-interface {v1}, Lcom/google/tagmanager/Container$ResourceStorage;->close()V
 
     .line 362
-    :cond_16
+    :cond_1
     iput-object v0, p0, Lcom/google/tagmanager/Container;->mResourceStorage:Lcom/google/tagmanager/Container$ResourceStorage;
 
     .line 363
@@ -1063,26 +1064,26 @@
     iget-object v2, p0, Lcom/google/tagmanager/Container;->mContainerId:Ljava/lang/String;
 
     invoke-virtual {v1, v2}, Lcom/google/tagmanager/TagManager;->removeContainer(Ljava/lang/String;)Z
-    :try_end_21
-    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_21} :catch_24
-    .catchall {:try_start_2 .. :try_end_21} :catchall_22
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 367
-    goto :goto_3d
+    goto :goto_0
 
     .line 354
-    :catchall_22
+    :catchall_0
     move-exception v0
 
-    goto :goto_41
+    goto :goto_1
 
     .line 365
-    :catch_24
+    :catch_0
     move-exception v1
 
     .line 366
     .local v1, "e":Ljava/lang/Exception;
-    :try_start_25
+    :try_start_1
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
@@ -1105,10 +1106,10 @@
 
     .line 368
     .end local v1    # "e":Ljava/lang/Exception;
-    :goto_3d
+    :goto_0
     iput-object v0, p0, Lcom/google/tagmanager/Container;->mRuntime:Lcom/google/tagmanager/Runtime;
-    :try_end_3f
-    .catchall {:try_start_25 .. :try_end_3f} :catchall_22
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 369
     monitor-exit p0
@@ -1116,15 +1117,14 @@
     return-void
 
     .line 354
-    :goto_41
+    :goto_1
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/Container;
     throw v0
 .end method
 
 .method createEventInfoDistributor(Ljava/lang/String;)Lcom/google/tagmanager/EventInfoDistributor;
-    .registers 4
+    .locals 2
     .param p1, "resourceVersion"    # Ljava/lang/String;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
@@ -1151,7 +1151,7 @@
 .end method
 
 .method evaluateTags(Ljava/lang/String;)V
-    .registers 3
+    .locals 1
     .param p1, "currentEventName"    # Ljava/lang/String;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
@@ -1168,7 +1168,7 @@
 .end method
 
 .method public getBoolean(Ljava/lang/String;)Z
-    .registers 6
+    .locals 4
     .param p1, "key"    # Ljava/lang/String;
 
     .line 239
@@ -1178,7 +1178,7 @@
 
     .line 240
     .local v0, "runtime":Lcom/google/tagmanager/Runtime;
-    if-nez v0, :cond_14
+    if-nez v0, :cond_0
 
     .line 241
     const-string v1, "getBoolean called for closed container."
@@ -1197,8 +1197,8 @@
     return v1
 
     .line 245
-    :cond_14
-    :try_start_14
+    :cond_0
+    :try_start_0
     invoke-virtual {v0, p1}, Lcom/google/tagmanager/Runtime;->evaluateMacroReference(Ljava/lang/String;)Lcom/google/tagmanager/ObjectAndStatic;
 
     move-result-object v1
@@ -1216,13 +1216,13 @@
     invoke-virtual {v1}, Ljava/lang/Boolean;->booleanValue()Z
 
     move-result v1
-    :try_end_26
-    .catch Ljava/lang/Exception; {:try_start_14 .. :try_end_26} :catch_27
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
     return v1
 
     .line 246
-    :catch_27
+    :catch_0
     move-exception v1
 
     .line 247
@@ -1264,7 +1264,7 @@
 .end method
 
 .method public getContainerId()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 231
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mContainerId:Ljava/lang/String;
@@ -1273,7 +1273,7 @@
 .end method
 
 .method getCtfeUrlPathAndQuery()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 722
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mCtfeUrlPathAndQuery:Ljava/lang/String;
@@ -1282,7 +1282,7 @@
 .end method
 
 .method public getDouble(Ljava/lang/String;)D
-    .registers 6
+    .locals 4
     .param p1, "key"    # Ljava/lang/String;
 
     .line 258
@@ -1292,7 +1292,7 @@
 
     .line 259
     .local v0, "runtime":Lcom/google/tagmanager/Runtime;
-    if-nez v0, :cond_14
+    if-nez v0, :cond_0
 
     .line 260
     const-string v1, "getDouble called for closed container."
@@ -1311,8 +1311,8 @@
     return-wide v1
 
     .line 264
-    :cond_14
-    :try_start_14
+    :cond_0
+    :try_start_0
     invoke-virtual {v0, p1}, Lcom/google/tagmanager/Runtime;->evaluateMacroReference(Ljava/lang/String;)Lcom/google/tagmanager/ObjectAndStatic;
 
     move-result-object v1
@@ -1330,13 +1330,13 @@
     invoke-virtual {v1}, Ljava/lang/Double;->doubleValue()D
 
     move-result-wide v1
-    :try_end_26
-    .catch Ljava/lang/Exception; {:try_start_14 .. :try_end_26} :catch_27
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
     return-wide v1
 
     .line 265
-    :catch_27
+    :catch_0
     move-exception v1
 
     .line 266
@@ -1378,13 +1378,13 @@
 .end method
 
 .method public declared-synchronized getFunctionCallMacroHandler(Ljava/lang/String;)Lcom/google/tagmanager/Container$FunctionCallMacroHandler;
-    .registers 3
+    .locals 1
     .param p1, "customMacroName"    # Ljava/lang/String;
 
     monitor-enter p0
 
     .line 413
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mFunctionCallMacroHandlers:Ljava/util/Map;
 
     invoke-interface {v0, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -1392,31 +1392,31 @@
     move-result-object v0
 
     check-cast v0, Lcom/google/tagmanager/Container$FunctionCallMacroHandler;
-    :try_end_9
-    .catchall {:try_start_1 .. :try_end_9} :catchall_b
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     monitor-exit p0
 
     return-object v0
 
+    .end local p0    # "this":Lcom/google/tagmanager/Container;
     .end local p1    # "customMacroName":Ljava/lang/String;
-    :catchall_b
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/Container;
     throw p1
 .end method
 
 .method public declared-synchronized getFunctionCallTagHandler(Ljava/lang/String;)Lcom/google/tagmanager/Container$FunctionCallTagHandler;
-    .registers 3
+    .locals 1
     .param p1, "customTagName"    # Ljava/lang/String;
 
     monitor-enter p0
 
     .line 434
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mFunctionCallTagHandlers:Ljava/util/Map;
 
     invoke-interface {v0, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -1424,25 +1424,25 @@
     move-result-object v0
 
     check-cast v0, Lcom/google/tagmanager/Container$FunctionCallTagHandler;
-    :try_end_9
-    .catchall {:try_start_1 .. :try_end_9} :catchall_b
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     monitor-exit p0
 
     return-object v0
 
+    .end local p0    # "this":Lcom/google/tagmanager/Container;
     .end local p1    # "customTagName":Ljava/lang/String;
-    :catchall_b
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/Container;
     throw p1
 .end method
 
 .method public getLastRefreshTime()J
-    .registers 3
+    .locals 2
 
     .line 315
     iget-wide v0, p0, Lcom/google/tagmanager/Container;->mLastRefreshTime:J
@@ -1451,7 +1451,7 @@
 .end method
 
 .method public getLong(Ljava/lang/String;)J
-    .registers 6
+    .locals 4
     .param p1, "key"    # Ljava/lang/String;
 
     .line 277
@@ -1461,7 +1461,7 @@
 
     .line 278
     .local v0, "runtime":Lcom/google/tagmanager/Runtime;
-    if-nez v0, :cond_14
+    if-nez v0, :cond_0
 
     .line 279
     const-string v1, "getLong called for closed container."
@@ -1480,8 +1480,8 @@
     return-wide v1
 
     .line 283
-    :cond_14
-    :try_start_14
+    :cond_0
+    :try_start_0
     invoke-virtual {v0, p1}, Lcom/google/tagmanager/Runtime;->evaluateMacroReference(Ljava/lang/String;)Lcom/google/tagmanager/ObjectAndStatic;
 
     move-result-object v1
@@ -1499,13 +1499,13 @@
     invoke-virtual {v1}, Ljava/lang/Long;->longValue()J
 
     move-result-wide v1
-    :try_end_26
-    .catch Ljava/lang/Exception; {:try_start_14 .. :try_end_26} :catch_27
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
     return-wide v1
 
     .line 284
-    :catch_27
+    :catch_0
     move-exception v1
 
     .line 285
@@ -1547,7 +1547,7 @@
 .end method
 
 .method getResourceVersion()Ljava/lang/String;
-    .registers 2
+    .locals 1
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
@@ -1558,7 +1558,7 @@
 .end method
 
 .method public getString(Ljava/lang/String;)Ljava/lang/String;
-    .registers 6
+    .locals 4
     .param p1, "key"    # Ljava/lang/String;
 
     .line 296
@@ -1568,7 +1568,7 @@
 
     .line 297
     .local v0, "runtime":Lcom/google/tagmanager/Runtime;
-    if-nez v0, :cond_10
+    if-nez v0, :cond_0
 
     .line 298
     const-string v1, "getString called for closed container."
@@ -1583,8 +1583,8 @@
     return-object v1
 
     .line 302
-    :cond_10
-    :try_start_10
+    :cond_0
+    :try_start_0
     invoke-virtual {v0, p1}, Lcom/google/tagmanager/Runtime;->evaluateMacroReference(Ljava/lang/String;)Lcom/google/tagmanager/ObjectAndStatic;
 
     move-result-object v1
@@ -1598,13 +1598,13 @@
     invoke-static {v1}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
 
     move-result-object v1
-    :try_end_1e
-    .catch Ljava/lang/Exception; {:try_start_10 .. :try_end_1e} :catch_1f
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
     return-object v1
 
     .line 303
-    :catch_1f
+    :catch_0
     move-exception v1
 
     .line 304
@@ -1642,7 +1642,7 @@
 .end method
 
 .method public isDefault()Z
-    .registers 5
+    .locals 4
 
     .line 375
     invoke-virtual {p0}, Lcom/google/tagmanager/Container;->getLastRefreshTime()J
@@ -1653,21 +1653,21 @@
 
     cmp-long v0, v0, v2
 
-    if-nez v0, :cond_c
+    if-nez v0, :cond_0
 
     const/4 v0, 0x1
 
-    goto :goto_d
+    goto :goto_0
 
-    :cond_c
+    :cond_0
     const/4 v0, 0x0
 
-    :goto_d
+    :goto_0
     return v0
 .end method
 
 .method load(Lcom/google/tagmanager/Container$Callback;)V
-    .registers 7
+    .locals 5
     .param p1, "callback"    # Lcom/google/tagmanager/Container$Callback;
 
     .line 385
@@ -1694,7 +1694,7 @@
 .end method
 
 .method declared-synchronized load(Lcom/google/tagmanager/Container$Callback;Lcom/google/tagmanager/Container$ResourceLoaderScheduler;Lcom/google/tagmanager/Clock;)V
-    .registers 7
+    .locals 3
     .param p1, "callback"    # Lcom/google/tagmanager/Container$Callback;
     .param p2, "scheduler"    # Lcom/google/tagmanager/Container$ResourceLoaderScheduler;
     .param p3, "clock"    # Lcom/google/tagmanager/Clock;
@@ -1704,10 +1704,10 @@
     monitor-enter p0
 
     .line 465
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mDiskLoadCallback:Lcom/google/tagmanager/LoadCallback;
 
-    if-nez v0, :cond_59
+    if-nez v0, :cond_3
 
     .line 469
     iput-object p3, p0, Lcom/google/tagmanager/Container;->mClock:Lcom/google/tagmanager/Clock;
@@ -1727,14 +1727,14 @@
 
     move-result v0
 
-    if-eqz v0, :cond_1d
+    if-eqz v0, :cond_0
 
     .line 533
     const-string v0, "Container is in DEFAULT_CONTAINER mode. Use default container."
 
     invoke-static {v0}, Lcom/google/tagmanager/Log;->i(Ljava/lang/String;)V
-    :try_end_1b
-    .catchall {:try_start_1 .. :try_end_1b} :catchall_72
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 534
     monitor-exit p0
@@ -1742,8 +1742,9 @@
     return-void
 
     .line 537
-    :cond_1d
-    :try_start_1d
+    .end local p0    # "this":Lcom/google/tagmanager/Container;
+    :cond_0
+    :try_start_1
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mResourceStorage:Lcom/google/tagmanager/Container$ResourceStorage;
 
     iget-object v1, p0, Lcom/google/tagmanager/Container;->mDiskLoadCallback:Lcom/google/tagmanager/LoadCallback;
@@ -1767,7 +1768,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_45
+    if-eqz v0, :cond_1
 
     .line 613
     invoke-static {}, Lcom/google/tagmanager/PreviewManager;->getInstance()Lcom/google/tagmanager/PreviewManager;
@@ -1786,10 +1787,10 @@
     invoke-interface {p2, v0}, Lcom/google/tagmanager/Container$ResourceLoaderScheduler;->setCtfeURLPathAndQuery(Ljava/lang/String;)V
 
     .line 616
-    :cond_45
+    :cond_1
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mCtfeServerAddress:Ljava/lang/String;
 
-    if-eqz v0, :cond_50
+    if-eqz v0, :cond_2
 
     .line 617
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mCtfeHost:Lcom/google/tagmanager/CtfeHost;
@@ -1799,15 +1800,15 @@
     invoke-virtual {v0, v1}, Lcom/google/tagmanager/CtfeHost;->setCtfeServerAddress(Ljava/lang/String;)V
 
     .line 619
-    :cond_50
+    :cond_2
     iput-object p2, p0, Lcom/google/tagmanager/Container;->mNetworkLoadScheduler:Lcom/google/tagmanager/Container$ResourceLoaderScheduler;
 
     .line 622
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mResourceStorage:Lcom/google/tagmanager/Container$ResourceStorage;
 
     invoke-interface {v0}, Lcom/google/tagmanager/Container$ResourceStorage;->loadResourceFromDiskInBackground()V
-    :try_end_57
-    .catchall {:try_start_1d .. :try_end_57} :catchall_72
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 623
     monitor-exit p0
@@ -1815,8 +1816,8 @@
     return-void
 
     .line 466
-    :cond_59
-    :try_start_59
+    :cond_3
+    :try_start_2
     new-instance v0, Ljava/lang/RuntimeException;
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -1838,24 +1839,23 @@
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
-    :try_end_72
-    .catchall {:try_start_59 .. :try_end_72} :catchall_72
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
     .line 464
     .end local p1    # "callback":Lcom/google/tagmanager/Container$Callback;
     .end local p2    # "scheduler":Lcom/google/tagmanager/Container$ResourceLoaderScheduler;
     .end local p3    # "clock":Lcom/google/tagmanager/Clock;
-    :catchall_72
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/Container;
     throw p1
 .end method
 
 .method declared-synchronized loadAfterDelay(J)V
-    .registers 5
+    .locals 2
     .param p1, "delay"    # J
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
@@ -1863,16 +1863,16 @@
     monitor-enter p0
 
     .line 632
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mNetworkLoadScheduler:Lcom/google/tagmanager/Container$ResourceLoaderScheduler;
 
-    if-eqz v0, :cond_14
+    if-eqz v0, :cond_0
 
     invoke-direct {p0}, Lcom/google/tagmanager/Container;->isDefaultContainerRefreshMode()Z
 
     move-result v0
 
-    if-nez v0, :cond_14
+    if-nez v0, :cond_0
 
     .line 633
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mNetworkLoadScheduler:Lcom/google/tagmanager/Container$ResourceLoaderScheduler;
@@ -1882,45 +1882,45 @@
     iget-object v1, v1, Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;->fingerprint:Ljava/lang/String;
 
     invoke-interface {v0, p1, p2, v1}, Lcom/google/tagmanager/Container$ResourceLoaderScheduler;->loadAfterDelay(JLjava/lang/String;)V
-    :try_end_14
-    .catchall {:try_start_1 .. :try_end_14} :catchall_16
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 635
-    :cond_14
+    .end local p0    # "this":Lcom/google/tagmanager/Container;
+    :cond_0
     monitor-exit p0
 
     return-void
 
     .line 631
     .end local p1    # "delay":J
-    :catchall_16
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/Container;
     throw p1
 .end method
 
 .method public declared-synchronized refresh()V
-    .registers 5
+    .locals 4
 
     monitor-enter p0
 
     .line 326
-    :try_start_1
+    :try_start_0
     invoke-direct {p0}, Lcom/google/tagmanager/Container;->getRuntime()Lcom/google/tagmanager/Runtime;
 
     move-result-object v0
 
-    if-nez v0, :cond_e
+    if-nez v0, :cond_0
 
     .line 327
     const-string v0, "refresh called for closed container"
 
     invoke-static {v0}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
-    :try_end_c
-    .catchall {:try_start_1 .. :try_end_c} :catchall_55
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 328
     monitor-exit p0
@@ -1928,21 +1928,22 @@
     return-void
 
     .line 331
-    :cond_e
-    :try_start_e
+    .end local p0    # "this":Lcom/google/tagmanager/Container;
+    :cond_0
+    :try_start_1
     invoke-direct {p0}, Lcom/google/tagmanager/Container;->isDefaultContainerRefreshMode()Z
 
     move-result v0
 
-    if-eqz v0, :cond_1b
+    if-eqz v0, :cond_1
 
     .line 332
     const-string v0, "Container is in DEFAULT_CONTAINER mode. Refresh request is ignored."
 
     invoke-static {v0}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
-    :try_end_19
-    .catch Ljava/lang/Exception; {:try_start_e .. :try_end_19} :catch_3a
-    .catchall {:try_start_e .. :try_end_19} :catchall_55
+    :try_end_1
+    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 333
     monitor-exit p0
@@ -1950,8 +1951,8 @@
     return-void
 
     .line 336
-    :cond_1b
-    :try_start_1b
+    :cond_1
+    :try_start_2
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mClock:Lcom/google/tagmanager/Clock;
 
     invoke-interface {v0}, Lcom/google/tagmanager/Clock;->currentTimeMillis()J
@@ -1964,7 +1965,7 @@
 
     move-result v2
 
-    if-eqz v2, :cond_34
+    if-eqz v2, :cond_2
 
     .line 338
     const-string v2, "Container refresh requested"
@@ -1979,29 +1980,29 @@
     .line 340
     iput-wide v0, p0, Lcom/google/tagmanager/Container;->mLastRefreshMethodCalledTime:J
 
-    goto :goto_39
+    goto :goto_0
 
     .line 342
-    :cond_34
+    :cond_2
     const-string v2, "Container refresh was called too often. Ignored."
 
     invoke-static {v2}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
-    :try_end_39
-    .catch Ljava/lang/Exception; {:try_start_1b .. :try_end_39} :catch_3a
-    .catchall {:try_start_1b .. :try_end_39} :catchall_55
+    :try_end_2
+    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_0
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
     .line 346
     .end local v0    # "currentTime":J
-    :goto_39
-    goto :goto_53
+    :goto_0
+    goto :goto_1
 
     .line 344
-    :catch_3a
+    :catch_0
     move-exception v0
 
     .line 345
     .local v0, "e":Ljava/lang/Exception;
-    :try_start_3b
+    :try_start_3
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -2021,40 +2022,39 @@
     move-result-object v1
 
     invoke-static {v1}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
-    :try_end_53
-    .catchall {:try_start_3b .. :try_end_53} :catchall_55
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
     .line 347
     .end local v0    # "e":Ljava/lang/Exception;
-    :goto_53
+    :goto_1
     monitor-exit p0
 
     return-void
 
     .line 325
-    :catchall_55
+    :catchall_0
     move-exception v0
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/Container;
     throw v0
 .end method
 
 .method public declared-synchronized registerFunctionCallMacroHandler(Ljava/lang/String;Lcom/google/tagmanager/Container$FunctionCallMacroHandler;)V
-    .registers 4
+    .locals 1
     .param p1, "customMacroName"    # Ljava/lang/String;
     .param p2, "customMacroHandler"    # Lcom/google/tagmanager/Container$FunctionCallMacroHandler;
 
     monitor-enter p0
 
     .line 406
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mFunctionCallMacroHandlers:Ljava/util/Map;
 
     invoke-interface {v0, p1, p2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    :try_end_6
-    .catchall {:try_start_1 .. :try_end_6} :catchall_8
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 407
     monitor-exit p0
@@ -2062,31 +2062,31 @@
     return-void
 
     .line 405
+    .end local p0    # "this":Lcom/google/tagmanager/Container;
     .end local p1    # "customMacroName":Ljava/lang/String;
     .end local p2    # "customMacroHandler":Lcom/google/tagmanager/Container$FunctionCallMacroHandler;
-    :catchall_8
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/Container;
     throw p1
 .end method
 
 .method public declared-synchronized registerFunctionCallTagHandler(Ljava/lang/String;Lcom/google/tagmanager/Container$FunctionCallTagHandler;)V
-    .registers 4
+    .locals 1
     .param p1, "customTagName"    # Ljava/lang/String;
     .param p2, "customTagHandler"    # Lcom/google/tagmanager/Container$FunctionCallTagHandler;
 
     monitor-enter p0
 
     .line 427
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mFunctionCallTagHandlers:Ljava/util/Map;
 
     invoke-interface {v0, p1, p2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    :try_end_6
-    .catchall {:try_start_1 .. :try_end_6} :catchall_8
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 428
     monitor-exit p0
@@ -2094,19 +2094,19 @@
     return-void
 
     .line 426
+    .end local p0    # "this":Lcom/google/tagmanager/Container;
     .end local p1    # "customTagName":Ljava/lang/String;
     .end local p2    # "customTagHandler":Lcom/google/tagmanager/Container$FunctionCallTagHandler;
-    :catchall_8
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/Container;
     throw p1
 .end method
 
 .method declared-synchronized setCtfeServerAddress(Ljava/lang/String;)V
-    .registers 3
+    .locals 1
     .param p1, "addr"    # Ljava/lang/String;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
@@ -2114,38 +2114,38 @@
     monitor-enter p0
 
     .line 707
-    :try_start_1
+    :try_start_0
     iput-object p1, p0, Lcom/google/tagmanager/Container;->mCtfeServerAddress:Ljava/lang/String;
 
     .line 708
-    if-eqz p1, :cond_a
+    if-eqz p1, :cond_0
 
     .line 709
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mCtfeHost:Lcom/google/tagmanager/CtfeHost;
 
     invoke-virtual {v0, p1}, Lcom/google/tagmanager/CtfeHost;->setCtfeServerAddress(Ljava/lang/String;)V
-    :try_end_a
-    .catchall {:try_start_1 .. :try_end_a} :catchall_c
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 711
-    :cond_a
+    .end local p0    # "this":Lcom/google/tagmanager/Container;
+    :cond_0
     monitor-exit p0
 
     return-void
 
     .line 706
     .end local p1    # "addr":Ljava/lang/String;
-    :catchall_c
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/Container;
     throw p1
 .end method
 
 .method declared-synchronized setCtfeUrlPathAndQuery(Ljava/lang/String;)V
-    .registers 3
+    .locals 1
     .param p1, "ctfeUrlPathAndQuery"    # Ljava/lang/String;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
@@ -2153,34 +2153,34 @@
     monitor-enter p0
 
     .line 715
-    :try_start_1
+    :try_start_0
     iput-object p1, p0, Lcom/google/tagmanager/Container;->mCtfeUrlPathAndQuery:Ljava/lang/String;
 
     .line 716
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mNetworkLoadScheduler:Lcom/google/tagmanager/Container$ResourceLoaderScheduler;
 
-    if-eqz v0, :cond_c
+    if-eqz v0, :cond_0
 
     .line 717
     iget-object v0, p0, Lcom/google/tagmanager/Container;->mNetworkLoadScheduler:Lcom/google/tagmanager/Container$ResourceLoaderScheduler;
 
     invoke-interface {v0, p1}, Lcom/google/tagmanager/Container$ResourceLoaderScheduler;->setCtfeURLPathAndQuery(Ljava/lang/String;)V
-    :try_end_c
-    .catchall {:try_start_1 .. :try_end_c} :catchall_e
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 719
-    :cond_c
+    .end local p0    # "this":Lcom/google/tagmanager/Container;
+    :cond_0
     monitor-exit p0
 
     return-void
 
     .line 714
     .end local p1    # "ctfeUrlPathAndQuery":Ljava/lang/String;
-    :catchall_e
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/Container;
     throw p1
 .end method

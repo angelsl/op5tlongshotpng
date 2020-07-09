@@ -23,7 +23,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/Runtime;)V
-    .registers 2
+    .locals 0
 
     .line 445
     iput-object p1, p0, Lcom/google/tagmanager/Runtime$4;->this$0:Lcom/google/tagmanager/Runtime;
@@ -36,7 +36,7 @@
 
 # virtual methods
 .method public rulePassed(Lcom/google/tagmanager/ResourceUtil$ExpandedRule;Ljava/util/Set;Ljava/util/Set;Lcom/google/tagmanager/ResolvedRuleBuilder;)V
-    .registers 8
+    .locals 3
     .param p1, "rule"    # Lcom/google/tagmanager/ResourceUtil$ExpandedRule;
     .param p4, "debugRuleBuilder"    # Lcom/google/tagmanager/ResolvedRuleBuilder;
     .annotation system Ldalvik/annotation/Signature;

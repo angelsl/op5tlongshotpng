@@ -31,7 +31,7 @@
 
 # direct methods
 .method private constructor <init>()V
-    .registers 2
+    .locals 1
 
     .line 49
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -48,7 +48,7 @@
 .end method
 
 .method synthetic constructor <init>(Lcom/google/tagmanager/ResourceUtil$1;)V
-    .registers 2
+    .locals 0
     .param p1, "x0"    # Lcom/google/tagmanager/ResourceUtil$1;
 
     .line 44
@@ -60,7 +60,7 @@
 
 # virtual methods
 .method public addProperty(Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCallBuilder;
-    .registers 4
+    .locals 1
     .param p1, "key"    # Ljava/lang/String;
     .param p2, "value"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
@@ -74,7 +74,7 @@
 .end method
 
 .method public build()Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
-    .registers 5
+    .locals 4
 
     .line 64
     new-instance v0, Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
@@ -91,7 +91,7 @@
 .end method
 
 .method public setPushAfterEvaluate(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCallBuilder;
-    .registers 2
+    .locals 0
     .param p1, "value"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 59

@@ -26,7 +26,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/PersistentHitStore;)V
-    .registers 2
+    .locals 0
 
     .line 474
     iput-object p1, p0, Lcom/google/tagmanager/PersistentHitStore$StoreDispatchListener;->this$0:Lcom/google/tagmanager/PersistentHitStore;
@@ -39,7 +39,7 @@
 
 # virtual methods
 .method public onHitDispatched(Lcom/google/tagmanager/Hit;)V
-    .registers 5
+    .locals 3
     .param p1, "hit"    # Lcom/google/tagmanager/Hit;
 
     .line 477
@@ -49,7 +49,6 @@
 
     move-result-wide v1
 
-    # invokes: Lcom/google/tagmanager/PersistentHitStore;->deleteHit(J)V
     invoke-static {v0, v1, v2}, Lcom/google/tagmanager/PersistentHitStore;->access$000(Lcom/google/tagmanager/PersistentHitStore;J)V
 
     .line 478
@@ -57,7 +56,7 @@
 .end method
 
 .method public onHitPermanentDispatchFailure(Lcom/google/tagmanager/Hit;)V
-    .registers 5
+    .locals 3
     .param p1, "hit"    # Lcom/google/tagmanager/Hit;
 
     .line 482
@@ -67,7 +66,6 @@
 
     move-result-wide v1
 
-    # invokes: Lcom/google/tagmanager/PersistentHitStore;->deleteHit(J)V
     invoke-static {v0, v1, v2}, Lcom/google/tagmanager/PersistentHitStore;->access$000(Lcom/google/tagmanager/PersistentHitStore;J)V
 
     .line 483
@@ -96,7 +94,7 @@
 .end method
 
 .method public onHitTransientDispatchFailure(Lcom/google/tagmanager/Hit;)V
-    .registers 9
+    .locals 7
     .param p1, "hit"    # Lcom/google/tagmanager/Hit;
 
     .line 488
@@ -110,7 +108,7 @@
 
     cmp-long v2, v0, v2
 
-    if-nez v2, :cond_1e
+    if-nez v2, :cond_0
 
     .line 491
     iget-object v2, p0, Lcom/google/tagmanager/PersistentHitStore$StoreDispatchListener;->this$0:Lcom/google/tagmanager/PersistentHitStore;
@@ -121,7 +119,6 @@
 
     iget-object v5, p0, Lcom/google/tagmanager/PersistentHitStore$StoreDispatchListener;->this$0:Lcom/google/tagmanager/PersistentHitStore;
 
-    # getter for: Lcom/google/tagmanager/PersistentHitStore;->mClock:Lcom/google/tagmanager/Clock;
     invoke-static {v5}, Lcom/google/tagmanager/PersistentHitStore;->access$100(Lcom/google/tagmanager/PersistentHitStore;)Lcom/google/tagmanager/Clock;
 
     move-result-object v5
@@ -130,20 +127,18 @@
 
     move-result-wide v5
 
-    # invokes: Lcom/google/tagmanager/PersistentHitStore;->setHitFirstDispatchTime(JJ)V
     invoke-static {v2, v3, v4, v5, v6}, Lcom/google/tagmanager/PersistentHitStore;->access$200(Lcom/google/tagmanager/PersistentHitStore;JJ)V
 
-    goto :goto_51
+    goto :goto_0
 
     .line 492
-    :cond_1e
+    :cond_0
     const-wide/32 v2, 0xdbba00
 
     add-long/2addr v2, v0
 
     iget-object v4, p0, Lcom/google/tagmanager/PersistentHitStore$StoreDispatchListener;->this$0:Lcom/google/tagmanager/PersistentHitStore;
 
-    # getter for: Lcom/google/tagmanager/PersistentHitStore;->mClock:Lcom/google/tagmanager/Clock;
     invoke-static {v4}, Lcom/google/tagmanager/PersistentHitStore;->access$100(Lcom/google/tagmanager/PersistentHitStore;)Lcom/google/tagmanager/Clock;
 
     move-result-object v4
@@ -154,7 +149,7 @@
 
     cmp-long v2, v2, v4
 
-    if-gez v2, :cond_51
+    if-gez v2, :cond_1
 
     .line 494
     iget-object v2, p0, Lcom/google/tagmanager/PersistentHitStore$StoreDispatchListener;->this$0:Lcom/google/tagmanager/PersistentHitStore;
@@ -163,7 +158,6 @@
 
     move-result-wide v3
 
-    # invokes: Lcom/google/tagmanager/PersistentHitStore;->deleteHit(J)V
     invoke-static {v2, v3, v4}, Lcom/google/tagmanager/PersistentHitStore;->access$000(Lcom/google/tagmanager/PersistentHitStore;J)V
 
     .line 495
@@ -188,7 +182,7 @@
     invoke-static {v2}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
 
     .line 497
-    :cond_51
-    :goto_51
+    :cond_1
+    :goto_0
     return-void
 .end method

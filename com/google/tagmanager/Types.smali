@@ -42,7 +42,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 5
+    .locals 5
 
     .line 36
     const/4 v0, 0x0
@@ -119,7 +119,7 @@
 .end method
 
 .method private constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 55
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -129,7 +129,7 @@
 .end method
 
 .method public static functionIdToValue(Ljava/lang/String;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 3
+    .locals 2
     .param p0, "id"    # Ljava/lang/String;
 
     .line 257
@@ -151,7 +151,7 @@
 .end method
 
 .method public static getDefaultBoolean()Ljava/lang/Boolean;
-    .registers 1
+    .locals 1
 
     .line 71
     sget-object v0, Lcom/google/tagmanager/Types;->DEFAULT_BOOLEAN:Ljava/lang/Boolean;
@@ -160,7 +160,7 @@
 .end method
 
 .method public static getDefaultDouble()Ljava/lang/Double;
-    .registers 1
+    .locals 1
 
     .line 67
     sget-object v0, Lcom/google/tagmanager/Types;->DEFAULT_DOUBLE:Ljava/lang/Double;
@@ -169,7 +169,7 @@
 .end method
 
 .method public static getDefaultInt64()Ljava/lang/Long;
-    .registers 1
+    .locals 1
 
     .line 63
     sget-object v0, Lcom/google/tagmanager/Types;->DEFAULT_INT64:Ljava/lang/Long;
@@ -178,7 +178,7 @@
 .end method
 
 .method public static getDefaultList()Ljava/util/List;
-    .registers 1
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -195,7 +195,7 @@
 .end method
 
 .method public static getDefaultMap()Ljava/util/Map;
-    .registers 1
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -213,7 +213,7 @@
 .end method
 
 .method public static getDefaultNumber()Lcom/google/tagmanager/TypedNumber;
-    .registers 1
+    .locals 1
 
     .line 75
     sget-object v0, Lcom/google/tagmanager/Types;->DEFAULT_NUMBER:Lcom/google/tagmanager/TypedNumber;
@@ -222,7 +222,7 @@
 .end method
 
 .method public static getDefaultObject()Ljava/lang/Object;
-    .registers 1
+    .locals 1
 
     .line 59
     sget-object v0, Lcom/google/tagmanager/Types;->DEFAULT_OBJECT:Ljava/lang/Object;
@@ -231,7 +231,7 @@
 .end method
 
 .method public static getDefaultString()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 79
     sget-object v0, Lcom/google/tagmanager/Types;->DEFAULT_STRING:Ljava/lang/String;
@@ -240,7 +240,7 @@
 .end method
 
 .method public static getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 1
+    .locals 1
 
     .line 91
     sget-object v0, Lcom/google/tagmanager/Types;->DEFAULT_VALUE:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -249,13 +249,13 @@
 .end method
 
 .method private static getDouble(Ljava/lang/Object;)D
-    .registers 3
+    .locals 2
     .param p0, "o"    # Ljava/lang/Object;
 
     .line 301
     instance-of v0, p0, Ljava/lang/Number;
 
-    if-eqz v0, :cond_c
+    if-eqz v0, :cond_0
 
     .line 302
     move-object v0, p0
@@ -269,7 +269,7 @@
     return-wide v0
 
     .line 304
-    :cond_c
+    :cond_0
     const-string v0, "getDouble received non-Number"
 
     invoke-static {v0}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
@@ -281,13 +281,13 @@
 .end method
 
 .method private static getInt64(Ljava/lang/Object;)J
-    .registers 3
+    .locals 2
     .param p0, "o"    # Ljava/lang/Object;
 
     .line 325
     instance-of v0, p0, Ljava/lang/Number;
 
-    if-eqz v0, :cond_c
+    if-eqz v0, :cond_0
 
     .line 326
     move-object v0, p0
@@ -301,7 +301,7 @@
     return-wide v0
 
     .line 328
-    :cond_c
+    :cond_0
     const-string v0, "getInt64 received non-Number"
 
     invoke-static {v0}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
@@ -313,21 +313,21 @@
 .end method
 
 .method private static isDoubleableNumber(Ljava/lang/Object;)Z
-    .registers 2
+    .locals 1
     .param p0, "o"    # Ljava/lang/Object;
 
     .line 291
     instance-of v0, p0, Ljava/lang/Double;
 
-    if-nez v0, :cond_18
+    if-nez v0, :cond_1
 
     instance-of v0, p0, Ljava/lang/Float;
 
-    if-nez v0, :cond_18
+    if-nez v0, :cond_1
 
     instance-of v0, p0, Lcom/google/tagmanager/TypedNumber;
 
-    if-eqz v0, :cond_16
+    if-eqz v0, :cond_0
 
     move-object v0, p0
 
@@ -337,47 +337,47 @@
 
     move-result v0
 
-    if-eqz v0, :cond_16
+    if-eqz v0, :cond_0
 
-    goto :goto_18
+    goto :goto_0
 
-    :cond_16
+    :cond_0
     const/4 v0, 0x0
 
-    goto :goto_19
+    goto :goto_1
 
-    :cond_18
-    :goto_18
+    :cond_1
+    :goto_0
     const/4 v0, 0x1
 
-    :goto_19
+    :goto_1
     return v0
 .end method
 
 .method private static isInt64ableNumber(Ljava/lang/Object;)Z
-    .registers 2
+    .locals 1
     .param p0, "o"    # Ljava/lang/Object;
 
     .line 314
     instance-of v0, p0, Ljava/lang/Byte;
 
-    if-nez v0, :cond_20
+    if-nez v0, :cond_1
 
     instance-of v0, p0, Ljava/lang/Short;
 
-    if-nez v0, :cond_20
+    if-nez v0, :cond_1
 
     instance-of v0, p0, Ljava/lang/Integer;
 
-    if-nez v0, :cond_20
+    if-nez v0, :cond_1
 
     instance-of v0, p0, Ljava/lang/Long;
 
-    if-nez v0, :cond_20
+    if-nez v0, :cond_1
 
     instance-of v0, p0, Lcom/google/tagmanager/TypedNumber;
 
-    if-eqz v0, :cond_1e
+    if-eqz v0, :cond_0
 
     move-object v0, p0
 
@@ -387,25 +387,25 @@
 
     move-result v0
 
-    if-eqz v0, :cond_1e
+    if-eqz v0, :cond_0
 
-    goto :goto_20
+    goto :goto_0
 
-    :cond_1e
+    :cond_0
     const/4 v0, 0x0
 
-    goto :goto_21
+    goto :goto_1
 
-    :cond_20
-    :goto_20
+    :cond_1
+    :goto_0
     const/4 v0, 0x1
 
-    :goto_21
+    :goto_1
     return v0
 .end method
 
 .method public static varargs macroReferenceToValue(Ljava/lang/String;[I)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 4
+    .locals 2
     .param p0, "macroName"    # Ljava/lang/String;
     .param p1, "escapings"    # [I
 
@@ -442,21 +442,21 @@
 .end method
 
 .method public static objectToBoolean(Ljava/lang/Object;)Ljava/lang/Boolean;
-    .registers 2
+    .locals 1
     .param p0, "o"    # Ljava/lang/Object;
 
     .line 139
     instance-of v0, p0, Ljava/lang/Boolean;
 
-    if-eqz v0, :cond_8
+    if-eqz v0, :cond_0
 
     move-object v0, p0
 
     check-cast v0, Ljava/lang/Boolean;
 
-    goto :goto_10
+    goto :goto_0
 
-    :cond_8
+    :cond_0
     invoke-static {p0}, Lcom/google/tagmanager/Types;->objectToString(Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v0
@@ -465,12 +465,12 @@
 
     move-result-object v0
 
-    :goto_10
+    :goto_0
     return-object v0
 .end method
 
 .method public static objectToDouble(Ljava/lang/Object;)Ljava/lang/Double;
-    .registers 3
+    .locals 2
     .param p0, "o"    # Ljava/lang/Object;
 
     .line 133
@@ -478,7 +478,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_f
+    if-eqz v0, :cond_0
 
     invoke-static {p0}, Lcom/google/tagmanager/Types;->getDouble(Ljava/lang/Object;)D
 
@@ -488,9 +488,9 @@
 
     move-result-object v0
 
-    goto :goto_17
+    goto :goto_0
 
-    :cond_f
+    :cond_0
     invoke-static {p0}, Lcom/google/tagmanager/Types;->objectToString(Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v0
@@ -499,12 +499,12 @@
 
     move-result-object v0
 
-    :goto_17
+    :goto_0
     return-object v0
 .end method
 
 .method public static objectToInt64(Ljava/lang/Object;)Ljava/lang/Long;
-    .registers 3
+    .locals 2
     .param p0, "o"    # Ljava/lang/Object;
 
     .line 124
@@ -512,7 +512,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_f
+    if-eqz v0, :cond_0
 
     invoke-static {p0}, Lcom/google/tagmanager/Types;->getInt64(Ljava/lang/Object;)J
 
@@ -522,9 +522,9 @@
 
     move-result-object v0
 
-    goto :goto_17
+    goto :goto_0
 
-    :cond_f
+    :cond_0
     invoke-static {p0}, Lcom/google/tagmanager/Types;->objectToString(Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v0
@@ -533,18 +533,18 @@
 
     move-result-object v0
 
-    :goto_17
+    :goto_0
     return-object v0
 .end method
 
 .method public static objectToNumber(Ljava/lang/Object;)Lcom/google/tagmanager/TypedNumber;
-    .registers 3
+    .locals 2
     .param p0, "o"    # Ljava/lang/Object;
 
     .line 111
     instance-of v0, p0, Lcom/google/tagmanager/TypedNumber;
 
-    if-eqz v0, :cond_8
+    if-eqz v0, :cond_0
 
     .line 112
     move-object v0, p0
@@ -554,12 +554,12 @@
     return-object v0
 
     .line 113
-    :cond_8
+    :cond_0
     invoke-static {p0}, Lcom/google/tagmanager/Types;->isInt64ableNumber(Ljava/lang/Object;)Z
 
     move-result v0
 
-    if-eqz v0, :cond_17
+    if-eqz v0, :cond_1
 
     .line 114
     invoke-static {p0}, Lcom/google/tagmanager/Types;->getInt64(Ljava/lang/Object;)J
@@ -573,12 +573,12 @@
     return-object v0
 
     .line 115
-    :cond_17
+    :cond_1
     invoke-static {p0}, Lcom/google/tagmanager/Types;->isDoubleableNumber(Ljava/lang/Object;)Z
 
     move-result v0
 
-    if-eqz v0, :cond_2a
+    if-eqz v0, :cond_2
 
     .line 116
     invoke-static {p0}, Lcom/google/tagmanager/Types;->getDouble(Ljava/lang/Object;)D
@@ -596,7 +596,7 @@
     return-object v0
 
     .line 118
-    :cond_2a
+    :cond_2
     invoke-static {p0}, Lcom/google/tagmanager/Types;->objectToString(Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v0
@@ -609,27 +609,27 @@
 .end method
 
 .method public static objectToString(Ljava/lang/Object;)Ljava/lang/String;
-    .registers 2
+    .locals 1
     .param p0, "o"    # Ljava/lang/Object;
 
     .line 107
-    if-nez p0, :cond_5
+    if-nez p0, :cond_0
 
     sget-object v0, Lcom/google/tagmanager/Types;->DEFAULT_STRING:Ljava/lang/String;
 
-    goto :goto_9
+    goto :goto_0
 
-    :cond_5
+    :cond_0
     invoke-virtual {p0}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
     move-result-object v0
 
-    :goto_9
+    :goto_0
     return-object v0
 .end method
 
 .method public static objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 13
+    .locals 12
     .param p0, "o"    # Ljava/lang/Object;
 
     .line 184
@@ -645,7 +645,7 @@
     .local v1, "containsRef":Z
     instance-of v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    if-eqz v2, :cond_e
+    if-eqz v2, :cond_0
 
     .line 188
     move-object v2, p0
@@ -655,12 +655,12 @@
     return-object v2
 
     .line 189
-    :cond_e
+    :cond_0
     instance-of v2, p0, Ljava/lang/String;
 
     const/4 v3, 0x1
 
-    if-eqz v2, :cond_1c
+    if-eqz v2, :cond_1
 
     .line 190
     iput v3, v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->type:I
@@ -672,15 +672,15 @@
 
     iput-object v2, v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->string:Ljava/lang/String;
 
-    goto/16 :goto_10b
+    goto/16 :goto_7
 
     .line 192
-    :cond_1c
+    :cond_1
     instance-of v2, p0, Ljava/util/List;
 
     const/4 v4, 0x0
 
-    if-eqz v2, :cond_64
+    if-eqz v2, :cond_6
 
     .line 193
     const/4 v2, 0x2
@@ -709,12 +709,12 @@
     move-result-object v6
 
     .local v6, "i$":Ljava/util/Iterator;
-    :goto_34
+    :goto_0
     invoke-interface {v6}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v7
 
-    if-eqz v7, :cond_58
+    if-eqz v7, :cond_5
 
     invoke-interface {v6}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -730,33 +730,31 @@
     .local v8, "listValue":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     sget-object v9, Lcom/google/tagmanager/Types;->DEFAULT_VALUE:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    if-ne v8, v9, :cond_49
+    if-ne v8, v9, :cond_2
 
     .line 202
-    sget-object v3, Lcom/google/tagmanager/Types;->DEFAULT_VALUE:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    return-object v3
+    return-object v9
 
     .line 204
-    :cond_49
-    if-nez v1, :cond_52
+    :cond_2
+    if-nez v1, :cond_4
 
     iget-boolean v9, v8, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->containsReferences:Z
 
-    if-eqz v9, :cond_50
+    if-eqz v9, :cond_3
 
-    goto :goto_52
+    goto :goto_1
 
-    :cond_50
+    :cond_3
     move v9, v4
 
-    goto :goto_53
+    goto :goto_2
 
-    :cond_52
-    :goto_52
+    :cond_4
+    :goto_1
     move v9, v3
 
-    :goto_53
+    :goto_2
     move v1, v9
 
     .line 205
@@ -765,11 +763,11 @@
     .line 207
     .end local v7    # "listObject":Ljava/lang/Object;
     .end local v8    # "listValue":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    goto :goto_34
+    goto :goto_0
 
     .line 208
     .end local v6    # "i$":Ljava/util/Iterator;
-    :cond_58
+    :cond_5
     new-array v3, v4, [Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     invoke-interface {v5, v3}, Ljava/util/List;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
@@ -783,12 +781,12 @@
     .line 209
     .end local v2    # "objectList":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Object;>;"
     .end local v5    # "valueList":Ljava/util/List;, "Ljava/util/List<Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
-    goto/16 :goto_10b
+    goto/16 :goto_7
 
-    :cond_64
+    :cond_6
     instance-of v2, p0, Ljava/util/Map;
 
-    if-eqz v2, :cond_db
+    if-eqz v2, :cond_c
 
     .line 210
     const/4 v2, 0x3
@@ -831,12 +829,12 @@
     move-result-object v7
 
     .local v7, "i$":Ljava/util/Iterator;
-    :goto_88
+    :goto_3
     invoke-interface {v7}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v8
 
-    if-eqz v8, :cond_c6
+    if-eqz v8, :cond_b
 
     invoke-interface {v7}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -868,38 +866,36 @@
     .local v10, "value":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     sget-object v11, Lcom/google/tagmanager/Types;->DEFAULT_VALUE:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    if-eq v9, v11, :cond_c3
+    if-eq v9, v11, :cond_a
 
-    sget-object v11, Lcom/google/tagmanager/Types;->DEFAULT_VALUE:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    if-ne v10, v11, :cond_7
 
-    if-ne v10, v11, :cond_ad
-
-    goto :goto_c3
+    goto :goto_6
 
     .line 223
-    :cond_ad
-    if-nez v1, :cond_ba
+    :cond_7
+    if-nez v1, :cond_9
 
     iget-boolean v11, v9, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->containsReferences:Z
 
-    if-nez v11, :cond_ba
+    if-nez v11, :cond_9
 
     iget-boolean v11, v10, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->containsReferences:Z
 
-    if-eqz v11, :cond_b8
+    if-eqz v11, :cond_8
 
-    goto :goto_ba
+    goto :goto_4
 
-    :cond_b8
+    :cond_8
     move v11, v4
 
-    goto :goto_bb
+    goto :goto_5
 
-    :cond_ba
-    :goto_ba
+    :cond_9
+    :goto_4
     move v11, v3
 
-    :goto_bb
+    :goto_5
     move v1, v11
 
     .line 224
@@ -912,14 +908,14 @@
     .end local v8    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/Object;Ljava/lang/Object;>;"
     .end local v9    # "key":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .end local v10    # "value":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    goto :goto_88
+    goto :goto_3
 
     .line 221
     .restart local v8    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/Object;Ljava/lang/Object;>;"
     .restart local v9    # "key":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .restart local v10    # "value":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    :cond_c3
-    :goto_c3
+    :cond_a
+    :goto_6
     sget-object v3, Lcom/google/tagmanager/Types;->DEFAULT_VALUE:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     return-object v3
@@ -929,7 +925,7 @@
     .end local v8    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/Object;Ljava/lang/Object;>;"
     .end local v9    # "key":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .end local v10    # "value":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    :cond_c6
+    :cond_b
     new-array v3, v4, [Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     invoke-interface {v5, v3}, Ljava/util/List;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
@@ -955,14 +951,14 @@
     .end local v2    # "entries":Ljava/util/Set;, "Ljava/util/Set<Ljava/util/Map$Entry<Ljava/lang/Object;Ljava/lang/Object;>;>;"
     .end local v5    # "keys":Ljava/util/List;, "Ljava/util/List<Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
     .end local v6    # "values":Ljava/util/List;, "Ljava/util/List<Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
-    goto :goto_10b
+    goto :goto_7
 
-    :cond_db
+    :cond_c
     invoke-static {p0}, Lcom/google/tagmanager/Types;->isDoubleableNumber(Ljava/lang/Object;)Z
 
     move-result v2
 
-    if-eqz v2, :cond_ea
+    if-eqz v2, :cond_d
 
     .line 233
     iput v3, v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->type:I
@@ -974,15 +970,15 @@
 
     iput-object v2, v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->string:Ljava/lang/String;
 
-    goto :goto_10b
+    goto :goto_7
 
     .line 235
-    :cond_ea
+    :cond_d
     invoke-static {p0}, Lcom/google/tagmanager/Types;->isInt64ableNumber(Ljava/lang/Object;)Z
 
     move-result v2
 
-    if-eqz v2, :cond_fa
+    if-eqz v2, :cond_e
 
     .line 236
     const/4 v2, 0x6
@@ -996,13 +992,13 @@
 
     iput-wide v2, v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->integer:J
 
-    goto :goto_10b
+    goto :goto_7
 
     .line 238
-    :cond_fa
+    :cond_e
     instance-of v2, p0, Ljava/lang/Boolean;
 
-    if-eqz v2, :cond_10e
+    if-eqz v2, :cond_f
 
     .line 239
     const/16 v2, 0x8
@@ -1021,14 +1017,14 @@
     iput-boolean v2, v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->boolean_:Z
 
     .line 247
-    :goto_10b
+    :goto_7
     iput-boolean v1, v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->containsReferences:Z
 
     .line 248
     return-object v0
 
     .line 242
-    :cond_10e
+    :cond_f
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
@@ -1037,13 +1033,13 @@
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    if-nez p0, :cond_11d
+    if-nez p0, :cond_10
 
     const-string v3, "null"
 
-    goto :goto_125
+    goto :goto_8
 
-    :cond_11d
+    :cond_10
     invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     move-result-object v3
@@ -1052,7 +1048,7 @@
 
     move-result-object v3
 
-    :goto_125
+    :goto_8
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
@@ -1068,7 +1064,7 @@
 .end method
 
 .method private static parseBoolean(Ljava/lang/String;)Ljava/lang/Boolean;
-    .registers 2
+    .locals 1
     .param p0, "s"    # Ljava/lang/String;
 
     .line 367
@@ -1078,7 +1074,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_b
+    if-eqz v0, :cond_0
 
     .line 368
     sget-object v0, Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;
@@ -1086,14 +1082,14 @@
     return-object v0
 
     .line 369
-    :cond_b
+    :cond_0
     const-string v0, "false"
 
     invoke-virtual {v0, p0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
 
     move-result v0
 
-    if-eqz v0, :cond_16
+    if-eqz v0, :cond_1
 
     .line 370
     sget-object v0, Ljava/lang/Boolean;->FALSE:Ljava/lang/Boolean;
@@ -1101,14 +1097,14 @@
     return-object v0
 
     .line 372
-    :cond_16
+    :cond_1
     sget-object v0, Lcom/google/tagmanager/Types;->DEFAULT_BOOLEAN:Ljava/lang/Boolean;
 
     return-object v0
 .end method
 
 .method private static parseDouble(Ljava/lang/String;)Ljava/lang/Double;
-    .registers 4
+    .locals 3
     .param p0, "s"    # Ljava/lang/String;
 
     .line 361
@@ -1120,13 +1116,13 @@
     .local v0, "result":Lcom/google/tagmanager/TypedNumber;
     sget-object v1, Lcom/google/tagmanager/Types;->DEFAULT_NUMBER:Lcom/google/tagmanager/TypedNumber;
 
-    if-ne v0, v1, :cond_b
+    if-ne v0, v1, :cond_0
 
     sget-object v1, Lcom/google/tagmanager/Types;->DEFAULT_DOUBLE:Ljava/lang/Double;
 
-    goto :goto_13
+    goto :goto_0
 
-    :cond_b
+    :cond_0
     invoke-virtual {v0}, Lcom/google/tagmanager/TypedNumber;->doubleValue()D
 
     move-result-wide v1
@@ -1135,12 +1131,12 @@
 
     move-result-object v1
 
-    :goto_13
+    :goto_0
     return-object v1
 .end method
 
 .method private static parseInt64(Ljava/lang/String;)Ljava/lang/Long;
-    .registers 4
+    .locals 3
     .param p0, "s"    # Ljava/lang/String;
 
     .line 354
@@ -1152,13 +1148,13 @@
     .local v0, "result":Lcom/google/tagmanager/TypedNumber;
     sget-object v1, Lcom/google/tagmanager/Types;->DEFAULT_NUMBER:Lcom/google/tagmanager/TypedNumber;
 
-    if-ne v0, v1, :cond_b
+    if-ne v0, v1, :cond_0
 
     sget-object v1, Lcom/google/tagmanager/Types;->DEFAULT_INT64:Ljava/lang/Long;
 
-    goto :goto_13
+    goto :goto_0
 
-    :cond_b
+    :cond_0
     invoke-virtual {v0}, Lcom/google/tagmanager/TypedNumber;->longValue()J
 
     move-result-wide v1
@@ -1167,12 +1163,12 @@
 
     move-result-object v1
 
-    :goto_13
+    :goto_0
     return-object v1
 .end method
 
 .method private static parseNumber(Ljava/lang/String;)Lcom/google/tagmanager/TypedNumber;
-    .registers 4
+    .locals 3
     .param p0, "s"    # Ljava/lang/String;
 
     .line 345
@@ -1180,13 +1176,13 @@
     invoke-static {p0}, Lcom/google/tagmanager/TypedNumber;->numberWithString(Ljava/lang/String;)Lcom/google/tagmanager/TypedNumber;
 
     move-result-object v0
-    :try_end_4
-    .catch Ljava/lang/NumberFormatException; {:try_start_0 .. :try_end_4} :catch_5
+    :try_end_0
+    .catch Ljava/lang/NumberFormatException; {:try_start_0 .. :try_end_0} :catch_0
 
     return-object v0
 
     .line 346
-    :catch_5
+    :catch_0
     move-exception v0
 
     .line 347
@@ -1218,7 +1214,7 @@
 .end method
 
 .method public static varargs templateToValue([Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 7
+    .locals 5
     .param p0, "tokens"    # [Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 273
@@ -1246,63 +1242,58 @@
     .line 277
     const/4 v2, 0x0
 
-    move v3, v1
+    .local v2, "i":I
+    :goto_0
+    array-length v3, p0
 
-    move v1, v2
-
-    .local v1, "i":I
-    .local v3, "containsRef":Z
-    :goto_11
-    array-length v4, p0
-
-    if-ge v1, v4, :cond_2a
+    if-ge v2, v3, :cond_2
 
     .line 278
-    iget-object v4, v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    iget-object v3, v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    aget-object v5, p0, v1
+    aget-object v4, p0, v2
 
-    aput-object v5, v4, v1
+    aput-object v4, v3, v2
 
     .line 279
-    if-nez v3, :cond_25
+    if-nez v1, :cond_1
 
-    aget-object v4, p0, v1
+    aget-object v3, p0, v2
 
-    iget-boolean v4, v4, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->containsReferences:Z
+    iget-boolean v3, v3, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->containsReferences:Z
 
-    if-eqz v4, :cond_23
+    if-eqz v3, :cond_0
 
-    goto :goto_25
+    goto :goto_1
 
-    :cond_23
-    move v4, v2
+    :cond_0
+    const/4 v3, 0x0
 
-    goto :goto_26
+    goto :goto_2
 
-    :cond_25
-    :goto_25
-    const/4 v4, 0x1
+    :cond_1
+    :goto_1
+    const/4 v3, 0x1
 
-    :goto_26
-    move v3, v4
+    :goto_2
+    move v1, v3
 
     .line 277
-    add-int/lit8 v1, v1, 0x1
+    add-int/lit8 v2, v2, 0x1
 
-    goto :goto_11
+    goto :goto_0
 
     .line 281
-    .end local v1    # "i":I
-    :cond_2a
-    iput-boolean v3, v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->containsReferences:Z
+    .end local v2    # "i":I
+    :cond_2
+    iput-boolean v1, v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->containsReferences:Z
 
     .line 283
     return-object v0
 .end method
 
 .method public static valueToBoolean(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/Boolean;
-    .registers 2
+    .locals 1
     .param p0, "v"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 174
@@ -1318,7 +1309,7 @@
 .end method
 
 .method public static valueToDouble(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/Double;
-    .registers 2
+    .locals 1
     .param p0, "v"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 170
@@ -1334,7 +1325,7 @@
 .end method
 
 .method public static valueToInt64(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/Long;
-    .registers 2
+    .locals 1
     .param p0, "v"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 166
@@ -1350,7 +1341,7 @@
 .end method
 
 .method public static valueToNumber(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Lcom/google/tagmanager/TypedNumber;
-    .registers 2
+    .locals 1
     .param p0, "v"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 162
@@ -1366,11 +1357,11 @@
 .end method
 
 .method public static valueToObject(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/Object;
-    .registers 8
+    .locals 7
     .param p0, "v"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 378
-    if-nez p0, :cond_5
+    if-nez p0, :cond_0
 
     .line 379
     sget-object v0, Lcom/google/tagmanager/Types;->DEFAULT_OBJECT:Ljava/lang/Object;
@@ -1378,12 +1369,10 @@
     return-object v0
 
     .line 382
-    :cond_5
+    :cond_0
     iget v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->type:I
 
-    const/4 v1, 0x0
-
-    packed-switch v0, :pswitch_data_dc
+    packed-switch v0, :pswitch_data_0
 
     .line 457
     new-instance v0, Ljava/lang/StringBuilder;
@@ -1410,7 +1399,7 @@
     return-object v0
 
     .line 454
-    :pswitch_24
+    :pswitch_0
     iget-boolean v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->boolean_:Z
 
     invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
@@ -1420,24 +1409,26 @@
     return-object v0
 
     .line 441
-    :pswitch_2b
+    :pswitch_1
     new-instance v0, Ljava/lang/StringBuffer;
 
     invoke-direct {v0}, Ljava/lang/StringBuffer;-><init>()V
 
     .line 442
     .local v0, "result":Ljava/lang/StringBuffer;
-    iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    .local v2, "arr$":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    array-length v3, v2
+    .local v1, "arr$":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    array-length v2, v1
 
-    .local v1, "i$":I
-    .local v3, "len$":I
-    :goto_33
-    if-ge v1, v3, :cond_48
+    .local v2, "len$":I
+    const/4 v3, 0x0
 
-    aget-object v4, v2, v1
+    .local v3, "i$":I
+    :goto_0
+    if-ge v3, v2, :cond_2
+
+    aget-object v4, v1, v3
 
     .line 443
     .local v4, "val":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -1449,7 +1440,7 @@
     .local v5, "s":Ljava/lang/String;
     sget-object v6, Lcom/google/tagmanager/Types;->DEFAULT_STRING:Ljava/lang/String;
 
-    if-ne v5, v6, :cond_42
+    if-ne v5, v6, :cond_1
 
     .line 445
     sget-object v6, Lcom/google/tagmanager/Types;->DEFAULT_OBJECT:Ljava/lang/Object;
@@ -1457,21 +1448,21 @@
     return-object v6
 
     .line 447
-    :cond_42
+    :cond_1
     invoke-virtual {v0, v5}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
     .line 442
     .end local v4    # "val":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .end local v5    # "s":Ljava/lang/String;
-    add-int/lit8 v1, v1, 0x1
+    add-int/lit8 v3, v3, 0x1
 
-    goto :goto_33
+    goto :goto_0
 
     .line 450
-    .end local v1    # "i$":I
-    .end local v2    # "arr$":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .end local v3    # "len$":I
-    :cond_48
+    .end local v1    # "arr$":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    .end local v2    # "len$":I
+    .end local v3    # "i$":I
+    :cond_2
     invoke-virtual {v0}, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
 
     move-result-object v1
@@ -1480,7 +1471,7 @@
 
     .line 438
     .end local v0    # "result":Ljava/lang/StringBuffer;
-    :pswitch_4d
+    :pswitch_2
     iget-wide v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->integer:J
 
     invoke-static {v0, v1}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
@@ -1490,7 +1481,7 @@
     return-object v0
 
     .line 434
-    :pswitch_54
+    :pswitch_3
     const-string v0, "Trying to convert a function id to object"
 
     invoke-static {v0}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
@@ -1501,7 +1492,7 @@
     return-object v0
 
     .line 426
-    :pswitch_5c
+    :pswitch_4
     const-string v0, "Trying to convert a macro reference to object"
 
     invoke-static {v0}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
@@ -1512,16 +1503,16 @@
     return-object v0
 
     .line 402
-    :pswitch_64
+    :pswitch_5
     iget-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     array-length v0, v0
 
-    iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    array-length v2, v2
+    array-length v1, v1
 
-    if-eq v0, v2, :cond_87
+    if-eq v0, v1, :cond_3
 
     .line 403
     new-instance v0, Ljava/lang/StringBuilder;
@@ -1550,26 +1541,26 @@
     return-object v0
 
     .line 406
-    :cond_87
+    :cond_3
     new-instance v0, Ljava/util/LinkedHashMap;
 
-    iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    array-length v2, v2
+    array-length v1, v1
 
-    invoke-direct {v0, v2}, Ljava/util/LinkedHashMap;-><init>(I)V
+    invoke-direct {v0, v1}, Ljava/util/LinkedHashMap;-><init>(I)V
 
     .line 407
     .local v0, "result":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
-    nop
+    const/4 v1, 0x0
 
     .local v1, "i":I
-    :goto_90
+    :goto_1
     iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     array-length v2, v2
 
-    if-ge v1, v2, :cond_b7
+    if-ge v1, v2, :cond_6
 
     .line 408
     iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -1594,16 +1585,14 @@
     .local v3, "value":Ljava/lang/Object;
     sget-object v4, Lcom/google/tagmanager/Types;->DEFAULT_OBJECT:Ljava/lang/Object;
 
-    if-eq v2, v4, :cond_b4
+    if-eq v2, v4, :cond_5
 
-    sget-object v4, Lcom/google/tagmanager/Types;->DEFAULT_OBJECT:Ljava/lang/Object;
+    if-ne v3, v4, :cond_4
 
-    if-ne v3, v4, :cond_ae
-
-    goto :goto_b4
+    goto :goto_2
 
     .line 415
-    :cond_ae
+    :cond_4
     invoke-interface {v0, v2, v3}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 407
@@ -1611,13 +1600,13 @@
     .end local v3    # "value":Ljava/lang/Object;
     add-int/lit8 v1, v1, 0x1
 
-    goto :goto_90
+    goto :goto_1
 
     .line 413
     .restart local v2    # "key":Ljava/lang/Object;
     .restart local v3    # "value":Ljava/lang/Object;
-    :cond_b4
-    :goto_b4
+    :cond_5
+    :goto_2
     sget-object v4, Lcom/google/tagmanager/Types;->DEFAULT_OBJECT:Ljava/lang/Object;
 
     return-object v4
@@ -1626,33 +1615,35 @@
     .end local v1    # "i":I
     .end local v2    # "key":Ljava/lang/Object;
     .end local v3    # "value":Ljava/lang/Object;
-    :cond_b7
+    :cond_6
     return-object v0
 
     .line 387
     .end local v0    # "result":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
-    :pswitch_b8
+    :pswitch_6
     new-instance v0, Ljava/util/ArrayList;
 
-    iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    array-length v2, v2
+    array-length v1, v1
 
-    invoke-direct {v0, v2}, Ljava/util/ArrayList;-><init>(I)V
+    invoke-direct {v0, v1}, Ljava/util/ArrayList;-><init>(I)V
 
     .line 388
     .local v0, "result":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/Object;>;"
-    iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    .local v2, "arr$":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    array-length v3, v2
+    .local v1, "arr$":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    array-length v2, v1
 
-    .local v1, "i$":I
-    .local v3, "len$":I
-    :goto_c3
-    if-ge v1, v3, :cond_d8
+    .local v2, "len$":I
+    const/4 v3, 0x0
 
-    aget-object v4, v2, v1
+    .local v3, "i$":I
+    :goto_3
+    if-ge v3, v2, :cond_8
+
+    aget-object v4, v1, v3
 
     .line 389
     .restart local v4    # "val":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -1664,53 +1655,53 @@
     .local v5, "o":Ljava/lang/Object;
     sget-object v6, Lcom/google/tagmanager/Types;->DEFAULT_OBJECT:Ljava/lang/Object;
 
-    if-ne v5, v6, :cond_d2
+    if-ne v5, v6, :cond_7
 
     .line 393
-    sget-object v6, Lcom/google/tagmanager/Types;->DEFAULT_OBJECT:Ljava/lang/Object;
-
     return-object v6
 
     .line 395
-    :cond_d2
+    :cond_7
     invoke-virtual {v0, v5}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     .line 388
     .end local v4    # "val":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .end local v5    # "o":Ljava/lang/Object;
-    add-int/lit8 v1, v1, 0x1
+    add-int/lit8 v3, v3, 0x1
 
-    goto :goto_c3
+    goto :goto_3
 
     .line 398
-    .end local v1    # "i$":I
-    .end local v2    # "arr$":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .end local v3    # "len$":I
-    :cond_d8
+    .end local v1    # "arr$":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    .end local v2    # "len$":I
+    .end local v3    # "i$":I
+    :cond_8
     return-object v0
 
     .line 384
     .end local v0    # "result":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/Object;>;"
-    :pswitch_d9
+    :pswitch_7
     iget-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->string:Ljava/lang/String;
 
     return-object v0
 
-    :pswitch_data_dc
+    nop
+
+    :pswitch_data_0
     .packed-switch 0x1
-        :pswitch_d9
-        :pswitch_b8
-        :pswitch_64
-        :pswitch_5c
-        :pswitch_54
-        :pswitch_4d
-        :pswitch_2b
-        :pswitch_24
+        :pswitch_7
+        :pswitch_6
+        :pswitch_5
+        :pswitch_4
+        :pswitch_3
+        :pswitch_2
+        :pswitch_1
+        :pswitch_0
     .end packed-switch
 .end method
 
 .method public static valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
-    .registers 2
+    .locals 1
     .param p0, "v"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 158

@@ -23,7 +23,7 @@
 
 # direct methods
 .method constructor <init>(Landroid/content/SharedPreferences$Editor;)V
-    .registers 2
+    .locals 0
 
     .line 22
     iput-object p1, p0, Lcom/google/tagmanager/SharedPreferencesUtil$1;->val$editor:Landroid/content/SharedPreferences$Editor;
@@ -36,7 +36,7 @@
 
 # virtual methods
 .method public run()V
-    .registers 2
+    .locals 1
 
     .line 25
     iget-object v0, p0, Lcom/google/tagmanager/SharedPreferencesUtil$1;->val$editor:Landroid/content/SharedPreferences$Editor;

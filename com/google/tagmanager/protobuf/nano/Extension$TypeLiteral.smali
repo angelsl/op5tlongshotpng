@@ -29,7 +29,7 @@
 
 # direct methods
 .method protected constructor <init>()V
-    .registers 4
+    .locals 3
 
     .line 82
     .local p0, "this":Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;, "Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral<TT;>;"
@@ -48,7 +48,7 @@
     .local v0, "superclass":Ljava/lang/reflect/Type;
     instance-of v1, v0, Ljava/lang/Class;
 
-    if-nez v1, :cond_1c
+    if-nez v1, :cond_0
 
     .line 87
     move-object v1, v0
@@ -69,7 +69,7 @@
     return-void
 
     .line 85
-    :cond_1c
+    :cond_0
     new-instance v1, Ljava/lang/RuntimeException;
 
     const-string v2, "Missing type parameter"
@@ -80,7 +80,7 @@
 .end method
 
 .method static synthetic access$000(Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;)Z
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;
 
     .line 79
@@ -92,7 +92,7 @@
 .end method
 
 .method static synthetic access$100(Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;)Ljava/lang/Class;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;
 
     .line 79
@@ -104,7 +104,7 @@
 .end method
 
 .method static synthetic access$200(Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;)Ljava/lang/Class;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;
 
     .line 79
@@ -116,7 +116,7 @@
 .end method
 
 .method private getListType()Ljava/lang/Class;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -141,7 +141,7 @@
 .end method
 
 .method private getTargetClass()Ljava/lang/Class;
-    .registers 3
+    .locals 2
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -156,7 +156,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_14
+    if-eqz v0, :cond_0
 
     .line 109
     iget-object v0, p0, Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;->type:Ljava/lang/reflect/Type;
@@ -176,7 +176,7 @@
     return-object v0
 
     .line 111
-    :cond_14
+    :cond_0
     iget-object v0, p0, Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;->type:Ljava/lang/reflect/Type;
 
     check-cast v0, Ljava/lang/Class;
@@ -185,7 +185,7 @@
 .end method
 
 .method private isList()Z
-    .registers 2
+    .locals 1
 
     .line 94
     .local p0, "this":Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;, "Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral<TT;>;"

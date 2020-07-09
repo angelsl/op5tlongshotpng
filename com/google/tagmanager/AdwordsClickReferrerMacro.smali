@@ -17,7 +17,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 15
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->ADWORDS_CLICK_REFERRER:Lcom/google/analytics/containertag/common/FunctionType;
@@ -50,7 +50,7 @@
 .end method
 
 .method public constructor <init>(Landroid/content/Context;)V
-    .registers 6
+    .locals 4
     .param p1, "context"    # Landroid/content/Context;
 
     .line 26
@@ -76,7 +76,7 @@
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 22
     sget-object v0, Lcom/google/tagmanager/AdwordsClickReferrerMacro;->ID:Ljava/lang/String;
@@ -87,7 +87,7 @@
 
 # virtual methods
 .method public evaluate(Ljava/util/Map;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 8
+    .locals 6
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -111,7 +111,7 @@
 
     .line 38
     .local v0, "conversionIdValue":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-nez v0, :cond_f
+    if-nez v0, :cond_0
 
     .line 39
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -121,7 +121,7 @@
     return-object v1
 
     .line 41
-    :cond_f
+    :cond_0
     invoke-static {v0}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
 
     move-result-object v1
@@ -138,20 +138,20 @@
 
     .line 44
     .local v2, "componentValue":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-eqz v2, :cond_22
+    if-eqz v2, :cond_1
 
     invoke-static {v2}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
 
     move-result-object v3
 
-    goto :goto_23
+    goto :goto_0
 
-    :cond_22
+    :cond_1
     const/4 v3, 0x0
 
     .line 46
     .local v3, "component":Ljava/lang/String;
-    :goto_23
+    :goto_0
     iget-object v4, p0, Lcom/google/tagmanager/AdwordsClickReferrerMacro;->context:Landroid/content/Context;
 
     invoke-static {v4, v1, v3}, Lcom/google/tagmanager/InstallReferrerUtil;->getClickReferrer(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
@@ -160,25 +160,25 @@
 
     .line 47
     .local v4, "referrer":Ljava/lang/String;
-    if-eqz v4, :cond_30
+    if-eqz v4, :cond_2
 
     invoke-static {v4}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     move-result-object v5
 
-    goto :goto_34
+    goto :goto_1
 
-    :cond_30
+    :cond_2
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     move-result-object v5
 
-    :goto_34
+    :goto_1
     return-object v5
 .end method
 
 .method public isCacheable()Z
-    .registers 2
+    .locals 1
 
     .line 32
     const/4 v0, 0x1

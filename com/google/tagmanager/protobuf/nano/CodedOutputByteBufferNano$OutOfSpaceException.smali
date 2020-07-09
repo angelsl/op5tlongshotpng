@@ -20,7 +20,7 @@
 
 # direct methods
 .method constructor <init>(II)V
-    .registers 5
+    .locals 2
     .param p1, "position"    # I
     .param p2, "limit"    # I
 

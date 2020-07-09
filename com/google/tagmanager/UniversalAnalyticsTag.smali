@@ -61,7 +61,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 28
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->UNIVERSAL_ANALYTICS:Lcom/google/analytics/containertag/common/FunctionType;
@@ -130,7 +130,7 @@
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Lcom/google/tagmanager/DataLayer;)V
-    .registers 4
+    .locals 1
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "dataLayer"    # Lcom/google/tagmanager/DataLayer;
 
@@ -146,7 +146,7 @@
 .end method
 
 .method constructor <init>(Landroid/content/Context;Lcom/google/tagmanager/DataLayer;Lcom/google/tagmanager/TrackerProvider;)V
-    .registers 6
+    .locals 2
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "dataLayer"    # Lcom/google/tagmanager/DataLayer;
     .param p3, "trackerProvider"    # Lcom/google/tagmanager/TrackerProvider;
@@ -201,7 +201,7 @@
 .end method
 
 .method private addParam(Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;)V
-    .registers 4
+    .locals 0
     .param p2, "gaKey"    # Ljava/lang/String;
     .param p3, "value"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
@@ -219,18 +219,18 @@
 
     .line 144
     .local p1, "itemParams":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
-    if-eqz p3, :cond_5
+    if-eqz p3, :cond_0
 
     .line 145
     invoke-interface {p1, p2, p3}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 147
-    :cond_5
+    :cond_0
     return-void
 .end method
 
 .method private checkBooleanProperty(Ljava/util/Map;Ljava/lang/String;)Z
-    .registers 5
+    .locals 2
     .param p2, "key"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -254,13 +254,13 @@
 
     .line 90
     .local v0, "value":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-nez v0, :cond_a
+    if-nez v0, :cond_0
 
     const/4 v1, 0x0
 
-    goto :goto_12
+    goto :goto_0
 
-    :cond_a
+    :cond_0
     invoke-static {v0}, Lcom/google/tagmanager/Types;->valueToBoolean(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/Boolean;
 
     move-result-object v1
@@ -269,12 +269,12 @@
 
     move-result v1
 
-    :goto_12
+    :goto_0
     return v1
 .end method
 
 .method private convertToGaFields(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/util/Map;
-    .registers 6
+    .locals 5
     .param p1, "analyticsFields"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -289,7 +289,7 @@
     .end annotation
 
     .line 223
-    if-nez p1, :cond_8
+    if-nez p1, :cond_0
 
     .line 224
     new-instance v0, Ljava/util/HashMap;
@@ -299,14 +299,14 @@
     return-object v0
 
     .line 226
-    :cond_8
+    :cond_0
     invoke-direct {p0, p1}, Lcom/google/tagmanager/UniversalAnalyticsTag;->valueToMap(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/util/Map;
 
     move-result-object v0
 
     .line 227
     .local v0, "params":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
-    if-nez v0, :cond_14
+    if-nez v0, :cond_1
 
     .line 228
     new-instance v1, Ljava/util/HashMap;
@@ -316,43 +316,41 @@
     return-object v1
 
     .line 233
-    :cond_14
+    :cond_1
     const-string v1, "&aip"
 
     invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    move-result-object v1
+    move-result-object v2
 
-    check-cast v1, Ljava/lang/String;
+    check-cast v2, Ljava/lang/String;
 
     .line 234
-    .local v1, "aip":Ljava/lang/String;
-    if-eqz v1, :cond_2f
+    .local v2, "aip":Ljava/lang/String;
+    if-eqz v2, :cond_2
 
-    iget-object v2, p0, Lcom/google/tagmanager/UniversalAnalyticsTag;->mTurnOffAnonymizeIpValues:Ljava/util/Set;
+    iget-object v3, p0, Lcom/google/tagmanager/UniversalAnalyticsTag;->mTurnOffAnonymizeIpValues:Ljava/util/Set;
 
-    invoke-virtual {v1}, Ljava/lang/String;->toLowerCase()Ljava/lang/String;
+    invoke-virtual {v2}, Ljava/lang/String;->toLowerCase()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v4
 
-    invoke-interface {v2, v3}, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
+    invoke-interface {v3, v4}, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
 
-    move-result v2
+    move-result v3
 
-    if-eqz v2, :cond_2f
+    if-eqz v3, :cond_2
 
     .line 235
-    const-string v2, "&aip"
-
-    invoke-interface {v0, v2}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {v0, v1}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 237
-    :cond_2f
+    :cond_2
     return-object v0
 .end method
 
 .method private getDataLayerString(Ljava/lang/String;)Ljava/lang/String;
-    .registers 4
+    .locals 2
     .param p1, "field"    # Ljava/lang/String;
 
     .line 109
@@ -364,23 +362,23 @@
 
     .line 110
     .local v0, "data":Ljava/lang/Object;
-    if-nez v0, :cond_a
+    if-nez v0, :cond_0
 
     const/4 v1, 0x0
 
-    goto :goto_e
+    goto :goto_0
 
-    :cond_a
+    :cond_0
     invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
     move-result-object v1
 
-    :goto_e
+    :goto_0
     return-object v1
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 68
     sget-object v0, Lcom/google/tagmanager/UniversalAnalyticsTag;->ID:Ljava/lang/String;
@@ -389,7 +387,7 @@
 .end method
 
 .method private getTransactionFields(Ljava/util/Map;)Ljava/util/Map;
-    .registers 6
+    .locals 4
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -416,7 +414,7 @@
 
     .line 246
     .local v0, "map":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-eqz v0, :cond_f
+    if-eqz v0, :cond_0
 
     .line 247
     invoke-direct {p0, v0}, Lcom/google/tagmanager/UniversalAnalyticsTag;->valueToMap(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/util/Map;
@@ -426,10 +424,10 @@
     return-object v1
 
     .line 249
-    :cond_f
+    :cond_0
     sget-object v1, Lcom/google/tagmanager/UniversalAnalyticsTag;->defaultTransactionMap:Ljava/util/Map;
 
-    if-nez v1, :cond_44
+    if-nez v1, :cond_1
 
     .line 250
     new-instance v1, Ljava/util/HashMap;
@@ -484,14 +482,14 @@
 
     .line 259
     .end local v1    # "defaultMap":Ljava/util/HashMap;, "Ljava/util/HashMap<Ljava/lang/String;Ljava/lang/String;>;"
-    :cond_44
+    :cond_1
     sget-object v1, Lcom/google/tagmanager/UniversalAnalyticsTag;->defaultTransactionMap:Ljava/util/Map;
 
     return-object v1
 .end method
 
 .method private getTransactionItemFields(Ljava/util/Map;)Ljava/util/Map;
-    .registers 6
+    .locals 4
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -518,7 +516,7 @@
 
     .line 270
     .local v0, "map":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-eqz v0, :cond_f
+    if-eqz v0, :cond_0
 
     .line 271
     invoke-direct {p0, v0}, Lcom/google/tagmanager/UniversalAnalyticsTag;->valueToMap(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/util/Map;
@@ -528,10 +526,10 @@
     return-object v1
 
     .line 273
-    :cond_f
+    :cond_0
     sget-object v1, Lcom/google/tagmanager/UniversalAnalyticsTag;->defaultItemMap:Ljava/util/Map;
 
-    if-nez v1, :cond_44
+    if-nez v1, :cond_1
 
     .line 274
     new-instance v1, Ljava/util/HashMap;
@@ -586,14 +584,14 @@
 
     .line 283
     .end local v1    # "defaultMap":Ljava/util/HashMap;, "Ljava/util/HashMap<Ljava/lang/String;Ljava/lang/String;>;"
-    :cond_44
+    :cond_1
     sget-object v1, Lcom/google/tagmanager/UniversalAnalyticsTag;->defaultItemMap:Ljava/util/Map;
 
     return-object v1
 .end method
 
 .method private getTransactionItems()Ljava/util/List;
-    .registers 7
+    .locals 6
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -616,7 +614,7 @@
 
     .line 120
     .local v0, "data":Ljava/lang/Object;
-    if-nez v0, :cond_c
+    if-nez v0, :cond_0
 
     .line 121
     const/4 v1, 0x0
@@ -624,10 +622,10 @@
     return-object v1
 
     .line 123
-    :cond_c
+    :cond_0
     instance-of v1, v0, Ljava/util/List;
 
-    if-eqz v1, :cond_32
+    if-eqz v1, :cond_3
 
     .line 129
     move-object v1, v0
@@ -641,12 +639,12 @@
     move-result-object v2
 
     .local v2, "i$":Ljava/util/Iterator;
-    :goto_17
+    :goto_0
     invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v3
 
-    if-eqz v3, :cond_2e
+    if-eqz v3, :cond_2
 
     invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -656,15 +654,15 @@
     .local v3, "obj":Ljava/lang/Object;
     instance-of v4, v3, Ljava/util/Map;
 
-    if-eqz v4, :cond_26
+    if-eqz v4, :cond_1
 
     .line 136
     .end local v3    # "obj":Ljava/lang/Object;
-    goto :goto_17
+    goto :goto_0
 
     .line 133
     .restart local v3    # "obj":Ljava/lang/Object;
-    :cond_26
+    :cond_1
     new-instance v4, Ljava/lang/IllegalArgumentException;
 
     const-string v5, "Each element of transactionProducts should be of type Map."
@@ -676,7 +674,7 @@
     .line 139
     .end local v2    # "i$":Ljava/util/Iterator;
     .end local v3    # "obj":Ljava/lang/Object;
-    :cond_2e
+    :cond_2
     move-object v2, v0
 
     check-cast v2, Ljava/util/List;
@@ -688,7 +686,7 @@
     .line 124
     .end local v1    # "list":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Object;>;"
     .end local v2    # "retData":Ljava/util/List;, "Ljava/util/List<Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;>;"
-    :cond_32
+    :cond_3
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
     const-string v2, "transactionProducts should be of type List."
@@ -699,7 +697,7 @@
 .end method
 
 .method private sendTransaction(Lcom/google/analytics/tracking/android/Tracker;Ljava/util/Map;)V
-    .registers 16
+    .locals 16
     .param p1, "tracker"    # Lcom/google/analytics/tracking/android/Tracker;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -714,306 +712,335 @@
 
     .line 154
     .local p2, "tag":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
-    const-string v0, "transactionId"
+    move-object/from16 v1, p0
 
-    invoke-direct {p0, v0}, Lcom/google/tagmanager/UniversalAnalyticsTag;->getDataLayerString(Ljava/lang/String;)Ljava/lang/String;
+    move-object/from16 v2, p2
 
-    move-result-object v0
+    const-string v0, "&t"
+
+    const-string v3, "transactionId"
+
+    invoke-direct {v1, v3}, Lcom/google/tagmanager/UniversalAnalyticsTag;->getDataLayerString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v3
 
     .line 155
-    .local v0, "transactionId":Ljava/lang/String;
-    if-nez v0, :cond_e
+    .local v3, "transactionId":Ljava/lang/String;
+    if-nez v3, :cond_0
 
     .line 156
-    const-string v1, "Cannot find transactionId in data layer."
+    const-string v0, "Cannot find transactionId in data layer."
 
-    invoke-static {v1}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
+    invoke-static {v0}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
 
     .line 157
     return-void
 
     .line 162
-    :cond_e
-    new-instance v1, Ljava/util/LinkedList;
+    :cond_0
+    new-instance v4, Ljava/util/LinkedList;
 
-    invoke-direct {v1}, Ljava/util/LinkedList;-><init>()V
+    invoke-direct {v4}, Ljava/util/LinkedList;-><init>()V
 
     .line 165
-    .local v1, "sendQueue":Ljava/util/List;, "Ljava/util/List<Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;>;"
-    :try_start_13
-    sget-object v2, Lcom/google/tagmanager/UniversalAnalyticsTag;->ANALYTICS_FIELDS:Ljava/lang/String;
+    .local v4, "sendQueue":Ljava/util/List;, "Ljava/util/List<Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;>;"
+    :try_start_0
+    sget-object v5, Lcom/google/tagmanager/UniversalAnalyticsTag;->ANALYTICS_FIELDS:Ljava/lang/String;
 
-    invoke-interface {p2, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {v2, v5}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    move-result-object v2
+    move-result-object v5
 
-    check-cast v2, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    check-cast v5, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    invoke-direct {p0, v2}, Lcom/google/tagmanager/UniversalAnalyticsTag;->convertToGaFields(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/util/Map;
+    invoke-direct {v1, v5}, Lcom/google/tagmanager/UniversalAnalyticsTag;->convertToGaFields(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/util/Map;
 
-    move-result-object v2
+    move-result-object v5
 
     .line 166
-    .local v2, "params":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
-    const-string v3, "&t"
+    .local v5, "params":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    const-string v6, "transaction"
 
-    const-string v4, "transaction"
-
-    invoke-interface {v2, v3, v4}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {v5, v0, v6}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 168
-    invoke-direct {p0, p2}, Lcom/google/tagmanager/UniversalAnalyticsTag;->getTransactionFields(Ljava/util/Map;)Ljava/util/Map;
+    invoke-direct {v1, v2}, Lcom/google/tagmanager/UniversalAnalyticsTag;->getTransactionFields(Ljava/util/Map;)Ljava/util/Map;
 
-    move-result-object v3
+    move-result-object v6
 
     .line 169
-    .local v3, "transactionFields":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
-    invoke-interface {v3}, Ljava/util/Map;->entrySet()Ljava/util/Set;
+    .local v6, "transactionFields":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    invoke-interface {v6}, Ljava/util/Map;->entrySet()Ljava/util/Set;
 
-    move-result-object v4
+    move-result-object v7
 
-    invoke-interface {v4}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+    invoke-interface {v7}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
 
-    move-result-object v4
+    move-result-object v7
 
-    .local v4, "i$":Ljava/util/Iterator;
-    :goto_32
-    invoke-interface {v4}, Ljava/util/Iterator;->hasNext()Z
+    .local v7, "i$":Ljava/util/Iterator;
+    :goto_0
+    invoke-interface {v7}, Ljava/util/Iterator;->hasNext()Z
 
-    move-result v5
+    move-result v8
 
-    if-eqz v5, :cond_52
+    if-eqz v8, :cond_1
 
-    invoke-interface {v4}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {v7}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
-    move-result-object v5
+    move-result-object v8
 
-    check-cast v5, Ljava/util/Map$Entry;
+    check-cast v8, Ljava/util/Map$Entry;
 
     .line 170
-    .local v5, "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/lang/String;>;"
-    invoke-interface {v5}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+    .local v8, "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/lang/String;>;"
+    invoke-interface {v8}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
-    move-result-object v6
+    move-result-object v9
 
-    check-cast v6, Ljava/lang/String;
+    check-cast v9, Ljava/lang/String;
 
-    invoke-interface {v5}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+    invoke-interface {v8}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
 
-    move-result-object v7
+    move-result-object v10
 
-    check-cast v7, Ljava/lang/String;
+    check-cast v10, Ljava/lang/String;
 
-    invoke-direct {p0, v7}, Lcom/google/tagmanager/UniversalAnalyticsTag;->getDataLayerString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-direct {v1, v10}, Lcom/google/tagmanager/UniversalAnalyticsTag;->getDataLayerString(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v7
+    move-result-object v10
 
-    invoke-direct {p0, v2, v6, v7}, Lcom/google/tagmanager/UniversalAnalyticsTag;->addParam(Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;)V
+    invoke-direct {v1, v5, v9, v10}, Lcom/google/tagmanager/UniversalAnalyticsTag;->addParam(Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;)V
 
     .line 171
-    .end local v5    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/lang/String;>;"
-    goto :goto_32
+    .end local v8    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/lang/String;>;"
+    goto :goto_0
 
     .line 172
-    .end local v4    # "i$":Ljava/util/Iterator;
-    :cond_52
-    invoke-interface {v1, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+    .end local v7    # "i$":Ljava/util/Iterator;
+    :cond_1
+    invoke-interface {v4, v5}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     .line 174
-    invoke-direct {p0}, Lcom/google/tagmanager/UniversalAnalyticsTag;->getTransactionItems()Ljava/util/List;
-
-    move-result-object v4
-
-    .line 175
-    .local v4, "items":Ljava/util/List;, "Ljava/util/List<Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;>;"
-    if-eqz v4, :cond_c1
-
-    .line 176
-    invoke-interface {v4}, Ljava/util/List;->iterator()Ljava/util/Iterator;
-
-    move-result-object v5
-
-    .local v5, "i$":Ljava/util/Iterator;
-    :goto_5f
-    invoke-interface {v5}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v6
-
-    if-eqz v6, :cond_c1
-
-    invoke-interface {v5}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v6
-
-    check-cast v6, Ljava/util/Map;
-
-    .line 177
-    .local v6, "item":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
-    const-string v7, "name"
-
-    invoke-interface {v6, v7}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-direct/range {p0 .. p0}, Lcom/google/tagmanager/UniversalAnalyticsTag;->getTransactionItems()Ljava/util/List;
 
     move-result-object v7
 
-    if-nez v7, :cond_79
+    .line 175
+    .local v7, "items":Ljava/util/List;, "Ljava/util/List<Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;>;"
+    if-eqz v7, :cond_4
+
+    .line 176
+    invoke-interface {v7}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+
+    move-result-object v8
+
+    .local v8, "i$":Ljava/util/Iterator;
+    :goto_1
+    invoke-interface {v8}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v9
+
+    if-eqz v9, :cond_4
+
+    invoke-interface {v8}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v9
+
+    check-cast v9, Ljava/util/Map;
+
+    .line 177
+    .local v9, "item":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    const-string v10, "name"
+
+    invoke-interface {v9, v10}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v10
+
+    if-nez v10, :cond_2
 
     .line 178
-    const-string v7, "Unable to send transaction item hit due to missing \'name\' field."
+    const-string v0, "Unable to send transaction item hit due to missing \'name\' field."
 
-    invoke-static {v7}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
+    invoke-static {v0}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
 
     .line 179
     return-void
 
     .line 182
-    :cond_79
-    sget-object v7, Lcom/google/tagmanager/UniversalAnalyticsTag;->ANALYTICS_FIELDS:Ljava/lang/String;
+    :cond_2
+    sget-object v10, Lcom/google/tagmanager/UniversalAnalyticsTag;->ANALYTICS_FIELDS:Ljava/lang/String;
 
-    invoke-interface {p2, v7}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v7
-
-    check-cast v7, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    invoke-direct {p0, v7}, Lcom/google/tagmanager/UniversalAnalyticsTag;->convertToGaFields(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/util/Map;
-
-    move-result-object v7
-
-    .line 183
-    .local v7, "itemParams":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
-    const-string v8, "&t"
-
-    const-string v9, "item"
-
-    invoke-interface {v7, v8, v9}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 184
-    const-string v8, "&ti"
-
-    invoke-interface {v7, v8, v0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 186
-    invoke-direct {p0, p2}, Lcom/google/tagmanager/UniversalAnalyticsTag;->getTransactionItemFields(Ljava/util/Map;)Ljava/util/Map;
-
-    move-result-object v8
-
-    .line 187
-    .local v8, "itemFields":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
-    invoke-interface {v8}, Ljava/util/Map;->entrySet()Ljava/util/Set;
-
-    move-result-object v9
-
-    invoke-interface {v9}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
-
-    move-result-object v9
-
-    .local v9, "i$":Ljava/util/Iterator;
-    :goto_9d
-    invoke-interface {v9}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v10
-
-    if-eqz v10, :cond_bd
-
-    invoke-interface {v9}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {v2, v10}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v10
 
-    check-cast v10, Ljava/util/Map$Entry;
+    check-cast v10, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    .line 188
-    .local v10, "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/lang/String;>;"
-    invoke-interface {v10}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+    invoke-direct {v1, v10}, Lcom/google/tagmanager/UniversalAnalyticsTag;->convertToGaFields(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/util/Map;
+
+    move-result-object v10
+
+    .line 183
+    .local v10, "itemParams":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    const-string v11, "item"
+
+    invoke-interface {v10, v0, v11}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 184
+    const-string v11, "&ti"
+
+    invoke-interface {v10, v11, v3}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 186
+    invoke-direct {v1, v2}, Lcom/google/tagmanager/UniversalAnalyticsTag;->getTransactionItemFields(Ljava/util/Map;)Ljava/util/Map;
 
     move-result-object v11
 
-    check-cast v11, Ljava/lang/String;
-
-    invoke-interface {v10}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
-
-    move-result-object v12
-
-    invoke-interface {v6, v12}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    .line 187
+    .local v11, "itemFields":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    invoke-interface {v11}, Ljava/util/Map;->entrySet()Ljava/util/Set;
 
     move-result-object v12
 
-    check-cast v12, Ljava/lang/String;
+    invoke-interface {v12}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
 
-    invoke-direct {p0, v7, v11, v12}, Lcom/google/tagmanager/UniversalAnalyticsTag;->addParam(Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;)V
+    move-result-object v12
+
+    .local v12, "i$":Ljava/util/Iterator;
+    :goto_2
+    invoke-interface {v12}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v13
+
+    if-eqz v13, :cond_3
+
+    invoke-interface {v12}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v13
+
+    check-cast v13, Ljava/util/Map$Entry;
+
+    .line 188
+    .local v13, "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/lang/String;>;"
+    invoke-interface {v13}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+
+    move-result-object v14
+
+    check-cast v14, Ljava/lang/String;
+
+    invoke-interface {v13}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+
+    move-result-object v15
+
+    invoke-interface {v9, v15}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v15
+
+    check-cast v15, Ljava/lang/String;
+
+    invoke-direct {v1, v10, v14, v15}, Lcom/google/tagmanager/UniversalAnalyticsTag;->addParam(Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;)V
 
     .line 189
-    .end local v10    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/lang/String;>;"
-    goto :goto_9d
+    .end local v13    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/lang/String;>;"
+    goto :goto_2
 
     .line 190
-    .end local v9    # "i$":Ljava/util/Iterator;
-    :cond_bd
-    invoke-interface {v1, v7}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+    .end local v12    # "i$":Ljava/util/Iterator;
+    :cond_3
+    invoke-interface {v4, v10}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     .line 191
-    .end local v6    # "item":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
-    .end local v7    # "itemParams":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
-    .end local v8    # "itemFields":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
-    goto :goto_5f
+    nop
+
+    .end local v9    # "item":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    .end local v10    # "itemParams":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    .end local v11    # "itemFields":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    goto :goto_1
 
     .line 193
-    .end local v5    # "i$":Ljava/util/Iterator;
-    :cond_c1
-    invoke-interface {v1}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+    .end local v8    # "i$":Ljava/util/Iterator;
+    :cond_4
+    invoke-interface {v4}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
-    move-result-object v5
+    move-result-object v0
 
-    .restart local v5    # "i$":Ljava/util/Iterator;
-    :goto_c5
-    invoke-interface {v5}, Ljava/util/Iterator;->hasNext()Z
+    .local v0, "i$":Ljava/util/Iterator;
+    :goto_3
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
 
-    move-result v6
+    move-result v8
 
-    if-eqz v6, :cond_d5
+    if-eqz v8, :cond_5
 
-    invoke-interface {v5}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
-    move-result-object v6
+    move-result-object v8
 
-    check-cast v6, Ljava/util/Map;
+    check-cast v8, Ljava/util/Map;
+    :try_end_0
+    .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_1
 
     .line 194
-    .local v6, "gaParam":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
-    invoke-virtual {p1, v6}, Lcom/google/analytics/tracking/android/Tracker;->send(Ljava/util/Map;)V
-    :try_end_d4
-    .catch Ljava/lang/IllegalArgumentException; {:try_start_13 .. :try_end_d4} :catch_d7
+    .local v8, "gaParam":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    move-object/from16 v9, p1
+
+    :try_start_1
+    invoke-virtual {v9, v8}, Lcom/google/analytics/tracking/android/Tracker;->send(Ljava/util/Map;)V
+    :try_end_1
+    .catch Ljava/lang/IllegalArgumentException; {:try_start_1 .. :try_end_1} :catch_0
 
     .line 195
-    .end local v6    # "gaParam":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
-    goto :goto_c5
+    .end local v8    # "gaParam":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    goto :goto_3
+
+    .line 196
+    .end local v0    # "i$":Ljava/util/Iterator;
+    .end local v5    # "params":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    .end local v6    # "transactionFields":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    .end local v7    # "items":Ljava/util/List;, "Ljava/util/List<Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;>;"
+    :catch_0
+    move-exception v0
+
+    goto :goto_4
+
+    .line 193
+    .restart local v0    # "i$":Ljava/util/Iterator;
+    .restart local v5    # "params":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    .restart local v6    # "transactionFields":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    .restart local v7    # "items":Ljava/util/List;, "Ljava/util/List<Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;>;"
+    :cond_5
+    move-object/from16 v9, p1
 
     .line 199
-    .end local v2    # "params":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
-    .end local v3    # "transactionFields":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
-    .end local v4    # "items":Ljava/util/List;, "Ljava/util/List<Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;>;"
-    .end local v5    # "i$":Ljava/util/Iterator;
-    :cond_d5
+    .end local v0    # "i$":Ljava/util/Iterator;
+    .end local v5    # "params":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    .end local v6    # "transactionFields":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    .end local v7    # "items":Ljava/util/List;, "Ljava/util/List<Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;>;"
     nop
 
     .line 200
     return-void
 
     .line 196
-    :catch_d7
-    move-exception v2
+    :catch_1
+    move-exception v0
+
+    move-object/from16 v9, p1
 
     .line 197
-    .local v2, "e":Ljava/lang/IllegalArgumentException;
-    const-string v3, "Unable to send transaction"
+    .local v0, "e":Ljava/lang/IllegalArgumentException;
+    :goto_4
+    const-string v5, "Unable to send transaction"
 
-    invoke-static {v3, v2}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;Ljava/lang/Throwable;)V
+    invoke-static {v5, v0}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;Ljava/lang/Throwable;)V
 
     .line 198
     return-void
 .end method
 
 .method private valueToMap(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/util/Map;
-    .registers 9
+    .locals 7
     .param p1, "mapValue"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -1036,7 +1063,7 @@
     .local v0, "o":Ljava/lang/Object;
     instance-of v1, v0, Ljava/util/Map;
 
-    if-nez v1, :cond_a
+    if-nez v1, :cond_0
 
     .line 208
     const/4 v1, 0x0
@@ -1044,7 +1071,7 @@
     return-object v1
 
     .line 211
-    :cond_a
+    :cond_0
     move-object v1, v0
 
     check-cast v1, Ljava/util/Map;
@@ -1066,12 +1093,12 @@
     move-result-object v3
 
     .local v3, "i$":Ljava/util/Iterator;
-    :goto_1a
+    :goto_0
     invoke-interface {v3}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v4
 
-    if-eqz v4, :cond_3a
+    if-eqz v4, :cond_1
 
     invoke-interface {v3}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -1101,18 +1128,18 @@
 
     .line 215
     .end local v4    # "entry":Ljava/util/Map$Entry;
-    goto :goto_1a
+    goto :goto_0
 
     .line 216
     .end local v3    # "i$":Ljava/util/Iterator;
-    :cond_3a
+    :cond_1
     return-object v2
 .end method
 
 
 # virtual methods
 .method public evaluateTrackingTag(Ljava/util/Map;)V
-    .registers 4
+    .locals 2
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -1141,7 +1168,7 @@
 
     move-result v1
 
-    if-eqz v1, :cond_20
+    if-eqz v1, :cond_0
 
     .line 98
     sget-object v1, Lcom/google/tagmanager/UniversalAnalyticsTag;->ANALYTICS_FIELDS:Ljava/lang/String;
@@ -1158,31 +1185,31 @@
 
     invoke-virtual {v0, v1}, Lcom/google/analytics/tracking/android/Tracker;->send(Ljava/util/Map;)V
 
-    goto :goto_31
+    goto :goto_0
 
     .line 99
-    :cond_20
+    :cond_0
     sget-object v1, Lcom/google/tagmanager/UniversalAnalyticsTag;->TRACK_TRANSACTION:Ljava/lang/String;
 
     invoke-direct {p0, p1, v1}, Lcom/google/tagmanager/UniversalAnalyticsTag;->checkBooleanProperty(Ljava/util/Map;Ljava/lang/String;)Z
 
     move-result v1
 
-    if-eqz v1, :cond_2c
+    if-eqz v1, :cond_1
 
     .line 100
     invoke-direct {p0, v0, p1}, Lcom/google/tagmanager/UniversalAnalyticsTag;->sendTransaction(Lcom/google/analytics/tracking/android/Tracker;Ljava/util/Map;)V
 
-    goto :goto_31
+    goto :goto_0
 
     .line 102
-    :cond_2c
+    :cond_1
     const-string v1, "Ignoring unknown tag."
 
     invoke-static {v1}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
 
     .line 105
-    :goto_31
+    :goto_0
     iget-object v1, p0, Lcom/google/tagmanager/UniversalAnalyticsTag;->mTrackerProvider:Lcom/google/tagmanager/TrackerProvider;
 
     invoke-virtual {v1, v0}, Lcom/google/tagmanager/TrackerProvider;->close(Lcom/google/analytics/tracking/android/Tracker;)V

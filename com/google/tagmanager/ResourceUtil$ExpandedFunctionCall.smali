@@ -31,7 +31,7 @@
 
 # direct methods
 .method private constructor <init>(Ljava/util/Map;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)V
-    .registers 3
+    .locals 0
     .param p2, "pushAfterEvaluate"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -60,7 +60,7 @@
 .end method
 
 .method synthetic constructor <init>(Ljava/util/Map;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;Lcom/google/tagmanager/ResourceUtil$1;)V
-    .registers 4
+    .locals 0
     .param p1, "x0"    # Ljava/util/Map;
     .param p2, "x1"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .param p3, "x2"    # Lcom/google/tagmanager/ResourceUtil$1;
@@ -72,7 +72,7 @@
 .end method
 
 .method public static newBuilder()Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCallBuilder;
-    .registers 2
+    .locals 2
 
     .line 85
     new-instance v0, Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCallBuilder;
@@ -87,7 +87,7 @@
 
 # virtual methods
 .method public getProperties()Ljava/util/Map;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -109,7 +109,7 @@
 .end method
 
 .method public getPushAfterEvaluate()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 2
+    .locals 1
 
     .line 108
     iget-object v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;->mPushAfterEvaluate:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -118,7 +118,7 @@
 .end method
 
 .method public toString()Ljava/lang/String;
-    .registers 3
+    .locals 2
 
     .line 113
     new-instance v0, Ljava/lang/StringBuilder;
@@ -151,7 +151,7 @@
 .end method
 
 .method public updateCacheableProperty(Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)V
-    .registers 4
+    .locals 1
     .param p1, "key"    # Ljava/lang/String;
     .param p2, "v"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 

@@ -9,7 +9,7 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    .registers 3
+    .locals 0
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "attrs"    # Landroid/util/AttributeSet;
 
@@ -23,7 +23,7 @@
 
 # virtual methods
 .method public getInterpolation(F)F
-    .registers 4
+    .locals 2
     .param p1, "x"    # F
 
     .line 23
@@ -33,7 +33,7 @@
 
     const v1, 0x3f27ef9e    # 0.656f
 
-    add-float/2addr v1, v0
+    add-float/2addr v0, v1
 
-    return v1
+    return v0
 .end method

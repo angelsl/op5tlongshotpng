@@ -32,7 +32,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 559
     const/4 v0, 0x0
@@ -45,7 +45,7 @@
 .end method
 
 .method public constructor <init>()V
-    .registers 2
+    .locals 1
 
     .line 560
     invoke-direct {p0}, Lcom/google/tagmanager/protobuf/nano/ExtendableMessageNano;-><init>()V
@@ -74,7 +74,7 @@
 .end method
 
 .method public static parseFrom(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;)Lcom/google/analytics/containertag/proto/Serving$FunctionCall;
-    .registers 2
+    .locals 1
     .param p0, "input"    # Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -95,7 +95,7 @@
 .end method
 
 .method public static parseFrom([B)Lcom/google/analytics/containertag/proto/Serving$FunctionCall;
-    .registers 2
+    .locals 1
     .param p0, "data"    # [B
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -120,7 +120,7 @@
 
 # virtual methods
 .method public final clear()Lcom/google/analytics/containertag/proto/Serving$FunctionCall;
-    .registers 2
+    .locals 1
 
     .line 578
     sget-object v0, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->EMPTY_INT_ARRAY:[I
@@ -156,28 +156,28 @@
 .end method
 
 .method public final equals(Ljava/lang/Object;)Z
-    .registers 7
+    .locals 5
     .param p1, "o"    # Ljava/lang/Object;
 
     .line 590
     const/4 v0, 0x1
 
-    if-ne p1, p0, :cond_4
+    if-ne p1, p0, :cond_0
 
     return v0
 
     .line 591
-    :cond_4
+    :cond_0
     instance-of v1, p1, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;
 
     const/4 v2, 0x0
 
-    if-nez v1, :cond_a
+    if-nez v1, :cond_1
 
     return v2
 
     .line 592
-    :cond_a
+    :cond_1
     move-object v1, p1
 
     check-cast v1, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;
@@ -192,43 +192,43 @@
 
     move-result v3
 
-    if-eqz v3, :cond_43
+    if-eqz v3, :cond_3
 
     iget v3, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->function:I
 
     iget v4, v1, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->function:I
 
-    if-ne v3, v4, :cond_43
+    if-ne v3, v4, :cond_3
 
     iget v3, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->name:I
 
     iget v4, v1, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->name:I
 
-    if-ne v3, v4, :cond_43
+    if-ne v3, v4, :cond_3
 
     iget-boolean v3, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->liveOnly:Z
 
     iget-boolean v4, v1, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->liveOnly:Z
 
-    if-ne v3, v4, :cond_43
+    if-ne v3, v4, :cond_3
 
     iget-boolean v3, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->serverSide:Z
 
     iget-boolean v4, v1, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->serverSide:Z
 
-    if-ne v3, v4, :cond_43
+    if-ne v3, v4, :cond_3
 
     iget-object v3, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->unknownFieldData:Ljava/util/List;
 
-    if-nez v3, :cond_38
+    if-nez v3, :cond_2
 
     iget-object v3, v1, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->unknownFieldData:Ljava/util/List;
 
-    if-nez v3, :cond_43
+    if-nez v3, :cond_3
 
-    goto :goto_42
+    goto :goto_0
 
-    :cond_38
+    :cond_2
     iget-object v3, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->unknownFieldData:Ljava/util/List;
 
     iget-object v4, v1, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->unknownFieldData:Ljava/util/List;
@@ -237,20 +237,20 @@
 
     move-result v3
 
-    if-eqz v3, :cond_43
+    if-eqz v3, :cond_3
 
-    :goto_42
-    goto :goto_44
+    :goto_0
+    goto :goto_1
 
-    :cond_43
+    :cond_3
     move v0, v2
 
-    :goto_44
+    :goto_1
     return v0
 .end method
 
 .method public getSerializedSize()I
-    .registers 9
+    .locals 8
 
     .line 640
     const/4 v0, 0x0
@@ -261,11 +261,9 @@
 
     const/4 v2, 0x1
 
-    if-eqz v1, :cond_d
+    if-eqz v1, :cond_0
 
     .line 642
-    iget-boolean v1, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->serverSide:Z
-
     invoke-static {v2, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeBoolSize(IZ)I
 
     move-result v1
@@ -273,7 +271,7 @@
     add-int/2addr v0, v1
 
     .line 645
-    :cond_d
+    :cond_0
     const/4 v1, 0x2
 
     iget v3, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->function:I
@@ -287,13 +285,11 @@
     .line 647
     iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->property:[I
 
-    if-eqz v1, :cond_35
-
-    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->property:[I
+    if-eqz v1, :cond_2
 
     array-length v1, v1
 
-    if-lez v1, :cond_35
+    if-lez v1, :cond_2
 
     .line 648
     const/4 v1, 0x0
@@ -309,8 +305,8 @@
     const/4 v5, 0x0
 
     .local v5, "i$":I
-    :goto_23
-    if-ge v5, v4, :cond_2f
+    :goto_0
+    if-ge v5, v4, :cond_1
 
     aget v6, v3, v5
 
@@ -326,13 +322,13 @@
     .end local v6    # "element":I
     add-int/lit8 v5, v5, 0x1
 
-    goto :goto_23
+    goto :goto_0
 
     .line 653
     .end local v3    # "arr$":[I
     .end local v4    # "len$":I
     .end local v5    # "i$":I
-    :cond_2f
+    :cond_1
     add-int/2addr v0, v1
 
     .line 654
@@ -340,47 +336,43 @@
 
     array-length v3, v3
 
-    mul-int/2addr v2, v3
+    mul-int/2addr v3, v2
 
-    add-int/2addr v0, v2
+    add-int/2addr v0, v3
 
     .line 656
     .end local v1    # "dataSize":I
-    :cond_35
+    :cond_2
     iget v1, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->name:I
 
-    if-eqz v1, :cond_41
+    if-eqz v1, :cond_3
 
     .line 657
-    const/4 v1, 0x4
+    const/4 v2, 0x4
 
-    iget v2, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->name:I
-
-    invoke-static {v1, v2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeInt32Size(II)I
+    invoke-static {v2, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeInt32Size(II)I
 
     move-result v1
 
     add-int/2addr v0, v1
 
     .line 660
-    :cond_41
+    :cond_3
     iget-boolean v1, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->liveOnly:Z
 
-    if-eqz v1, :cond_4d
+    if-eqz v1, :cond_4
 
     .line 661
-    const/4 v1, 0x6
+    const/4 v2, 0x6
 
-    iget-boolean v2, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->liveOnly:Z
-
-    invoke-static {v1, v2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeBoolSize(IZ)I
+    invoke-static {v2, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeBoolSize(IZ)I
 
     move-result v1
 
     add-int/2addr v0, v1
 
     .line 664
-    :cond_4d
+    :cond_4
     iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->unknownFieldData:Ljava/util/List;
 
     invoke-static {v1}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->computeWireSize(Ljava/util/List;)I
@@ -397,7 +389,7 @@
 .end method
 
 .method public hashCode()I
-    .registers 8
+    .locals 5
 
     .line 602
     const/16 v0, 0x11
@@ -406,136 +398,123 @@
     .local v0, "result":I
     iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->property:[I
 
-    const/4 v2, 0x0
+    if-nez v1, :cond_0
 
-    const/16 v3, 0x1f
+    mul-int/lit8 v0, v0, 0x1f
 
-    if-nez v1, :cond_b
-
-    mul-int/2addr v0, v3
-
-    goto :goto_1e
+    goto :goto_1
 
     .line 605
-    :cond_b
-    move v1, v0
+    :cond_0
+    const/4 v1, 0x0
 
-    move v0, v2
+    .local v1, "i":I
+    :goto_0
+    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->property:[I
 
-    .local v0, "i":I
-    .local v1, "result":I
-    :goto_d
-    iget-object v4, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->property:[I
+    array-length v3, v2
 
-    array-length v4, v4
-
-    if-ge v0, v4, :cond_1d
+    if-ge v1, v3, :cond_1
 
     .line 606
-    mul-int v4, v3, v1
+    mul-int/lit8 v3, v0, 0x1f
 
-    iget-object v5, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->property:[I
+    aget v2, v2, v1
 
-    aget v5, v5, v0
-
-    add-int v1, v4, v5
+    add-int v0, v3, v2
 
     .line 605
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v1, v1, 0x1
 
-    goto :goto_d
+    goto :goto_0
 
     .line 609
-    .end local v0    # "i":I
-    :cond_1d
-    move v0, v1
+    .end local v1    # "i":I
+    :cond_1
+    :goto_1
+    mul-int/lit8 v1, v0, 0x1f
 
-    .end local v1    # "result":I
-    .local v0, "result":I
-    :goto_1e
-    mul-int v1, v3, v0
+    iget v2, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->function:I
 
-    iget v4, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->function:I
-
-    add-int/2addr v1, v4
+    add-int/2addr v1, v2
 
     .line 610
     .end local v0    # "result":I
-    .restart local v1    # "result":I
-    mul-int v0, v3, v1
+    .local v1, "result":I
+    mul-int/lit8 v0, v1, 0x1f
 
-    iget v4, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->name:I
+    iget v2, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->name:I
 
-    add-int/2addr v0, v4
+    add-int/2addr v0, v2
 
     .line 611
     .end local v1    # "result":I
     .restart local v0    # "result":I
-    mul-int v1, v3, v0
+    mul-int/lit8 v1, v0, 0x1f
 
-    iget-boolean v4, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->liveOnly:Z
+    iget-boolean v2, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->liveOnly:Z
 
-    const/4 v5, 0x2
+    const/4 v3, 0x2
 
-    const/4 v6, 0x1
+    const/4 v4, 0x1
 
-    if-eqz v4, :cond_32
+    if-eqz v2, :cond_2
 
-    move v4, v6
+    move v2, v4
 
-    goto :goto_33
+    goto :goto_2
 
-    :cond_32
-    move v4, v5
+    :cond_2
+    move v2, v3
 
-    :goto_33
-    add-int/2addr v1, v4
+    :goto_2
+    add-int/2addr v1, v2
 
     .line 612
     .end local v0    # "result":I
     .restart local v1    # "result":I
-    mul-int v0, v3, v1
+    mul-int/lit8 v0, v1, 0x1f
 
-    iget-boolean v4, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->serverSide:Z
+    iget-boolean v2, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->serverSide:Z
 
-    if-eqz v4, :cond_3c
+    if-eqz v2, :cond_3
 
-    move v5, v6
+    move v3, v4
 
-    nop
-
-    :cond_3c
-    add-int/2addr v0, v5
+    :cond_3
+    add-int/2addr v0, v3
 
     .line 613
     .end local v1    # "result":I
     .restart local v0    # "result":I
-    mul-int/2addr v3, v0
+    mul-int/lit8 v1, v0, 0x1f
 
-    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->unknownFieldData:Ljava/util/List;
+    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->unknownFieldData:Ljava/util/List;
 
-    if-nez v1, :cond_43
+    if-nez v2, :cond_4
 
-    goto :goto_49
+    const/4 v2, 0x0
 
-    :cond_43
-    iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->unknownFieldData:Ljava/util/List;
+    goto :goto_3
 
-    invoke-interface {v1}, Ljava/util/List;->hashCode()I
+    :cond_4
+    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->unknownFieldData:Ljava/util/List;
+
+    invoke-interface {v2}, Ljava/util/List;->hashCode()I
 
     move-result v2
 
-    :goto_49
-    add-int/2addr v3, v2
+    :goto_3
+    add-int/2addr v1, v2
 
     .line 614
     .end local v0    # "result":I
-    .local v3, "result":I
-    return v3
+    .restart local v1    # "result":I
+    return v1
 .end method
 
 .method public mergeFrom(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;)Lcom/google/analytics/containertag/proto/Serving$FunctionCall;
-    .registers 8
+    .locals 6
     .param p1, "input"    # Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -551,32 +530,32 @@
 
     .line 675
     .local v0, "tag":I
-    if-eqz v0, :cond_7c
+    if-eqz v0, :cond_8
 
     const/16 v1, 0x8
 
-    if-eq v0, v1, :cond_74
+    if-eq v0, v1, :cond_6
 
     const/16 v1, 0x10
 
-    if-eq v0, v1, :cond_6d
+    if-eq v0, v1, :cond_5
 
     const/16 v1, 0x18
 
-    if-eq v0, v1, :cond_3c
+    if-eq v0, v1, :cond_3
 
     const/16 v1, 0x20
 
-    if-eq v0, v1, :cond_35
+    if-eq v0, v1, :cond_2
 
     const/16 v1, 0x30
 
-    if-eq v0, v1, :cond_2e
+    if-eq v0, v1, :cond_1
 
     .line 679
     iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->unknownFieldData:Ljava/util/List;
 
-    if-nez v1, :cond_25
+    if-nez v1, :cond_0
 
     .line 680
     new-instance v1, Ljava/util/ArrayList;
@@ -586,32 +565,30 @@
     iput-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->unknownFieldData:Ljava/util/List;
 
     .line 683
-    :cond_25
+    :cond_0
     iget-object v1, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->unknownFieldData:Ljava/util/List;
 
     invoke-static {v1, p1, v0}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->storeUnknownField(Ljava/util/List;Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;I)Z
 
     move-result v1
 
-    if-nez v1, :cond_7b
+    if-nez v1, :cond_7
 
     .line 685
     return-object p0
 
     .line 716
-    :cond_2e
+    :cond_1
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readBool()Z
 
     move-result v1
 
     iput-boolean v1, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->liveOnly:Z
 
-    .end local v0    # "tag":I
-    goto :goto_7b
+    goto :goto_2
 
     .line 712
-    .restart local v0    # "tag":I
-    :cond_35
+    :cond_2
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readInt32()I
 
     move-result v1
@@ -619,10 +596,10 @@
     iput v1, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->name:I
 
     .line 713
-    goto :goto_7b
+    goto :goto_2
 
     .line 698
-    :cond_3c
+    :cond_3
     invoke-static {p1, v1}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->getRepeatedFieldArrayLength(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;I)I
 
     move-result v1
@@ -631,70 +608,64 @@
     .local v1, "arrayLength":I
     iget-object v2, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->property:[I
 
-    array-length v2, v2
+    array-length v3, v2
 
     .line 700
-    .local v2, "i":I
-    add-int v3, v2, v1
+    .local v3, "i":I
+    add-int v4, v3, v1
 
-    new-array v3, v3, [I
+    new-array v4, v4, [I
 
     .line 701
-    .local v3, "newArray":[I
-    iget-object v4, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->property:[I
-
+    .local v4, "newArray":[I
     const/4 v5, 0x0
 
-    invoke-static {v4, v5, v3, v5, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {v2, v5, v4, v5, v3}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
     .line 702
-    iput-object v3, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->property:[I
+    iput-object v4, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->property:[I
 
     .line 703
-    :goto_4f
-    iget-object v4, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->property:[I
+    :goto_1
+    iget-object v2, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->property:[I
 
-    array-length v4, v4
+    array-length v5, v2
 
-    add-int/lit8 v4, v4, -0x1
+    add-int/lit8 v5, v5, -0x1
 
-    if-ge v2, v4, :cond_64
+    if-ge v3, v5, :cond_4
 
     .line 704
-    iget-object v4, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->property:[I
-
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readInt32()I
 
     move-result v5
 
-    aput v5, v4, v2
+    aput v5, v2, v3
 
     .line 705
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readTag()I
 
     .line 703
-    add-int/lit8 v2, v2, 0x1
+    add-int/lit8 v3, v3, 0x1
 
-    goto :goto_4f
+    goto :goto_1
 
     .line 708
-    :cond_64
-    iget-object v4, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->property:[I
-
+    :cond_4
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readInt32()I
 
     move-result v5
 
-    aput v5, v4, v2
+    aput v5, v2, v3
 
     .line 709
-    goto :goto_7b
+    goto :goto_2
 
     .line 694
     .end local v1    # "arrayLength":I
-    .end local v2    # "i":I
-    .end local v3    # "newArray":[I
-    :cond_6d
+    .end local v3    # "i":I
+    .end local v4    # "newArray":[I
+    :cond_5
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readInt32()I
 
     move-result v1
@@ -702,10 +673,10 @@
     iput v1, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->function:I
 
     .line 695
-    goto :goto_7b
+    goto :goto_2
 
     .line 690
-    :cond_74
+    :cond_6
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readBool()Z
 
     move-result v1
@@ -717,18 +688,18 @@
 
     .line 720
     .end local v0    # "tag":I
-    :cond_7b
-    :goto_7b
+    :cond_7
+    :goto_2
     goto :goto_0
 
     .line 677
     .restart local v0    # "tag":I
-    :cond_7c
+    :cond_8
     return-object p0
 .end method
 
 .method public bridge synthetic mergeFrom(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;)Lcom/google/tagmanager/protobuf/nano/MessageNano;
-    .registers 3
+    .locals 1
     .param p1, "x0"    # Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -745,7 +716,7 @@
 .end method
 
 .method public writeTo(Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;)V
-    .registers 7
+    .locals 5
     .param p1, "output"    # Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -756,17 +727,15 @@
     .line 619
     iget-boolean v0, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->serverSide:Z
 
-    if-eqz v0, :cond_a
+    if-eqz v0, :cond_0
 
     .line 620
-    iget-boolean v0, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->serverSide:Z
-
     const/4 v1, 0x1
 
     invoke-virtual {p1, v1, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeBool(IZ)V
 
     .line 622
-    :cond_a
+    :cond_0
     const/4 v0, 0x2
 
     iget v1, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->function:I
@@ -776,7 +745,7 @@
     .line 623
     iget-object v0, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->property:[I
 
-    if-eqz v0, :cond_23
+    if-eqz v0, :cond_1
 
     .line 624
     iget-object v0, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->property:[I
@@ -788,8 +757,8 @@
     const/4 v2, 0x0
 
     .local v2, "i$":I
-    :goto_18
-    if-ge v2, v1, :cond_23
+    :goto_0
+    if-ge v2, v1, :cond_1
 
     aget v3, v0, v2
 
@@ -803,39 +772,35 @@
     .end local v3    # "element":I
     add-int/lit8 v2, v2, 0x1
 
-    goto :goto_18
+    goto :goto_0
 
     .line 628
     .end local v0    # "arr$":[I
     .end local v1    # "len$":I
     .end local v2    # "i$":I
-    :cond_23
+    :cond_1
     iget v0, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->name:I
 
-    if-eqz v0, :cond_2d
+    if-eqz v0, :cond_2
 
     .line 629
-    const/4 v0, 0x4
+    const/4 v1, 0x4
 
-    iget v1, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->name:I
-
-    invoke-virtual {p1, v0, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeInt32(II)V
+    invoke-virtual {p1, v1, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeInt32(II)V
 
     .line 631
-    :cond_2d
+    :cond_2
     iget-boolean v0, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->liveOnly:Z
 
-    if-eqz v0, :cond_37
+    if-eqz v0, :cond_3
 
     .line 632
-    const/4 v0, 0x6
+    const/4 v1, 0x6
 
-    iget-boolean v1, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->liveOnly:Z
-
-    invoke-virtual {p1, v0, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeBool(IZ)V
+    invoke-virtual {p1, v1, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeBool(IZ)V
 
     .line 634
-    :cond_37
+    :cond_3
     iget-object v0, p0, Lcom/google/analytics/containertag/proto/Serving$FunctionCall;->unknownFieldData:Ljava/util/List;
 
     invoke-static {v0, p1}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->writeUnknownFields(Ljava/util/List;Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;)V

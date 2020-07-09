@@ -5,7 +5,7 @@
 
 # direct methods
 .method private constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 22
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -15,7 +15,7 @@
 .end method
 
 .method public static expandedResourceFromJsonString(Ljava/lang/String;)Lcom/google/tagmanager/ResourceUtil$ExpandedResource;
-    .registers 7
+    .locals 6
     .param p0, "jsonString"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -43,12 +43,12 @@
     const/4 v2, 0x0
 
     .local v2, "i":I
-    :goto_e
+    :goto_0
     iget-object v3, v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     array-length v3, v3
 
-    if-ge v2, v3, :cond_4d
+    if-ge v2, v3, :cond_0
 
     .line 33
     invoke-static {}, Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;->newBuilder()Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCallBuilder;
@@ -108,11 +108,11 @@
     .line 30
     add-int/lit8 v2, v2, 0x1
 
-    goto :goto_e
+    goto :goto_0
 
     .line 40
     .end local v2    # "i":I
-    :cond_4d
+    :cond_0
     invoke-virtual {v1}, Lcom/google/tagmanager/ResourceUtil$ExpandedResourceBuilder;->build()Lcom/google/tagmanager/ResourceUtil$ExpandedResource;
 
     move-result-object v2
@@ -121,7 +121,7 @@
 .end method
 
 .method static jsonObjectToObject(Ljava/lang/Object;)Ljava/lang/Object;
-    .registers 6
+    .locals 5
     .param p0, "o"    # Ljava/lang/Object;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
@@ -135,7 +135,7 @@
     .line 58
     instance-of v0, p0, Lorg/json/JSONArray;
 
-    if-nez v0, :cond_3e
+    if-nez v0, :cond_3
 
     .line 60
     sget-object v0, Lorg/json/JSONObject;->NULL:Ljava/lang/Object;
@@ -144,12 +144,12 @@
 
     move-result v0
 
-    if-nez v0, :cond_36
+    if-nez v0, :cond_2
 
     .line 62
     instance-of v0, p0, Lorg/json/JSONObject;
 
-    if-eqz v0, :cond_35
+    if-eqz v0, :cond_1
 
     .line 63
     move-object v0, p0
@@ -170,12 +170,12 @@
 
     .line 67
     .local v2, "keys":Ljava/util/Iterator;, "Ljava/util/Iterator<Ljava/lang/String;>;"
-    :goto_1c
+    :goto_0
     invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v3
 
-    if-eqz v3, :cond_34
+    if-eqz v3, :cond_0
 
     .line 68
     invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
@@ -198,21 +198,21 @@
 
     .line 70
     .end local v3    # "key":Ljava/lang/String;
-    goto :goto_1c
+    goto :goto_0
 
     .line 71
-    :cond_34
+    :cond_0
     return-object v1
 
     .line 74
     .end local v0    # "jsonObject":Lorg/json/JSONObject;
     .end local v1    # "map":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;"
     .end local v2    # "keys":Ljava/util/Iterator;, "Ljava/util/Iterator<Ljava/lang/String;>;"
-    :cond_35
+    :cond_1
     return-object p0
 
     .line 61
-    :cond_36
+    :cond_2
     new-instance v0, Ljava/lang/RuntimeException;
 
     const-string v1, "JSON nulls are not supported"
@@ -222,7 +222,7 @@
     throw v0
 
     .line 59
-    :cond_3e
+    :cond_3
     new-instance v0, Ljava/lang/RuntimeException;
 
     const-string v1, "JSONArrays are not supported"
@@ -233,7 +233,7 @@
 .end method
 
 .method private static jsonObjectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 2
+    .locals 1
     .param p0, "o"    # Ljava/lang/Object;
     .annotation system Ldalvik/annotation/Throws;
         value = {

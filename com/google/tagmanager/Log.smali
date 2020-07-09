@@ -12,7 +12,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 12
     new-instance v0, Lcom/google/tagmanager/DefaultLogger;
@@ -25,7 +25,7 @@
 .end method
 
 .method constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 10
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -34,7 +34,7 @@
 .end method
 
 .method public static d(Ljava/lang/String;)V
-    .registers 2
+    .locals 1
     .param p0, "message"    # Ljava/lang/String;
 
     .line 51
@@ -47,7 +47,7 @@
 .end method
 
 .method public static d(Ljava/lang/String;Ljava/lang/Throwable;)V
-    .registers 3
+    .locals 1
     .param p0, "message"    # Ljava/lang/String;
     .param p1, "t"    # Ljava/lang/Throwable;
 
@@ -61,7 +61,7 @@
 .end method
 
 .method public static e(Ljava/lang/String;)V
-    .registers 2
+    .locals 1
     .param p0, "message"    # Ljava/lang/String;
 
     .line 27
@@ -74,7 +74,7 @@
 .end method
 
 .method public static e(Ljava/lang/String;Ljava/lang/Throwable;)V
-    .registers 3
+    .locals 1
     .param p0, "message"    # Ljava/lang/String;
     .param p1, "t"    # Ljava/lang/Throwable;
 
@@ -88,7 +88,7 @@
 .end method
 
 .method public static getLogLevel()Lcom/google/tagmanager/Logger$LogLevel;
-    .registers 1
+    .locals 1
 
     .line 67
     sget-object v0, Lcom/google/tagmanager/Log;->sLogger:Lcom/google/tagmanager/Logger;
@@ -101,7 +101,7 @@
 .end method
 
 .method public static getLogger()Lcom/google/tagmanager/Logger;
-    .registers 2
+    .locals 2
 
     .line 23
     sget-object v0, Lcom/google/tagmanager/Log;->sLogger:Lcom/google/tagmanager/Logger;
@@ -112,21 +112,21 @@
 
     const-class v1, Lcom/google/tagmanager/NoOpLogger;
 
-    if-ne v0, v1, :cond_c
+    if-ne v0, v1, :cond_0
 
     const/4 v0, 0x0
 
-    goto :goto_e
+    goto :goto_0
 
-    :cond_c
+    :cond_0
     sget-object v0, Lcom/google/tagmanager/Log;->sLogger:Lcom/google/tagmanager/Logger;
 
-    :goto_e
+    :goto_0
     return-object v0
 .end method
 
 .method public static i(Ljava/lang/String;)V
-    .registers 2
+    .locals 1
     .param p0, "message"    # Ljava/lang/String;
 
     .line 43
@@ -139,7 +139,7 @@
 .end method
 
 .method public static i(Ljava/lang/String;Ljava/lang/Throwable;)V
-    .registers 3
+    .locals 1
     .param p0, "message"    # Ljava/lang/String;
     .param p1, "t"    # Ljava/lang/Throwable;
 
@@ -153,11 +153,11 @@
 .end method
 
 .method public static setLogger(Lcom/google/tagmanager/Logger;)V
-    .registers 2
+    .locals 1
     .param p0, "logger"    # Lcom/google/tagmanager/Logger;
 
     .line 15
-    if-nez p0, :cond_a
+    if-nez p0, :cond_0
 
     .line 16
     new-instance v0, Lcom/google/tagmanager/NoOpLogger;
@@ -166,19 +166,19 @@
 
     sput-object v0, Lcom/google/tagmanager/Log;->sLogger:Lcom/google/tagmanager/Logger;
 
-    goto :goto_c
+    goto :goto_0
 
     .line 18
-    :cond_a
+    :cond_0
     sput-object p0, Lcom/google/tagmanager/Log;->sLogger:Lcom/google/tagmanager/Logger;
 
     .line 20
-    :goto_c
+    :goto_0
     return-void
 .end method
 
 .method public static v(Ljava/lang/String;)V
-    .registers 2
+    .locals 1
     .param p0, "message"    # Ljava/lang/String;
 
     .line 59
@@ -191,7 +191,7 @@
 .end method
 
 .method public static v(Ljava/lang/String;Ljava/lang/Throwable;)V
-    .registers 3
+    .locals 1
     .param p0, "message"    # Ljava/lang/String;
     .param p1, "t"    # Ljava/lang/Throwable;
 
@@ -205,7 +205,7 @@
 .end method
 
 .method public static w(Ljava/lang/String;)V
-    .registers 2
+    .locals 1
     .param p0, "message"    # Ljava/lang/String;
 
     .line 35
@@ -218,7 +218,7 @@
 .end method
 
 .method public static w(Ljava/lang/String;Ljava/lang/Throwable;)V
-    .registers 3
+    .locals 1
     .param p0, "message"    # Ljava/lang/String;
     .param p1, "t"    # Ljava/lang/Throwable;
 

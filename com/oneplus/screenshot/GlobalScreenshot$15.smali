@@ -1,9 +1,6 @@
 .class Lcom/oneplus/screenshot/GlobalScreenshot$15;
-.super Ljava/lang/Object;
+.super Landroid/animation/AnimatorListenerAdapter;
 .source "GlobalScreenshot.java"
-
-# interfaces
-.implements Landroid/view/animation/Interpolator;
 
 
 # annotations
@@ -23,54 +20,56 @@
 
 # direct methods
 .method constructor <init>(Lcom/oneplus/screenshot/GlobalScreenshot;)V
-    .registers 2
+    .locals 0
     .param p1, "this$0"    # Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .line 1552
+    .line 1725
     iput-object p1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$15;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0}, Landroid/animation/AnimatorListenerAdapter;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public getInterpolation(F)F
-    .registers 9
-    .param p1, "x"    # F
+.method public onAnimationEnd(Landroid/animation/Animator;)V
+    .locals 3
+    .param p1, "animation"    # Landroid/animation/Animator;
 
-    .line 1555
-    const v0, 0x3f5c4771
+    .line 1728
+    iget-object v0, p0, Lcom/oneplus/screenshot/GlobalScreenshot$15;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    cmpg-float v1, p1, v0
+    invoke-static {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$1800(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageView;
 
-    const/high16 v2, 0x3f800000    # 1.0f
+    move-result-object v0
 
-    if-gez v1, :cond_18
+    const/16 v1, 0x8
 
-    .line 1557
-    const-wide/high16 v3, 0x3ff0000000000000L    # 1.0
+    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setVisibility(I)V
 
-    div-float v0, p1, v0
+    .line 1729
+    iget-object v0, p0, Lcom/oneplus/screenshot/GlobalScreenshot$15;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    sub-float/2addr v2, v0
+    invoke-static {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$1400(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageView;
 
-    float-to-double v0, v2
+    move-result-object v0
 
-    const-wide/high16 v5, 0x4000000000000000L    # 2.0
+    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setVisibility(I)V
 
-    invoke-static {v0, v1, v5, v6}, Ljava/lang/Math;->pow(DD)D
+    .line 1730
+    iget-object v0, p0, Lcom/oneplus/screenshot/GlobalScreenshot$15;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    move-result-wide v0
+    invoke-static {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$1400(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageView;
 
-    sub-double/2addr v3, v0
+    move-result-object v0
 
-    double-to-float v0, v3
+    const/4 v1, 0x0
 
-    return v0
+    const/4 v2, 0x0
 
-    .line 1559
-    :cond_18
-    return v2
+    invoke-virtual {v0, v1, v2}, Landroid/widget/ImageView;->setLayerType(ILandroid/graphics/Paint;)V
+
+    .line 1731
+    return-void
 .end method

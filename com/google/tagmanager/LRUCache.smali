@@ -38,7 +38,7 @@
 
 # direct methods
 .method constructor <init>(ILcom/google/tagmanager/CacheFactory$CacheSizeManager;)V
-    .registers 4
+    .locals 1
     .param p1, "maxSize"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -67,7 +67,7 @@
 
 # virtual methods
 .method public get(Ljava/lang/Object;)Ljava/lang/Object;
-    .registers 3
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(TK;)TV;"
@@ -87,7 +87,7 @@
 .end method
 
 .method public put(Ljava/lang/Object;Ljava/lang/Object;)V
-    .registers 4
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(TK;TV;)V"

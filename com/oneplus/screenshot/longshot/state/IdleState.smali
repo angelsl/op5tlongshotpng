@@ -9,7 +9,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;)V
-    .registers 2
+    .locals 0
     .param p1, "stateContext"    # Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     .line 11

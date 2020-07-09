@@ -29,7 +29,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 16
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->JOINER:Lcom/google/analytics/containertag/common/FunctionType;
@@ -80,7 +80,7 @@
 .end method
 
 .method public constructor <init>()V
-    .registers 5
+    .locals 4
 
     .line 31
     sget-object v0, Lcom/google/tagmanager/JoinerMacro;->ID:Ljava/lang/String;
@@ -102,7 +102,7 @@
 .end method
 
 .method private addTo(Ljava/util/Set;Ljava/lang/String;)V
-    .registers 5
+    .locals 2
     .param p2, "string"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -120,12 +120,12 @@
     const/4 v0, 0x0
 
     .local v0, "i":I
-    :goto_1
+    :goto_0
     invoke-virtual {p2}, Ljava/lang/String;->length()I
 
     move-result v1
 
-    if-ge v0, v1, :cond_15
+    if-ge v0, v1, :cond_0
 
     .line 108
     invoke-virtual {p2, v0}, Ljava/lang/String;->charAt(I)C
@@ -141,16 +141,16 @@
     .line 107
     add-int/lit8 v0, v0, 0x1
 
-    goto :goto_1
+    goto :goto_0
 
     .line 110
     .end local v0    # "i":I
-    :cond_15
+    :cond_0
     return-void
 .end method
 
 .method private append(Ljava/lang/StringBuilder;Ljava/lang/String;Lcom/google/tagmanager/JoinerMacro$EscapeType;Ljava/util/Set;)V
-    .registers 6
+    .locals 1
     .param p1, "sb"    # Ljava/lang/StringBuilder;
     .param p2, "s"    # Ljava/lang/String;
     .param p3, "escapeType"    # Lcom/google/tagmanager/JoinerMacro$EscapeType;
@@ -179,7 +179,7 @@
 .end method
 
 .method private escape(Ljava/lang/String;Lcom/google/tagmanager/JoinerMacro$EscapeType;Ljava/util/Set;)Ljava/lang/String;
-    .registers 9
+    .locals 5
     .param p1, "s"    # Ljava/lang/String;
     .param p2, "escapeType"    # Lcom/google/tagmanager/JoinerMacro$EscapeType;
     .annotation system Ldalvik/annotation/Signature;
@@ -204,13 +204,19 @@
 
     aget v0, v0, v1
 
-    packed-switch v0, :pswitch_data_4c
+    const/4 v1, 0x1
+
+    if-eq v0, v1, :cond_2
+
+    const/4 v1, 0x2
+
+    if-eq v0, v1, :cond_0
 
     .line 135
     return-object p1
 
     .line 127
-    :pswitch_c
+    :cond_0
     const-string v0, "\\"
 
     const-string v1, "\\\\"
@@ -222,71 +228,69 @@
     .line 128
     invoke-interface {p3}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
 
-    move-result-object v0
-
-    .local v0, "i$":Ljava/util/Iterator;
-    :goto_18
-    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v1
-
-    if-eqz v1, :cond_3e
-
-    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
     move-result-object v1
 
-    check-cast v1, Ljava/lang/Character;
+    .local v1, "i$":Ljava/util/Iterator;
+    :goto_0
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
-    .line 129
-    .local v1, "c":Ljava/lang/Character;
-    invoke-virtual {v1}, Ljava/lang/Character;->toString()Ljava/lang/String;
+    move-result v2
+
+    if-eqz v2, :cond_1
+
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v2
 
-    .line 130
-    .local v2, "charAsString":Ljava/lang/String;
-    new-instance v3, Ljava/lang/StringBuilder;
+    check-cast v2, Ljava/lang/Character;
 
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v4, "\\"
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    .line 129
+    .local v2, "c":Ljava/lang/Character;
+    invoke-virtual {v2}, Ljava/lang/Character;->toString()Ljava/lang/String;
 
     move-result-object v3
 
-    invoke-virtual {p1, v2, v3}, Ljava/lang/String;->replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    .line 130
+    .local v3, "charAsString":Ljava/lang/String;
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v4, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {p1, v3, v4}, Ljava/lang/String;->replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
 
     move-result-object p1
 
     .line 131
-    .end local v1    # "c":Ljava/lang/Character;
-    .end local v2    # "charAsString":Ljava/lang/String;
-    goto :goto_18
+    .end local v2    # "c":Ljava/lang/Character;
+    .end local v3    # "charAsString":Ljava/lang/String;
+    goto :goto_0
 
     .line 132
-    .end local v0    # "i$":Ljava/util/Iterator;
-    :cond_3e
+    .end local v1    # "i$":Ljava/util/Iterator;
+    :cond_1
     return-object p1
 
     .line 121
-    :pswitch_3f
-    :try_start_3f
+    :cond_2
+    :try_start_0
     invoke-static {p1}, Lcom/google/tagmanager/ValueEscapeUtil;->urlEncode(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
-    :try_end_43
-    .catch Ljava/io/UnsupportedEncodingException; {:try_start_3f .. :try_end_43} :catch_44
+    :try_end_0
+    .catch Ljava/io/UnsupportedEncodingException; {:try_start_0 .. :try_end_0} :catch_0
 
     return-object v0
 
     .line 122
-    :catch_44
+    :catch_0
     move-exception v0
 
     .line 123
@@ -297,18 +301,10 @@
 
     .line 124
     return-object p1
-
-    nop
-
-    :pswitch_data_4c
-    .packed-switch 0x1
-        :pswitch_3f
-        :pswitch_c
-    .end packed-switch
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 27
     sget-object v0, Lcom/google/tagmanager/JoinerMacro;->ID:Ljava/lang/String;
@@ -319,7 +315,7 @@
 
 # virtual methods
 .method public evaluate(Ljava/util/Map;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 19
+    .locals 16
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -331,10 +327,10 @@
         }
     .end annotation
 
+    .line 39
     .local p1, "parameters":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
     move-object/from16 v0, p0
 
-    .line 39
     move-object/from16 v1, p1
 
     sget-object v2, Lcom/google/tagmanager/JoinerMacro;->ARG0:Ljava/lang/String;
@@ -347,7 +343,7 @@
 
     .line 40
     .local v2, "input":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-nez v2, :cond_13
+    if-nez v2, :cond_0
 
     .line 41
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -357,7 +353,7 @@
     return-object v3
 
     .line 44
-    :cond_13
+    :cond_0
     sget-object v3, Lcom/google/tagmanager/JoinerMacro;->ITEM_SEPARATOR:Ljava/lang/String;
 
     invoke-interface {v1, v3}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -368,20 +364,20 @@
 
     .line 45
     .local v3, "itemSeparatorParameter":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-eqz v3, :cond_22
+    if-eqz v3, :cond_1
 
     invoke-static {v3}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
 
     move-result-object v4
 
-    goto :goto_24
+    goto :goto_0
 
-    :cond_22
+    :cond_1
     const-string v4, ""
 
     .line 49
     .local v4, "itemSeparator":Ljava/lang/String;
-    :goto_24
+    :goto_0
     sget-object v5, Lcom/google/tagmanager/JoinerMacro;->KEY_VALUE_SEPARATOR:Ljava/lang/String;
 
     invoke-interface {v1, v5}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -392,20 +388,20 @@
 
     .line 50
     .local v5, "keyValueSeparatorParameter":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-eqz v5, :cond_33
+    if-eqz v5, :cond_2
 
     invoke-static {v5}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
 
     move-result-object v6
 
-    goto :goto_35
+    goto :goto_1
 
-    :cond_33
+    :cond_2
     const-string v6, "="
 
     .line 54
     .local v6, "keyValueSeparator":Ljava/lang/String;
-    :goto_35
+    :goto_1
     sget-object v7, Lcom/google/tagmanager/JoinerMacro$EscapeType;->NONE:Lcom/google/tagmanager/JoinerMacro$EscapeType;
 
     .line 55
@@ -424,7 +420,7 @@
 
     .line 57
     .local v9, "charsToBackslashEscape":Ljava/util/Set;, "Ljava/util/Set<Ljava/lang/Character;>;"
-    if-eqz v8, :cond_8a
+    if-eqz v8, :cond_5
 
     .line 58
     invoke-static {v8}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
@@ -439,22 +435,22 @@
 
     move-result v11
 
-    if-eqz v11, :cond_51
+    if-eqz v11, :cond_3
 
     .line 60
     sget-object v7, Lcom/google/tagmanager/JoinerMacro$EscapeType;->URL:Lcom/google/tagmanager/JoinerMacro$EscapeType;
 
-    goto :goto_8a
+    goto :goto_2
 
     .line 61
-    :cond_51
+    :cond_3
     const-string v11, "backslash"
 
     invoke-virtual {v11, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v11
 
-    if-eqz v11, :cond_71
+    if-eqz v11, :cond_4
 
     .line 62
     sget-object v7, Lcom/google/tagmanager/JoinerMacro$EscapeType;->BACKSLASH:Lcom/google/tagmanager/JoinerMacro$EscapeType;
@@ -481,10 +477,10 @@
 
     invoke-interface {v9, v11}, Ljava/util/Set;->remove(Ljava/lang/Object;)Z
 
-    goto :goto_8a
+    goto :goto_2
 
     .line 69
-    :cond_71
+    :cond_4
     new-instance v11, Ljava/lang/StringBuilder;
 
     invoke-direct {v11}, Ljava/lang/StringBuilder;-><init>()V
@@ -510,8 +506,8 @@
 
     .line 74
     .end local v10    # "escape":Ljava/lang/String;
-    :cond_8a
-    :goto_8a
+    :cond_5
+    :goto_2
     new-instance v10, Ljava/lang/StringBuilder;
 
     invoke-direct {v10}, Ljava/lang/StringBuilder;-><init>()V
@@ -520,112 +516,123 @@
     .local v10, "sb":Ljava/lang/StringBuilder;
     iget v11, v2, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->type:I
 
-    const/4 v12, 0x0
+    const/4 v12, 0x2
 
-    packed-switch v11, :pswitch_data_ea
+    if-eq v11, v12, :cond_9
+
+    const/4 v12, 0x3
+
+    const/4 v13, 0x0
+
+    if-eq v11, v12, :cond_6
+
+    move v11, v13
 
     .line 101
+    .local v11, "firstTime":Z
     invoke-static {v2}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v12
 
-    invoke-direct {v0, v10, v1, v7, v9}, Lcom/google/tagmanager/JoinerMacro;->append(Ljava/lang/StringBuilder;Ljava/lang/String;Lcom/google/tagmanager/JoinerMacro$EscapeType;Ljava/util/Set;)V
+    invoke-direct {v0, v10, v12, v7, v9}, Lcom/google/tagmanager/JoinerMacro;->append(Ljava/lang/StringBuilder;Ljava/lang/String;Lcom/google/tagmanager/JoinerMacro$EscapeType;Ljava/util/Set;)V
 
-    goto :goto_e1
+    goto :goto_5
+
+    .line 75
+    .end local v11    # "firstTime":Z
+    :cond_6
+    move v11, v13
 
     .line 88
-    :pswitch_9d
-    nop
+    .restart local v11    # "firstTime":Z
+    const/4 v12, 0x0
 
     .local v12, "i":I
-    :goto_9e
-    move v11, v12
+    :goto_3
+    iget-object v13, v2, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    .end local v12    # "i":I
-    .local v11, "i":I
-    iget-object v12, v2, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    array-length v13, v13
 
-    array-length v12, v12
-
-    if-ge v11, v12, :cond_c5
+    if-ge v12, v13, :cond_8
 
     .line 89
-    if-lez v11, :cond_a9
+    if-lez v12, :cond_7
 
     .line 90
     invoke-virtual {v10, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 92
-    :cond_a9
-    iget-object v12, v2, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    :cond_7
+    iget-object v13, v2, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    aget-object v12, v12, v11
-
-    invoke-static {v12}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
-
-    move-result-object v12
-
-    .line 93
-    .local v12, "key":Ljava/lang/String;
-    iget-object v13, v2, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    aget-object v13, v13, v11
+    aget-object v13, v13, v12
 
     invoke-static {v13}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
 
     move-result-object v13
 
+    .line 93
+    .local v13, "key":Ljava/lang/String;
+    iget-object v14, v2, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+
+    aget-object v14, v14, v12
+
+    invoke-static {v14}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
+
+    move-result-object v14
+
     .line 94
-    .local v13, "value":Ljava/lang/String;
-    invoke-direct {v0, v10, v12, v7, v9}, Lcom/google/tagmanager/JoinerMacro;->append(Ljava/lang/StringBuilder;Ljava/lang/String;Lcom/google/tagmanager/JoinerMacro$EscapeType;Ljava/util/Set;)V
+    .local v14, "value":Ljava/lang/String;
+    invoke-direct {v0, v10, v13, v7, v9}, Lcom/google/tagmanager/JoinerMacro;->append(Ljava/lang/StringBuilder;Ljava/lang/String;Lcom/google/tagmanager/JoinerMacro$EscapeType;Ljava/util/Set;)V
 
     .line 95
     invoke-virtual {v10, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 96
-    invoke-direct {v0, v10, v13, v7, v9}, Lcom/google/tagmanager/JoinerMacro;->append(Ljava/lang/StringBuilder;Ljava/lang/String;Lcom/google/tagmanager/JoinerMacro$EscapeType;Ljava/util/Set;)V
+    invoke-direct {v0, v10, v14, v7, v9}, Lcom/google/tagmanager/JoinerMacro;->append(Ljava/lang/StringBuilder;Ljava/lang/String;Lcom/google/tagmanager/JoinerMacro$EscapeType;Ljava/util/Set;)V
 
     .line 88
-    .end local v12    # "key":Ljava/lang/String;
-    .end local v13    # "value":Ljava/lang/String;
-    add-int/lit8 v12, v11, 0x1
+    .end local v13    # "key":Ljava/lang/String;
+    .end local v14    # "value":Ljava/lang/String;
+    add-int/lit8 v12, v12, 0x1
 
-    .end local v11    # "i":I
-    .local v12, "i":I
-    goto :goto_9e
+    goto :goto_3
 
     .line 98
     .end local v12    # "i":I
-    :cond_c5
-    goto :goto_e1
+    :cond_8
+    goto :goto_5
 
     .line 77
-    :pswitch_c6
+    .end local v11    # "firstTime":Z
+    :cond_9
     const/4 v11, 0x1
 
     .line 78
-    .local v11, "firstTime":Z
-    iget-object v13, v2, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    .restart local v11    # "firstTime":Z
+    iget-object v12, v2, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    .local v13, "arr$":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    array-length v14, v13
+    .local v12, "arr$":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    array-length v13, v12
 
-    .local v12, "i$":I
-    .local v14, "len$":I
-    :goto_ca
-    if-ge v12, v14, :cond_e0
+    .local v13, "len$":I
+    const/4 v14, 0x0
 
-    aget-object v15, v13, v12
+    .local v14, "i$":I
+    :goto_4
+    if-ge v14, v13, :cond_b
+
+    aget-object v15, v12, v14
 
     .line 79
     .local v15, "itemVal":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-nez v11, :cond_d3
+    if-nez v11, :cond_a
 
     .line 80
     invoke-virtual {v10, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 82
-    :cond_d3
+    :cond_a
     const/4 v11, 0x0
 
     .line 83
@@ -637,22 +644,22 @@
 
     .line 78
     .end local v15    # "itemVal":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    add-int/lit8 v12, v12, 0x1
+    add-int/lit8 v14, v14, 0x1
 
     move-object/from16 v1, p1
 
-    goto :goto_ca
+    goto :goto_4
 
     .line 85
-    .end local v12    # "i$":I
-    .end local v13    # "arr$":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .end local v14    # "len$":I
-    :cond_e0
+    .end local v12    # "arr$":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    .end local v13    # "len$":I
+    .end local v14    # "i$":I
+    :cond_b
     nop
 
     .line 103
     .end local v11    # "firstTime":Z
-    :goto_e1
+    :goto_5
     invoke-virtual {v10}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1
@@ -662,16 +669,10 @@
     move-result-object v1
 
     return-object v1
-
-    :pswitch_data_ea
-    .packed-switch 0x2
-        :pswitch_c6
-        :pswitch_9d
-    .end packed-switch
 .end method
 
 .method public isCacheable()Z
-    .registers 2
+    .locals 1
 
     .line 35
     const/4 v0, 0x1

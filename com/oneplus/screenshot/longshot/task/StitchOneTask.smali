@@ -9,7 +9,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/longshot/task/JoinTask$OnJoinListener;Lcom/oneplus/screenshot/longshot/cache/JoinCache;Landroid/content/Context;I)V
-    .registers 5
+    .locals 0
     .param p1, "listener"    # Lcom/oneplus/screenshot/longshot/task/JoinTask$OnJoinListener;
     .param p2, "joinCache"    # Lcom/oneplus/screenshot/longshot/cache/JoinCache;
     .param p3, "context"    # Landroid/content/Context;
@@ -25,7 +25,7 @@
 
 # virtual methods
 .method protected createMatcher(Landroid/content/Context;I)Lcom/oneplus/screenshot/longshot/match/Matcher;
-    .registers 4
+    .locals 1
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "index"    # I
 
@@ -36,18 +36,18 @@
 .end method
 
 .method protected onJoin(Lcom/oneplus/screenshot/longshot/cache/BitmapCache;Lcom/oneplus/screenshot/longshot/cache/BitmapCache;)Z
-    .registers 4
+    .locals 1
     .param p1, "last"    # Lcom/oneplus/screenshot/longshot/cache/BitmapCache;
     .param p2, "curr"    # Lcom/oneplus/screenshot/longshot/cache/BitmapCache;
 
     .line 30
-    if-eqz p1, :cond_5
+    if-eqz p1, :cond_0
 
     .line 31
     invoke-virtual {p1}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->recycle()V
 
     .line 33
-    :cond_5
+    :cond_0
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/task/StitchOneTask;->mJoinCache:Lcom/oneplus/screenshot/longshot/cache/JoinCache;
 
     invoke-virtual {v0, p2}, Lcom/oneplus/screenshot/longshot/cache/JoinCache;->addLast(Ljava/lang/Object;)V

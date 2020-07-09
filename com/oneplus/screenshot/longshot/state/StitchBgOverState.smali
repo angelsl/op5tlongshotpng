@@ -9,22 +9,22 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;)V
-    .registers 2
+    .locals 0
     .param p1, "stateContext"    # Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
-    .line 16
+    .line 14
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/longshot/state/StitchBgNextState;-><init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;)V
 
-    .line 17
+    .line 15
     return-void
 .end method
 
 
 # virtual methods
 .method protected createJoinTask()Lcom/oneplus/screenshot/longshot/task/JoinTask;
-    .registers 5
+    .locals 4
 
-    .line 24
+    .line 22
     new-instance v0, Lcom/oneplus/screenshot/longshot/task/StitchBgOverTask;
 
     iget-object v1, p0, Lcom/oneplus/screenshot/longshot/state/StitchBgOverState;->mJoinCache:Lcom/oneplus/screenshot/longshot/cache/JoinCache;
@@ -47,9 +47,9 @@
 .end method
 
 .method protected getPageText()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
-    .line 39
+    .line 37
     invoke-super {p0}, Lcom/oneplus/screenshot/longshot/state/StitchBgNextState;->getPageText()Ljava/lang/String;
 
     move-result-object v0
@@ -58,9 +58,9 @@
 .end method
 
 .method protected getSuccessText()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
-    .line 34
+    .line 32
     invoke-super {p0}, Lcom/oneplus/screenshot/longshot/state/StitchBgNextState;->getSuccessText()Ljava/lang/String;
 
     move-result-object v0
@@ -69,15 +69,15 @@
 .end method
 
 .method protected prepareSuccess()V
-    .registers 3
+    .locals 2
 
-    .line 29
+    .line 27
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/StitchBgOverState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     const/4 v1, 0x1
 
     invoke-interface {v0, v1}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->setLast(Z)V
 
-    .line 30
+    .line 28
     return-void
 .end method

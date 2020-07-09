@@ -23,7 +23,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/ServiceManagerImpl;)V
-    .registers 2
+    .locals 0
 
     .line 52
     iput-object p1, p0, Lcom/google/tagmanager/ServiceManagerImpl$1;->this$0:Lcom/google/tagmanager/ServiceManagerImpl;
@@ -36,16 +36,13 @@
 
 # virtual methods
 .method public reportStoreIsEmpty(Z)V
-    .registers 4
+    .locals 2
     .param p1, "isEmpty"    # Z
 
     .line 55
     iget-object v0, p0, Lcom/google/tagmanager/ServiceManagerImpl$1;->this$0:Lcom/google/tagmanager/ServiceManagerImpl;
 
-    iget-object v1, p0, Lcom/google/tagmanager/ServiceManagerImpl$1;->this$0:Lcom/google/tagmanager/ServiceManagerImpl;
-
-    # getter for: Lcom/google/tagmanager/ServiceManagerImpl;->connected:Z
-    invoke-static {v1}, Lcom/google/tagmanager/ServiceManagerImpl;->access$000(Lcom/google/tagmanager/ServiceManagerImpl;)Z
+    invoke-static {v0}, Lcom/google/tagmanager/ServiceManagerImpl;->access$000(Lcom/google/tagmanager/ServiceManagerImpl;)Z
 
     move-result v1
 

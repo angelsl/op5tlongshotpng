@@ -16,7 +16,7 @@
 
 # direct methods
 .method public constructor <init>(Ljava/lang/String;I)V
-    .registers 5
+    .locals 2
     .param p1, "operation"    # Ljava/lang/String;
     .param p2, "t"    # I
 

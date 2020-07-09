@@ -31,7 +31,7 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    .registers 6
+    .locals 3
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "attrs"    # Landroid/util/AttributeSet;
 
@@ -102,7 +102,7 @@
 .end method
 
 .method static synthetic access$000(Lcom/oneplus/screenshot/longshot/widget/EditView;)Landroid/view/ViewParent;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/oneplus/screenshot/longshot/widget/EditView;
 
     .line 16
@@ -112,7 +112,7 @@
 .end method
 
 .method static synthetic access$100(Lcom/oneplus/screenshot/longshot/widget/EditView;I)V
-    .registers 2
+    .locals 0
     .param p0, "x0"    # Lcom/oneplus/screenshot/longshot/widget/EditView;
     .param p1, "x1"    # I
 
@@ -123,7 +123,7 @@
 .end method
 
 .method static synthetic access$200(Lcom/oneplus/screenshot/longshot/widget/EditView;)Landroid/content/Context;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/oneplus/screenshot/longshot/widget/EditView;
 
     .line 16
@@ -133,7 +133,7 @@
 .end method
 
 .method static synthetic access$300(Lcom/oneplus/screenshot/longshot/widget/EditView;II)Z
-    .registers 4
+    .locals 1
     .param p0, "x0"    # Lcom/oneplus/screenshot/longshot/widget/EditView;
     .param p1, "x1"    # I
     .param p2, "x2"    # I
@@ -147,7 +147,7 @@
 .end method
 
 .method private hitDrag(II)Z
-    .registers 6
+    .locals 3
     .param p1, "x"    # I
     .param p2, "y"    # I
 
@@ -162,13 +162,11 @@
     .local v0, "rect":Landroid/graphics/Rect;
     iget v1, p0, Lcom/oneplus/screenshot/longshot/widget/EditView;->mTouchSlop:I
 
+    neg-int v2, v1
+
     neg-int v1, v1
 
-    iget v2, p0, Lcom/oneplus/screenshot/longshot/widget/EditView;->mTouchSlop:I
-
-    neg-int v2, v2
-
-    invoke-virtual {v0, v1, v2}, Landroid/graphics/Rect;->inset(II)V
+    invoke-virtual {v0, v2, v1}, Landroid/graphics/Rect;->inset(II)V
 
     .line 105
     invoke-virtual {v0, p1, p2}, Landroid/graphics/Rect;->contains(II)Z
@@ -179,7 +177,7 @@
 .end method
 
 .method private trackMotionDrag(I)V
-    .registers 3
+    .locals 1
     .param p1, "deltaY"    # I
 
     .line 110
@@ -190,25 +188,25 @@
     add-int/2addr p1, v0
 
     .line 112
-    if-gez p1, :cond_9
+    if-gez p1, :cond_0
 
     .line 113
     const/4 p1, 0x0
 
-    goto :goto_f
+    goto :goto_0
 
     .line 114
-    :cond_9
+    :cond_0
     iget v0, p0, Lcom/oneplus/screenshot/longshot/widget/EditView;->mCutBottom:I
 
-    if-le p1, v0, :cond_f
+    if-le p1, v0, :cond_1
 
     .line 115
     iget p1, p0, Lcom/oneplus/screenshot/longshot/widget/EditView;->mCutBottom:I
 
     .line 118
-    :cond_f
-    :goto_f
+    :cond_1
+    :goto_0
     invoke-virtual {p0, p1}, Lcom/oneplus/screenshot/longshot/widget/EditView;->setCutPosition(I)V
 
     .line 120
@@ -226,7 +224,7 @@
 
 # virtual methods
 .method protected createGestureListener()Landroid/view/GestureDetector$OnGestureListener;
-    .registers 2
+    .locals 1
 
     .line 85
     new-instance v0, Lcom/oneplus/screenshot/longshot/widget/EditView$EditOnGestureListener;
@@ -237,7 +235,7 @@
 .end method
 
 .method public getCutPosition()I
-    .registers 2
+    .locals 1
 
     .line 92
     iget v0, p0, Lcom/oneplus/screenshot/longshot/widget/EditView;->mCutPosition:I
@@ -246,12 +244,12 @@
 .end method
 
 .method protected onDraw(Landroid/graphics/Canvas;)V
-    .registers 21
+    .locals 18
     .param p1, "canvas"    # Landroid/graphics/Canvas;
 
+    .line 59
     move-object/from16 v0, p0
 
-    .line 59
     move-object/from16 v1, p1
 
     invoke-super/range {p0 .. p1}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->onDraw(Landroid/graphics/Canvas;)V
@@ -259,11 +257,11 @@
     .line 60
     iget-object v2, v0, Lcom/oneplus/screenshot/longshot/widget/EditView;->mDimDrawable:Landroid/graphics/drawable/Drawable;
 
-    if-eqz v2, :cond_65
+    if-eqz v2, :cond_0
 
     iget-object v2, v0, Lcom/oneplus/screenshot/longshot/widget/EditView;->mDragDrawable:Landroid/graphics/drawable/Drawable;
 
-    if-eqz v2, :cond_65
+    if-eqz v2, :cond_0
 
     .line 61
     invoke-virtual/range {p0 .. p0}, Lcom/oneplus/screenshot/longshot/widget/EditView;->getCutPosition()I
@@ -362,17 +360,18 @@
 
     move/from16 v17, v2
 
+    .end local v2    # "cutPosition":I
+    .local v17, "cutPosition":I
     sub-int v2, v16, v6
 
     .line 76
     .local v2, "dimBottom":I
-    .local v17, "cutPosition":I
-    move/from16 v18, v3
-
-    iget-object v3, v0, Lcom/oneplus/screenshot/longshot/widget/EditView;->mDimDrawable:Landroid/graphics/drawable/Drawable;
+    move/from16 v16, v3
 
     .end local v3    # "paddingLeft":I
-    .local v18, "paddingLeft":I
+    .local v16, "paddingLeft":I
+    iget-object v3, v0, Lcom/oneplus/screenshot/longshot/widget/EditView;->mDimDrawable:Landroid/graphics/drawable/Drawable;
+
     invoke-virtual {v3, v13, v14, v15, v2}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
 
     .line 77
@@ -404,14 +403,14 @@
     .end local v13    # "dimLeft":I
     .end local v14    # "dimTop":I
     .end local v15    # "dimRight":I
+    .end local v16    # "paddingLeft":I
     .end local v17    # "cutPosition":I
-    .end local v18    # "paddingLeft":I
-    :cond_65
+    :cond_0
     return-void
 .end method
 
 .method protected onMeasure(II)V
-    .registers 5
+    .locals 2
     .param p1, "widthMeasureSpec"    # I
     .param p2, "heightMeasureSpec"    # I
 
@@ -455,7 +454,7 @@
 .end method
 
 .method public setCutPosition(I)V
-    .registers 2
+    .locals 0
     .param p1, "value"    # I
 
     .line 96

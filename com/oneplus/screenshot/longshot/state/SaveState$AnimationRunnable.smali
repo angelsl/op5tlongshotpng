@@ -27,43 +27,43 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/longshot/state/SaveState;Landroid/view/View;Landroid/animation/Animator;)V
-    .registers 4
+    .locals 0
     .param p2, "decor"    # Landroid/view/View;
     .param p3, "anim"    # Landroid/animation/Animator;
 
-    .line 129
+    .line 153
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/SaveState$AnimationRunnable;->this$0:Lcom/oneplus/screenshot/longshot/state/SaveState;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 126
+    .line 150
     const/4 p1, 0x0
 
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/SaveState$AnimationRunnable;->mDecor:Landroid/view/View;
 
-    .line 127
+    .line 151
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/SaveState$AnimationRunnable;->mAnim:Landroid/animation/Animator;
 
-    .line 130
+    .line 154
     iput-object p2, p0, Lcom/oneplus/screenshot/longshot/state/SaveState$AnimationRunnable;->mDecor:Landroid/view/View;
 
-    .line 131
+    .line 155
     iput-object p3, p0, Lcom/oneplus/screenshot/longshot/state/SaveState$AnimationRunnable;->mAnim:Landroid/animation/Animator;
 
-    .line 132
+    .line 156
     return-void
 .end method
 
 
 # virtual methods
 .method public run()V
-    .registers 2
+    .locals 1
 
-    .line 136
+    .line 160
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/SaveState$AnimationRunnable;->mAnim:Landroid/animation/Animator;
 
     invoke-virtual {v0}, Landroid/animation/Animator;->start()V
 
-    .line 137
+    .line 161
     return-void
 .end method

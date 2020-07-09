@@ -11,7 +11,7 @@
 
 # direct methods
 .method public constructor <init>(D)V
-    .registers 5
+    .locals 2
     .param p1, "real"    # D
 
     .line 9
@@ -24,7 +24,7 @@
 .end method
 
 .method public constructor <init>(DD)V
-    .registers 7
+    .locals 2
     .param p1, "real"    # D
     .param p3, "imag"    # D
 
@@ -52,7 +52,7 @@
 
 # virtual methods
 .method public clone()Lcom/oneplus/screenshot/longshot/transform/Complex;
-    .registers 6
+    .locals 5
 
     .line 19
     new-instance v0, Lcom/oneplus/screenshot/longshot/transform/Complex;
@@ -67,7 +67,7 @@
 .end method
 
 .method public bridge synthetic clone()Ljava/lang/Object;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/CloneNotSupportedException;
@@ -83,7 +83,7 @@
 .end method
 
 .method public conjugate()Lcom/oneplus/screenshot/longshot/transform/Complex;
-    .registers 3
+    .locals 2
 
     .line 54
     iget-wide v0, p0, Lcom/oneplus/screenshot/longshot/transform/Complex;->mImag:D
@@ -97,7 +97,7 @@
 .end method
 
 .method public divide(D)Lcom/oneplus/screenshot/longshot/transform/Complex;
-    .registers 5
+    .locals 2
     .param p1, "v"    # D
 
     .line 49
@@ -112,7 +112,7 @@
 .end method
 
 .method public getImag()D
-    .registers 3
+    .locals 2
 
     .line 27
     iget-wide v0, p0, Lcom/oneplus/screenshot/longshot/transform/Complex;->mImag:D
@@ -121,7 +121,7 @@
 .end method
 
 .method public getReal()D
-    .registers 3
+    .locals 2
 
     .line 23
     iget-wide v0, p0, Lcom/oneplus/screenshot/longshot/transform/Complex;->mReal:D
@@ -130,7 +130,7 @@
 .end method
 
 .method public minus(Lcom/oneplus/screenshot/longshot/transform/Complex;)Lcom/oneplus/screenshot/longshot/transform/Complex;
-    .registers 6
+    .locals 4
     .param p1, "v"    # Lcom/oneplus/screenshot/longshot/transform/Complex;
 
     .line 37
@@ -156,7 +156,7 @@
 .end method
 
 .method public multiply(Lcom/oneplus/screenshot/longshot/transform/Complex;)Lcom/oneplus/screenshot/longshot/transform/Complex;
-    .registers 8
+    .locals 8
     .param p1, "v"    # Lcom/oneplus/screenshot/longshot/transform/Complex;
 
     .line 43
@@ -170,20 +170,16 @@
 
     iget-wide v4, p1, Lcom/oneplus/screenshot/longshot/transform/Complex;->mImag:D
 
-    mul-double/2addr v2, v4
+    mul-double v6, v2, v4
 
-    sub-double/2addr v0, v2
+    sub-double/2addr v0, v6
 
     iput-wide v0, p0, Lcom/oneplus/screenshot/longshot/transform/Complex;->mReal:D
 
     .line 44
     iget-wide v0, p0, Lcom/oneplus/screenshot/longshot/transform/Complex;->mReal:D
 
-    iget-wide v2, p1, Lcom/oneplus/screenshot/longshot/transform/Complex;->mImag:D
-
-    mul-double/2addr v0, v2
-
-    iget-wide v2, p0, Lcom/oneplus/screenshot/longshot/transform/Complex;->mImag:D
+    mul-double/2addr v0, v4
 
     iget-wide v4, p1, Lcom/oneplus/screenshot/longshot/transform/Complex;->mReal:D
 
@@ -198,7 +194,7 @@
 .end method
 
 .method public plus(Lcom/oneplus/screenshot/longshot/transform/Complex;)Lcom/oneplus/screenshot/longshot/transform/Complex;
-    .registers 6
+    .locals 4
     .param p1, "v"    # Lcom/oneplus/screenshot/longshot/transform/Complex;
 
     .line 31

@@ -42,82 +42,82 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 9
+    .locals 9
 
     .line 31
     new-instance v0, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
-    const-string v1, "CONNECTING"
+    const/4 v1, 0x0
 
-    const/4 v2, 0x0
+    const-string v2, "CONNECTING"
 
-    invoke-direct {v0, v1, v2}, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v2, v1}, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->CONNECTING:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
     .line 32
     new-instance v0, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
-    const-string v1, "CONNECTED_SERVICE"
+    const/4 v2, 0x1
 
-    const/4 v3, 0x1
+    const-string v3, "CONNECTED_SERVICE"
 
-    invoke-direct {v0, v1, v3}, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v3, v2}, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->CONNECTED_SERVICE:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
     .line 33
     new-instance v0, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
-    const-string v1, "CONNECTED_LOCAL"
+    const/4 v3, 0x2
 
-    const/4 v4, 0x2
+    const-string v4, "CONNECTED_LOCAL"
 
-    invoke-direct {v0, v1, v4}, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v4, v3}, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->CONNECTED_LOCAL:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
     .line 34
     new-instance v0, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
-    const-string v1, "BLOCKED"
+    const/4 v4, 0x3
 
-    const/4 v5, 0x3
+    const-string v5, "BLOCKED"
 
-    invoke-direct {v0, v1, v5}, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v5, v4}, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->BLOCKED:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
     .line 35
     new-instance v0, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
-    const-string v1, "PENDING_CONNECTION"
+    const/4 v5, 0x4
 
-    const/4 v6, 0x4
+    const-string v6, "PENDING_CONNECTION"
 
-    invoke-direct {v0, v1, v6}, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v6, v5}, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->PENDING_CONNECTION:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
     .line 36
     new-instance v0, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
-    const-string v1, "PENDING_DISCONNECT"
+    const/4 v6, 0x5
 
-    const/4 v7, 0x5
+    const-string v7, "PENDING_DISCONNECT"
 
-    invoke-direct {v0, v1, v7}, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v7, v6}, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->PENDING_DISCONNECT:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
     .line 37
     new-instance v0, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
-    const-string v1, "DISCONNECTED"
+    const/4 v7, 0x6
 
-    const/4 v8, 0x6
+    const-string v8, "DISCONNECTED"
 
-    invoke-direct {v0, v1, v8}, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v8, v7}, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->DISCONNECTED:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
@@ -126,33 +126,33 @@
 
     new-array v0, v0, [Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
-    sget-object v1, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->CONNECTING:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
+    sget-object v8, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->CONNECTING:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
-    aput-object v1, v0, v2
+    aput-object v8, v0, v1
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->CONNECTED_SERVICE:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
-    aput-object v1, v0, v3
+    aput-object v1, v0, v2
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->CONNECTED_LOCAL:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
-    aput-object v1, v0, v4
+    aput-object v1, v0, v3
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->BLOCKED:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
-    aput-object v1, v0, v5
+    aput-object v1, v0, v4
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->PENDING_CONNECTION:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
-    aput-object v1, v0, v6
+    aput-object v1, v0, v5
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->PENDING_DISCONNECT:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
-    aput-object v1, v0, v7
+    aput-object v1, v0, v6
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->DISCONNECTED:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
-    aput-object v1, v0, v8
+    aput-object v1, v0, v7
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->$VALUES:[Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
@@ -160,7 +160,7 @@
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V
-    .registers 3
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
@@ -174,7 +174,7 @@
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
-    .registers 2
+    .locals 1
     .param p0, "name"    # Ljava/lang/String;
 
     .line 30
@@ -190,7 +190,7 @@
 .end method
 
 .method public static values()[Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
-    .registers 1
+    .locals 1
 
     .line 30
     sget-object v0, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->$VALUES:[Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;

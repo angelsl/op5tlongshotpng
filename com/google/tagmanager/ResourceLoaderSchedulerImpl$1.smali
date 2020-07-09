@@ -23,7 +23,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;)V
-    .registers 2
+    .locals 0
 
     .line 60
     iput-object p1, p0, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl$1;->this$0:Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;
@@ -36,7 +36,7 @@
 
 # virtual methods
 .method public createExecutorService()Ljava/util/concurrent/ScheduledExecutorService;
-    .registers 2
+    .locals 1
 
     .line 65
     invoke-static {}, Ljava/util/concurrent/Executors;->newSingleThreadScheduledExecutor()Ljava/util/concurrent/ScheduledExecutorService;

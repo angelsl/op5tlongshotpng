@@ -28,7 +28,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/google/tagmanager/LoadCallback$Failure;)V
-    .registers 2
+    .locals 0
     .param p1, "failure"    # Lcom/google/tagmanager/LoadCallback$Failure;
 
     .line 12
@@ -43,7 +43,7 @@
 .end method
 
 .method public constructor <init>(Ljava/lang/Object;)V
-    .registers 2
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(TT;)V"
@@ -65,7 +65,7 @@
 
 # virtual methods
 .method public getFailure()Lcom/google/tagmanager/LoadCallback$Failure;
-    .registers 2
+    .locals 1
 
     .line 21
     .local p0, "this":Lcom/google/tagmanager/TypeOrFailure;, "Lcom/google/tagmanager/TypeOrFailure<TT;>;"
@@ -75,7 +75,7 @@
 .end method
 
 .method public getType()Ljava/lang/Object;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()TT;"

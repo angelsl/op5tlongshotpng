@@ -23,7 +23,7 @@
 
 # direct methods
 .method public constructor <init>()V
-    .registers 2
+    .locals 1
 
     .line 9
     invoke-direct {p0}, Ljava/util/ArrayList;-><init>()V
@@ -39,23 +39,23 @@
 
 # virtual methods
 .method public clear()V
-    .registers 2
+    .locals 1
 
     .line 23
     iget-boolean v0, p0, Lcom/oneplus/screenshot/longshot/cache/ImageCache;->mCanClear:Z
 
-    if-eqz v0, :cond_7
+    if-eqz v0, :cond_0
 
     .line 24
     invoke-super {p0}, Ljava/util/ArrayList;->clear()V
 
     .line 26
-    :cond_7
+    :cond_0
     return-void
 .end method
 
 .method public setCanClear(Z)V
-    .registers 2
+    .locals 0
     .param p1, "canClear"    # Z
 
     .line 32

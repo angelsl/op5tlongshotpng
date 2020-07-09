@@ -13,7 +13,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 14
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->CONTAINER_VERSION:Lcom/google/analytics/containertag/common/FunctionType;
@@ -28,7 +28,7 @@
 .end method
 
 .method public constructor <init>(Lcom/google/tagmanager/Runtime;)V
-    .registers 4
+    .locals 2
     .param p1, "runtime"    # Lcom/google/tagmanager/Runtime;
 
     .line 23
@@ -48,7 +48,7 @@
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 19
     sget-object v0, Lcom/google/tagmanager/ContainerVersionMacro;->ID:Ljava/lang/String;
@@ -59,7 +59,7 @@
 
 # virtual methods
 .method public evaluate(Ljava/util/Map;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 4
+    .locals 2
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -85,25 +85,25 @@
 
     .line 33
     .local v0, "containerVersion":Ljava/lang/String;
-    if-nez v0, :cond_11
+    if-nez v0, :cond_0
 
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     move-result-object v1
 
-    goto :goto_15
+    goto :goto_0
 
-    :cond_11
+    :cond_0
     invoke-static {v0}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     move-result-object v1
 
-    :goto_15
+    :goto_0
     return-object v1
 .end method
 
 .method public isCacheable()Z
-    .registers 2
+    .locals 1
 
     .line 28
     const/4 v0, 0x1

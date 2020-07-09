@@ -23,10 +23,10 @@
 
 # direct methods
 .method constructor <init>(Lcom/oneplus/screenshot/longshot/state/AbsMoveState;)V
-    .registers 2
+    .locals 0
     .param p1, "this$0"    # Lcom/oneplus/screenshot/longshot/state/AbsMoveState;
 
-    .line 51
+    .line 49
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/AbsMoveState$1;->this$0:Lcom/oneplus/screenshot/longshot/state/AbsMoveState;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -37,20 +37,20 @@
 
 # virtual methods
 .method public run()V
-    .registers 2
+    .locals 1
 
-    .line 54
+    .line 52
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsMoveState$1;->this$0:Lcom/oneplus/screenshot/longshot/state/AbsMoveState;
 
     iget-object v0, v0, Lcom/oneplus/screenshot/longshot/state/AbsMoveState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     invoke-interface {v0}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->hide()V
 
-    .line 56
+    .line 54
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/AbsMoveState$1;->this$0:Lcom/oneplus/screenshot/longshot/state/AbsMoveState;
 
     invoke-static {v0}, Lcom/oneplus/screenshot/longshot/state/AbsMoveState;->access$000(Lcom/oneplus/screenshot/longshot/state/AbsMoveState;)V
 
-    .line 57
+    .line 55
     return-void
 .end method

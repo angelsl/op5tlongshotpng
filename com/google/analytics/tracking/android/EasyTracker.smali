@@ -66,7 +66,7 @@
 
 # direct methods
 .method private constructor <init>(Landroid/content/Context;)V
-    .registers 8
+    .locals 6
     .param p1, "ctx"    # Landroid/content/Context;
 
     .line 94
@@ -95,7 +95,7 @@
 .end method
 
 .method private constructor <init>(Landroid/content/Context;Lcom/google/analytics/tracking/android/ParameterLoader;Lcom/google/analytics/tracking/android/GoogleAnalytics;Lcom/google/analytics/tracking/android/ServiceManager;Lcom/google/analytics/tracking/android/TrackerHandler;)V
-    .registers 9
+    .locals 3
     .param p1, "ctx"    # Landroid/content/Context;
     .param p2, "parameterLoader"    # Lcom/google/analytics/tracking/android/ParameterLoader;
     .param p3, "ga"    # Lcom/google/analytics/tracking/android/GoogleAnalytics;
@@ -103,21 +103,21 @@
     .param p5, "handler"    # Lcom/google/analytics/tracking/android/TrackerHandler;
 
     .line 100
-    const-string v0, "easy_tracker"
+    if-eqz p5, :cond_0
 
-    if-eqz p5, :cond_6
+    move-object v0, p5
 
-    move-object v1, p5
+    goto :goto_0
 
-    goto :goto_7
+    :cond_0
+    move-object v0, p3
 
-    :cond_6
-    move-object v1, p3
+    :goto_0
+    const-string v1, "easy_tracker"
 
-    :goto_7
     const/4 v2, 0x0
 
-    invoke-direct {p0, v0, v2, v1}, Lcom/google/analytics/tracking/android/Tracker;-><init>(Ljava/lang/String;Ljava/lang/String;Lcom/google/analytics/tracking/android/TrackerHandler;)V
+    invoke-direct {p0, v1, v2, v0}, Lcom/google/analytics/tracking/android/Tracker;-><init>(Ljava/lang/String;Ljava/lang/String;Lcom/google/analytics/tracking/android/TrackerHandler;)V
 
     .line 155
     const/4 v0, 0x0
@@ -143,15 +143,13 @@
     .line 102
     sget-object v0, Lcom/google/analytics/tracking/android/EasyTracker;->sResourcePackageName:Ljava/lang/String;
 
-    if-eqz v0, :cond_24
+    if-eqz v0, :cond_1
 
     .line 103
-    sget-object v0, Lcom/google/analytics/tracking/android/EasyTracker;->sResourcePackageName:Ljava/lang/String;
-
     invoke-interface {p2, v0}, Lcom/google/analytics/tracking/android/ParameterLoader;->setResourcePackageName(Ljava/lang/String;)V
 
     .line 106
-    :cond_24
+    :cond_1
     iput-object p3, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mGoogleAnalytics:Lcom/google/analytics/tracking/android/GoogleAnalytics;
 
     .line 108
@@ -169,7 +167,7 @@
 .end method
 
 .method static synthetic access$102(Lcom/google/analytics/tracking/android/EasyTracker;Z)Z
-    .registers 2
+    .locals 0
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/EasyTracker;
     .param p1, "x1"    # Z
 
@@ -180,15 +178,15 @@
 .end method
 
 .method private declared-synchronized clearExistingTimer()V
-    .registers 2
+    .locals 1
 
     monitor-enter p0
 
     .line 386
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mTimer:Ljava/util/Timer;
 
-    if-eqz v0, :cond_d
+    if-eqz v0, :cond_0
 
     .line 387
     iget-object v0, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mTimer:Ljava/util/Timer;
@@ -199,27 +197,27 @@
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mTimer:Ljava/util/Timer;
-    :try_end_d
-    .catchall {:try_start_1 .. :try_end_d} :catchall_f
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 390
-    :cond_d
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/EasyTracker;
+    :cond_0
     monitor-exit p0
 
     return-void
 
     .line 385
-    :catchall_f
+    :catchall_0
     move-exception v0
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/analytics/tracking/android/EasyTracker;
     throw v0
 .end method
 
 .method private getActivityName(Landroid/app/Activity;)Ljava/lang/String;
-    .registers 5
+    .locals 3
     .param p1, "activity"    # Landroid/app/Activity;
 
     .line 402
@@ -239,7 +237,7 @@
 
     move-result v1
 
-    if-eqz v1, :cond_19
+    if-eqz v1, :cond_0
 
     .line 404
     iget-object v1, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mActivityNameMap:Ljava/util/Map;
@@ -253,7 +251,7 @@
     return-object v1
 
     .line 406
-    :cond_19
+    :cond_0
     iget-object v1, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mParameterFetcher:Lcom/google/analytics/tracking/android/ParameterLoader;
 
     invoke-interface {v1, v0}, Lcom/google/analytics/tracking/android/ParameterLoader;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -262,13 +260,13 @@
 
     .line 407
     .local v1, "name":Ljava/lang/String;
-    if-nez v1, :cond_22
+    if-nez v1, :cond_1
 
     .line 408
     move-object v1, v0
 
     .line 410
-    :cond_22
+    :cond_1
     iget-object v2, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mActivityNameMap:Ljava/util/Map;
 
     invoke-interface {v2, v0, v1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
@@ -278,13 +276,13 @@
 .end method
 
 .method public static getInstance(Landroid/content/Context;)Lcom/google/analytics/tracking/android/EasyTracker;
-    .registers 2
+    .locals 1
     .param p0, "ctx"    # Landroid/content/Context;
 
     .line 130
     sget-object v0, Lcom/google/analytics/tracking/android/EasyTracker;->sInstance:Lcom/google/analytics/tracking/android/EasyTracker;
 
-    if-nez v0, :cond_b
+    if-nez v0, :cond_0
 
     .line 131
     new-instance v0, Lcom/google/analytics/tracking/android/EasyTracker;
@@ -294,14 +292,14 @@
     sput-object v0, Lcom/google/analytics/tracking/android/EasyTracker;->sInstance:Lcom/google/analytics/tracking/android/EasyTracker;
 
     .line 133
-    :cond_b
+    :cond_0
     sget-object v0, Lcom/google/analytics/tracking/android/EasyTracker;->sInstance:Lcom/google/analytics/tracking/android/EasyTracker;
 
     return-object v0
 .end method
 
 .method private getLogLevelFromString(Ljava/lang/String;)Lcom/google/analytics/tracking/android/Logger$LogLevel;
-    .registers 4
+    .locals 2
     .param p1, "logLevelString"    # Ljava/lang/String;
 
     .line 288
@@ -313,13 +311,13 @@
     invoke-static {v0}, Lcom/google/analytics/tracking/android/Logger$LogLevel;->valueOf(Ljava/lang/String;)Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
     move-result-object v0
-    :try_end_8
-    .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_8} :catch_9
+    :try_end_0
+    .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_0
 
     return-object v0
 
     .line 289
-    :catch_9
+    :catch_0
     move-exception v0
 
     .line 291
@@ -330,7 +328,7 @@
 .end method
 
 .method static getNewInstance(Landroid/content/Context;Lcom/google/analytics/tracking/android/ParameterLoader;Lcom/google/analytics/tracking/android/GoogleAnalytics;Lcom/google/analytics/tracking/android/ServiceManager;Lcom/google/analytics/tracking/android/TrackerHandler;)Lcom/google/analytics/tracking/android/EasyTracker;
-    .registers 12
+    .locals 7
     .param p0, "ctx"    # Landroid/content/Context;
     .param p1, "parameterLoader"    # Lcom/google/analytics/tracking/android/ParameterLoader;
     .param p2, "ga"    # Lcom/google/analytics/tracking/android/GoogleAnalytics;
@@ -365,7 +363,7 @@
 .end method
 
 .method private loadParameters()V
-    .registers 12
+    .locals 11
 
     .line 208
     const-string v0, "Starting EasyTracker."
@@ -387,7 +385,7 @@
 
     move-result v1
 
-    if-eqz v1, :cond_1b
+    if-eqz v1, :cond_0
 
     .line 214
     iget-object v1, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mParameterFetcher:Lcom/google/analytics/tracking/android/ParameterLoader;
@@ -399,7 +397,7 @@
     move-result-object v0
 
     .line 216
-    :cond_1b
+    :cond_0
     const-string v1, "&tid"
 
     invoke-virtual {p0, v1, v0}, Lcom/google/analytics/tracking/android/EasyTracker;->set(Ljava/lang/String;Ljava/lang/String;)V
@@ -436,7 +434,7 @@
 
     move-result v2
 
-    if-nez v2, :cond_5b
+    if-nez v2, :cond_1
 
     .line 221
     new-instance v2, Ljava/lang/StringBuilder;
@@ -461,7 +459,7 @@
     invoke-virtual {p0, v2, v1}, Lcom/google/analytics/tracking/android/EasyTracker;->set(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 225
-    :cond_5b
+    :cond_1
     iget-object v2, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mParameterFetcher:Lcom/google/analytics/tracking/android/ParameterLoader;
 
     const-string v3, "ga_appVersion"
@@ -472,7 +470,7 @@
 
     .line 229
     .local v2, "appVersion":Ljava/lang/String;
-    if-eqz v2, :cond_7e
+    if-eqz v2, :cond_2
 
     .line 230
     new-instance v3, Ljava/lang/StringBuilder;
@@ -497,7 +495,7 @@
     invoke-virtual {p0, v3, v2}, Lcom/google/analytics/tracking/android/EasyTracker;->set(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 234
-    :cond_7e
+    :cond_2
     iget-object v3, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mParameterFetcher:Lcom/google/analytics/tracking/android/ParameterLoader;
 
     const-string v4, "ga_logLevel"
@@ -508,7 +506,7 @@
 
     .line 235
     .local v3, "logLevelString":Ljava/lang/String;
-    if-eqz v3, :cond_ab
+    if-eqz v3, :cond_3
 
     .line 236
     invoke-direct {p0, v3}, Lcom/google/analytics/tracking/android/EasyTracker;->getLogLevelFromString(Ljava/lang/String;)Lcom/google/analytics/tracking/android/Logger$LogLevel;
@@ -517,7 +515,7 @@
 
     .line 237
     .local v4, "logLevel":Lcom/google/analytics/tracking/android/Logger$LogLevel;
-    if-eqz v4, :cond_ab
+    if-eqz v4, :cond_3
 
     .line 238
     new-instance v5, Ljava/lang/StringBuilder;
@@ -547,7 +545,7 @@
 
     .line 243
     .end local v4    # "logLevel":Lcom/google/analytics/tracking/android/Logger$LogLevel;
-    :cond_ab
+    :cond_3
     iget-object v4, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mParameterFetcher:Lcom/google/analytics/tracking/android/ParameterLoader;
 
     const-string v5, "ga_sampleFrequency"
@@ -558,18 +556,18 @@
 
     .line 245
     .local v4, "sampleRate":Ljava/lang/Double;
-    if-nez v4, :cond_c6
+    if-nez v4, :cond_4
 
     .line 246
     new-instance v5, Ljava/lang/Double;
 
     iget-object v6, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mParameterFetcher:Lcom/google/analytics/tracking/android/ParameterLoader;
 
-    const-string v7, "ga_sampleRate"
+    const/16 v7, 0x64
 
-    const/16 v8, 0x64
+    const-string v8, "ga_sampleRate"
 
-    invoke-interface {v6, v7, v8}, Lcom/google/analytics/tracking/android/ParameterLoader;->getInt(Ljava/lang/String;I)I
+    invoke-interface {v6, v8, v7}, Lcom/google/analytics/tracking/android/ParameterLoader;->getInt(Ljava/lang/String;I)I
 
     move-result v6
 
@@ -580,7 +578,7 @@
     move-object v4, v5
 
     .line 248
-    :cond_c6
+    :cond_4
     invoke-virtual {v4}, Ljava/lang/Double;->doubleValue()D
 
     move-result-wide v5
@@ -589,23 +587,23 @@
 
     cmpl-double v5, v5, v7
 
-    if-eqz v5, :cond_dd
+    if-eqz v5, :cond_5
 
     .line 249
-    const-string v5, "&sf"
-
     invoke-virtual {v4}, Ljava/lang/Double;->doubleValue()D
 
-    move-result-wide v6
+    move-result-wide v5
 
-    invoke-static {v6, v7}, Ljava/lang/Double;->toString(D)Ljava/lang/String;
+    invoke-static {v5, v6}, Ljava/lang/Double;->toString(D)Ljava/lang/String;
 
-    move-result-object v6
+    move-result-object v5
 
-    invoke-virtual {p0, v5, v6}, Lcom/google/analytics/tracking/android/EasyTracker;->set(Ljava/lang/String;Ljava/lang/String;)V
+    const-string v6, "&sf"
+
+    invoke-virtual {p0, v6, v5}, Lcom/google/analytics/tracking/android/EasyTracker;->set(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 252
-    :cond_dd
+    :cond_5
     new-instance v5, Ljava/lang/StringBuilder;
 
     invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
@@ -625,11 +623,11 @@
     .line 254
     iget-object v5, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mParameterFetcher:Lcom/google/analytics/tracking/android/ParameterLoader;
 
-    const-string v6, "ga_dispatchPeriod"
+    const/16 v6, 0x708
 
-    const/16 v7, 0x708
+    const-string v7, "ga_dispatchPeriod"
 
-    invoke-interface {v5, v6, v7}, Lcom/google/analytics/tracking/android/ParameterLoader;->getInt(Ljava/lang/String;I)I
+    invoke-interface {v5, v7, v6}, Lcom/google/analytics/tracking/android/ParameterLoader;->getInt(Ljava/lang/String;I)I
 
     move-result v5
 
@@ -659,11 +657,11 @@
     .line 258
     iget-object v6, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mParameterFetcher:Lcom/google/analytics/tracking/android/ParameterLoader;
 
-    const-string v7, "ga_sessionTimeout"
+    const/16 v7, 0x1e
 
-    const/16 v8, 0x1e
+    const-string v8, "ga_sessionTimeout"
 
-    invoke-interface {v6, v7, v8}, Lcom/google/analytics/tracking/android/ParameterLoader;->getInt(Ljava/lang/String;I)I
+    invoke-interface {v6, v8, v7}, Lcom/google/analytics/tracking/android/ParameterLoader;->getInt(Ljava/lang/String;I)I
 
     move-result v6
 
@@ -701,7 +699,7 @@
 
     move-result v6
 
-    if-nez v6, :cond_150
+    if-nez v6, :cond_7
 
     iget-object v6, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mParameterFetcher:Lcom/google/analytics/tracking/android/ParameterLoader;
 
@@ -711,20 +709,20 @@
 
     move-result v6
 
-    if-eqz v6, :cond_14e
+    if-eqz v6, :cond_6
 
-    goto :goto_150
+    goto :goto_0
 
-    :cond_14e
+    :cond_6
     const/4 v6, 0x0
 
-    goto :goto_151
+    goto :goto_1
 
-    :cond_150
-    :goto_150
+    :cond_7
+    :goto_0
     const/4 v6, 0x1
 
-    :goto_151
+    :goto_1
     iput-boolean v6, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mIsAutoActivityTracking:Z
 
     .line 264
@@ -757,7 +755,7 @@
 
     .line 267
     .local v6, "isAnonymizeIpEnabled":Z
-    if-eqz v6, :cond_18e
+    if-eqz v6, :cond_8
 
     .line 268
     const-string v7, "&aip"
@@ -784,7 +782,7 @@
     invoke-static {v7}, Lcom/google/analytics/tracking/android/Log;->v(Ljava/lang/String;)V
 
     .line 272
-    :cond_18e
+    :cond_8
     iget-object v7, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mParameterFetcher:Lcom/google/analytics/tracking/android/ParameterLoader;
 
     const-string v8, "ga_reportUncaughtExceptions"
@@ -798,7 +796,7 @@
     .line 274
     iget-boolean v7, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mIsReportUncaughtExceptionsEnabled:Z
 
-    if-eqz v7, :cond_1c2
+    if-eqz v7, :cond_9
 
     .line 275
     new-instance v7, Lcom/google/analytics/tracking/android/ExceptionReporter;
@@ -838,7 +836,7 @@
 
     .line 282
     .end local v7    # "reporter":Lcom/google/analytics/tracking/android/ExceptionReporter;
-    :cond_1c2
+    :cond_9
     iget-object v7, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mParameterFetcher:Lcom/google/analytics/tracking/android/ParameterLoader;
 
     const-string v8, "ga_dryRun"
@@ -858,13 +856,13 @@
 .end method
 
 .method private setContext(Landroid/content/Context;Lcom/google/analytics/tracking/android/ParameterLoader;Lcom/google/analytics/tracking/android/ServiceManager;)V
-    .registers 5
+    .locals 1
     .param p1, "ctx"    # Landroid/content/Context;
     .param p2, "parameterLoader"    # Lcom/google/analytics/tracking/android/ParameterLoader;
     .param p3, "serviceManager"    # Lcom/google/analytics/tracking/android/ServiceManager;
 
     .line 308
-    if-nez p1, :cond_7
+    if-nez p1, :cond_0
 
     .line 309
     const-string v0, "Context cannot be null"
@@ -872,7 +870,7 @@
     invoke-static {v0}, Lcom/google/analytics/tracking/android/Log;->e(Ljava/lang/String;)V
 
     .line 311
-    :cond_7
+    :cond_0
     invoke-virtual {p1}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
 
     move-result-object v0
@@ -893,7 +891,7 @@
 .end method
 
 .method public static setResourcePackageName(Ljava/lang/String;)V
-    .registers 1
+    .locals 0
     .param p0, "resourcePackageName"    # Ljava/lang/String;
 
     .line 445
@@ -906,7 +904,7 @@
 
 # virtual methods
 .method public activityStart(Landroid/app/Activity;)V
-    .registers 6
+    .locals 4
     .param p1, "activity"    # Landroid/app/Activity;
 
     .line 327
@@ -926,23 +924,23 @@
 
     const/4 v1, 0x1
 
-    if-nez v0, :cond_1d
+    if-nez v0, :cond_0
 
     iget v0, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mActivitiesActive:I
 
-    if-nez v0, :cond_1d
+    if-nez v0, :cond_0
 
     invoke-virtual {p0}, Lcom/google/analytics/tracking/android/EasyTracker;->checkForNewSession()Z
 
     move-result v0
 
-    if-eqz v0, :cond_1d
+    if-eqz v0, :cond_0
 
     .line 333
     iput-boolean v1, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mStartSessionOnNextSend:Z
 
     .line 335
-    :cond_1d
+    :cond_0
     iput-boolean v1, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mIsInForeground:Z
 
     .line 336
@@ -955,7 +953,7 @@
     .line 337
     iget-boolean v0, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mIsAutoActivityTracking:Z
 
-    if-eqz v0, :cond_4f
+    if-eqz v0, :cond_1
 
     .line 338
     new-instance v0, Ljava/util/HashMap;
@@ -978,13 +976,13 @@
     invoke-virtual {v2, v1}, Lcom/google/analytics/tracking/android/GAUsage;->setDisableUsage(Z)V
 
     .line 342
-    const-string v1, "&cd"
-
     invoke-direct {p0, p1}, Lcom/google/analytics/tracking/android/EasyTracker;->getActivityName(Landroid/app/Activity;)Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v1
 
-    invoke-virtual {p0, v1, v2}, Lcom/google/analytics/tracking/android/EasyTracker;->set(Ljava/lang/String;Ljava/lang/String;)V
+    const-string v2, "&cd"
+
+    invoke-virtual {p0, v2, v1}, Lcom/google/analytics/tracking/android/EasyTracker;->set(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 343
     invoke-virtual {p0, v0}, Lcom/google/analytics/tracking/android/EasyTracker;->send(Ljava/util/Map;)V
@@ -1000,12 +998,12 @@
 
     .line 346
     .end local v0    # "params":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
-    :cond_4f
+    :cond_1
     return-void
 .end method
 
 .method public activityStop(Landroid/app/Activity;)V
-    .registers 6
+    .locals 4
     .param p1, "activity"    # Landroid/app/Activity;
 
     .line 356
@@ -1047,7 +1045,7 @@
     .line 364
     iget v0, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mActivitiesActive:I
 
-    if-nez v0, :cond_41
+    if-nez v0, :cond_0
 
     .line 365
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/EasyTracker;->clearExistingTimer()V
@@ -1080,27 +1078,25 @@
     invoke-virtual {v0, v1, v2, v3}, Ljava/util/Timer;->schedule(Ljava/util/TimerTask;J)V
 
     .line 372
-    :cond_41
+    :cond_0
     return-void
 .end method
 
 .method checkForNewSession()Z
-    .registers 7
+    .locals 6
 
     .line 198
     iget-wide v0, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mSessionTimeout:J
 
     const-wide/16 v2, 0x0
 
-    cmp-long v0, v0, v2
+    cmp-long v4, v0, v2
 
-    if-eqz v0, :cond_20
-
-    iget-wide v0, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mSessionTimeout:J
+    if-eqz v4, :cond_1
 
     cmp-long v0, v0, v2
 
-    if-lez v0, :cond_1e
+    if-lez v0, :cond_0
 
     iget-object v0, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mClock:Lcom/google/analytics/tracking/android/Clock;
 
@@ -1116,25 +1112,25 @@
 
     cmp-long v0, v0, v2
 
-    if-lez v0, :cond_1e
+    if-lez v0, :cond_0
 
-    goto :goto_20
+    goto :goto_0
 
-    :cond_1e
+    :cond_0
     const/4 v0, 0x0
 
-    goto :goto_21
+    goto :goto_1
 
-    :cond_20
-    :goto_20
+    :cond_1
+    :goto_0
     const/4 v0, 0x1
 
-    :goto_21
+    :goto_1
     return v0
 .end method
 
 .method public dispatchLocalHits()V
-    .registers 2
+    .locals 1
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
@@ -1148,7 +1144,7 @@
 .end method
 
 .method getActivitiesActive()I
-    .registers 2
+    .locals 1
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
@@ -1159,7 +1155,7 @@
 .end method
 
 .method overrideUncaughtExceptionHandler(Ljava/lang/Thread$UncaughtExceptionHandler;)V
-    .registers 3
+    .locals 1
     .param p1, "handler"    # Ljava/lang/Thread$UncaughtExceptionHandler;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
@@ -1167,18 +1163,18 @@
     .line 297
     iget-boolean v0, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mIsReportUncaughtExceptionsEnabled:Z
 
-    if-eqz v0, :cond_7
+    if-eqz v0, :cond_0
 
     .line 298
     invoke-static {p1}, Ljava/lang/Thread;->setDefaultUncaughtExceptionHandler(Ljava/lang/Thread$UncaughtExceptionHandler;)V
 
     .line 300
-    :cond_7
+    :cond_0
     return-void
 .end method
 
 .method public send(Ljava/util/Map;)V
-    .registers 4
+    .locals 2
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -1193,7 +1189,7 @@
     .local p1, "params":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     iget-boolean v0, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mStartSessionOnNextSend:Z
 
-    if-eqz v0, :cond_e
+    if-eqz v0, :cond_0
 
     .line 428
     const-string v0, "&sc"
@@ -1208,7 +1204,7 @@
     iput-boolean v0, p0, Lcom/google/analytics/tracking/android/EasyTracker;->mStartSessionOnNextSend:Z
 
     .line 431
-    :cond_e
+    :cond_0
     invoke-super {p0, p1}, Lcom/google/analytics/tracking/android/Tracker;->send(Ljava/util/Map;)V
 
     .line 432
@@ -1216,7 +1212,7 @@
 .end method
 
 .method setClock(Lcom/google/analytics/tracking/android/Clock;)V
-    .registers 2
+    .locals 0
     .param p1, "clock"    # Lcom/google/analytics/tracking/android/Clock;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation

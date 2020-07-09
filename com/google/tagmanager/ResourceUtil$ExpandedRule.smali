@@ -118,7 +118,7 @@
 
 # direct methods
 .method private constructor <init>(Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;)V
-    .registers 12
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -243,7 +243,7 @@
 .end method
 
 .method synthetic constructor <init>(Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Lcom/google/tagmanager/ResourceUtil$1;)V
-    .registers 12
+    .locals 0
     .param p1, "x0"    # Ljava/util/List;
     .param p2, "x1"    # Ljava/util/List;
     .param p3, "x2"    # Ljava/util/List;
@@ -263,7 +263,7 @@
 .end method
 
 .method public static newBuilder()Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;
-    .registers 2
+    .locals 2
 
     .line 245
     new-instance v0, Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;
@@ -278,7 +278,7 @@
 
 # virtual methods
 .method public getAddMacroRuleNames()Ljava/util/List;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -295,7 +295,7 @@
 .end method
 
 .method public getAddMacros()Ljava/util/List;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -312,7 +312,7 @@
 .end method
 
 .method public getAddTagRuleNames()Ljava/util/List;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -329,7 +329,7 @@
 .end method
 
 .method public getAddTags()Ljava/util/List;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -346,7 +346,7 @@
 .end method
 
 .method public getNegativePredicates()Ljava/util/List;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -363,7 +363,7 @@
 .end method
 
 .method public getPositivePredicates()Ljava/util/List;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -380,7 +380,7 @@
 .end method
 
 .method public getRemoveMacroRuleNames()Ljava/util/List;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -397,7 +397,7 @@
 .end method
 
 .method public getRemoveMacros()Ljava/util/List;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -414,7 +414,7 @@
 .end method
 
 .method public getRemoveTagRuleNames()Ljava/util/List;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -431,7 +431,7 @@
 .end method
 
 .method public getRemoveTags()Ljava/util/List;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -448,7 +448,7 @@
 .end method
 
 .method public toString()Ljava/lang/String;
-    .registers 3
+    .locals 2
 
     .line 300
     new-instance v0, Ljava/lang/StringBuilder;

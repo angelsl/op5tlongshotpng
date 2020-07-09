@@ -23,7 +23,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/google/tagmanager/NoopResolvedRuleBuilder;)V
-    .registers 2
+    .locals 0
 
     .line 52
     iput-object p1, p0, Lcom/google/tagmanager/NoopResolvedRuleBuilder$NoopResolvedFunctionCallTranslatorList;->this$0:Lcom/google/tagmanager/NoopResolvedRuleBuilder;
@@ -36,7 +36,7 @@
 
 # virtual methods
 .method public translateAndAddAll(Ljava/util/List;Ljava/util/List;)V
-    .registers 3
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",

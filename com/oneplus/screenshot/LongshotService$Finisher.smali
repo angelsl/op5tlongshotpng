@@ -25,34 +25,33 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/LongshotService;Lcom/oneplus/longshot/ILongScreenshotCallback;)V
-    .registers 3
+    .locals 0
     .param p2, "callback"    # Lcom/oneplus/longshot/ILongScreenshotCallback;
 
-    .line 140
+    .line 168
     iput-object p1, p0, Lcom/oneplus/screenshot/LongshotService$Finisher;->this$0:Lcom/oneplus/screenshot/LongshotService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 138
+    .line 166
     const/4 p1, 0x0
 
     iput-object p1, p0, Lcom/oneplus/screenshot/LongshotService$Finisher;->mCallback:Lcom/oneplus/longshot/ILongScreenshotCallback;
 
-    .line 141
+    .line 169
     iput-object p2, p0, Lcom/oneplus/screenshot/LongshotService$Finisher;->mCallback:Lcom/oneplus/longshot/ILongScreenshotCallback;
 
-    .line 142
+    .line 170
     return-void
 .end method
 
 
 # virtual methods
 .method public run()V
-    .registers 3
+    .locals 2
 
-    .line 147
+    .line 175
     :try_start_0
-    # getter for: Lcom/oneplus/screenshot/LongshotService;->TAG:Ljava/lang/String;
     invoke-static {}, Lcom/oneplus/screenshot/LongshotService;->access$000()Ljava/lang/String;
 
     move-result-object v0
@@ -61,26 +60,26 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 148
+    .line 176
     iget-object v0, p0, Lcom/oneplus/screenshot/LongshotService$Finisher;->mCallback:Lcom/oneplus/longshot/ILongScreenshotCallback;
 
     invoke-interface {v0}, Lcom/oneplus/longshot/ILongScreenshotCallback;->stop()V
-    :try_end_e
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_e} :catch_f
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 151
-    goto :goto_13
+    .line 179
+    goto :goto_0
 
-    .line 149
-    :catch_f
+    .line 177
+    :catch_0
     move-exception v0
 
-    .line 150
+    .line 178
     .local v0, "e":Landroid/os/RemoteException;
     invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
 
-    .line 152
+    .line 180
     .end local v0    # "e":Landroid/os/RemoteException;
-    :goto_13
+    :goto_0
     return-void
 .end method

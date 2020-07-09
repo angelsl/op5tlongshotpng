@@ -43,7 +43,7 @@
 
 # direct methods
 .method public constructor <init>(Ljava/util/Map;JLjava/lang/String;Ljava/util/List;)V
-    .registers 6
+    .locals 0
     .param p2, "hitTimeInMilliseconds"    # J
     .param p4, "path"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
@@ -84,7 +84,7 @@
 
 # virtual methods
 .method public getCommands()Ljava/util/List;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -101,7 +101,7 @@
 .end method
 
 .method public getHitTimeInMilliseconds()J
-    .registers 3
+    .locals 2
 
     .line 455
     iget-wide v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy$HitParams;->hitTimeInMilliseconds:J
@@ -110,7 +110,7 @@
 .end method
 
 .method public getPath()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 459
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy$HitParams;->path:Ljava/lang/String;
@@ -119,7 +119,7 @@
 .end method
 
 .method public getWireFormatParams()Ljava/util/Map;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -137,7 +137,7 @@
 .end method
 
 .method public toString()Ljava/lang/String;
-    .registers 5
+    .locals 4
 
     .line 468
     new-instance v0, Ljava/lang/StringBuilder;
@@ -158,7 +158,7 @@
     .line 471
     iget-object v1, p0, Lcom/google/analytics/tracking/android/GAServiceProxy$HitParams;->wireFormatParams:Ljava/util/Map;
 
-    if-eqz v1, :cond_4b
+    if-eqz v1, :cond_0
 
     .line 472
     const-string v1, "  PARAMS: "
@@ -177,12 +177,12 @@
     move-result-object v1
 
     .local v1, "i$":Ljava/util/Iterator;
-    :goto_22
+    :goto_0
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v2
 
-    if-eqz v2, :cond_4b
+    if-eqz v2, :cond_0
 
     invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -221,11 +221,11 @@
 
     .line 478
     .end local v2    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/lang/String;>;"
-    goto :goto_22
+    goto :goto_0
 
     .line 480
     .end local v1    # "i$":Ljava/util/Iterator;
-    :cond_4b
+    :cond_0
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1

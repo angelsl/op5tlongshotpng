@@ -12,7 +12,7 @@
 
 # direct methods
 .method constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 24
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -21,17 +21,17 @@
 .end method
 
 .method private closeWithClient(Lorg/apache/http/client/HttpClient;)V
-    .registers 3
+    .locals 1
     .param p1, "client"    # Lorg/apache/http/client/HttpClient;
 
     .line 61
-    if-eqz p1, :cond_f
+    if-eqz p1, :cond_0
 
     invoke-interface {p1}, Lorg/apache/http/client/HttpClient;->getConnectionManager()Lorg/apache/http/conn/ClientConnectionManager;
 
     move-result-object v0
 
-    if-eqz v0, :cond_f
+    if-eqz v0, :cond_0
 
     .line 62
     invoke-interface {p1}, Lorg/apache/http/client/HttpClient;->getConnectionManager()Lorg/apache/http/conn/ClientConnectionManager;
@@ -41,12 +41,12 @@
     invoke-interface {v0}, Lorg/apache/http/conn/ClientConnectionManager;->shutdown()V
 
     .line 64
-    :cond_f
+    :cond_0
     return-void
 .end method
 
 .method private handleServerResponse(Lorg/apache/http/client/HttpClient;Lorg/apache/http/HttpResponse;)Ljava/io/InputStream;
-    .registers 6
+    .locals 3
     .param p1, "client"    # Lorg/apache/http/client/HttpClient;
     .param p2, "response"    # Lorg/apache/http/HttpResponse;
     .annotation system Ldalvik/annotation/Throws;
@@ -68,7 +68,7 @@
     .local v0, "responseCode":I
     const/16 v1, 0xc8
 
-    if-ne v0, v1, :cond_1a
+    if-ne v0, v1, :cond_0
 
     .line 70
     const-string v1, "Success response"
@@ -87,7 +87,7 @@
     return-object v1
 
     .line 75
-    :cond_1a
+    :cond_0
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -106,7 +106,7 @@
     .local v1, "errorMessage":Ljava/lang/String;
     const/16 v2, 0x194
 
-    if-ne v0, v2, :cond_35
+    if-ne v0, v2, :cond_1
 
     .line 77
     new-instance v2, Ljava/io/FileNotFoundException;
@@ -116,7 +116,7 @@
     throw v2
 
     .line 79
-    :cond_35
+    :cond_1
     new-instance v2, Ljava/io/IOException;
 
     invoke-direct {v2, v1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
@@ -127,7 +127,7 @@
 
 # virtual methods
 .method public close()V
-    .registers 2
+    .locals 1
 
     .line 57
     iget-object v0, p0, Lcom/google/tagmanager/HttpNetworkClient;->mClient:Lorg/apache/http/client/HttpClient;
@@ -139,7 +139,7 @@
 .end method
 
 .method createNewHttpClient()Lorg/apache/http/client/HttpClient;
-    .registers 3
+    .locals 2
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
@@ -166,7 +166,7 @@
 .end method
 
 .method createPostRequest(Ljava/lang/String;[B)Lorg/apache/http/client/methods/HttpPost;
-    .registers 5
+    .locals 2
     .param p1, "url"    # Ljava/lang/String;
     .param p2, "content"    # [B
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
@@ -190,7 +190,7 @@
 .end method
 
 .method public getInputStream(Ljava/lang/String;)Ljava/io/InputStream;
-    .registers 4
+    .locals 2
     .param p1, "url"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -228,7 +228,7 @@
 .end method
 
 .method public sendPostRequest(Ljava/lang/String;[B)V
-    .registers 6
+    .locals 3
     .param p1, "url"    # Ljava/lang/String;
     .param p2, "content"    # [B
     .annotation system Ldalvik/annotation/Throws;

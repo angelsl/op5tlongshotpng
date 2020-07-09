@@ -24,7 +24,7 @@
 
 # direct methods
 .method constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 1103
     invoke-direct {p0}, Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;-><init>()V

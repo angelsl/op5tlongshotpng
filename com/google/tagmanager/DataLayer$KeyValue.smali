@@ -22,7 +22,7 @@
 
 # direct methods
 .method constructor <init>(Ljava/lang/String;Ljava/lang/Object;)V
-    .registers 3
+    .locals 0
     .param p1, "key"    # Ljava/lang/String;
     .param p2, "value"    # Ljava/lang/Object;
 
@@ -42,7 +42,7 @@
 
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
-    .registers 6
+    .locals 4
     .param p1, "o"    # Ljava/lang/Object;
 
     .line 117
@@ -50,13 +50,13 @@
 
     const/4 v1, 0x0
 
-    if-nez v0, :cond_6
+    if-nez v0, :cond_0
 
     .line 118
     return v1
 
     .line 120
-    :cond_6
+    :cond_0
     move-object v0, p1
 
     check-cast v0, Lcom/google/tagmanager/DataLayer$KeyValue;
@@ -71,7 +71,7 @@
 
     move-result v2
 
-    if-eqz v2, :cond_1f
+    if-eqz v2, :cond_1
 
     iget-object v2, p0, Lcom/google/tagmanager/DataLayer$KeyValue;->mValue:Ljava/lang/Object;
 
@@ -81,18 +81,16 @@
 
     move-result v2
 
-    if-eqz v2, :cond_1f
+    if-eqz v2, :cond_1
 
     const/4 v1, 0x1
 
-    nop
-
-    :cond_1f
+    :cond_1
     return v1
 .end method
 
 .method public hashCode()I
-    .registers 4
+    .locals 3
 
     .line 112
     const/4 v0, 0x2
@@ -135,7 +133,7 @@
 .end method
 
 .method public toString()Ljava/lang/String;
-    .registers 3
+    .locals 2
 
     .line 107
     new-instance v0, Ljava/lang/StringBuilder;

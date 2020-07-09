@@ -15,7 +15,7 @@
 
 # direct methods
 .method constructor <init>(Ljava/lang/String;JJ)V
-    .registers 7
+    .locals 1
     .param p1, "hitString"    # Ljava/lang/String;
     .param p2, "hitId"    # J
     .param p4, "hitTime"    # J
@@ -44,7 +44,7 @@
 
 # virtual methods
 .method getHitId()J
-    .registers 3
+    .locals 2
 
     .line 28
     iget-wide v0, p0, Lcom/google/analytics/tracking/android/Hit;->mHitId:J
@@ -53,7 +53,7 @@
 .end method
 
 .method getHitParams()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 20
     iget-object v0, p0, Lcom/google/analytics/tracking/android/Hit;->mHitString:Ljava/lang/String;
@@ -62,7 +62,7 @@
 .end method
 
 .method getHitTime()J
-    .registers 3
+    .locals 2
 
     .line 32
     iget-wide v0, p0, Lcom/google/analytics/tracking/android/Hit;->mHitTime:J
@@ -71,7 +71,7 @@
 .end method
 
 .method getHitUrlScheme()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 47
     iget-object v0, p0, Lcom/google/analytics/tracking/android/Hit;->mHitUrlScheme:Ljava/lang/String;
@@ -80,7 +80,7 @@
 .end method
 
 .method setHitString(Ljava/lang/String;)V
-    .registers 2
+    .locals 0
     .param p1, "hitString"    # Ljava/lang/String;
 
     .line 24
@@ -91,11 +91,11 @@
 .end method
 
 .method setHitUrl(Ljava/lang/String;)V
-    .registers 4
+    .locals 2
     .param p1, "hitUrl"    # Ljava/lang/String;
 
     .line 58
-    if-eqz p1, :cond_1e
+    if-eqz p1, :cond_2
 
     invoke-virtual {p1}, Ljava/lang/String;->trim()Ljava/lang/String;
 
@@ -105,12 +105,12 @@
 
     move-result v0
 
-    if-eqz v0, :cond_d
+    if-eqz v0, :cond_0
 
-    goto :goto_1e
+    goto :goto_0
 
     .line 61
-    :cond_d
+    :cond_0
     invoke-virtual {p1}, Ljava/lang/String;->toLowerCase()Ljava/lang/String;
 
     move-result-object v0
@@ -121,19 +121,17 @@
 
     move-result v0
 
-    if-eqz v0, :cond_1d
+    if-eqz v0, :cond_1
 
     .line 62
-    const-string v0, "http:"
-
-    iput-object v0, p0, Lcom/google/analytics/tracking/android/Hit;->mHitUrlScheme:Ljava/lang/String;
+    iput-object v1, p0, Lcom/google/analytics/tracking/android/Hit;->mHitUrlScheme:Ljava/lang/String;
 
     .line 64
-    :cond_1d
+    :cond_1
     return-void
 
     .line 59
-    :cond_1e
-    :goto_1e
+    :cond_2
+    :goto_0
     return-void
 .end method

@@ -47,46 +47,46 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 4
+    .locals 3
 
     .line 40
-    const-string v0, "CREATE TABLE IF NOT EXISTS %s ( \'%s\' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \'%s\' STRING NOT NULL, \'%s\' BLOB NOT NULL, \'%s\' INTEGER NOT NULL);"
+    const/4 v0, 0x5
 
-    const/4 v1, 0x5
+    new-array v0, v0, [Ljava/lang/Object;
 
-    new-array v1, v1, [Ljava/lang/Object;
+    const/4 v1, 0x0
 
     const-string v2, "datalayer"
 
-    const/4 v3, 0x0
+    aput-object v2, v0, v1
 
-    aput-object v2, v1, v3
+    const/4 v1, 0x1
 
     const-string v2, "ID"
 
-    const/4 v3, 0x1
+    aput-object v2, v0, v1
 
-    aput-object v2, v1, v3
+    const/4 v1, 0x2
 
     const-string v2, "key"
 
-    const/4 v3, 0x2
+    aput-object v2, v0, v1
 
-    aput-object v2, v1, v3
+    const/4 v1, 0x3
 
     const-string v2, "value"
 
-    const/4 v3, 0x3
+    aput-object v2, v0, v1
 
-    aput-object v2, v1, v3
+    const/4 v1, 0x4
 
     const-string v2, "expires"
 
-    const/4 v3, 0x4
+    aput-object v2, v0, v1
 
-    aput-object v2, v1, v3
+    const-string v1, "CREATE TABLE IF NOT EXISTS %s ( \'%s\' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \'%s\' STRING NOT NULL, \'%s\' BLOB NOT NULL, \'%s\' INTEGER NOT NULL);"
 
-    invoke-static {v0, v1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    invoke-static {v1, v0}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v0
 
@@ -96,7 +96,7 @@
 .end method
 
 .method public constructor <init>(Landroid/content/Context;)V
-    .registers 8
+    .locals 6
     .param p1, "context"    # Landroid/content/Context;
 
     .line 59
@@ -104,11 +104,11 @@
 
     invoke-direct {v2}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl$1;-><init>()V
 
-    const-string v3, "google_tagmanager.db"
-
     invoke-static {}, Ljava/util/concurrent/Executors;->newSingleThreadExecutor()Ljava/util/concurrent/ExecutorService;
 
     move-result-object v5
+
+    const-string v3, "google_tagmanager.db"
 
     const/16 v4, 0x7d0
 
@@ -123,7 +123,7 @@
 .end method
 
 .method constructor <init>(Landroid/content/Context;Lcom/google/tagmanager/Clock;Ljava/lang/String;ILjava/util/concurrent/Executor;)V
-    .registers 8
+    .locals 2
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "clock"    # Lcom/google/tagmanager/Clock;
     .param p3, "databaseName"    # Ljava/lang/String;
@@ -161,7 +161,7 @@
 .end method
 
 .method static synthetic access$000(Lcom/google/tagmanager/DataLayerPersistentStoreImpl;Ljava/util/List;J)V
-    .registers 4
+    .locals 0
     .param p0, "x0"    # Lcom/google/tagmanager/DataLayerPersistentStoreImpl;
     .param p1, "x1"    # Ljava/util/List;
     .param p2, "x2"    # J
@@ -173,7 +173,7 @@
 .end method
 
 .method static synthetic access$100(Lcom/google/tagmanager/DataLayerPersistentStoreImpl;)Ljava/util/List;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/tagmanager/DataLayerPersistentStoreImpl;
 
     .line 32
@@ -185,7 +185,7 @@
 .end method
 
 .method static synthetic access$200(Lcom/google/tagmanager/DataLayerPersistentStoreImpl;Ljava/lang/String;)V
-    .registers 2
+    .locals 0
     .param p0, "x0"    # Lcom/google/tagmanager/DataLayerPersistentStoreImpl;
     .param p1, "x1"    # Ljava/lang/String;
 
@@ -196,7 +196,7 @@
 .end method
 
 .method static synthetic access$300(Lcom/google/tagmanager/DataLayerPersistentStoreImpl;)Landroid/content/Context;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/tagmanager/DataLayerPersistentStoreImpl;
 
     .line 32
@@ -206,7 +206,7 @@
 .end method
 
 .method static synthetic access$400()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 32
     sget-object v0, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->CREATE_MAPS_TABLE:Ljava/lang/String;
@@ -215,7 +215,7 @@
 .end method
 
 .method private clearKeysWithPrefixSingleThreaded(Ljava/lang/String;)V
-    .registers 9
+    .locals 7
     .param p1, "keyPrefix"    # Ljava/lang/String;
 
     .line 233
@@ -227,14 +227,14 @@
 
     .line 234
     .local v0, "db":Landroid/database/sqlite/SQLiteDatabase;
-    if-nez v0, :cond_9
+    if-nez v0, :cond_0
 
     .line 235
     return-void
 
     .line 239
-    :cond_9
-    :try_start_9
+    :cond_0
+    :try_start_0
     const-string v1, "datalayer"
 
     const-string v2, "key = ? OR key LIKE ?"
@@ -290,26 +290,26 @@
     move-result-object v2
 
     invoke-static {v2}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
-    :try_end_44
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_9 .. :try_end_44} :catch_47
-    .catchall {:try_start_9 .. :try_end_44} :catchall_45
+    :try_end_0
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .end local v1    # "deleted":I
-    goto :goto_69
+    goto :goto_0
 
     .line 245
-    :catchall_45
+    :catchall_0
     move-exception v1
 
-    goto :goto_6e
+    goto :goto_1
 
     .line 242
-    :catch_47
+    :catch_0
     move-exception v1
 
     .line 243
     .local v1, "e":Landroid/database/sqlite/SQLiteException;
-    :try_start_48
+    :try_start_1
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
@@ -335,12 +335,12 @@
     move-result-object v2
 
     invoke-static {v2}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
-    :try_end_69
-    .catchall {:try_start_48 .. :try_end_69} :catchall_45
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 245
     .end local v1    # "e":Landroid/database/sqlite/SQLiteException;
-    :goto_69
+    :goto_0
     invoke-direct {p0}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->closeDatabaseConnection()V
 
     .line 246
@@ -350,50 +350,50 @@
     return-void
 
     .line 245
-    :goto_6e
+    :goto_1
     invoke-direct {p0}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->closeDatabaseConnection()V
 
     throw v1
 .end method
 
 .method private closeDatabaseConnection()V
-    .registers 2
+    .locals 1
 
     .line 374
     :try_start_0
     iget-object v0, p0, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->mDbHelper:Lcom/google/tagmanager/DataLayerPersistentStoreImpl$DatabaseHelper;
 
     invoke-virtual {v0}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl$DatabaseHelper;->close()V
-    :try_end_5
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_0 .. :try_end_5} :catch_6
+    :try_end_0
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 377
-    goto :goto_7
+    goto :goto_0
 
     .line 375
-    :catch_6
+    :catch_0
     move-exception v0
 
     .line 378
-    :goto_7
+    :goto_0
     return-void
 .end method
 
 .method private deleteEntries([Ljava/lang/String;)V
-    .registers 9
+    .locals 5
     .param p1, "entryIds"    # [Ljava/lang/String;
 
     .line 269
-    if-eqz p1, :cond_4d
+    if-eqz p1, :cond_2
 
     array-length v0, p1
 
-    if-nez v0, :cond_6
+    if-nez v0, :cond_0
 
-    goto :goto_4d
+    goto :goto_1
 
     .line 272
-    :cond_6
+    :cond_0
     const-string v0, "Error opening database for deleteEntries."
 
     invoke-direct {p0, v0}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
@@ -402,61 +402,61 @@
 
     .line 273
     .local v0, "db":Landroid/database/sqlite/SQLiteDatabase;
-    if-nez v0, :cond_f
+    if-nez v0, :cond_1
 
     .line 274
     return-void
 
     .line 276
-    :cond_f
-    const-string v1, "%s in (%s)"
+    :cond_1
+    const/4 v1, 0x2
 
-    const/4 v2, 0x2
+    new-array v1, v1, [Ljava/lang/Object;
 
-    new-array v2, v2, [Ljava/lang/Object;
+    const/4 v2, 0x0
 
-    const/4 v3, 0x0
+    const-string v3, "ID"
 
-    const-string v4, "ID"
+    aput-object v3, v1, v2
 
-    aput-object v4, v2, v3
+    const/4 v2, 0x1
 
-    const/4 v3, 0x1
+    array-length v3, p1
+
+    const-string v4, "?"
+
+    invoke-static {v3, v4}, Ljava/util/Collections;->nCopies(ILjava/lang/Object;)Ljava/util/List;
+
+    move-result-object v3
 
     const-string v4, ","
 
-    array-length v5, p1
+    invoke-static {v4, v3}, Landroid/text/TextUtils;->join(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
 
-    const-string v6, "?"
+    move-result-object v3
 
-    invoke-static {v5, v6}, Ljava/util/Collections;->nCopies(ILjava/lang/Object;)Ljava/util/List;
+    aput-object v3, v1, v2
 
-    move-result-object v5
+    const-string v2, "%s in (%s)"
 
-    invoke-static {v4, v5}, Landroid/text/TextUtils;->join(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
-
-    move-result-object v4
-
-    aput-object v4, v2, v3
-
-    invoke-static {v1, v2}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    invoke-static {v2, v1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v1
 
     .line 279
     .local v1, "whereClause":Ljava/lang/String;
-    :try_start_2d
+    :try_start_0
     const-string v2, "datalayer"
 
     invoke-virtual {v0, v2, v1, p1}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
-    :try_end_32
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_2d .. :try_end_32} :catch_33
+    :try_end_0
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 282
-    goto :goto_4c
+    goto :goto_0
 
     .line 280
-    :catch_33
+    :catch_0
     move-exception v2
 
     .line 281
@@ -483,19 +483,19 @@
 
     .line 283
     .end local v2    # "e":Landroid/database/sqlite/SQLiteException;
-    :goto_4c
+    :goto_0
     return-void
 
     .line 270
     .end local v0    # "db":Landroid/database/sqlite/SQLiteDatabase;
     .end local v1    # "whereClause":Ljava/lang/String;
-    :cond_4d
-    :goto_4d
+    :cond_2
+    :goto_1
     return-void
 .end method
 
 .method private deleteEntriesOlderThan(J)V
-    .registers 9
+    .locals 6
     .param p1, "timeInMillis"    # J
 
     .line 250
@@ -507,14 +507,14 @@
 
     .line 251
     .local v0, "db":Landroid/database/sqlite/SQLiteDatabase;
-    if-nez v0, :cond_9
+    if-nez v0, :cond_0
 
     .line 252
     return-void
 
     .line 255
-    :cond_9
-    :try_start_9
+    :cond_0
+    :try_start_0
     const-string v1, "datalayer"
 
     const-string v2, "expires <= ?"
@@ -556,15 +556,15 @@
     move-result-object v2
 
     invoke-static {v2}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
-    :try_end_34
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_9 .. :try_end_34} :catch_35
+    :try_end_0
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 260
     .end local v1    # "deleted":I
-    goto :goto_3b
+    goto :goto_0
 
     .line 258
-    :catch_35
+    :catch_0
     move-exception v1
 
     .line 259
@@ -575,12 +575,12 @@
 
     .line 261
     .end local v1    # "e":Landroid/database/sqlite/SQLiteException;
-    :goto_3b
+    :goto_0
     return-void
 .end method
 
 .method private getNumStoredEntries()I
-    .registers 7
+    .locals 5
 
     .line 330
     const/4 v0, 0x0
@@ -595,144 +595,141 @@
 
     .line 332
     .local v1, "db":Landroid/database/sqlite/SQLiteDatabase;
-    if-nez v1, :cond_a
+    if-nez v1, :cond_0
 
     .line 333
     return v0
 
     .line 335
-    :cond_a
+    :cond_0
     const/4 v2, 0x0
-
-    move-object v3, v2
 
     .line 337
-    .local v3, "cursor":Landroid/database/Cursor;
-    :try_start_c
-    const-string v4, "SELECT COUNT(*) from datalayer"
+    .local v2, "cursor":Landroid/database/Cursor;
+    :try_start_0
+    const-string v3, "SELECT COUNT(*) from datalayer"
 
-    invoke-virtual {v1, v4, v2}, Landroid/database/sqlite/SQLiteDatabase;->rawQuery(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    const/4 v4, 0x0
 
-    move-result-object v2
+    invoke-virtual {v1, v3, v4}, Landroid/database/sqlite/SQLiteDatabase;->rawQuery(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-object v3, v2
+    move-result-object v3
+
+    move-object v2, v3
 
     .line 338
-    invoke-interface {v3}, Landroid/database/Cursor;->moveToFirst()Z
+    invoke-interface {v2}, Landroid/database/Cursor;->moveToFirst()Z
 
-    move-result v2
+    move-result v3
 
-    if-eqz v2, :cond_1f
+    if-eqz v3, :cond_1
 
     .line 339
-    const/4 v2, 0x0
+    const/4 v3, 0x0
 
-    invoke-interface {v3, v2}, Landroid/database/Cursor;->getLong(I)J
+    invoke-interface {v2, v3}, Landroid/database/Cursor;->getLong(I)J
 
-    move-result-wide v4
-    :try_end_1e
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_c .. :try_end_1e} :catch_27
-    .catchall {:try_start_c .. :try_end_1e} :catchall_25
+    move-result-wide v3
+    :try_end_0
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    long-to-int v0, v4
+    long-to-int v0, v3
 
     .line 344
-    :cond_1f
-    if-eqz v3, :cond_30
+    :cond_1
+    nop
 
     .line 345
-    :goto_21
-    invoke-interface {v3}, Landroid/database/Cursor;->close()V
+    :goto_0
+    invoke-interface {v2}, Landroid/database/Cursor;->close()V
 
-    goto :goto_30
+    goto :goto_1
 
     .line 344
-    :catchall_25
-    move-exception v2
+    :catchall_0
+    move-exception v3
 
-    goto :goto_31
+    goto :goto_2
 
     .line 341
-    :catch_27
-    move-exception v2
+    :catch_0
+    move-exception v3
 
     .line 342
-    .local v2, "e":Landroid/database/sqlite/SQLiteException;
-    :try_start_28
+    .local v3, "e":Landroid/database/sqlite/SQLiteException;
+    :try_start_1
     const-string v4, "Error getting numStoredEntries"
 
     invoke-static {v4}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
-    :try_end_2d
-    .catchall {:try_start_28 .. :try_end_2d} :catchall_25
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 344
-    .end local v2    # "e":Landroid/database/sqlite/SQLiteException;
-    if-eqz v3, :cond_30
+    .end local v3    # "e":Landroid/database/sqlite/SQLiteException;
+    if-eqz v2, :cond_2
 
-    goto :goto_21
+    .line 345
+    goto :goto_0
 
     .line 348
-    :cond_30
-    :goto_30
+    :cond_2
+    :goto_1
     return v0
 
     .line 344
-    :goto_31
-    if-eqz v3, :cond_36
+    :goto_2
+    if-eqz v2, :cond_3
 
     .line 345
-    invoke-interface {v3}, Landroid/database/Cursor;->close()V
+    invoke-interface {v2}, Landroid/database/Cursor;->close()V
 
-    :cond_36
-    throw v2
+    :cond_3
+    throw v3
 .end method
 
 .method private getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
-    .registers 5
+    .locals 3
     .param p1, "errorMessage"    # Ljava/lang/String;
 
     .line 359
     const/4 v0, 0x0
 
-    move-object v1, v0
-
     .line 361
-    .local v1, "db":Landroid/database/sqlite/SQLiteDatabase;
-    :try_start_2
-    iget-object v2, p0, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->mDbHelper:Lcom/google/tagmanager/DataLayerPersistentStoreImpl$DatabaseHelper;
+    .local v0, "db":Landroid/database/sqlite/SQLiteDatabase;
+    :try_start_0
+    iget-object v1, p0, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->mDbHelper:Lcom/google/tagmanager/DataLayerPersistentStoreImpl$DatabaseHelper;
 
-    invoke-virtual {v2}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl$DatabaseHelper;->getWritableDatabase()Landroid/database/sqlite/SQLiteDatabase;
+    invoke-virtual {v1}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl$DatabaseHelper;->getWritableDatabase()Landroid/database/sqlite/SQLiteDatabase;
 
-    move-result-object v2
-    :try_end_8
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_2 .. :try_end_8} :catch_b
+    move-result-object v1
+    :try_end_0
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    move-object v0, v2
+    move-object v0, v1
 
     .line 365
-    .end local v1    # "db":Landroid/database/sqlite/SQLiteDatabase;
-    .local v0, "db":Landroid/database/sqlite/SQLiteDatabase;
     nop
 
     .line 366
     return-object v0
 
     .line 362
-    .end local v0    # "db":Landroid/database/sqlite/SQLiteDatabase;
-    .restart local v1    # "db":Landroid/database/sqlite/SQLiteDatabase;
-    :catch_b
-    move-exception v2
+    :catch_0
+    move-exception v1
 
     .line 363
-    .local v2, "e":Landroid/database/sqlite/SQLiteException;
+    .local v1, "e":Landroid/database/sqlite/SQLiteException;
     invoke-static {p1}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
 
     .line 364
-    return-object v0
+    const/4 v2, 0x0
+
+    return-object v2
 .end method
 
 .method private loadSerialized()Ljava/util/List;
-    .registers 12
+    .locals 11
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -759,13 +756,13 @@
 
     .line 192
     .local v10, "list":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/DataLayerPersistentStoreImpl$KeyAndSerialized;>;"
-    if-nez v0, :cond_f
+    if-nez v0, :cond_0
 
     .line 193
     return-object v10
 
     .line 195
-    :cond_f
+    :cond_0
     const-string v1, "key"
 
     const-string v2, "value"
@@ -776,8 +773,6 @@
 
     .line 197
     .local v3, "columns":[Ljava/lang/String;
-    const-string v2, "datalayer"
-
     const/4 v4, 0x0
 
     const/4 v5, 0x0
@@ -786,9 +781,11 @@
 
     const/4 v7, 0x0
 
-    const-string v8, "ID"
-
     const/4 v9, 0x0
+
+    const-string v2, "datalayer"
+
+    const-string v8, "ID"
 
     move-object v1, v0
 
@@ -798,13 +795,13 @@
 
     .line 199
     .local v1, "results":Landroid/database/Cursor;
-    :goto_25
-    :try_start_25
+    :goto_0
+    :try_start_0
     invoke-interface {v1}, Landroid/database/Cursor;->moveToNext()Z
 
     move-result v2
 
-    if-eqz v2, :cond_3e
+    if-eqz v2, :cond_1
 
     .line 200
     new-instance v2, Lcom/google/tagmanager/DataLayerPersistentStoreImpl$KeyAndSerialized;
@@ -824,13 +821,13 @@
     invoke-direct {v2, v4, v5}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl$KeyAndSerialized;-><init>(Ljava/lang/String;[B)V
 
     invoke-interface {v10, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
-    :try_end_3d
-    .catchall {:try_start_25 .. :try_end_3d} :catchall_43
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    goto :goto_25
+    goto :goto_0
 
     .line 203
-    :cond_3e
+    :cond_1
     invoke-interface {v1}, Landroid/database/Cursor;->close()V
 
     .line 204
@@ -840,7 +837,7 @@
     return-object v10
 
     .line 203
-    :catchall_43
+    :catchall_0
     move-exception v2
 
     invoke-interface {v1}, Landroid/database/Cursor;->close()V
@@ -849,7 +846,7 @@
 .end method
 
 .method private loadSingleThreaded()Ljava/util/List;
-    .registers 3
+    .locals 2
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -877,15 +874,15 @@
     invoke-direct {p0, v0}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->unserializeValues(Ljava/util/List;)Ljava/util/List;
 
     move-result-object v0
-    :try_end_11
-    .catchall {:try_start_0 .. :try_end_11} :catchall_15
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 108
     invoke-direct {p0}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->closeDatabaseConnection()V
 
     return-object v0
 
-    :catchall_15
+    :catchall_0
     move-exception v0
 
     invoke-direct {p0}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->closeDatabaseConnection()V
@@ -894,7 +891,7 @@
 .end method
 
 .method private makeRoomForEntries(I)V
-    .registers 6
+    .locals 4
     .param p1, "count"    # I
 
     .line 224
@@ -910,7 +907,7 @@
 
     .line 225
     .local v0, "entrysOverLimit":I
-    if-lez v0, :cond_37
+    if-lez v0, :cond_0
 
     .line 226
     invoke-direct {p0, v0}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->peekEntryIds(I)Ljava/util/List;
@@ -958,12 +955,12 @@
 
     .line 230
     .end local v1    # "entrysToDelete":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
-    :cond_37
+    :cond_0
     return-void
 .end method
 
 .method private peekEntryIds(I)Ljava/util/List;
-    .registers 15
+    .locals 14
     .param p1, "maxEntries"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -975,55 +972,51 @@
     .end annotation
 
     .line 294
-    new-instance v0, Ljava/util/ArrayList;
+    const-string v0, "ID"
 
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+    new-instance v1, Ljava/util/ArrayList;
+
+    invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
 
     .line 295
-    .local v0, "entryIds":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
-    if-gtz p1, :cond_d
+    .local v1, "entryIds":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
+    if-gtz p1, :cond_0
 
     .line 296
-    const-string v1, "Invalid maxEntries specified. Skipping."
+    const-string v0, "Invalid maxEntries specified. Skipping."
 
-    invoke-static {v1}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
+    invoke-static {v0}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
 
     .line 297
-    return-object v0
+    return-object v1
 
     .line 299
-    :cond_d
-    const-string v1, "Error opening database for peekEntryIds."
+    :cond_0
+    const-string v2, "Error opening database for peekEntryIds."
 
-    invoke-direct {p0, v1}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
+    invoke-direct {p0, v2}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
 
-    move-result-object v1
+    move-result-object v2
 
     .line 300
-    .local v1, "db":Landroid/database/sqlite/SQLiteDatabase;
-    if-nez v1, :cond_16
+    .local v2, "db":Landroid/database/sqlite/SQLiteDatabase;
+    if-nez v2, :cond_1
 
     .line 301
-    return-object v0
+    return-object v1
 
     .line 304
-    :cond_16
-    const/4 v2, 0x0
-
-    move-object v11, v2
+    :cond_1
+    const/4 v12, 0x0
 
     .line 306
-    .local v11, "cursor":Landroid/database/Cursor;
-    :try_start_18
-    const-string v3, "datalayer"
+    .local v12, "cursor":Landroid/database/Cursor;
+    :try_start_0
+    const-string v4, "datalayer"
 
-    const-string v2, "ID"
+    filled-new-array {v0}, [Ljava/lang/String;
 
-    filled-new-array {v2}, [Ljava/lang/String;
-
-    move-result-object v4
-
-    const/4 v5, 0x0
+    move-result-object v5
 
     const/4 v6, 0x0
 
@@ -1031,86 +1024,86 @@
 
     const/4 v8, 0x0
 
-    const-string v2, "%s ASC"
+    const/4 v9, 0x0
 
-    const/4 v9, 0x1
+    const-string v3, "%s ASC"
 
-    new-array v9, v9, [Ljava/lang/Object;
+    const/4 v10, 0x1
 
-    const-string v10, "ID"
+    new-array v10, v10, [Ljava/lang/Object;
 
-    const/4 v12, 0x0
+    const/4 v13, 0x0
 
-    aput-object v10, v9, v12
+    aput-object v0, v10, v13
 
-    invoke-static {v2, v9}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-
-    move-result-object v9
-
-    invoke-static {p1}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
+    invoke-static {v3, v10}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v10
 
-    move-object v2, v1
+    invoke-static {p1}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
 
-    invoke-virtual/range {v2 .. v10}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    move-result-object v11
 
-    move-result-object v2
+    move-object v3, v2
 
-    move-object v11, v2
+    invoke-virtual/range {v3 .. v11}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+
+    move-result-object v0
+
+    move-object v12, v0
 
     .line 314
-    invoke-interface {v11}, Landroid/database/Cursor;->moveToFirst()Z
+    invoke-interface {v12}, Landroid/database/Cursor;->moveToFirst()Z
 
-    move-result v2
+    move-result v0
 
-    if-eqz v2, :cond_53
+    if-eqz v0, :cond_3
 
     .line 316
-    :cond_42
-    invoke-interface {v11, v12}, Landroid/database/Cursor;->getLong(I)J
+    :cond_2
+    invoke-interface {v12, v13}, Landroid/database/Cursor;->getLong(I)J
 
-    move-result-wide v2
+    move-result-wide v3
 
-    invoke-static {v2, v3}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
+    invoke-static {v3, v4}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v0
 
-    invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+    invoke-interface {v1, v0}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     .line 317
-    invoke-interface {v11}, Landroid/database/Cursor;->moveToNext()Z
+    invoke-interface {v12}, Landroid/database/Cursor;->moveToNext()Z
 
-    move-result v2
-    :try_end_51
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_18 .. :try_end_51} :catch_5b
-    .catchall {:try_start_18 .. :try_end_51} :catchall_59
+    move-result v0
+    :try_end_0
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    if-nez v2, :cond_42
+    if-nez v0, :cond_2
 
     .line 322
-    :cond_53
-    if-eqz v11, :cond_77
+    :cond_3
+    nop
 
     .line 323
-    :goto_55
-    invoke-interface {v11}, Landroid/database/Cursor;->close()V
+    :goto_0
+    invoke-interface {v12}, Landroid/database/Cursor;->close()V
 
-    goto :goto_77
+    goto :goto_1
 
     .line 322
-    :catchall_59
-    move-exception v2
+    :catchall_0
+    move-exception v0
 
-    goto :goto_78
+    goto :goto_2
 
     .line 319
-    :catch_5b
-    move-exception v2
+    :catch_0
+    move-exception v0
 
     .line 320
-    .local v2, "e":Landroid/database/sqlite/SQLiteException;
-    :try_start_5c
+    .local v0, "e":Landroid/database/sqlite/SQLiteException;
+    :try_start_1
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
@@ -1119,7 +1112,7 @@
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2}, Landroid/database/sqlite/SQLiteException;->getMessage()Ljava/lang/String;
+    invoke-virtual {v0}, Landroid/database/sqlite/SQLiteException;->getMessage()Ljava/lang/String;
 
     move-result-object v4
 
@@ -1130,33 +1123,34 @@
     move-result-object v3
 
     invoke-static {v3}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
-    :try_end_74
-    .catchall {:try_start_5c .. :try_end_74} :catchall_59
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 322
-    .end local v2    # "e":Landroid/database/sqlite/SQLiteException;
-    if-eqz v11, :cond_77
-
-    goto :goto_55
-
-    .line 326
-    :cond_77
-    :goto_77
-    return-object v0
-
-    .line 322
-    :goto_78
-    if-eqz v11, :cond_7d
+    .end local v0    # "e":Landroid/database/sqlite/SQLiteException;
+    if-eqz v12, :cond_4
 
     .line 323
-    invoke-interface {v11}, Landroid/database/Cursor;->close()V
+    goto :goto_0
 
-    :cond_7d
-    throw v2
+    .line 326
+    :cond_4
+    :goto_1
+    return-object v1
+
+    .line 322
+    :goto_2
+    if-eqz v12, :cond_5
+
+    .line 323
+    invoke-interface {v12}, Landroid/database/Cursor;->close()V
+
+    :cond_5
+    throw v0
 .end method
 
 .method private declared-synchronized saveSingleThreaded(Ljava/util/List;J)V
-    .registers 8
+    .locals 4
     .param p2, "lifetimeInMillis"    # J
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -1171,7 +1165,7 @@
     monitor-enter p0
 
     .line 180
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->mClock:Lcom/google/tagmanager/Clock;
 
     invoke-interface {v0}, Lcom/google/tagmanager/Clock;->currentTimeMillis()J
@@ -1193,15 +1187,15 @@
     add-long v2, v0, p2
 
     invoke-direct {p0, p1, v2, v3}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->writeEntriesToDatabase(Ljava/util/List;J)V
-    :try_end_16
-    .catchall {:try_start_1 .. :try_end_16} :catchall_1c
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 185
     .end local v0    # "now":J
-    :try_start_16
+    :try_start_1
     invoke-direct {p0}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->closeDatabaseConnection()V
-    :try_end_19
-    .catchall {:try_start_16 .. :try_end_19} :catchall_21
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_1
 
     .line 186
     nop
@@ -1212,30 +1206,30 @@
     return-void
 
     .line 185
-    :catchall_1c
+    .end local p0    # "this":Lcom/google/tagmanager/DataLayerPersistentStoreImpl;
+    :catchall_0
     move-exception v0
 
-    :try_start_1d
+    :try_start_2
     invoke-direct {p0}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->closeDatabaseConnection()V
 
     throw v0
-    :try_end_21
-    .catchall {:try_start_1d .. :try_end_21} :catchall_21
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
     .line 179
     .end local p1    # "keysAndValues":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/DataLayerPersistentStoreImpl$KeyAndSerialized;>;"
     .end local p2    # "lifetimeInMillis":J
-    :catchall_21
+    :catchall_1
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/DataLayerPersistentStoreImpl;
     throw p1
 .end method
 
 .method private serialize(Ljava/lang/Object;)[B
-    .registers 7
+    .locals 5
     .param p1, "o"    # Ljava/lang/Object;
 
     .line 157
@@ -1247,141 +1241,112 @@
     .local v0, "byteStream":Ljava/io/ByteArrayOutputStream;
     const/4 v1, 0x0
 
-    move-object v2, v1
-
     .line 160
-    .local v2, "objectOutput":Ljava/io/ObjectOutputStream;
-    :try_start_7
-    new-instance v3, Ljava/io/ObjectOutputStream;
+    .local v1, "objectOutput":Ljava/io/ObjectOutputStream;
+    :try_start_0
+    new-instance v2, Ljava/io/ObjectOutputStream;
 
-    invoke-direct {v3, v0}, Ljava/io/ObjectOutputStream;-><init>(Ljava/io/OutputStream;)V
+    invoke-direct {v2, v0}, Ljava/io/ObjectOutputStream;-><init>(Ljava/io/OutputStream;)V
 
-    move-object v2, v3
+    move-object v1, v2
 
     .line 161
-    invoke-virtual {v2, p1}, Ljava/io/ObjectOutputStream;->writeObject(Ljava/lang/Object;)V
+    invoke-virtual {v1, p1}, Ljava/io/ObjectOutputStream;->writeObject(Ljava/lang/Object;)V
 
     .line 162
     invoke-virtual {v0}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
 
-    move-result-object v3
-    :try_end_14
-    .catch Ljava/io/IOException; {:try_start_7 .. :try_end_14} :catch_30
-    .catchall {:try_start_7 .. :try_end_14} :catchall_21
+    move-result-object v2
+    :try_end_0
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_2
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 167
     nop
 
     .line 168
-    :try_start_15
-    invoke-virtual {v2}, Ljava/io/ObjectOutputStream;->close()V
-
-    goto :goto_1b
-
-    .line 171
-    :catch_19
-    move-exception v1
-
-    goto :goto_1f
+    :try_start_1
+    invoke-virtual {v1}, Ljava/io/ObjectOutputStream;->close()V
 
     .line 170
-    :goto_1b
     invoke-virtual {v0}, Ljava/io/ByteArrayOutputStream;->close()V
-    :try_end_1e
-    .catch Ljava/io/IOException; {:try_start_15 .. :try_end_1e} :catch_19
+    :try_end_1
+    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_0
 
     .line 173
-    goto :goto_20
+    goto :goto_0
 
     .line 171
-    :goto_1f
-    nop
+    :catch_0
+    move-exception v3
 
     .line 173
-    :goto_20
-    return-object v3
+    :goto_0
+    return-object v2
 
     .line 166
-    :catchall_21
-    move-exception v1
+    :catchall_0
+    move-exception v2
 
     .line 167
-    if-eqz v2, :cond_2a
+    if-eqz v1, :cond_0
 
     .line 168
-    :try_start_24
-    invoke-virtual {v2}, Ljava/io/ObjectOutputStream;->close()V
-
-    goto :goto_2a
-
-    .line 171
-    :catch_28
-    move-exception v3
-
-    goto :goto_2e
+    :try_start_2
+    invoke-virtual {v1}, Ljava/io/ObjectOutputStream;->close()V
 
     .line 170
-    :cond_2a
-    :goto_2a
+    :cond_0
     invoke-virtual {v0}, Ljava/io/ByteArrayOutputStream;->close()V
-    :try_end_2d
-    .catch Ljava/io/IOException; {:try_start_24 .. :try_end_2d} :catch_28
+    :try_end_2
+    .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_1
 
     .line 173
-    goto :goto_2f
+    goto :goto_1
 
     .line 171
-    :goto_2e
-    nop
+    :catch_1
+    move-exception v3
 
     .line 173
-    :goto_2f
-    throw v1
+    :goto_1
+    throw v2
 
     .line 163
-    :catch_30
-    move-exception v3
+    :catch_2
+    move-exception v2
 
     .line 164
-    .local v3, "e":Ljava/io/IOException;
-    nop
+    .local v2, "e":Ljava/io/IOException;
+    const/4 v3, 0x0
 
     .line 167
-    if-eqz v2, :cond_3a
+    if-eqz v1, :cond_1
 
     .line 168
-    :try_start_34
-    invoke-virtual {v2}, Ljava/io/ObjectOutputStream;->close()V
-
-    goto :goto_3a
-
-    .line 171
-    :catch_38
-    move-exception v4
-
-    goto :goto_3e
+    :try_start_3
+    invoke-virtual {v1}, Ljava/io/ObjectOutputStream;->close()V
 
     .line 170
-    :cond_3a
-    :goto_3a
+    :cond_1
     invoke-virtual {v0}, Ljava/io/ByteArrayOutputStream;->close()V
-    :try_end_3d
-    .catch Ljava/io/IOException; {:try_start_34 .. :try_end_3d} :catch_38
+    :try_end_3
+    .catch Ljava/io/IOException; {:try_start_3 .. :try_end_3} :catch_3
 
     .line 173
-    goto :goto_3f
+    goto :goto_2
 
     .line 171
-    :goto_3e
-    nop
+    :catch_3
+    move-exception v4
 
     .line 173
-    :goto_3f
-    return-object v1
+    :goto_2
+    return-object v3
 .end method
 
 .method private serializeValues(Ljava/util/List;)Ljava/util/List;
-    .registers 8
+    .locals 6
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -1407,12 +1372,12 @@
     move-result-object v1
 
     .local v1, "i$":Ljava/util/Iterator;
-    :goto_9
+    :goto_0
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v2
 
-    if-eqz v2, :cond_26
+    if-eqz v2, :cond_0
 
     invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -1438,16 +1403,16 @@
 
     .line 130
     .end local v2    # "keyAndValue":Lcom/google/tagmanager/DataLayer$KeyValue;
-    goto :goto_9
+    goto :goto_0
 
     .line 131
     .end local v1    # "i$":Ljava/util/Iterator;
-    :cond_26
+    :cond_0
     return-object v0
 .end method
 
 .method private unserialize([B)Ljava/lang/Object;
-    .registers 7
+    .locals 5
     .param p1, "bytes"    # [B
 
     .line 135
@@ -1459,97 +1424,79 @@
     .local v0, "byteStream":Ljava/io/ByteArrayInputStream;
     const/4 v1, 0x0
 
-    move-object v2, v1
-
     .line 138
-    .local v2, "objectInput":Ljava/io/ObjectInputStream;
-    :try_start_7
+    .local v1, "objectInput":Ljava/io/ObjectInputStream;
+    const/4 v2, 0x0
+
+    :try_start_0
     new-instance v3, Ljava/io/ObjectInputStream;
 
     invoke-direct {v3, v0}, Ljava/io/ObjectInputStream;-><init>(Ljava/io/InputStream;)V
 
-    move-object v2, v3
+    move-object v1, v3
 
     .line 139
-    invoke-virtual {v2}, Ljava/io/ObjectInputStream;->readObject()Ljava/lang/Object;
+    invoke-virtual {v1}, Ljava/io/ObjectInputStream;->readObject()Ljava/lang/Object;
 
-    move-result-object v3
-    :try_end_11
-    .catch Ljava/io/IOException; {:try_start_7 .. :try_end_11} :catch_3d
-    .catch Ljava/lang/ClassNotFoundException; {:try_start_7 .. :try_end_11} :catch_2d
-    .catchall {:try_start_7 .. :try_end_11} :catchall_1e
+    move-result-object v2
+    :try_end_0
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_4
+    .catch Ljava/lang/ClassNotFoundException; {:try_start_0 .. :try_end_0} :catch_2
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 146
     nop
 
     .line 147
-    :try_start_12
-    invoke-virtual {v2}, Ljava/io/ObjectInputStream;->close()V
-
-    goto :goto_18
-
-    .line 150
-    :catch_16
-    move-exception v1
-
-    goto :goto_1c
+    :try_start_1
+    invoke-virtual {v1}, Ljava/io/ObjectInputStream;->close()V
 
     .line 149
-    :goto_18
     invoke-virtual {v0}, Ljava/io/ByteArrayInputStream;->close()V
-    :try_end_1b
-    .catch Ljava/io/IOException; {:try_start_12 .. :try_end_1b} :catch_16
+    :try_end_1
+    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_0
 
     .line 152
-    goto :goto_1d
+    goto :goto_0
 
     .line 150
-    :goto_1c
-    nop
-
-    .line 152
-    :goto_1d
-    return-object v3
-
-    .line 145
-    :catchall_1e
-    move-exception v1
-
-    .line 146
-    if-eqz v2, :cond_27
-
-    .line 147
-    :try_start_21
-    invoke-virtual {v2}, Ljava/io/ObjectInputStream;->close()V
-
-    goto :goto_27
-
-    .line 150
-    :catch_25
+    :catch_0
     move-exception v3
 
-    goto :goto_2b
+    .line 152
+    :goto_0
+    return-object v2
+
+    .line 145
+    :catchall_0
+    move-exception v2
+
+    .line 146
+    if-eqz v1, :cond_0
+
+    .line 147
+    :try_start_2
+    invoke-virtual {v1}, Ljava/io/ObjectInputStream;->close()V
 
     .line 149
-    :cond_27
-    :goto_27
+    :cond_0
     invoke-virtual {v0}, Ljava/io/ByteArrayInputStream;->close()V
-    :try_end_2a
-    .catch Ljava/io/IOException; {:try_start_21 .. :try_end_2a} :catch_25
+    :try_end_2
+    .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_1
 
     .line 152
-    goto :goto_2c
+    goto :goto_1
 
     .line 150
-    :goto_2b
-    nop
+    :catch_1
+    move-exception v3
 
     .line 152
-    :goto_2c
-    throw v1
+    :goto_1
+    throw v2
 
     .line 142
-    :catch_2d
+    :catch_2
     move-exception v3
 
     .line 143
@@ -1557,41 +1504,32 @@
     nop
 
     .line 146
-    if-eqz v2, :cond_37
+    if-eqz v1, :cond_1
 
     .line 147
-    :try_start_31
-    invoke-virtual {v2}, Ljava/io/ObjectInputStream;->close()V
-
-    goto :goto_37
-
-    .line 150
-    :catch_35
-    move-exception v4
-
-    goto :goto_3b
+    :try_start_3
+    invoke-virtual {v1}, Ljava/io/ObjectInputStream;->close()V
 
     .line 149
-    :cond_37
-    :goto_37
+    :cond_1
     invoke-virtual {v0}, Ljava/io/ByteArrayInputStream;->close()V
-    :try_end_3a
-    .catch Ljava/io/IOException; {:try_start_31 .. :try_end_3a} :catch_35
+    :try_end_3
+    .catch Ljava/io/IOException; {:try_start_3 .. :try_end_3} :catch_3
 
     .line 152
-    goto :goto_3c
+    goto :goto_2
 
     .line 150
-    :goto_3b
-    nop
+    :catch_3
+    move-exception v4
 
     .line 152
-    :goto_3c
-    return-object v1
+    :goto_2
+    return-object v2
 
     .line 140
     .end local v3    # "e":Ljava/lang/ClassNotFoundException;
-    :catch_3d
+    :catch_4
     move-exception v3
 
     .line 141
@@ -1599,41 +1537,32 @@
     nop
 
     .line 146
-    if-eqz v2, :cond_47
+    if-eqz v1, :cond_2
 
     .line 147
-    :try_start_41
-    invoke-virtual {v2}, Ljava/io/ObjectInputStream;->close()V
-
-    goto :goto_47
-
-    .line 150
-    :catch_45
-    move-exception v4
-
-    goto :goto_4b
+    :try_start_4
+    invoke-virtual {v1}, Ljava/io/ObjectInputStream;->close()V
 
     .line 149
-    :cond_47
-    :goto_47
+    :cond_2
     invoke-virtual {v0}, Ljava/io/ByteArrayInputStream;->close()V
-    :try_end_4a
-    .catch Ljava/io/IOException; {:try_start_41 .. :try_end_4a} :catch_45
+    :try_end_4
+    .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_5
 
     .line 152
-    goto :goto_4c
+    goto :goto_3
 
     .line 150
-    :goto_4b
-    nop
+    :catch_5
+    move-exception v4
 
     .line 152
-    :goto_4c
-    return-object v1
+    :goto_3
+    return-object v2
 .end method
 
 .method private unserializeValues(Ljava/util/List;)Ljava/util/List;
-    .registers 8
+    .locals 6
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -1659,12 +1588,12 @@
     move-result-object v1
 
     .local v1, "i$":Ljava/util/Iterator;
-    :goto_9
+    :goto_0
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v2
 
-    if-eqz v2, :cond_26
+    if-eqz v2, :cond_0
 
     invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -1690,16 +1619,16 @@
 
     .line 119
     .end local v2    # "keyAndSerialized":Lcom/google/tagmanager/DataLayerPersistentStoreImpl$KeyAndSerialized;
-    goto :goto_9
+    goto :goto_0
 
     .line 120
     .end local v1    # "i$":Ljava/util/Iterator;
-    :cond_26
+    :cond_0
     return-object v0
 .end method
 
 .method private writeEntriesToDatabase(Ljava/util/List;J)V
-    .registers 10
+    .locals 6
     .param p2, "expireTime"    # J
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -1720,24 +1649,24 @@
 
     .line 210
     .local v0, "db":Landroid/database/sqlite/SQLiteDatabase;
-    if-nez v0, :cond_9
+    if-nez v0, :cond_0
 
     .line 211
     return-void
 
     .line 213
-    :cond_9
+    :cond_0
     invoke-interface {p1}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
     move-result-object v1
 
     .local v1, "i$":Ljava/util/Iterator;
-    :goto_d
+    :goto_0
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v2
 
-    if-eqz v2, :cond_3c
+    if-eqz v2, :cond_1
 
     invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -1753,50 +1682,50 @@
 
     .line 215
     .local v3, "values":Landroid/content/ContentValues;
-    const-string v4, "expires"
-
     invoke-static {p2, p3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
-    move-result-object v5
+    move-result-object v4
 
-    invoke-virtual {v3, v4, v5}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
+    const-string v5, "expires"
+
+    invoke-virtual {v3, v5, v4}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
     .line 216
-    const-string v4, "key"
+    iget-object v4, v2, Lcom/google/tagmanager/DataLayerPersistentStoreImpl$KeyAndSerialized;->mKey:Ljava/lang/String;
 
-    iget-object v5, v2, Lcom/google/tagmanager/DataLayerPersistentStoreImpl$KeyAndSerialized;->mKey:Ljava/lang/String;
+    const-string v5, "key"
 
-    invoke-virtual {v3, v4, v5}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v3, v5, v4}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 217
-    const-string v4, "value"
+    iget-object v4, v2, Lcom/google/tagmanager/DataLayerPersistentStoreImpl$KeyAndSerialized;->mSerialized:[B
 
-    iget-object v5, v2, Lcom/google/tagmanager/DataLayerPersistentStoreImpl$KeyAndSerialized;->mSerialized:[B
+    const-string v5, "value"
 
-    invoke-virtual {v3, v4, v5}, Landroid/content/ContentValues;->put(Ljava/lang/String;[B)V
+    invoke-virtual {v3, v5, v4}, Landroid/content/ContentValues;->put(Ljava/lang/String;[B)V
 
     .line 218
-    const-string v4, "datalayer"
+    const/4 v4, 0x0
 
-    const/4 v5, 0x0
+    const-string v5, "datalayer"
 
-    invoke-virtual {v0, v4, v5, v3}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v5, v4, v3}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
     .line 219
     .end local v2    # "keyAndValue":Lcom/google/tagmanager/DataLayerPersistentStoreImpl$KeyAndSerialized;
     .end local v3    # "values":Landroid/content/ContentValues;
-    goto :goto_d
+    goto :goto_0
 
     .line 220
     .end local v1    # "i$":Ljava/util/Iterator;
-    :cond_3c
+    :cond_1
     return-void
 .end method
 
 
 # virtual methods
 .method public clearKeysWithPrefix(Ljava/lang/String;)V
-    .registers 4
+    .locals 2
     .param p1, "keyPrefix"    # Ljava/lang/String;
 
     .line 96
@@ -1813,7 +1742,7 @@
 .end method
 
 .method public loadSaved(Lcom/google/tagmanager/DataLayer$PersistentStore$Callback;)V
-    .registers 4
+    .locals 2
     .param p1, "callback"    # Lcom/google/tagmanager/DataLayer$PersistentStore$Callback;
 
     .line 87
@@ -1830,7 +1759,7 @@
 .end method
 
 .method public saveKeyValues(Ljava/util/List;J)V
-    .registers 7
+    .locals 3
     .param p2, "lifetimeInMillis"    # J
     .annotation system Ldalvik/annotation/Signature;
         value = {

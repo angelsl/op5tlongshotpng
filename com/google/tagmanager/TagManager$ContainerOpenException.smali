@@ -20,7 +20,7 @@
 
 # direct methods
 .method private constructor <init>(Ljava/lang/String;)V
-    .registers 4
+    .locals 2
     .param p1, "containerId"    # Ljava/lang/String;
 
     .line 107
@@ -50,7 +50,7 @@
 
 # virtual methods
 .method public getContainerId()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 113
     iget-object v0, p0, Lcom/google/tagmanager/TagManager$ContainerOpenException;->mContainerId:Ljava/lang/String;

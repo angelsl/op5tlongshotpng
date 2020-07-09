@@ -17,7 +17,7 @@
 
 # direct methods
 .method public constructor <init>([Lcom/oneplus/screenshot/longshot/bitmap/Pixels;II)V
-    .registers 5
+    .locals 1
     .param p1, "lines"    # [Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
     .param p2, "start"    # I
     .param p3, "end"    # I
@@ -54,7 +54,7 @@
 
 # virtual methods
 .method public getEnd()I
-    .registers 2
+    .locals 1
 
     .line 44
     iget v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchRange;->mEnd:I
@@ -63,7 +63,7 @@
 .end method
 
 .method public getLines()[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
-    .registers 2
+    .locals 1
 
     .line 52
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchRange;->mLines:[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
@@ -72,7 +72,7 @@
 .end method
 
 .method public getSize()I
-    .registers 3
+    .locals 2
 
     .line 48
     iget v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchRange;->mEnd:I
@@ -87,7 +87,7 @@
 .end method
 
 .method public getStart()I
-    .registers 2
+    .locals 1
 
     .line 40
     iget v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchRange;->mStart:I
@@ -96,12 +96,12 @@
 .end method
 
 .method public toString()Ljava/lang/String;
-    .registers 3
+    .locals 2
 
     .line 30
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchRange;->mLines:[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
 
-    if-eqz v0, :cond_28
+    if-eqz v0, :cond_0
 
     .line 31
     new-instance v0, Ljava/lang/StringBuilder;
@@ -137,7 +137,7 @@
     return-object v0
 
     .line 33
-    :cond_28
+    :cond_0
     const/4 v0, 0x0
 
     return-object v0

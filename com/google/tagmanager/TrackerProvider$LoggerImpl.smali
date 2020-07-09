@@ -19,7 +19,7 @@
 
 # direct methods
 .method constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 47
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -28,7 +28,7 @@
 .end method
 
 .method private static toAnalyticsLogLevel(Lcom/google/tagmanager/Logger$LogLevel;)Lcom/google/analytics/tracking/android/Logger$LogLevel;
-    .registers 3
+    .locals 2
     .param p0, "logLevel"    # Lcom/google/tagmanager/Logger$LogLevel;
 
     .line 88
@@ -40,7 +40,7 @@
 
     aget v0, v0, v1
 
-    packed-switch v0, :pswitch_data_1a
+    packed-switch v0, :pswitch_data_0
 
     .line 100
     sget-object v0, Lcom/google/analytics/tracking/android/Logger$LogLevel;->ERROR:Lcom/google/analytics/tracking/android/Logger$LogLevel;
@@ -48,44 +48,44 @@
     return-object v0
 
     .line 98
-    :pswitch_e
+    :pswitch_0
     sget-object v0, Lcom/google/analytics/tracking/android/Logger$LogLevel;->VERBOSE:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
     return-object v0
 
     .line 96
-    :pswitch_11
+    :pswitch_1
     sget-object v0, Lcom/google/analytics/tracking/android/Logger$LogLevel;->INFO:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
     return-object v0
 
     .line 93
-    :pswitch_14
+    :pswitch_2
     sget-object v0, Lcom/google/analytics/tracking/android/Logger$LogLevel;->WARNING:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
     return-object v0
 
     .line 91
-    :pswitch_17
+    :pswitch_3
     sget-object v0, Lcom/google/analytics/tracking/android/Logger$LogLevel;->ERROR:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
     return-object v0
 
-    :pswitch_data_1a
+    :pswitch_data_0
     .packed-switch 0x1
-        :pswitch_17
-        :pswitch_17
-        :pswitch_14
-        :pswitch_11
-        :pswitch_11
-        :pswitch_e
+        :pswitch_3
+        :pswitch_3
+        :pswitch_2
+        :pswitch_1
+        :pswitch_1
+        :pswitch_0
     .end packed-switch
 .end method
 
 
 # virtual methods
 .method public error(Ljava/lang/Exception;)V
-    .registers 3
+    .locals 1
     .param p1, "exception"    # Ljava/lang/Exception;
 
     .line 55
@@ -98,7 +98,7 @@
 .end method
 
 .method public error(Ljava/lang/String;)V
-    .registers 2
+    .locals 0
     .param p1, "message"    # Ljava/lang/String;
 
     .line 50
@@ -109,7 +109,7 @@
 .end method
 
 .method public getLogLevel()Lcom/google/analytics/tracking/android/Logger$LogLevel;
-    .registers 3
+    .locals 2
 
     .line 75
     invoke-static {}, Lcom/google/tagmanager/Log;->getLogLevel()Lcom/google/tagmanager/Logger$LogLevel;
@@ -118,23 +118,23 @@
 
     .line 76
     .local v0, "logLevel":Lcom/google/tagmanager/Logger$LogLevel;
-    if-nez v0, :cond_9
+    if-nez v0, :cond_0
 
     sget-object v1, Lcom/google/analytics/tracking/android/Logger$LogLevel;->ERROR:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
-    goto :goto_d
+    goto :goto_0
 
-    :cond_9
+    :cond_0
     invoke-static {v0}, Lcom/google/tagmanager/TrackerProvider$LoggerImpl;->toAnalyticsLogLevel(Lcom/google/tagmanager/Logger$LogLevel;)Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
     move-result-object v1
 
-    :goto_d
+    :goto_0
     return-object v1
 .end method
 
 .method public info(Ljava/lang/String;)V
-    .registers 2
+    .locals 0
     .param p1, "message"    # Ljava/lang/String;
 
     .line 60
@@ -145,7 +145,7 @@
 .end method
 
 .method public setLogLevel(Lcom/google/analytics/tracking/android/Logger$LogLevel;)V
-    .registers 3
+    .locals 1
     .param p1, "logLevel"    # Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
     .line 82
@@ -158,7 +158,7 @@
 .end method
 
 .method public verbose(Ljava/lang/String;)V
-    .registers 2
+    .locals 0
     .param p1, "message"    # Ljava/lang/String;
 
     .line 65
@@ -169,7 +169,7 @@
 .end method
 
 .method public warn(Ljava/lang/String;)V
-    .registers 2
+    .locals 0
     .param p1, "message"    # Ljava/lang/String;
 
     .line 70

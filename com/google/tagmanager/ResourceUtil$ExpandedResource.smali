@@ -44,7 +44,7 @@
 
 # direct methods
 .method private constructor <init>(Ljava/util/List;Ljava/util/Map;Ljava/lang/String;I)V
-    .registers 6
+    .locals 1
     .param p3, "version"    # Ljava/lang/String;
     .param p4, "resourceFormatVersion"    # I
     .annotation system Ldalvik/annotation/Signature;
@@ -93,7 +93,7 @@
 .end method
 
 .method synthetic constructor <init>(Ljava/util/List;Ljava/util/Map;Ljava/lang/String;ILcom/google/tagmanager/ResourceUtil$1;)V
-    .registers 6
+    .locals 0
     .param p1, "x0"    # Ljava/util/List;
     .param p2, "x1"    # Ljava/util/Map;
     .param p3, "x2"    # Ljava/lang/String;
@@ -107,7 +107,7 @@
 .end method
 
 .method public static newBuilder()Lcom/google/tagmanager/ResourceUtil$ExpandedResourceBuilder;
-    .registers 2
+    .locals 2
 
     .line 384
     new-instance v0, Lcom/google/tagmanager/ResourceUtil$ExpandedResourceBuilder;
@@ -122,7 +122,7 @@
 
 # virtual methods
 .method public getAllMacros()Ljava/util/Map;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -141,7 +141,7 @@
 .end method
 
 .method public getMacros(Ljava/lang/String;)Ljava/util/List;
-    .registers 3
+    .locals 1
     .param p1, "name"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -167,7 +167,7 @@
 .end method
 
 .method public getResourceFormatVersion()I
-    .registers 2
+    .locals 1
 
     .line 400
     iget v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedResource;->mResourceFormatVersion:I
@@ -176,7 +176,7 @@
 .end method
 
 .method public getRules()Ljava/util/List;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -193,7 +193,7 @@
 .end method
 
 .method public getVersion()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 395
     iget-object v0, p0, Lcom/google/tagmanager/ResourceUtil$ExpandedResource;->mVersion:Ljava/lang/String;
@@ -202,7 +202,7 @@
 .end method
 
 .method public toString()Ljava/lang/String;
-    .registers 3
+    .locals 2
 
     .line 410
     new-instance v0, Ljava/lang/StringBuilder;

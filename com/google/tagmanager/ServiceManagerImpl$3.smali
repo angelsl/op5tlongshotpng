@@ -23,7 +23,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/ServiceManagerImpl;)V
-    .registers 2
+    .locals 0
 
     .line 186
     iput-object p1, p0, Lcom/google/tagmanager/ServiceManagerImpl$3;->this$0:Lcom/google/tagmanager/ServiceManagerImpl;
@@ -36,12 +36,11 @@
 
 # virtual methods
 .method public run()V
-    .registers 2
+    .locals 1
 
     .line 189
     iget-object v0, p0, Lcom/google/tagmanager/ServiceManagerImpl$3;->this$0:Lcom/google/tagmanager/ServiceManagerImpl;
 
-    # getter for: Lcom/google/tagmanager/ServiceManagerImpl;->store:Lcom/google/tagmanager/HitStore;
     invoke-static {v0}, Lcom/google/tagmanager/ServiceManagerImpl;->access$500(Lcom/google/tagmanager/ServiceManagerImpl;)Lcom/google/tagmanager/HitStore;
 
     move-result-object v0

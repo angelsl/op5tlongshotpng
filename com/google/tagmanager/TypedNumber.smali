@@ -27,7 +27,7 @@
 
 # direct methods
 .method private constructor <init>(D)V
-    .registers 4
+    .locals 1
     .param p1, "d"    # D
 
     .line 11
@@ -46,7 +46,7 @@
 .end method
 
 .method private constructor <init>(J)V
-    .registers 4
+    .locals 1
     .param p1, "l"    # J
 
     .line 16
@@ -65,7 +65,7 @@
 .end method
 
 .method public static numberWithDouble(Ljava/lang/Double;)Lcom/google/tagmanager/TypedNumber;
-    .registers 4
+    .locals 3
     .param p0, "d"    # Ljava/lang/Double;
 
     .line 25
@@ -81,7 +81,7 @@
 .end method
 
 .method public static numberWithInt64(J)Lcom/google/tagmanager/TypedNumber;
-    .registers 3
+    .locals 1
     .param p0, "l"    # J
 
     .line 32
@@ -93,7 +93,7 @@
 .end method
 
 .method public static numberWithString(Ljava/lang/String;)Lcom/google/tagmanager/TypedNumber;
-    .registers 4
+    .locals 3
     .param p0, "s"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -110,17 +110,17 @@
     move-result-wide v1
 
     invoke-direct {v0, v1, v2}, Lcom/google/tagmanager/TypedNumber;-><init>(J)V
-    :try_end_9
-    .catch Ljava/lang/NumberFormatException; {:try_start_0 .. :try_end_9} :catch_a
+    :try_end_0
+    .catch Ljava/lang/NumberFormatException; {:try_start_0 .. :try_end_0} :catch_0
 
     return-object v0
 
     .line 45
-    :catch_a
+    :catch_0
     move-exception v0
 
     .line 51
-    :try_start_b
+    :try_start_1
     new-instance v0, Lcom/google/tagmanager/TypedNumber;
 
     invoke-static {p0}, Ljava/lang/Double;->parseDouble(Ljava/lang/String;)D
@@ -128,13 +128,13 @@
     move-result-wide v1
 
     invoke-direct {v0, v1, v2}, Lcom/google/tagmanager/TypedNumber;-><init>(D)V
-    :try_end_14
-    .catch Ljava/lang/NumberFormatException; {:try_start_b .. :try_end_14} :catch_15
+    :try_end_1
+    .catch Ljava/lang/NumberFormatException; {:try_start_1 .. :try_end_1} :catch_1
 
     return-object v0
 
     .line 52
-    :catch_15
+    :catch_1
     move-exception v0
 
     .line 57
@@ -162,7 +162,7 @@
 
 # virtual methods
 .method public byteValue()B
-    .registers 3
+    .locals 2
 
     .line 129
     invoke-virtual {p0}, Lcom/google/tagmanager/TypedNumber;->longValue()J
@@ -177,7 +177,7 @@
 .end method
 
 .method public compareTo(Lcom/google/tagmanager/TypedNumber;)I
-    .registers 6
+    .locals 4
     .param p1, "other"    # Lcom/google/tagmanager/TypedNumber;
 
     .line 77
@@ -185,13 +185,13 @@
 
     move-result v0
 
-    if-eqz v0, :cond_1e
+    if-eqz v0, :cond_0
 
     invoke-virtual {p1}, Lcom/google/tagmanager/TypedNumber;->isInt64()Z
 
     move-result v0
 
-    if-eqz v0, :cond_1e
+    if-eqz v0, :cond_0
 
     new-instance v0, Ljava/lang/Long;
 
@@ -209,9 +209,9 @@
 
     move-result v0
 
-    goto :goto_2a
+    goto :goto_0
 
-    :cond_1e
+    :cond_0
     invoke-virtual {p0}, Lcom/google/tagmanager/TypedNumber;->doubleValue()D
 
     move-result-wide v0
@@ -224,12 +224,12 @@
 
     move-result v0
 
-    :goto_2a
+    :goto_0
     return v0
 .end method
 
 .method public bridge synthetic compareTo(Ljava/lang/Object;)I
-    .registers 3
+    .locals 1
     .param p1, "x0"    # Ljava/lang/Object;
 
     .line 6
@@ -245,36 +245,36 @@
 .end method
 
 .method public doubleValue()D
-    .registers 3
+    .locals 2
 
     .line 92
     invoke-virtual {p0}, Lcom/google/tagmanager/TypedNumber;->isInt64()Z
 
     move-result v0
 
-    if-eqz v0, :cond_a
+    if-eqz v0, :cond_0
 
     iget-wide v0, p0, Lcom/google/tagmanager/TypedNumber;->mInt64:J
 
     long-to-double v0, v0
 
-    goto :goto_c
+    goto :goto_0
 
-    :cond_a
+    :cond_0
     iget-wide v0, p0, Lcom/google/tagmanager/TypedNumber;->mDouble:D
 
-    :goto_c
+    :goto_0
     return-wide v0
 .end method
 
 .method public equals(Ljava/lang/Object;)Z
-    .registers 3
+    .locals 1
     .param p1, "other"    # Ljava/lang/Object;
 
     .line 67
     instance-of v0, p1, Lcom/google/tagmanager/TypedNumber;
 
-    if-eqz v0, :cond_f
+    if-eqz v0, :cond_0
 
     move-object v0, p1
 
@@ -284,21 +284,21 @@
 
     move-result v0
 
-    if-nez v0, :cond_f
+    if-nez v0, :cond_0
 
     const/4 v0, 0x1
 
-    goto :goto_10
+    goto :goto_0
 
-    :cond_f
+    :cond_0
     const/4 v0, 0x0
 
-    :goto_10
+    :goto_0
     return v0
 .end method
 
 .method public floatValue()F
-    .registers 3
+    .locals 2
 
     .line 97
     invoke-virtual {p0}, Lcom/google/tagmanager/TypedNumber;->doubleValue()D
@@ -311,7 +311,7 @@
 .end method
 
 .method public hashCode()I
-    .registers 4
+    .locals 3
 
     .line 72
     new-instance v0, Ljava/lang/Long;
@@ -330,7 +330,7 @@
 .end method
 
 .method public int16Value()S
-    .registers 3
+    .locals 2
 
     .line 124
     invoke-virtual {p0}, Lcom/google/tagmanager/TypedNumber;->longValue()J
@@ -345,7 +345,7 @@
 .end method
 
 .method public int32Value()I
-    .registers 3
+    .locals 2
 
     .line 115
     invoke-virtual {p0}, Lcom/google/tagmanager/TypedNumber;->longValue()J
@@ -358,30 +358,30 @@
 .end method
 
 .method public int64Value()J
-    .registers 3
+    .locals 2
 
     .line 106
     invoke-virtual {p0}, Lcom/google/tagmanager/TypedNumber;->isInt64()Z
 
     move-result v0
 
-    if-eqz v0, :cond_9
+    if-eqz v0, :cond_0
 
     iget-wide v0, p0, Lcom/google/tagmanager/TypedNumber;->mInt64:J
 
-    goto :goto_c
+    goto :goto_0
 
-    :cond_9
+    :cond_0
     iget-wide v0, p0, Lcom/google/tagmanager/TypedNumber;->mDouble:D
 
     double-to-long v0, v0
 
-    :goto_c
+    :goto_0
     return-wide v0
 .end method
 
 .method public intValue()I
-    .registers 2
+    .locals 1
 
     .line 111
     invoke-virtual {p0}, Lcom/google/tagmanager/TypedNumber;->int32Value()I
@@ -392,7 +392,7 @@
 .end method
 
 .method public isDouble()Z
-    .registers 2
+    .locals 1
 
     .line 83
     invoke-virtual {p0}, Lcom/google/tagmanager/TypedNumber;->isInt64()Z
@@ -405,7 +405,7 @@
 .end method
 
 .method public isInt64()Z
-    .registers 2
+    .locals 1
 
     .line 87
     iget-boolean v0, p0, Lcom/google/tagmanager/TypedNumber;->mIsInt64:Z
@@ -414,7 +414,7 @@
 .end method
 
 .method public longValue()J
-    .registers 3
+    .locals 2
 
     .line 102
     invoke-virtual {p0}, Lcom/google/tagmanager/TypedNumber;->int64Value()J
@@ -425,7 +425,7 @@
 .end method
 
 .method public shortValue()S
-    .registers 2
+    .locals 1
 
     .line 120
     invoke-virtual {p0}, Lcom/google/tagmanager/TypedNumber;->int16Value()S
@@ -436,14 +436,14 @@
 .end method
 
 .method public toString()Ljava/lang/String;
-    .registers 3
+    .locals 2
 
     .line 62
     invoke-virtual {p0}, Lcom/google/tagmanager/TypedNumber;->isInt64()Z
 
     move-result v0
 
-    if-eqz v0, :cond_d
+    if-eqz v0, :cond_0
 
     iget-wide v0, p0, Lcom/google/tagmanager/TypedNumber;->mInt64:J
 
@@ -451,15 +451,15 @@
 
     move-result-object v0
 
-    goto :goto_13
+    goto :goto_0
 
-    :cond_d
+    :cond_0
     iget-wide v0, p0, Lcom/google/tagmanager/TypedNumber;->mDouble:D
 
     invoke-static {v0, v1}, Ljava/lang/Double;->toString(D)Ljava/lang/String;
 
     move-result-object v0
 
-    :goto_13
+    :goto_0
     return-object v0
 .end method

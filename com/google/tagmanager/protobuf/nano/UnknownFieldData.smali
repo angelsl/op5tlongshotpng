@@ -11,7 +11,7 @@
 
 # direct methods
 .method constructor <init>(I[B)V
-    .registers 3
+    .locals 0
     .param p1, "tag"    # I
     .param p2, "bytes"    # [B
 
@@ -31,28 +31,28 @@
 
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
-    .registers 7
+    .locals 5
     .param p1, "o"    # Ljava/lang/Object;
 
     .line 52
     const/4 v0, 0x1
 
-    if-ne p1, p0, :cond_4
+    if-ne p1, p0, :cond_0
 
     return v0
 
     .line 53
-    :cond_4
+    :cond_0
     instance-of v1, p1, Lcom/google/tagmanager/protobuf/nano/UnknownFieldData;
 
     const/4 v2, 0x0
 
-    if-nez v1, :cond_a
+    if-nez v1, :cond_1
 
     return v2
 
     .line 55
-    :cond_a
+    :cond_1
     move-object v1, p1
 
     check-cast v1, Lcom/google/tagmanager/protobuf/nano/UnknownFieldData;
@@ -63,7 +63,7 @@
 
     iget v4, v1, Lcom/google/tagmanager/protobuf/nano/UnknownFieldData;->tag:I
 
-    if-ne v3, v4, :cond_1e
+    if-ne v3, v4, :cond_2
 
     iget-object v3, p0, Lcom/google/tagmanager/protobuf/nano/UnknownFieldData;->bytes:[B
 
@@ -73,62 +73,58 @@
 
     move-result v3
 
-    if-eqz v3, :cond_1e
+    if-eqz v3, :cond_2
 
-    goto :goto_1f
+    goto :goto_0
 
-    :cond_1e
+    :cond_2
     move v0, v2
 
-    :goto_1f
+    :goto_0
     return v0
 .end method
 
 .method public hashCode()I
-    .registers 6
+    .locals 4
 
     .line 61
     const/16 v0, 0x11
 
     .line 62
     .local v0, "result":I
-    const/16 v1, 0x1f
+    mul-int/lit8 v1, v0, 0x1f
 
-    mul-int v2, v1, v0
+    iget v2, p0, Lcom/google/tagmanager/protobuf/nano/UnknownFieldData;->tag:I
 
-    iget v3, p0, Lcom/google/tagmanager/protobuf/nano/UnknownFieldData;->tag:I
-
-    add-int/2addr v2, v3
+    add-int/2addr v1, v2
 
     .line 63
     .end local v0    # "result":I
-    .local v2, "result":I
+    .local v1, "result":I
     const/4 v0, 0x0
 
     .local v0, "i":I
-    :goto_a
-    iget-object v3, p0, Lcom/google/tagmanager/protobuf/nano/UnknownFieldData;->bytes:[B
+    :goto_0
+    iget-object v2, p0, Lcom/google/tagmanager/protobuf/nano/UnknownFieldData;->bytes:[B
 
-    array-length v3, v3
+    array-length v3, v2
 
-    if-ge v0, v3, :cond_1a
+    if-ge v0, v3, :cond_0
 
     .line 64
-    mul-int v3, v1, v2
+    mul-int/lit8 v3, v1, 0x1f
 
-    iget-object v4, p0, Lcom/google/tagmanager/protobuf/nano/UnknownFieldData;->bytes:[B
+    aget-byte v2, v2, v0
 
-    aget-byte v4, v4, v0
-
-    add-int v2, v3, v4
+    add-int v1, v3, v2
 
     .line 63
     add-int/lit8 v0, v0, 0x1
 
-    goto :goto_a
+    goto :goto_0
 
     .line 66
     .end local v0    # "i":I
-    :cond_1a
-    return v2
+    :cond_0
+    return v1
 .end method

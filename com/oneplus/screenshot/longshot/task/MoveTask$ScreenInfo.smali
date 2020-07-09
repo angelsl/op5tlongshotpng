@@ -24,19 +24,19 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/longshot/task/MoveTask;Landroid/graphics/Bitmap;Ljava/lang/String;)V
-    .registers 5
+    .locals 1
     .param p2, "bitmap"    # Landroid/graphics/Bitmap;
     .param p3, "fileName"    # Ljava/lang/String;
 
-    .line 402
+    .line 365
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/task/MoveTask$ScreenInfo;->this$0:Lcom/oneplus/screenshot/longshot/task/MoveTask;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 403
+    .line 366
     iput-object p2, p0, Lcom/oneplus/screenshot/longshot/task/MoveTask$ScreenInfo;->mBitmap:Landroid/graphics/Bitmap;
 
-    .line 404
+    .line 367
     new-instance p1, Lcom/oneplus/screenshot/util/ImageInfo;
 
     const-string v0, "Dump"
@@ -45,6 +45,6 @@
 
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/task/MoveTask$ScreenInfo;->mInfo:Lcom/oneplus/screenshot/util/ImageInfo;
 
-    .line 405
+    .line 368
     return-void
 .end method

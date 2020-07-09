@@ -9,7 +9,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;Lcom/oneplus/screenshot/longshot/util/MovePoint;)V
-    .registers 3
+    .locals 0
     .param p1, "stateContext"    # Lcom/oneplus/screenshot/longshot/state/LongshotContext;
     .param p2, "movePoint"    # Lcom/oneplus/screenshot/longshot/util/MovePoint;
 
@@ -23,7 +23,7 @@
 
 # virtual methods
 .method protected getNextState()Lcom/oneplus/screenshot/longshot/state/LongshotState;
-    .registers 2
+    .locals 1
 
     .line 21
     sget-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->STITCH_ONE:Lcom/oneplus/screenshot/longshot/state/LongshotState;

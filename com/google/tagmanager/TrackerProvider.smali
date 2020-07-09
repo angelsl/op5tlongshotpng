@@ -19,7 +19,7 @@
 
 # direct methods
 .method constructor <init>(Landroid/content/Context;)V
-    .registers 2
+    .locals 0
     .param p1, "context"    # Landroid/content/Context;
 
     .line 19
@@ -33,7 +33,7 @@
 .end method
 
 .method constructor <init>(Lcom/google/analytics/tracking/android/GoogleAnalytics;)V
-    .registers 4
+    .locals 2
     .param p1, "ga"    # Lcom/google/analytics/tracking/android/GoogleAnalytics;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
@@ -58,15 +58,15 @@
 .end method
 
 .method private declared-synchronized initTrackProviderIfNecessary()V
-    .registers 3
+    .locals 2
 
     monitor-enter p0
 
     .line 41
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/tagmanager/TrackerProvider;->mGoogleAnalytics:Lcom/google/analytics/tracking/android/GoogleAnalytics;
 
-    if-nez v0, :cond_17
+    if-nez v0, :cond_0
 
     .line 42
     iget-object v0, p0, Lcom/google/tagmanager/TrackerProvider;->mContext:Landroid/content/Context;
@@ -85,29 +85,29 @@
     invoke-direct {v1}, Lcom/google/tagmanager/TrackerProvider$LoggerImpl;-><init>()V
 
     invoke-virtual {v0, v1}, Lcom/google/analytics/tracking/android/GoogleAnalytics;->setLogger(Lcom/google/analytics/tracking/android/Logger;)V
-    :try_end_17
-    .catchall {:try_start_1 .. :try_end_17} :catchall_19
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 45
-    :cond_17
+    .end local p0    # "this":Lcom/google/tagmanager/TrackerProvider;
+    :cond_0
     monitor-exit p0
 
     return-void
 
     .line 40
-    :catchall_19
+    :catchall_0
     move-exception v0
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/TrackerProvider;
     throw v0
 .end method
 
 
 # virtual methods
 .method public close(Lcom/google/analytics/tracking/android/Tracker;)V
-    .registers 4
+    .locals 2
     .param p1, "tracker"    # Lcom/google/analytics/tracking/android/Tracker;
 
     .line 36
@@ -124,7 +124,7 @@
 .end method
 
 .method public getTracker(Ljava/lang/String;)Lcom/google/analytics/tracking/android/Tracker;
-    .registers 3
+    .locals 1
     .param p1, "trackingId"    # Ljava/lang/String;
 
     .line 30

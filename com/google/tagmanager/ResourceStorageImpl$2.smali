@@ -25,7 +25,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/ResourceStorageImpl;Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;)V
-    .registers 3
+    .locals 0
 
     .line 119
     iput-object p1, p0, Lcom/google/tagmanager/ResourceStorageImpl$2;->this$0:Lcom/google/tagmanager/ResourceStorageImpl;
@@ -40,7 +40,7 @@
 
 # virtual methods
 .method public run()V
-    .registers 3
+    .locals 2
 
     .line 122
     iget-object v0, p0, Lcom/google/tagmanager/ResourceStorageImpl$2;->this$0:Lcom/google/tagmanager/ResourceStorageImpl;

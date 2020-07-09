@@ -27,7 +27,7 @@
 
 # direct methods
 .method private constructor <init>([BII)V
-    .registers 5
+    .locals 1
     .param p1, "buffer"    # [B
     .param p2, "offset"    # I
     .param p3, "length"    # I
@@ -51,7 +51,7 @@
 .end method
 
 .method public static computeBoolSize(IZ)I
-    .registers 4
+    .locals 2
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # Z
 
@@ -70,7 +70,7 @@
 .end method
 
 .method public static computeBoolSizeNoTag(Z)I
-    .registers 2
+    .locals 1
     .param p0, "value"    # Z
 
     .line 621
@@ -80,7 +80,7 @@
 .end method
 
 .method public static computeByteArraySize(I[B)I
-    .registers 4
+    .locals 2
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # [B
 
@@ -99,7 +99,7 @@
 .end method
 
 .method public static computeByteArraySizeNoTag([B)I
-    .registers 3
+    .locals 2
     .param p0, "value"    # [B
 
     .line 668
@@ -117,7 +117,7 @@
 .end method
 
 .method public static computeBytesSize(I[B)I
-    .registers 4
+    .locals 2
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # [B
 
@@ -136,7 +136,7 @@
 .end method
 
 .method public static computeBytesSizeNoTag([B)I
-    .registers 3
+    .locals 2
     .param p0, "value"    # [B
 
     .line 660
@@ -154,7 +154,7 @@
 .end method
 
 .method public static computeDoubleSize(ID)I
-    .registers 5
+    .locals 2
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # D
 
@@ -173,7 +173,7 @@
 .end method
 
 .method public static computeDoubleSizeNoTag(D)I
-    .registers 3
+    .locals 1
     .param p0, "value"    # D
 
     .line 560
@@ -183,7 +183,7 @@
 .end method
 
 .method public static computeEnumSize(II)I
-    .registers 4
+    .locals 2
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # I
 
@@ -202,7 +202,7 @@
 .end method
 
 .method public static computeEnumSizeNoTag(I)I
-    .registers 2
+    .locals 1
     .param p0, "value"    # I
 
     .line 684
@@ -214,7 +214,7 @@
 .end method
 
 .method public static computeFixed32Size(II)I
-    .registers 4
+    .locals 2
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # I
 
@@ -233,7 +233,7 @@
 .end method
 
 .method public static computeFixed32SizeNoTag(I)I
-    .registers 2
+    .locals 1
     .param p0, "value"    # I
 
     .line 613
@@ -243,7 +243,7 @@
 .end method
 
 .method public static computeFixed64Size(IJ)I
-    .registers 5
+    .locals 2
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # J
 
@@ -262,7 +262,7 @@
 .end method
 
 .method public static computeFixed64SizeNoTag(J)I
-    .registers 3
+    .locals 1
     .param p0, "value"    # J
 
     .line 605
@@ -272,7 +272,7 @@
 .end method
 
 .method public static computeFloatSize(IF)I
-    .registers 4
+    .locals 2
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # F
 
@@ -291,7 +291,7 @@
 .end method
 
 .method public static computeFloatSizeNoTag(F)I
-    .registers 2
+    .locals 1
     .param p0, "value"    # F
 
     .line 568
@@ -301,7 +301,7 @@
 .end method
 
 .method public static computeGroupSize(ILcom/google/tagmanager/protobuf/nano/MessageNano;)I
-    .registers 4
+    .locals 2
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # Lcom/google/tagmanager/protobuf/nano/MessageNano;
 
@@ -322,7 +322,7 @@
 .end method
 
 .method public static computeGroupSizeNoTag(Lcom/google/tagmanager/protobuf/nano/MessageNano;)I
-    .registers 2
+    .locals 1
     .param p0, "value"    # Lcom/google/tagmanager/protobuf/nano/MessageNano;
 
     .line 643
@@ -334,7 +334,7 @@
 .end method
 
 .method public static computeInt32Size(II)I
-    .registers 4
+    .locals 2
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # I
 
@@ -353,11 +353,11 @@
 .end method
 
 .method public static computeInt32SizeNoTag(I)I
-    .registers 2
+    .locals 1
     .param p0, "value"    # I
 
     .line 592
-    if-ltz p0, :cond_7
+    if-ltz p0, :cond_0
 
     .line 593
     invoke-static {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeRawVarint32Size(I)I
@@ -367,14 +367,14 @@
     return v0
 
     .line 596
-    :cond_7
+    :cond_0
     const/16 v0, 0xa
 
     return v0
 .end method
 
 .method public static computeInt64Size(IJ)I
-    .registers 5
+    .locals 2
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # J
 
@@ -393,7 +393,7 @@
 .end method
 
 .method public static computeInt64SizeNoTag(J)I
-    .registers 3
+    .locals 1
     .param p0, "value"    # J
 
     .line 584
@@ -405,7 +405,7 @@
 .end method
 
 .method public static computeMessageSize(ILcom/google/tagmanager/protobuf/nano/MessageNano;)I
-    .registers 4
+    .locals 2
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # Lcom/google/tagmanager/protobuf/nano/MessageNano;
 
@@ -424,7 +424,7 @@
 .end method
 
 .method public static computeMessageSizeNoTag(Lcom/google/tagmanager/protobuf/nano/MessageNano;)I
-    .registers 3
+    .locals 2
     .param p0, "value"    # Lcom/google/tagmanager/protobuf/nano/MessageNano;
 
     .line 651
@@ -444,61 +444,61 @@
 .end method
 
 .method public static computeRawVarint32Size(I)I
-    .registers 2
+    .locals 1
     .param p0, "value"    # I
 
     .line 823
     and-int/lit8 v0, p0, -0x80
 
-    if-nez v0, :cond_6
+    if-nez v0, :cond_0
 
     const/4 v0, 0x1
 
     return v0
 
     .line 824
-    :cond_6
+    :cond_0
     and-int/lit16 v0, p0, -0x4000
 
-    if-nez v0, :cond_c
+    if-nez v0, :cond_1
 
     const/4 v0, 0x2
 
     return v0
 
     .line 825
-    :cond_c
+    :cond_1
     const/high16 v0, -0x200000
 
     and-int/2addr v0, p0
 
-    if-nez v0, :cond_13
+    if-nez v0, :cond_2
 
     const/4 v0, 0x3
 
     return v0
 
     .line 826
-    :cond_13
+    :cond_2
     const/high16 v0, -0x10000000
 
     and-int/2addr v0, p0
 
-    if-nez v0, :cond_1a
+    if-nez v0, :cond_3
 
     const/4 v0, 0x4
 
     return v0
 
     .line 827
-    :cond_1a
+    :cond_3
     const/4 v0, 0x5
 
     return v0
 .end method
 
 .method public static computeRawVarint64Size(J)I
-    .registers 6
+    .locals 4
     .param p0, "value"    # J
 
     .line 845
@@ -510,133 +510,133 @@
 
     cmp-long v0, v0, v2
 
-    if-nez v0, :cond_b
+    if-nez v0, :cond_0
 
     const/4 v0, 0x1
 
     return v0
 
     .line 846
-    :cond_b
+    :cond_0
     const-wide/16 v0, -0x4000
 
     and-long/2addr v0, p0
 
     cmp-long v0, v0, v2
 
-    if-nez v0, :cond_14
+    if-nez v0, :cond_1
 
     const/4 v0, 0x2
 
     return v0
 
     .line 847
-    :cond_14
+    :cond_1
     const-wide/32 v0, -0x200000
 
     and-long/2addr v0, p0
 
     cmp-long v0, v0, v2
 
-    if-nez v0, :cond_1e
+    if-nez v0, :cond_2
 
     const/4 v0, 0x3
 
     return v0
 
     .line 848
-    :cond_1e
+    :cond_2
     const-wide/32 v0, -0x10000000
 
     and-long/2addr v0, p0
 
     cmp-long v0, v0, v2
 
-    if-nez v0, :cond_28
+    if-nez v0, :cond_3
 
     const/4 v0, 0x4
 
     return v0
 
     .line 849
-    :cond_28
+    :cond_3
     const-wide v0, -0x800000000L
 
     and-long/2addr v0, p0
 
     cmp-long v0, v0, v2
 
-    if-nez v0, :cond_34
+    if-nez v0, :cond_4
 
     const/4 v0, 0x5
 
     return v0
 
     .line 850
-    :cond_34
+    :cond_4
     const-wide v0, -0x40000000000L
 
     and-long/2addr v0, p0
 
     cmp-long v0, v0, v2
 
-    if-nez v0, :cond_40
+    if-nez v0, :cond_5
 
     const/4 v0, 0x6
 
     return v0
 
     .line 851
-    :cond_40
+    :cond_5
     const-wide/high16 v0, -0x2000000000000L
 
     and-long/2addr v0, p0
 
     cmp-long v0, v0, v2
 
-    if-nez v0, :cond_49
+    if-nez v0, :cond_6
 
     const/4 v0, 0x7
 
     return v0
 
     .line 852
-    :cond_49
+    :cond_6
     const-wide/high16 v0, -0x100000000000000L
 
     and-long/2addr v0, p0
 
     cmp-long v0, v0, v2
 
-    if-nez v0, :cond_53
+    if-nez v0, :cond_7
 
     const/16 v0, 0x8
 
     return v0
 
     .line 853
-    :cond_53
+    :cond_7
     const-wide/high16 v0, -0x8000000000000000L
 
     and-long/2addr v0, p0
 
     cmp-long v0, v0, v2
 
-    if-nez v0, :cond_5d
+    if-nez v0, :cond_8
 
     const/16 v0, 0x9
 
     return v0
 
     .line 854
-    :cond_5d
+    :cond_8
     const/16 v0, 0xa
 
     return v0
 .end method
 
 .method public static computeSFixed32Size(II)I
-    .registers 4
+    .locals 2
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # I
 
@@ -655,7 +655,7 @@
 .end method
 
 .method public static computeSFixed32SizeNoTag(I)I
-    .registers 2
+    .locals 1
     .param p0, "value"    # I
 
     .line 692
@@ -665,7 +665,7 @@
 .end method
 
 .method public static computeSFixed64Size(IJ)I
-    .registers 5
+    .locals 2
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # J
 
@@ -684,7 +684,7 @@
 .end method
 
 .method public static computeSFixed64SizeNoTag(J)I
-    .registers 3
+    .locals 1
     .param p0, "value"    # J
 
     .line 700
@@ -694,7 +694,7 @@
 .end method
 
 .method public static computeSInt32Size(II)I
-    .registers 4
+    .locals 2
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # I
 
@@ -713,7 +713,7 @@
 .end method
 
 .method public static computeSInt32SizeNoTag(I)I
-    .registers 2
+    .locals 1
     .param p0, "value"    # I
 
     .line 708
@@ -729,7 +729,7 @@
 .end method
 
 .method public static computeSInt64Size(IJ)I
-    .registers 5
+    .locals 2
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # J
 
@@ -748,7 +748,7 @@
 .end method
 
 .method public static computeSInt64SizeNoTag(J)I
-    .registers 4
+    .locals 2
     .param p0, "value"    # J
 
     .line 716
@@ -764,7 +764,7 @@
 .end method
 
 .method public static computeStringSize(ILjava/lang/String;)I
-    .registers 4
+    .locals 2
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # Ljava/lang/String;
 
@@ -783,7 +783,7 @@
 .end method
 
 .method public static computeStringSizeNoTag(Ljava/lang/String;)I
-    .registers 4
+    .locals 3
     .param p0, "value"    # Ljava/lang/String;
 
     .line 630
@@ -803,8 +803,8 @@
     move-result v1
 
     array-length v2, v0
-    :try_end_c
-    .catch Ljava/io/UnsupportedEncodingException; {:try_start_0 .. :try_end_c} :catch_e
+    :try_end_0
+    .catch Ljava/io/UnsupportedEncodingException; {:try_start_0 .. :try_end_0} :catch_0
 
     add-int/2addr v1, v2
 
@@ -812,7 +812,7 @@
 
     .line 633
     .end local v0    # "bytes":[B
-    :catch_e
+    :catch_0
     move-exception v0
 
     .line 634
@@ -827,7 +827,7 @@
 .end method
 
 .method public static computeTagSize(I)I
-    .registers 2
+    .locals 1
     .param p0, "fieldNumber"    # I
 
     .line 798
@@ -845,7 +845,7 @@
 .end method
 
 .method public static computeUInt32Size(II)I
-    .registers 4
+    .locals 2
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # I
 
@@ -864,7 +864,7 @@
 .end method
 
 .method public static computeUInt32SizeNoTag(I)I
-    .registers 2
+    .locals 1
     .param p0, "value"    # I
 
     .line 676
@@ -876,7 +876,7 @@
 .end method
 
 .method public static computeUInt64Size(IJ)I
-    .registers 5
+    .locals 2
     .param p0, "fieldNumber"    # I
     .param p1, "value"    # J
 
@@ -895,7 +895,7 @@
 .end method
 
 .method public static computeUInt64SizeNoTag(J)I
-    .registers 3
+    .locals 1
     .param p0, "value"    # J
 
     .line 576
@@ -907,7 +907,7 @@
 .end method
 
 .method public static encodeZigZag32(I)I
-    .registers 3
+    .locals 2
     .param p0, "n"    # I
 
     .line 893
@@ -921,7 +921,7 @@
 .end method
 
 .method public static encodeZigZag64(J)J
-    .registers 6
+    .locals 4
     .param p0, "n"    # J
 
     .line 908
@@ -939,7 +939,7 @@
 .end method
 
 .method public static newInstance([B)Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;
-    .registers 3
+    .locals 2
     .param p0, "flatArray"    # [B
 
     .line 69
@@ -955,7 +955,7 @@
 .end method
 
 .method public static newInstance([BII)Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;
-    .registers 4
+    .locals 1
     .param p0, "flatArray"    # [B
     .param p1, "offset"    # I
     .param p2, "length"    # I
@@ -971,20 +971,20 @@
 
 # virtual methods
 .method public checkNoSpaceLeft()V
-    .registers 3
+    .locals 2
 
     .line 737
     invoke-virtual {p0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->spaceLeft()I
 
     move-result v0
 
-    if-nez v0, :cond_7
+    if-nez v0, :cond_0
 
     .line 741
     return-void
 
     .line 738
-    :cond_7
+    :cond_0
     new-instance v0, Ljava/lang/IllegalStateException;
 
     const-string v1, "Did not write as much data as expected."
@@ -995,7 +995,7 @@
 .end method
 
 .method public spaceLeft()I
-    .registers 3
+    .locals 2
 
     .line 726
     iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->limit:I
@@ -1008,7 +1008,7 @@
 .end method
 
 .method public writeBool(IZ)V
-    .registers 4
+    .locals 1
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # Z
     .annotation system Ldalvik/annotation/Throws;
@@ -1030,7 +1030,7 @@
 .end method
 
 .method public writeBoolNoTag(Z)V
-    .registers 2
+    .locals 0
     .param p1, "value"    # Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1046,7 +1046,7 @@
 .end method
 
 .method public writeByteArray(I[B)V
-    .registers 4
+    .locals 1
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # [B
     .annotation system Ldalvik/annotation/Throws;
@@ -1068,7 +1068,7 @@
 .end method
 
 .method public writeByteArrayNoTag([B)V
-    .registers 3
+    .locals 1
     .param p1, "value"    # [B
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1089,7 +1089,7 @@
 .end method
 
 .method public writeBytes(I[B)V
-    .registers 4
+    .locals 1
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # [B
     .annotation system Ldalvik/annotation/Throws;
@@ -1111,7 +1111,7 @@
 .end method
 
 .method public writeBytesNoTag([B)V
-    .registers 3
+    .locals 1
     .param p1, "value"    # [B
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1132,7 +1132,7 @@
 .end method
 
 .method public writeDouble(ID)V
-    .registers 5
+    .locals 1
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # D
     .annotation system Ldalvik/annotation/Throws;
@@ -1154,7 +1154,7 @@
 .end method
 
 .method public writeDoubleNoTag(D)V
-    .registers 5
+    .locals 2
     .param p1, "value"    # D
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1174,7 +1174,7 @@
 .end method
 
 .method public writeEnum(II)V
-    .registers 4
+    .locals 1
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # I
     .annotation system Ldalvik/annotation/Throws;
@@ -1196,7 +1196,7 @@
 .end method
 
 .method public writeEnumNoTag(I)V
-    .registers 2
+    .locals 0
     .param p1, "value"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1212,7 +1212,7 @@
 .end method
 
 .method public writeFixed32(II)V
-    .registers 4
+    .locals 1
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # I
     .annotation system Ldalvik/annotation/Throws;
@@ -1234,7 +1234,7 @@
 .end method
 
 .method public writeFixed32NoTag(I)V
-    .registers 2
+    .locals 0
     .param p1, "value"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1250,7 +1250,7 @@
 .end method
 
 .method public writeFixed64(IJ)V
-    .registers 5
+    .locals 1
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
@@ -1272,7 +1272,7 @@
 .end method
 
 .method public writeFixed64NoTag(J)V
-    .registers 3
+    .locals 0
     .param p1, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1288,7 +1288,7 @@
 .end method
 
 .method public writeFloat(IF)V
-    .registers 4
+    .locals 1
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # F
     .annotation system Ldalvik/annotation/Throws;
@@ -1310,7 +1310,7 @@
 .end method
 
 .method public writeFloatNoTag(F)V
-    .registers 3
+    .locals 1
     .param p1, "value"    # F
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1330,7 +1330,7 @@
 .end method
 
 .method public writeGroup(ILcom/google/tagmanager/protobuf/nano/MessageNano;)V
-    .registers 4
+    .locals 1
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # Lcom/google/tagmanager/protobuf/nano/MessageNano;
     .annotation system Ldalvik/annotation/Throws;
@@ -1357,7 +1357,7 @@
 .end method
 
 .method public writeGroupNoTag(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
-    .registers 2
+    .locals 0
     .param p1, "value"    # Lcom/google/tagmanager/protobuf/nano/MessageNano;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1373,7 +1373,7 @@
 .end method
 
 .method public writeInt32(II)V
-    .registers 4
+    .locals 1
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # I
     .annotation system Ldalvik/annotation/Throws;
@@ -1395,7 +1395,7 @@
 .end method
 
 .method public writeInt32NoTag(I)V
-    .registers 4
+    .locals 2
     .param p1, "value"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1404,26 +1404,26 @@
     .end annotation
 
     .line 274
-    if-ltz p1, :cond_6
+    if-ltz p1, :cond_0
 
     .line 275
     invoke-virtual {p0, p1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawVarint32(I)V
 
-    goto :goto_a
+    goto :goto_0
 
     .line 278
-    :cond_6
+    :cond_0
     int-to-long v0, p1
 
     invoke-virtual {p0, v0, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawVarint64(J)V
 
     .line 280
-    :goto_a
+    :goto_0
     return-void
 .end method
 
 .method public writeInt64(IJ)V
-    .registers 5
+    .locals 1
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
@@ -1445,7 +1445,7 @@
 .end method
 
 .method public writeInt64NoTag(J)V
-    .registers 3
+    .locals 0
     .param p1, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1461,7 +1461,7 @@
 .end method
 
 .method public writeMessage(ILcom/google/tagmanager/protobuf/nano/MessageNano;)V
-    .registers 4
+    .locals 1
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # Lcom/google/tagmanager/protobuf/nano/MessageNano;
     .annotation system Ldalvik/annotation/Throws;
@@ -1483,7 +1483,7 @@
 .end method
 
 .method public writeMessageNoTag(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
-    .registers 3
+    .locals 1
     .param p1, "value"    # Lcom/google/tagmanager/protobuf/nano/MessageNano;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1506,7 +1506,7 @@
 .end method
 
 .method public writeRawByte(B)V
-    .registers 5
+    .locals 3
     .param p1, "value"    # B
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1519,37 +1519,31 @@
 
     iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->limit:I
 
-    if-eq v0, v1, :cond_11
+    if-eq v0, v1, :cond_0
 
     .line 764
-    iget-object v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->buffer:[B
+    iget-object v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->buffer:[B
 
-    iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->position:I
-
-    add-int/lit8 v2, v1, 0x1
+    add-int/lit8 v2, v0, 0x1
 
     iput v2, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->position:I
 
-    aput-byte p1, v0, v1
+    aput-byte p1, v1, v0
 
     .line 765
     return-void
 
     .line 761
-    :cond_11
-    new-instance v0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano$OutOfSpaceException;
+    :cond_0
+    new-instance v2, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano$OutOfSpaceException;
 
-    iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->position:I
+    invoke-direct {v2, v0, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano$OutOfSpaceException;-><init>(II)V
 
-    iget v2, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->limit:I
-
-    invoke-direct {v0, v1, v2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano$OutOfSpaceException;-><init>(II)V
-
-    throw v0
+    throw v2
 .end method
 
 .method public writeRawByte(I)V
-    .registers 3
+    .locals 1
     .param p1, "value"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1567,7 +1561,7 @@
 .end method
 
 .method public writeRawBytes([B)V
-    .registers 4
+    .locals 2
     .param p1, "value"    # [B
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1587,7 +1581,7 @@
 .end method
 
 .method public writeRawBytes([BII)V
-    .registers 7
+    .locals 3
     .param p1, "value"    # [B
     .param p2, "offset"    # I
     .param p3, "length"    # I
@@ -1602,14 +1596,12 @@
 
     iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->position:I
 
-    sub-int/2addr v0, v1
+    sub-int v2, v0, v1
 
-    if-lt v0, p3, :cond_14
+    if-lt v2, p3, :cond_0
 
     .line 782
     iget-object v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->buffer:[B
-
-    iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->position:I
 
     invoke-static {p1, p2, v0, v1, p3}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
@@ -1624,20 +1616,16 @@
     return-void
 
     .line 786
-    :cond_14
-    new-instance v0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano$OutOfSpaceException;
+    :cond_0
+    new-instance v2, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano$OutOfSpaceException;
 
-    iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->position:I
+    invoke-direct {v2, v1, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano$OutOfSpaceException;-><init>(II)V
 
-    iget v2, p0, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->limit:I
-
-    invoke-direct {v0, v1, v2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano$OutOfSpaceException;-><init>(II)V
-
-    throw v0
+    throw v2
 .end method
 
 .method public writeRawLittleEndian32(I)V
-    .registers 3
+    .locals 1
     .param p1, "value"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1676,7 +1664,7 @@
 .end method
 
 .method public writeRawLittleEndian64(J)V
-    .registers 5
+    .locals 2
     .param p1, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1773,7 +1761,7 @@
 .end method
 
 .method public writeRawVarint32(I)V
-    .registers 3
+    .locals 1
     .param p1, "value"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1785,7 +1773,7 @@
     :goto_0
     and-int/lit8 v0, p1, -0x80
 
-    if-nez v0, :cond_8
+    if-nez v0, :cond_0
 
     .line 808
     invoke-virtual {p0, p1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeRawByte(I)V
@@ -1794,7 +1782,7 @@
     return-void
 
     .line 811
-    :cond_8
+    :cond_0
     and-int/lit8 v0, p1, 0x7f
 
     or-int/lit16 v0, v0, 0x80
@@ -1808,7 +1796,7 @@
 .end method
 
 .method public writeRawVarint64(J)V
-    .registers 7
+    .locals 4
     .param p1, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1826,7 +1814,7 @@
 
     cmp-long v0, v0, v2
 
-    if-nez v0, :cond_e
+    if-nez v0, :cond_0
 
     .line 834
     long-to-int v0, p1
@@ -1837,7 +1825,7 @@
     return-void
 
     .line 837
-    :cond_e
+    :cond_0
     long-to-int v0, p1
 
     and-int/lit8 v0, v0, 0x7f
@@ -1855,7 +1843,7 @@
 .end method
 
 .method public writeSFixed32(II)V
-    .registers 4
+    .locals 1
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # I
     .annotation system Ldalvik/annotation/Throws;
@@ -1877,7 +1865,7 @@
 .end method
 
 .method public writeSFixed32NoTag(I)V
-    .registers 2
+    .locals 0
     .param p1, "value"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1893,7 +1881,7 @@
 .end method
 
 .method public writeSFixed64(IJ)V
-    .registers 5
+    .locals 1
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
@@ -1915,7 +1903,7 @@
 .end method
 
 .method public writeSFixed64NoTag(J)V
-    .registers 3
+    .locals 0
     .param p1, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1931,7 +1919,7 @@
 .end method
 
 .method public writeSInt32(II)V
-    .registers 4
+    .locals 1
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # I
     .annotation system Ldalvik/annotation/Throws;
@@ -1953,7 +1941,7 @@
 .end method
 
 .method public writeSInt32NoTag(I)V
-    .registers 3
+    .locals 1
     .param p1, "value"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1973,7 +1961,7 @@
 .end method
 
 .method public writeSInt64(IJ)V
-    .registers 5
+    .locals 1
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
@@ -1995,7 +1983,7 @@
 .end method
 
 .method public writeSInt64NoTag(J)V
-    .registers 5
+    .locals 2
     .param p1, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -2015,7 +2003,7 @@
 .end method
 
 .method public writeString(ILjava/lang/String;)V
-    .registers 4
+    .locals 1
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
@@ -2037,7 +2025,7 @@
 .end method
 
 .method public writeStringNoTag(Ljava/lang/String;)V
-    .registers 4
+    .locals 2
     .param p1, "value"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -2066,7 +2054,7 @@
 .end method
 
 .method public writeTag(II)V
-    .registers 4
+    .locals 1
     .param p1, "fieldNumber"    # I
     .param p2, "wireType"    # I
     .annotation system Ldalvik/annotation/Throws;
@@ -2087,7 +2075,7 @@
 .end method
 
 .method public writeUInt32(II)V
-    .registers 4
+    .locals 1
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # I
     .annotation system Ldalvik/annotation/Throws;
@@ -2109,7 +2097,7 @@
 .end method
 
 .method public writeUInt32NoTag(I)V
-    .registers 2
+    .locals 0
     .param p1, "value"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -2125,7 +2113,7 @@
 .end method
 
 .method public writeUInt64(IJ)V
-    .registers 5
+    .locals 1
     .param p1, "fieldNumber"    # I
     .param p2, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
@@ -2147,7 +2135,7 @@
 .end method
 
 .method public writeUInt64NoTag(J)V
-    .registers 3
+    .locals 0
     .param p1, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
         value = {

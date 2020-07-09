@@ -17,7 +17,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 15
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->CUSTOM_VAR:Lcom/google/analytics/containertag/common/FunctionType;
@@ -50,7 +50,7 @@
 .end method
 
 .method public constructor <init>(Lcom/google/tagmanager/DataLayer;)V
-    .registers 6
+    .locals 4
     .param p1, "dataLayer"    # Lcom/google/tagmanager/DataLayer;
 
     .line 26
@@ -76,7 +76,7 @@
 .end method
 
 .method public static getDefaultValueKey()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 35
     sget-object v0, Lcom/google/tagmanager/DataLayerMacro;->DEFAULT_VALUE:Ljava/lang/String;
@@ -85,7 +85,7 @@
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 22
     sget-object v0, Lcom/google/tagmanager/DataLayerMacro;->ID:Ljava/lang/String;
@@ -94,7 +94,7 @@
 .end method
 
 .method public static getNameKey()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 31
     sget-object v0, Lcom/google/tagmanager/DataLayerMacro;->NAME:Ljava/lang/String;
@@ -105,7 +105,7 @@
 
 # virtual methods
 .method public evaluate(Ljava/util/Map;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 5
+    .locals 3
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -139,7 +139,7 @@
 
     .line 44
     .local v0, "dataLayerValue":Ljava/lang/Object;
-    if-nez v0, :cond_24
+    if-nez v0, :cond_1
 
     .line 45
     sget-object v1, Lcom/google/tagmanager/DataLayerMacro;->DEFAULT_VALUE:Ljava/lang/String;
@@ -152,13 +152,13 @@
 
     .line 46
     .local v1, "defaultValue":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-eqz v1, :cond_1f
+    if-eqz v1, :cond_0
 
     .line 47
     return-object v1
 
     .line 49
-    :cond_1f
+    :cond_0
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     move-result-object v2
@@ -167,7 +167,7 @@
 
     .line 52
     .end local v1    # "defaultValue":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    :cond_24
+    :cond_1
     invoke-static {v0}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     move-result-object v1
@@ -176,7 +176,7 @@
 .end method
 
 .method public isCacheable()Z
-    .registers 2
+    .locals 1
 
     .line 39
     const/4 v0, 0x0

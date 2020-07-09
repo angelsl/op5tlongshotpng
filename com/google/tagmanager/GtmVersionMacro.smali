@@ -9,7 +9,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 12
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->GTM_VERSION:Lcom/google/analytics/containertag/common/FunctionType;
@@ -24,7 +24,7 @@
 .end method
 
 .method public constructor <init>()V
-    .registers 3
+    .locals 2
 
     .line 19
     sget-object v0, Lcom/google/tagmanager/GtmVersionMacro;->ID:Ljava/lang/String;
@@ -40,7 +40,7 @@
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 15
     sget-object v0, Lcom/google/tagmanager/GtmVersionMacro;->ID:Ljava/lang/String;
@@ -51,7 +51,7 @@
 
 # virtual methods
 .method public evaluate(Ljava/util/Map;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 3
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -75,7 +75,7 @@
 .end method
 
 .method public isCacheable()Z
-    .registers 2
+    .locals 1
 
     .line 23
     const/4 v0, 0x1

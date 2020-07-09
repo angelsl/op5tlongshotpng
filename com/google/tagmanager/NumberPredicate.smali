@@ -5,7 +5,7 @@
 
 # direct methods
 .method public constructor <init>(Ljava/lang/String;)V
-    .registers 2
+    .locals 0
     .param p1, "functionId"    # Ljava/lang/String;
 
     .line 15
@@ -18,7 +18,7 @@
 
 # virtual methods
 .method protected evaluateNoDefaultValues(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;Ljava/util/Map;)Z
-    .registers 7
+    .locals 3
     .param p1, "arg0"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .param p2, "arg1"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .annotation system Ldalvik/annotation/Signature;
@@ -51,28 +51,28 @@
 
     move-result-object v2
 
-    if-eq v0, v2, :cond_1a
+    if-eq v0, v2, :cond_1
 
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultNumber()Lcom/google/tagmanager/TypedNumber;
 
     move-result-object v2
 
-    if-ne v1, v2, :cond_15
+    if-ne v1, v2, :cond_0
 
-    goto :goto_1a
+    goto :goto_0
 
-    :cond_15
+    :cond_0
     invoke-virtual {p0, v0, v1, p3}, Lcom/google/tagmanager/NumberPredicate;->evaluateNumber(Lcom/google/tagmanager/TypedNumber;Lcom/google/tagmanager/TypedNumber;Ljava/util/Map;)Z
 
     move-result v2
 
-    goto :goto_1b
+    goto :goto_1
 
-    :cond_1a
-    :goto_1a
+    :cond_1
+    :goto_0
     const/4 v2, 0x0
 
-    :goto_1b
+    :goto_1
     return v2
 .end method
 

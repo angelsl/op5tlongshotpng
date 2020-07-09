@@ -11,7 +11,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 12
     sget-object v0, Lcom/google/analytics/containertag/common/Key;->ARG0:Lcom/google/analytics/containertag/common/Key;
@@ -35,7 +35,7 @@
 .end method
 
 .method public constructor <init>(Ljava/lang/String;)V
-    .registers 5
+    .locals 3
     .param p1, "functionId"    # Ljava/lang/String;
 
     .line 28
@@ -62,7 +62,7 @@
 .end method
 
 .method public static getArg0Key()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 16
     sget-object v0, Lcom/google/tagmanager/Predicate;->ARG0:Ljava/lang/String;
@@ -71,7 +71,7 @@
 .end method
 
 .method public static getArg1Key()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 20
     sget-object v0, Lcom/google/tagmanager/Predicate;->ARG1:Ljava/lang/String;
@@ -82,7 +82,7 @@
 
 # virtual methods
 .method public evaluate(Ljava/util/Map;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 6
+    .locals 4
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -105,14 +105,14 @@
     move-result-object v0
 
     .local v0, "i$":Ljava/util/Iterator;
-    :goto_8
+    :goto_0
     invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v1
 
     const/4 v2, 0x0
 
-    if-eqz v1, :cond_25
+    if-eqz v1, :cond_1
 
     invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -126,7 +126,7 @@
 
     move-result-object v3
 
-    if-ne v1, v3, :cond_24
+    if-ne v1, v3, :cond_0
 
     .line 39
     invoke-static {v2}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
@@ -141,12 +141,12 @@
 
     .line 41
     .end local v1    # "v":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    :cond_24
-    goto :goto_8
+    :cond_0
+    goto :goto_0
 
     .line 42
     .end local v0    # "i$":Ljava/util/Iterator;
-    :cond_25
+    :cond_1
     sget-object v0, Lcom/google/tagmanager/Predicate;->ARG0:Ljava/lang/String;
 
     invoke-interface {p1, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -167,23 +167,21 @@
 
     .line 44
     .local v1, "arg1":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-eqz v0, :cond_3f
+    if-eqz v0, :cond_3
 
-    if-nez v1, :cond_3a
+    if-nez v1, :cond_2
 
-    goto :goto_3f
+    goto :goto_1
 
-    :cond_3a
+    :cond_2
     invoke-virtual {p0, v0, v1, p1}, Lcom/google/tagmanager/Predicate;->evaluateNoDefaultValues(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;Ljava/util/Map;)Z
 
     move-result v2
 
-    nop
-
     .line 47
     .local v2, "result":Z
-    :cond_3f
-    :goto_3f
+    :cond_3
+    :goto_1
     invoke-static {v2}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
 
     move-result-object v3
@@ -210,7 +208,7 @@
 .end method
 
 .method public isCacheable()Z
-    .registers 2
+    .locals 1
 
     .line 55
     const/4 v0, 0x1

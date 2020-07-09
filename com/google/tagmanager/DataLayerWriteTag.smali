@@ -17,7 +17,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 15
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->DATA_LAYER_WRITE:Lcom/google/analytics/containertag/common/FunctionType;
@@ -50,7 +50,7 @@
 .end method
 
 .method public constructor <init>(Lcom/google/tagmanager/DataLayer;)V
-    .registers 6
+    .locals 4
     .param p1, "dataLayer"    # Lcom/google/tagmanager/DataLayer;
 
     .line 26
@@ -76,22 +76,22 @@
 .end method
 
 .method private clearPersistent(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)V
-    .registers 4
+    .locals 2
     .param p1, "value"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 37
-    if-eqz p1, :cond_1a
+    if-eqz p1, :cond_2
 
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultObject()Ljava/lang/Object;
 
     move-result-object v0
 
-    if-ne p1, v0, :cond_9
+    if-ne p1, v0, :cond_0
 
-    goto :goto_1a
+    goto :goto_0
 
     .line 40
-    :cond_9
+    :cond_0
     invoke-static {p1}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
 
     move-result-object v0
@@ -102,13 +102,13 @@
 
     move-result-object v1
 
-    if-ne v0, v1, :cond_14
+    if-ne v0, v1, :cond_1
 
     .line 42
     return-void
 
     .line 44
-    :cond_14
+    :cond_1
     iget-object v1, p0, Lcom/google/tagmanager/DataLayerWriteTag;->mDataLayer:Lcom/google/tagmanager/DataLayer;
 
     invoke-virtual {v1, v0}, Lcom/google/tagmanager/DataLayer;->clearPersistentKeysWithPrefix(Ljava/lang/String;)V
@@ -118,13 +118,13 @@
 
     .line 38
     .end local v0    # "prefix":Ljava/lang/String;
-    :cond_1a
-    :goto_1a
+    :cond_2
+    :goto_0
     return-void
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 22
     sget-object v0, Lcom/google/tagmanager/DataLayerWriteTag;->ID:Ljava/lang/String;
@@ -133,22 +133,22 @@
 .end method
 
 .method private pushToDataLayer(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)V
-    .registers 8
+    .locals 6
     .param p1, "value"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 48
-    if-eqz p1, :cond_32
+    if-eqz p1, :cond_4
 
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultObject()Ljava/lang/Object;
 
     move-result-object v0
 
-    if-ne p1, v0, :cond_9
+    if-ne p1, v0, :cond_0
 
-    goto :goto_32
+    goto :goto_1
 
     .line 51
-    :cond_9
+    :cond_0
     invoke-static {p1}, Lcom/google/tagmanager/Types;->valueToObject(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/Object;
 
     move-result-object v0
@@ -157,13 +157,13 @@
     .local v0, "o":Ljava/lang/Object;
     instance-of v1, v0, Ljava/util/List;
 
-    if-nez v1, :cond_12
+    if-nez v1, :cond_1
 
     .line 53
     return-void
 
     .line 56
-    :cond_12
+    :cond_1
     move-object v1, v0
 
     check-cast v1, Ljava/util/List;
@@ -175,12 +175,12 @@
     move-result-object v2
 
     .local v2, "i$":Ljava/util/Iterator;
-    :goto_19
+    :goto_0
     invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v3
 
-    if-eqz v3, :cond_31
+    if-eqz v3, :cond_3
 
     invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -190,13 +190,13 @@
     .local v3, "obj":Ljava/lang/Object;
     instance-of v4, v3, Ljava/util/Map;
 
-    if-nez v4, :cond_28
+    if-nez v4, :cond_2
 
     .line 59
-    goto :goto_19
+    goto :goto_0
 
     .line 62
-    :cond_28
+    :cond_2
     move-object v4, v3
 
     check-cast v4, Ljava/util/Map;
@@ -210,25 +210,25 @@
     .line 64
     .end local v3    # "obj":Ljava/lang/Object;
     .end local v4    # "map":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
-    goto :goto_19
+    goto :goto_0
 
     .line 65
     .end local v2    # "i$":Ljava/util/Iterator;
-    :cond_31
+    :cond_3
     return-void
 
     .line 49
     .end local v0    # "o":Ljava/lang/Object;
     .end local v1    # "list":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Object;>;"
-    :cond_32
-    :goto_32
+    :cond_4
+    :goto_1
     return-void
 .end method
 
 
 # virtual methods
 .method public evaluateTrackingTag(Ljava/util/Map;)V
-    .registers 3
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",

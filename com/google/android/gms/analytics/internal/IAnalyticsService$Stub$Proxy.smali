@@ -23,7 +23,7 @@
 
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
-    .registers 2
+    .locals 0
     .param p1, "remote"    # Landroid/os/IBinder;
 
     .line 78
@@ -39,7 +39,7 @@
 
 # virtual methods
 .method public asBinder()Landroid/os/IBinder;
-    .registers 2
+    .locals 1
 
     .line 83
     iget-object v0, p0, Lcom/google/android/gms/analytics/internal/IAnalyticsService$Stub$Proxy;->mRemote:Landroid/os/IBinder;
@@ -48,7 +48,7 @@
 .end method
 
 .method public clearHits()V
-    .registers 6
+    .locals 5
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -68,7 +68,7 @@
 
     .line 126
     .local v1, "_reply":Landroid/os/Parcel;
-    :try_start_8
+    :try_start_0
     const-string v2, "com.google.android.gms.analytics.internal.IAnalyticsService"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
@@ -84,8 +84,8 @@
 
     .line 128
     invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
-    :try_end_17
-    .catchall {:try_start_8 .. :try_end_17} :catchall_1f
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 131
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
@@ -100,7 +100,7 @@
     return-void
 
     .line 131
-    :catchall_1f
+    :catchall_0
     move-exception v2
 
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
@@ -112,7 +112,7 @@
 .end method
 
 .method public getInterfaceDescriptor()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 87
     const-string v0, "com.google.android.gms.analytics.internal.IAnalyticsService"
@@ -121,7 +121,7 @@
 .end method
 
 .method public sendHit(Ljava/util/Map;JLjava/lang/String;Ljava/util/List;)V
-    .registers 11
+    .locals 5
     .param p1, "wireParams"    # Ljava/util/Map;
     .param p2, "hitTimeInMilliseconds"    # J
     .param p4, "path"    # Ljava/lang/String;
@@ -157,7 +157,7 @@
 
     .line 105
     .local v1, "_reply":Landroid/os/Parcel;
-    :try_start_8
+    :try_start_0
     const-string v2, "com.google.android.gms.analytics.internal.IAnalyticsService"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
@@ -185,8 +185,8 @@
 
     .line 111
     invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
-    :try_end_23
-    .catchall {:try_start_8 .. :try_end_23} :catchall_2b
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 114
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
@@ -201,7 +201,7 @@
     return-void
 
     .line 114
-    :catchall_2b
+    :catchall_0
     move-exception v2
 
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V

@@ -20,10 +20,10 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/GlobalScreenshot;)V
-    .registers 2
+    .locals 0
     .param p1, "this$0"    # Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .line 1805
+    .line 2177
     iput-object p1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$KeyEventCallBack;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -34,31 +34,31 @@
 
 # virtual methods
 .method public onKeyEvent(Landroid/view/KeyEvent;)V
-    .registers 4
+    .locals 2
     .param p1, "event"    # Landroid/view/KeyEvent;
 
-    .line 1807
-    if-nez p1, :cond_3
+    .line 2179
+    if-nez p1, :cond_0
 
-    .line 1808
+    .line 2180
     return-void
 
-    .line 1811
-    :cond_3
+    .line 2183
+    :cond_0
     invoke-virtual {p1}, Landroid/view/KeyEvent;->getKeyCode()I
 
     move-result v0
 
     const/4 v1, 0x4
 
-    if-ne v0, v1, :cond_f
+    if-ne v0, v1, :cond_1
 
-    .line 1812
+    .line 2184
     iget-object v0, p0, Lcom/oneplus/screenshot/GlobalScreenshot$KeyEventCallBack;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
     invoke-static {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$000(Lcom/oneplus/screenshot/GlobalScreenshot;)V
 
-    .line 1814
-    :cond_f
+    .line 2186
+    :cond_1
     return-void
 .end method

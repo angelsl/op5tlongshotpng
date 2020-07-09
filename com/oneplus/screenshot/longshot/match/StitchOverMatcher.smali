@@ -9,7 +9,7 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;I)V
-    .registers 5
+    .locals 2
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "index"    # I
 
@@ -44,11 +44,11 @@
     iput v0, p0, Lcom/oneplus/screenshot/longshot/match/StitchOverMatcher;->mOffsetCurr:I
 
     .line 20
-    sget v0, Lcom/oneplus/screenshot/longshot/util/Configs;->LEVEL_STITCH_LAST:I
+    sget v0, Lcom/oneplus/screenshot/longshot/util/Configs;->levelStitchLast:I
 
     const/4 v1, 0x2
 
-    if-eq v0, v1, :cond_31
+    if-eq v0, v1, :cond_0
 
     .line 26
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->LINES_STITCH_OVER_LEVEL_1:Lcom/oneplus/screenshot/longshot/util/Configs;
@@ -68,10 +68,10 @@
 
     iput v0, p0, Lcom/oneplus/screenshot/longshot/match/StitchOverMatcher;->mExtendCurr:I
 
-    goto :goto_42
+    goto :goto_0
 
     .line 22
-    :cond_31
+    :cond_0
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->LINES_STITCH_OVER_LEVEL_2:Lcom/oneplus/screenshot/longshot/util/Configs;
 
     invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/util/Configs;->getValue()I
@@ -93,14 +93,14 @@
     nop
 
     .line 30
-    :goto_42
+    :goto_0
     return-void
 .end method
 
 
 # virtual methods
 .method protected canDump()Z
-    .registers 2
+    .locals 1
 
     .line 42
     sget-object v0, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper$Options;->OVER:Lcom/oneplus/screenshot/longshot/dump/BitmapDumper$Options;
@@ -113,14 +113,14 @@
 .end method
 
 .method protected getStep()I
-    .registers 3
+    .locals 2
 
     .line 47
-    sget v0, Lcom/oneplus/screenshot/longshot/util/Configs;->LEVEL_STITCH_LAST:I
+    sget v0, Lcom/oneplus/screenshot/longshot/util/Configs;->levelStitchLast:I
 
     const/4 v1, 0x2
 
-    if-eq v0, v1, :cond_c
+    if-eq v0, v1, :cond_0
 
     .line 51
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->STEP_STITCH_OVER_LEVEL_1:Lcom/oneplus/screenshot/longshot/util/Configs;
@@ -132,7 +132,7 @@
     return v0
 
     .line 49
-    :cond_c
+    :cond_0
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->STEP_STITCH_OVER_LEVEL_2:Lcom/oneplus/screenshot/longshot/util/Configs;
 
     invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/util/Configs;->getValue()I
@@ -143,7 +143,7 @@
 .end method
 
 .method protected getTag()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 37
     const-string v0, "StitchOver"

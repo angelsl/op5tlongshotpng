@@ -15,5 +15,5 @@
 
 
 # virtual methods
-.method public abstract onShow(Landroid/app/Dialog;)V
+.method public abstract onShow(Lcom/oneplus/screenshot/longshot/app/LongshotDialog;)V
 .end method

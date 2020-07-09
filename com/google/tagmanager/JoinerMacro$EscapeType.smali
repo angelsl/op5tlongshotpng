@@ -34,36 +34,36 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 5
+    .locals 5
 
     .line 24
     new-instance v0, Lcom/google/tagmanager/JoinerMacro$EscapeType;
 
-    const-string v1, "NONE"
+    const/4 v1, 0x0
 
-    const/4 v2, 0x0
+    const-string v2, "NONE"
 
-    invoke-direct {v0, v1, v2}, Lcom/google/tagmanager/JoinerMacro$EscapeType;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v2, v1}, Lcom/google/tagmanager/JoinerMacro$EscapeType;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/tagmanager/JoinerMacro$EscapeType;->NONE:Lcom/google/tagmanager/JoinerMacro$EscapeType;
 
     new-instance v0, Lcom/google/tagmanager/JoinerMacro$EscapeType;
 
-    const-string v1, "URL"
+    const/4 v2, 0x1
 
-    const/4 v3, 0x1
+    const-string v3, "URL"
 
-    invoke-direct {v0, v1, v3}, Lcom/google/tagmanager/JoinerMacro$EscapeType;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v3, v2}, Lcom/google/tagmanager/JoinerMacro$EscapeType;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/tagmanager/JoinerMacro$EscapeType;->URL:Lcom/google/tagmanager/JoinerMacro$EscapeType;
 
     new-instance v0, Lcom/google/tagmanager/JoinerMacro$EscapeType;
 
-    const-string v1, "BACKSLASH"
+    const/4 v3, 0x2
 
-    const/4 v4, 0x2
+    const-string v4, "BACKSLASH"
 
-    invoke-direct {v0, v1, v4}, Lcom/google/tagmanager/JoinerMacro$EscapeType;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v4, v3}, Lcom/google/tagmanager/JoinerMacro$EscapeType;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/tagmanager/JoinerMacro$EscapeType;->BACKSLASH:Lcom/google/tagmanager/JoinerMacro$EscapeType;
 
@@ -71,17 +71,17 @@
 
     new-array v0, v0, [Lcom/google/tagmanager/JoinerMacro$EscapeType;
 
-    sget-object v1, Lcom/google/tagmanager/JoinerMacro$EscapeType;->NONE:Lcom/google/tagmanager/JoinerMacro$EscapeType;
+    sget-object v4, Lcom/google/tagmanager/JoinerMacro$EscapeType;->NONE:Lcom/google/tagmanager/JoinerMacro$EscapeType;
 
-    aput-object v1, v0, v2
+    aput-object v4, v0, v1
 
     sget-object v1, Lcom/google/tagmanager/JoinerMacro$EscapeType;->URL:Lcom/google/tagmanager/JoinerMacro$EscapeType;
 
-    aput-object v1, v0, v3
+    aput-object v1, v0, v2
 
     sget-object v1, Lcom/google/tagmanager/JoinerMacro$EscapeType;->BACKSLASH:Lcom/google/tagmanager/JoinerMacro$EscapeType;
 
-    aput-object v1, v0, v4
+    aput-object v1, v0, v3
 
     sput-object v0, Lcom/google/tagmanager/JoinerMacro$EscapeType;->$VALUES:[Lcom/google/tagmanager/JoinerMacro$EscapeType;
 
@@ -89,7 +89,7 @@
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V
-    .registers 3
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
@@ -103,7 +103,7 @@
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Lcom/google/tagmanager/JoinerMacro$EscapeType;
-    .registers 2
+    .locals 1
     .param p0, "name"    # Ljava/lang/String;
 
     .line 24
@@ -119,7 +119,7 @@
 .end method
 
 .method public static values()[Lcom/google/tagmanager/JoinerMacro$EscapeType;
-    .registers 1
+    .locals 1
 
     .line 24
     sget-object v0, Lcom/google/tagmanager/JoinerMacro$EscapeType;->$VALUES:[Lcom/google/tagmanager/JoinerMacro$EscapeType;

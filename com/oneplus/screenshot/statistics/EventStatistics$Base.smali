@@ -36,29 +36,29 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 5
+    .locals 5
 
     .line 71
     new-instance v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
 
-    const-string v1, "ERROR"
+    const/4 v1, 0x0
 
-    const/4 v2, 0x0
+    const-string v2, "ERROR"
 
-    invoke-direct {v0, v1, v2, v2}, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;-><init>(Ljava/lang/String;II)V
+    invoke-direct {v0, v2, v1, v1}, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;-><init>(Ljava/lang/String;II)V
 
     sput-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;->ERROR:Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
 
     .line 72
     new-instance v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
 
-    const-string v1, "ACTION"
+    const/4 v2, 0x1
 
-    const/4 v3, 0x1
+    const-string v3, "ACTION"
 
     const/16 v4, 0x3e8
 
-    invoke-direct {v0, v1, v3, v4}, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;-><init>(Ljava/lang/String;II)V
+    invoke-direct {v0, v3, v2, v4}, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;-><init>(Ljava/lang/String;II)V
 
     sput-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;->ACTION:Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
 
@@ -67,13 +67,13 @@
 
     new-array v0, v0, [Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
 
-    sget-object v1, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;->ERROR:Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
+    sget-object v3, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;->ERROR:Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
 
-    aput-object v1, v0, v2
+    aput-object v3, v0, v1
 
     sget-object v1, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;->ACTION:Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
 
-    aput-object v1, v0, v3
+    aput-object v1, v0, v2
 
     sput-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;->$VALUES:[Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
 
@@ -81,7 +81,7 @@
 .end method
 
 .method private constructor <init>(Ljava/lang/String;II)V
-    .registers 4
+    .locals 0
     .param p3, "value"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -105,7 +105,7 @@
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
-    .registers 2
+    .locals 1
     .param p0, "name"    # Ljava/lang/String;
 
     .line 69
@@ -121,7 +121,7 @@
 .end method
 
 .method public static values()[Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
-    .registers 1
+    .locals 1
 
     .line 69
     sget-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;->$VALUES:[Lcom/oneplus/screenshot/statistics/EventStatistics$Base;
@@ -138,7 +138,7 @@
 
 # virtual methods
 .method public valueOf()I
-    .registers 2
+    .locals 1
 
     .line 81
     iget v0, p0, Lcom/oneplus/screenshot/statistics/EventStatistics$Base;->mValue:I

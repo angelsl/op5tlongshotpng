@@ -50,7 +50,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 173
     new-instance v0, Ljava/util/HashMap;
@@ -63,7 +63,7 @@
 .end method
 
 .method private constructor <init>(Lcom/google/tagmanager/TagManager;Ljava/lang/String;Ljava/lang/Long;Lcom/google/tagmanager/ContainerOpener$Notifier;)V
-    .registers 9
+    .locals 4
     .param p1, "tagManager"    # Lcom/google/tagmanager/TagManager;
     .param p2, "containerId"    # Ljava/lang/String;
     .param p3, "timeoutInMillis"    # Ljava/lang/Long;
@@ -86,7 +86,7 @@
     iput-object p2, p0, Lcom/google/tagmanager/ContainerOpener;->mContainerId:Ljava/lang/String;
 
     .line 193
-    if-eqz p3, :cond_1b
+    if-eqz p3, :cond_0
 
     const-wide/16 v0, 0x1
 
@@ -98,12 +98,12 @@
 
     move-result-wide v0
 
-    goto :goto_1d
+    goto :goto_0
 
-    :cond_1b
+    :cond_0
     const-wide/16 v0, 0x7d0
 
-    :goto_1d
+    :goto_0
     iput-wide v0, p0, Lcom/google/tagmanager/ContainerOpener;->mTimeoutInMillis:J
 
     .line 195
@@ -114,7 +114,7 @@
 .end method
 
 .method static synthetic access$000(Lcom/google/tagmanager/ContainerOpener;Lcom/google/tagmanager/Container;)V
-    .registers 2
+    .locals 0
     .param p0, "x0"    # Lcom/google/tagmanager/ContainerOpener;
     .param p1, "x1"    # Lcom/google/tagmanager/Container;
 
@@ -125,7 +125,7 @@
 .end method
 
 .method static synthetic access$100(Lcom/google/tagmanager/ContainerOpener;)Lcom/google/tagmanager/Container;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/tagmanager/ContainerOpener;
 
     .line 49
@@ -135,16 +135,16 @@
 .end method
 
 .method private declared-synchronized callNotifiers(Lcom/google/tagmanager/Container;)V
-    .registers 6
+    .locals 4
     .param p1, "container"    # Lcom/google/tagmanager/Container;
 
     monitor-enter p0
 
     .line 398
-    :try_start_1
+    :try_start_0
     iget-boolean v0, p0, Lcom/google/tagmanager/ContainerOpener;->mHaveNotified:Z
 
-    if-nez v0, :cond_32
+    if-nez v0, :cond_1
 
     .line 399
     const/4 v0, 0x0
@@ -154,11 +154,11 @@
     const-class v1, Lcom/google/tagmanager/ContainerOpener;
 
     monitor-enter v1
-    :try_end_9
-    .catchall {:try_start_1 .. :try_end_9} :catchall_34
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
     .line 401
-    :try_start_9
+    :try_start_1
     sget-object v2, Lcom/google/tagmanager/ContainerOpener;->mContainerIdNotifiersMap:Ljava/util/Map;
 
     iget-object v3, p0, Lcom/google/tagmanager/ContainerOpener;->mContainerId:Ljava/lang/String;
@@ -173,25 +173,25 @@
 
     .line 402
     monitor-exit v1
-    :try_end_15
-    .catchall {:try_start_9 .. :try_end_15} :catchall_2f
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 403
-    if-eqz v0, :cond_2b
+    if-eqz v0, :cond_0
 
     .line 404
-    :try_start_17
+    :try_start_2
     invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
     move-result-object v1
 
     .local v1, "i$":Ljava/util/Iterator;
-    :goto_1b
+    :goto_0
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v2
 
-    if-eqz v2, :cond_2b
+    if-eqz v2, :cond_0
 
     invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -205,56 +205,54 @@
 
     .line 406
     .end local v2    # "notifier":Lcom/google/tagmanager/ContainerOpener$Notifier;
-    goto :goto_1b
+    goto :goto_0
 
     .line 408
     .end local v1    # "i$":Ljava/util/Iterator;
-    :cond_2b
+    .end local p0    # "this":Lcom/google/tagmanager/ContainerOpener;
+    :cond_0
     const/4 v1, 0x1
 
     iput-boolean v1, p0, Lcom/google/tagmanager/ContainerOpener;->mHaveNotified:Z
-    :try_end_2e
-    .catchall {:try_start_17 .. :try_end_2e} :catchall_34
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    .end local v0    # "notifiers":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/ContainerOpener$Notifier;>;"
-    goto :goto_32
+    goto :goto_1
 
     .line 402
-    .restart local v0    # "notifiers":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/ContainerOpener$Notifier;>;"
-    :catchall_2f
+    :catchall_0
     move-exception v2
 
-    :try_start_30
+    :try_start_3
     monitor-exit v1
-    :try_end_31
-    .catchall {:try_start_30 .. :try_end_31} :catchall_2f
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
-    :try_start_31
+    :try_start_4
     throw v2
-    :try_end_32
-    .catchall {:try_start_31 .. :try_end_32} :catchall_34
+    :try_end_4
+    .catchall {:try_start_4 .. :try_end_4} :catchall_1
 
     .line 410
     .end local v0    # "notifiers":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/ContainerOpener$Notifier;>;"
-    :cond_32
-    :goto_32
+    :cond_1
+    :goto_1
     monitor-exit p0
 
     return-void
 
     .line 397
     .end local p1    # "container":Lcom/google/tagmanager/Container;
-    :catchall_34
+    :catchall_1
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/ContainerOpener;
     throw p1
 .end method
 
 .method private open(Lcom/google/tagmanager/Container$RefreshType;)V
-    .registers 13
+    .locals 11
     .param p1, "refreshType"    # Lcom/google/tagmanager/Container$RefreshType;
 
     .line 344
@@ -275,7 +273,7 @@
     monitor-enter v3
 
     .line 348
-    :try_start_a
+    :try_start_0
     iget-object v4, p0, Lcom/google/tagmanager/ContainerOpener;->mTagManager:Lcom/google/tagmanager/TagManager;
 
     iget-object v5, p0, Lcom/google/tagmanager/ContainerOpener;->mContainerId:Ljava/lang/String;
@@ -291,7 +289,7 @@
 
     const/4 v5, 0x0
 
-    if-nez v4, :cond_4b
+    if-nez v4, :cond_1
 
     .line 351
     new-instance v4, Ljava/util/ArrayList;
@@ -321,15 +319,15 @@
 
     sget-object v8, Lcom/google/tagmanager/Container$RefreshType;->SAVED:Lcom/google/tagmanager/Container$RefreshType;
 
-    if-ne p1, v8, :cond_3a
+    if-ne p1, v8, :cond_0
 
     new-instance v8, Lcom/google/tagmanager/ContainerOpener$WaitForNonDefaultRefresh;
 
     invoke-direct {v8, p0}, Lcom/google/tagmanager/ContainerOpener$WaitForNonDefaultRefresh;-><init>(Lcom/google/tagmanager/ContainerOpener;)V
 
-    goto :goto_44
+    goto :goto_0
 
-    :cond_3a
+    :cond_0
     new-instance v8, Lcom/google/tagmanager/ContainerOpener$WaitForFresh;
 
     const-wide/32 v9, 0x2932e00
@@ -338,7 +336,7 @@
 
     invoke-direct {v8, p0, v9, v10}, Lcom/google/tagmanager/ContainerOpener$WaitForFresh;-><init>(Lcom/google/tagmanager/ContainerOpener;J)V
 
-    :goto_44
+    :goto_0
     invoke-virtual {v6, v7, v8}, Lcom/google/tagmanager/TagManager;->openContainer(Ljava/lang/String;Lcom/google/tagmanager/Container$Callback;)Lcom/google/tagmanager/Container;
 
     move-result-object v6
@@ -347,10 +345,10 @@
 
     .line 359
     .end local v4    # "notifiers":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/ContainerOpener$Notifier;>;"
-    goto :goto_58
+    goto :goto_1
 
     .line 360
-    :cond_4b
+    :cond_1
     sget-object v4, Lcom/google/tagmanager/ContainerOpener;->mContainerIdNotifiersMap:Ljava/util/Map;
 
     iget-object v6, p0, Lcom/google/tagmanager/ContainerOpener;->mContainerId:Ljava/lang/String;
@@ -363,20 +361,20 @@
 
     .line 361
     .restart local v4    # "notifiers":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/ContainerOpener$Notifier;>;"
-    if-nez v4, :cond_79
+    if-nez v4, :cond_3
 
     .line 363
     const/4 v2, 0x1
 
     .line 372
     .end local v4    # "notifiers":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/ContainerOpener$Notifier;>;"
-    :goto_58
+    :goto_1
     monitor-exit v3
-    :try_end_59
-    .catchall {:try_start_a .. :try_end_59} :catchall_82
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 374
-    if-eqz v2, :cond_65
+    if-eqz v2, :cond_2
 
     .line 375
     iget-object v3, p0, Lcom/google/tagmanager/ContainerOpener;->mNotifier:Lcom/google/tagmanager/ContainerOpener$Notifier;
@@ -392,7 +390,7 @@
     return-void
 
     .line 381
-    :cond_65
+    :cond_2
     iget-wide v3, p0, Lcom/google/tagmanager/ContainerOpener;->mTimeoutInMillis:J
 
     iget-object v5, p0, Lcom/google/tagmanager/ContainerOpener;->mClock:Lcom/google/tagmanager/Clock;
@@ -421,8 +419,8 @@
     .line 367
     .end local v3    # "remainingTimeout":J
     .restart local v4    # "notifiers":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/ContainerOpener$Notifier;>;"
-    :cond_79
-    :try_start_79
+    :cond_3
+    :try_start_1
     iget-object v6, p0, Lcom/google/tagmanager/ContainerOpener;->mNotifier:Lcom/google/tagmanager/ContainerOpener$Notifier;
 
     invoke-interface {v4, v6}, Ljava/util/List;->add(Ljava/lang/Object;)Z
@@ -437,18 +435,18 @@
 
     .line 372
     .end local v4    # "notifiers":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/ContainerOpener$Notifier;>;"
-    :catchall_82
+    :catchall_0
     move-exception v4
 
     monitor-exit v3
-    :try_end_84
-    .catchall {:try_start_79 .. :try_end_84} :catchall_82
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v4
 .end method
 
 .method public static openContainer(Lcom/google/tagmanager/TagManager;Ljava/lang/String;Lcom/google/tagmanager/ContainerOpener$OpenType;Ljava/lang/Long;)Lcom/google/tagmanager/ContainerOpener$ContainerFuture;
-    .registers 6
+    .locals 2
     .param p0, "tagManager"    # Lcom/google/tagmanager/TagManager;
     .param p1, "containerId"    # Ljava/lang/String;
     .param p2, "openType"    # Lcom/google/tagmanager/ContainerOpener$OpenType;
@@ -474,7 +472,7 @@
 .end method
 
 .method public static openContainer(Lcom/google/tagmanager/TagManager;Ljava/lang/String;Lcom/google/tagmanager/ContainerOpener$OpenType;Ljava/lang/Long;Lcom/google/tagmanager/ContainerOpener$Notifier;)V
-    .registers 7
+    .locals 2
     .param p0, "tagManager"    # Lcom/google/tagmanager/TagManager;
     .param p1, "containerId"    # Ljava/lang/String;
     .param p2, "openType"    # Lcom/google/tagmanager/ContainerOpener$OpenType;
@@ -482,16 +480,16 @@
     .param p4, "notifier"    # Lcom/google/tagmanager/ContainerOpener$Notifier;
 
     .line 241
-    if-eqz p0, :cond_32
+    if-eqz p0, :cond_4
 
     .line 244
-    if-eqz p1, :cond_2a
+    if-eqz p1, :cond_3
 
     .line 247
-    if-eqz p2, :cond_22
+    if-eqz p2, :cond_2
 
     .line 250
-    if-eqz p4, :cond_1a
+    if-eqz p4, :cond_1
 
     .line 254
     new-instance v0, Lcom/google/tagmanager/ContainerOpener;
@@ -502,16 +500,16 @@
     .local v0, "containerLoader":Lcom/google/tagmanager/ContainerOpener;
     sget-object v1, Lcom/google/tagmanager/ContainerOpener$OpenType;->PREFER_FRESH:Lcom/google/tagmanager/ContainerOpener$OpenType;
 
-    if-ne p2, v1, :cond_14
+    if-ne p2, v1, :cond_0
 
     sget-object v1, Lcom/google/tagmanager/Container$RefreshType;->NETWORK:Lcom/google/tagmanager/Container$RefreshType;
 
-    goto :goto_16
+    goto :goto_0
 
-    :cond_14
+    :cond_0
     sget-object v1, Lcom/google/tagmanager/Container$RefreshType;->SAVED:Lcom/google/tagmanager/Container$RefreshType;
 
-    :goto_16
+    :goto_0
     invoke-direct {v0, v1}, Lcom/google/tagmanager/ContainerOpener;->open(Lcom/google/tagmanager/Container$RefreshType;)V
 
     .line 259
@@ -519,7 +517,7 @@
 
     .line 251
     .end local v0    # "containerLoader":Lcom/google/tagmanager/ContainerOpener;
-    :cond_1a
+    :cond_1
     new-instance v0, Ljava/lang/NullPointerException;
 
     const-string v1, "Notifier cannot be null."
@@ -529,7 +527,7 @@
     throw v0
 
     .line 248
-    :cond_22
+    :cond_2
     new-instance v0, Ljava/lang/NullPointerException;
 
     const-string v1, "OpenType cannot be null."
@@ -539,7 +537,7 @@
     throw v0
 
     .line 245
-    :cond_2a
+    :cond_3
     new-instance v0, Ljava/lang/NullPointerException;
 
     const-string v1, "ContainerId cannot be null."
@@ -549,7 +547,7 @@
     throw v0
 
     .line 242
-    :cond_32
+    :cond_4
     new-instance v0, Ljava/lang/NullPointerException;
 
     const-string v1, "TagManager cannot be null."
@@ -560,7 +558,7 @@
 .end method
 
 .method private setTimer(J)V
-    .registers 6
+    .locals 3
     .param p1, "timeoutInMillis"    # J
 
     .line 387

@@ -34,38 +34,38 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 5
+    .locals 5
 
     .line 87
     new-instance v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
 
-    const-string v1, "CRASH"
+    const/4 v1, 0x0
 
-    const/4 v2, 0x0
+    const-string v2, "CRASH"
 
-    invoke-direct {v0, v1, v2}, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v2, v1}, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;->CRASH:Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
 
     .line 88
     new-instance v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
 
-    const-string v1, "MEMORY"
+    const/4 v2, 0x1
 
-    const/4 v3, 0x1
+    const-string v3, "MEMORY"
 
-    invoke-direct {v0, v1, v3}, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v3, v2}, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;->MEMORY:Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
 
     .line 89
     new-instance v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
 
-    const-string v1, "JOIN"
+    const/4 v3, 0x2
 
-    const/4 v4, 0x2
+    const-string v4, "JOIN"
 
-    invoke-direct {v0, v1, v4}, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v4, v3}, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;->JOIN:Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
 
@@ -74,17 +74,17 @@
 
     new-array v0, v0, [Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
 
-    sget-object v1, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;->CRASH:Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
+    sget-object v4, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;->CRASH:Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
 
-    aput-object v1, v0, v2
+    aput-object v4, v0, v1
 
     sget-object v1, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;->MEMORY:Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
 
-    aput-object v1, v0, v3
+    aput-object v1, v0, v2
 
     sget-object v1, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;->JOIN:Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
 
-    aput-object v1, v0, v4
+    aput-object v1, v0, v3
 
     sput-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;->$VALUES:[Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
 
@@ -92,7 +92,7 @@
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V
-    .registers 3
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
@@ -106,7 +106,7 @@
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
-    .registers 2
+    .locals 1
     .param p0, "name"    # Ljava/lang/String;
 
     .line 85
@@ -122,7 +122,7 @@
 .end method
 
 .method public static values()[Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
-    .registers 1
+    .locals 1
 
     .line 85
     sget-object v0, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;->$VALUES:[Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
@@ -139,14 +139,13 @@
 
 # virtual methods
 .method public valueOf()I
-    .registers 3
+    .locals 2
 
     .line 92
     invoke-virtual {p0}, Lcom/oneplus/screenshot/statistics/EventStatistics$Error;->ordinal()I
 
     move-result v0
 
-    # getter for: Lcom/oneplus/screenshot/statistics/EventStatistics;->APPBASE:I
     invoke-static {}, Lcom/oneplus/screenshot/statistics/EventStatistics;->access$000()I
 
     move-result v1

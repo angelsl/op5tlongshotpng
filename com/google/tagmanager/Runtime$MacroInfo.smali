@@ -78,7 +78,7 @@
 
 # direct methods
 .method public constructor <init>()V
-    .registers 2
+    .locals 1
 
     .line 51
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -125,7 +125,7 @@
 
 # virtual methods
 .method public addAddMacroForRule(Lcom/google/tagmanager/ResourceUtil$ExpandedRule;Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;)V
-    .registers 5
+    .locals 2
     .param p1, "rule"    # Lcom/google/tagmanager/ResourceUtil$ExpandedRule;
     .param p2, "function"    # Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
 
@@ -140,7 +140,7 @@
 
     .line 94
     .local v0, "result":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;>;"
-    if-nez v0, :cond_15
+    if-nez v0, :cond_0
 
     .line 95
     new-instance v1, Ljava/util/ArrayList;
@@ -155,7 +155,7 @@
     invoke-interface {v1, p1, v0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 98
-    :cond_15
+    :cond_0
     invoke-interface {v0, p2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     .line 99
@@ -163,7 +163,7 @@
 .end method
 
 .method public addAddMacroRuleNameForRule(Lcom/google/tagmanager/ResourceUtil$ExpandedRule;Ljava/lang/String;)V
-    .registers 5
+    .locals 2
     .param p1, "rule"    # Lcom/google/tagmanager/ResourceUtil$ExpandedRule;
     .param p2, "ruleName"    # Ljava/lang/String;
 
@@ -178,7 +178,7 @@
 
     .line 113
     .local v0, "result":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
-    if-nez v0, :cond_15
+    if-nez v0, :cond_0
 
     .line 114
     new-instance v1, Ljava/util/ArrayList;
@@ -193,7 +193,7 @@
     invoke-interface {v1, p1, v0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 117
-    :cond_15
+    :cond_0
     invoke-interface {v0, p2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     .line 118
@@ -201,7 +201,7 @@
 .end method
 
 .method public addRemoveMacroForRule(Lcom/google/tagmanager/ResourceUtil$ExpandedRule;Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;)V
-    .registers 5
+    .locals 2
     .param p1, "rule"    # Lcom/google/tagmanager/ResourceUtil$ExpandedRule;
     .param p2, "function"    # Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
 
@@ -216,7 +216,7 @@
 
     .line 136
     .local v0, "result":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;>;"
-    if-nez v0, :cond_15
+    if-nez v0, :cond_0
 
     .line 137
     new-instance v1, Ljava/util/ArrayList;
@@ -231,7 +231,7 @@
     invoke-interface {v1, p1, v0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 140
-    :cond_15
+    :cond_0
     invoke-interface {v0, p2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     .line 141
@@ -239,7 +239,7 @@
 .end method
 
 .method public addRemoveMacroRuleNameForRule(Lcom/google/tagmanager/ResourceUtil$ExpandedRule;Ljava/lang/String;)V
-    .registers 5
+    .locals 2
     .param p1, "rule"    # Lcom/google/tagmanager/ResourceUtil$ExpandedRule;
     .param p2, "ruleName"    # Ljava/lang/String;
 
@@ -254,7 +254,7 @@
 
     .line 156
     .local v0, "result":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
-    if-nez v0, :cond_15
+    if-nez v0, :cond_0
 
     .line 157
     new-instance v1, Ljava/util/ArrayList;
@@ -269,7 +269,7 @@
     invoke-interface {v1, p1, v0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 160
-    :cond_15
+    :cond_0
     invoke-interface {v0, p2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     .line 161
@@ -277,7 +277,7 @@
 .end method
 
 .method public addRule(Lcom/google/tagmanager/ResourceUtil$ExpandedRule;)V
-    .registers 3
+    .locals 1
     .param p1, "rule"    # Lcom/google/tagmanager/ResourceUtil$ExpandedRule;
 
     .line 63
@@ -289,7 +289,7 @@
 .end method
 
 .method public getAddMacroRuleNames()Ljava/util/Map;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -308,7 +308,7 @@
 .end method
 
 .method public getAddMacros()Ljava/util/Map;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -327,7 +327,7 @@
 .end method
 
 .method public getDefault()Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
-    .registers 2
+    .locals 1
 
     .line 166
     iget-object v0, p0, Lcom/google/tagmanager/Runtime$MacroInfo;->mDefault:Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
@@ -336,7 +336,7 @@
 .end method
 
 .method public getRemoveMacroRuleNames()Ljava/util/Map;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -355,7 +355,7 @@
 .end method
 
 .method public getRemoveMacros()Ljava/util/Map;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -374,7 +374,7 @@
 .end method
 
 .method public getRules()Ljava/util/Set;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -391,7 +391,7 @@
 .end method
 
 .method public setDefault(Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;)V
-    .registers 2
+    .locals 0
     .param p1, "def"    # Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
 
     .line 167

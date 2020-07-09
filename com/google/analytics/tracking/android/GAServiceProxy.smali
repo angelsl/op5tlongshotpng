@@ -80,7 +80,7 @@
 
 # direct methods
 .method constructor <init>(Landroid/content/Context;Lcom/google/analytics/tracking/android/AnalyticsThread;)V
-    .registers 5
+    .locals 2
     .param p1, "ctx"    # Landroid/content/Context;
     .param p2, "thread"    # Lcom/google/analytics/tracking/android/AnalyticsThread;
 
@@ -98,7 +98,7 @@
 .end method
 
 .method constructor <init>(Landroid/content/Context;Lcom/google/analytics/tracking/android/AnalyticsThread;Lcom/google/analytics/tracking/android/AnalyticsStore;Lcom/google/analytics/tracking/android/GoogleAnalytics;)V
-    .registers 7
+    .locals 2
     .param p1, "ctx"    # Landroid/content/Context;
     .param p2, "thread"    # Lcom/google/analytics/tracking/android/AnalyticsThread;
     .param p3, "store"    # Lcom/google/analytics/tracking/android/AnalyticsStore;
@@ -155,7 +155,7 @@
 .end method
 
 .method static synthetic access$000(Lcom/google/analytics/tracking/android/GAServiceProxy;)V
-    .registers 1
+    .locals 0
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/GAServiceProxy;
 
     .line 28
@@ -165,7 +165,7 @@
 .end method
 
 .method static synthetic access$1000(Lcom/google/analytics/tracking/android/GAServiceProxy;)Lcom/google/analytics/tracking/android/Clock;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/GAServiceProxy;
 
     .line 28
@@ -175,7 +175,7 @@
 .end method
 
 .method static synthetic access$1100(Lcom/google/analytics/tracking/android/GAServiceProxy;)V
-    .registers 1
+    .locals 0
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/GAServiceProxy;
 
     .line 28
@@ -185,7 +185,7 @@
 .end method
 
 .method static synthetic access$1200(Lcom/google/analytics/tracking/android/GAServiceProxy;)Ljava/util/Timer;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/GAServiceProxy;
 
     .line 28
@@ -195,7 +195,7 @@
 .end method
 
 .method static synthetic access$400(Lcom/google/analytics/tracking/android/GAServiceProxy;)Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/GAServiceProxy;
 
     .line 28
@@ -205,7 +205,7 @@
 .end method
 
 .method static synthetic access$500(Lcom/google/analytics/tracking/android/GAServiceProxy;)V
-    .registers 1
+    .locals 0
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/GAServiceProxy;
 
     .line 28
@@ -215,7 +215,7 @@
 .end method
 
 .method static synthetic access$600(Lcom/google/analytics/tracking/android/GAServiceProxy;)V
-    .registers 1
+    .locals 0
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/GAServiceProxy;
 
     .line 28
@@ -225,7 +225,7 @@
 .end method
 
 .method static synthetic access$700(Lcom/google/analytics/tracking/android/GAServiceProxy;)Ljava/util/Queue;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/GAServiceProxy;
 
     .line 28
@@ -235,7 +235,7 @@
 .end method
 
 .method static synthetic access$800(Lcom/google/analytics/tracking/android/GAServiceProxy;)J
-    .registers 3
+    .locals 2
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/GAServiceProxy;
 
     .line 28
@@ -245,7 +245,7 @@
 .end method
 
 .method static synthetic access$900(Lcom/google/analytics/tracking/android/GAServiceProxy;)J
-    .registers 3
+    .locals 2
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/GAServiceProxy;
 
     .line 28
@@ -255,24 +255,24 @@
 .end method
 
 .method private cancelTimer(Ljava/util/Timer;)Ljava/util/Timer;
-    .registers 3
+    .locals 1
     .param p1, "timer"    # Ljava/util/Timer;
 
     .line 188
-    if-eqz p1, :cond_5
+    if-eqz p1, :cond_0
 
     .line 189
     invoke-virtual {p1}, Ljava/util/Timer;->cancel()V
 
     .line 191
-    :cond_5
+    :cond_0
     const/4 v0, 0x0
 
     return-object v0
 .end method
 
 .method private clearAllTimers()V
-    .registers 2
+    .locals 1
 
     .line 195
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->reConnectTimer:Ljava/util/Timer;
@@ -306,30 +306,30 @@
 .end method
 
 .method private declared-synchronized connectToService()V
-    .registers 5
+    .locals 4
 
     monitor-enter p0
 
     .line 322
-    :try_start_1
+    :try_start_0
     iget-boolean v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->forceLocalDispatch:Z
 
-    if-nez v0, :cond_49
+    if-nez v0, :cond_0
 
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->client:Lcom/google/analytics/tracking/android/AnalyticsClient;
 
-    if-eqz v0, :cond_49
+    if-eqz v0, :cond_0
 
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->state:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->CONNECTED_LOCAL:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
-    :try_end_d
-    .catchall {:try_start_1 .. :try_end_d} :catchall_53
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    if-eq v0, v1, :cond_49
+    if-eq v0, v1, :cond_0
 
     .line 324
-    :try_start_f
+    :try_start_1
     iget v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->connectTries:I
 
     add-int/lit8 v0, v0, 0x1
@@ -377,19 +377,21 @@
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->client:Lcom/google/analytics/tracking/android/AnalyticsClient;
 
     invoke-interface {v0}, Lcom/google/analytics/tracking/android/AnalyticsClient;->connect()V
-    :try_end_3e
-    .catch Ljava/lang/SecurityException; {:try_start_f .. :try_end_3e} :catch_3f
-    .catchall {:try_start_f .. :try_end_3e} :catchall_53
+    :try_end_1
+    .catch Ljava/lang/SecurityException; {:try_start_1 .. :try_end_1} :catch_0
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    goto :goto_48
+    .line 334
+    goto :goto_0
 
     .line 331
-    :catch_3f
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceProxy;
+    :catch_0
     move-exception v0
 
     .line 332
     .local v0, "e":Ljava/lang/SecurityException;
-    :try_start_40
+    :try_start_2
     const-string v1, "security exception on connectToService"
 
     invoke-static {v1}, Lcom/google/analytics/tracking/android/Log;->w(Ljava/lang/String;)V
@@ -399,52 +401,50 @@
 
     .line 334
     .end local v0    # "e":Ljava/lang/SecurityException;
-    :goto_48
-    goto :goto_51
+    goto :goto_0
 
     .line 336
-    :cond_49
+    :cond_0
     const-string v0, "client not initialized."
 
     invoke-static {v0}, Lcom/google/analytics/tracking/android/Log;->w(Ljava/lang/String;)V
 
     .line 337
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->useStore()V
-    :try_end_51
-    .catchall {:try_start_40 .. :try_end_51} :catchall_53
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
     .line 339
-    :goto_51
+    :goto_0
     monitor-exit p0
 
     return-void
 
     .line 321
-    :catchall_53
+    :catchall_0
     move-exception v0
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceProxy;
     throw v0
 .end method
 
 .method private declared-synchronized disconnectFromService()V
-    .registers 3
+    .locals 2
 
     monitor-enter p0
 
     .line 342
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->client:Lcom/google/analytics/tracking/android/AnalyticsClient;
 
-    if-eqz v0, :cond_14
+    if-eqz v0, :cond_0
 
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->state:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->CONNECTED_SERVICE:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
-    if-ne v0, v1, :cond_14
+    if-ne v0, v1, :cond_0
 
     .line 343
     sget-object v0, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->PENDING_DISCONNECT:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
@@ -455,27 +455,27 @@
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->client:Lcom/google/analytics/tracking/android/AnalyticsClient;
 
     invoke-interface {v0}, Lcom/google/analytics/tracking/android/AnalyticsClient;->disconnect()V
-    :try_end_14
-    .catchall {:try_start_1 .. :try_end_14} :catchall_16
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 346
-    :cond_14
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceProxy;
+    :cond_0
     monitor-exit p0
 
     return-void
 
     .line 341
-    :catchall_16
+    :catchall_0
     move-exception v0
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceProxy;
     throw v0
 .end method
 
 .method private dispatchToStore()V
-    .registers 2
+    .locals 1
 
     .line 296
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->store:Lcom/google/analytics/tracking/android/AnalyticsStore;
@@ -492,7 +492,7 @@
 .end method
 
 .method private fireReconnectAttempt()V
-    .registers 5
+    .locals 4
 
     .line 397
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->reConnectTimer:Ljava/util/Timer;
@@ -530,12 +530,12 @@
 .end method
 
 .method private declared-synchronized sendQueue()V
-    .registers 9
+    .locals 8
 
     monitor-enter p0
 
     .line 241
-    :try_start_1
+    :try_start_0
     invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
 
     move-result-object v0
@@ -550,7 +550,7 @@
 
     move-result v0
 
-    if-nez v0, :cond_21
+    if-nez v0, :cond_0
 
     .line 242
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->thread:Lcom/google/analytics/tracking/android/AnalyticsThread;
@@ -564,8 +564,8 @@
     invoke-direct {v1, p0}, Lcom/google/analytics/tracking/android/GAServiceProxy$2;-><init>(Lcom/google/analytics/tracking/android/GAServiceProxy;)V
 
     invoke-virtual {v0, v1}, Ljava/util/concurrent/LinkedBlockingQueue;->add(Ljava/lang/Object;)Z
-    :try_end_1f
-    .catchall {:try_start_1 .. :try_end_1f} :catchall_e4
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 248
     monitor-exit p0
@@ -573,17 +573,18 @@
     return-void
 
     .line 250
-    :cond_21
-    :try_start_21
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceProxy;
+    :cond_0
+    :try_start_1
     iget-boolean v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->pendingClearHits:Z
 
-    if-eqz v0, :cond_28
+    if-eqz v0, :cond_1
 
     .line 251
     invoke-virtual {p0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->clearHits()V
 
     .line 253
-    :cond_28
+    :cond_1
     sget-object v0, Lcom/google/analytics/tracking/android/GAServiceProxy$3;->$SwitchMap$com$google$analytics$tracking$android$GAServiceProxy$ConnectState:[I
 
     iget-object v1, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->state:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
@@ -594,24 +595,50 @@
 
     aget v0, v0, v1
 
+    const/4 v1, 0x1
+
+    if-eq v0, v1, :cond_6
+
+    const/4 v1, 0x2
+
+    if-eq v0, v1, :cond_3
+
     const/4 v1, 0x6
 
-    if-eq v0, v1, :cond_d2
+    if-eq v0, v1, :cond_2
 
-    packed-switch v0, :pswitch_data_e8
+    goto/16 :goto_3
 
-    goto/16 :goto_e2
+    .line 281
+    :cond_2
+    const-string v0, "Need to reconnect"
 
-    .line 267
-    :goto_3a
-    :pswitch_3a
+    invoke-static {v0}, Lcom/google/analytics/tracking/android/Log;->v(Ljava/lang/String;)V
+
+    .line 282
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->queue:Ljava/util/Queue;
 
     invoke-interface {v0}, Ljava/util/Queue;->isEmpty()Z
 
     move-result v0
 
-    if-nez v0, :cond_87
+    if-nez v0, :cond_8
+
+    .line 283
+    invoke-direct {p0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->connectToService()V
+
+    goto/16 :goto_3
+
+    .line 267
+    :cond_3
+    :goto_0
+    iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->queue:Ljava/util/Queue;
+
+    invoke-interface {v0}, Ljava/util/Queue;->isEmpty()Z
+
+    move-result v0
+
+    if-nez v0, :cond_5
 
     .line 268
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->queue:Ljava/util/Queue;
@@ -647,7 +674,7 @@
 
     move-result v1
 
-    if-nez v1, :cond_7c
+    if-nez v1, :cond_4
 
     .line 271
     iget-object v2, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->client:Lcom/google/analytics/tracking/android/AnalyticsClient;
@@ -670,26 +697,28 @@
 
     invoke-interface/range {v2 .. v7}, Lcom/google/analytics/tracking/android/AnalyticsClient;->sendHit(Ljava/util/Map;JLjava/lang/String;Ljava/util/List;)V
 
-    goto :goto_81
+    goto :goto_1
 
     .line 274
-    :cond_7c
+    :cond_4
     const-string v1, "Dry run enabled. Hit not actually sent to service."
 
     invoke-static {v1}, Lcom/google/analytics/tracking/android/Log;->v(Ljava/lang/String;)V
 
     .line 276
-    :goto_81
+    :goto_1
     iget-object v1, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->queue:Ljava/util/Queue;
 
     invoke-interface {v1}, Ljava/util/Queue;->poll()Ljava/lang/Object;
 
     .line 277
+    nop
+
     .end local v0    # "hitParams":Lcom/google/analytics/tracking/android/GAServiceProxy$HitParams;
-    goto :goto_3a
+    goto :goto_0
 
     .line 278
-    :cond_87
+    :cond_5
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->clock:Lcom/google/analytics/tracking/android/Clock;
 
     invoke-interface {v0}, Lcom/google/analytics/tracking/android/Clock;->currentTimeMillis()J
@@ -699,18 +728,18 @@
     iput-wide v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->lastRequestTime:J
 
     .line 279
-    goto :goto_e2
+    goto :goto_3
 
     .line 255
-    :goto_90
-    :pswitch_90
+    :cond_6
+    :goto_2
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->queue:Ljava/util/Queue;
 
     invoke-interface {v0}, Ljava/util/Queue;->isEmpty()Z
 
     move-result v0
 
-    if-nez v0, :cond_ca
+    if-nez v0, :cond_7
 
     .line 256
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->queue:Ljava/util/Queue;
@@ -762,78 +791,49 @@
 
     .line 260
     .end local v0    # "hitParams":Lcom/google/analytics/tracking/android/GAServiceProxy$HitParams;
-    goto :goto_90
+    goto :goto_2
 
     .line 262
-    :cond_ca
+    :cond_7
     iget-boolean v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->pendingDispatch:Z
 
-    if-eqz v0, :cond_e2
+    if-eqz v0, :cond_8
 
     .line 263
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->dispatchToStore()V
-
-    goto :goto_e2
-
-    .line 281
-    :cond_d2
-    const-string v0, "Need to reconnect"
-
-    invoke-static {v0}, Lcom/google/analytics/tracking/android/Log;->v(Ljava/lang/String;)V
-
-    .line 282
-    iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->queue:Ljava/util/Queue;
-
-    invoke-interface {v0}, Ljava/util/Queue;->isEmpty()Z
-
-    move-result v0
-
-    if-nez v0, :cond_e2
-
-    .line 283
-    invoke-direct {p0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->connectToService()V
-    :try_end_e2
-    .catchall {:try_start_21 .. :try_end_e2} :catchall_e4
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 290
-    :cond_e2
-    :goto_e2
+    :cond_8
+    :goto_3
     monitor-exit p0
 
     return-void
 
     .line 240
-    :catchall_e4
+    :catchall_0
     move-exception v0
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceProxy;
     throw v0
-
-    nop
-
-    :pswitch_data_e8
-    .packed-switch 0x1
-        :pswitch_90
-        :pswitch_3a
-    .end packed-switch
 .end method
 
 .method private declared-synchronized useStore()V
-    .registers 4
+    .locals 3
 
     monitor-enter p0
 
     .line 304
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->state:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->CONNECTED_LOCAL:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
-    :try_end_5
-    .catchall {:try_start_1 .. :try_end_5} :catchall_34
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    if-ne v0, v1, :cond_9
+    if-ne v0, v1, :cond_0
 
     .line 305
     monitor-exit p0
@@ -841,8 +841,8 @@
     return-void
 
     .line 308
-    :cond_9
-    :try_start_9
+    :cond_0
+    :try_start_1
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->clearAllTimers()V
 
     .line 309
@@ -853,17 +853,18 @@
     .line 310
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->testStore:Lcom/google/analytics/tracking/android/AnalyticsStore;
 
-    if-eqz v0, :cond_1a
+    if-eqz v0, :cond_1
 
     .line 311
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->testStore:Lcom/google/analytics/tracking/android/AnalyticsStore;
 
     iput-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->store:Lcom/google/analytics/tracking/android/AnalyticsStore;
 
-    goto :goto_2b
+    goto :goto_0
 
     .line 313
-    :cond_1a
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceProxy;
+    :cond_1
     invoke-static {}, Lcom/google/analytics/tracking/android/GAServiceManager;->getInstance()Lcom/google/analytics/tracking/android/GAServiceManager;
 
     move-result-object v0
@@ -885,15 +886,15 @@
 
     .line 317
     .end local v0    # "instance":Lcom/google/analytics/tracking/android/GAServiceManager;
-    :goto_2b
+    :goto_0
     sget-object v0, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->CONNECTED_LOCAL:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
     iput-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->state:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
     .line 318
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->sendQueue()V
-    :try_end_32
-    .catchall {:try_start_9 .. :try_end_32} :catchall_34
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 319
     monitor-exit p0
@@ -901,19 +902,18 @@
     return-void
 
     .line 303
-    :catchall_34
+    :catchall_0
     move-exception v0
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceProxy;
     throw v0
 .end method
 
 
 # virtual methods
 .method public clearHits()V
-    .registers 5
+    .locals 4
 
     .line 125
     const-string v0, "clearHits called"
@@ -938,17 +938,21 @@
 
     const/4 v1, 0x0
 
-    packed-switch v0, :pswitch_data_30
+    const/4 v2, 0x1
+
+    if-eq v0, v2, :cond_1
+
+    const/4 v3, 0x2
+
+    if-eq v0, v3, :cond_0
 
     .line 137
-    const/4 v0, 0x1
+    iput-boolean v2, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->pendingClearHits:Z
 
-    iput-boolean v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->pendingClearHits:Z
-
-    goto :goto_2e
+    goto :goto_0
 
     .line 133
-    :pswitch_1c
+    :cond_0
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->client:Lcom/google/analytics/tracking/android/AnalyticsClient;
 
     invoke-interface {v0}, Lcom/google/analytics/tracking/android/AnalyticsClient;->clearHits()V
@@ -957,10 +961,10 @@
     iput-boolean v1, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->pendingClearHits:Z
 
     .line 135
-    goto :goto_2e
+    goto :goto_0
 
     .line 129
-    :pswitch_24
+    :cond_1
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->store:Lcom/google/analytics/tracking/android/AnalyticsStore;
 
     const-wide/16 v2, 0x0
@@ -974,31 +978,23 @@
     nop
 
     .line 140
-    :goto_2e
+    :goto_0
     return-void
-
-    nop
-
-    :pswitch_data_30
-    .packed-switch 0x1
-        :pswitch_24
-        :pswitch_1c
-    .end packed-switch
 .end method
 
 .method public createService()V
-    .registers 3
+    .locals 2
 
     .line 206
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->client:Lcom/google/analytics/tracking/android/AnalyticsClient;
 
-    if-eqz v0, :cond_5
+    if-eqz v0, :cond_0
 
     .line 207
     return-void
 
     .line 209
-    :cond_5
+    :cond_0
     new-instance v0, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;
 
     iget-object v1, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->ctx:Landroid/content/Context;
@@ -1015,19 +1011,19 @@
 .end method
 
 .method createService(Lcom/google/analytics/tracking/android/AnalyticsClient;)V
-    .registers 3
+    .locals 1
     .param p1, "client"    # Lcom/google/analytics/tracking/android/AnalyticsClient;
 
     .line 217
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->client:Lcom/google/analytics/tracking/android/AnalyticsClient;
 
-    if-eqz v0, :cond_5
+    if-eqz v0, :cond_0
 
     .line 218
     return-void
 
     .line 220
-    :cond_5
+    :cond_0
     iput-object p1, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->client:Lcom/google/analytics/tracking/android/AnalyticsClient;
 
     .line 221
@@ -1038,7 +1034,7 @@
 .end method
 
 .method public dispatch()V
-    .registers 3
+    .locals 3
 
     .line 111
     sget-object v0, Lcom/google/analytics/tracking/android/GAServiceProxy$3;->$SwitchMap$com$google$analytics$tracking$android$GAServiceProxy$ConnectState:[I
@@ -1051,46 +1047,42 @@
 
     aget v0, v0, v1
 
-    packed-switch v0, :pswitch_data_18
+    const/4 v1, 0x1
+
+    if-eq v0, v1, :cond_1
+
+    const/4 v2, 0x2
+
+    if-eq v0, v2, :cond_0
 
     .line 118
-    const/4 v0, 0x1
+    iput-boolean v1, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->pendingDispatch:Z
 
-    iput-boolean v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->pendingDispatch:Z
-
-    goto :goto_16
+    goto :goto_0
 
     .line 116
-    :pswitch_11
-    goto :goto_16
+    :cond_0
+    goto :goto_0
 
     .line 113
-    :pswitch_12
+    :cond_1
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->dispatchToStore()V
 
     .line 114
     nop
 
     .line 121
-    :goto_16
+    :goto_0
     return-void
-
-    nop
-
-    :pswitch_data_18
-    .packed-switch 0x1
-        :pswitch_12
-        :pswitch_11
-    .end packed-switch
 .end method
 
 .method public declared-synchronized onConnected()V
-    .registers 5
+    .locals 4
 
     monitor-enter p0
 
     .line 350
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->failedConnectTimer:Ljava/util/Timer;
 
     invoke-direct {p0, v0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->cancelTimer(Ljava/util/Timer;)Ljava/util/Timer;
@@ -1117,15 +1109,15 @@
     .line 355
     iget-boolean v1, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->pendingServiceDisconnect:Z
 
-    if-eqz v1, :cond_20
+    if-eqz v1, :cond_0
 
     .line 356
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->disconnectFromService()V
 
     .line 357
     iput-boolean v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->pendingServiceDisconnect:Z
-    :try_end_1e
-    .catchall {:try_start_1 .. :try_end_1e} :catchall_43
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 358
     monitor-exit p0
@@ -1133,8 +1125,9 @@
     return-void
 
     .line 361
-    :cond_20
-    :try_start_20
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceProxy;
+    :cond_0
+    :try_start_1
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->sendQueue()V
 
     .line 362
@@ -1167,8 +1160,8 @@
     iget-wide v2, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->idleTimeout:J
 
     invoke-virtual {v0, v1, v2, v3}, Ljava/util/Timer;->schedule(Ljava/util/TimerTask;J)V
-    :try_end_41
-    .catchall {:try_start_20 .. :try_end_41} :catchall_43
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 365
     monitor-exit p0
@@ -1176,24 +1169,23 @@
     return-void
 
     .line 349
-    :catchall_43
+    :catchall_0
     move-exception v0
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceProxy;
     throw v0
 .end method
 
 .method public declared-synchronized onConnectionFailed(ILandroid/content/Intent;)V
-    .registers 5
+    .locals 2
     .param p1, "errorCode"    # I
     .param p2, "resolution"    # Landroid/content/Intent;
 
     monitor-enter p0
 
     .line 386
-    :try_start_1
+    :try_start_0
     sget-object v0, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->PENDING_CONNECTION:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
     iput-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->state:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
@@ -1203,7 +1195,7 @@
 
     const/4 v1, 0x2
 
-    if-ge v0, v1, :cond_27
+    if-ge v0, v1, :cond_0
 
     .line 388
     new-instance v0, Ljava/lang/StringBuilder;
@@ -1229,10 +1221,11 @@
     .line 389
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->fireReconnectAttempt()V
 
-    goto :goto_43
+    goto :goto_0
 
     .line 391
-    :cond_27
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceProxy;
+    :cond_0
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -1255,11 +1248,11 @@
 
     .line 392
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->useStore()V
-    :try_end_43
-    .catchall {:try_start_1 .. :try_end_43} :catchall_45
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 394
-    :goto_43
+    :goto_0
     monitor-exit p0
 
     return-void
@@ -1267,27 +1260,26 @@
     .line 385
     .end local p1    # "errorCode":I
     .end local p2    # "resolution":Landroid/content/Intent;
-    :catchall_45
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceProxy;
     throw p1
 .end method
 
 .method public declared-synchronized onDisconnected()V
-    .registers 3
+    .locals 2
 
     monitor-enter p0
 
     .line 369
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->state:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->PENDING_DISCONNECT:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
-    if-ne v0, v1, :cond_14
+    if-ne v0, v1, :cond_0
 
     .line 370
     const-string v0, "Disconnected from service"
@@ -1302,10 +1294,11 @@
 
     iput-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->state:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
 
-    goto :goto_29
+    goto :goto_0
 
     .line 374
-    :cond_14
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceProxy;
+    :cond_0
     const-string v0, "Unexpected disconnect."
 
     invoke-static {v0}, Lcom/google/analytics/tracking/android/Log;->v(Ljava/lang/String;)V
@@ -1320,37 +1313,36 @@
 
     const/4 v1, 0x2
 
-    if-ge v0, v1, :cond_26
+    if-ge v0, v1, :cond_1
 
     .line 377
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->fireReconnectAttempt()V
 
-    goto :goto_29
+    goto :goto_0
 
     .line 379
-    :cond_26
+    :cond_1
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->useStore()V
-    :try_end_29
-    .catchall {:try_start_1 .. :try_end_29} :catchall_2b
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 382
-    :goto_29
+    :goto_0
     monitor-exit p0
 
     return-void
 
     .line 368
-    :catchall_2b
+    :catchall_0
     move-exception v0
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceProxy;
     throw v0
 .end method
 
 .method public putHit(Ljava/util/Map;JLjava/lang/String;Ljava/util/List;)V
-    .registers 14
+    .locals 8
     .param p2, "hitTimeInMilliseconds"    # J
     .param p4, "path"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
@@ -1401,7 +1393,7 @@
 .end method
 
 .method setClock(Lcom/google/analytics/tracking/android/Clock;)V
-    .registers 2
+    .locals 0
     .param p1, "clock"    # Lcom/google/analytics/tracking/android/Clock;
 
     .line 97
@@ -1412,17 +1404,17 @@
 .end method
 
 .method public declared-synchronized setForceLocalDispatch()V
-    .registers 4
+    .locals 3
 
     monitor-enter p0
 
     .line 144
-    :try_start_1
+    :try_start_0
     iget-boolean v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->forceLocalDispatch:Z
-    :try_end_3
-    .catchall {:try_start_1 .. :try_end_3} :catchall_2a
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    if-eqz v0, :cond_7
+    if-eqz v0, :cond_0
 
     .line 145
     monitor-exit p0
@@ -1430,8 +1422,8 @@
     return-void
 
     .line 148
-    :cond_7
-    :try_start_7
+    :cond_0
+    :try_start_1
     const-string v0, "setForceLocalDispatch called."
 
     invoke-static {v0}, Lcom/google/analytics/tracking/android/Log;->v(Ljava/lang/String;)V
@@ -1452,72 +1444,74 @@
 
     aget v1, v1, v2
 
-    packed-switch v1, :pswitch_data_2e
+    packed-switch v1, :pswitch_data_0
 
-    goto :goto_28
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceProxy;
+    goto :goto_0
 
     .line 176
-    :pswitch_1d
-    goto :goto_28
+    .restart local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceProxy;
+    :pswitch_0
+    goto :goto_0
 
     .line 173
-    :pswitch_1e
-    goto :goto_28
+    :pswitch_1
+    goto :goto_0
 
     .line 170
-    :pswitch_1f
-    goto :goto_28
+    :pswitch_2
+    goto :goto_0
 
     .line 165
-    :pswitch_20
+    :pswitch_3
     iput-boolean v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy;->pendingServiceDisconnect:Z
 
     .line 166
-    goto :goto_28
+    goto :goto_0
 
     .line 160
-    :pswitch_23
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceProxy;
+    :pswitch_4
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/GAServiceProxy;->disconnectFromService()V
-    :try_end_26
-    .catchall {:try_start_7 .. :try_end_26} :catchall_2a
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 161
-    goto :goto_28
+    goto :goto_0
 
     .line 158
-    :pswitch_27
+    :pswitch_5
     nop
 
     .line 179
-    :goto_28
+    :goto_0
     monitor-exit p0
 
     return-void
 
     .line 143
-    :catchall_2a
+    :catchall_0
     move-exception v0
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceProxy;
     throw v0
 
     nop
 
-    :pswitch_data_2e
+    :pswitch_data_0
     .packed-switch 0x1
-        :pswitch_27
-        :pswitch_23
-        :pswitch_20
-        :pswitch_1f
-        :pswitch_1e
-        :pswitch_1d
+        :pswitch_5
+        :pswitch_4
+        :pswitch_3
+        :pswitch_2
+        :pswitch_1
+        :pswitch_0
     .end packed-switch
 .end method
 
 .method public setIdleTimeout(J)V
-    .registers 3
+    .locals 0
     .param p1, "idleTimeout"    # J
 
     .line 229

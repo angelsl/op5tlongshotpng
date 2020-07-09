@@ -23,10 +23,10 @@
 
 # direct methods
 .method constructor <init>(Lcom/oneplus/screenshot/GlobalScreenshot;)V
-    .registers 2
+    .locals 0
     .param p1, "this$0"    # Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .line 1148
+    .line 1283
     iput-object p1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$4;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -37,13 +37,12 @@
 
 # virtual methods
 .method public run()V
-    .registers 3
+    .locals 2
 
-    .line 1151
+    .line 1286
     iget-object v0, p0, Lcom/oneplus/screenshot/GlobalScreenshot$4;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    # getter for: Lcom/oneplus/screenshot/GlobalScreenshot;->mScreenshotSelectorView:Lcom/oneplus/screenshot/ScreenshotSelectorView;
-    invoke-static {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$800(Lcom/oneplus/screenshot/GlobalScreenshot;)Lcom/oneplus/screenshot/ScreenshotSelectorView;
+    invoke-static {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$900(Lcom/oneplus/screenshot/GlobalScreenshot;)Lcom/oneplus/screenshot/ScreenshotSelectorView;
 
     move-result-object v0
 
@@ -51,16 +50,15 @@
 
     invoke-virtual {v0, v1}, Lcom/oneplus/screenshot/ScreenshotSelectorView;->setVisibility(I)V
 
-    .line 1152
+    .line 1287
     iget-object v0, p0, Lcom/oneplus/screenshot/GlobalScreenshot$4;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    # getter for: Lcom/oneplus/screenshot/GlobalScreenshot;->mScreenshotSelectorView:Lcom/oneplus/screenshot/ScreenshotSelectorView;
-    invoke-static {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$800(Lcom/oneplus/screenshot/GlobalScreenshot;)Lcom/oneplus/screenshot/ScreenshotSelectorView;
+    invoke-static {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$900(Lcom/oneplus/screenshot/GlobalScreenshot;)Lcom/oneplus/screenshot/ScreenshotSelectorView;
 
     move-result-object v0
 
     invoke-virtual {v0}, Lcom/oneplus/screenshot/ScreenshotSelectorView;->requestFocus()Z
 
-    .line 1153
+    .line 1288
     return-void
 .end method

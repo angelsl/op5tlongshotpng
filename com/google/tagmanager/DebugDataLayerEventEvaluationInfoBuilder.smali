@@ -12,7 +12,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/google/analytics/containertag/proto/Debug$DataLayerEventEvaluationInfo;)V
-    .registers 2
+    .locals 0
     .param p1, "dataLayerEvent"    # Lcom/google/analytics/containertag/proto/Debug$DataLayerEventEvaluationInfo;
 
     .line 16
@@ -28,7 +28,7 @@
 
 # virtual methods
 .method public createAndAddResult()Lcom/google/tagmanager/ResolvedFunctionCallBuilder;
-    .registers 4
+    .locals 3
 
     .line 22
     new-instance v0, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
@@ -39,9 +39,7 @@
     .local v0, "result":Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
     iget-object v1, p0, Lcom/google/tagmanager/DebugDataLayerEventEvaluationInfoBuilder;->dataLayerEvent:Lcom/google/analytics/containertag/proto/Debug$DataLayerEventEvaluationInfo;
 
-    iget-object v2, p0, Lcom/google/tagmanager/DebugDataLayerEventEvaluationInfoBuilder;->dataLayerEvent:Lcom/google/analytics/containertag/proto/Debug$DataLayerEventEvaluationInfo;
-
-    iget-object v2, v2, Lcom/google/analytics/containertag/proto/Debug$DataLayerEventEvaluationInfo;->results:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    iget-object v2, v1, Lcom/google/analytics/containertag/proto/Debug$DataLayerEventEvaluationInfo;->results:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
     invoke-static {v2, v0}, Lcom/google/tagmanager/ArrayUtils;->appendToArray([Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;)[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
@@ -58,7 +56,7 @@
 .end method
 
 .method public createRulesEvaluation()Lcom/google/tagmanager/RuleEvaluationStepInfoBuilder;
-    .registers 3
+    .locals 2
 
     .line 29
     iget-object v0, p0, Lcom/google/tagmanager/DebugDataLayerEventEvaluationInfoBuilder;->dataLayerEvent:Lcom/google/analytics/containertag/proto/Debug$DataLayerEventEvaluationInfo;

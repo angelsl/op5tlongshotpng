@@ -34,38 +34,38 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 5
+    .locals 5
 
     .line 11
     new-instance v0, Lcom/google/tagmanager/LoadCallback$Failure;
 
-    const-string v1, "NOT_AVAILABLE"
+    const/4 v1, 0x0
 
-    const/4 v2, 0x0
+    const-string v2, "NOT_AVAILABLE"
 
-    invoke-direct {v0, v1, v2}, Lcom/google/tagmanager/LoadCallback$Failure;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v2, v1}, Lcom/google/tagmanager/LoadCallback$Failure;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/tagmanager/LoadCallback$Failure;->NOT_AVAILABLE:Lcom/google/tagmanager/LoadCallback$Failure;
 
     .line 12
     new-instance v0, Lcom/google/tagmanager/LoadCallback$Failure;
 
-    const-string v1, "IO_ERROR"
+    const/4 v2, 0x1
 
-    const/4 v3, 0x1
+    const-string v3, "IO_ERROR"
 
-    invoke-direct {v0, v1, v3}, Lcom/google/tagmanager/LoadCallback$Failure;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v3, v2}, Lcom/google/tagmanager/LoadCallback$Failure;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/tagmanager/LoadCallback$Failure;->IO_ERROR:Lcom/google/tagmanager/LoadCallback$Failure;
 
     .line 13
     new-instance v0, Lcom/google/tagmanager/LoadCallback$Failure;
 
-    const-string v1, "SERVER_ERROR"
+    const/4 v3, 0x2
 
-    const/4 v4, 0x2
+    const-string v4, "SERVER_ERROR"
 
-    invoke-direct {v0, v1, v4}, Lcom/google/tagmanager/LoadCallback$Failure;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v4, v3}, Lcom/google/tagmanager/LoadCallback$Failure;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/tagmanager/LoadCallback$Failure;->SERVER_ERROR:Lcom/google/tagmanager/LoadCallback$Failure;
 
@@ -74,17 +74,17 @@
 
     new-array v0, v0, [Lcom/google/tagmanager/LoadCallback$Failure;
 
-    sget-object v1, Lcom/google/tagmanager/LoadCallback$Failure;->NOT_AVAILABLE:Lcom/google/tagmanager/LoadCallback$Failure;
+    sget-object v4, Lcom/google/tagmanager/LoadCallback$Failure;->NOT_AVAILABLE:Lcom/google/tagmanager/LoadCallback$Failure;
 
-    aput-object v1, v0, v2
+    aput-object v4, v0, v1
 
     sget-object v1, Lcom/google/tagmanager/LoadCallback$Failure;->IO_ERROR:Lcom/google/tagmanager/LoadCallback$Failure;
 
-    aput-object v1, v0, v3
+    aput-object v1, v0, v2
 
     sget-object v1, Lcom/google/tagmanager/LoadCallback$Failure;->SERVER_ERROR:Lcom/google/tagmanager/LoadCallback$Failure;
 
-    aput-object v1, v0, v4
+    aput-object v1, v0, v3
 
     sput-object v0, Lcom/google/tagmanager/LoadCallback$Failure;->$VALUES:[Lcom/google/tagmanager/LoadCallback$Failure;
 
@@ -92,7 +92,7 @@
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V
-    .registers 3
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
@@ -106,7 +106,7 @@
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Lcom/google/tagmanager/LoadCallback$Failure;
-    .registers 2
+    .locals 1
     .param p0, "name"    # Ljava/lang/String;
 
     .line 10
@@ -122,7 +122,7 @@
 .end method
 
 .method public static values()[Lcom/google/tagmanager/LoadCallback$Failure;
-    .registers 1
+    .locals 1
 
     .line 10
     sget-object v0, Lcom/google/tagmanager/LoadCallback$Failure;->$VALUES:[Lcom/google/tagmanager/LoadCallback$Failure;

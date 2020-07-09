@@ -27,7 +27,7 @@
 
 # direct methods
 .method private constructor <init>()V
-    .registers 3
+    .locals 2
 
     .line 312
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -45,7 +45,7 @@
 .end method
 
 .method synthetic constructor <init>(Lcom/google/tagmanager/ContainerOpener$1;)V
-    .registers 2
+    .locals 0
     .param p1, "x0"    # Lcom/google/tagmanager/ContainerOpener$1;
 
     .line 312
@@ -57,12 +57,12 @@
 
 # virtual methods
 .method public get()Lcom/google/tagmanager/Container;
-    .registers 2
+    .locals 1
 
     .line 319
     iget-boolean v0, p0, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;->mHaveGotten:Z
 
-    if-eqz v0, :cond_7
+    if-eqz v0, :cond_0
 
     .line 320
     iget-object v0, p0, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;->mContainer:Lcom/google/tagmanager/Container;
@@ -70,23 +70,23 @@
     return-object v0
 
     .line 324
-    :cond_7
-    :try_start_7
+    :cond_0
+    :try_start_0
     iget-object v0, p0, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;->mContainerIsReady:Ljava/util/concurrent/Semaphore;
 
     invoke-virtual {v0}, Ljava/util/concurrent/Semaphore;->acquire()V
-    :try_end_c
-    .catch Ljava/lang/InterruptedException; {:try_start_7 .. :try_end_c} :catch_d
+    :try_end_0
+    .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 327
-    goto :goto_e
+    goto :goto_0
 
     .line 325
-    :catch_d
+    :catch_0
     move-exception v0
 
     .line 328
-    :goto_e
+    :goto_0
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;->mHaveGotten:Z
@@ -98,12 +98,12 @@
 .end method
 
 .method public isDone()Z
-    .registers 2
+    .locals 1
 
     .line 339
     iget-boolean v0, p0, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;->mHaveGotten:Z
 
-    if-nez v0, :cond_f
+    if-nez v0, :cond_1
 
     iget-object v0, p0, Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;->mContainerIsReady:Ljava/util/concurrent/Semaphore;
 
@@ -111,25 +111,25 @@
 
     move-result v0
 
-    if-lez v0, :cond_d
+    if-lez v0, :cond_0
 
-    goto :goto_f
+    goto :goto_0
 
-    :cond_d
+    :cond_0
     const/4 v0, 0x0
 
-    goto :goto_10
+    goto :goto_1
 
-    :cond_f
-    :goto_f
+    :cond_1
+    :goto_0
     const/4 v0, 0x1
 
-    :goto_10
+    :goto_1
     return v0
 .end method
 
 .method public setContainer(Lcom/google/tagmanager/Container;)V
-    .registers 3
+    .locals 1
     .param p1, "container"    # Lcom/google/tagmanager/Container;
 
     .line 333

@@ -33,7 +33,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/Runtime;)V
-    .registers 2
+    .locals 0
 
     .line 205
     iput-object p1, p0, Lcom/google/tagmanager/Runtime$2;->this$0:Lcom/google/tagmanager/Runtime;
@@ -46,7 +46,7 @@
 
 # virtual methods
 .method public bridge synthetic sizeOf(Ljava/lang/Object;Ljava/lang/Object;)I
-    .registers 5
+    .locals 2
     .param p1, "x0"    # Ljava/lang/Object;
     .param p2, "x1"    # Ljava/lang/Object;
 
@@ -67,7 +67,7 @@
 .end method
 
 .method public sizeOf(Ljava/lang/String;Lcom/google/tagmanager/Runtime$CachedMacro;)I
-    .registers 5
+    .locals 2
     .param p1, "key"    # Ljava/lang/String;
     .param p2, "value"    # Lcom/google/tagmanager/Runtime$CachedMacro;
 

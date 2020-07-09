@@ -29,7 +29,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/HitSendingThreadImpl;Lcom/google/tagmanager/HitSendingThread;JLjava/lang/String;)V
-    .registers 6
+    .locals 0
 
     .line 71
     iput-object p1, p0, Lcom/google/tagmanager/HitSendingThreadImpl$1;->this$0:Lcom/google/tagmanager/HitSendingThreadImpl;
@@ -48,17 +48,16 @@
 
 # virtual methods
 .method public run()V
-    .registers 5
+    .locals 4
 
     .line 74
     iget-object v0, p0, Lcom/google/tagmanager/HitSendingThreadImpl$1;->this$0:Lcom/google/tagmanager/HitSendingThreadImpl;
 
-    # getter for: Lcom/google/tagmanager/HitSendingThreadImpl;->mUrlStore:Lcom/google/tagmanager/HitStore;
     invoke-static {v0}, Lcom/google/tagmanager/HitSendingThreadImpl;->access$000(Lcom/google/tagmanager/HitSendingThreadImpl;)Lcom/google/tagmanager/HitStore;
 
     move-result-object v0
 
-    if-nez v0, :cond_20
+    if-nez v0, :cond_0
 
     .line 75
     invoke-static {}, Lcom/google/tagmanager/ServiceManagerImpl;->getInstance()Lcom/google/tagmanager/ServiceManagerImpl;
@@ -69,7 +68,6 @@
     .local v0, "instance":Lcom/google/tagmanager/ServiceManagerImpl;
     iget-object v1, p0, Lcom/google/tagmanager/HitSendingThreadImpl$1;->this$0:Lcom/google/tagmanager/HitSendingThreadImpl;
 
-    # getter for: Lcom/google/tagmanager/HitSendingThreadImpl;->mContext:Landroid/content/Context;
     invoke-static {v1}, Lcom/google/tagmanager/HitSendingThreadImpl;->access$100(Lcom/google/tagmanager/HitSendingThreadImpl;)Landroid/content/Context;
 
     move-result-object v1
@@ -85,15 +83,13 @@
 
     move-result-object v2
 
-    # setter for: Lcom/google/tagmanager/HitSendingThreadImpl;->mUrlStore:Lcom/google/tagmanager/HitStore;
     invoke-static {v1, v2}, Lcom/google/tagmanager/HitSendingThreadImpl;->access$002(Lcom/google/tagmanager/HitSendingThreadImpl;Lcom/google/tagmanager/HitStore;)Lcom/google/tagmanager/HitStore;
 
     .line 79
     .end local v0    # "instance":Lcom/google/tagmanager/ServiceManagerImpl;
-    :cond_20
+    :cond_0
     iget-object v0, p0, Lcom/google/tagmanager/HitSendingThreadImpl$1;->this$0:Lcom/google/tagmanager/HitSendingThreadImpl;
 
-    # getter for: Lcom/google/tagmanager/HitSendingThreadImpl;->mUrlStore:Lcom/google/tagmanager/HitStore;
     invoke-static {v0}, Lcom/google/tagmanager/HitSendingThreadImpl;->access$000(Lcom/google/tagmanager/HitSendingThreadImpl;)Lcom/google/tagmanager/HitStore;
 
     move-result-object v0

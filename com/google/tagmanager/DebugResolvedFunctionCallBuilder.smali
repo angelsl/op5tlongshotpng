@@ -12,7 +12,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;)V
-    .registers 2
+    .locals 0
     .param p1, "functionCall"    # Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
     .line 15
@@ -28,7 +28,7 @@
 
 # virtual methods
 .method public createResolvedPropertyBuilder(Ljava/lang/String;)Lcom/google/tagmanager/ResolvedPropertyBuilder;
-    .registers 5
+    .locals 3
     .param p1, "key"    # Ljava/lang/String;
 
     .line 21
@@ -43,9 +43,7 @@
     .line 23
     iget-object v1, p0, Lcom/google/tagmanager/DebugResolvedFunctionCallBuilder;->resolvedFunctionCall:Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
-    iget-object v2, p0, Lcom/google/tagmanager/DebugResolvedFunctionCallBuilder;->resolvedFunctionCall:Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
-
-    iget-object v2, v2, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;->properties:[Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
+    iget-object v2, v1, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;->properties:[Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
 
     invoke-static {v2, v0}, Lcom/google/tagmanager/ArrayUtils;->appendToArray([Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;)[Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
 
@@ -62,7 +60,7 @@
 .end method
 
 .method public setFunctionResult(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)V
-    .registers 4
+    .locals 2
     .param p1, "functionResult"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 30

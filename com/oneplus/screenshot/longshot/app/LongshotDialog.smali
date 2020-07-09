@@ -1,5 +1,5 @@
 .class public Lcom/oneplus/screenshot/longshot/app/LongshotDialog;
-.super Landroid/app/Dialog;
+.super Ljava/lang/Object;
 .source "LongshotDialog.java"
 
 # interfaces
@@ -27,205 +27,256 @@
 
 .field private mContext:Landroid/content/Context;
 
+.field private mDecorView:Landroid/widget/FrameLayout;
+
+.field private mLayoutParams:Landroid/view/WindowManager$LayoutParams;
+
 .field private mOnDismissListener:Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;
 
 .field private mOnShowListener:Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnShowListener;
 
 .field private mReceiver:Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;
 
+.field private mShowing:Z
+
+.field private mWindowManager:Landroid/view/WindowManager;
+
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;)V
-    .registers 4
+    .locals 2
     .param p1, "context"    # Landroid/content/Context;
 
-    .line 42
-    const v0, 0x7f0d000d
+    .line 43
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    invoke-direct {p0, p1, v0}, Landroid/app/Dialog;-><init>(Landroid/content/Context;I)V
-
-    .line 31
+    .line 26
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mOnShowListener:Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnShowListener;
 
-    .line 32
+    .line 27
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mOnDismissListener:Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;
 
-    .line 33
+    .line 28
     const/4 v1, 0x0
 
     iput v1, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mContentLayout:I
 
-    .line 34
+    .line 29
     iput-boolean v1, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mContentChanged:Z
 
-    .line 35
+    .line 30
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mContext:Landroid/content/Context;
 
-    .line 36
+    .line 31
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mReceiver:Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;
 
-    .line 43
+    .line 35
+    iput-boolean v1, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mShowing:Z
+
+    .line 45
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mContext:Landroid/content/Context;
 
-    .line 44
+    .line 47
+    invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->onCreate()V
+
+    .line 49
     return-void
 .end method
 
 .method private initWindow()V
-    .registers 5
+    .locals 9
 
-    .line 155
-    const v0, 0x1830500
+    .line 196
+    new-instance v8, Landroid/view/WindowManager$LayoutParams;
 
-    .line 161
-    .local v0, "flags":I
-    invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->getWindow()Landroid/view/Window;
+    const/4 v1, -0x1
 
-    move-result-object v1
+    const/4 v2, -0x1
 
-    .line 162
-    .local v1, "window":Landroid/view/Window;
-    invoke-virtual {v1}, Landroid/view/Window;->getAttributes()Landroid/view/WindowManager$LayoutParams;
-
-    move-result-object v2
-
-    .line 164
-    .local v2, "lp":Landroid/view/WindowManager$LayoutParams;
-    const/4 v3, 0x1
-
-    iput v3, v2, Landroid/view/WindowManager$LayoutParams;->layoutInDisplayCutoutMode:I
-
-    .line 166
-    const/16 v3, 0x33
-
-    iput v3, v2, Landroid/view/WindowManager$LayoutParams;->gravity:I
-
-    .line 167
-    const/4 v3, -0x3
-
-    iput v3, v2, Landroid/view/WindowManager$LayoutParams;->format:I
-
-    .line 168
-    const/16 v3, 0x7f4
-
-    iput v3, v2, Landroid/view/WindowManager$LayoutParams;->type:I
-
-    .line 169
-    iput v0, v2, Landroid/view/WindowManager$LayoutParams;->flags:I
-
-    .line 170
     const/4 v3, 0x0
 
-    iput v3, v2, Landroid/view/WindowManager$LayoutParams;->windowAnimations:I
+    const/4 v4, 0x0
 
-    .line 171
-    invoke-virtual {v1, v2}, Landroid/view/Window;->setAttributes(Landroid/view/WindowManager$LayoutParams;)V
+    const/16 v5, 0x7f4
 
-    .line 172
+    const v6, 0x18a0510
+
+    const/4 v7, -0x3
+
+    move-object v0, v8
+
+    invoke-direct/range {v0 .. v7}, Landroid/view/WindowManager$LayoutParams;-><init>(IIIIIII)V
+
+    iput-object v8, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mLayoutParams:Landroid/view/WindowManager$LayoutParams;
+
+    .line 209
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mLayoutParams:Landroid/view/WindowManager$LayoutParams;
+
+    const/16 v1, 0x33
+
+    iput v1, v0, Landroid/view/WindowManager$LayoutParams;->gravity:I
+
+    .line 210
+    const/4 v1, 0x0
+
+    iput v1, v0, Landroid/view/WindowManager$LayoutParams;->windowAnimations:I
+
+    .line 211
+    new-instance v0, Landroid/widget/FrameLayout;
+
+    iget-object v1, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mContext:Landroid/content/Context;
+
+    invoke-direct {v0, v1}, Landroid/widget/FrameLayout;-><init>(Landroid/content/Context;)V
+
+    iput-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mDecorView:Landroid/widget/FrameLayout;
+
+    .line 212
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mWindowManager:Landroid/view/WindowManager;
+
+    iget-object v1, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mDecorView:Landroid/widget/FrameLayout;
+
+    iget-object v2, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mLayoutParams:Landroid/view/WindowManager$LayoutParams;
+
+    invoke-interface {v0, v1, v2}, Landroid/view/WindowManager;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 214
     return-void
 .end method
 
 
 # virtual methods
 .method public dismiss()V
-    .registers 3
+    .locals 2
 
-    .line 106
+    .line 139
     const-string v0, "Longshot.Dialog"
 
     const-string v1, "dismiss"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 108
-    invoke-super {p0}, Landroid/app/Dialog;->dismiss()V
-
-    .line 109
+    .line 142
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mOnDismissListener:Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;
 
-    if-eqz v0, :cond_14
+    if-eqz v0, :cond_0
 
-    .line 110
-    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mOnDismissListener:Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;
-
+    .line 143
     const/4 v1, 0x0
 
     invoke-interface {v0, v1}, Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;->onDismiss(I)V
 
-    .line 112
-    :cond_14
+    .line 146
+    :cond_0
     return-void
 .end method
 
-.method public hide()V
-    .registers 3
+.method public getContext()Landroid/content/Context;
+    .locals 1
 
-    .line 100
+    .line 240
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mContext:Landroid/content/Context;
+
+    return-object v0
+.end method
+
+.method public getDecorView()Landroid/widget/FrameLayout;
+    .locals 1
+
+    .line 217
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mDecorView:Landroid/widget/FrameLayout;
+
+    return-object v0
+.end method
+
+.method public hide()V
+    .locals 2
+
+    .line 130
     const-string v0, "Longshot.Dialog"
 
     const-string v1, "hide"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 101
-    invoke-super {p0}, Landroid/app/Dialog;->hide()V
+    .line 133
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mDecorView:Landroid/widget/FrameLayout;
 
-    .line 102
+    const/16 v1, 0x8
+
+    invoke-virtual {v0, v1}, Landroid/widget/FrameLayout;->setVisibility(I)V
+
+    .line 135
     return-void
 .end method
 
-.method public onCloseSystemDialogs()V
-    .registers 3
+.method public isShowing()Z
+    .locals 1
 
-    .line 117
+    .line 244
+    iget-boolean v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mShowing:Z
+
+    return v0
+.end method
+
+.method public onCloseSystemDialogs()V
+    .locals 2
+
+    .line 152
     const-string v0, "Longshot.Dialog"
 
     const-string v1, "onCloseSystemDialogs"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 118
+    .line 154
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mOnDismissListener:Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;
 
-    if-eqz v0, :cond_12
+    if-eqz v0, :cond_0
 
-    .line 119
-    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mOnDismissListener:Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;
-
+    .line 155
     const/16 v1, 0x7d0
 
     invoke-interface {v0, v1}, Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;->onDismiss(I)V
 
-    .line 122
-    :cond_12
+    .line 158
+    :cond_0
     return-void
 .end method
 
-.method protected onCreate(Landroid/os/Bundle;)V
-    .registers 4
-    .param p1, "savedInstanceState"    # Landroid/os/Bundle;
+.method protected onCreate()V
+    .locals 2
 
-    .line 51
+    .line 56
     const-string v0, "Longshot.Dialog"
 
     const-string v1, "onCreate"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 53
-    invoke-super {p0, p1}, Landroid/app/Dialog;->onCreate(Landroid/os/Bundle;)V
+    .line 59
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mContext:Landroid/content/Context;
 
-    .line 54
+    const-string v1, "window"
+
+    invoke-virtual {v0, v1}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/view/WindowManager;
+
+    iput-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mWindowManager:Landroid/view/WindowManager;
+
+    .line 61
     invoke-direct {p0}, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->initWindow()V
 
-    .line 55
+    .line 62
     iget v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mContentLayout:I
 
     invoke-virtual {p0, v0}, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->setContentView(I)V
 
-    .line 57
+    .line 64
     new-instance v0, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;
 
     iget-object v1, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mContext:Landroid/content/Context;
@@ -234,235 +285,315 @@
 
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mReceiver:Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;
 
-    .line 58
+    .line 66
     return-void
 .end method
 
 .method public onRinging()V
-    .registers 3
+    .locals 2
 
-    .line 127
+    .line 164
     const-string v0, "Longshot.Dialog"
 
     const-string v1, "onRinging"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 128
+    .line 166
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mOnDismissListener:Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;
 
-    if-eqz v0, :cond_12
+    if-eqz v0, :cond_0
 
-    .line 129
-    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mOnDismissListener:Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;
-
+    .line 167
     const/16 v1, 0x3e8
 
     invoke-interface {v0, v1}, Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;->onDismiss(I)V
 
-    .line 131
-    :cond_12
+    .line 169
+    :cond_0
     return-void
 .end method
 
-.method protected onStop()V
-    .registers 3
+.method public onStop()V
+    .locals 2
 
-    .line 62
+    .line 69
+    iget-boolean v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mShowing:Z
+
+    if-eqz v0, :cond_1
+
+    .line 70
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mShowing:Z
+
+    .line 72
     const-string v0, "Longshot.Dialog"
 
     const-string v1, "onStop"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 64
-    invoke-super {p0}, Landroid/app/Dialog;->onStop()V
-
-    .line 65
+    .line 74
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mReceiver:Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;
 
-    if-eqz v0, :cond_13
+    if-eqz v0, :cond_0
 
-    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mReceiver:Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;
-
+    .line 75
     invoke-virtual {v0}, Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;->unregister()V
 
-    .line 66
-    :cond_13
+    .line 76
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mReceiver:Lcom/oneplus/screenshot/service/GlobalBroadcastReceiver;
 
-    .line 67
+    .line 78
+    :cond_0
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mDecorView:Landroid/widget/FrameLayout;
+
+    invoke-virtual {v0}, Landroid/widget/FrameLayout;->isAttachedToWindow()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    .line 79
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mDecorView:Landroid/widget/FrameLayout;
+
+    invoke-virtual {v0}, Landroid/widget/FrameLayout;->removeAllViews()V
+
+    .line 80
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mWindowManager:Landroid/view/WindowManager;
+
+    iget-object v1, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mDecorView:Landroid/widget/FrameLayout;
+
+    invoke-interface {v0, v1}, Landroid/view/WindowManager;->removeView(Landroid/view/View;)V
+
+    .line 83
+    :cond_1
     return-void
 .end method
 
 .method public setContent(I)V
-    .registers 3
+    .locals 1
     .param p1, "layoutRes"    # I
 
-    .line 138
+    .line 176
     iget v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mContentLayout:I
 
-    if-eq v0, p1, :cond_9
+    if-eq v0, p1, :cond_0
 
-    .line 139
+    .line 177
     iput p1, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mContentLayout:I
 
-    .line 140
+    .line 178
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mContentChanged:Z
 
-    .line 142
-    :cond_9
+    .line 180
+    :cond_0
     return-void
 .end method
 
 .method public setContentView(I)V
-    .registers 3
+    .locals 2
     .param p1, "layoutResID"    # I
 
-    .line 71
+    .line 86
     iget-boolean v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mContentChanged:Z
 
-    if-eqz v0, :cond_a
+    if-eqz v0, :cond_0
 
-    .line 72
+    .line 87
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mContentChanged:Z
 
-    .line 73
-    invoke-super {p0, p1}, Landroid/app/Dialog;->setContentView(I)V
+    .line 89
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mDecorView:Landroid/widget/FrameLayout;
 
-    .line 75
-    :cond_a
+    invoke-virtual {v0}, Landroid/widget/FrameLayout;->removeAllViews()V
+
+    .line 90
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mContext:Landroid/content/Context;
+
+    invoke-static {v0}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
+
+    move-result-object v0
+
+    .line 91
+    .local v0, "lf":Landroid/view/LayoutInflater;
+    iget-object v1, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mDecorView:Landroid/widget/FrameLayout;
+
+    invoke-virtual {v0, p1, v1}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
+
+    .line 94
+    .end local v0    # "lf":Landroid/view/LayoutInflater;
+    :cond_0
     return-void
 .end method
 
 .method public setOnDismissListener(Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;)V
-    .registers 2
+    .locals 0
     .param p1, "listener"    # Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;
 
-    .line 149
+    .line 187
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mOnDismissListener:Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnDismissListener;
 
-    .line 150
+    .line 188
     return-void
 .end method
 
 .method public setOnShowListener(Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnShowListener;)V
-    .registers 2
+    .locals 0
     .param p1, "listener"    # Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnShowListener;
 
-    .line 145
+    .line 183
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mOnShowListener:Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnShowListener;
 
-    .line 146
+    .line 184
     return-void
 .end method
 
-.method public show()V
-    .registers 4
+.method public setTitle(I)V
+    .locals 1
+    .param p1, "titleId"    # I
 
-    .line 79
-    const-string v0, "Longshot.Dialog"
+    .line 248
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mContext:Landroid/content/Context;
 
-    new-instance v1, Ljava/lang/StringBuilder;
+    invoke-virtual {v0, p1}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+    move-result-object v0
 
-    const-string v2, "show ,"
+    invoke-virtual {p0, v0}, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->setTitle(Ljava/lang/CharSequence;)V
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    sget-boolean v2, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_LONGSHOT_RUNNING:Z
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 80
-    sget-boolean v0, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_LONGSHOT_RUNNING:Z
-
-    if-nez v0, :cond_1d
-
+    .line 249
     return-void
+.end method
 
-    .line 82
-    :cond_1d
+.method public setTitle(Ljava/lang/CharSequence;)V
+    .locals 3
+    .param p1, "title"    # Ljava/lang/CharSequence;
+
+    .line 253
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->isShowing()Z
 
     move-result v0
 
-    if-eqz v0, :cond_41
+    if-eqz v0, :cond_0
 
-    .line 83
+    .line 254
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mLayoutParams:Landroid/view/WindowManager$LayoutParams;
+
+    invoke-virtual {v0, p1}, Landroid/view/WindowManager$LayoutParams;->setTitle(Ljava/lang/CharSequence;)V
+
+    .line 255
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mWindowManager:Landroid/view/WindowManager;
+
+    iget-object v1, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mDecorView:Landroid/widget/FrameLayout;
+
+    iget-object v2, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mLayoutParams:Landroid/view/WindowManager$LayoutParams;
+
+    invoke-interface {v0, v1, v2}, Landroid/view/WindowManager;->updateViewLayout(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 258
+    :cond_0
+    return-void
+.end method
+
+.method public show()V
+    .locals 2
+
+    .line 97
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "show ,"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    sget-boolean v1, Lcom/oneplus/screenshot/longshot/util/Configs;->isLongshotRunning:Z
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    const-string v1, "Longshot.Dialog"
+
+    invoke-static {v1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 98
+    sget-boolean v0, Lcom/oneplus/screenshot/longshot/util/Configs;->isLongshotRunning:Z
+
+    if-nez v0, :cond_0
+
+    .line 99
+    return-void
+
+    .line 102
+    :cond_0
+    iget-boolean v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mShowing:Z
+
+    if-eqz v0, :cond_1
+
+    .line 103
     iget v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mContentLayout:I
 
     invoke-virtual {p0, v0}, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->setContentView(I)V
 
-    .line 84
-    invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->getWindow()Landroid/view/Window;
+    .line 105
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mDecorView:Landroid/widget/FrameLayout;
 
-    move-result-object v0
-
-    invoke-virtual {v0}, Landroid/view/Window;->getDecorView()Landroid/view/View;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Landroid/view/View;->getVisibility()I
+    invoke-virtual {v0}, Landroid/widget/FrameLayout;->getVisibility()I
 
     move-result v0
 
-    if-eqz v0, :cond_4e
+    if-eqz v0, :cond_2
 
-    .line 85
-    const-string v0, "Longshot.Dialog"
+    .line 108
+    const-string v0, "show : GONE=>VISIBLE"
 
-    const-string v1, "show : GONE=>VISIBLE"
+    invoke-static {v1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    .line 111
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mDecorView:Landroid/widget/FrameLayout;
 
-    .line 86
-    invoke-super {p0}, Landroid/app/Dialog;->show()V
+    const/4 v1, 0x0
 
-    goto :goto_4e
+    invoke-virtual {v0, v1}, Landroid/widget/FrameLayout;->setVisibility(I)V
 
-    .line 89
-    :cond_41
-    const-string v0, "Longshot.Dialog"
+    goto :goto_0
 
-    const-string v1, "show : CREATE"
+    .line 116
+    :cond_1
+    const-string v0, "show : CREATE"
 
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 90
+    .line 118
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mContentChanged:Z
 
-    .line 91
-    invoke-super {p0}, Landroid/app/Dialog;->show()V
+    .line 120
+    iput-boolean v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mShowing:Z
 
-    .line 93
-    :cond_4e
-    :goto_4e
+    .line 123
+    :cond_2
+    :goto_0
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mOnShowListener:Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnShowListener;
 
-    if-eqz v0, :cond_57
+    if-eqz v0, :cond_3
 
-    .line 94
-    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/LongshotDialog;->mOnShowListener:Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnShowListener;
+    .line 124
+    invoke-interface {v0, p0}, Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnShowListener;->onShow(Lcom/oneplus/screenshot/longshot/app/LongshotDialog;)V
 
-    invoke-interface {v0, p0}, Lcom/oneplus/screenshot/longshot/app/LongshotDialog$OnShowListener;->onShow(Landroid/app/Dialog;)V
-
-    .line 96
-    :cond_57
+    .line 126
+    :cond_3
     return-void
 .end method

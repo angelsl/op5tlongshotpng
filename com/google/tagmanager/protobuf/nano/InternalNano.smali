@@ -5,7 +5,7 @@
 
 # direct methods
 .method public constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 43
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -14,7 +14,7 @@
 .end method
 
 .method public static final bytesDefaultValue(Ljava/lang/String;)[B
-    .registers 4
+    .locals 3
     .param p0, "bytes"    # Ljava/lang/String;
 
     .line 93
@@ -24,13 +24,13 @@
     invoke-virtual {p0, v0}, Ljava/lang/String;->getBytes(Ljava/lang/String;)[B
 
     move-result-object v0
-    :try_end_6
-    .catch Ljava/io/UnsupportedEncodingException; {:try_start_0 .. :try_end_6} :catch_7
+    :try_end_0
+    .catch Ljava/io/UnsupportedEncodingException; {:try_start_0 .. :try_end_0} :catch_0
 
     return-object v0
 
     .line 94
-    :catch_7
+    :catch_0
     move-exception v0
 
     .line 97
@@ -45,7 +45,7 @@
 .end method
 
 .method public static final copyFromUtf8(Ljava/lang/String;)[B
-    .registers 4
+    .locals 3
     .param p0, "text"    # Ljava/lang/String;
 
     .line 108
@@ -55,13 +55,13 @@
     invoke-virtual {p0, v0}, Ljava/lang/String;->getBytes(Ljava/lang/String;)[B
 
     move-result-object v0
-    :try_end_6
-    .catch Ljava/io/UnsupportedEncodingException; {:try_start_0 .. :try_end_6} :catch_7
+    :try_end_0
+    .catch Ljava/io/UnsupportedEncodingException; {:try_start_0 .. :try_end_0} :catch_0
 
     return-object v0
 
     .line 109
-    :catch_7
+    :catch_0
     move-exception v0
 
     .line 110
@@ -76,7 +76,7 @@
 .end method
 
 .method public static final stringDefaultValue(Ljava/lang/String;)Ljava/lang/String;
-    .registers 4
+    .locals 3
     .param p0, "bytes"    # Ljava/lang/String;
 
     .line 74
@@ -92,13 +92,13 @@
     const-string v2, "UTF-8"
 
     invoke-direct {v0, v1, v2}, Ljava/lang/String;-><init>([BLjava/lang/String;)V
-    :try_end_d
-    .catch Ljava/io/UnsupportedEncodingException; {:try_start_0 .. :try_end_d} :catch_e
+    :try_end_0
+    .catch Ljava/io/UnsupportedEncodingException; {:try_start_0 .. :try_end_0} :catch_0
 
     return-object v0
 
     .line 75
-    :catch_e
+    :catch_0
     move-exception v0
 
     .line 78

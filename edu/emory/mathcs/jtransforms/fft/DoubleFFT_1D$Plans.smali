@@ -34,36 +34,36 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 5
+    .locals 5
 
     .line 6541
     new-instance v0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;
 
-    const-string v1, "SPLIT_RADIX"
+    const/4 v1, 0x0
 
-    const/4 v2, 0x0
+    const-string v2, "SPLIT_RADIX"
 
-    invoke-direct {v0, v1, v2}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v2, v1}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;->SPLIT_RADIX:Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;
 
     new-instance v0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;
 
-    const-string v1, "MIXED_RADIX"
+    const/4 v2, 0x1
 
-    const/4 v3, 0x1
+    const-string v3, "MIXED_RADIX"
 
-    invoke-direct {v0, v1, v3}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v3, v2}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;->MIXED_RADIX:Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;
 
     new-instance v0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;
 
-    const-string v1, "BLUESTEIN"
+    const/4 v3, 0x2
 
-    const/4 v4, 0x2
+    const-string v4, "BLUESTEIN"
 
-    invoke-direct {v0, v1, v4}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v4, v3}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;->BLUESTEIN:Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;
 
@@ -72,17 +72,17 @@
 
     new-array v0, v0, [Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;
 
-    sget-object v1, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;->SPLIT_RADIX:Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;
+    sget-object v4, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;->SPLIT_RADIX:Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;
 
-    aput-object v1, v0, v2
+    aput-object v4, v0, v1
 
     sget-object v1, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;->MIXED_RADIX:Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;
 
-    aput-object v1, v0, v3
+    aput-object v1, v0, v2
 
     sget-object v1, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;->BLUESTEIN:Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;
 
-    aput-object v1, v0, v4
+    aput-object v1, v0, v3
 
     sput-object v0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;->$VALUES:[Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;
 
@@ -90,7 +90,7 @@
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V
-    .registers 3
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
@@ -104,7 +104,7 @@
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;
-    .registers 2
+    .locals 1
     .param p0, "name"    # Ljava/lang/String;
 
     .line 6540
@@ -120,7 +120,7 @@
 .end method
 
 .method public static values()[Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;
-    .registers 1
+    .locals 1
 
     .line 6540
     sget-object v0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;->$VALUES:[Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$Plans;

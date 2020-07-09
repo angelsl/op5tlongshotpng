@@ -3,12 +3,12 @@
 .source "GlobalScreenshot.java"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Landroid/view/animation/Interpolator;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/oneplus/screenshot/GlobalScreenshot;->onClick(Landroid/view/View;)V
+    value = Lcom/oneplus/screenshot/GlobalScreenshot;->createScreenshotDropOutAnimation(IIZZ)Landroid/animation/ValueAnimator;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,18 +20,14 @@
 # instance fields
 .field final synthetic this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-.field final synthetic val$v:Landroid/view/View;
-
 
 # direct methods
-.method constructor <init>(Lcom/oneplus/screenshot/GlobalScreenshot;Landroid/view/View;)V
-    .registers 3
+.method constructor <init>(Lcom/oneplus/screenshot/GlobalScreenshot;)V
+    .locals 0
     .param p1, "this$0"    # Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .line 1676
+    .line 1756
     iput-object p1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$17;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
-
-    iput-object p2, p0, Lcom/oneplus/screenshot/GlobalScreenshot$17;->val$v:Landroid/view/View;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -40,20 +36,41 @@
 
 
 # virtual methods
-.method public run()V
-    .registers 3
+.method public getInterpolation(F)F
+    .locals 7
+    .param p1, "x"    # F
 
-    .line 1679
-    iget-object v0, p0, Lcom/oneplus/screenshot/GlobalScreenshot$17;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
+    .line 1759
+    const v0, 0x3f5c4771
 
-    iget-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$17;->val$v:Landroid/view/View;
+    cmpg-float v1, p1, v0
 
-    invoke-virtual {v1}, Landroid/view/View;->getContext()Landroid/content/Context;
+    const/high16 v2, 0x3f800000    # 1.0f
 
-    move-result-object v1
+    if-gez v1, :cond_0
 
-    invoke-static {v0, v1}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$2600(Lcom/oneplus/screenshot/GlobalScreenshot;Landroid/content/Context;)V
+    .line 1761
+    const-wide/high16 v3, 0x3ff0000000000000L    # 1.0
 
-    .line 1680
-    return-void
+    div-float v0, p1, v0
+
+    sub-float/2addr v2, v0
+
+    float-to-double v0, v2
+
+    const-wide/high16 v5, 0x4000000000000000L    # 2.0
+
+    invoke-static {v0, v1, v5, v6}, Ljava/lang/Math;->pow(DD)D
+
+    move-result-wide v0
+
+    sub-double/2addr v3, v0
+
+    double-to-float v0, v3
+
+    return v0
+
+    .line 1763
+    :cond_0
+    return v2
 .end method

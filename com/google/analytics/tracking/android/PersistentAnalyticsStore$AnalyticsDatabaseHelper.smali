@@ -27,7 +27,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;Landroid/content/Context;Ljava/lang/String;)V
-    .registers 6
+    .locals 2
     .param p2, "context"    # Landroid/content/Context;
     .param p3, "databaseName"    # Ljava/lang/String;
 
@@ -51,7 +51,7 @@
 .end method
 
 .method private tablePresent(Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase;)Z
-    .registers 13
+    .locals 10
     .param p1, "table"    # Ljava/lang/String;
     .param p2, "db"    # Landroid/database/sqlite/SQLiteDatabase;
 
@@ -62,7 +62,7 @@
     .local v0, "cursor":Landroid/database/Cursor;
     const/4 v1, 0x0
 
-    :try_start_2
+    :try_start_0
     const-string v3, "SQLITE_MASTER"
 
     const-string v2, "name"
@@ -96,33 +96,32 @@
     .line 618
     invoke-interface {v0}, Landroid/database/Cursor;->moveToFirst()Z
 
-    move-result v2
-    :try_end_1e
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_2 .. :try_end_1e} :catch_26
-    .catchall {:try_start_2 .. :try_end_1e} :catchall_24
+    move-result v1
+    :try_end_0
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 623
-    if-eqz v0, :cond_23
+    nop
 
     .line 624
     invoke-interface {v0}, Landroid/database/Cursor;->close()V
 
-    :cond_23
-    return v2
+    return v1
 
     .line 623
-    :catchall_24
+    :catchall_0
     move-exception v1
 
-    goto :goto_42
+    goto :goto_0
 
     .line 619
-    :catch_26
+    :catch_0
     move-exception v2
 
     .line 620
     .local v2, "e":Landroid/database/sqlite/SQLiteException;
-    :try_start_27
+    :try_start_1
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
@@ -138,35 +137,35 @@
     move-result-object v3
 
     invoke-static {v3}, Lcom/google/analytics/tracking/android/Log;->w(Ljava/lang/String;)V
-    :try_end_3b
-    .catchall {:try_start_27 .. :try_end_3b} :catchall_24
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 621
     nop
 
     .line 623
-    if-eqz v0, :cond_41
+    if-eqz v0, :cond_0
 
     .line 624
     invoke-interface {v0}, Landroid/database/Cursor;->close()V
 
-    :cond_41
+    :cond_0
     return v1
 
     .line 623
     .end local v2    # "e":Landroid/database/sqlite/SQLiteException;
-    :goto_42
-    if-eqz v0, :cond_47
+    :goto_0
+    if-eqz v0, :cond_1
 
     .line 624
     invoke-interface {v0}, Landroid/database/Cursor;->close()V
 
-    :cond_47
+    :cond_1
     throw v1
 .end method
 
 .method private validateColumnsPresent(Landroid/database/sqlite/SQLiteDatabase;)V
-    .registers 7
+    .locals 5
     .param p1, "db"    # Landroid/database/sqlite/SQLiteDatabase;
 
     .line 692
@@ -186,7 +185,7 @@
 
     .line 696
     .local v1, "columns":Ljava/util/Set;, "Ljava/util/Set<Ljava/lang/String;>;"
-    :try_start_c
+    :try_start_0
     invoke-interface {v0}, Landroid/database/Cursor;->getColumnNames()[Ljava/lang/String;
 
     move-result-object v2
@@ -196,27 +195,27 @@
     const/4 v3, 0x0
 
     .local v3, "i":I
-    :goto_11
+    :goto_0
     array-length v4, v2
 
-    if-ge v3, v4, :cond_1c
+    if-ge v3, v4, :cond_0
 
     .line 698
     aget-object v4, v2, v3
 
     invoke-interface {v1, v4}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
-    :try_end_19
-    .catchall {:try_start_c .. :try_end_19} :catchall_66
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 697
     add-int/lit8 v3, v3, 0x1
 
-    goto :goto_11
+    goto :goto_0
 
     .line 701
     .end local v2    # "columnNames":[Ljava/lang/String;
     .end local v3    # "i":I
-    :cond_1c
+    :cond_0
     invoke-interface {v0}, Landroid/database/Cursor;->close()V
 
     .line 702
@@ -229,7 +228,7 @@
 
     move-result v2
 
-    if-eqz v2, :cond_5e
+    if-eqz v2, :cond_3
 
     const-string v2, "hit_url"
 
@@ -237,7 +236,7 @@
 
     move-result v2
 
-    if-eqz v2, :cond_5e
+    if-eqz v2, :cond_3
 
     const-string v2, "hit_string"
 
@@ -245,7 +244,7 @@
 
     move-result v2
 
-    if-eqz v2, :cond_5e
+    if-eqz v2, :cond_3
 
     const-string v2, "hit_time"
 
@@ -253,7 +252,7 @@
 
     move-result v2
 
-    if-eqz v2, :cond_5e
+    if-eqz v2, :cond_3
 
     .line 711
     const-string v2, "hit_app_id"
@@ -270,10 +269,10 @@
 
     move-result v3
 
-    if-eqz v3, :cond_56
+    if-eqz v3, :cond_2
 
     .line 716
-    if-eqz v2, :cond_55
+    if-eqz v2, :cond_1
 
     .line 717
     const-string v3, "ALTER TABLE hits2 ADD COLUMN hit_app_id"
@@ -281,11 +280,11 @@
     invoke-virtual {p1, v3}, Landroid/database/sqlite/SQLiteDatabase;->execSQL(Ljava/lang/String;)V
 
     .line 720
-    :cond_55
+    :cond_1
     return-void
 
     .line 714
-    :cond_56
+    :cond_2
     new-instance v3, Landroid/database/sqlite/SQLiteException;
 
     const-string v4, "Database has extra columns"
@@ -296,7 +295,7 @@
 
     .line 708
     .end local v2    # "needsAppId":Z
-    :cond_5e
+    :cond_3
     new-instance v2, Landroid/database/sqlite/SQLiteException;
 
     const-string v3, "Database column missing"
@@ -306,7 +305,7 @@
     throw v2
 
     .line 701
-    :catchall_66
+    :catchall_0
     move-exception v2
 
     invoke-interface {v0}, Landroid/database/Cursor;->close()V
@@ -317,12 +316,12 @@
 
 # virtual methods
 .method public getWritableDatabase()Landroid/database/sqlite/SQLiteDatabase;
-    .registers 5
+    .locals 4
 
     .line 638
     iget-boolean v0, p0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore$AnalyticsDatabaseHelper;->mBadDatabase:Z
 
-    if-eqz v0, :cond_21
+    if-eqz v0, :cond_1
 
     .line 642
     iget-wide v0, p0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore$AnalyticsDatabaseHelper;->mLastDatabaseCheckTime:J
@@ -333,7 +332,6 @@
 
     iget-object v2, p0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore$AnalyticsDatabaseHelper;->this$0:Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;
 
-    # getter for: Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->mClock:Lcom/google/analytics/tracking/android/Clock;
     invoke-static {v2}, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->access$000(Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;)Lcom/google/analytics/tracking/android/Clock;
 
     move-result-object v2
@@ -344,12 +342,12 @@
 
     cmp-long v0, v0, v2
 
-    if-gtz v0, :cond_19
+    if-gtz v0, :cond_0
 
-    goto :goto_21
+    goto :goto_0
 
     .line 644
-    :cond_19
+    :cond_0
     new-instance v0, Landroid/database/sqlite/SQLiteException;
 
     const-string v1, "Database creation failed"
@@ -359,8 +357,8 @@
     throw v0
 
     .line 647
-    :cond_21
-    :goto_21
+    :cond_1
+    :goto_0
     const/4 v0, 0x0
 
     .line 648
@@ -372,7 +370,6 @@
     .line 649
     iget-object v1, p0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore$AnalyticsDatabaseHelper;->this$0:Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;
 
-    # getter for: Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->mClock:Lcom/google/analytics/tracking/android/Clock;
     invoke-static {v1}, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->access$000(Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;)Lcom/google/analytics/tracking/android/Clock;
 
     move-result-object v1
@@ -384,34 +381,32 @@
     iput-wide v1, p0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore$AnalyticsDatabaseHelper;->mLastDatabaseCheckTime:J
 
     .line 651
-    :try_start_31
+    :try_start_0
     invoke-super {p0}, Landroid/database/sqlite/SQLiteOpenHelper;->getWritableDatabase()Landroid/database/sqlite/SQLiteDatabase;
 
     move-result-object v1
-    :try_end_35
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_31 .. :try_end_35} :catch_37
+    :try_end_0
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_0 .. :try_end_0} :catch_0
 
     move-object v0, v1
 
     .line 655
-    goto :goto_4b
+    goto :goto_1
 
     .line 652
-    :catch_37
+    :catch_0
     move-exception v1
 
     .line 654
     .local v1, "e":Landroid/database/sqlite/SQLiteException;
     iget-object v2, p0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore$AnalyticsDatabaseHelper;->this$0:Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;
 
-    # getter for: Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->mContext:Landroid/content/Context;
     invoke-static {v2}, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->access$200(Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;)Landroid/content/Context;
 
     move-result-object v2
 
     iget-object v3, p0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore$AnalyticsDatabaseHelper;->this$0:Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;
 
-    # getter for: Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->mDatabaseName:Ljava/lang/String;
     invoke-static {v3}, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->access$100(Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;)Ljava/lang/String;
 
     move-result-object v3
@@ -424,8 +419,8 @@
 
     .line 656
     .end local v1    # "e":Landroid/database/sqlite/SQLiteException;
-    :goto_4b
-    if-nez v0, :cond_51
+    :goto_1
+    if-nez v0, :cond_2
 
     .line 657
     invoke-super {p0}, Landroid/database/sqlite/SQLiteOpenHelper;->getWritableDatabase()Landroid/database/sqlite/SQLiteDatabase;
@@ -433,7 +428,7 @@
     move-result-object v0
 
     .line 659
-    :cond_51
+    :cond_2
     const/4 v1, 0x0
 
     iput-boolean v1, p0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore$AnalyticsDatabaseHelper;->mBadDatabase:Z
@@ -443,7 +438,7 @@
 .end method
 
 .method isBadDatabase()Z
-    .registers 2
+    .locals 1
 
     .line 585
     iget-boolean v0, p0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore$AnalyticsDatabaseHelper;->mBadDatabase:Z
@@ -452,7 +447,7 @@
 .end method
 
 .method public onCreate(Landroid/database/sqlite/SQLiteDatabase;)V
-    .registers 3
+    .locals 1
     .param p1, "db"    # Landroid/database/sqlite/SQLiteDatabase;
 
     .line 724
@@ -467,7 +462,7 @@
 .end method
 
 .method public onOpen(Landroid/database/sqlite/SQLiteDatabase;)V
-    .registers 4
+    .locals 2
     .param p1, "db"    # Landroid/database/sqlite/SQLiteDatabase;
 
     .line 667
@@ -475,32 +470,32 @@
 
     const/16 v1, 0xf
 
-    if-ge v0, v1, :cond_19
+    if-ge v0, v1, :cond_0
 
     .line 668
-    const-string v0, "PRAGMA journal_mode=memory"
+    const/4 v0, 0x0
 
-    const/4 v1, 0x0
+    const-string v1, "PRAGMA journal_mode=memory"
 
-    invoke-virtual {p1, v0, v1}, Landroid/database/sqlite/SQLiteDatabase;->rawQuery(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual {p1, v1, v0}, Landroid/database/sqlite/SQLiteDatabase;->rawQuery(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
 
     move-result-object v0
 
     .line 671
     .local v0, "cursor":Landroid/database/Cursor;
-    :try_start_d
+    :try_start_0
     invoke-interface {v0}, Landroid/database/Cursor;->moveToFirst()Z
-    :try_end_10
-    .catchall {:try_start_d .. :try_end_10} :catchall_14
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 673
     invoke-interface {v0}, Landroid/database/Cursor;->close()V
 
     .line 674
-    goto :goto_19
+    goto :goto_0
 
     .line 673
-    :catchall_14
+    :catchall_0
     move-exception v1
 
     invoke-interface {v0}, Landroid/database/Cursor;->close()V
@@ -509,37 +504,36 @@
 
     .line 676
     .end local v0    # "cursor":Landroid/database/Cursor;
-    :cond_19
-    :goto_19
+    :cond_0
+    :goto_0
     const-string v0, "hits2"
 
     invoke-direct {p0, v0, p1}, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore$AnalyticsDatabaseHelper;->tablePresent(Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase;)Z
 
     move-result v0
 
-    if-nez v0, :cond_29
+    if-nez v0, :cond_1
 
     .line 677
-    # getter for: Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->CREATE_HITS_TABLE:Ljava/lang/String;
     invoke-static {}, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->access$300()Ljava/lang/String;
 
     move-result-object v0
 
     invoke-virtual {p1, v0}, Landroid/database/sqlite/SQLiteDatabase;->execSQL(Ljava/lang/String;)V
 
-    goto :goto_2c
+    goto :goto_1
 
     .line 679
-    :cond_29
+    :cond_1
     invoke-direct {p0, p1}, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore$AnalyticsDatabaseHelper;->validateColumnsPresent(Landroid/database/sqlite/SQLiteDatabase;)V
 
     .line 681
-    :goto_2c
+    :goto_1
     return-void
 .end method
 
 .method public onUpgrade(Landroid/database/sqlite/SQLiteDatabase;II)V
-    .registers 4
+    .locals 0
     .param p1, "db"    # Landroid/database/sqlite/SQLiteDatabase;
     .param p2, "oldVersion"    # I
     .param p3, "newVersion"    # I
@@ -549,7 +543,7 @@
 .end method
 
 .method setBadDatabase(Z)V
-    .registers 2
+    .locals 0
     .param p1, "badDatabase"    # Z
 
     .line 589

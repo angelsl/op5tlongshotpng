@@ -23,7 +23,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/analytics/tracking/android/GAServiceProxy;)V
-    .registers 2
+    .locals 0
 
     .line 242
     iput-object p1, p0, Lcom/google/analytics/tracking/android/GAServiceProxy$2;->this$0:Lcom/google/analytics/tracking/android/GAServiceProxy;
@@ -36,7 +36,7 @@
 
 # virtual methods
 .method public run()V
-    .registers 2
+    .locals 1
 
     .line 245
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy$2;->this$0:Lcom/google/analytics/tracking/android/GAServiceProxy;

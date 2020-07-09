@@ -17,7 +17,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 19
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->REGEX_GROUP:Lcom/google/analytics/containertag/common/FunctionType;
@@ -68,7 +68,7 @@
 .end method
 
 .method public constructor <init>()V
-    .registers 5
+    .locals 4
 
     .line 32
     sget-object v0, Lcom/google/tagmanager/RegexGroupMacro;->ID:Ljava/lang/String;
@@ -96,7 +96,7 @@
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 28
     sget-object v0, Lcom/google/tagmanager/RegexGroupMacro;->ID:Ljava/lang/String;
@@ -107,7 +107,7 @@
 
 # virtual methods
 .method public evaluate(Ljava/util/Map;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 12
+    .locals 10
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -141,26 +141,26 @@
 
     .line 42
     .local v1, "regex":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-eqz v0, :cond_90
+    if-eqz v0, :cond_6
 
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     move-result-object v2
 
-    if-eq v0, v2, :cond_90
+    if-eq v0, v2, :cond_6
 
-    if-eqz v1, :cond_90
+    if-eqz v1, :cond_6
 
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     move-result-object v2
 
-    if-ne v1, v2, :cond_21
+    if-ne v1, v2, :cond_0
 
-    goto :goto_90
+    goto :goto_1
 
     .line 47
-    :cond_21
+    :cond_0
     const/16 v2, 0x40
 
     .line 48
@@ -181,13 +181,13 @@
 
     move-result v3
 
-    if-eqz v3, :cond_37
+    if-eqz v3, :cond_1
 
     .line 49
     or-int/lit8 v2, v2, 0x2
 
     .line 51
-    :cond_37
+    :cond_1
     const/4 v3, 0x1
 
     .line 52
@@ -202,7 +202,7 @@
 
     .line 53
     .local v4, "groupNumberValue":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-eqz v4, :cond_5c
+    if-eqz v4, :cond_3
 
     .line 54
     invoke-static {v4}, Lcom/google/tagmanager/Types;->valueToInt64(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/Long;
@@ -215,7 +215,7 @@
 
     move-result-object v6
 
-    if-ne v5, v6, :cond_51
+    if-ne v5, v6, :cond_2
 
     .line 56
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -225,13 +225,13 @@
     return-object v6
 
     .line 58
-    :cond_51
+    :cond_2
     invoke-virtual {v5}, Ljava/lang/Long;->intValue()I
 
     move-result v3
 
     .line 59
-    if-gez v3, :cond_5c
+    if-gez v3, :cond_3
 
     .line 60
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -242,8 +242,8 @@
 
     .line 64
     .end local v5    # "groupNumberLong":Ljava/lang/Long;
-    :cond_5c
-    :try_start_5c
+    :cond_3
+    :try_start_0
     invoke-static {v0}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
 
     move-result-object v5
@@ -274,13 +274,13 @@
 
     move-result v9
 
-    if-eqz v9, :cond_7e
+    if-eqz v9, :cond_4
 
     invoke-virtual {v8}, Ljava/util/regex/Matcher;->groupCount()I
 
     move-result v9
 
-    if-lt v9, v3, :cond_7e
+    if-lt v9, v3, :cond_4
 
     .line 69
     invoke-virtual {v8, v3}, Ljava/util/regex/Matcher;->group(I)Ljava/lang/String;
@@ -290,23 +290,23 @@
     move-object v7, v9
 
     .line 71
-    :cond_7e
-    if-nez v7, :cond_85
+    :cond_4
+    if-nez v7, :cond_5
 
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     move-result-object v9
 
-    goto :goto_89
+    goto :goto_0
 
-    :cond_85
+    :cond_5
     invoke-static {v7}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     move-result-object v9
-    :try_end_89
-    .catch Ljava/util/regex/PatternSyntaxException; {:try_start_5c .. :try_end_89} :catch_8a
+    :try_end_0
+    .catch Ljava/util/regex/PatternSyntaxException; {:try_start_0 .. :try_end_0} :catch_0
 
-    :goto_89
+    :goto_0
     return-object v9
 
     .line 74
@@ -314,7 +314,7 @@
     .end local v6    # "regexString":Ljava/lang/String;
     .end local v7    # "extracted":Ljava/lang/String;
     .end local v8    # "m":Ljava/util/regex/Matcher;
-    :catch_8a
+    :catch_0
     move-exception v5
 
     .line 76
@@ -330,8 +330,8 @@
     .end local v3    # "groupNumber":I
     .end local v4    # "groupNumberValue":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .end local v5    # "err":Ljava/util/regex/PatternSyntaxException;
-    :cond_90
-    :goto_90
+    :cond_6
+    :goto_1
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     move-result-object v2
@@ -340,7 +340,7 @@
 .end method
 
 .method public isCacheable()Z
-    .registers 2
+    .locals 1
 
     .line 36
     const/4 v0, 0x1

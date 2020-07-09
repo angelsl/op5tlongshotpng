@@ -20,7 +20,7 @@
 
 # direct methods
 .method protected constructor <init>(Lcom/oneplus/screenshot/longshot/widget/EditView;)V
-    .registers 2
+    .locals 0
     .param p1, "this$0"    # Lcom/oneplus/screenshot/longshot/widget/EditView;
 
     .line 128
@@ -34,7 +34,7 @@
 
 # virtual methods
 .method protected getTouchMode(Landroid/view/MotionEvent;)I
-    .registers 5
+    .locals 3
     .param p1, "e"    # Landroid/view/MotionEvent;
 
     .line 155
@@ -52,12 +52,11 @@
 
     float-to-int v2, v2
 
-    # invokes: Lcom/oneplus/screenshot/longshot/widget/EditView;->hitDrag(II)Z
     invoke-static {v0, v1, v2}, Lcom/oneplus/screenshot/longshot/widget/EditView;->access$300(Lcom/oneplus/screenshot/longshot/widget/EditView;II)Z
 
     move-result v0
 
-    if-eqz v0, :cond_14
+    if-eqz v0, :cond_0
 
     .line 156
     const/4 v0, 0x3
@@ -65,7 +64,7 @@
     return v0
 
     .line 158
-    :cond_14
+    :cond_0
     invoke-super {p0, p1}, Lcom/oneplus/screenshot/longshot/widget/ImageView$ImageOnGestureListener;->getTouchMode(Landroid/view/MotionEvent;)I
 
     move-result v0
@@ -74,7 +73,7 @@
 .end method
 
 .method public onFling(Landroid/view/MotionEvent;Landroid/view/MotionEvent;FF)Z
-    .registers 7
+    .locals 2
     .param p1, "e1"    # Landroid/view/MotionEvent;
     .param p2, "e2"    # Landroid/view/MotionEvent;
     .param p3, "distanceX"    # F
@@ -87,7 +86,7 @@
 
     const/4 v1, 0x3
 
-    if-ne v0, v1, :cond_9
+    if-ne v0, v1, :cond_0
 
     .line 148
     const/4 v0, 0x1
@@ -95,7 +94,7 @@
     return v0
 
     .line 150
-    :cond_9
+    :cond_0
     invoke-super {p0, p1, p2, p3, p4}, Lcom/oneplus/screenshot/longshot/widget/ImageView$ImageOnGestureListener;->onFling(Landroid/view/MotionEvent;Landroid/view/MotionEvent;FF)Z
 
     move-result v0
@@ -104,7 +103,7 @@
 .end method
 
 .method public onScroll(Landroid/view/MotionEvent;Landroid/view/MotionEvent;FF)Z
-    .registers 9
+    .locals 3
     .param p1, "e1"    # Landroid/view/MotionEvent;
     .param p2, "e2"    # Landroid/view/MotionEvent;
     .param p3, "distanceX"    # F
@@ -117,12 +116,11 @@
 
     const/4 v1, 0x3
 
-    if-ne v0, v1, :cond_30
+    if-ne v0, v1, :cond_1
 
     .line 133
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/EditView$EditOnGestureListener;->this$0:Lcom/oneplus/screenshot/longshot/widget/EditView;
 
-    # getter for: Lcom/oneplus/screenshot/longshot/widget/EditView;->mParent:Landroid/view/ViewParent;
     invoke-static {v0}, Lcom/oneplus/screenshot/longshot/widget/EditView;->access$000(Lcom/oneplus/screenshot/longshot/widget/EditView;)Landroid/view/ViewParent;
 
     move-result-object v0
@@ -134,11 +132,9 @@
     .line 135
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/EditView$EditOnGestureListener;->this$0:Lcom/oneplus/screenshot/longshot/widget/EditView;
 
-    const/4 v2, -0x1
+    float-to-int v2, p4
 
-    float-to-int v3, p4
-
-    mul-int/2addr v2, v3
+    mul-int/lit8 v2, v2, -0x1
 
     invoke-static {v0, v2}, Lcom/oneplus/screenshot/longshot/widget/EditView;->access$100(Lcom/oneplus/screenshot/longshot/widget/EditView;I)V
 
@@ -147,7 +143,7 @@
 
     iget-boolean v0, v0, Lcom/oneplus/screenshot/longshot/widget/EditView;->mIsFirstScroll:Z
 
-    if-eqz v0, :cond_2f
+    if-eqz v0, :cond_0
 
     .line 137
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/EditView$EditOnGestureListener;->this$0:Lcom/oneplus/screenshot/longshot/widget/EditView;
@@ -157,9 +153,6 @@
     iput-boolean v2, v0, Lcom/oneplus/screenshot/longshot/widget/EditView;->mIsFirstScroll:Z
 
     .line 138
-    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/EditView$EditOnGestureListener;->this$0:Lcom/oneplus/screenshot/longshot/widget/EditView;
-
-    # getter for: Lcom/oneplus/screenshot/longshot/widget/EditView;->mContext:Landroid/content/Context;
     invoke-static {v0}, Lcom/oneplus/screenshot/longshot/widget/EditView;->access$200(Lcom/oneplus/screenshot/longshot/widget/EditView;)Landroid/content/Context;
 
     move-result-object v0
@@ -169,11 +162,11 @@
     invoke-static {v0, v2}, Lcom/oneplus/screenshot/statistics/EventStatistics;->addAction(Landroid/content/Context;Lcom/oneplus/screenshot/statistics/EventStatistics$Action;)V
 
     .line 140
-    :cond_2f
+    :cond_0
     return v1
 
     .line 142
-    :cond_30
+    :cond_1
     invoke-super {p0, p1, p2, p3, p4}, Lcom/oneplus/screenshot/longshot/widget/ImageView$ImageOnGestureListener;->onScroll(Landroid/view/MotionEvent;Landroid/view/MotionEvent;FF)Z
 
     move-result v0

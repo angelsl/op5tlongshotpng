@@ -33,7 +33,7 @@
 
 # direct methods
 .method private constructor <init>([BII)V
-    .registers 5
+    .locals 1
     .param p1, "buffer"    # [B
     .param p2, "off"    # I
     .param p3, "len"    # I
@@ -75,7 +75,7 @@
 .end method
 
 .method public static decodeZigZag32(I)I
-    .registers 3
+    .locals 2
     .param p0, "n"    # I
 
     .line 376
@@ -91,7 +91,7 @@
 .end method
 
 .method public static decodeZigZag64(J)J
-    .registers 6
+    .locals 4
     .param p0, "n"    # J
 
     .line 390
@@ -111,7 +111,7 @@
 .end method
 
 .method public static newInstance([B)Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;
-    .registers 3
+    .locals 2
     .param p0, "buf"    # [B
 
     .line 52
@@ -127,7 +127,7 @@
 .end method
 
 .method public static newInstance([BII)Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;
-    .registers 4
+    .locals 1
     .param p0, "buf"    # [B
     .param p1, "off"    # I
     .param p2, "len"    # I
@@ -141,7 +141,7 @@
 .end method
 
 .method private recomputeBufferSizeAfterLimit()V
-    .registers 4
+    .locals 3
 
     .line 493
     iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferSize:I
@@ -159,11 +159,9 @@
     .local v0, "bufferEnd":I
     iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->currentLimit:I
 
-    if-le v0, v1, :cond_1b
+    if-le v0, v1, :cond_0
 
     .line 497
-    iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->currentLimit:I
-
     sub-int v1, v0, v1
 
     iput v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferSizeAfterLimit:I
@@ -177,23 +175,23 @@
 
     iput v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferSize:I
 
-    goto :goto_1e
+    goto :goto_0
 
     .line 500
-    :cond_1b
+    :cond_0
     const/4 v1, 0x0
 
     iput v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferSizeAfterLimit:I
 
     .line 502
-    :goto_1e
+    :goto_0
     return-void
 .end method
 
 
 # virtual methods
 .method public checkLastTagWas(I)V
-    .registers 3
+    .locals 1
     .param p1, "value"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -204,13 +202,13 @@
     .line 94
     iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->lastTag:I
 
-    if-ne v0, p1, :cond_5
+    if-ne v0, p1, :cond_0
 
     .line 97
     return-void
 
     .line 95
-    :cond_5
+    :cond_0
     invoke-static {}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;->invalidEndTag()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
 
     move-result-object v0
@@ -219,14 +217,14 @@
 .end method
 
 .method public getBytesUntilLimit()I
-    .registers 3
+    .locals 2
 
     .line 519
     iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->currentLimit:I
 
     const v1, 0x7fffffff
 
-    if-ne v0, v1, :cond_9
+    if-ne v0, v1, :cond_0
 
     .line 520
     const/4 v0, -0x1
@@ -234,25 +232,23 @@
     return v0
 
     .line 523
-    :cond_9
-    iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
+    :cond_0
+    iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
 
     .line 524
-    .local v0, "currentAbsolutePosition":I
-    iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->currentLimit:I
+    .local v1, "currentAbsolutePosition":I
+    sub-int/2addr v0, v1
 
-    sub-int/2addr v1, v0
-
-    return v1
+    return v0
 .end method
 
 .method public getData(II)[B
-    .registers 7
+    .locals 4
     .param p1, "offset"    # I
     .param p2, "length"    # I
 
     .line 551
-    if-nez p2, :cond_5
+    if-nez p2, :cond_0
 
     .line 552
     sget-object v0, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->EMPTY_BYTES:[B
@@ -260,7 +256,7 @@
     return-object v0
 
     .line 554
-    :cond_5
+    :cond_0
     new-array v0, p2, [B
 
     .line 555
@@ -282,7 +278,7 @@
 .end method
 
 .method public getPosition()I
-    .registers 3
+    .locals 2
 
     .line 540
     iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
@@ -295,28 +291,28 @@
 .end method
 
 .method public isAtEnd()Z
-    .registers 3
+    .locals 2
 
     .line 533
     iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
 
     iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferSize:I
 
-    if-ne v0, v1, :cond_8
+    if-ne v0, v1, :cond_0
 
     const/4 v0, 0x1
 
-    goto :goto_9
+    goto :goto_0
 
-    :cond_8
+    :cond_0
     const/4 v0, 0x0
 
-    :goto_9
+    :goto_0
     return v0
 .end method
 
 .method public popLimit(I)V
-    .registers 2
+    .locals 0
     .param p1, "oldLimit"    # I
 
     .line 510
@@ -330,7 +326,7 @@
 .end method
 
 .method public pushLimit(I)I
-    .registers 4
+    .locals 2
     .param p1, "byteLimit"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -339,7 +335,7 @@
     .end annotation
 
     .line 477
-    if-ltz p1, :cond_14
+    if-ltz p1, :cond_1
 
     .line 480
     iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
@@ -351,7 +347,7 @@
 
     .line 482
     .local v0, "oldLimit":I
-    if-gt p1, v0, :cond_f
+    if-gt p1, v0, :cond_0
 
     .line 485
     iput p1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->currentLimit:I
@@ -363,7 +359,7 @@
     return v0
 
     .line 483
-    :cond_f
+    :cond_0
     invoke-static {}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;->truncatedMessage()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
 
     move-result-object v1
@@ -372,7 +368,7 @@
 
     .line 478
     .end local v0    # "oldLimit":I
-    :cond_14
+    :cond_1
     invoke-static {}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;->negativeSize()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
 
     move-result-object v0
@@ -381,7 +377,7 @@
 .end method
 
 .method public readBool()Z
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -393,21 +389,21 @@
 
     move-result v0
 
-    if-eqz v0, :cond_8
+    if-eqz v0, :cond_0
 
     const/4 v0, 0x1
 
-    goto :goto_9
+    goto :goto_0
 
-    :cond_8
+    :cond_0
     const/4 v0, 0x0
 
-    :goto_9
+    :goto_0
     return v0
 .end method
 
 .method public readBytes()[B
-    .registers 6
+    .locals 5
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -427,22 +423,20 @@
 
     sub-int/2addr v1, v2
 
-    if-gt v0, v1, :cond_1d
+    if-gt v0, v1, :cond_0
 
-    if-lez v0, :cond_1d
+    if-lez v0, :cond_0
 
     .line 235
     new-array v1, v0, [B
 
     .line 236
     .local v1, "result":[B
-    iget-object v2, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->buffer:[B
-
-    iget v3, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
+    iget-object v3, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->buffer:[B
 
     const/4 v4, 0x0
 
-    invoke-static {v2, v3, v1, v4, v0}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {v3, v2, v1, v4, v0}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
     .line 237
     iget v2, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
@@ -456,7 +450,7 @@
 
     .line 241
     .end local v1    # "result":[B
-    :cond_1d
+    :cond_0
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readRawBytes(I)[B
 
     move-result-object v1
@@ -465,7 +459,7 @@
 .end method
 
 .method public readDouble()D
-    .registers 3
+    .locals 2
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -485,7 +479,7 @@
 .end method
 
 .method public readEnum()I
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -501,7 +495,7 @@
 .end method
 
 .method public readFixed32()I
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -517,7 +511,7 @@
 .end method
 
 .method public readFixed64()J
-    .registers 3
+    .locals 2
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -533,7 +527,7 @@
 .end method
 
 .method public readFloat()F
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -553,7 +547,7 @@
 .end method
 
 .method public readGroup(Lcom/google/tagmanager/protobuf/nano/MessageNano;I)V
-    .registers 5
+    .locals 2
     .param p1, "msg"    # Lcom/google/tagmanager/protobuf/nano/MessageNano;
     .param p2, "fieldNumber"    # I
     .annotation system Ldalvik/annotation/Throws;
@@ -567,11 +561,9 @@
 
     iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->recursionLimit:I
 
-    if-ge v0, v1, :cond_1e
+    if-ge v0, v1, :cond_0
 
     .line 208
-    iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->recursionDepth:I
-
     add-int/lit8 v0, v0, 0x1
 
     iput v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->recursionDepth:I
@@ -599,7 +591,7 @@
     return-void
 
     .line 206
-    :cond_1e
+    :cond_0
     invoke-static {}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;->recursionLimitExceeded()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
 
     move-result-object v0
@@ -608,7 +600,7 @@
 .end method
 
 .method public readInt32()I
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -624,7 +616,7 @@
 .end method
 
 .method public readInt64()J
-    .registers 3
+    .locals 2
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -640,7 +632,7 @@
 .end method
 
 .method public readMessage(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
-    .registers 5
+    .locals 3
     .param p1, "msg"    # Lcom/google/tagmanager/protobuf/nano/MessageNano;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -659,7 +651,7 @@
 
     iget v2, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->recursionLimit:I
 
-    if-ge v1, v2, :cond_25
+    if-ge v1, v2, :cond_0
 
     .line 221
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->pushLimit(I)I
@@ -697,7 +689,7 @@
 
     .line 219
     .end local v1    # "oldLimit":I
-    :cond_25
+    :cond_0
     invoke-static {}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;->recursionLimitExceeded()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
 
     move-result-object v1
@@ -706,7 +698,7 @@
 .end method
 
 .method public readRawByte()B
-    .registers 4
+    .locals 3
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -718,23 +710,21 @@
 
     iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferSize:I
 
-    if-eq v0, v1, :cond_11
+    if-eq v0, v1, :cond_0
 
     .line 584
-    iget-object v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->buffer:[B
+    iget-object v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->buffer:[B
 
-    iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
-
-    add-int/lit8 v2, v1, 0x1
+    add-int/lit8 v2, v0, 0x1
 
     iput v2, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
 
-    aget-byte v0, v0, v1
+    aget-byte v0, v1, v0
 
     return v0
 
     .line 582
-    :cond_11
+    :cond_0
     invoke-static {}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;->truncatedMessage()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
 
     move-result-object v0
@@ -743,7 +733,7 @@
 .end method
 
 .method public readRawBytes(I)[B
-    .registers 6
+    .locals 4
     .param p1, "size"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -752,52 +742,48 @@
     .end annotation
 
     .line 594
-    if-ltz p1, :cond_32
+    if-ltz p1, :cond_2
 
     .line 598
     iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
 
-    add-int/2addr v0, p1
+    add-int v1, v0, p1
 
-    iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->currentLimit:I
+    iget v2, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->currentLimit:I
 
-    if-gt v0, v1, :cond_25
+    if-gt v1, v2, :cond_1
 
     .line 605
-    iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferSize:I
+    iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferSize:I
 
-    iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
+    sub-int/2addr v1, v0
 
-    sub-int/2addr v0, v1
-
-    if-gt p1, v0, :cond_20
+    if-gt p1, v1, :cond_0
 
     .line 607
-    new-array v0, p1, [B
+    new-array v1, p1, [B
 
     .line 608
-    .local v0, "bytes":[B
-    iget-object v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->buffer:[B
-
-    iget v2, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
+    .local v1, "bytes":[B
+    iget-object v2, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->buffer:[B
 
     const/4 v3, 0x0
 
-    invoke-static {v1, v2, v0, v3, p1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {v2, v0, v1, v3, p1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
     .line 609
-    iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
+    iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
 
-    add-int/2addr v1, p1
+    add-int/2addr v0, p1
 
-    iput v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
+    iput v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
 
     .line 610
-    return-object v0
+    return-object v1
 
     .line 612
-    .end local v0    # "bytes":[B
-    :cond_20
+    .end local v1    # "bytes":[B
+    :cond_0
     invoke-static {}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;->truncatedMessage()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
 
     move-result-object v0
@@ -805,14 +791,10 @@
     throw v0
 
     .line 600
-    :cond_25
-    iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->currentLimit:I
+    :cond_1
+    sub-int/2addr v2, v0
 
-    iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
-
-    sub-int/2addr v0, v1
-
-    invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->skipRawBytes(I)V
+    invoke-virtual {p0, v2}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->skipRawBytes(I)V
 
     .line 602
     invoke-static {}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;->truncatedMessage()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
@@ -822,7 +804,7 @@
     throw v0
 
     .line 595
-    :cond_32
+    :cond_2
     invoke-static {}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;->negativeSize()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
 
     move-result-object v0
@@ -831,7 +813,7 @@
 .end method
 
 .method public readRawLittleEndian32()I
-    .registers 7
+    .locals 6
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -887,7 +869,7 @@
 .end method
 
 .method public readRawLittleEndian64()J
-    .registers 16
+    .locals 15
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -1023,7 +1005,7 @@
 .end method
 
 .method public readRawVarint32()I
-    .registers 5
+    .locals 4
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -1037,13 +1019,13 @@
 
     .line 286
     .local v0, "tmp":B
-    if-ltz v0, :cond_7
+    if-ltz v0, :cond_0
 
     .line 287
     return v0
 
     .line 289
-    :cond_7
+    :cond_0
     and-int/lit8 v1, v0, 0x7f
 
     .line 290
@@ -1054,17 +1036,17 @@
 
     move v0, v2
 
-    if-ltz v2, :cond_14
+    if-ltz v2, :cond_1
 
     .line 291
     shl-int/lit8 v2, v0, 0x7
 
     or-int/2addr v1, v2
 
-    goto :goto_56
+    goto :goto_1
 
     .line 293
-    :cond_14
+    :cond_1
     and-int/lit8 v2, v0, 0x7f
 
     shl-int/lit8 v2, v2, 0x7
@@ -1078,17 +1060,17 @@
 
     move v0, v2
 
-    if-ltz v2, :cond_24
+    if-ltz v2, :cond_2
 
     .line 295
     shl-int/lit8 v2, v0, 0xe
 
     or-int/2addr v1, v2
 
-    goto :goto_56
+    goto :goto_1
 
     .line 297
-    :cond_24
+    :cond_2
     and-int/lit8 v2, v0, 0x7f
 
     shl-int/lit8 v2, v2, 0xe
@@ -1102,17 +1084,17 @@
 
     move v0, v2
 
-    if-ltz v2, :cond_34
+    if-ltz v2, :cond_3
 
     .line 299
     shl-int/lit8 v2, v0, 0x15
 
     or-int/2addr v1, v2
 
-    goto :goto_56
+    goto :goto_1
 
     .line 301
-    :cond_34
+    :cond_3
     and-int/lit8 v2, v0, 0x7f
 
     shl-int/lit8 v2, v2, 0x15
@@ -1131,36 +1113,36 @@
     or-int/2addr v1, v2
 
     .line 303
-    if-gez v0, :cond_56
+    if-gez v0, :cond_6
 
     .line 305
     const/4 v2, 0x0
 
     .local v2, "i":I
-    :goto_44
+    :goto_0
     const/4 v3, 0x5
 
-    if-ge v2, v3, :cond_51
+    if-ge v2, v3, :cond_5
 
     .line 306
     invoke-virtual {p0}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readRawByte()B
 
     move-result v3
 
-    if-ltz v3, :cond_4e
+    if-ltz v3, :cond_4
 
     .line 307
     return v1
 
     .line 305
-    :cond_4e
+    :cond_4
     add-int/lit8 v2, v2, 0x1
 
-    goto :goto_44
+    goto :goto_0
 
     .line 310
     .end local v2    # "i":I
-    :cond_51
+    :cond_5
     invoke-static {}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;->malformedVarint()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
 
     move-result-object v2
@@ -1168,13 +1150,13 @@
     throw v2
 
     .line 315
-    :cond_56
-    :goto_56
+    :cond_6
+    :goto_1
     return v1
 .end method
 
 .method public readRawVarint64()J
-    .registers 7
+    .locals 6
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -1190,10 +1172,10 @@
 
     .line 322
     .local v1, "result":J
-    :goto_3
+    :goto_0
     const/16 v3, 0x40
 
-    if-ge v0, v3, :cond_18
+    if-ge v0, v3, :cond_1
 
     .line 323
     invoke-virtual {p0}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readRawByte()B
@@ -1213,21 +1195,23 @@
     .line 325
     and-int/lit16 v4, v3, 0x80
 
-    if-nez v4, :cond_15
+    if-nez v4, :cond_0
 
     .line 326
     return-wide v1
 
     .line 328
-    :cond_15
+    :cond_0
+    nop
+
+    .end local v3    # "b":B
     add-int/lit8 v0, v0, 0x7
 
     .line 329
-    .end local v3    # "b":B
-    goto :goto_3
+    goto :goto_0
 
     .line 330
-    :cond_18
+    :cond_1
     invoke-static {}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;->malformedVarint()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
 
     move-result-object v3
@@ -1236,7 +1220,7 @@
 .end method
 
 .method public readSFixed32()I
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -1252,7 +1236,7 @@
 .end method
 
 .method public readSFixed64()J
-    .registers 3
+    .locals 2
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -1268,7 +1252,7 @@
 .end method
 
 .method public readSInt32()I
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -1288,7 +1272,7 @@
 .end method
 
 .method public readSInt64()J
-    .registers 3
+    .locals 2
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -1308,7 +1292,7 @@
 .end method
 
 .method public readString()Ljava/lang/String;
-    .registers 6
+    .locals 5
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -1328,20 +1312,18 @@
 
     sub-int/2addr v1, v2
 
-    if-gt v0, v1, :cond_1e
+    const-string v3, "UTF-8"
 
-    if-lez v0, :cond_1e
+    if-gt v0, v1, :cond_0
+
+    if-lez v0, :cond_0
 
     .line 193
     new-instance v1, Ljava/lang/String;
 
-    iget-object v2, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->buffer:[B
+    iget-object v4, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->buffer:[B
 
-    iget v3, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
-
-    const-string v4, "UTF-8"
-
-    invoke-direct {v1, v2, v3, v0, v4}, Ljava/lang/String;-><init>([BIILjava/lang/String;)V
+    invoke-direct {v1, v4, v2, v0, v3}, Ljava/lang/String;-><init>([BIILjava/lang/String;)V
 
     .line 194
     .local v1, "result":Ljava/lang/String;
@@ -1356,14 +1338,12 @@
 
     .line 198
     .end local v1    # "result":Ljava/lang/String;
-    :cond_1e
+    :cond_0
     new-instance v1, Ljava/lang/String;
 
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readRawBytes(I)[B
 
     move-result-object v2
-
-    const-string v3, "UTF-8"
 
     invoke-direct {v1, v2, v3}, Ljava/lang/String;-><init>([BLjava/lang/String;)V
 
@@ -1371,7 +1351,7 @@
 .end method
 
 .method public readTag()I
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -1383,7 +1363,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_a
+    if-eqz v0, :cond_0
 
     .line 72
     const/4 v0, 0x0
@@ -1394,7 +1374,7 @@
     return v0
 
     .line 76
-    :cond_a
+    :cond_0
     invoke-virtual {p0}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readRawVarint32()I
 
     move-result v0
@@ -1404,15 +1384,13 @@
     .line 77
     iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->lastTag:I
 
-    if-eqz v0, :cond_17
+    if-eqz v0, :cond_1
 
     .line 81
-    iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->lastTag:I
-
     return v0
 
     .line 79
-    :cond_17
+    :cond_1
     invoke-static {}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;->invalidTag()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
 
     move-result-object v0
@@ -1421,7 +1399,7 @@
 .end method
 
 .method public readUInt32()I
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -1437,7 +1415,7 @@
 .end method
 
 .method public readUInt64()J
-    .registers 3
+    .locals 2
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -1453,14 +1431,14 @@
 .end method
 
 .method public resetSizeCounter()V
-    .registers 1
+    .locals 0
 
     .line 468
     return-void
 .end method
 
 .method public rewindToPosition(I)V
-    .registers 6
+    .locals 4
     .param p1, "position"    # I
 
     .line 564
@@ -1470,23 +1448,21 @@
 
     sub-int/2addr v0, v1
 
-    if-gt p1, v0, :cond_26
+    if-gt p1, v0, :cond_1
 
     .line 568
-    if-ltz p1, :cond_f
+    if-ltz p1, :cond_0
 
     .line 571
-    iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferStart:I
+    add-int/2addr v1, p1
 
-    add-int/2addr v0, p1
-
-    iput v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
+    iput v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
 
     .line 572
     return-void
 
     .line 569
-    :cond_f
+    :cond_0
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -1508,7 +1484,7 @@
     throw v0
 
     .line 565
-    :cond_26
+    :cond_1
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -1543,11 +1519,11 @@
 .end method
 
 .method public setRecursionLimit(I)I
-    .registers 5
+    .locals 3
     .param p1, "limit"    # I
 
     .line 430
-    if-ltz p1, :cond_7
+    if-ltz p1, :cond_0
 
     .line 434
     iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->recursionLimit:I
@@ -1561,7 +1537,7 @@
 
     .line 431
     .end local v0    # "oldLimit":I
-    :cond_7
+    :cond_0
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -1584,11 +1560,11 @@
 .end method
 
 .method public setSizeLimit(I)I
-    .registers 5
+    .locals 3
     .param p1, "limit"    # I
 
     .line 455
-    if-ltz p1, :cond_7
+    if-ltz p1, :cond_0
 
     .line 459
     iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->sizeLimit:I
@@ -1602,7 +1578,7 @@
 
     .line 456
     .end local v0    # "oldLimit":I
-    :cond_7
+    :cond_0
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -1625,7 +1601,7 @@
 .end method
 
 .method public skipField(I)Z
-    .registers 5
+    .locals 4
     .param p1, "tag"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1640,30 +1616,48 @@
 
     const/4 v1, 0x1
 
-    packed-switch v0, :pswitch_data_34
+    if-eqz v0, :cond_5
+
+    if-eq v0, v1, :cond_4
+
+    const/4 v2, 0x2
+
+    if-eq v0, v2, :cond_3
+
+    const/4 v2, 0x3
+
+    const/4 v3, 0x4
+
+    if-eq v0, v2, :cond_2
+
+    if-eq v0, v3, :cond_1
+
+    const/4 v2, 0x5
+
+    if-ne v0, v2, :cond_0
+
+    .line 125
+    invoke-virtual {p0}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readRawLittleEndian32()I
+
+    .line 126
+    return v1
 
     .line 128
+    :cond_0
     invoke-static {}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;->invalidWireType()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
 
     move-result-object v0
 
     throw v0
 
-    .line 125
-    :pswitch_d
-    invoke-virtual {p0}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readRawLittleEndian32()I
-
-    .line 126
-    return v1
-
     .line 123
-    :pswitch_11
+    :cond_1
     const/4 v0, 0x0
 
     return v0
 
     .line 117
-    :pswitch_13
+    :cond_2
     invoke-virtual {p0}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->skipMessage()V
 
     .line 118
@@ -1671,9 +1665,7 @@
 
     move-result v0
 
-    const/4 v2, 0x4
-
-    invoke-static {v0, v2}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->makeTag(II)I
+    invoke-static {v0, v3}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->makeTag(II)I
 
     move-result v0
 
@@ -1683,7 +1675,7 @@
     return v1
 
     .line 114
-    :pswitch_23
+    :cond_3
     invoke-virtual {p0}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readRawVarint32()I
 
     move-result v0
@@ -1694,34 +1686,22 @@
     return v1
 
     .line 111
-    :pswitch_2b
+    :cond_4
     invoke-virtual {p0}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readRawLittleEndian64()J
 
     .line 112
     return v1
 
     .line 108
-    :pswitch_2f
+    :cond_5
     invoke-virtual {p0}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readInt32()I
 
     .line 109
     return v1
-
-    nop
-
-    :pswitch_data_34
-    .packed-switch 0x0
-        :pswitch_2f
-        :pswitch_2b
-        :pswitch_23
-        :pswitch_13
-        :pswitch_11
-        :pswitch_d
-    .end packed-switch
 .end method
 
 .method public skipMessage()V
-    .registers 3
+    .locals 2
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -1736,30 +1716,30 @@
 
     .line 139
     .local v0, "tag":I
-    if-eqz v0, :cond_e
+    if-eqz v0, :cond_1
 
     invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->skipField(I)Z
 
     move-result v1
 
-    if-nez v1, :cond_d
+    if-nez v1, :cond_0
 
-    goto :goto_e
+    goto :goto_1
 
     .line 142
     .end local v0    # "tag":I
-    :cond_d
+    :cond_0
     goto :goto_0
 
     .line 140
     .restart local v0    # "tag":I
-    :cond_e
-    :goto_e
+    :cond_1
+    :goto_1
     return-void
 .end method
 
 .method public skipRawBytes(I)V
-    .registers 4
+    .locals 3
     .param p1, "size"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1768,29 +1748,25 @@
     .end annotation
 
     .line 623
-    if-ltz p1, :cond_28
+    if-ltz p1, :cond_2
 
     .line 627
     iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
 
-    add-int/2addr v0, p1
+    add-int v1, v0, p1
 
-    iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->currentLimit:I
+    iget v2, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->currentLimit:I
 
-    if-gt v0, v1, :cond_1b
+    if-gt v1, v2, :cond_1
 
     .line 634
-    iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferSize:I
+    iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferSize:I
 
-    iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
+    sub-int/2addr v1, v0
 
-    sub-int/2addr v0, v1
-
-    if-gt p1, v0, :cond_16
+    if-gt p1, v1, :cond_0
 
     .line 636
-    iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
-
     add-int/2addr v0, p1
 
     iput v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
@@ -1799,7 +1775,7 @@
     return-void
 
     .line 638
-    :cond_16
+    :cond_0
     invoke-static {}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;->truncatedMessage()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
 
     move-result-object v0
@@ -1807,14 +1783,10 @@
     throw v0
 
     .line 629
-    :cond_1b
-    iget v0, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->currentLimit:I
+    :cond_1
+    sub-int/2addr v2, v0
 
-    iget v1, p0, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->bufferPos:I
-
-    sub-int/2addr v0, v1
-
-    invoke-virtual {p0, v0}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->skipRawBytes(I)V
+    invoke-virtual {p0, v2}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->skipRawBytes(I)V
 
     .line 631
     invoke-static {}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;->truncatedMessage()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
@@ -1824,7 +1796,7 @@
     throw v0
 
     .line 624
-    :cond_28
+    :cond_2
     invoke-static {}, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;->negativeSize()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
 
     move-result-object v0

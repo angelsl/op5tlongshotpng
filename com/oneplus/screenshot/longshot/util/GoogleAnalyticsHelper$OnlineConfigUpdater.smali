@@ -19,19 +19,19 @@
 
 # direct methods
 .method private constructor <init>()V
-    .registers 1
+    .locals 0
 
-    .line 120
+    .line 113
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
 .method synthetic constructor <init>(Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper$1;)V
-    .registers 2
+    .locals 0
     .param p1, "x0"    # Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper$1;
 
-    .line 120
+    .line 113
     invoke-direct {p0}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper$OnlineConfigUpdater;-><init>()V
 
     return-void
@@ -40,11 +40,10 @@
 
 # virtual methods
 .method public updateConfig(Lorg/json/JSONArray;)V
-    .registers 4
+    .locals 2
     .param p1, "configJSONArray"    # Lorg/json/JSONArray;
 
-    .line 124
-    # getter for: Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->TAG:Ljava/lang/String;
+    .line 117
     invoke-static {}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->access$000()Ljava/lang/String;
 
     move-result-object v0
@@ -53,9 +52,9 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 125
+    .line 118
     invoke-static {p1}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->access$200(Lorg/json/JSONArray;)V
 
-    .line 126
+    .line 119
     return-void
 .end method

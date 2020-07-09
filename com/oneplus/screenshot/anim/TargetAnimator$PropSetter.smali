@@ -29,7 +29,7 @@
 
 # direct methods
 .method private constructor <init>(Lcom/oneplus/screenshot/anim/TargetAnimator;)V
-    .registers 2
+    .locals 0
 
     .line 199
     iput-object p1, p0, Lcom/oneplus/screenshot/anim/TargetAnimator$PropSetter;->this$0:Lcom/oneplus/screenshot/anim/TargetAnimator;
@@ -40,7 +40,7 @@
 .end method
 
 .method synthetic constructor <init>(Lcom/oneplus/screenshot/anim/TargetAnimator;Lcom/oneplus/screenshot/anim/TargetAnimator$1;)V
-    .registers 3
+    .locals 0
     .param p1, "x0"    # Lcom/oneplus/screenshot/anim/TargetAnimator;
     .param p2, "x1"    # Lcom/oneplus/screenshot/anim/TargetAnimator$1;
 

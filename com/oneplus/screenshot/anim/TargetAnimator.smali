@@ -20,9 +20,11 @@
 .end annotation
 
 
-# instance fields
-.field private final TAG:Ljava/lang/String;
+# static fields
+.field private static final TAG:Ljava/lang/String; = "TargetAnimator"
 
+
+# instance fields
 .field protected mLoader:Lcom/oneplus/screenshot/anim/TargetAnimator$ViewLoader;
 
 .field private mSetAnimators:Ljava/util/Map;
@@ -61,15 +63,10 @@
 
 # direct methods
 .method public constructor <init>()V
-    .registers 2
+    .locals 1
 
     .line 33
     invoke-direct {p0}, Landroid/animation/ValueAnimator;-><init>()V
-
-    .line 16
-    const-string v0, "TargetAnimator"
-
-    iput-object v0, p0, Lcom/oneplus/screenshot/anim/TargetAnimator;->TAG:Ljava/lang/String;
 
     .line 21
     const/4 v0, 0x0
@@ -108,7 +105,7 @@
 .end method
 
 .method static synthetic access$100(Lcom/oneplus/screenshot/anim/TargetAnimator;Landroid/view/View;Ljava/lang/reflect/Method;Ljava/lang/Object;)V
-    .registers 4
+    .locals 0
     .param p0, "x0"    # Lcom/oneplus/screenshot/anim/TargetAnimator;
     .param p1, "x1"    # Landroid/view/View;
     .param p2, "x2"    # Ljava/lang/reflect/Method;
@@ -121,7 +118,7 @@
 .end method
 
 .method private addSetters(Landroid/view/View;Lcom/oneplus/screenshot/anim/TargetAnimator$TargetProp;Ljava/lang/Class;Ljava/util/Map;)V
-    .registers 12
+    .locals 7
     .param p1, "target"    # Landroid/view/View;
     .param p2, "props"    # Lcom/oneplus/screenshot/anim/TargetAnimator$TargetProp;
     .annotation system Ldalvik/annotation/Signature;
@@ -163,12 +160,12 @@
 
     move-result-object v2
 
-    :goto_12
+    :goto_0
     invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v3
 
-    if-eqz v3, :cond_4a
+    if-eqz v3, :cond_0
 
     invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -178,7 +175,7 @@
 
     .line 96
     .local v3, "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/lang/Object;>;"
-    :try_start_1e
+    :try_start_0
     invoke-interface {v3}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
 
     move-result-object v4
@@ -208,29 +205,30 @@
     move-result-object v5
 
     invoke-virtual {v0, v4, v5}, Lcom/oneplus/screenshot/anim/TargetAnimator$PropSetter;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    :try_end_39
-    .catch Ljava/lang/IllegalArgumentException; {:try_start_1e .. :try_end_39} :catch_44
-    .catch Ljava/lang/NoSuchMethodException; {:try_start_1e .. :try_end_39} :catch_3f
-    .catch Ljava/lang/SecurityException; {:try_start_1e .. :try_end_39} :catch_3a
+    :try_end_0
+    .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_2
+    .catch Ljava/lang/NoSuchMethodException; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/lang/SecurityException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 104
+    nop
 
     .end local v4    # "method":Ljava/lang/reflect/Method;
-    goto :goto_48
+    goto :goto_2
 
     .line 102
-    :catch_3a
+    :catch_0
     move-exception v4
 
     .line 103
     .local v4, "e":Ljava/lang/SecurityException;
     invoke-virtual {v4}, Ljava/lang/SecurityException;->printStackTrace()V
 
-    .end local v3    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/lang/Object;>;"
-    .end local v4    # "e":Ljava/lang/SecurityException;
-    goto :goto_49
+    goto :goto_2
 
     .line 100
-    .restart local v3    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/lang/Object;>;"
-    :catch_3f
+    .end local v4    # "e":Ljava/lang/SecurityException;
+    :catch_1
     move-exception v4
 
     .line 101
@@ -238,10 +236,10 @@
     invoke-virtual {v4}, Ljava/lang/NoSuchMethodException;->printStackTrace()V
 
     .end local v4    # "e":Ljava/lang/NoSuchMethodException;
-    goto :goto_48
+    goto :goto_1
 
     .line 98
-    :catch_44
+    :catch_2
     move-exception v4
 
     .line 99
@@ -249,17 +247,17 @@
     invoke-virtual {v4}, Ljava/lang/IllegalArgumentException;->printStackTrace()V
 
     .line 104
-    .end local v3    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/lang/Object;>;"
     .end local v4    # "e":Ljava/lang/IllegalArgumentException;
-    :goto_48
+    :goto_1
     nop
 
     .line 105
-    :goto_49
-    goto :goto_12
+    .end local v3    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/lang/Object;>;"
+    :goto_2
+    goto :goto_0
 
     .line 106
-    :cond_4a
+    :cond_0
     invoke-interface {p4, p1, v0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 107
@@ -267,7 +265,7 @@
 .end method
 
 .method private getSetterName(Ljava/lang/String;)Ljava/lang/String;
-    .registers 6
+    .locals 4
     .param p1, "prop"    # Ljava/lang/String;
 
     .line 134
@@ -311,7 +309,7 @@
 .end method
 
 .method private invoke(Landroid/view/View;Ljava/lang/reflect/Method;Ljava/lang/Object;)V
-    .registers 6
+    .locals 2
     .param p1, "target"    # Landroid/view/View;
     .param p2, "setter"    # Ljava/lang/reflect/Method;
     .param p3, "value"    # Ljava/lang/Object;
@@ -319,7 +317,7 @@
     .line 121
     const/4 v0, 0x1
 
-    :try_start_1
+    :try_start_0
     new-array v0, v0, [Ljava/lang/Object;
 
     const/4 v1, 0x0
@@ -327,27 +325,27 @@
     aput-object p3, v0, v1
 
     invoke-virtual {p2, p1, v0}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    :try_end_9
-    .catch Ljava/lang/IllegalAccessException; {:try_start_1 .. :try_end_9} :catch_19
-    .catch Ljava/lang/IllegalArgumentException; {:try_start_1 .. :try_end_9} :catch_14
-    .catch Ljava/lang/reflect/InvocationTargetException; {:try_start_1 .. :try_end_9} :catch_f
-    .catch Ljava/lang/SecurityException; {:try_start_1 .. :try_end_9} :catch_a
+    :try_end_0
+    .catch Ljava/lang/IllegalAccessException; {:try_start_0 .. :try_end_0} :catch_3
+    .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_2
+    .catch Ljava/lang/reflect/InvocationTargetException; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/lang/SecurityException; {:try_start_0 .. :try_end_0} :catch_0
 
-    goto :goto_1d
+    goto :goto_0
 
     .line 128
-    :catch_a
+    :catch_0
     move-exception v0
 
     .line 129
     .local v0, "e":Ljava/lang/SecurityException;
     invoke-virtual {v0}, Ljava/lang/SecurityException;->printStackTrace()V
 
-    .end local v0    # "e":Ljava/lang/SecurityException;
-    goto :goto_1e
+    goto :goto_1
 
     .line 126
-    :catch_f
+    .end local v0    # "e":Ljava/lang/SecurityException;
+    :catch_1
     move-exception v0
 
     .line 127
@@ -355,10 +353,10 @@
     invoke-virtual {v0}, Ljava/lang/reflect/InvocationTargetException;->printStackTrace()V
 
     .end local v0    # "e":Ljava/lang/reflect/InvocationTargetException;
-    goto :goto_1d
+    goto :goto_0
 
     .line 124
-    :catch_14
+    :catch_2
     move-exception v0
 
     .line 125
@@ -366,10 +364,10 @@
     invoke-virtual {v0}, Ljava/lang/IllegalArgumentException;->printStackTrace()V
 
     .end local v0    # "e":Ljava/lang/IllegalArgumentException;
-    goto :goto_1d
+    goto :goto_0
 
     .line 122
-    :catch_19
+    :catch_3
     move-exception v0
 
     .line 123
@@ -378,16 +376,16 @@
 
     .line 130
     .end local v0    # "e":Ljava/lang/IllegalAccessException;
-    :goto_1d
+    :goto_0
     nop
 
     .line 131
-    :goto_1e
+    :goto_1
     return-void
 .end method
 
 .method private invokeSetters(Lcom/oneplus/screenshot/anim/TargetAnimator$Runner;Ljava/util/Map;)V
-    .registers 9
+    .locals 6
     .param p1, "runner"    # Lcom/oneplus/screenshot/anim/TargetAnimator$Runner;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -410,12 +408,12 @@
 
     move-result-object v0
 
-    :goto_8
+    :goto_0
     invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v1
 
-    if-eqz v1, :cond_39
+    if-eqz v1, :cond_1
 
     invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -449,12 +447,12 @@
 
     move-result-object v4
 
-    :goto_28
+    :goto_1
     invoke-interface {v4}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v5
 
-    if-eqz v5, :cond_38
+    if-eqz v5, :cond_0
 
     invoke-interface {v4}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -468,24 +466,24 @@
 
     .line 115
     .end local v5    # "setter":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/reflect/Method;Ljava/lang/Object;>;"
-    goto :goto_28
+    goto :goto_1
 
     .line 116
     .end local v1    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Landroid/view/View;Lcom/oneplus/screenshot/anim/TargetAnimator$PropSetter;>;"
     .end local v2    # "target":Landroid/view/View;
     .end local v3    # "propSetter":Lcom/oneplus/screenshot/anim/TargetAnimator$PropSetter;
-    :cond_38
-    goto :goto_8
+    :cond_0
+    goto :goto_0
 
     .line 117
-    :cond_39
+    :cond_1
     return-void
 .end method
 
 
 # virtual methods
 .method public addPropAnimator(Landroid/view/View;Lcom/oneplus/screenshot/anim/TargetAnimator$TargetProp;)V
-    .registers 5
+    .locals 2
     .param p1, "target"    # Landroid/view/View;
     .param p2, "props"    # Lcom/oneplus/screenshot/anim/TargetAnimator$TargetProp;
 
@@ -501,7 +499,7 @@
 .end method
 
 .method public addPropEnd(Landroid/view/View;Lcom/oneplus/screenshot/anim/TargetAnimator$TargetProp;)V
-    .registers 5
+    .locals 2
     .param p1, "target"    # Landroid/view/View;
     .param p2, "props"    # Lcom/oneplus/screenshot/anim/TargetAnimator$TargetProp;
 
@@ -517,7 +515,7 @@
 .end method
 
 .method public addPropStart(Landroid/view/View;Lcom/oneplus/screenshot/anim/TargetAnimator$TargetProp;)V
-    .registers 5
+    .locals 2
     .param p1, "target"    # Landroid/view/View;
     .param p2, "props"    # Lcom/oneplus/screenshot/anim/TargetAnimator$TargetProp;
 
@@ -533,7 +531,7 @@
 .end method
 
 .method public getLoader()Lcom/oneplus/screenshot/anim/TargetAnimator$ViewLoader;
-    .registers 2
+    .locals 1
 
     .line 69
     iget-object v0, p0, Lcom/oneplus/screenshot/anim/TargetAnimator;->mLoader:Lcom/oneplus/screenshot/anim/TargetAnimator$ViewLoader;
@@ -542,7 +540,7 @@
 .end method
 
 .method public onAnimationCancel(Landroid/animation/Animator;)V
-    .registers 2
+    .locals 0
     .param p1, "animation"    # Landroid/animation/Animator;
 
     .line 53
@@ -550,7 +548,7 @@
 .end method
 
 .method public onAnimationEnd(Landroid/animation/Animator;)V
-    .registers 4
+    .locals 2
     .param p1, "animation"    # Landroid/animation/Animator;
 
     .line 48
@@ -569,7 +567,7 @@
 .end method
 
 .method public onAnimationRepeat(Landroid/animation/Animator;)V
-    .registers 2
+    .locals 0
     .param p1, "animation"    # Landroid/animation/Animator;
 
     .line 57
@@ -577,7 +575,7 @@
 .end method
 
 .method public onAnimationStart(Landroid/animation/Animator;)V
-    .registers 4
+    .locals 2
     .param p1, "animation"    # Landroid/animation/Animator;
 
     .line 43
@@ -596,7 +594,7 @@
 .end method
 
 .method public onAnimationUpdate(Landroid/animation/ValueAnimator;)V
-    .registers 5
+    .locals 3
     .param p1, "animation"    # Landroid/animation/ValueAnimator;
 
     .line 61
@@ -625,7 +623,7 @@
 .end method
 
 .method public setLoader(Lcom/oneplus/screenshot/anim/TargetAnimator$ViewLoader;)V
-    .registers 2
+    .locals 0
     .param p1, "loader"    # Lcom/oneplus/screenshot/anim/TargetAnimator$ViewLoader;
 
     .line 73

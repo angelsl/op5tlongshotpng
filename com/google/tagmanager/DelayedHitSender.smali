@@ -24,7 +24,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 23
     new-instance v0, Ljava/lang/Object;
@@ -37,7 +37,7 @@
 .end method
 
 .method private constructor <init>(Landroid/content/Context;)V
-    .registers 4
+    .locals 2
     .param p1, "context"    # Landroid/content/Context;
 
     .line 32
@@ -56,7 +56,7 @@
 .end method
 
 .method constructor <init>(Lcom/google/tagmanager/HitSendingThread;Lcom/google/tagmanager/RateLimiter;)V
-    .registers 3
+    .locals 0
     .param p1, "thread"    # Lcom/google/tagmanager/HitSendingThread;
     .param p2, "rateLimiter"    # Lcom/google/tagmanager/RateLimiter;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
@@ -76,7 +76,7 @@
 .end method
 
 .method public static getInstance(Landroid/content/Context;)Lcom/google/tagmanager/HitSender;
-    .registers 3
+    .locals 2
     .param p0, "context"    # Landroid/content/Context;
 
     .line 42
@@ -85,10 +85,10 @@
     monitor-enter v0
 
     .line 43
-    :try_start_3
+    :try_start_0
     sget-object v1, Lcom/google/tagmanager/DelayedHitSender;->sInstance:Lcom/google/tagmanager/DelayedHitSender;
 
-    if-nez v1, :cond_e
+    if-nez v1, :cond_0
 
     .line 44
     new-instance v1, Lcom/google/tagmanager/DelayedHitSender;
@@ -98,7 +98,7 @@
     sput-object v1, Lcom/google/tagmanager/DelayedHitSender;->sInstance:Lcom/google/tagmanager/DelayedHitSender;
 
     .line 46
-    :cond_e
+    :cond_0
     sget-object v1, Lcom/google/tagmanager/DelayedHitSender;->sInstance:Lcom/google/tagmanager/DelayedHitSender;
 
     monitor-exit v0
@@ -106,12 +106,12 @@
     return-object v1
 
     .line 47
-    :catchall_12
+    :catchall_0
     move-exception v1
 
     monitor-exit v0
-    :try_end_14
-    .catchall {:try_start_3 .. :try_end_14} :catchall_12
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method
@@ -119,7 +119,7 @@
 
 # virtual methods
 .method public sendHit(Ljava/lang/String;)Z
-    .registers 5
+    .locals 3
     .param p1, "url"    # Ljava/lang/String;
 
     .line 63
@@ -131,7 +131,7 @@
 
     const/4 v1, 0x0
 
-    if-nez v0, :cond_f
+    if-nez v0, :cond_0
 
     .line 64
     const-string v0, "Too many urls sent too quickly with the TagManagerSender, rate limiting invoked."
@@ -142,17 +142,17 @@
     return v1
 
     .line 68
-    :cond_f
+    :cond_0
     iget-object v0, p0, Lcom/google/tagmanager/DelayedHitSender;->mWrapperUrl:Ljava/lang/String;
 
-    if-eqz v0, :cond_5a
+    if-eqz v0, :cond_1
 
     iget-object v0, p0, Lcom/google/tagmanager/DelayedHitSender;->mWrapperQueryParameter:Ljava/lang/String;
 
-    if-eqz v0, :cond_5a
+    if-eqz v0, :cond_1
 
     .line 70
-    :try_start_17
+    :try_start_0
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -203,14 +203,14 @@
     move-result-object v0
 
     invoke-static {v0}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
-    :try_end_52
-    .catch Ljava/io/UnsupportedEncodingException; {:try_start_17 .. :try_end_52} :catch_53
+    :try_end_0
+    .catch Ljava/io/UnsupportedEncodingException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 75
-    goto :goto_5a
+    goto :goto_0
 
     .line 72
-    :catch_53
+    :catch_0
     move-exception v0
 
     .line 73
@@ -224,8 +224,8 @@
 
     .line 78
     .end local v0    # "e":Ljava/io/UnsupportedEncodingException;
-    :cond_5a
-    :goto_5a
+    :cond_1
+    :goto_0
     iget-object v0, p0, Lcom/google/tagmanager/DelayedHitSender;->mSendingThread:Lcom/google/tagmanager/HitSendingThread;
 
     invoke-interface {v0, p1}, Lcom/google/tagmanager/HitSendingThread;->sendHit(Ljava/lang/String;)V
@@ -237,7 +237,7 @@
 .end method
 
 .method public setUrlWrapModeForTesting(Ljava/lang/String;Ljava/lang/String;)V
-    .registers 3
+    .locals 0
     .param p1, "url"    # Ljava/lang/String;
     .param p2, "queryParameter"    # Ljava/lang/String;
 

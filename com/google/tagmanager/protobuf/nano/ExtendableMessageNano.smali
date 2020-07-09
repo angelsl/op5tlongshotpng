@@ -17,7 +17,7 @@
 
 # direct methods
 .method public constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 40
     invoke-direct {p0}, Lcom/google/tagmanager/protobuf/nano/MessageNano;-><init>()V
@@ -28,7 +28,7 @@
 
 # virtual methods
 .method public getExtension(Lcom/google/tagmanager/protobuf/nano/Extension;)Ljava/lang/Object;
-    .registers 3
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "<T:",
@@ -51,7 +51,7 @@
 .end method
 
 .method public getSerializedSize()I
-    .registers 2
+    .locals 1
 
     .line 50
     iget-object v0, p0, Lcom/google/tagmanager/protobuf/nano/ExtendableMessageNano;->unknownFieldData:Ljava/util/List;
@@ -69,7 +69,7 @@
 .end method
 
 .method public setExtension(Lcom/google/tagmanager/protobuf/nano/Extension;Ljava/lang/Object;)V
-    .registers 4
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "<T:",
@@ -85,7 +85,7 @@
     .local p2, "value":Ljava/lang/Object;, "TT;"
     iget-object v0, p0, Lcom/google/tagmanager/protobuf/nano/ExtendableMessageNano;->unknownFieldData:Ljava/util/List;
 
-    if-nez v0, :cond_b
+    if-nez v0, :cond_0
 
     .line 67
     new-instance v0, Ljava/util/ArrayList;
@@ -95,7 +95,7 @@
     iput-object v0, p0, Lcom/google/tagmanager/protobuf/nano/ExtendableMessageNano;->unknownFieldData:Ljava/util/List;
 
     .line 69
-    :cond_b
+    :cond_0
     iget-object v0, p0, Lcom/google/tagmanager/protobuf/nano/ExtendableMessageNano;->unknownFieldData:Ljava/util/List;
 
     invoke-static {p1, p2, v0}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->setExtension(Lcom/google/tagmanager/protobuf/nano/Extension;Ljava/lang/Object;Ljava/util/List;)V

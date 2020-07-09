@@ -12,7 +12,7 @@
 
 # direct methods
 .method constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 16
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -21,22 +21,22 @@
 .end method
 
 .method private closeURLConnection(Ljava/net/HttpURLConnection;)V
-    .registers 2
+    .locals 0
     .param p1, "connection"    # Ljava/net/HttpURLConnection;
 
     .line 70
-    if-eqz p1, :cond_5
+    if-eqz p1, :cond_0
 
     .line 71
     invoke-virtual {p1}, Ljava/net/HttpURLConnection;->disconnect()V
 
     .line 73
-    :cond_5
+    :cond_0
     return-void
 .end method
 
 .method private handleServerResponse(Ljava/net/HttpURLConnection;)Ljava/io/InputStream;
-    .registers 5
+    .locals 3
     .param p1, "connection"    # Ljava/net/HttpURLConnection;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -53,7 +53,7 @@
     .local v0, "responseCode":I
     const/16 v1, 0xc8
 
-    if-ne v0, v1, :cond_d
+    if-ne v0, v1, :cond_0
 
     .line 52
     invoke-virtual {p1}, Ljava/net/HttpURLConnection;->getInputStream()Ljava/io/InputStream;
@@ -63,7 +63,7 @@
     return-object v1
 
     .line 56
-    :cond_d
+    :cond_0
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -82,7 +82,7 @@
     .local v1, "errorMessage":Ljava/lang/String;
     const/16 v2, 0x194
 
-    if-ne v0, v2, :cond_28
+    if-ne v0, v2, :cond_1
 
     .line 58
     new-instance v2, Ljava/io/FileNotFoundException;
@@ -92,7 +92,7 @@
     throw v2
 
     .line 60
-    :cond_28
+    :cond_1
     new-instance v2, Ljava/io/IOException;
 
     invoke-direct {v2, v1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
@@ -103,7 +103,7 @@
 
 # virtual methods
 .method public close()V
-    .registers 2
+    .locals 1
 
     .line 66
     iget-object v0, p0, Lcom/google/tagmanager/HttpUrlConnectionNetworkClient;->mConnection:Ljava/net/HttpURLConnection;
@@ -115,7 +115,7 @@
 .end method
 
 .method public getInputStream(Ljava/lang/String;)Ljava/io/InputStream;
-    .registers 3
+    .locals 1
     .param p1, "urlStr"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -141,7 +141,7 @@
 .end method
 
 .method getUrlConnection(Ljava/lang/String;)Ljava/net/HttpURLConnection;
-    .registers 5
+    .locals 3
     .param p1, "urlStr"    # Ljava/lang/String;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
@@ -179,7 +179,7 @@
 .end method
 
 .method public sendPostRequest(Ljava/lang/String;[B)V
-    .registers 6
+    .locals 3
     .param p1, "urlStr"    # Ljava/lang/String;
     .param p2, "content"    # [B
     .annotation system Ldalvik/annotation/Throws;
@@ -195,7 +195,7 @@
 
     .line 30
     .local v0, "connection":Ljava/net/HttpURLConnection;
-    :try_start_4
+    :try_start_0
     const-string v1, "Content-Length"
 
     array-length v2, p2
@@ -223,21 +223,21 @@
     invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getOutputStream()Ljava/io/OutputStream;
 
     move-result-object v1
-    :try_end_1e
-    .catchall {:try_start_4 .. :try_end_1e} :catchall_35
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
     .line 37
     .local v1, "sendToServer":Ljava/io/OutputStream;
-    :try_start_1e
+    :try_start_1
     invoke-virtual {v1, p2}, Ljava/io/OutputStream;->write([B)V
 
     .line 38
     invoke-virtual {v1}, Ljava/io/OutputStream;->flush()V
-    :try_end_24
-    .catchall {:try_start_1e .. :try_end_24} :catchall_30
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 40
-    :try_start_24
+    :try_start_2
     invoke-virtual {v1}, Ljava/io/OutputStream;->close()V
 
     .line 41
@@ -245,10 +245,12 @@
 
     .line 43
     invoke-direct {p0, v0}, Lcom/google/tagmanager/HttpUrlConnectionNetworkClient;->handleServerResponse(Ljava/net/HttpURLConnection;)Ljava/io/InputStream;
-    :try_end_2b
-    .catchall {:try_start_24 .. :try_end_2b} :catchall_35
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
     .line 45
+    nop
+
     .end local v1    # "sendToServer":Ljava/io/OutputStream;
     invoke-direct {p0, v0}, Lcom/google/tagmanager/HttpUrlConnectionNetworkClient;->closeURLConnection(Ljava/net/HttpURLConnection;)V
 
@@ -260,19 +262,27 @@
 
     .line 40
     .restart local v1    # "sendToServer":Ljava/io/OutputStream;
-    :catchall_30
+    :catchall_0
     move-exception v2
 
-    :try_start_31
+    :try_start_3
     invoke-virtual {v1}, Ljava/io/OutputStream;->close()V
 
+    .end local v0    # "connection":Ljava/net/HttpURLConnection;
+    .end local p0    # "this":Lcom/google/tagmanager/HttpUrlConnectionNetworkClient;
+    .end local p1    # "urlStr":Ljava/lang/String;
+    .end local p2    # "content":[B
     throw v2
-    :try_end_35
-    .catchall {:try_start_31 .. :try_end_35} :catchall_35
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_1
 
     .line 45
     .end local v1    # "sendToServer":Ljava/io/OutputStream;
-    :catchall_35
+    .restart local v0    # "connection":Ljava/net/HttpURLConnection;
+    .restart local p0    # "this":Lcom/google/tagmanager/HttpUrlConnectionNetworkClient;
+    .restart local p1    # "urlStr":Ljava/lang/String;
+    .restart local p2    # "content":[B
+    :catchall_1
     move-exception v1
 
     invoke-direct {p0, v0}, Lcom/google/tagmanager/HttpUrlConnectionNetworkClient;->closeURLConnection(Ljava/net/HttpURLConnection;)V

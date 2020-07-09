@@ -17,7 +17,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 11
     const-class v0, Lcom/oneplus/screenshot/util/SharedPrefs;
@@ -32,7 +32,7 @@
 .end method
 
 .method public constructor <init>(Landroid/content/Context;)V
-    .registers 4
+    .locals 2
     .param p1, "context"    # Landroid/content/Context;
 
     .line 25
@@ -61,7 +61,7 @@
 
 # virtual methods
 .method public getBoolean(Ljava/lang/String;)Z
-    .registers 4
+    .locals 2
     .param p1, "key"    # Ljava/lang/String;
 
     .line 33
@@ -77,7 +77,7 @@
 .end method
 
 .method public setBoolean(Ljava/lang/String;Z)V
-    .registers 4
+    .locals 1
     .param p1, "key"    # Ljava/lang/String;
     .param p2, "value"    # Z
 

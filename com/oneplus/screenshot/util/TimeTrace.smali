@@ -17,7 +17,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 2
+    .locals 2
 
     .line 7
     const-class v0, Lcom/oneplus/screenshot/util/TimeTrace;
@@ -46,7 +46,7 @@
 .end method
 
 .method public constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 5
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -55,7 +55,7 @@
 .end method
 
 .method private static clear()V
-    .registers 2
+    .locals 2
 
     .line 76
     const-wide/16 v0, 0x0
@@ -68,13 +68,9 @@
     sput-wide v0, Lcom/oneplus/screenshot/util/TimeTrace;->mLast:J
 
     .line 78
-    sget-wide v0, Lcom/oneplus/screenshot/util/TimeTrace;->mStart:J
-
     sput-wide v0, Lcom/oneplus/screenshot/util/TimeTrace;->mMarkStart:J
 
     .line 79
-    sget-wide v0, Lcom/oneplus/screenshot/util/TimeTrace;->mStart:J
-
     sput-wide v0, Lcom/oneplus/screenshot/util/TimeTrace;->mMarkLast:J
 
     .line 80
@@ -82,7 +78,7 @@
 .end method
 
 .method public static log(Ljava/lang/String;Ljava/lang/String;)V
-    .registers 8
+    .locals 6
     .param p0, "tag"    # Ljava/lang/String;
     .param p1, "msg"    # Ljava/lang/String;
 
@@ -104,7 +100,7 @@
 .end method
 
 .method private static log(Ljava/lang/String;Ljava/lang/String;JJ)V
-    .registers 6
+    .locals 0
     .param p0, "tag"    # Ljava/lang/String;
     .param p1, "msg"    # Ljava/lang/String;
     .param p2, "length"    # J
@@ -115,7 +111,7 @@
 .end method
 
 .method public static mark(Ljava/lang/String;Ljava/lang/String;)V
-    .registers 14
+    .locals 12
     .param p0, "tag"    # Ljava/lang/String;
     .param p1, "msg"    # Ljava/lang/String;
 
@@ -124,7 +120,7 @@
 
     .line 44
     .local v0, "canMark":Z
-    if-eqz v0, :cond_1c
+    if-eqz v0, :cond_0
 
     sget-wide v1, Lcom/oneplus/screenshot/util/TimeTrace;->mMarkStart:J
 
@@ -132,7 +128,7 @@
 
     cmp-long v1, v1, v3
 
-    if-eqz v1, :cond_1c
+    if-eqz v1, :cond_0
 
     .line 45
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
@@ -163,12 +159,12 @@
     .line 50
     .end local v8    # "curr":J
     .end local v10    # "length":J
-    :cond_1c
+    :cond_0
     return-void
 .end method
 
 .method public static reset()V
-    .registers 0
+    .locals 0
 
     .line 32
     invoke-static {}, Lcom/oneplus/screenshot/util/TimeTrace;->set()V
@@ -178,7 +174,7 @@
 .end method
 
 .method private static set()V
-    .registers 2
+    .locals 2
 
     .line 69
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
@@ -193,13 +189,9 @@
     sput-wide v0, Lcom/oneplus/screenshot/util/TimeTrace;->mLast:J
 
     .line 71
-    sget-wide v0, Lcom/oneplus/screenshot/util/TimeTrace;->mStart:J
-
     sput-wide v0, Lcom/oneplus/screenshot/util/TimeTrace;->mMarkStart:J
 
     .line 72
-    sget-wide v0, Lcom/oneplus/screenshot/util/TimeTrace;->mStart:J
-
     sput-wide v0, Lcom/oneplus/screenshot/util/TimeTrace;->mMarkLast:J
 
     .line 73
@@ -207,7 +199,7 @@
 .end method
 
 .method public static start()V
-    .registers 0
+    .locals 0
 
     .line 22
     invoke-static {}, Lcom/oneplus/screenshot/util/TimeTrace;->set()V
@@ -217,7 +209,7 @@
 .end method
 
 .method public static stop()V
-    .registers 0
+    .locals 0
 
     .line 27
     invoke-static {}, Lcom/oneplus/screenshot/util/TimeTrace;->clear()V

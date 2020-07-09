@@ -23,10 +23,10 @@
 
 # direct methods
 .method constructor <init>(Lcom/oneplus/screenshot/GlobalScreenshot;)V
-    .registers 2
+    .locals 0
     .param p1, "this$0"    # Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .line 1442
+    .line 1547
     iput-object p1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$9;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -37,26 +37,26 @@
 
 # virtual methods
 .method public getInterpolation(F)F
-    .registers 7
+    .locals 5
     .param p1, "x"    # F
 
-    .line 1446
+    .line 1551
     const v0, 0x3f1aca6b
 
     cmpg-float v1, p1, v0
 
-    if-gtz v1, :cond_16
+    if-gtz v1, :cond_0
 
-    .line 1447
+    .line 1552
     const-wide v1, 0x400921fb54442d18L    # Math.PI
 
     div-float v0, p1, v0
 
     float-to-double v3, v0
 
-    mul-double/2addr v1, v3
+    mul-double/2addr v3, v1
 
-    invoke-static {v1, v2}, Ljava/lang/Math;->sin(D)D
+    invoke-static {v3, v4}, Ljava/lang/Math;->sin(D)D
 
     move-result-wide v0
 
@@ -64,8 +64,8 @@
 
     return v0
 
-    .line 1449
-    :cond_16
+    .line 1554
+    :cond_0
     const/4 v0, 0x0
 
     return v0

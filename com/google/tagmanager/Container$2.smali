@@ -34,7 +34,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/Container;Lcom/google/tagmanager/Clock;)V
-    .registers 3
+    .locals 0
 
     .line 471
     iput-object p1, p0, Lcom/google/tagmanager/Container$2;->this$0:Lcom/google/tagmanager/Container;
@@ -47,7 +47,7 @@
 .end method
 
 .method private failureToRefreshFailure(Lcom/google/tagmanager/LoadCallback$Failure;)Lcom/google/tagmanager/Container$RefreshFailure;
-    .registers 4
+    .locals 2
     .param p1, "failure"    # Lcom/google/tagmanager/LoadCallback$Failure;
 
     .line 518
@@ -59,7 +59,17 @@
 
     aget v0, v0, v1
 
-    packed-switch v0, :pswitch_data_18
+    const/4 v1, 0x1
+
+    if-eq v0, v1, :cond_2
+
+    const/4 v1, 0x2
+
+    if-eq v0, v1, :cond_1
+
+    const/4 v1, 0x3
+
+    if-eq v0, v1, :cond_0
 
     .line 526
     sget-object v0, Lcom/google/tagmanager/Container$RefreshFailure;->UNKNOWN_ERROR:Lcom/google/tagmanager/Container$RefreshFailure;
@@ -67,37 +77,28 @@
     return-object v0
 
     .line 524
-    :pswitch_e
+    :cond_0
     sget-object v0, Lcom/google/tagmanager/Container$RefreshFailure;->SERVER_ERROR:Lcom/google/tagmanager/Container$RefreshFailure;
 
     return-object v0
 
     .line 522
-    :pswitch_11
+    :cond_1
     sget-object v0, Lcom/google/tagmanager/Container$RefreshFailure;->IO_ERROR:Lcom/google/tagmanager/Container$RefreshFailure;
 
     return-object v0
 
     .line 520
-    :pswitch_14
+    :cond_2
     sget-object v0, Lcom/google/tagmanager/Container$RefreshFailure;->NO_SAVED_CONTAINER:Lcom/google/tagmanager/Container$RefreshFailure;
 
     return-object v0
-
-    nop
-
-    :pswitch_data_18
-    .packed-switch 0x1
-        :pswitch_14
-        :pswitch_11
-        :pswitch_e
-    .end packed-switch
 .end method
 
 
 # virtual methods
 .method public onFailure(Lcom/google/tagmanager/LoadCallback$Failure;)V
-    .registers 5
+    .locals 3
     .param p1, "failure"    # Lcom/google/tagmanager/LoadCallback$Failure;
 
     .line 508
@@ -118,7 +119,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_1a
+    if-eqz v0, :cond_0
 
     .line 513
     iget-object v0, p0, Lcom/google/tagmanager/Container$2;->this$0:Lcom/google/tagmanager/Container;
@@ -128,12 +129,12 @@
     invoke-virtual {v0, v1, v2}, Lcom/google/tagmanager/Container;->loadAfterDelay(J)V
 
     .line 515
-    :cond_1a
+    :cond_0
     return-void
 .end method
 
 .method public onSuccess(Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;)V
-    .registers 12
+    .locals 10
     .param p1, "proto"    # Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;
 
     .line 482
@@ -143,12 +144,12 @@
 
     move-result v0
 
-    if-eqz v0, :cond_8e
+    if-eqz v0, :cond_2
 
     .line 484
     iget-object v0, p1, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->supplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
 
-    if-eqz v0, :cond_18
+    if-eqz v0, :cond_0
 
     .line 485
     iget-object v0, p1, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->supplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
@@ -161,21 +162,19 @@
 
     iget-object v2, p1, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->supplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
 
-    # setter for: Lcom/google/tagmanager/Container;->mLastLoadedSupplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
     invoke-static {v1, v2}, Lcom/google/tagmanager/Container;->access$102(Lcom/google/tagmanager/Container;Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;)Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
 
-    goto :goto_35
+    goto :goto_0
 
     .line 488
     .end local v0    # "resource":Lcom/google/analytics/containertag/proto/Serving$Resource;
-    :cond_18
+    :cond_0
     iget-object v0, p1, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->resource:Lcom/google/analytics/containertag/proto/Serving$Resource;
 
     .line 489
     .restart local v0    # "resource":Lcom/google/analytics/containertag/proto/Serving$Resource;
     iget-object v1, p0, Lcom/google/tagmanager/Container$2;->this$0:Lcom/google/tagmanager/Container;
 
-    # getter for: Lcom/google/tagmanager/Container;->mLastLoadedSupplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
     invoke-static {v1}, Lcom/google/tagmanager/Container;->access$100(Lcom/google/tagmanager/Container;)Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
 
     move-result-object v1
@@ -185,7 +184,6 @@
     .line 490
     iget-object v1, p0, Lcom/google/tagmanager/Container$2;->this$0:Lcom/google/tagmanager/Container;
 
-    # getter for: Lcom/google/tagmanager/Container;->mLastLoadedSupplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
     invoke-static {v1}, Lcom/google/tagmanager/Container;->access$100(Lcom/google/tagmanager/Container;)Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
 
     move-result-object v1
@@ -197,7 +195,6 @@
     .line 491
     iget-object v1, p0, Lcom/google/tagmanager/Container$2;->this$0:Lcom/google/tagmanager/Container;
 
-    # getter for: Lcom/google/tagmanager/Container;->mLastLoadedSupplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
     invoke-static {v1}, Lcom/google/tagmanager/Container;->access$100(Lcom/google/tagmanager/Container;)Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
 
     move-result-object v1
@@ -207,7 +204,7 @@
     iput-object v2, v1, Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;->fingerprint:Ljava/lang/String;
 
     .line 493
-    :goto_35
+    :goto_0
     iget-object v1, p0, Lcom/google/tagmanager/Container$2;->this$0:Lcom/google/tagmanager/Container;
 
     invoke-static {v1, v0}, Lcom/google/tagmanager/Container;->access$200(Lcom/google/tagmanager/Container;Lcom/google/analytics/containertag/proto/Serving$Resource;)V
@@ -215,22 +212,18 @@
     .line 494
     iget-object v1, p0, Lcom/google/tagmanager/Container$2;->this$0:Lcom/google/tagmanager/Container;
 
-    # getter for: Lcom/google/tagmanager/Container;->mLastLoadedSupplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
     invoke-static {v1}, Lcom/google/tagmanager/Container;->access$100(Lcom/google/tagmanager/Container;)Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
 
     move-result-object v1
 
     iget-object v1, v1, Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;->supplemental:[Lcom/google/analytics/containertag/proto/Serving$Supplemental;
 
-    if-eqz v1, :cond_51
+    if-eqz v1, :cond_1
 
     .line 495
     iget-object v1, p0, Lcom/google/tagmanager/Container$2;->this$0:Lcom/google/tagmanager/Container;
 
-    iget-object v2, p0, Lcom/google/tagmanager/Container$2;->this$0:Lcom/google/tagmanager/Container;
-
-    # getter for: Lcom/google/tagmanager/Container;->mLastLoadedSupplementedResource:Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
-    invoke-static {v2}, Lcom/google/tagmanager/Container;->access$100(Lcom/google/tagmanager/Container;)Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
+    invoke-static {v1}, Lcom/google/tagmanager/Container;->access$100(Lcom/google/tagmanager/Container;)Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;
 
     move-result-object v2
 
@@ -239,7 +232,7 @@
     invoke-static {v1, v2}, Lcom/google/tagmanager/Container;->access$300(Lcom/google/tagmanager/Container;[Lcom/google/analytics/containertag/proto/Serving$Supplemental;)V
 
     .line 497
-    :cond_51
+    :cond_1
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -263,7 +256,6 @@
 
     iget-wide v2, p1, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->timeStamp:J
 
-    # setter for: Lcom/google/tagmanager/Container;->mLastRefreshTime:J
     invoke-static {v1, v2, v3}, Lcom/google/tagmanager/Container;->access$402(Lcom/google/tagmanager/Container;J)J
 
     .line 499
@@ -271,10 +263,7 @@
 
     const-wide/16 v2, 0x0
 
-    iget-object v4, p0, Lcom/google/tagmanager/Container$2;->this$0:Lcom/google/tagmanager/Container;
-
-    # getter for: Lcom/google/tagmanager/Container;->mLastRefreshTime:J
-    invoke-static {v4}, Lcom/google/tagmanager/Container;->access$400(Lcom/google/tagmanager/Container;)J
+    invoke-static {v1}, Lcom/google/tagmanager/Container;->access$400(Lcom/google/tagmanager/Container;)J
 
     move-result-wide v4
 
@@ -302,7 +291,7 @@
 
     .line 503
     .end local v0    # "resource":Lcom/google/analytics/containertag/proto/Serving$Resource;
-    :cond_8e
+    :cond_2
     iget-object v0, p0, Lcom/google/tagmanager/Container$2;->this$0:Lcom/google/tagmanager/Container;
 
     sget-object v1, Lcom/google/tagmanager/Container$RefreshType;->SAVED:Lcom/google/tagmanager/Container$RefreshType;
@@ -314,7 +303,7 @@
 .end method
 
 .method public bridge synthetic onSuccess(Ljava/lang/Object;)V
-    .registers 3
+    .locals 1
     .param p1, "x0"    # Ljava/lang/Object;
 
     .line 471
@@ -328,7 +317,7 @@
 .end method
 
 .method public startLoad()V
-    .registers 3
+    .locals 2
 
     .line 474
     iget-object v0, p0, Lcom/google/tagmanager/Container$2;->this$0:Lcom/google/tagmanager/Container;

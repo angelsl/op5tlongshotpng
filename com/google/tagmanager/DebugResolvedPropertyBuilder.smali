@@ -12,7 +12,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;)V
-    .registers 2
+    .locals 0
     .param p1, "resolvedProperty"    # Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
 
     .line 16
@@ -28,7 +28,7 @@
 
 # virtual methods
 .method public createPropertyValueBuilder(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Lcom/google/tagmanager/ValueBuilder;
-    .registers 4
+    .locals 2
     .param p1, "propertyValue"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 22

@@ -56,7 +56,7 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;Ljava/lang/String;Lcom/google/tagmanager/CtfeHost;)V
-    .registers 10
+    .locals 6
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "containerId"    # Ljava/lang/String;
     .param p3, "ctfeHost"    # Lcom/google/tagmanager/CtfeHost;
@@ -81,7 +81,7 @@
 .end method
 
 .method constructor <init>(Landroid/content/Context;Ljava/lang/String;Lcom/google/tagmanager/CtfeHost;Lcom/google/tagmanager/ResourceLoaderSchedulerImpl$ScheduledExecutorServiceFactory;Lcom/google/tagmanager/ResourceLoaderSchedulerImpl$ResourceLoaderFactory;)V
-    .registers 7
+    .locals 1
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "containerId"    # Ljava/lang/String;
     .param p3, "ctfeHost"    # Lcom/google/tagmanager/CtfeHost;
@@ -103,7 +103,7 @@
     iput-object p2, p0, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->mContainerId:Ljava/lang/String;
 
     .line 59
-    if-nez p4, :cond_11
+    if-nez p4, :cond_0
 
     .line 60
     new-instance v0, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl$1;
@@ -113,7 +113,7 @@
     move-object p4, v0
 
     .line 69
-    :cond_11
+    :cond_0
     invoke-interface {p4}, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl$ScheduledExecutorServiceFactory;->createExecutorService()Ljava/util/concurrent/ScheduledExecutorService;
 
     move-result-object v0
@@ -121,7 +121,7 @@
     iput-object v0, p0, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->mExecutor:Ljava/util/concurrent/ScheduledExecutorService;
 
     .line 70
-    if-nez p5, :cond_21
+    if-nez p5, :cond_1
 
     .line 71
     new-instance v0, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl$2;
@@ -130,19 +130,19 @@
 
     iput-object v0, p0, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->mResourceLoaderFactory:Lcom/google/tagmanager/ResourceLoaderSchedulerImpl$ResourceLoaderFactory;
 
-    goto :goto_23
+    goto :goto_0
 
     .line 78
-    :cond_21
+    :cond_1
     iput-object p5, p0, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->mResourceLoaderFactory:Lcom/google/tagmanager/ResourceLoaderSchedulerImpl$ResourceLoaderFactory;
 
     .line 80
-    :goto_23
+    :goto_0
     return-void
 .end method
 
 .method static synthetic access$000(Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;)Landroid/content/Context;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;
 
     .line 27
@@ -152,7 +152,7 @@
 .end method
 
 .method static synthetic access$100(Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;)Ljava/lang/String;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;
 
     .line 27
@@ -162,7 +162,7 @@
 .end method
 
 .method private createResourceLoader(Ljava/lang/String;)Lcom/google/tagmanager/ResourceLoader;
-    .registers 4
+    .locals 2
     .param p1, "previousVersion"    # Ljava/lang/String;
 
     .line 137
@@ -193,17 +193,17 @@
 .end method
 
 .method private declared-synchronized ensureNotClosed()V
-    .registers 3
+    .locals 2
 
     monitor-enter p0
 
     .line 131
-    :try_start_1
+    :try_start_0
     iget-boolean v0, p0, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->mClosed:Z
-    :try_end_3
-    .catchall {:try_start_1 .. :try_end_3} :catchall_f
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    if-nez v0, :cond_7
+    if-nez v0, :cond_0
 
     .line 134
     monitor-exit p0
@@ -211,8 +211,8 @@
     return-void
 
     .line 132
-    :cond_7
-    :try_start_7
+    :cond_0
+    :try_start_1
     new-instance v0, Ljava/lang/IllegalStateException;
 
     const-string v1, "called method after closed"
@@ -220,34 +220,34 @@
     invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
     throw v0
-    :try_end_f
-    .catchall {:try_start_7 .. :try_end_f} :catchall_f
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 130
-    :catchall_f
+    .end local p0    # "this":Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;
+    :catchall_0
     move-exception v0
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;
     throw v0
 .end method
 
 
 # virtual methods
 .method public declared-synchronized close()V
-    .registers 3
+    .locals 2
 
     monitor-enter p0
 
     .line 84
-    :try_start_1
+    :try_start_0
     invoke-direct {p0}, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->ensureNotClosed()V
 
     .line 85
     iget-object v0, p0, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->mFuture:Ljava/util/concurrent/ScheduledFuture;
 
-    if-eqz v0, :cond_e
+    if-eqz v0, :cond_0
 
     .line 86
     iget-object v0, p0, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->mFuture:Ljava/util/concurrent/ScheduledFuture;
@@ -257,7 +257,8 @@
     invoke-interface {v0, v1}, Ljava/util/concurrent/ScheduledFuture;->cancel(Z)Z
 
     .line 88
-    :cond_e
+    .end local p0    # "this":Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;
+    :cond_0
     iget-object v0, p0, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->mExecutor:Ljava/util/concurrent/ScheduledExecutorService;
 
     invoke-interface {v0}, Ljava/util/concurrent/ScheduledExecutorService;->shutdown()V
@@ -266,8 +267,8 @@
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->mClosed:Z
-    :try_end_16
-    .catchall {:try_start_1 .. :try_end_16} :catchall_18
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 90
     monitor-exit p0
@@ -275,24 +276,23 @@
     return-void
 
     .line 83
-    :catchall_18
+    :catchall_0
     move-exception v0
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;
     throw v0
 .end method
 
 .method public declared-synchronized loadAfterDelay(JLjava/lang/String;)V
-    .registers 7
+    .locals 3
     .param p1, "delayInMillis"    # J
     .param p3, "previousVersion"    # Ljava/lang/String;
 
     monitor-enter p0
 
     .line 106
-    :try_start_1
+    :try_start_0
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -323,12 +323,12 @@
     .line 108
     iget-object v0, p0, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->mCallback:Lcom/google/tagmanager/LoadCallback;
 
-    if-eqz v0, :cond_40
+    if-eqz v0, :cond_1
 
     .line 112
     iget-object v0, p0, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->mFuture:Ljava/util/concurrent/ScheduledFuture;
 
-    if-eqz v0, :cond_30
+    if-eqz v0, :cond_0
 
     .line 118
     iget-object v0, p0, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->mFuture:Ljava/util/concurrent/ScheduledFuture;
@@ -338,7 +338,8 @@
     invoke-interface {v0, v1}, Ljava/util/concurrent/ScheduledFuture;->cancel(Z)Z
 
     .line 120
-    :cond_30
+    .end local p0    # "this":Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;
+    :cond_0
     iget-object v0, p0, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->mExecutor:Ljava/util/concurrent/ScheduledExecutorService;
 
     invoke-direct {p0, p3}, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->createResourceLoader(Ljava/lang/String;)Lcom/google/tagmanager/ResourceLoader;
@@ -352,8 +353,8 @@
     move-result-object v0
 
     iput-object v0, p0, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->mFuture:Ljava/util/concurrent/ScheduledFuture;
-    :try_end_3e
-    .catchall {:try_start_1 .. :try_end_3e} :catchall_48
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 122
     monitor-exit p0
@@ -361,8 +362,8 @@
     return-void
 
     .line 109
-    :cond_40
-    :try_start_40
+    :cond_1
+    :try_start_1
     new-instance v0, Ljava/lang/IllegalStateException;
 
     const-string v1, "callback must be set before loadAfterDelay() is called."
@@ -370,35 +371,34 @@
     invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
     throw v0
-    :try_end_48
-    .catchall {:try_start_40 .. :try_end_48} :catchall_48
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 105
     .end local p1    # "delayInMillis":J
     .end local p3    # "previousVersion":Ljava/lang/String;
-    :catchall_48
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;
     throw p1
 .end method
 
 .method public declared-synchronized setCtfeURLPathAndQuery(Ljava/lang/String;)V
-    .registers 2
+    .locals 0
     .param p1, "urlPathAndQuery"    # Ljava/lang/String;
 
     monitor-enter p0
 
     .line 126
-    :try_start_1
+    :try_start_0
     invoke-direct {p0}, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->ensureNotClosed()V
 
     .line 127
     iput-object p1, p0, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->mCtfeUrlPathAndQuery:Ljava/lang/String;
-    :try_end_6
-    .catchall {:try_start_1 .. :try_end_6} :catchall_8
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 128
     monitor-exit p0
@@ -406,18 +406,18 @@
     return-void
 
     .line 125
+    .end local p0    # "this":Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;
     .end local p1    # "urlPathAndQuery":Ljava/lang/String;
-    :catchall_8
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;
     throw p1
 .end method
 
 .method public declared-synchronized setLoadCallback(Lcom/google/tagmanager/LoadCallback;)V
-    .registers 2
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -431,13 +431,13 @@
     monitor-enter p0
 
     .line 94
-    :try_start_1
+    :try_start_0
     invoke-direct {p0}, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->ensureNotClosed()V
 
     .line 95
     iput-object p1, p0, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->mCallback:Lcom/google/tagmanager/LoadCallback;
-    :try_end_6
-    .catchall {:try_start_1 .. :try_end_6} :catchall_8
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 96
     monitor-exit p0
@@ -445,12 +445,12 @@
     return-void
 
     .line 93
+    .end local p0    # "this":Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;
     .end local p1    # "callback":Lcom/google/tagmanager/LoadCallback;, "Lcom/google/tagmanager/LoadCallback<Lcom/google/analytics/containertag/proto/Serving$SupplementedResource;>;"
-    :catchall_8
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;
     throw p1
 .end method

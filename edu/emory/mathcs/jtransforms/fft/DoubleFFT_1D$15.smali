@@ -35,7 +35,7 @@
 
 # direct methods
 .method constructor <init>(Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;III[D[DI)V
-    .registers 8
+    .locals 0
     .param p1, "this$0"    # Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;
 
     .line 5484
@@ -61,7 +61,7 @@
 
 # virtual methods
 .method public run()V
-    .registers 14
+    .locals 13
 
     .line 5487
     iget v0, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$15;->val$firstIdx:I
@@ -76,10 +76,10 @@
 
     .line 5489
     .local v1, "m":I
-    :goto_7
+    :goto_0
     const/16 v2, 0x200
 
-    if-le v1, v2, :cond_20
+    if-le v1, v2, :cond_0
 
     .line 5490
     shr-int/lit8 v1, v1, 0x2
@@ -103,10 +103,10 @@
 
     invoke-static/range {v3 .. v8}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->access$200(Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;I[DI[DI)V
 
-    goto :goto_7
+    goto :goto_0
 
     .line 5493
-    :cond_20
+    :cond_0
     iget-object v2, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$15;->this$0:Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;
 
     const/4 v4, 0x1
@@ -138,13 +138,11 @@
 
     sub-int/2addr v3, v1
 
-    .local v3, "j":I
-    :goto_37
     move v11, v3
 
-    .end local v3    # "j":I
     .local v11, "j":I
-    if-lez v11, :cond_5f
+    :goto_1
+    if-lez v11, :cond_1
 
     .line 5497
     add-int/lit8 v12, v2, 0x1
@@ -168,7 +166,6 @@
 
     move v5, v12
 
-    # invokes: Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->cfttree(III[DII[D)I
     invoke-static/range {v2 .. v9}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->access$400(Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;III[DII[D)I
 
     move-result v9
@@ -190,20 +187,16 @@
     invoke-static/range {v2 .. v8}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->access$300(Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;II[DII[D)V
 
     .line 5496
-    sub-int v3, v11, v1
+    sub-int/2addr v11, v1
 
-    .end local v11    # "j":I
-    .restart local v3    # "j":I
     move v2, v12
 
-    goto :goto_37
+    goto :goto_1
 
     .line 5501
-    .end local v3    # "j":I
     .end local v9    # "isplt":I
     .end local v12    # "k":I
     .restart local v2    # "k":I
-    .restart local v11    # "j":I
-    :cond_5f
+    :cond_1
     return-void
 .end method

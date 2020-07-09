@@ -14,14 +14,14 @@
 
 
 # static fields
-.field private static APPBASE:I
-
 .field private static final TAG:Ljava/lang/String;
+
+.field private static appBase:I
 
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 12
     const-class v0, Lcom/oneplus/screenshot/statistics/EventStatistics;
@@ -35,13 +35,13 @@
     .line 17
     const/4 v0, 0x0
 
-    sput v0, Lcom/oneplus/screenshot/statistics/EventStatistics;->APPBASE:I
+    sput v0, Lcom/oneplus/screenshot/statistics/EventStatistics;->appBase:I
 
     return-void
 .end method
 
 .method public constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 10
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -50,16 +50,16 @@
 .end method
 
 .method static synthetic access$000()I
-    .registers 1
+    .locals 1
 
     .line 10
-    sget v0, Lcom/oneplus/screenshot/statistics/EventStatistics;->APPBASE:I
+    sget v0, Lcom/oneplus/screenshot/statistics/EventStatistics;->appBase:I
 
     return v0
 .end method
 
 .method public static addAction(Landroid/content/Context;Lcom/oneplus/screenshot/statistics/EventStatistics$Action;)V
-    .registers 2
+    .locals 0
     .param p0, "context"    # Landroid/content/Context;
     .param p1, "eventId"    # Lcom/oneplus/screenshot/statistics/EventStatistics$Action;
 
@@ -68,7 +68,7 @@
 .end method
 
 .method public static addError(Landroid/content/Context;Lcom/oneplus/screenshot/statistics/EventStatistics$Error;Ljava/lang/String;)V
-    .registers 3
+    .locals 0
     .param p0, "context"    # Landroid/content/Context;
     .param p1, "eventId"    # Lcom/oneplus/screenshot/statistics/EventStatistics$Error;
     .param p2, "tag"    # Ljava/lang/String;
@@ -78,7 +78,7 @@
 .end method
 
 .method public static init(Landroid/content/Context;)V
-    .registers 4
+    .locals 3
     .param p0, "context"    # Landroid/content/Context;
 
     .line 48
@@ -113,36 +113,36 @@
     .local v1, "appCode":I
     mul-int/lit16 v2, v1, 0x2710
 
-    sput v2, Lcom/oneplus/screenshot/statistics/EventStatistics;->APPBASE:I
-    :try_end_1a
-    .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_0 .. :try_end_1a} :catch_1d
-    .catch Ljava/lang/NumberFormatException; {:try_start_0 .. :try_end_1a} :catch_1b
+    sput v2, Lcom/oneplus/screenshot/statistics/EventStatistics;->appBase:I
+    :try_end_0
+    .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/lang/NumberFormatException; {:try_start_0 .. :try_end_0} :catch_0
 
     .end local v0    # "info":Landroid/content/pm/ApplicationInfo;
     .end local v1    # "appCode":I
-    goto :goto_1e
+    goto :goto_0
 
     .line 54
-    :catch_1b
+    :catch_0
     move-exception v0
 
-    goto :goto_1f
+    goto :goto_1
 
     .line 52
-    :catch_1d
+    :catch_1
     move-exception v0
 
     .line 56
-    :goto_1e
+    :goto_0
     nop
 
     .line 57
-    :goto_1f
+    :goto_1
     return-void
 .end method
 
 .method private static isDebuggable(Landroid/content/Context;)Z
-    .registers 2
+    .locals 1
     .param p0, "context"    # Landroid/content/Context;
 
     .line 63
@@ -154,7 +154,7 @@
 .end method
 
 .method public static onDebug(Landroid/content/Context;)V
-    .registers 1
+    .locals 0
     .param p0, "context"    # Landroid/content/Context;
 
     .line 44
@@ -162,7 +162,7 @@
 .end method
 
 .method public static onError(Landroid/content/Context;)V
-    .registers 1
+    .locals 0
     .param p0, "context"    # Landroid/content/Context;
 
     .line 40
@@ -170,7 +170,7 @@
 .end method
 
 .method public static onPause(Landroid/content/Context;)V
-    .registers 1
+    .locals 0
     .param p0, "context"    # Landroid/content/Context;
 
     .line 36
@@ -178,7 +178,7 @@
 .end method
 
 .method public static onResume(Landroid/content/Context;)V
-    .registers 1
+    .locals 0
     .param p0, "context"    # Landroid/content/Context;
 
     .line 32

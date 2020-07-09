@@ -64,6 +64,8 @@
 
 .field public static final enum UNSUPPORTED:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
+.field public static final enum WAITTING_PREVIEW:Lcom/oneplus/screenshot/longshot/state/LongshotState;
+
 
 # instance fields
 .field private mState:Lcom/oneplus/screenshot/longshot/state/BaseState;
@@ -71,328 +73,339 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 17
+    .locals 16
 
     .line 7
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "IDLE"
+    const/4 v1, 0x0
 
-    const/4 v2, 0x0
+    const-string v2, "IDLE"
 
-    invoke-direct {v0, v1, v2}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v2, v1}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->IDLE:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     .line 8
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "UNSUPPORTED"
+    const/4 v2, 0x1
 
-    const/4 v3, 0x1
+    const-string v3, "UNSUPPORTED"
 
-    invoke-direct {v0, v1, v3}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v3, v2}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->UNSUPPORTED:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     .line 9
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "MAIN"
+    const/4 v3, 0x2
 
-    const/4 v4, 0x2
+    const-string v4, "MAIN"
 
-    invoke-direct {v0, v1, v4}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v4, v3}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->MAIN:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     .line 10
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "EDIT"
+    const/4 v4, 0x3
 
-    const/4 v5, 0x3
+    const-string v5, "EDIT"
 
-    invoke-direct {v0, v1, v5}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v5, v4}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->EDIT:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     .line 11
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "SAVE"
+    const/4 v5, 0x4
 
-    const/4 v6, 0x4
+    const-string v6, "SAVE"
 
-    invoke-direct {v0, v1, v6}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v6, v5}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SAVE:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     .line 12
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "MOVE_NEXT"
+    const/4 v6, 0x5
 
-    const/4 v7, 0x5
+    const-string v7, "MOVE_NEXT"
 
-    invoke-direct {v0, v1, v7}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v7, v6}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->MOVE_NEXT:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     .line 13
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "MOVE_PREV"
+    const/4 v7, 0x6
 
-    const/4 v8, 0x6
+    const-string v8, "MOVE_PREV"
 
-    invoke-direct {v0, v1, v8}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v8, v7}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->MOVE_PREV:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     .line 14
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "SHOT_FIRST"
+    const/4 v8, 0x7
 
-    const/4 v9, 0x7
+    const-string v9, "SHOT_FIRST"
 
-    invoke-direct {v0, v1, v9}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v9, v8}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_FIRST:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     .line 15
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "SHOT_BGNEXT"
+    const/16 v9, 0x8
 
-    const/16 v10, 0x8
+    const-string v10, "SHOT_BGNEXT"
 
-    invoke-direct {v0, v1, v10}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v10, v9}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_BGNEXT:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     .line 16
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "SHOT_BGOVER"
+    const/16 v10, 0x9
 
-    const/16 v11, 0x9
+    const-string v11, "SHOT_BGOVER"
 
-    invoke-direct {v0, v1, v11}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v11, v10}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_BGOVER:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     .line 17
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "SHOT_NEXT"
+    const/16 v11, 0xa
 
-    const/16 v12, 0xa
+    const-string v12, "SHOT_NEXT"
 
-    invoke-direct {v0, v1, v12}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v12, v11}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_NEXT:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     .line 18
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "SHOT_OVER"
+    const/16 v12, 0xb
 
-    const/16 v13, 0xb
+    const-string v13, "SHOT_OVER"
 
-    invoke-direct {v0, v1, v13}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v13, v12}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_OVER:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     .line 19
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "SHOT_LAST"
+    const/16 v13, 0xc
 
-    const/16 v14, 0xc
+    const-string v14, "SHOT_LAST"
 
-    invoke-direct {v0, v1, v14}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v13}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_LAST:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     .line 20
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "SHOT_SLAST"
+    const/16 v14, 0xd
 
-    const/16 v15, 0xd
+    const-string v15, "SHOT_SLAST"
 
-    invoke-direct {v0, v1, v15}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v15, v14}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_SLAST:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     .line 21
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "SHOT_ONE"
-
     const/16 v15, 0xe
 
-    invoke-direct {v0, v1, v15}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    const-string v14, "SHOT_ONE"
+
+    invoke-direct {v0, v14, v15}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_ONE:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     .line 22
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "SHOT_PREV"
+    const-string v14, "SHOT_PREV"
 
     const/16 v15, 0xf
 
-    invoke-direct {v0, v1, v15}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_PREV:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     .line 23
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "STITCH_BGNEXT"
+    const-string v14, "STITCH_BGNEXT"
 
     const/16 v15, 0x10
 
-    invoke-direct {v0, v1, v15}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->STITCH_BGNEXT:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     .line 24
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "STITCH_BGOVER"
+    const-string v14, "STITCH_BGOVER"
 
     const/16 v15, 0x11
 
-    invoke-direct {v0, v1, v15}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->STITCH_BGOVER:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     .line 25
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "STITCH_NEXT"
+    const-string v14, "STITCH_NEXT"
 
     const/16 v15, 0x12
 
-    invoke-direct {v0, v1, v15}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->STITCH_NEXT:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     .line 26
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "STITCH_OVER"
+    const-string v14, "STITCH_OVER"
 
     const/16 v15, 0x13
 
-    invoke-direct {v0, v1, v15}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->STITCH_OVER:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     .line 27
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "STITCH_LAST"
+    const-string v14, "STITCH_LAST"
 
     const/16 v15, 0x14
 
-    invoke-direct {v0, v1, v15}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->STITCH_LAST:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     .line 28
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "STITCH_SLAST"
+    const-string v14, "STITCH_SLAST"
 
     const/16 v15, 0x15
 
-    invoke-direct {v0, v1, v15}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->STITCH_SLAST:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     .line 29
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "STITCH_ONE"
+    const-string v14, "STITCH_ONE"
 
     const/16 v15, 0x16
 
-    invoke-direct {v0, v1, v15}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->STITCH_ONE:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     .line 30
     new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    const-string v1, "UNDO"
+    const-string v14, "UNDO"
 
     const/16 v15, 0x17
 
-    invoke-direct {v0, v1, v15}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->UNDO:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
+    .line 32
+    new-instance v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;
+
+    const-string v14, "WAITTING_PREVIEW"
+
+    const/16 v15, 0x18
+
+    invoke-direct {v0, v14, v15}, Lcom/oneplus/screenshot/longshot/state/LongshotState;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->WAITTING_PREVIEW:Lcom/oneplus/screenshot/longshot/state/LongshotState;
+
     .line 5
-    const/16 v0, 0x18
+    const/16 v0, 0x19
 
     new-array v0, v0, [Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    sget-object v1, Lcom/oneplus/screenshot/longshot/state/LongshotState;->IDLE:Lcom/oneplus/screenshot/longshot/state/LongshotState;
+    sget-object v14, Lcom/oneplus/screenshot/longshot/state/LongshotState;->IDLE:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    aput-object v1, v0, v2
+    aput-object v14, v0, v1
 
     sget-object v1, Lcom/oneplus/screenshot/longshot/state/LongshotState;->UNSUPPORTED:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    aput-object v1, v0, v3
+    aput-object v1, v0, v2
 
     sget-object v1, Lcom/oneplus/screenshot/longshot/state/LongshotState;->MAIN:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    aput-object v1, v0, v4
+    aput-object v1, v0, v3
 
     sget-object v1, Lcom/oneplus/screenshot/longshot/state/LongshotState;->EDIT:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    aput-object v1, v0, v5
+    aput-object v1, v0, v4
 
     sget-object v1, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SAVE:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    aput-object v1, v0, v6
+    aput-object v1, v0, v5
 
     sget-object v1, Lcom/oneplus/screenshot/longshot/state/LongshotState;->MOVE_NEXT:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    aput-object v1, v0, v7
+    aput-object v1, v0, v6
 
     sget-object v1, Lcom/oneplus/screenshot/longshot/state/LongshotState;->MOVE_PREV:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    aput-object v1, v0, v8
+    aput-object v1, v0, v7
 
     sget-object v1, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_FIRST:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    aput-object v1, v0, v9
+    aput-object v1, v0, v8
 
     sget-object v1, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_BGNEXT:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    aput-object v1, v0, v10
+    aput-object v1, v0, v9
 
     sget-object v1, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_BGOVER:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    aput-object v1, v0, v11
+    aput-object v1, v0, v10
 
     sget-object v1, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_NEXT:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    aput-object v1, v0, v12
+    aput-object v1, v0, v11
 
     sget-object v1, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_OVER:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    aput-object v1, v0, v13
+    aput-object v1, v0, v12
 
     sget-object v1, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_LAST:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    aput-object v1, v0, v14
+    aput-object v1, v0, v13
 
     sget-object v1, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_SLAST:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
@@ -460,13 +473,19 @@
 
     aput-object v1, v0, v2
 
+    sget-object v1, Lcom/oneplus/screenshot/longshot/state/LongshotState;->WAITTING_PREVIEW:Lcom/oneplus/screenshot/longshot/state/LongshotState;
+
+    const/16 v2, 0x18
+
+    aput-object v1, v0, v2
+
     sput-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->$VALUES:[Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     return-void
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V
-    .registers 3
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
@@ -476,7 +495,7 @@
     .line 5
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
-    .line 35
+    .line 38
     const/4 p1, 0x0
 
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->mState:Lcom/oneplus/screenshot/longshot/state/BaseState;
@@ -485,7 +504,7 @@
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Lcom/oneplus/screenshot/longshot/state/LongshotState;
-    .registers 2
+    .locals 1
     .param p0, "name"    # Ljava/lang/String;
 
     .line 5
@@ -501,7 +520,7 @@
 .end method
 
 .method public static values()[Lcom/oneplus/screenshot/longshot/state/LongshotState;
-    .registers 1
+    .locals 1
 
     .line 5
     sget-object v0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->$VALUES:[Lcom/oneplus/screenshot/longshot/state/LongshotState;
@@ -518,56 +537,56 @@
 
 # virtual methods
 .method public enter(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
-    .registers 4
+    .locals 1
     .param p1, "oldState"    # Lcom/oneplus/screenshot/longshot/state/LongshotState;
     .param p2, "listener"    # Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;
 
-    .line 49
+    .line 52
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->mState:Lcom/oneplus/screenshot/longshot/state/BaseState;
 
     invoke-virtual {v0, p1, p2}, Lcom/oneplus/screenshot/longshot/state/BaseState;->enter(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
 
-    .line 50
+    .line 53
     return-void
 .end method
 
 .method public exit(Lcom/oneplus/screenshot/longshot/state/LongshotState;)V
-    .registers 3
+    .locals 1
     .param p1, "newState"    # Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    .line 53
+    .line 56
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->mState:Lcom/oneplus/screenshot/longshot/state/BaseState;
 
     invoke-virtual {v0, p1}, Lcom/oneplus/screenshot/longshot/state/BaseState;->exit(Lcom/oneplus/screenshot/longshot/state/LongshotState;)V
 
-    .line 54
+    .line 57
     return-void
 .end method
 
 .method public get()Lcom/oneplus/screenshot/longshot/state/BaseState;
-    .registers 2
+    .locals 1
 
-    .line 61
+    .line 64
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->mState:Lcom/oneplus/screenshot/longshot/state/BaseState;
 
     return-object v0
 .end method
 
 .method public init(Lcom/oneplus/screenshot/longshot/state/BaseState;)V
-    .registers 2
+    .locals 0
     .param p1, "state"    # Lcom/oneplus/screenshot/longshot/state/BaseState;
 
-    .line 57
+    .line 60
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->mState:Lcom/oneplus/screenshot/longshot/state/BaseState;
 
-    .line 58
+    .line 61
     return-void
 .end method
 
 .method public toString()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
-    .line 42
+    .line 45
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->mState:Lcom/oneplus/screenshot/longshot/state/BaseState;
 
     invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/state/BaseState;->toString()Ljava/lang/String;
@@ -578,14 +597,14 @@
 .end method
 
 .method public updateMovePoint(Lcom/oneplus/screenshot/longshot/util/MovePoint;)V
-    .registers 3
+    .locals 1
     .param p1, "point"    # Lcom/oneplus/screenshot/longshot/util/MovePoint;
 
-    .line 65
+    .line 68
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/LongshotState;->mState:Lcom/oneplus/screenshot/longshot/state/BaseState;
 
     invoke-virtual {v0, p1}, Lcom/oneplus/screenshot/longshot/state/BaseState;->updateMovePoint(Lcom/oneplus/screenshot/longshot/util/MovePoint;)V
 
-    .line 66
+    .line 69
     return-void
 .end method

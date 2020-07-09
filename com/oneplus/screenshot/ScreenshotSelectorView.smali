@@ -15,7 +15,7 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;)V
-    .registers 3
+    .locals 1
     .param p1, "context"    # Landroid/content/Context;
 
     .line 40
@@ -28,7 +28,7 @@
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    .registers 6
+    .locals 3
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "attrs"    # Landroid/util/AttributeSet;
 
@@ -78,7 +78,7 @@
 
 # virtual methods
 .method public draw(Landroid/graphics/Canvas;)V
-    .registers 9
+    .locals 7
     .param p1, "canvas"    # Landroid/graphics/Canvas;
 
     .line 77
@@ -107,22 +107,20 @@
     .line 78
     iget-object v0, p0, Lcom/oneplus/screenshot/ScreenshotSelectorView;->mSelectionRect:Landroid/graphics/Rect;
 
-    if-eqz v0, :cond_1d
+    if-eqz v0, :cond_0
 
     .line 79
-    iget-object v0, p0, Lcom/oneplus/screenshot/ScreenshotSelectorView;->mSelectionRect:Landroid/graphics/Rect;
-
     iget-object v1, p0, Lcom/oneplus/screenshot/ScreenshotSelectorView;->mPaintSelection:Landroid/graphics/Paint;
 
     invoke-virtual {p1, v0, v1}, Landroid/graphics/Canvas;->drawRect(Landroid/graphics/Rect;Landroid/graphics/Paint;)V
 
     .line 81
-    :cond_1d
+    :cond_0
     return-void
 .end method
 
 .method public getSelectionRect()Landroid/graphics/Rect;
-    .registers 2
+    .locals 1
 
     .line 67
     iget-object v0, p0, Lcom/oneplus/screenshot/ScreenshotSelectorView;->mSelectionRect:Landroid/graphics/Rect;
@@ -131,7 +129,7 @@
 .end method
 
 .method public startSelection(II)V
-    .registers 4
+    .locals 1
     .param p1, "x"    # I
     .param p2, "y"    # I
 
@@ -154,7 +152,7 @@
 .end method
 
 .method public stopSelection()V
-    .registers 2
+    .locals 1
 
     .line 71
     const/4 v0, 0x0
@@ -169,18 +167,16 @@
 .end method
 
 .method public updateSelection(II)V
-    .registers 5
+    .locals 2
     .param p1, "x"    # I
     .param p2, "y"    # I
 
     .line 57
     iget-object v0, p0, Lcom/oneplus/screenshot/ScreenshotSelectorView;->mSelectionRect:Landroid/graphics/Rect;
 
-    if-eqz v0, :cond_37
+    if-eqz v0, :cond_0
 
     .line 58
-    iget-object v0, p0, Lcom/oneplus/screenshot/ScreenshotSelectorView;->mSelectionRect:Landroid/graphics/Rect;
-
     iget-object v1, p0, Lcom/oneplus/screenshot/ScreenshotSelectorView;->mStartPoint:Landroid/graphics/Point;
 
     iget v1, v1, Landroid/graphics/Point;->x:I
@@ -234,6 +230,6 @@
     invoke-virtual {p0}, Lcom/oneplus/screenshot/ScreenshotSelectorView;->invalidate()V
 
     .line 64
-    :cond_37
+    :cond_0
     return-void
 .end method

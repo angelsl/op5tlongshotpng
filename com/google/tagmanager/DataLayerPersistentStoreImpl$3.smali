@@ -25,7 +25,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/DataLayerPersistentStoreImpl;Lcom/google/tagmanager/DataLayer$PersistentStore$Callback;)V
-    .registers 3
+    .locals 0
 
     .line 87
     iput-object p1, p0, Lcom/google/tagmanager/DataLayerPersistentStoreImpl$3;->this$0:Lcom/google/tagmanager/DataLayerPersistentStoreImpl;
@@ -40,14 +40,13 @@
 
 # virtual methods
 .method public run()V
-    .registers 3
+    .locals 2
 
     .line 90
     iget-object v0, p0, Lcom/google/tagmanager/DataLayerPersistentStoreImpl$3;->val$callback:Lcom/google/tagmanager/DataLayer$PersistentStore$Callback;
 
     iget-object v1, p0, Lcom/google/tagmanager/DataLayerPersistentStoreImpl$3;->this$0:Lcom/google/tagmanager/DataLayerPersistentStoreImpl;
 
-    # invokes: Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->loadSingleThreaded()Ljava/util/List;
     invoke-static {v1}, Lcom/google/tagmanager/DataLayerPersistentStoreImpl;->access$100(Lcom/google/tagmanager/DataLayerPersistentStoreImpl;)Ljava/util/List;
 
     move-result-object v1

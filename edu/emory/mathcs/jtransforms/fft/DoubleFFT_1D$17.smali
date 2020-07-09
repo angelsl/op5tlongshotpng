@@ -31,7 +31,7 @@
 
 # direct methods
 .method constructor <init>(Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;II[DD)V
-    .registers 7
+    .locals 0
     .param p1, "this$0"    # Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;
 
     .line 6522
@@ -53,16 +53,16 @@
 
 # virtual methods
 .method public run()V
-    .registers 7
+    .locals 6
 
     .line 6525
     iget v0, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$17;->val$firstIdx:I
 
     .local v0, "i":I
-    :goto_2
+    :goto_0
     iget v1, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$17;->val$lastIdx:I
 
-    if-ge v0, v1, :cond_12
+    if-ge v0, v1, :cond_0
 
     .line 6526
     iget-object v1, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$17;->val$a:[D
@@ -78,10 +78,10 @@
     .line 6525
     add-int/lit8 v0, v0, 0x1
 
-    goto :goto_2
+    goto :goto_0
 
     .line 6528
     .end local v0    # "i":I
-    :cond_12
+    :cond_0
     return-void
 .end method

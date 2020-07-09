@@ -69,7 +69,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 2
+    .locals 2
 
     .line 161
     new-instance v0, Ljava/lang/Object;
@@ -106,7 +106,7 @@
 .end method
 
 .method constructor <init>()V
-    .registers 2
+    .locals 1
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
@@ -122,7 +122,7 @@
 .end method
 
 .method constructor <init>(Lcom/google/tagmanager/DataLayer$PersistentStore;)V
-    .registers 4
+    .locals 2
     .param p1, "persistentStore"    # Lcom/google/tagmanager/DataLayer$PersistentStore;
 
     .line 209
@@ -176,7 +176,7 @@
 .end method
 
 .method static synthetic access$000(Lcom/google/tagmanager/DataLayer;Ljava/util/Map;)V
-    .registers 2
+    .locals 0
     .param p0, "x0"    # Lcom/google/tagmanager/DataLayer;
     .param p1, "x1"    # Ljava/util/Map;
 
@@ -187,7 +187,7 @@
 .end method
 
 .method static synthetic access$100(Lcom/google/tagmanager/DataLayer;)Ljava/util/concurrent/CountDownLatch;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/tagmanager/DataLayer;
 
     .line 79
@@ -197,7 +197,7 @@
 .end method
 
 .method private flattenMap(Ljava/util/Map;)Ljava/util/List;
-    .registers 4
+    .locals 2
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -228,7 +228,7 @@
 .end method
 
 .method private flattenMapHelper(Ljava/util/Map;Ljava/lang/String;Ljava/util/Collection;)V
-    .registers 9
+    .locals 5
     .param p2, "keyPrefix"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -256,12 +256,12 @@
     move-result-object v0
 
     .local v0, "i$":Ljava/util/Iterator;
-    :goto_8
+    :goto_0
     invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v1
 
-    if-eqz v1, :cond_5c
+    if-eqz v1, :cond_3
 
     invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -281,16 +281,16 @@
 
     move-result v3
 
-    if-nez v3, :cond_25
+    if-nez v3, :cond_0
 
     const-string v3, ""
 
-    goto :goto_27
+    goto :goto_1
 
-    :cond_25
+    :cond_0
     const-string v3, "."
 
-    :goto_27
+    :goto_1
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-interface {v1}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
@@ -311,7 +311,7 @@
 
     instance-of v3, v3, Ljava/util/Map;
 
-    if-eqz v3, :cond_47
+    if-eqz v3, :cond_1
 
     .line 353
     invoke-interface {v1}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
@@ -326,17 +326,17 @@
 
     .line 355
     .end local v3    # "subMap":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
-    goto :goto_5b
+    goto :goto_2
 
     .line 356
-    :cond_47
+    :cond_1
     const-string v3, "gtm.lifetime"
 
     invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-nez v3, :cond_5b
+    if-nez v3, :cond_2
 
     .line 357
     new-instance v3, Lcom/google/tagmanager/DataLayer$KeyValue;
@@ -352,18 +352,18 @@
     .line 360
     .end local v1    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/Object;Ljava/lang/Object;>;"
     .end local v2    # "fullKey":Ljava/lang/String;
-    :cond_5b
-    :goto_5b
-    goto :goto_8
+    :cond_2
+    :goto_2
+    goto :goto_0
 
     .line 361
     .end local v0    # "i$":Ljava/util/Iterator;
-    :cond_5c
+    :cond_3
     return-void
 .end method
 
 .method private getLifetimeObject(Ljava/util/Map;)Ljava/lang/Object;
-    .registers 8
+    .locals 6
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -390,8 +390,8 @@
     const/4 v3, 0x0
 
     .local v3, "i$":I
-    :goto_5
-    if-ge v3, v2, :cond_19
+    :goto_0
+    if-ge v3, v2, :cond_1
 
     aget-object v4, v1, v3
 
@@ -399,7 +399,7 @@
     .local v4, "component":Ljava/lang/String;
     instance-of v5, v0, Ljava/util/Map;
 
-    if-nez v5, :cond_f
+    if-nez v5, :cond_0
 
     .line 319
     const/4 v5, 0x0
@@ -407,7 +407,7 @@
     return-object v5
 
     .line 322
-    :cond_f
+    :cond_0
     move-object v5, v0
 
     check-cast v5, Ljava/util/Map;
@@ -423,18 +423,18 @@
     .end local v5    # "currentAsMap":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
     add-int/lit8 v3, v3, 0x1
 
-    goto :goto_5
+    goto :goto_0
 
     .line 325
     .end local v1    # "arr$":[Ljava/lang/String;
     .end local v2    # "len$":I
     .end local v3    # "i$":I
-    :cond_19
+    :cond_1
     return-object v0
 .end method
 
 .method private getLifetimeValue(Ljava/util/Map;)Ljava/lang/Long;
-    .registers 4
+    .locals 2
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -454,7 +454,7 @@
 
     .line 306
     .local v0, "lifetimeObject":Ljava/lang/Object;
-    if-nez v0, :cond_8
+    if-nez v0, :cond_0
 
     .line 307
     const/4 v1, 0x0
@@ -462,7 +462,7 @@
     return-object v1
 
     .line 309
-    :cond_8
+    :cond_0
     invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
     move-result-object v1
@@ -475,7 +475,7 @@
 .end method
 
 .method public static varargs listOf([Ljava/lang/Object;)Ljava/util/List;
-    .registers 4
+    .locals 3
     .param p0, "objects"    # [Ljava/lang/Object;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -498,10 +498,10 @@
     const/4 v1, 0x0
 
     .local v1, "i":I
-    :goto_6
+    :goto_0
     array-length v2, p0
 
-    if-ge v1, v2, :cond_11
+    if-ge v1, v2, :cond_0
 
     .line 490
     aget-object v2, p0, v1
@@ -511,16 +511,16 @@
     .line 489
     add-int/lit8 v1, v1, 0x1
 
-    goto :goto_6
+    goto :goto_0
 
     .line 492
     .end local v1    # "i":I
-    :cond_11
+    :cond_0
     return-object v0
 .end method
 
 .method private loadSavedMaps()V
-    .registers 3
+    .locals 2
 
     .line 281
     iget-object v0, p0, Lcom/google/tagmanager/DataLayer;->mPersistentStore:Lcom/google/tagmanager/DataLayer$PersistentStore;
@@ -536,7 +536,7 @@
 .end method
 
 .method public static varargs mapOf([Ljava/lang/Object;)Ljava/util/Map;
-    .registers 5
+    .locals 4
     .param p0, "objects"    # [Ljava/lang/Object;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -555,7 +555,7 @@
 
     rem-int/lit8 v0, v0, 0x2
 
-    if-nez v0, :cond_1b
+    if-nez v0, :cond_1
 
     .line 471
     new-instance v0, Ljava/util/HashMap;
@@ -567,10 +567,10 @@
     const/4 v1, 0x0
 
     .local v1, "i":I
-    :goto_b
+    :goto_0
     array-length v2, p0
 
-    if-ge v1, v2, :cond_1a
+    if-ge v1, v2, :cond_0
 
     .line 473
     aget-object v2, p0, v1
@@ -584,16 +584,16 @@
     .line 472
     add-int/lit8 v1, v1, 0x2
 
-    goto :goto_b
+    goto :goto_0
 
     .line 475
     .end local v1    # "i":I
-    :cond_1a
+    :cond_0
     return-object v0
 
     .line 469
     .end local v0    # "map":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
-    :cond_1b
+    :cond_1
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v1, "expected even number of key-value pairs"
@@ -604,7 +604,7 @@
 .end method
 
 .method private notifyListeners(Ljava/util/Map;)V
-    .registers 4
+    .locals 2
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -628,12 +628,12 @@
     move-result-object v0
 
     .local v0, "i$":Ljava/util/Iterator;
-    :goto_a
+    :goto_0
     invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v1
 
-    if-eqz v1, :cond_1a
+    if-eqz v1, :cond_0
 
     invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -647,16 +647,16 @@
 
     .line 512
     .end local v1    # "listener":Lcom/google/tagmanager/DataLayer$Listener;
-    goto :goto_a
+    goto :goto_0
 
     .line 513
     .end local v0    # "i$":Ljava/util/Iterator;
-    :cond_1a
+    :cond_0
     return-void
 .end method
 
 .method static parseLifetime(Ljava/lang/String;)Ljava/lang/Long;
-    .registers 12
+    .locals 11
     .param p0, "lifetimeString"    # Ljava/lang/String;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
@@ -676,7 +676,7 @@
 
     const/4 v2, 0x0
 
-    if-nez v1, :cond_22
+    if-nez v1, :cond_0
 
     .line 368
     new-instance v1, Ljava/lang/StringBuilder;
@@ -699,68 +699,68 @@
     return-object v2
 
     .line 371
-    :cond_22
+    :cond_0
     const-wide/16 v3, 0x0
 
-    move-wide v5, v3
-
     .line 373
-    .local v5, "number":J
+    .local v3, "number":J
     const/4 v1, 0x1
 
-    :try_start_26
+    :try_start_0
     invoke-virtual {v0, v1}, Ljava/util/regex/Matcher;->group(I)Ljava/lang/String;
 
     move-result-object v1
 
     invoke-static {v1}, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J
 
-    move-result-wide v7
-    :try_end_2e
-    .catch Ljava/lang/NumberFormatException; {:try_start_26 .. :try_end_2e} :catch_30
+    move-result-wide v5
+    :try_end_0
+    .catch Ljava/lang/NumberFormatException; {:try_start_0 .. :try_end_0} :catch_0
 
-    move-wide v5, v7
+    move-wide v3, v5
 
     .line 376
-    goto :goto_45
+    goto :goto_0
 
     .line 374
-    :catch_30
+    :catch_0
     move-exception v1
 
     .line 375
     .local v1, "e":Ljava/lang/NumberFormatException;
-    new-instance v7, Ljava/lang/StringBuilder;
+    new-instance v5, Ljava/lang/StringBuilder;
 
-    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v8, "illegal number in _lifetime value: "
+    const-string v6, "illegal number in _lifetime value: "
 
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v7, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v7
+    move-result-object v5
 
-    invoke-static {v7}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
+    invoke-static {v5}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
 
     .line 377
     .end local v1    # "e":Ljava/lang/NumberFormatException;
-    :goto_45
-    cmp-long v1, v5, v3
+    :goto_0
+    const-wide/16 v5, 0x0
 
-    if-gtz v1, :cond_5e
+    cmp-long v1, v3, v5
+
+    if-gtz v1, :cond_1
 
     .line 378
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "non-positive _lifetime: "
+    const-string v5, "non-positive _lifetime: "
 
-    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -774,7 +774,7 @@
     return-object v2
 
     .line 382
-    :cond_5e
+    :cond_1
     const/4 v1, 0x2
 
     invoke-virtual {v0, v1}, Ljava/util/regex/Matcher;->group(I)Ljava/lang/String;
@@ -785,68 +785,68 @@
     .local v1, "unitString":Ljava/lang/String;
     invoke-virtual {v1}, Ljava/lang/String;->length()I
 
-    move-result v3
+    move-result v5
 
-    if-nez v3, :cond_6e
+    if-nez v5, :cond_2
 
     .line 386
-    invoke-static {v5, v6}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+    invoke-static {v3, v4}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
     move-result-object v2
 
     return-object v2
 
     .line 388
-    :cond_6e
-    const/4 v3, 0x0
+    :cond_2
+    const/4 v5, 0x0
 
-    invoke-virtual {v1, v3}, Ljava/lang/String;->charAt(I)C
+    invoke-virtual {v1, v5}, Ljava/lang/String;->charAt(I)C
 
-    move-result v3
+    move-result v5
 
-    const/16 v4, 0x64
+    const/16 v6, 0x64
 
     const-wide/16 v7, 0x3e8
 
     const-wide/16 v9, 0x3c
 
-    if-eq v3, v4, :cond_b1
+    if-eq v5, v6, :cond_6
 
-    const/16 v4, 0x68
+    const/16 v6, 0x68
 
-    if-eq v3, v4, :cond_a9
+    if-eq v5, v6, :cond_5
 
-    const/16 v4, 0x6d
+    const/16 v6, 0x6d
 
-    if-eq v3, v4, :cond_a2
+    if-eq v5, v6, :cond_4
 
-    const/16 v4, 0x73
+    const/16 v6, 0x73
 
-    if-eq v3, v4, :cond_9c
+    if-eq v5, v6, :cond_3
 
     .line 398
-    new-instance v3, Ljava/lang/StringBuilder;
+    new-instance v5, Ljava/lang/StringBuilder;
 
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v4, "unknown units in _lifetime: "
+    const-string v6, "unknown units in _lifetime: "
 
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v3, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v5
 
-    invoke-static {v3}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
+    invoke-static {v5}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
 
     .line 399
     return-object v2
 
     .line 390
-    :cond_9c
-    mul-long/2addr v7, v5
+    :cond_3
+    mul-long/2addr v7, v3
 
     invoke-static {v7, v8}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
@@ -855,8 +855,8 @@
     return-object v2
 
     .line 392
-    :cond_a2
-    mul-long/2addr v7, v5
+    :cond_4
+    mul-long/2addr v7, v3
 
     mul-long/2addr v7, v9
 
@@ -867,8 +867,8 @@
     return-object v2
 
     .line 394
-    :cond_a9
-    mul-long/2addr v7, v5
+    :cond_5
+    mul-long/2addr v7, v3
 
     mul-long/2addr v7, v9
 
@@ -881,16 +881,16 @@
     return-object v2
 
     .line 396
-    :cond_b1
+    :cond_6
+    mul-long/2addr v7, v3
+
+    mul-long/2addr v7, v9
+
+    mul-long/2addr v7, v9
+
+    const-wide/16 v5, 0x18
+
     mul-long/2addr v7, v5
-
-    mul-long/2addr v7, v9
-
-    mul-long/2addr v7, v9
-
-    const-wide/16 v2, 0x18
-
-    mul-long/2addr v7, v2
 
     invoke-static {v7, v8}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
@@ -900,14 +900,14 @@
 .end method
 
 .method private processQueuedUpdates()V
-    .registers 5
+    .locals 4
 
     .line 406
     const/4 v0, 0x0
 
     .line 407
     .local v0, "numUpdatesProcessed":I
-    :goto_1
+    :goto_0
     iget-object v1, p0, Lcom/google/tagmanager/DataLayer;->mUpdateQueue:Ljava/util/LinkedList;
 
     invoke-virtual {v1}, Ljava/util/LinkedList;->poll()Ljava/lang/Object;
@@ -919,7 +919,7 @@
     move-object v2, v1
 
     .local v2, "update":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
-    if-eqz v1, :cond_23
+    if-eqz v1, :cond_1
 
     .line 408
     invoke-direct {p0, v2}, Lcom/google/tagmanager/DataLayer;->processUpdate(Ljava/util/Map;)V
@@ -929,14 +929,12 @@
 
     const/16 v1, 0x1f4
 
-    if-gt v0, v1, :cond_16
+    if-gt v0, v1, :cond_0
 
-    .end local v2    # "update":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
-    goto :goto_1
+    goto :goto_0
 
     .line 410
-    .restart local v2    # "update":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
-    :cond_16
+    :cond_0
     iget-object v1, p0, Lcom/google/tagmanager/DataLayer;->mUpdateQueue:Ljava/util/LinkedList;
 
     invoke-virtual {v1}, Ljava/util/LinkedList;->clear()V
@@ -951,12 +949,12 @@
     throw v1
 
     .line 414
-    :cond_23
+    :cond_1
     return-void
 .end method
 
 .method private processUpdate(Ljava/util/Map;)V
-    .registers 7
+    .locals 5
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -974,7 +972,7 @@
     monitor-enter v0
 
     .line 419
-    :try_start_3
+    :try_start_0
     invoke-interface {p1}, Ljava/util/Map;->keySet()Ljava/util/Set;
 
     move-result-object v1
@@ -984,12 +982,12 @@
     move-result-object v1
 
     .local v1, "i$":Ljava/util/Iterator;
-    :goto_b
+    :goto_0
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v2
 
-    if-eqz v2, :cond_23
+    if-eqz v2, :cond_0
 
     invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -1011,14 +1009,14 @@
 
     .line 421
     .end local v2    # "key":Ljava/lang/Object;
-    goto :goto_b
+    goto :goto_0
 
     .line 422
     .end local v1    # "i$":Ljava/util/Iterator;
-    :cond_23
+    :cond_0
     monitor-exit v0
-    :try_end_24
-    .catchall {:try_start_3 .. :try_end_24} :catchall_28
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 423
     invoke-direct {p0, p1}, Lcom/google/tagmanager/DataLayer;->notifyListeners(Ljava/util/Map;)V
@@ -1027,19 +1025,19 @@
     return-void
 
     .line 422
-    :catchall_28
+    :catchall_0
     move-exception v1
 
-    :try_start_29
+    :try_start_1
     monitor-exit v0
-    :try_end_2a
-    .catchall {:try_start_29 .. :try_end_2a} :catchall_28
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v1
 .end method
 
 .method private pushWithoutWaitingForSaved(Ljava/util/Map;)V
-    .registers 4
+    .locals 2
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -1057,7 +1055,7 @@
     invoke-virtual {v0}, Ljava/util/concurrent/locks/ReentrantLock;->lock()V
 
     .line 267
-    :try_start_5
+    :try_start_0
     iget-object v0, p0, Lcom/google/tagmanager/DataLayer;->mUpdateQueue:Ljava/util/LinkedList;
 
     invoke-virtual {v0, p1}, Ljava/util/LinkedList;->offer(Ljava/lang/Object;)Z
@@ -1071,16 +1069,16 @@
 
     const/4 v1, 0x1
 
-    if-ne v0, v1, :cond_16
+    if-ne v0, v1, :cond_0
 
     .line 272
     invoke-direct {p0}, Lcom/google/tagmanager/DataLayer;->processQueuedUpdates()V
 
     .line 274
-    :cond_16
+    :cond_0
     invoke-direct {p0, p1}, Lcom/google/tagmanager/DataLayer;->savePersistentlyIfNeeded(Ljava/util/Map;)V
-    :try_end_19
-    .catchall {:try_start_5 .. :try_end_19} :catchall_20
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 276
     iget-object v0, p0, Lcom/google/tagmanager/DataLayer;->mPushLock:Ljava/util/concurrent/locks/ReentrantLock;
@@ -1094,7 +1092,7 @@
     return-void
 
     .line 276
-    :catchall_20
+    :catchall_0
     move-exception v0
 
     iget-object v1, p0, Lcom/google/tagmanager/DataLayer;->mPushLock:Ljava/util/concurrent/locks/ReentrantLock;
@@ -1105,7 +1103,7 @@
 .end method
 
 .method private savePersistentlyIfNeeded(Ljava/util/Map;)V
-    .registers 7
+    .locals 5
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -1124,13 +1122,13 @@
 
     .line 293
     .local v0, "lifetime":Ljava/lang/Long;
-    if-nez v0, :cond_7
+    if-nez v0, :cond_0
 
     .line 294
     return-void
 
     .line 296
-    :cond_7
+    :cond_0
     invoke-direct {p0, p1}, Lcom/google/tagmanager/DataLayer;->flattenMap(Ljava/util/Map;)Ljava/util/List;
 
     move-result-object v1
@@ -1157,7 +1155,7 @@
 
 # virtual methods
 .method clearPersistentKeysWithPrefix(Ljava/lang/String;)V
-    .registers 3
+    .locals 1
     .param p1, "prefix"    # Ljava/lang/String;
 
     .line 330
@@ -1175,7 +1173,7 @@
 .end method
 
 .method expandKeyValue(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
-    .registers 9
+    .locals 6
     .param p1, "key"    # Ljava/lang/Object;
     .param p2, "value"    # Ljava/lang/Object;
     .annotation system Ldalvik/annotation/Signature;
@@ -1217,12 +1215,12 @@
     const/4 v3, 0x0
 
     .local v3, "i":I
-    :goto_11
+    :goto_0
     array-length v4, v2
 
     add-int/lit8 v4, v4, -0x1
 
-    if-ge v3, v4, :cond_24
+    if-ge v3, v4, :cond_0
 
     .line 537
     new-instance v4, Ljava/util/HashMap;
@@ -1242,11 +1240,11 @@
     .end local v4    # "map":Ljava/util/HashMap;, "Ljava/util/HashMap<Ljava/lang/Object;Ljava/lang/Object;>;"
     add-int/lit8 v3, v3, 0x1
 
-    goto :goto_11
+    goto :goto_0
 
     .line 541
     .end local v3    # "i":I
-    :cond_24
+    :cond_0
     array-length v3, v2
 
     add-int/lit8 v3, v3, -0x1
@@ -1260,7 +1258,7 @@
 .end method
 
 .method public get(Ljava/lang/String;)Ljava/lang/Object;
-    .registers 12
+    .locals 10
     .param p1, "key"    # Ljava/lang/String;
 
     .line 436
@@ -1269,7 +1267,7 @@
     monitor-enter v0
 
     .line 437
-    :try_start_3
+    :try_start_0
     iget-object v1, p0, Lcom/google/tagmanager/DataLayer;->mModel:Ljava/util/Map;
 
     .line 438
@@ -1291,8 +1289,8 @@
     const/4 v5, 0x0
 
     .local v5, "i$":I
-    :goto_e
-    if-ge v5, v4, :cond_28
+    :goto_0
+    if-ge v5, v4, :cond_2
 
     aget-object v6, v3, v5
 
@@ -1302,7 +1300,7 @@
 
     const/4 v8, 0x0
 
-    if-nez v7, :cond_19
+    if-nez v7, :cond_0
 
     .line 441
     monitor-exit v0
@@ -1310,7 +1308,7 @@
     return-object v8
 
     .line 444
-    :cond_19
+    :cond_0
     move-object v7, v1
 
     check-cast v7, Ljava/util/Map;
@@ -1323,7 +1321,7 @@
 
     .line 446
     .local v9, "value":Ljava/lang/Object;
-    if-nez v9, :cond_24
+    if-nez v9, :cond_1
 
     .line 447
     monitor-exit v0
@@ -1331,7 +1329,7 @@
     return-object v8
 
     .line 449
-    :cond_24
+    :cond_1
     move-object v1, v9
 
     .line 439
@@ -1340,13 +1338,13 @@
     .end local v9    # "value":Ljava/lang/Object;
     add-int/lit8 v5, v5, 0x1
 
-    goto :goto_e
+    goto :goto_0
 
     .line 451
     .end local v3    # "arr$":[Ljava/lang/String;
     .end local v4    # "len$":I
     .end local v5    # "i$":I
-    :cond_28
+    :cond_2
     monitor-exit v0
 
     return-object v1
@@ -1354,18 +1352,18 @@
     .line 452
     .end local v1    # "target":Ljava/lang/Object;
     .end local v2    # "split":[Ljava/lang/String;
-    :catchall_2a
+    :catchall_0
     move-exception v1
 
     monitor-exit v0
-    :try_end_2c
-    .catchall {:try_start_3 .. :try_end_2c} :catchall_2a
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method
 
 .method mergeList(Ljava/util/List;Ljava/util/List;)V
-    .registers 7
+    .locals 4
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
@@ -1393,7 +1391,7 @@
 
     move-result v1
 
-    if-ge v0, v1, :cond_f
+    if-ge v0, v1, :cond_0
 
     .line 592
     const/4 v0, 0x0
@@ -1403,16 +1401,16 @@
     goto :goto_0
 
     .line 594
-    :cond_f
+    :cond_0
     const/4 v0, 0x0
 
     .local v0, "index":I
-    :goto_10
+    :goto_1
     invoke-interface {p1}, Ljava/util/List;->size()I
 
     move-result v1
 
-    if-ge v0, v1, :cond_66
+    if-ge v0, v1, :cond_6
 
     .line 595
     invoke-interface {p1, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
@@ -1423,7 +1421,7 @@
     .local v1, "fromValue":Ljava/lang/Object;
     instance-of v2, v1, Ljava/util/List;
 
-    if-eqz v2, :cond_3b
+    if-eqz v2, :cond_2
 
     .line 597
     invoke-interface {p2, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
@@ -1432,7 +1430,7 @@
 
     instance-of v2, v2, Ljava/util/List;
 
-    if-nez v2, :cond_2e
+    if-nez v2, :cond_1
 
     .line 598
     new-instance v2, Ljava/util/ArrayList;
@@ -1442,7 +1440,7 @@
     invoke-interface {p2, v0, v2}, Ljava/util/List;->set(ILjava/lang/Object;)Ljava/lang/Object;
 
     .line 601
-    :cond_2e
+    :cond_1
     move-object v2, v1
 
     check-cast v2, Ljava/util/List;
@@ -1462,12 +1460,12 @@
     .line 605
     .end local v2    # "mergeFrom":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Object;>;"
     .end local v3    # "mergeTo":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Object;>;"
-    goto :goto_63
+    goto :goto_3
 
-    :cond_3b
+    :cond_2
     instance-of v2, v1, Ljava/util/Map;
 
-    if-eqz v2, :cond_5c
+    if-eqz v2, :cond_4
 
     .line 606
     invoke-interface {p2, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
@@ -1476,7 +1474,7 @@
 
     instance-of v2, v2, Ljava/util/Map;
 
-    if-nez v2, :cond_4f
+    if-nez v2, :cond_3
 
     .line 607
     new-instance v2, Ljava/util/HashMap;
@@ -1486,7 +1484,7 @@
     invoke-interface {p2, v0, v2}, Ljava/util/List;->set(ILjava/lang/Object;)Ljava/lang/Object;
 
     .line 610
-    :cond_4f
+    :cond_3
     move-object v2, v1
 
     check-cast v2, Ljava/util/Map;
@@ -1503,35 +1501,41 @@
     .local v3, "mergeTo":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
     invoke-virtual {p0, v2, v3}, Lcom/google/tagmanager/DataLayer;->mergeMap(Ljava/util/Map;Ljava/util/Map;)V
 
-    .line 614
     .end local v2    # "mergeFrom":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
     .end local v3    # "mergeTo":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
-    goto :goto_63
+    goto :goto_2
 
-    :cond_5c
+    .line 614
+    :cond_4
     sget-object v2, Lcom/google/tagmanager/DataLayer;->OBJECT_NOT_PRESENT:Ljava/lang/Object;
 
-    if-eq v1, v2, :cond_63
+    if-eq v1, v2, :cond_5
 
     .line 615
     invoke-interface {p2, v0, v1}, Ljava/util/List;->set(ILjava/lang/Object;)Ljava/lang/Object;
 
+    goto :goto_3
+
+    .line 614
+    :cond_5
+    :goto_2
+    nop
+
     .line 594
     .end local v1    # "fromValue":Ljava/lang/Object;
-    :cond_63
-    :goto_63
+    :goto_3
     add-int/lit8 v0, v0, 0x1
 
-    goto :goto_10
+    goto :goto_1
 
     .line 618
     .end local v0    # "index":I
-    :cond_66
+    :cond_6
     return-void
 .end method
 
 .method mergeMap(Ljava/util/Map;Ljava/util/Map;)V
-    .registers 8
+    .locals 5
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
@@ -1561,12 +1565,12 @@
     move-result-object v0
 
     .local v0, "i$":Ljava/util/Iterator;
-    :goto_8
+    :goto_0
     invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v1
 
-    if-eqz v1, :cond_5c
+    if-eqz v1, :cond_4
 
     invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -1582,7 +1586,7 @@
     .local v2, "fromValue":Ljava/lang/Object;
     instance-of v3, v2, Ljava/util/List;
 
-    if-eqz v3, :cond_37
+    if-eqz v3, :cond_1
 
     .line 558
     invoke-interface {p2, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -1591,7 +1595,7 @@
 
     instance-of v3, v3, Ljava/util/List;
 
-    if-nez v3, :cond_2a
+    if-nez v3, :cond_0
 
     .line 559
     new-instance v3, Ljava/util/ArrayList;
@@ -1601,7 +1605,7 @@
     invoke-interface {p2, v1, v3}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 562
-    :cond_2a
+    :cond_0
     move-object v3, v2
 
     check-cast v3, Ljava/util/List;
@@ -1621,12 +1625,12 @@
     .line 566
     .end local v3    # "mergeFrom":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Object;>;"
     .end local v4    # "mergeTo":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Object;>;"
-    goto :goto_5b
+    goto :goto_1
 
-    :cond_37
+    :cond_1
     instance-of v3, v2, Ljava/util/Map;
 
-    if-eqz v3, :cond_58
+    if-eqz v3, :cond_3
 
     .line 567
     invoke-interface {p2, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -1635,7 +1639,7 @@
 
     instance-of v3, v3, Ljava/util/Map;
 
-    if-nez v3, :cond_4b
+    if-nez v3, :cond_2
 
     .line 568
     new-instance v3, Ljava/util/HashMap;
@@ -1645,7 +1649,7 @@
     invoke-interface {p2, v1, v3}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 571
-    :cond_4b
+    :cond_2
     move-object v3, v2
 
     check-cast v3, Ljava/util/Map;
@@ -1665,26 +1669,26 @@
     .line 575
     .end local v3    # "mergeFrom":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
     .end local v4    # "mergeTo":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
-    goto :goto_5b
+    goto :goto_1
 
     .line 576
-    :cond_58
+    :cond_3
     invoke-interface {p2, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 578
     .end local v1    # "key":Ljava/lang/Object;
     .end local v2    # "fromValue":Ljava/lang/Object;
-    :goto_5b
-    goto :goto_8
+    :goto_1
+    goto :goto_0
 
     .line 579
     .end local v0    # "i$":Ljava/util/Iterator;
-    :cond_5c
+    :cond_4
     return-void
 .end method
 
 .method public push(Ljava/lang/Object;Ljava/lang/Object;)V
-    .registers 4
+    .locals 1
     .param p1, "key"    # Ljava/lang/Object;
     .param p2, "value"    # Ljava/lang/Object;
 
@@ -1702,7 +1706,7 @@
 .end method
 
 .method public push(Ljava/util/Map;)V
-    .registers 4
+    .locals 2
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -1719,14 +1723,14 @@
     iget-object v0, p0, Lcom/google/tagmanager/DataLayer;->mPersistentStoreLoaded:Ljava/util/concurrent/CountDownLatch;
 
     invoke-virtual {v0}, Ljava/util/concurrent/CountDownLatch;->await()V
-    :try_end_5
-    .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_5} :catch_6
+    :try_end_0
+    .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 258
-    goto :goto_c
+    goto :goto_0
 
     .line 252
-    :catch_6
+    :catch_0
     move-exception v0
 
     .line 253
@@ -1737,7 +1741,7 @@
 
     .line 259
     .end local v0    # "e":Ljava/lang/InterruptedException;
-    :goto_c
+    :goto_0
     invoke-direct {p0, p1}, Lcom/google/tagmanager/DataLayer;->pushWithoutWaitingForSaved(Ljava/util/Map;)V
 
     .line 260
@@ -1745,7 +1749,7 @@
 .end method
 
 .method registerListener(Lcom/google/tagmanager/DataLayer$Listener;)V
-    .registers 4
+    .locals 2
     .param p1, "listener"    # Lcom/google/tagmanager/DataLayer$Listener;
 
     .line 499
@@ -1764,7 +1768,7 @@
 .end method
 
 .method unregisterListener(Lcom/google/tagmanager/DataLayer$Listener;)V
-    .registers 3
+    .locals 1
     .param p1, "listener"    # Lcom/google/tagmanager/DataLayer$Listener;
 
     .line 506

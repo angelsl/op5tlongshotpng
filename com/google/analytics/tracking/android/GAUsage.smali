@@ -35,7 +35,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 103
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage;
@@ -48,7 +48,7 @@
 .end method
 
 .method private constructor <init>()V
-    .registers 2
+    .locals 1
 
     .line 114
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -77,7 +77,7 @@
 .end method
 
 .method public static getInstance()Lcom/google/analytics/tracking/android/GAUsage;
-    .registers 1
+    .locals 1
 
     .line 106
     sget-object v0, Lcom/google/analytics/tracking/android/GAUsage;->INSTANCE:Lcom/google/analytics/tracking/android/GAUsage;
@@ -86,7 +86,7 @@
 .end method
 
 .method static getPrivateInstance()Lcom/google/analytics/tracking/android/GAUsage;
-    .registers 1
+    .locals 1
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
@@ -101,19 +101,19 @@
 
 # virtual methods
 .method public declared-synchronized getAndClearSequence()Ljava/lang/String;
-    .registers 4
+    .locals 3
 
     monitor-enter p0
 
     .line 187
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAUsage;->mSequence:Ljava/lang/StringBuilder;
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->length()I
 
     move-result v0
 
-    if-lez v0, :cond_11
+    if-lez v0, :cond_0
 
     .line 188
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAUsage;->mSequence:Ljava/lang/StringBuilder;
@@ -125,7 +125,8 @@
     invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->insert(ILjava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 190
-    :cond_11
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAUsage;
+    :cond_0
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAUsage;->mSequence:Ljava/lang/StringBuilder;
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
@@ -139,8 +140,8 @@
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
     iput-object v1, p0, Lcom/google/analytics/tracking/android/GAUsage;->mSequence:Ljava/lang/StringBuilder;
-    :try_end_1e
-    .catchall {:try_start_1 .. :try_end_1e} :catchall_20
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 192
     monitor-exit p0
@@ -149,22 +150,21 @@
 
     .line 186
     .end local v0    # "result":Ljava/lang/String;
-    :catchall_20
+    :catchall_0
     move-exception v0
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAUsage;
     throw v0
 .end method
 
 .method public declared-synchronized getAndClearUsage()Ljava/lang/String;
-    .registers 9
+    .locals 8
 
     monitor-enter p0
 
     .line 134
-    :try_start_1
+    :try_start_0
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -177,21 +177,18 @@
     .local v1, "spot":I
     const/4 v2, 0x6
 
-    move v3, v1
-
-    move v1, v2
+    move v3, v2
 
     .line 144
-    .local v1, "nextBoundary":I
-    .local v3, "spot":I
-    :goto_a
+    .local v3, "nextBoundary":I
+    :goto_0
     iget-object v4, p0, Lcom/google/analytics/tracking/android/GAUsage;->mUsedFields:Ljava/util/SortedSet;
 
     invoke-interface {v4}, Ljava/util/SortedSet;->size()I
 
     move-result v4
 
-    if-lez v4, :cond_3b
+    if-lez v4, :cond_1
 
     .line 148
     iget-object v4, p0, Lcom/google/analytics/tracking/android/GAUsage;->mUsedFields:Ljava/util/SortedSet;
@@ -215,28 +212,29 @@
 
     .line 158
     .local v5, "nextLoc":I
-    :goto_23
-    if-lt v5, v1, :cond_32
+    :goto_1
+    if-lt v5, v3, :cond_0
 
     .line 159
     const-string v6, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"
 
-    invoke-virtual {v6, v3}, Ljava/lang/String;->charAt(I)C
+    invoke-virtual {v6, v1}, Ljava/lang/String;->charAt(I)C
 
     move-result v6
 
     invoke-virtual {v0, v6}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
     .line 160
-    const/4 v3, 0x0
+    const/4 v1, 0x0
 
     .line 161
-    add-int/lit8 v1, v1, 0x6
+    add-int/lit8 v3, v3, 0x6
 
-    goto :goto_23
+    goto :goto_1
 
     .line 163
-    :cond_32
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAUsage;
+    :cond_0
     const/4 v6, 0x1
 
     invoke-virtual {v4}, Lcom/google/analytics/tracking/android/GAUsage$Field;->ordinal()I
@@ -247,35 +245,35 @@
 
     shl-int/2addr v6, v7
 
-    add-int/2addr v3, v6
+    add-int/2addr v1, v6
 
     .line 164
     .end local v4    # "f":Lcom/google/analytics/tracking/android/GAUsage$Field;
     .end local v5    # "nextLoc":I
-    goto :goto_a
+    goto :goto_0
 
     .line 169
-    :cond_3b
-    if-gtz v3, :cond_43
+    :cond_1
+    if-gtz v1, :cond_2
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->length()I
 
     move-result v2
 
-    if-nez v2, :cond_4c
+    if-nez v2, :cond_3
 
     .line 170
-    :cond_43
+    :cond_2
     const-string v2, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"
 
-    invoke-virtual {v2, v3}, Ljava/lang/String;->charAt(I)C
+    invoke-virtual {v2, v1}, Ljava/lang/String;->charAt(I)C
 
     move-result v2
 
     invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
     .line 174
-    :cond_4c
+    :cond_3
     iget-object v2, p0, Lcom/google/analytics/tracking/android/GAUsage;->mUsedFields:Ljava/util/SortedSet;
 
     invoke-interface {v2}, Ljava/util/SortedSet;->clear()V
@@ -284,8 +282,8 @@
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v2
-    :try_end_55
-    .catchall {:try_start_1 .. :try_end_55} :catchall_57
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     monitor-exit p0
 
@@ -293,28 +291,27 @@
 
     .line 133
     .end local v0    # "result":Ljava/lang/StringBuilder;
-    .end local v1    # "nextBoundary":I
-    .end local v3    # "spot":I
-    :catchall_57
+    .end local v1    # "spot":I
+    .end local v3    # "nextBoundary":I
+    :catchall_0
     move-exception v0
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAUsage;
     throw v0
 .end method
 
 .method public declared-synchronized setDisableUsage(Z)V
-    .registers 2
+    .locals 0
     .param p1, "disableUsage"    # Z
 
     monitor-enter p0
 
     .line 117
-    :try_start_1
+    :try_start_0
     iput-boolean p1, p0, Lcom/google/analytics/tracking/android/GAUsage;->mDisableUsage:Z
-    :try_end_3
-    .catchall {:try_start_1 .. :try_end_3} :catchall_5
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 118
     monitor-exit p0
@@ -322,27 +319,27 @@
     return-void
 
     .line 116
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAUsage;
     .end local p1    # "disableUsage":Z
-    :catchall_5
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAUsage;
     throw p1
 .end method
 
 .method public declared-synchronized setUsage(Lcom/google/analytics/tracking/android/GAUsage$Field;)V
-    .registers 5
+    .locals 3
     .param p1, "field"    # Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     monitor-enter p0
 
     .line 121
-    :try_start_1
+    :try_start_0
     iget-boolean v0, p0, Lcom/google/analytics/tracking/android/GAUsage;->mDisableUsage:Z
 
-    if-nez v0, :cond_19
+    if-nez v0, :cond_0
 
     .line 122
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAUsage;->mUsedFields:Ljava/util/SortedSet;
@@ -363,22 +360,22 @@
     move-result v1
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
-    :try_end_19
-    .catchall {:try_start_1 .. :try_end_19} :catchall_1b
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 125
-    :cond_19
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAUsage;
+    :cond_0
     monitor-exit p0
 
     return-void
 
     .line 120
     .end local p1    # "field":Lcom/google/analytics/tracking/android/GAUsage$Field;
-    :catchall_1b
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAUsage;
     throw p1
 .end method

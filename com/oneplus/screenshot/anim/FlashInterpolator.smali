@@ -9,7 +9,7 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    .registers 3
+    .locals 0
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "attrs"    # Landroid/util/AttributeSet;
 
@@ -23,7 +23,7 @@
 
 # virtual methods
 .method public getInterpolation(F)F
-    .registers 6
+    .locals 4
     .param p1, "x"    # F
 
     .line 23
@@ -31,7 +31,7 @@
 
     cmpg-float v0, p1, v0
 
-    if-gtz v0, :cond_17
+    if-gtz v0, :cond_0
 
     .line 24
     const-wide v0, 0x400921fb54442d18L    # Math.PI
@@ -42,9 +42,9 @@
 
     float-to-double v2, v2
 
-    mul-double/2addr v0, v2
+    mul-double/2addr v2, v0
 
-    invoke-static {v0, v1}, Ljava/lang/Math;->sin(D)D
+    invoke-static {v2, v3}, Ljava/lang/Math;->sin(D)D
 
     move-result-wide v0
 
@@ -53,7 +53,7 @@
     return v0
 
     .line 26
-    :cond_17
+    :cond_0
     const/4 v0, 0x0
 
     return v0

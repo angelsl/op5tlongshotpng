@@ -118,7 +118,7 @@
 
 # direct methods
 .method private constructor <init>()V
-    .registers 2
+    .locals 1
 
     .line 132
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -198,7 +198,7 @@
 .end method
 
 .method synthetic constructor <init>(Lcom/google/tagmanager/ResourceUtil$1;)V
-    .registers 2
+    .locals 0
     .param p1, "x0"    # Lcom/google/tagmanager/ResourceUtil$1;
 
     .line 120
@@ -210,7 +210,7 @@
 
 # virtual methods
 .method public addAddMacro(Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;)Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;
-    .registers 3
+    .locals 1
     .param p1, "f"    # Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
 
     .line 176
@@ -223,7 +223,7 @@
 .end method
 
 .method public addAddMacroRuleName(Ljava/lang/String;)Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;
-    .registers 3
+    .locals 1
     .param p1, "ruleName"    # Ljava/lang/String;
 
     .line 181
@@ -236,7 +236,7 @@
 .end method
 
 .method public addAddTag(Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;)Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;
-    .registers 3
+    .locals 1
     .param p1, "f"    # Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
 
     .line 156
@@ -249,7 +249,7 @@
 .end method
 
 .method public addAddTagRuleName(Ljava/lang/String;)Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;
-    .registers 3
+    .locals 1
     .param p1, "ruleName"    # Ljava/lang/String;
 
     .line 161
@@ -262,7 +262,7 @@
 .end method
 
 .method public addNegativePredicate(Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;)Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;
-    .registers 3
+    .locals 1
     .param p1, "f"    # Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
 
     .line 151
@@ -275,7 +275,7 @@
 .end method
 
 .method public addPositivePredicate(Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;)Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;
-    .registers 3
+    .locals 1
     .param p1, "f"    # Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
 
     .line 146
@@ -288,7 +288,7 @@
 .end method
 
 .method public addRemoveMacro(Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;)Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;
-    .registers 3
+    .locals 1
     .param p1, "f"    # Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
 
     .line 186
@@ -301,7 +301,7 @@
 .end method
 
 .method public addRemoveMacroRuleName(Ljava/lang/String;)Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;
-    .registers 3
+    .locals 1
     .param p1, "ruleName"    # Ljava/lang/String;
 
     .line 191
@@ -314,7 +314,7 @@
 .end method
 
 .method public addRemoveTag(Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;)Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;
-    .registers 3
+    .locals 1
     .param p1, "f"    # Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
 
     .line 166
@@ -327,7 +327,7 @@
 .end method
 
 .method public addRemoveTagRuleName(Ljava/lang/String;)Lcom/google/tagmanager/ResourceUtil$ExpandedRuleBuilder;
-    .registers 3
+    .locals 1
     .param p1, "ruleName"    # Ljava/lang/String;
 
     .line 171
@@ -340,7 +340,7 @@
 .end method
 
 .method public build()Lcom/google/tagmanager/ResourceUtil$ExpandedRule;
-    .registers 14
+    .locals 13
 
     .line 196
     new-instance v12, Lcom/google/tagmanager/ResourceUtil$ExpandedRule;

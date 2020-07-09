@@ -36,46 +36,46 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 6
+    .locals 6
 
     .line 21
     new-instance v0, Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
-    const-string v1, "VERBOSE"
+    const/4 v1, 0x0
 
-    const/4 v2, 0x0
+    const-string v2, "VERBOSE"
 
-    invoke-direct {v0, v1, v2}, Lcom/google/analytics/tracking/android/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v2, v1}, Lcom/google/analytics/tracking/android/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/Logger$LogLevel;->VERBOSE:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
     new-instance v0, Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
-    const-string v1, "INFO"
+    const/4 v2, 0x1
 
-    const/4 v3, 0x1
+    const-string v3, "INFO"
 
-    invoke-direct {v0, v1, v3}, Lcom/google/analytics/tracking/android/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v3, v2}, Lcom/google/analytics/tracking/android/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/Logger$LogLevel;->INFO:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
     new-instance v0, Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
-    const-string v1, "WARNING"
+    const/4 v3, 0x2
 
-    const/4 v4, 0x2
+    const-string v4, "WARNING"
 
-    invoke-direct {v0, v1, v4}, Lcom/google/analytics/tracking/android/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v4, v3}, Lcom/google/analytics/tracking/android/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/Logger$LogLevel;->WARNING:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
     new-instance v0, Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
-    const-string v1, "ERROR"
+    const/4 v4, 0x3
 
-    const/4 v5, 0x3
+    const-string v5, "ERROR"
 
-    invoke-direct {v0, v1, v5}, Lcom/google/analytics/tracking/android/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v5, v4}, Lcom/google/analytics/tracking/android/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/Logger$LogLevel;->ERROR:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
@@ -84,21 +84,21 @@
 
     new-array v0, v0, [Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
-    sget-object v1, Lcom/google/analytics/tracking/android/Logger$LogLevel;->VERBOSE:Lcom/google/analytics/tracking/android/Logger$LogLevel;
+    sget-object v5, Lcom/google/analytics/tracking/android/Logger$LogLevel;->VERBOSE:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
-    aput-object v1, v0, v2
+    aput-object v5, v0, v1
 
     sget-object v1, Lcom/google/analytics/tracking/android/Logger$LogLevel;->INFO:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
-    aput-object v1, v0, v3
+    aput-object v1, v0, v2
 
     sget-object v1, Lcom/google/analytics/tracking/android/Logger$LogLevel;->WARNING:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
-    aput-object v1, v0, v4
+    aput-object v1, v0, v3
 
     sget-object v1, Lcom/google/analytics/tracking/android/Logger$LogLevel;->ERROR:Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
-    aput-object v1, v0, v5
+    aput-object v1, v0, v4
 
     sput-object v0, Lcom/google/analytics/tracking/android/Logger$LogLevel;->$VALUES:[Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
@@ -106,7 +106,7 @@
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V
-    .registers 3
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
@@ -120,7 +120,7 @@
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Lcom/google/analytics/tracking/android/Logger$LogLevel;
-    .registers 2
+    .locals 1
     .param p0, "name"    # Ljava/lang/String;
 
     .line 20
@@ -136,7 +136,7 @@
 .end method
 
 .method public static values()[Lcom/google/analytics/tracking/android/Logger$LogLevel;
-    .registers 1
+    .locals 1
 
     .line 20
     sget-object v0, Lcom/google/analytics/tracking/android/Logger$LogLevel;->$VALUES:[Lcom/google/analytics/tracking/android/Logger$LogLevel;

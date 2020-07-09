@@ -7,6 +7,8 @@
 
 
 # static fields
+.field private static final M_LOCK:Ljava/lang/Object;
+
 .field private static final NOTIFICATION_ID_REPEAT:I = 0x3e8
 
 .field private static final TAG:Ljava/lang/String;
@@ -19,6 +21,8 @@
 
 .field private mContext:Landroid/content/Context;
 
+.field private mNavibar:Landroid/graphics/Bitmap;
+
 .field private mNotificationId:I
 
 .field private mSaveTask:Lcom/oneplus/screenshot/service/SaveTask;
@@ -26,7 +30,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 2
+    .locals 2
 
     .line 16
     new-instance v0, Ljava/lang/StringBuilder;
@@ -51,15 +55,22 @@
 
     sput-object v0, Lcom/oneplus/screenshot/service/GlobalSave;->TAG:Ljava/lang/String;
 
+    .line 34
+    new-instance v0, Ljava/lang/Object;
+
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+
+    sput-object v0, Lcom/oneplus/screenshot/service/GlobalSave;->M_LOCK:Ljava/lang/Object;
+
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/os/Bundle;)V
-    .registers 4
+    .locals 1
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "bundle"    # Landroid/os/Bundle;
 
-    .line 35
+    .line 39
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 26
@@ -81,13 +92,13 @@
 
     iput v0, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mNotificationId:I
 
-    .line 36
+    .line 40
     iput-object p1, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mContext:Landroid/content/Context;
 
-    .line 37
+    .line 41
     iput-object p2, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mBundle:Landroid/os/Bundle;
 
-    .line 38
+    .line 42
     iget-object v0, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mContext:Landroid/content/Context;
 
     invoke-virtual {v0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
@@ -98,14 +109,23 @@
 
     iput-object v0, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mCachable:Lcom/oneplus/screenshot/util/Cachable;
 
-    .line 39
+    .line 44
+    iget-object v0, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mCachable:Lcom/oneplus/screenshot/util/Cachable;
+
+    invoke-interface {v0}, Lcom/oneplus/screenshot/util/Cachable;->getNaviBar()Landroid/graphics/Bitmap;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mNavibar:Landroid/graphics/Bitmap;
+
+    .line 46
     return-void
 .end method
 
 .method private nextNotificationId()I
-    .registers 2
+    .locals 1
 
-    .line 87
+    .line 98
     iget v0, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mNotificationId:I
 
     add-int/lit8 v0, v0, 0x1
@@ -116,53 +136,53 @@
 .end method
 
 .method private onFinished()V
-    .registers 4
+    .locals 3
 
-    .line 76
+    .line 85
     sget-object v0, Lcom/oneplus/screenshot/service/GlobalSave;->TAG:Ljava/lang/String;
 
     const-string v1, "onFinished"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 78
+    .line 87
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mSaveTask:Lcom/oneplus/screenshot/service/SaveTask;
 
-    .line 79
-    iget-object v1, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mCachable:Lcom/oneplus/screenshot/util/Cachable;
+    .line 88
+    sget-object v1, Lcom/oneplus/screenshot/service/GlobalSave;->M_LOCK:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 80
-    :try_start_d
+    .line 89
+    :try_start_0
     iget-object v2, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mCachable:Lcom/oneplus/screenshot/util/Cachable;
 
     invoke-interface {v2}, Lcom/oneplus/screenshot/util/Cachable;->clearCache()V
 
-    .line 81
-    monitor-exit v1
-    :try_end_13
-    .catchall {:try_start_d .. :try_end_13} :catchall_19
-
-    .line 82
+    .line 91
     iput-object v0, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mCachable:Lcom/oneplus/screenshot/util/Cachable;
 
-    .line 83
+    .line 93
+    monitor-exit v1
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 94
     invoke-static {}, Lcom/oneplus/screenshot/service/GlobalNotification;->recycle()V
 
-    .line 84
+    .line 95
     return-void
 
-    .line 81
-    :catchall_19
+    .line 93
+    :catchall_0
     move-exception v0
 
-    :try_start_1a
+    :try_start_1
     monitor-exit v1
-    :try_end_1b
-    .catchall {:try_start_1a .. :try_end_1b} :catchall_19
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v0
 .end method
@@ -170,123 +190,144 @@
 
 # virtual methods
 .method public onSaveCancelled()V
-    .registers 3
+    .locals 2
 
-    .line 69
+    .line 78
     sget-object v0, Lcom/oneplus/screenshot/service/GlobalSave;->TAG:Ljava/lang/String;
 
     const-string v1, "onSaveCancelled"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 70
+    .line 79
     invoke-direct {p0}, Lcom/oneplus/screenshot/service/GlobalSave;->onFinished()V
 
-    .line 71
+    .line 80
     return-void
 .end method
 
 .method public onSaveFinished()V
-    .registers 3
+    .locals 2
 
-    .line 63
+    .line 72
     sget-object v0, Lcom/oneplus/screenshot/service/GlobalSave;->TAG:Ljava/lang/String;
 
     const-string v1, "onSaveFinished"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 64
+    .line 73
     invoke-direct {p0}, Lcom/oneplus/screenshot/service/GlobalSave;->onFinished()V
 
-    .line 65
+    .line 74
     return-void
 .end method
 
 .method public start()V
-    .registers 6
+    .locals 10
 
-    .line 45
+    .line 52
     sget-object v0, Lcom/oneplus/screenshot/service/GlobalSave;->TAG:Ljava/lang/String;
 
     const-string v1, "start"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 46
+    .line 53
     invoke-direct {p0}, Lcom/oneplus/screenshot/service/GlobalSave;->nextNotificationId()I
 
     move-result v0
 
     iput v0, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mNotificationId:I
 
-    .line 47
+    .line 54
     iget-object v0, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mContext:Landroid/content/Context;
 
-    const-string v1, ""
+    const/4 v1, 0x0
 
     const-string v2, ""
 
-    const/4 v3, 0x0
+    const-string v3, ""
 
-    invoke-static {v0, v3, v1, v2}, Lcom/oneplus/screenshot/longshot/util/Configs;->showNotifyWindow(Landroid/content/Context;ZLjava/lang/String;Ljava/lang/String;)V
-
-    .line 48
-    sput-boolean v3, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_LONGSHOT_RUNNING:Z
-
-    .line 50
-    const/4 v0, 0x0
-
-    .line 51
-    .local v0, "cache":Ljava/util/List;, "Ljava/util/List<Landroid/graphics/Bitmap;>;"
-    iget-object v1, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mCachable:Lcom/oneplus/screenshot/util/Cachable;
-
-    monitor-enter v1
-
-    .line 52
-    :try_start_1d
-    iget-object v2, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mCachable:Lcom/oneplus/screenshot/util/Cachable;
-
-    invoke-interface {v2}, Lcom/oneplus/screenshot/util/Cachable;->getCache()Ljava/util/List;
-
-    move-result-object v2
-
-    move-object v0, v2
-
-    .line 53
-    monitor-exit v1
-    :try_end_25
-    .catchall {:try_start_1d .. :try_end_25} :catchall_38
-
-    .line 54
-    new-instance v1, Lcom/oneplus/screenshot/service/SaveTask;
-
-    iget-object v2, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mContext:Landroid/content/Context;
-
-    iget v4, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mNotificationId:I
-
-    invoke-direct {v1, p0, v2, v0, v4}, Lcom/oneplus/screenshot/service/SaveTask;-><init>(Lcom/oneplus/screenshot/service/SaveTask$OnSaveListener;Landroid/content/Context;Ljava/util/List;I)V
-
-    iput-object v1, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mSaveTask:Lcom/oneplus/screenshot/service/SaveTask;
+    invoke-static {v0, v1, v2, v3}, Lcom/oneplus/screenshot/longshot/util/Configs;->showNotifyWindow(Landroid/content/Context;ZLjava/lang/String;Ljava/lang/String;)V
 
     .line 55
-    iget-object v1, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mSaveTask:Lcom/oneplus/screenshot/service/SaveTask;
+    sput-boolean v1, Lcom/oneplus/screenshot/longshot/util/Configs;->isLongshotRunning:Z
 
-    new-array v2, v3, [Ljava/lang/Void;
+    .line 57
+    const/4 v0, 0x0
 
-    invoke-virtual {v1, v2}, Lcom/oneplus/screenshot/service/SaveTask;->execute([Ljava/lang/Object;)Landroid/os/AsyncTask;
+    .line 58
+    .local v0, "cache":Ljava/util/List;, "Ljava/util/List<Landroid/graphics/Bitmap;>;"
+    sget-object v2, Lcom/oneplus/screenshot/service/GlobalSave;->M_LOCK:Ljava/lang/Object;
 
-    .line 56
+    monitor-enter v2
+
+    .line 59
+    :try_start_0
+    iget-object v3, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mCachable:Lcom/oneplus/screenshot/util/Cachable;
+
+    invoke-interface {v3}, Lcom/oneplus/screenshot/util/Cachable;->getCache()Ljava/util/List;
+
+    move-result-object v7
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_1
+
+    .line 60
+    .end local v0    # "cache":Ljava/util/List;, "Ljava/util/List<Landroid/graphics/Bitmap;>;"
+    .local v7, "cache":Ljava/util/List;, "Ljava/util/List<Landroid/graphics/Bitmap;>;"
+    :try_start_1
+    monitor-exit v2
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 62
+    new-instance v0, Lcom/oneplus/screenshot/service/SaveTask;
+
+    iget-object v6, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mContext:Landroid/content/Context;
+
+    iget v8, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mNotificationId:I
+
+    iget-object v9, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mNavibar:Landroid/graphics/Bitmap;
+
+    move-object v4, v0
+
+    move-object v5, p0
+
+    invoke-direct/range {v4 .. v9}, Lcom/oneplus/screenshot/service/SaveTask;-><init>(Lcom/oneplus/screenshot/service/SaveTask$OnSaveListener;Landroid/content/Context;Ljava/util/List;ILandroid/graphics/Bitmap;)V
+
+    iput-object v0, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mSaveTask:Lcom/oneplus/screenshot/service/SaveTask;
+
+    .line 64
+    iget-object v0, p0, Lcom/oneplus/screenshot/service/GlobalSave;->mSaveTask:Lcom/oneplus/screenshot/service/SaveTask;
+
+    new-array v1, v1, [Ljava/lang/Void;
+
+    invoke-virtual {v0, v1}, Lcom/oneplus/screenshot/service/SaveTask;->execute([Ljava/lang/Object;)Landroid/os/AsyncTask;
+
+    .line 65
     return-void
 
-    .line 53
-    :catchall_38
-    move-exception v2
+    .line 60
+    :catchall_0
+    move-exception v0
 
-    :try_start_39
-    monitor-exit v1
-    :try_end_3a
-    .catchall {:try_start_39 .. :try_end_3a} :catchall_38
+    move-object v1, v0
 
-    throw v2
+    move-object v0, v7
+
+    goto :goto_0
+
+    .end local v7    # "cache":Ljava/util/List;, "Ljava/util/List<Landroid/graphics/Bitmap;>;"
+    .restart local v0    # "cache":Ljava/util/List;, "Ljava/util/List<Landroid/graphics/Bitmap;>;"
+    :catchall_1
+    move-exception v1
+
+    :goto_0
+    :try_start_2
+    monitor-exit v2
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_1
+
+    throw v1
 .end method

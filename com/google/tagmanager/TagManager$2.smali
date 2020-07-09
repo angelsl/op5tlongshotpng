@@ -19,7 +19,7 @@
 
 # direct methods
 .method constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 172
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -30,7 +30,7 @@
 
 # virtual methods
 .method public newContainer(Landroid/content/Context;Ljava/lang/String;Lcom/google/tagmanager/TagManager;)Lcom/google/tagmanager/Container;
-    .registers 5
+    .locals 1
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "containerId"    # Ljava/lang/String;
     .param p3, "tagManager"    # Lcom/google/tagmanager/TagManager;

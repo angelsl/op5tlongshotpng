@@ -20,7 +20,7 @@
 
 # direct methods
 .method public constructor <init>()V
-    .registers 2
+    .locals 1
 
     .line 20
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -37,7 +37,7 @@
 
 # virtual methods
 .method constructCtfeDebugUrl(I)Ljava/lang/String;
-    .registers 4
+    .locals 2
     .param p1, "currentEventNumber"    # I
 
     .line 34
@@ -77,7 +77,7 @@
 .end method
 
 .method public getCtfeServerAddress()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 30
     iget-object v0, p0, Lcom/google/tagmanager/CtfeHost;->mCtfeServerAddress:Ljava/lang/String;
@@ -86,7 +86,7 @@
 .end method
 
 .method public setCtfeServerAddress(Ljava/lang/String;)V
-    .registers 4
+    .locals 2
     .param p1, "newCtfeAddress"    # Ljava/lang/String;
 
     .line 25

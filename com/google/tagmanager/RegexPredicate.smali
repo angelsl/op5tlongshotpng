@@ -11,7 +11,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 18
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->REGEX:Lcom/google/analytics/containertag/common/FunctionType;
@@ -35,7 +35,7 @@
 .end method
 
 .method public constructor <init>()V
-    .registers 2
+    .locals 1
 
     .line 30
     sget-object v0, Lcom/google/tagmanager/RegexPredicate;->ID:Ljava/lang/String;
@@ -47,7 +47,7 @@
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 22
     sget-object v0, Lcom/google/tagmanager/RegexPredicate;->ID:Ljava/lang/String;
@@ -56,7 +56,7 @@
 .end method
 
 .method public static getIgnoreCaseKey()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 26
     sget-object v0, Lcom/google/tagmanager/RegexPredicate;->IGNORE_CASE:Ljava/lang/String;
@@ -67,7 +67,7 @@
 
 # virtual methods
 .method protected evaluateString(Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Z
-    .registers 7
+    .locals 3
     .param p1, "arg0"    # Ljava/lang/String;
     .param p2, "arg1"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
@@ -104,14 +104,14 @@
 
     move-result v1
 
-    if-eqz v1, :cond_16
+    if-eqz v1, :cond_0
 
     .line 37
     or-int/lit8 v0, v0, 0x2
 
     .line 40
-    :cond_16
-    :try_start_16
+    :cond_0
+    :try_start_0
     invoke-static {p2, v0}, Ljava/util/regex/Pattern;->compile(Ljava/lang/String;I)Ljava/util/regex/Pattern;
 
     move-result-object v1
@@ -123,13 +123,13 @@
     invoke-virtual {v1}, Ljava/util/regex/Matcher;->find()Z
 
     move-result v1
-    :try_end_22
-    .catch Ljava/util/regex/PatternSyntaxException; {:try_start_16 .. :try_end_22} :catch_23
+    :try_end_0
+    .catch Ljava/util/regex/PatternSyntaxException; {:try_start_0 .. :try_end_0} :catch_0
 
     return v1
 
     .line 41
-    :catch_23
+    :catch_0
     move-exception v1
 
     .line 43

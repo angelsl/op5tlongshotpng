@@ -5,7 +5,7 @@
 
 # direct methods
 .method private constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 13
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -14,7 +14,7 @@
 .end method
 
 .method private static applyEscaping(Lcom/google/tagmanager/ObjectAndStatic;I)Lcom/google/tagmanager/ObjectAndStatic;
-    .registers 4
+    .locals 2
     .param p1, "escaping"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -40,7 +40,7 @@
 
     move-result v0
 
-    if-nez v0, :cond_12
+    if-nez v0, :cond_0
 
     .line 40
     const-string v0, "Escaping can only be applied to strings."
@@ -51,10 +51,10 @@
     return-object p0
 
     .line 43
-    :cond_12
+    :cond_0
     const/16 v0, 0xc
 
-    if-eq p1, v0, :cond_2b
+    if-eq p1, v0, :cond_1
 
     .line 47
     new-instance v0, Ljava/lang/StringBuilder;
@@ -77,7 +77,7 @@
     return-object p0
 
     .line 45
-    :cond_2b
+    :cond_1
     invoke-static {p0}, Lcom/google/tagmanager/ValueEscapeUtil;->escapeUri(Lcom/google/tagmanager/ObjectAndStatic;)Lcom/google/tagmanager/ObjectAndStatic;
 
     move-result-object v0
@@ -86,7 +86,7 @@
 .end method
 
 .method static varargs applyEscapings(Lcom/google/tagmanager/ObjectAndStatic;[I)Lcom/google/tagmanager/ObjectAndStatic;
-    .registers 7
+    .locals 5
     .param p1, "escapings"    # [I
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -115,8 +115,8 @@
     const/4 v3, 0x0
 
     .local v3, "i$":I
-    :goto_4
-    if-ge v3, v2, :cond_f
+    :goto_0
+    if-ge v3, v2, :cond_0
 
     aget v4, v1, v3
 
@@ -130,18 +130,18 @@
     .end local v4    # "escaping":I
     add-int/lit8 v3, v3, 0x1
 
-    goto :goto_4
+    goto :goto_0
 
     .line 21
     .end local v1    # "arr$":[I
     .end local v2    # "len$":I
     .end local v3    # "i$":I
-    :cond_f
+    :cond_0
     return-object v0
 .end method
 
 .method private static escapeUri(Lcom/google/tagmanager/ObjectAndStatic;)Lcom/google/tagmanager/ObjectAndStatic;
-    .registers 5
+    .locals 4
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -184,14 +184,14 @@
     move-result v3
 
     invoke-direct {v1, v2, v3}, Lcom/google/tagmanager/ObjectAndStatic;-><init>(Ljava/lang/Object;Z)V
-    :try_end_1b
-    .catch Ljava/io/UnsupportedEncodingException; {:try_start_0 .. :try_end_1b} :catch_1c
+    :try_end_0
+    .catch Ljava/io/UnsupportedEncodingException; {:try_start_0 .. :try_end_0} :catch_0
 
     return-object v1
 
     .line 56
     .end local v0    # "escapedString":Ljava/lang/String;
-    :catch_1c
+    :catch_0
     move-exception v0
 
     .line 57
@@ -206,7 +206,7 @@
 .end method
 
 .method private static isValidStringType(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Z
-    .registers 2
+    .locals 1
     .param p0, "value"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 63
@@ -220,7 +220,7 @@
 .end method
 
 .method static urlEncode(Ljava/lang/String;)Ljava/lang/String;
-    .registers 4
+    .locals 3
     .param p0, "string"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {

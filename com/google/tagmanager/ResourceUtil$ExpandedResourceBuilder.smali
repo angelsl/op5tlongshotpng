@@ -44,7 +44,7 @@
 
 # direct methods
 .method private constructor <init>()V
-    .registers 2
+    .locals 1
 
     .line 318
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -78,7 +78,7 @@
 .end method
 
 .method synthetic constructor <init>(Lcom/google/tagmanager/ResourceUtil$1;)V
-    .registers 2
+    .locals 0
     .param p1, "x0"    # Lcom/google/tagmanager/ResourceUtil$1;
 
     .line 312
@@ -90,7 +90,7 @@
 
 # virtual methods
 .method public addMacro(Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;)Lcom/google/tagmanager/ResourceUtil$ExpandedResourceBuilder;
-    .registers 5
+    .locals 3
     .param p1, "f"    # Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
 
     .line 331
@@ -126,7 +126,7 @@
 
     .line 333
     .local v1, "macroList":Ljava/util/List;, "Ljava/util/List<Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;>;"
-    if-nez v1, :cond_29
+    if-nez v1, :cond_0
 
     .line 334
     new-instance v2, Ljava/util/ArrayList;
@@ -141,7 +141,7 @@
     invoke-interface {v2, v0, v1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 337
-    :cond_29
+    :cond_0
     invoke-interface {v1, p1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     .line 338
@@ -149,7 +149,7 @@
 .end method
 
 .method public addRule(Lcom/google/tagmanager/ResourceUtil$ExpandedRule;)Lcom/google/tagmanager/ResourceUtil$ExpandedResourceBuilder;
-    .registers 3
+    .locals 1
     .param p1, "r"    # Lcom/google/tagmanager/ResourceUtil$ExpandedRule;
 
     .line 326
@@ -162,7 +162,7 @@
 .end method
 
 .method public build()Lcom/google/tagmanager/ResourceUtil$ExpandedResource;
-    .registers 8
+    .locals 7
 
     .line 352
     new-instance v6, Lcom/google/tagmanager/ResourceUtil$ExpandedResource;
@@ -185,7 +185,7 @@
 .end method
 
 .method public setResourceFormatVersion(I)Lcom/google/tagmanager/ResourceUtil$ExpandedResourceBuilder;
-    .registers 2
+    .locals 0
     .param p1, "resourceFormatVersion"    # I
 
     .line 347
@@ -196,7 +196,7 @@
 .end method
 
 .method public setVersion(Ljava/lang/String;)Lcom/google/tagmanager/ResourceUtil$ExpandedResourceBuilder;
-    .registers 2
+    .locals 0
     .param p1, "version"    # Ljava/lang/String;
 
     .line 342

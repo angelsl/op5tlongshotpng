@@ -25,7 +25,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/DataLayerPersistentStoreImpl;Ljava/lang/String;)V
-    .registers 3
+    .locals 0
 
     .line 96
     iput-object p1, p0, Lcom/google/tagmanager/DataLayerPersistentStoreImpl$4;->this$0:Lcom/google/tagmanager/DataLayerPersistentStoreImpl;
@@ -40,7 +40,7 @@
 
 # virtual methods
 .method public run()V
-    .registers 3
+    .locals 2
 
     .line 99
     iget-object v0, p0, Lcom/google/tagmanager/DataLayerPersistentStoreImpl$4;->this$0:Lcom/google/tagmanager/DataLayerPersistentStoreImpl;

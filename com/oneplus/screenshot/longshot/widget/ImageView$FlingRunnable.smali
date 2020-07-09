@@ -27,14 +27,14 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/longshot/widget/ImageView;)V
-    .registers 3
+    .locals 1
 
-    .line 276
+    .line 278
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->this$0:Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 277
+    .line 279
     new-instance v0, Landroid/widget/Scroller;
 
     invoke-virtual {p1}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->getContext()Landroid/content/Context;
@@ -45,140 +45,140 @@
 
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->mScroller:Landroid/widget/Scroller;
 
-    .line 278
+    .line 280
     return-void
 .end method
 
 .method static synthetic access$000(Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;Z)V
-    .registers 2
+    .locals 0
     .param p0, "x0"    # Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;
     .param p1, "x1"    # Z
 
-    .line 265
+    .line 267
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->endFling(Z)V
 
     return-void
 .end method
 
 .method private endFling(Z)V
-    .registers 4
+    .locals 2
     .param p1, "toSlots"    # Z
 
-    .line 317
+    .line 319
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->mScroller:Landroid/widget/Scroller;
 
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Landroid/widget/Scroller;->forceFinished(Z)V
 
-    .line 318
-    if-eqz p1, :cond_d
+    .line 320
+    if-eqz p1, :cond_0
 
-    .line 319
+    .line 321
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->this$0:Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
     invoke-static {v0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->access$500(Lcom/oneplus/screenshot/longshot/widget/ImageView;)V
 
-    .line 322
-    :cond_d
+    .line 324
+    :cond_0
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->this$0:Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
     const/4 v1, 0x0
 
     iput v1, v0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mTouchMode:I
 
-    .line 323
+    .line 325
     return-void
 .end method
 
 .method private startCommon()V
-    .registers 2
+    .locals 1
 
-    .line 282
+    .line 284
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->this$0:Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
     invoke-virtual {v0, p0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->removeCallbacks(Ljava/lang/Runnable;)Z
 
-    .line 283
+    .line 285
     return-void
 .end method
 
 
 # virtual methods
 .method public run()V
-    .registers 6
+    .locals 5
 
-    .line 328
+    .line 330
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->mScroller:Landroid/widget/Scroller;
 
-    .line 329
+    .line 331
     .local v0, "scroller":Landroid/widget/Scroller;
     invoke-virtual {v0}, Landroid/widget/Scroller;->computeScrollOffset()Z
 
     move-result v1
 
-    .line 330
+    .line 332
     .local v1, "more":Z
     invoke-virtual {v0}, Landroid/widget/Scroller;->getCurrY()I
 
     move-result v2
 
-    .line 334
+    .line 336
     .local v2, "y":I
     iget v3, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->mLastFlingY:I
 
     sub-int/2addr v3, v2
 
-    .line 336
+    .line 338
     .local v3, "delta":I
     iget-object v4, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->this$0:Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
     invoke-static {v4, v3}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->access$300(Lcom/oneplus/screenshot/longshot/widget/ImageView;I)V
 
-    .line 338
-    if-eqz v1, :cond_1c
+    .line 340
+    if-eqz v1, :cond_0
 
-    .line 339
+    .line 341
     iput v2, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->mLastFlingY:I
 
-    .line 340
+    .line 342
     iget-object v4, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->this$0:Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
     invoke-virtual {v4, p0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->post(Ljava/lang/Runnable;)Z
 
-    goto :goto_20
+    goto :goto_0
 
-    .line 342
-    :cond_1c
+    .line 344
+    :cond_0
     const/4 v4, 0x1
 
     invoke-direct {p0, v4}, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->endFling(Z)V
 
-    .line 344
-    :goto_20
+    .line 346
+    :goto_0
     return-void
 .end method
 
 .method public startUsingDistance(I)V
-    .registers 9
+    .locals 7
     .param p1, "distance"    # I
 
-    .line 298
-    if-nez p1, :cond_3
-
-    .line 299
-    return-void
+    .line 300
+    if-nez p1, :cond_0
 
     .line 301
-    :cond_3
+    return-void
+
+    .line 303
+    :cond_0
     invoke-direct {p0}, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->startCommon()V
 
-    .line 302
+    .line 304
     const/4 v0, 0x0
 
     iput v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->mLastFlingY:I
 
-    .line 303
+    .line 305
     iget-object v1, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->mScroller:Landroid/widget/Scroller;
 
     const/4 v2, 0x0
@@ -191,52 +191,51 @@
 
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->this$0:Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
-    # getter for: Lcom/oneplus/screenshot/longshot/widget/ImageView;->mAnimationDuration:I
     invoke-static {v0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->access$400(Lcom/oneplus/screenshot/longshot/widget/ImageView;)I
 
     move-result v6
 
     invoke-virtual/range {v1 .. v6}, Landroid/widget/Scroller;->startScroll(IIIII)V
 
-    .line 304
+    .line 306
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->this$0:Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
     invoke-virtual {v0, p0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->post(Ljava/lang/Runnable;)Z
 
-    .line 305
+    .line 307
     return-void
 .end method
 
 .method public startUsingVelocity(I)V
-    .registers 12
+    .locals 10
     .param p1, "initialVelocity"    # I
 
-    .line 286
-    if-nez p1, :cond_3
-
-    .line 287
-    return-void
+    .line 288
+    if-nez p1, :cond_0
 
     .line 289
-    :cond_3
+    return-void
+
+    .line 291
+    :cond_0
     invoke-direct {p0}, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->startCommon()V
 
-    .line 290
-    if-gez p1, :cond_c
+    .line 292
+    if-gez p1, :cond_1
 
     const v0, 0x7fffffff
 
-    goto :goto_d
+    goto :goto_0
 
-    :cond_c
+    :cond_1
     const/4 v0, 0x0
 
-    .line 291
+    .line 293
     .local v0, "initialY":I
-    :goto_d
+    :goto_0
     iput v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->mLastFlingY:I
 
-    .line 292
+    .line 294
     iget-object v1, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->mScroller:Landroid/widget/Scroller;
 
     const/4 v2, 0x0
@@ -257,27 +256,27 @@
 
     invoke-virtual/range {v1 .. v9}, Landroid/widget/Scroller;->fling(IIIIIIII)V
 
-    .line 294
+    .line 296
     iget-object v1, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->this$0:Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
     invoke-virtual {v1, p0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->post(Ljava/lang/Runnable;)Z
 
-    .line 295
+    .line 297
     return-void
 .end method
 
 .method public stop(Z)V
-    .registers 3
+    .locals 1
     .param p1, "toSlots"    # Z
 
-    .line 308
+    .line 310
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->this$0:Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
     invoke-virtual {v0, p0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->removeCallbacks(Ljava/lang/Runnable;)Z
 
-    .line 309
+    .line 311
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;->endFling(Z)V
 
-    .line 310
+    .line 312
     return-void
 .end method

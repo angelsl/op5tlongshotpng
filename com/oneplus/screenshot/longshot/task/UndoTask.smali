@@ -9,13 +9,13 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/longshot/task/JoinTask$OnJoinListener;Lcom/oneplus/screenshot/longshot/cache/JoinCache;Landroid/content/Context;I)V
-    .registers 11
+    .locals 6
     .param p1, "listener"    # Lcom/oneplus/screenshot/longshot/task/JoinTask$OnJoinListener;
     .param p2, "joinCache"    # Lcom/oneplus/screenshot/longshot/cache/JoinCache;
     .param p3, "context"    # Landroid/content/Context;
     .param p4, "index"    # I
 
-    .line 22
+    .line 20
     const/4 v5, 0x0
 
     move-object v0, p0
@@ -30,18 +30,18 @@
 
     invoke-direct/range {v0 .. v5}, Lcom/oneplus/screenshot/longshot/task/JoinTask;-><init>(Lcom/oneplus/screenshot/longshot/task/JoinTask$OnJoinListener;Lcom/oneplus/screenshot/longshot/cache/JoinCache;Landroid/content/Context;IZ)V
 
-    .line 23
+    .line 21
     return-void
 .end method
 
 
 # virtual methods
 .method protected createMatcher(Landroid/content/Context;I)Lcom/oneplus/screenshot/longshot/match/Matcher;
-    .registers 4
+    .locals 1
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "index"    # I
 
-    .line 30
+    .line 28
     new-instance v0, Lcom/oneplus/screenshot/longshot/match/UndoMatcher;
 
     invoke-direct {v0, p1, p2}, Lcom/oneplus/screenshot/longshot/match/UndoMatcher;-><init>(Landroid/content/Context;I)V
@@ -50,35 +50,35 @@
 .end method
 
 .method protected onFailed(Lcom/oneplus/screenshot/longshot/cache/BitmapCache;Lcom/oneplus/screenshot/longshot/cache/BitmapCache;)V
-    .registers 4
+    .locals 1
     .param p1, "last"    # Lcom/oneplus/screenshot/longshot/cache/BitmapCache;
     .param p2, "curr"    # Lcom/oneplus/screenshot/longshot/cache/BitmapCache;
 
-    .line 58
+    .line 56
     invoke-virtual {p1}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->recycle()V
 
-    .line 59
+    .line 57
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/task/UndoTask;->mJoinCache:Lcom/oneplus/screenshot/longshot/cache/JoinCache;
 
     invoke-virtual {v0, p2}, Lcom/oneplus/screenshot/longshot/cache/JoinCache;->addLast(Ljava/lang/Object;)V
 
-    .line 60
+    .line 58
     return-void
 .end method
 
 .method protected onJoin(Lcom/oneplus/screenshot/longshot/cache/BitmapCache;Lcom/oneplus/screenshot/longshot/cache/BitmapCache;)Z
-    .registers 13
+    .locals 10
     .param p1, "last"    # Lcom/oneplus/screenshot/longshot/cache/BitmapCache;
     .param p2, "curr"    # Lcom/oneplus/screenshot/longshot/cache/BitmapCache;
 
-    .line 35
+    .line 33
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/task/UndoTask;->mMatcher:Lcom/oneplus/screenshot/longshot/match/Matcher;
 
     invoke-interface {v0, p1, p2}, Lcom/oneplus/screenshot/longshot/match/Matcher;->run(Lcom/oneplus/screenshot/longshot/cache/BitmapCache;Lcom/oneplus/screenshot/longshot/cache/BitmapCache;)Lcom/oneplus/screenshot/longshot/match/MatchData;
 
     move-result-object v0
 
-    .line 36
+    .line 34
     .local v0, "data":Lcom/oneplus/screenshot/longshot/match/MatchData;
     invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/match/MatchData;->getMatched()I
 
@@ -86,21 +86,21 @@
 
     const/4 v2, 0x0
 
-    if-lez v1, :cond_f
+    if-lez v1, :cond_0
 
     const/4 v1, 0x1
 
-    goto :goto_10
+    goto :goto_0
 
-    :cond_f
+    :cond_0
     move v1, v2
 
-    .line 37
+    .line 35
     .local v1, "result":Z
-    :goto_10
-    if-eqz v1, :cond_5f
+    :goto_0
+    if-eqz v1, :cond_3
 
-    .line 38
+    .line 36
     invoke-virtual {p2}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->getBitmap()Landroid/graphics/Bitmap;
 
     move-result-object v3
@@ -109,7 +109,7 @@
 
     move-result v3
 
-    .line 39
+    .line 37
     .local v3, "width":I
     invoke-virtual {p2}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->getBitmap()Landroid/graphics/Bitmap;
 
@@ -119,7 +119,7 @@
 
     move-result v4
 
-    .line 40
+    .line 38
     .local v4, "height":I
     invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/match/MatchData;->getCurrRange()Lcom/oneplus/screenshot/longshot/match/MatchRange;
 
@@ -129,13 +129,13 @@
 
     move-result v5
 
-    .line 41
+    .line 39
     .local v5, "yCurr":I
     sub-int v6, v4, v5
 
-    if-lez v6, :cond_57
+    if-lez v6, :cond_2
 
-    .line 42
+    .line 40
     invoke-virtual {p2}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->getBitmap()Landroid/graphics/Bitmap;
 
     move-result-object v6
@@ -146,19 +146,19 @@
 
     move-result-object v2
 
-    .line 43
+    .line 41
     .local v2, "bmpCurr":Landroid/graphics/Bitmap;
     invoke-virtual {p2}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->getBitmap()Landroid/graphics/Bitmap;
 
     move-result-object v6
 
-    if-ne v6, v2, :cond_41
+    if-ne v6, v2, :cond_1
 
-    .line 44
+    .line 42
     invoke-virtual {p2}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->removeBitmap()Landroid/graphics/Bitmap;
 
-    .line 46
-    :cond_41
+    .line 44
+    :cond_1
     iget-object v6, p0, Lcom/oneplus/screenshot/longshot/task/UndoTask;->mJoinCache:Lcom/oneplus/screenshot/longshot/cache/JoinCache;
 
     new-instance v7, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;
@@ -175,27 +175,27 @@
 
     invoke-virtual {v6, v7}, Lcom/oneplus/screenshot/longshot/cache/JoinCache;->addLast(Ljava/lang/Object;)V
 
-    .line 47
+    .line 45
     invoke-virtual {p2}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->recycle()V
 
-    .line 48
+    .line 46
     .end local v2    # "bmpCurr":Landroid/graphics/Bitmap;
-    goto :goto_5c
+    goto :goto_1
 
-    .line 49
-    :cond_57
+    .line 47
+    :cond_2
     iget-object v2, p0, Lcom/oneplus/screenshot/longshot/task/UndoTask;->mJoinCache:Lcom/oneplus/screenshot/longshot/cache/JoinCache;
 
     invoke-virtual {v2, p2}, Lcom/oneplus/screenshot/longshot/cache/JoinCache;->addLast(Ljava/lang/Object;)V
 
-    .line 51
-    :goto_5c
+    .line 49
+    :goto_1
     invoke-virtual {p1}, Lcom/oneplus/screenshot/longshot/cache/BitmapCache;->recycle()V
 
-    .line 53
+    .line 51
     .end local v3    # "width":I
     .end local v4    # "height":I
     .end local v5    # "yCurr":I
-    :cond_5f
+    :cond_3
     return v1
 .end method

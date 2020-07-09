@@ -20,7 +20,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 3
+    .locals 3
 
     .line 111
     invoke-static {}, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->values()[Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
@@ -33,7 +33,7 @@
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAServiceProxy$3;->$SwitchMap$com$google$analytics$tracking$android$GAServiceProxy$ConnectState:[I
 
-    :try_start_9
+    :try_start_0
     sget-object v0, Lcom/google/analytics/tracking/android/GAServiceProxy$3;->$SwitchMap$com$google$analytics$tracking$android$GAServiceProxy$ConnectState:[I
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->CONNECTED_LOCAL:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
@@ -45,16 +45,16 @@
     const/4 v2, 0x1
 
     aput v2, v0, v1
-    :try_end_14
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_9 .. :try_end_14} :catch_15
+    :try_end_0
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_0 .. :try_end_0} :catch_0
 
-    goto :goto_16
+    goto :goto_0
 
-    :catch_15
+    :catch_0
     move-exception v0
 
-    :goto_16
-    :try_start_16
+    :goto_0
+    :try_start_1
     sget-object v0, Lcom/google/analytics/tracking/android/GAServiceProxy$3;->$SwitchMap$com$google$analytics$tracking$android$GAServiceProxy$ConnectState:[I
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->CONNECTED_SERVICE:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
@@ -66,16 +66,16 @@
     const/4 v2, 0x2
 
     aput v2, v0, v1
-    :try_end_21
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_16 .. :try_end_21} :catch_22
+    :try_end_1
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_1 .. :try_end_1} :catch_1
 
-    goto :goto_23
+    goto :goto_1
 
-    :catch_22
+    :catch_1
     move-exception v0
 
-    :goto_23
-    :try_start_23
+    :goto_1
+    :try_start_2
     sget-object v0, Lcom/google/analytics/tracking/android/GAServiceProxy$3;->$SwitchMap$com$google$analytics$tracking$android$GAServiceProxy$ConnectState:[I
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->CONNECTING:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
@@ -87,16 +87,16 @@
     const/4 v2, 0x3
 
     aput v2, v0, v1
-    :try_end_2e
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_23 .. :try_end_2e} :catch_2f
+    :try_end_2
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_2 .. :try_end_2} :catch_2
 
-    goto :goto_30
+    goto :goto_2
 
-    :catch_2f
+    :catch_2
     move-exception v0
 
-    :goto_30
-    :try_start_30
+    :goto_2
+    :try_start_3
     sget-object v0, Lcom/google/analytics/tracking/android/GAServiceProxy$3;->$SwitchMap$com$google$analytics$tracking$android$GAServiceProxy$ConnectState:[I
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->PENDING_CONNECTION:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
@@ -108,16 +108,16 @@
     const/4 v2, 0x4
 
     aput v2, v0, v1
-    :try_end_3b
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_30 .. :try_end_3b} :catch_3c
+    :try_end_3
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_3 .. :try_end_3} :catch_3
 
-    goto :goto_3d
+    goto :goto_3
 
-    :catch_3c
+    :catch_3
     move-exception v0
 
-    :goto_3d
-    :try_start_3d
+    :goto_3
+    :try_start_4
     sget-object v0, Lcom/google/analytics/tracking/android/GAServiceProxy$3;->$SwitchMap$com$google$analytics$tracking$android$GAServiceProxy$ConnectState:[I
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->PENDING_DISCONNECT:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
@@ -129,16 +129,16 @@
     const/4 v2, 0x5
 
     aput v2, v0, v1
-    :try_end_48
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_3d .. :try_end_48} :catch_49
+    :try_end_4
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_4 .. :try_end_4} :catch_4
 
-    goto :goto_4a
+    goto :goto_4
 
-    :catch_49
+    :catch_4
     move-exception v0
 
-    :goto_4a
-    :try_start_4a
+    :goto_4
+    :try_start_5
     sget-object v0, Lcom/google/analytics/tracking/android/GAServiceProxy$3;->$SwitchMap$com$google$analytics$tracking$android$GAServiceProxy$ConnectState:[I
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;->DISCONNECTED:Lcom/google/analytics/tracking/android/GAServiceProxy$ConnectState;
@@ -150,14 +150,14 @@
     const/4 v2, 0x6
 
     aput v2, v0, v1
-    :try_end_55
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_4a .. :try_end_55} :catch_56
+    :try_end_5
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_5 .. :try_end_5} :catch_5
 
-    goto :goto_57
+    goto :goto_5
 
-    :catch_56
+    :catch_5
     move-exception v0
 
-    :goto_57
+    :goto_5
     return-void
 .end method

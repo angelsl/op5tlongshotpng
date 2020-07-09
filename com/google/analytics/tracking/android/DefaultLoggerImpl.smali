@@ -19,7 +19,7 @@
 
 # direct methods
 .method constructor <init>()V
-    .registers 2
+    .locals 1
 
     .line 20
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -34,7 +34,7 @@
 .end method
 
 .method private formatMessage(Ljava/lang/String;)Ljava/lang/String;
-    .registers 4
+    .locals 2
     .param p1, "msg"    # Ljava/lang/String;
 
     .line 69
@@ -68,7 +68,7 @@
 
 # virtual methods
 .method public error(Ljava/lang/Exception;)V
-    .registers 4
+    .locals 2
     .param p1, "exception"    # Ljava/lang/Exception;
 
     .line 53
@@ -84,22 +84,22 @@
 
     move-result v1
 
-    if-gt v0, v1, :cond_14
+    if-gt v0, v1, :cond_0
 
     .line 54
-    const-string v0, "GAV3"
+    const/4 v0, 0x0
 
-    const/4 v1, 0x0
+    const-string v1, "GAV3"
 
-    invoke-static {v0, v1, p1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    invoke-static {v1, v0, p1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
     .line 56
-    :cond_14
+    :cond_0
     return-void
 .end method
 
 .method public error(Ljava/lang/String;)V
-    .registers 4
+    .locals 2
     .param p1, "msg"    # Ljava/lang/String;
 
     .line 46
@@ -115,24 +115,24 @@
 
     move-result v1
 
-    if-gt v0, v1, :cond_17
+    if-gt v0, v1, :cond_0
 
     .line 47
-    const-string v0, "GAV3"
-
     invoke-direct {p0, p1}, Lcom/google/analytics/tracking/android/DefaultLoggerImpl;->formatMessage(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+    const-string v1, "GAV3"
+
+    invoke-static {v1, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 49
-    :cond_17
+    :cond_0
     return-void
 .end method
 
 .method public getLogLevel()Lcom/google/analytics/tracking/android/Logger$LogLevel;
-    .registers 2
+    .locals 1
 
     .line 65
     iget-object v0, p0, Lcom/google/analytics/tracking/android/DefaultLoggerImpl;->mLogLevel:Lcom/google/analytics/tracking/android/Logger$LogLevel;
@@ -141,7 +141,7 @@
 .end method
 
 .method public info(Ljava/lang/String;)V
-    .registers 4
+    .locals 2
     .param p1, "msg"    # Ljava/lang/String;
 
     .line 32
@@ -157,24 +157,24 @@
 
     move-result v1
 
-    if-gt v0, v1, :cond_17
+    if-gt v0, v1, :cond_0
 
     .line 33
-    const-string v0, "GAV3"
-
     invoke-direct {p0, p1}, Lcom/google/analytics/tracking/android/DefaultLoggerImpl;->formatMessage(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    const-string v1, "GAV3"
+
+    invoke-static {v1, v0}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 35
-    :cond_17
+    :cond_0
     return-void
 .end method
 
 .method public setLogLevel(Lcom/google/analytics/tracking/android/Logger$LogLevel;)V
-    .registers 2
+    .locals 0
     .param p1, "level"    # Lcom/google/analytics/tracking/android/Logger$LogLevel;
 
     .line 60
@@ -185,7 +185,7 @@
 .end method
 
 .method public verbose(Ljava/lang/String;)V
-    .registers 4
+    .locals 2
     .param p1, "msg"    # Ljava/lang/String;
 
     .line 25
@@ -201,24 +201,24 @@
 
     move-result v1
 
-    if-gt v0, v1, :cond_17
+    if-gt v0, v1, :cond_0
 
     .line 26
-    const-string v0, "GAV3"
-
     invoke-direct {p0, p1}, Lcom/google/analytics/tracking/android/DefaultLoggerImpl;->formatMessage(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+    const-string v1, "GAV3"
+
+    invoke-static {v1, v0}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 28
-    :cond_17
+    :cond_0
     return-void
 .end method
 
 .method public warn(Ljava/lang/String;)V
-    .registers 4
+    .locals 2
     .param p1, "msg"    # Ljava/lang/String;
 
     .line 39
@@ -234,18 +234,18 @@
 
     move-result v1
 
-    if-gt v0, v1, :cond_17
+    if-gt v0, v1, :cond_0
 
     .line 40
-    const-string v0, "GAV3"
-
     invoke-direct {p0, p1}, Lcom/google/analytics/tracking/android/DefaultLoggerImpl;->formatMessage(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
+    const-string v1, "GAV3"
+
+    invoke-static {v1, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 42
-    :cond_17
+    :cond_0
     return-void
 .end method

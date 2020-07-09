@@ -5,7 +5,7 @@
 
 # direct methods
 .method constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 12
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -14,7 +14,7 @@
 .end method
 
 .method static saveAsync(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    .registers 6
+    .locals 2
     .param p0, "context"    # Landroid/content/Context;
     .param p1, "sharedPreferencesName"    # Ljava/lang/String;
     .param p2, "key"    # Ljava/lang/String;
@@ -50,7 +50,7 @@
 .end method
 
 .method static saveEditorAsync(Landroid/content/SharedPreferences$Editor;)V
-    .registers 3
+    .locals 2
     .param p0, "editor"    # Landroid/content/SharedPreferences$Editor;
 
     .line 19
@@ -58,15 +58,15 @@
 
     const/16 v1, 0x9
 
-    if-lt v0, v1, :cond_a
+    if-lt v0, v1, :cond_0
 
     .line 20
     invoke-interface {p0}, Landroid/content/SharedPreferences$Editor;->apply()V
 
-    goto :goto_17
+    goto :goto_0
 
     .line 22
-    :cond_a
+    :cond_0
     new-instance v0, Ljava/lang/Thread;
 
     new-instance v1, Lcom/google/tagmanager/SharedPreferencesUtil$1;
@@ -78,6 +78,6 @@
     invoke-virtual {v0}, Ljava/lang/Thread;->start()V
 
     .line 29
-    :goto_17
+    :goto_0
     return-void
 .end method

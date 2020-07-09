@@ -28,7 +28,7 @@
 
 # direct methods
 .method constructor <init>(Ljava/lang/Object;Z)V
-    .registers 3
+    .locals 0
     .param p2, "isStatic"    # Z
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -54,7 +54,7 @@
 
 # virtual methods
 .method public getObject()Ljava/lang/Object;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()TT;"
@@ -69,7 +69,7 @@
 .end method
 
 .method public isStatic()Z
-    .registers 2
+    .locals 1
 
     .line 20
     .local p0, "this":Lcom/google/tagmanager/ObjectAndStatic;, "Lcom/google/tagmanager/ObjectAndStatic<TT;>;"

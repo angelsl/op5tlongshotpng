@@ -5,7 +5,7 @@
 
 # direct methods
 .method private constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 10
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -15,7 +15,7 @@
 .end method
 
 .method public static appendToArray([Lcom/google/analytics/containertag/proto/Debug$EventInfo;Lcom/google/analytics/containertag/proto/Debug$EventInfo;)[Lcom/google/analytics/containertag/proto/Debug$EventInfo;
-    .registers 5
+    .locals 3
     .param p0, "from"    # [Lcom/google/analytics/containertag/proto/Debug$EventInfo;
     .param p1, "itemToAppend"    # Lcom/google/analytics/containertag/proto/Debug$EventInfo;
 
@@ -44,7 +44,7 @@
 .end method
 
 .method public static appendToArray([Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;)[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
-    .registers 5
+    .locals 3
     .param p0, "from"    # [Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
     .param p1, "itemToAppend"    # Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
@@ -73,7 +73,7 @@
 .end method
 
 .method public static appendToArray([Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;)[Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
-    .registers 5
+    .locals 3
     .param p0, "from"    # [Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
     .param p1, "itemToAppend"    # Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
 
@@ -102,7 +102,7 @@
 .end method
 
 .method public static appendToArray([Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;)[Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-    .registers 5
+    .locals 3
     .param p0, "from"    # [Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
     .param p1, "itemToAppend"    # Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
 

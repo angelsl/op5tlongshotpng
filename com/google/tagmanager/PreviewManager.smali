@@ -39,7 +39,7 @@
 
 # direct methods
 .method constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 53
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -52,7 +52,7 @@
 .end method
 
 .method private getContainerId(Ljava/lang/String;)Ljava/lang/String;
-    .registers 5
+    .locals 3
     .param p1, "query"    # Ljava/lang/String;
 
     .line 138
@@ -82,7 +82,7 @@
 .end method
 
 .method static getInstance()Lcom/google/tagmanager/PreviewManager;
-    .registers 2
+    .locals 2
 
     .line 58
     const-class v0, Lcom/google/tagmanager/PreviewManager;
@@ -90,10 +90,10 @@
     monitor-enter v0
 
     .line 59
-    :try_start_3
+    :try_start_0
     sget-object v1, Lcom/google/tagmanager/PreviewManager;->sInstance:Lcom/google/tagmanager/PreviewManager;
 
-    if-nez v1, :cond_e
+    if-nez v1, :cond_0
 
     .line 60
     new-instance v1, Lcom/google/tagmanager/PreviewManager;
@@ -103,7 +103,7 @@
     sput-object v1, Lcom/google/tagmanager/PreviewManager;->sInstance:Lcom/google/tagmanager/PreviewManager;
 
     .line 63
-    :cond_e
+    :cond_0
     sget-object v1, Lcom/google/tagmanager/PreviewManager;->sInstance:Lcom/google/tagmanager/PreviewManager;
 
     monitor-exit v0
@@ -111,18 +111,18 @@
     return-object v1
 
     .line 64
-    :catchall_12
+    :catchall_0
     move-exception v1
 
     monitor-exit v0
-    :try_end_14
-    .catchall {:try_start_3 .. :try_end_14} :catchall_12
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method
 
 .method private getQueryWithoutDebugParameter(Landroid/net/Uri;)Ljava/lang/String;
-    .registers 5
+    .locals 3
     .param p1, "data"    # Landroid/net/Uri;
 
     .line 111
@@ -144,7 +144,7 @@
 
 # virtual methods
 .method clear()V
-    .registers 2
+    .locals 1
 
     .line 131
     sget-object v0, Lcom/google/tagmanager/PreviewManager$PreviewMode;->NONE:Lcom/google/tagmanager/PreviewManager$PreviewMode;
@@ -167,7 +167,7 @@
 .end method
 
 .method getCTFEUrlDebugQuery()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 127
     iget-object v0, p0, Lcom/google/tagmanager/PreviewManager;->mCTFEUrlQuery:Ljava/lang/String;
@@ -176,7 +176,7 @@
 .end method
 
 .method getCTFEUrlPath()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 119
     iget-object v0, p0, Lcom/google/tagmanager/PreviewManager;->mCTFEUrlPath:Ljava/lang/String;
@@ -185,7 +185,7 @@
 .end method
 
 .method getContainerId()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 123
     iget-object v0, p0, Lcom/google/tagmanager/PreviewManager;->mContainerId:Ljava/lang/String;
@@ -194,7 +194,7 @@
 .end method
 
 .method getPreviewMode()Lcom/google/tagmanager/PreviewManager$PreviewMode;
-    .registers 2
+    .locals 1
 
     .line 115
     iget-object v0, p0, Lcom/google/tagmanager/PreviewManager;->mPreviewMode:Lcom/google/tagmanager/PreviewManager$PreviewMode;
@@ -203,7 +203,7 @@
 .end method
 
 .method declared-synchronized setPreviewData(Landroid/net/Uri;)Z
-    .registers 8
+    .locals 5
     .param p1, "data"    # Landroid/net/Uri;
 
     monitor-enter p0
@@ -211,255 +211,266 @@
     .line 68
     const/4 v0, 0x0
 
-    move-object v1, v0
-
     .line 70
-    .local v1, "uriStr":Ljava/lang/String;
-    const/4 v2, 0x0
+    .local v0, "uriStr":Ljava/lang/String;
+    const/4 v1, 0x0
 
-    :try_start_4
+    :try_start_0
     invoke-virtual {p1}, Landroid/net/Uri;->toString()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v2
+    :try_end_0
+    .catch Ljava/io/UnsupportedEncodingException; {:try_start_0 .. :try_end_0} :catch_1
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    const-string v4, "UTF-8"
+    :try_start_1
+    const-string v3, "UTF-8"
 
-    invoke-static {v3, v4}, Ljava/net/URLDecoder;->decode(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v2, v3}, Ljava/net/URLDecoder;->decode(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v3
-    :try_end_e
-    .catch Ljava/io/UnsupportedEncodingException; {:try_start_4 .. :try_end_e} :catch_c0
-    .catchall {:try_start_4 .. :try_end_e} :catchall_bd
+    move-result-object v2
+    :try_end_1
+    .catch Ljava/io/UnsupportedEncodingException; {:try_start_1 .. :try_end_1} :catch_0
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    move-object v1, v3
+    move-object v0, v2
 
     .line 74
     nop
 
     .line 75
-    :try_start_10
-    const-string v3, "^tagmanager.c.\\S+:\\/\\/preview\\/p\\?id=\\S+&gtm_auth=\\S+&gtm_preview=\\d+(&gtm_debug=x)?$"
+    :try_start_2
+    const-string v2, "^tagmanager.c.\\S+:\\/\\/preview\\/p\\?id=\\S+&gtm_auth=\\S+&gtm_preview=\\d+(&gtm_debug=x)?$"
 
-    invoke-virtual {v1, v3}, Ljava/lang/String;->matches(Ljava/lang/String;)Z
+    invoke-virtual {v0, v2}, Ljava/lang/String;->matches(Ljava/lang/String;)Z
 
-    move-result v3
+    move-result v2
 
-    const/4 v4, 0x1
+    const/4 v3, 0x1
 
-    if-eqz v3, :cond_6f
+    if-eqz v2, :cond_3
 
     .line 76
-    new-instance v0, Ljava/lang/StringBuilder;
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
     const-string v2, "Container preview url: "
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v1
 
-    invoke-static {v0}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
+    invoke-static {v1}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
 
     .line 77
-    const-string v0, ".*?&gtm_debug=x$"
+    const-string v1, ".*?&gtm_debug=x$"
 
-    invoke-virtual {v1, v0}, Ljava/lang/String;->matches(Ljava/lang/String;)Z
+    invoke-virtual {v0, v1}, Ljava/lang/String;->matches(Ljava/lang/String;)Z
 
-    move-result v0
+    move-result v1
 
-    if-eqz v0, :cond_3a
+    if-eqz v1, :cond_0
 
     .line 78
-    sget-object v0, Lcom/google/tagmanager/PreviewManager$PreviewMode;->CONTAINER_DEBUG:Lcom/google/tagmanager/PreviewManager$PreviewMode;
+    sget-object v1, Lcom/google/tagmanager/PreviewManager$PreviewMode;->CONTAINER_DEBUG:Lcom/google/tagmanager/PreviewManager$PreviewMode;
 
-    iput-object v0, p0, Lcom/google/tagmanager/PreviewManager;->mPreviewMode:Lcom/google/tagmanager/PreviewManager$PreviewMode;
+    iput-object v1, p0, Lcom/google/tagmanager/PreviewManager;->mPreviewMode:Lcom/google/tagmanager/PreviewManager$PreviewMode;
 
-    goto :goto_3e
+    goto :goto_0
 
     .line 80
-    :cond_3a
-    sget-object v0, Lcom/google/tagmanager/PreviewManager$PreviewMode;->CONTAINER:Lcom/google/tagmanager/PreviewManager$PreviewMode;
+    .end local p0    # "this":Lcom/google/tagmanager/PreviewManager;
+    :cond_0
+    sget-object v1, Lcom/google/tagmanager/PreviewManager$PreviewMode;->CONTAINER:Lcom/google/tagmanager/PreviewManager$PreviewMode;
 
-    iput-object v0, p0, Lcom/google/tagmanager/PreviewManager;->mPreviewMode:Lcom/google/tagmanager/PreviewManager$PreviewMode;
+    iput-object v1, p0, Lcom/google/tagmanager/PreviewManager;->mPreviewMode:Lcom/google/tagmanager/PreviewManager$PreviewMode;
 
     .line 97
-    :goto_3e
+    :goto_0
     invoke-direct {p0, p1}, Lcom/google/tagmanager/PreviewManager;->getQueryWithoutDebugParameter(Landroid/net/Uri;)Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v1
 
-    iput-object v0, p0, Lcom/google/tagmanager/PreviewManager;->mCTFEUrlQuery:Ljava/lang/String;
+    iput-object v1, p0, Lcom/google/tagmanager/PreviewManager;->mCTFEUrlQuery:Ljava/lang/String;
 
     .line 99
-    iget-object v0, p0, Lcom/google/tagmanager/PreviewManager;->mPreviewMode:Lcom/google/tagmanager/PreviewManager$PreviewMode;
+    iget-object v1, p0, Lcom/google/tagmanager/PreviewManager;->mPreviewMode:Lcom/google/tagmanager/PreviewManager$PreviewMode;
 
     sget-object v2, Lcom/google/tagmanager/PreviewManager$PreviewMode;->CONTAINER:Lcom/google/tagmanager/PreviewManager$PreviewMode;
 
-    if-eq v0, v2, :cond_50
+    if-eq v1, v2, :cond_1
 
-    iget-object v0, p0, Lcom/google/tagmanager/PreviewManager;->mPreviewMode:Lcom/google/tagmanager/PreviewManager$PreviewMode;
+    iget-object v1, p0, Lcom/google/tagmanager/PreviewManager;->mPreviewMode:Lcom/google/tagmanager/PreviewManager$PreviewMode;
 
     sget-object v2, Lcom/google/tagmanager/PreviewManager$PreviewMode;->CONTAINER_DEBUG:Lcom/google/tagmanager/PreviewManager$PreviewMode;
 
-    if-ne v0, v2, :cond_65
+    if-ne v1, v2, :cond_2
 
     .line 100
-    :cond_50
-    new-instance v0, Ljava/lang/StringBuilder;
+    :cond_1
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
     const-string v2, "/r?"
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     iget-object v2, p0, Lcom/google/tagmanager/PreviewManager;->mCTFEUrlQuery:Ljava/lang/String;
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v1
 
-    iput-object v0, p0, Lcom/google/tagmanager/PreviewManager;->mCTFEUrlPath:Ljava/lang/String;
+    iput-object v1, p0, Lcom/google/tagmanager/PreviewManager;->mCTFEUrlPath:Ljava/lang/String;
 
     .line 103
-    :cond_65
-    iget-object v0, p0, Lcom/google/tagmanager/PreviewManager;->mCTFEUrlQuery:Ljava/lang/String;
+    :cond_2
+    iget-object v1, p0, Lcom/google/tagmanager/PreviewManager;->mCTFEUrlQuery:Ljava/lang/String;
 
-    invoke-direct {p0, v0}, Lcom/google/tagmanager/PreviewManager;->getContainerId(Ljava/lang/String;)Ljava/lang/String;
+    invoke-direct {p0, v1}, Lcom/google/tagmanager/PreviewManager;->getContainerId(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v1
 
-    iput-object v0, p0, Lcom/google/tagmanager/PreviewManager;->mContainerId:Ljava/lang/String;
-    :try_end_6d
-    .catchall {:try_start_10 .. :try_end_6d} :catchall_bd
+    iput-object v1, p0, Lcom/google/tagmanager/PreviewManager;->mContainerId:Ljava/lang/String;
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
     .line 105
     monitor-exit p0
 
-    return v4
+    return v3
 
     .line 82
-    :cond_6f
-    :try_start_6f
-    const-string v3, "^tagmanager.c.\\S+:\\/\\/preview\\/p\\?id=\\S+&gtm_preview=$"
+    :cond_3
+    :try_start_3
+    const-string v2, "^tagmanager.c.\\S+:\\/\\/preview\\/p\\?id=\\S+&gtm_preview=$"
 
-    invoke-virtual {v1, v3}, Ljava/lang/String;->matches(Ljava/lang/String;)Z
+    invoke-virtual {v0, v2}, Ljava/lang/String;->matches(Ljava/lang/String;)Z
 
-    move-result v3
+    move-result v2
 
-    if-eqz v3, :cond_a7
+    if-eqz v2, :cond_5
 
     .line 83
     invoke-virtual {p1}, Landroid/net/Uri;->getQuery()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v2
 
-    invoke-direct {p0, v3}, Lcom/google/tagmanager/PreviewManager;->getContainerId(Ljava/lang/String;)Ljava/lang/String;
+    invoke-direct {p0, v2}, Lcom/google/tagmanager/PreviewManager;->getContainerId(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v2
 
-    iget-object v5, p0, Lcom/google/tagmanager/PreviewManager;->mContainerId:Ljava/lang/String;
+    iget-object v4, p0, Lcom/google/tagmanager/PreviewManager;->mContainerId:Ljava/lang/String;
 
-    invoke-virtual {v3, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v2, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v3
+    move-result v2
 
-    if-eqz v3, :cond_a5
+    if-eqz v2, :cond_4
 
     .line 84
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "Exit preview mode for container: "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v2, p0, Lcom/google/tagmanager/PreviewManager;->mContainerId:Ljava/lang/String;
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v1}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
+
+    .line 85
+    sget-object v1, Lcom/google/tagmanager/PreviewManager$PreviewMode;->NONE:Lcom/google/tagmanager/PreviewManager$PreviewMode;
+
+    iput-object v1, p0, Lcom/google/tagmanager/PreviewManager;->mPreviewMode:Lcom/google/tagmanager/PreviewManager$PreviewMode;
+
+    .line 86
+    const/4 v1, 0x0
+
+    iput-object v1, p0, Lcom/google/tagmanager/PreviewManager;->mCTFEUrlPath:Ljava/lang/String;
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
+
+    .line 87
+    monitor-exit p0
+
+    return v3
+
+    .line 90
+    :cond_4
+    monitor-exit p0
+
+    return v1
+
+    .line 93
+    :cond_5
+    :try_start_4
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Exit preview mode for container: "
+    const-string v3, "Invalid preview uri: "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget-object v3, p0, Lcom/google/tagmanager/PreviewManager;->mContainerId:Ljava/lang/String;
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v2
 
-    invoke-static {v2}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
-
-    .line 85
-    sget-object v2, Lcom/google/tagmanager/PreviewManager$PreviewMode;->NONE:Lcom/google/tagmanager/PreviewManager$PreviewMode;
-
-    iput-object v2, p0, Lcom/google/tagmanager/PreviewManager;->mPreviewMode:Lcom/google/tagmanager/PreviewManager$PreviewMode;
-
-    .line 86
-    iput-object v0, p0, Lcom/google/tagmanager/PreviewManager;->mCTFEUrlPath:Ljava/lang/String;
-    :try_end_a3
-    .catchall {:try_start_6f .. :try_end_a3} :catchall_bd
-
-    .line 87
-    monitor-exit p0
-
-    return v4
-
-    .line 90
-    :cond_a5
-    monitor-exit p0
-
-    return v2
-
-    .line 93
-    :cond_a7
-    :try_start_a7
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v3, "Invalid preview uri: "
-
-    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
-    :try_end_bb
-    .catchall {:try_start_a7 .. :try_end_bb} :catchall_bd
+    invoke-static {v2}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
+    :try_end_4
+    .catchall {:try_start_4 .. :try_end_4} :catchall_0
 
     .line 94
     monitor-exit p0
 
-    return v2
+    return v1
+
+    .line 71
+    :catch_0
+    move-exception v2
+
+    goto :goto_1
 
     .line 67
-    .end local v1    # "uriStr":Ljava/lang/String;
+    .end local v0    # "uriStr":Ljava/lang/String;
     .end local p1    # "data":Landroid/net/Uri;
-    :catchall_bd
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/PreviewManager;
     throw p1
 
     .line 71
-    .restart local v1    # "uriStr":Ljava/lang/String;
+    .restart local v0    # "uriStr":Ljava/lang/String;
     .restart local p0    # "this":Lcom/google/tagmanager/PreviewManager;
     .restart local p1    # "data":Landroid/net/Uri;
-    :catch_c0
-    move-exception v0
+    :catch_1
+    move-exception v2
 
     .line 73
-    .local v0, "e":Ljava/io/UnsupportedEncodingException;
+    .local v2, "e":Ljava/io/UnsupportedEncodingException;
+    :goto_1
     monitor-exit p0
 
-    return v2
+    return v1
 .end method

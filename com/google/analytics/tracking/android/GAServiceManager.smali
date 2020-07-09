@@ -41,7 +41,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 40
     new-instance v0, Ljava/lang/Object;
@@ -54,7 +54,7 @@
 .end method
 
 .method private constructor <init>()V
-    .registers 2
+    .locals 1
 
     .line 82
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/ServiceManager;-><init>()V
@@ -92,7 +92,7 @@
 .end method
 
 .method constructor <init>(Landroid/content/Context;Lcom/google/analytics/tracking/android/AnalyticsThread;Lcom/google/analytics/tracking/android/AnalyticsStore;Z)V
-    .registers 6
+    .locals 1
     .param p1, "ctx"    # Landroid/content/Context;
     .param p2, "thread"    # Lcom/google/analytics/tracking/android/AnalyticsThread;
     .param p3, "store"    # Lcom/google/analytics/tracking/android/AnalyticsStore;
@@ -148,7 +148,7 @@
 .end method
 
 .method static synthetic access$000(Lcom/google/analytics/tracking/android/GAServiceManager;)Z
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/GAServiceManager;
 
     .line 26
@@ -158,7 +158,7 @@
 .end method
 
 .method static synthetic access$100()Ljava/lang/Object;
-    .registers 1
+    .locals 1
 
     .line 26
     sget-object v0, Lcom/google/analytics/tracking/android/GAServiceManager;->MSG_OBJECT:Ljava/lang/Object;
@@ -167,7 +167,7 @@
 .end method
 
 .method static synthetic access$200(Lcom/google/analytics/tracking/android/GAServiceManager;)I
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/GAServiceManager;
 
     .line 26
@@ -177,7 +177,7 @@
 .end method
 
 .method static synthetic access$300(Lcom/google/analytics/tracking/android/GAServiceManager;)Z
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/GAServiceManager;
 
     .line 26
@@ -187,7 +187,7 @@
 .end method
 
 .method static synthetic access$400(Lcom/google/analytics/tracking/android/GAServiceManager;)Landroid/os/Handler;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/GAServiceManager;
 
     .line 26
@@ -197,7 +197,7 @@
 .end method
 
 .method static clearInstance()V
-    .registers 1
+    .locals 1
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
@@ -211,12 +211,12 @@
 .end method
 
 .method public static getInstance()Lcom/google/analytics/tracking/android/GAServiceManager;
-    .registers 1
+    .locals 1
 
     .line 76
     sget-object v0, Lcom/google/analytics/tracking/android/GAServiceManager;->instance:Lcom/google/analytics/tracking/android/GAServiceManager;
 
-    if-nez v0, :cond_b
+    if-nez v0, :cond_0
 
     .line 77
     new-instance v0, Lcom/google/analytics/tracking/android/GAServiceManager;
@@ -226,14 +226,14 @@
     sput-object v0, Lcom/google/analytics/tracking/android/GAServiceManager;->instance:Lcom/google/analytics/tracking/android/GAServiceManager;
 
     .line 79
-    :cond_b
+    :cond_0
     sget-object v0, Lcom/google/analytics/tracking/android/GAServiceManager;->instance:Lcom/google/analytics/tracking/android/GAServiceManager;
 
     return-object v0
 .end method
 
 .method private initializeHandler()V
-    .registers 5
+    .locals 4
 
     .line 105
     new-instance v0, Landroid/os/Handler;
@@ -255,18 +255,16 @@
     .line 123
     iget v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->dispatchPeriodInSeconds:I
 
-    if-lez v0, :cond_29
+    if-lez v0, :cond_0
 
     .line 124
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->handler:Landroid/os/Handler;
 
-    iget-object v1, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->handler:Landroid/os/Handler;
+    const/4 v1, 0x1
 
-    const/4 v2, 0x1
+    sget-object v2, Lcom/google/analytics/tracking/android/GAServiceManager;->MSG_OBJECT:Ljava/lang/Object;
 
-    sget-object v3, Lcom/google/analytics/tracking/android/GAServiceManager;->MSG_OBJECT:Ljava/lang/Object;
-
-    invoke-virtual {v1, v2, v3}, Landroid/os/Handler;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
+    invoke-virtual {v0, v1, v2}, Landroid/os/Handler;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
 
     move-result-object v1
 
@@ -279,12 +277,12 @@
     invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message;J)Z
 
     .line 127
-    :cond_29
+    :cond_0
     return-void
 .end method
 
 .method private initializeNetworkReceiver()V
-    .registers 3
+    .locals 2
 
     .line 100
     new-instance v0, Lcom/google/analytics/tracking/android/GANetworkReceiver;
@@ -307,17 +305,17 @@
 
 # virtual methods
 .method public declared-synchronized dispatchLocalHits()V
-    .registers 3
+    .locals 2
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
     monitor-enter p0
 
     .line 207
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->thread:Lcom/google/analytics/tracking/android/AnalyticsThread;
 
-    if-nez v0, :cond_f
+    if-nez v0, :cond_0
 
     .line 208
     const-string v0, "Dispatch call queued. Dispatch will run once initialization is complete."
@@ -328,8 +326,8 @@
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->pendingDispatch:Z
-    :try_end_d
-    .catchall {:try_start_1 .. :try_end_d} :catchall_1f
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 210
     monitor-exit p0
@@ -337,8 +335,9 @@
     return-void
 
     .line 213
-    :cond_f
-    :try_start_f
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceManager;
+    :cond_0
+    :try_start_1
     invoke-static {}, Lcom/google/analytics/tracking/android/GAUsage;->getInstance()Lcom/google/analytics/tracking/android/GAUsage;
 
     move-result-object v0
@@ -351,8 +350,8 @@
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->thread:Lcom/google/analytics/tracking/android/AnalyticsThread;
 
     invoke-interface {v0}, Lcom/google/analytics/tracking/android/AnalyticsThread;->dispatch()V
-    :try_end_1d
-    .catchall {:try_start_f .. :try_end_1d} :catchall_1f
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 215
     monitor-exit p0
@@ -360,17 +359,16 @@
     return-void
 
     .line 206
-    :catchall_1f
+    :catchall_0
     move-exception v0
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceManager;
     throw v0
 .end method
 
 .method getListener()Lcom/google/analytics/tracking/android/AnalyticsStoreStateListener;
-    .registers 2
+    .locals 1
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
@@ -381,20 +379,20 @@
 .end method
 
 .method declared-synchronized getStore()Lcom/google/analytics/tracking/android/AnalyticsStore;
-    .registers 4
+    .locals 3
 
     monitor-enter p0
 
     .line 167
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->store:Lcom/google/analytics/tracking/android/AnalyticsStore;
 
-    if-nez v0, :cond_2f
+    if-nez v0, :cond_1
 
     .line 168
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->ctx:Landroid/content/Context;
 
-    if-eqz v0, :cond_27
+    if-eqz v0, :cond_0
 
     .line 173
     new-instance v0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;
@@ -410,7 +408,7 @@
     .line 174
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->pendingHostOverride:Ljava/lang/String;
 
-    if-eqz v0, :cond_2f
+    if-eqz v0, :cond_1
 
     .line 175
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->store:Lcom/google/analytics/tracking/android/AnalyticsStore;
@@ -428,10 +426,11 @@
 
     iput-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->pendingHostOverride:Ljava/lang/String;
 
-    goto :goto_2f
+    goto :goto_0
 
     .line 171
-    :cond_27
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceManager;
+    :cond_0
     new-instance v0, Ljava/lang/IllegalStateException;
 
     const-string v1, "Cant get a store unless we have a context"
@@ -441,62 +440,61 @@
     throw v0
 
     .line 179
-    :cond_2f
-    :goto_2f
+    :cond_1
+    :goto_0
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->handler:Landroid/os/Handler;
 
-    if-nez v0, :cond_36
+    if-nez v0, :cond_2
 
     .line 181
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/GAServiceManager;->initializeHandler()V
 
     .line 183
-    :cond_36
+    :cond_2
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->networkReceiver:Lcom/google/analytics/tracking/android/GANetworkReceiver;
 
-    if-nez v0, :cond_41
+    if-nez v0, :cond_3
 
     iget-boolean v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->listenForNetwork:Z
 
-    if-eqz v0, :cond_41
+    if-eqz v0, :cond_3
 
     .line 184
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/GAServiceManager;->initializeNetworkReceiver()V
 
     .line 186
-    :cond_41
+    :cond_3
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->store:Lcom/google/analytics/tracking/android/AnalyticsStore;
-    :try_end_43
-    .catchall {:try_start_1 .. :try_end_43} :catchall_45
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     monitor-exit p0
 
     return-object v0
 
     .line 166
-    :catchall_45
+    :catchall_0
     move-exception v0
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceManager;
     throw v0
 .end method
 
 .method declared-synchronized initialize(Landroid/content/Context;Lcom/google/analytics/tracking/android/AnalyticsThread;)V
-    .registers 5
+    .locals 2
     .param p1, "ctx"    # Landroid/content/Context;
     .param p2, "thread"    # Lcom/google/analytics/tracking/android/AnalyticsThread;
 
     monitor-enter p0
 
     .line 139
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->ctx:Landroid/content/Context;
-    :try_end_3
-    .catchall {:try_start_1 .. :try_end_3} :catchall_28
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    if-eqz v0, :cond_7
+    if-eqz v0, :cond_0
 
     .line 140
     monitor-exit p0
@@ -504,8 +502,8 @@
     return-void
 
     .line 142
-    :cond_7
-    :try_start_7
+    :cond_0
+    :try_start_1
     invoke-virtual {p1}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
 
     move-result-object v0
@@ -515,7 +513,7 @@
     .line 144
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->thread:Lcom/google/analytics/tracking/android/AnalyticsThread;
 
-    if-nez v0, :cond_26
+    if-nez v0, :cond_2
 
     .line 145
     iput-object p2, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->thread:Lcom/google/analytics/tracking/android/AnalyticsThread;
@@ -525,7 +523,7 @@
 
     const/4 v1, 0x0
 
-    if-eqz v0, :cond_1d
+    if-eqz v0, :cond_1
 
     .line 147
     invoke-virtual {p0}, Lcom/google/analytics/tracking/android/GAServiceManager;->dispatchLocalHits()V
@@ -534,21 +532,22 @@
     iput-boolean v1, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->pendingDispatch:Z
 
     .line 150
-    :cond_1d
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceManager;
+    :cond_1
     iget-boolean v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->pendingForceLocalDispatch:Z
 
-    if-eqz v0, :cond_26
+    if-eqz v0, :cond_2
 
     .line 151
     invoke-virtual {p0}, Lcom/google/analytics/tracking/android/GAServiceManager;->setForceLocalDispatch()V
 
     .line 152
     iput-boolean v1, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->pendingForceLocalDispatch:Z
-    :try_end_26
-    .catchall {:try_start_7 .. :try_end_26} :catchall_28
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 155
-    :cond_26
+    :cond_2
     monitor-exit p0
 
     return-void
@@ -556,33 +555,32 @@
     .line 138
     .end local p1    # "ctx":Landroid/content/Context;
     .end local p2    # "thread":Lcom/google/analytics/tracking/android/AnalyticsThread;
-    :catchall_28
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceManager;
     throw p1
 .end method
 
 .method declared-synchronized onRadioPowered()V
-    .registers 5
+    .locals 4
 
     monitor-enter p0
 
     .line 277
-    :try_start_1
+    :try_start_0
     iget-boolean v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->storeIsEmpty:Z
 
-    if-nez v0, :cond_22
+    if-nez v0, :cond_0
 
     iget-boolean v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->connected:Z
 
-    if-eqz v0, :cond_22
+    if-eqz v0, :cond_0
 
     iget v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->dispatchPeriodInSeconds:I
 
-    if-lez v0, :cond_22
+    if-lez v0, :cond_0
 
     .line 281
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->handler:Landroid/os/Handler;
@@ -605,27 +603,27 @@
     move-result-object v1
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
-    :try_end_22
-    .catchall {:try_start_1 .. :try_end_22} :catchall_24
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 284
-    :cond_22
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceManager;
+    :cond_0
     monitor-exit p0
 
     return-void
 
     .line 276
-    :catchall_24
+    :catchall_0
     move-exception v0
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceManager;
     throw v0
 .end method
 
 .method declared-synchronized overrideHostUrl(Ljava/lang/String;)V
-    .registers 3
+    .locals 1
     .param p1, "hostOverride"    # Ljava/lang/String;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
@@ -633,18 +631,19 @@
     monitor-enter p0
 
     .line 195
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->store:Lcom/google/analytics/tracking/android/AnalyticsStore;
 
-    if-nez v0, :cond_8
+    if-nez v0, :cond_0
 
     .line 196
     iput-object p1, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->pendingHostOverride:Ljava/lang/String;
 
-    goto :goto_11
+    goto :goto_0
 
     .line 198
-    :cond_8
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceManager;
+    :cond_0
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->store:Lcom/google/analytics/tracking/android/AnalyticsStore;
 
     invoke-interface {v0}, Lcom/google/analytics/tracking/android/AnalyticsStore;->getDispatcher()Lcom/google/analytics/tracking/android/Dispatcher;
@@ -652,35 +651,34 @@
     move-result-object v0
 
     invoke-interface {v0, p1}, Lcom/google/analytics/tracking/android/Dispatcher;->overrideHostUrl(Ljava/lang/String;)V
-    :try_end_11
-    .catchall {:try_start_1 .. :try_end_11} :catchall_13
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 200
-    :goto_11
+    :goto_0
     monitor-exit p0
 
     return-void
 
     .line 194
     .end local p1    # "hostOverride":Ljava/lang/String;
-    :catchall_13
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceManager;
     throw p1
 .end method
 
 .method public setForceLocalDispatch()V
-    .registers 3
+    .locals 2
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
     .line 243
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->thread:Lcom/google/analytics/tracking/android/AnalyticsThread;
 
-    if-nez v0, :cond_d
+    if-nez v0, :cond_0
 
     .line 244
     const-string v0, "setForceLocalDispatch() queued. It will be called once initialization is complete."
@@ -696,7 +694,7 @@
     return-void
 
     .line 248
-    :cond_d
+    :cond_0
     invoke-static {}, Lcom/google/analytics/tracking/android/GAUsage;->getInstance()Lcom/google/analytics/tracking/android/GAUsage;
 
     move-result-object v0
@@ -715,7 +713,7 @@
 .end method
 
 .method public declared-synchronized setLocalDispatchPeriod(I)V
-    .registers 6
+    .locals 4
     .param p1, "dispatchPeriodInSeconds"    # I
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
@@ -723,10 +721,10 @@
     monitor-enter p0
 
     .line 220
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->handler:Landroid/os/Handler;
 
-    if-nez v0, :cond_e
+    if-nez v0, :cond_0
 
     .line 221
     const-string v0, "Dispatch period set with null handler. Dispatch will run once initialization is complete."
@@ -735,8 +733,8 @@
 
     .line 223
     iput p1, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->dispatchPeriodInSeconds:I
-    :try_end_c
-    .catchall {:try_start_1 .. :try_end_c} :catchall_49
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 224
     monitor-exit p0
@@ -744,8 +742,9 @@
     return-void
 
     .line 227
-    :cond_e
-    :try_start_e
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceManager;
+    :cond_0
+    :try_start_1
     invoke-static {}, Lcom/google/analytics/tracking/android/GAUsage;->getInstance()Lcom/google/analytics/tracking/android/GAUsage;
 
     move-result-object v0
@@ -759,15 +758,15 @@
 
     const/4 v1, 0x1
 
-    if-nez v0, :cond_2b
+    if-nez v0, :cond_1
 
     iget-boolean v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->connected:Z
 
-    if-eqz v0, :cond_2b
+    if-eqz v0, :cond_1
 
     iget v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->dispatchPeriodInSeconds:I
 
-    if-lez v0, :cond_2b
+    if-lez v0, :cond_1
 
     .line 230
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->handler:Landroid/os/Handler;
@@ -777,19 +776,19 @@
     invoke-virtual {v0, v1, v2}, Landroid/os/Handler;->removeMessages(ILjava/lang/Object;)V
 
     .line 232
-    :cond_2b
+    :cond_1
     iput p1, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->dispatchPeriodInSeconds:I
 
     .line 233
-    if-lez p1, :cond_47
+    if-lez p1, :cond_2
 
     iget-boolean v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->storeIsEmpty:Z
 
-    if-nez v0, :cond_47
+    if-nez v0, :cond_2
 
     iget-boolean v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->connected:Z
 
-    if-eqz v0, :cond_47
+    if-eqz v0, :cond_2
 
     .line 234
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->handler:Landroid/os/Handler;
@@ -807,39 +806,38 @@
     int-to-long v2, v2
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message;J)Z
-    :try_end_47
-    .catchall {:try_start_e .. :try_end_47} :catchall_49
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 237
-    :cond_47
+    :cond_2
     monitor-exit p0
 
     return-void
 
     .line 219
     .end local p1    # "dispatchPeriodInSeconds":I
-    :catchall_49
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceManager;
     throw p1
 .end method
 
 .method declared-synchronized updateConnectivityStatus(Z)V
-    .registers 3
+    .locals 1
     .param p1, "connected"    # Z
 
     monitor-enter p0
 
     .line 272
-    :try_start_1
+    :try_start_0
     iget-boolean v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->storeIsEmpty:Z
 
     invoke-virtual {p0, v0, p1}, Lcom/google/analytics/tracking/android/GAServiceManager;->updatePowerSaveMode(ZZ)V
-    :try_end_6
-    .catchall {:try_start_1 .. :try_end_6} :catchall_8
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 273
     monitor-exit p0
@@ -847,18 +845,18 @@
     return-void
 
     .line 271
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceManager;
     .end local p1    # "connected":Z
-    :catchall_8
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceManager;
     throw p1
 .end method
 
 .method declared-synchronized updatePowerSaveMode(ZZ)V
-    .registers 7
+    .locals 4
     .param p1, "storeIsEmpty"    # Z
     .param p2, "connected"    # Z
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
@@ -867,16 +865,16 @@
     monitor-enter p0
 
     .line 254
-    :try_start_1
+    :try_start_0
     iget-boolean v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->storeIsEmpty:Z
 
-    if-ne v0, p1, :cond_b
+    if-ne v0, p1, :cond_0
 
     iget-boolean v0, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->connected:Z
-    :try_end_7
-    .catchall {:try_start_1 .. :try_end_7} :catchall_59
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    if-ne v0, p2, :cond_b
+    if-ne v0, p2, :cond_0
 
     .line 255
     monitor-exit p0
@@ -884,18 +882,19 @@
     return-void
 
     .line 257
-    :cond_b
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceManager;
+    :cond_0
     const/4 v0, 0x1
 
-    if-nez p1, :cond_10
+    if-nez p1, :cond_1
 
-    if-nez p2, :cond_1b
+    if-nez p2, :cond_2
 
-    :cond_10
-    :try_start_10
+    :cond_1
+    :try_start_1
     iget v1, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->dispatchPeriodInSeconds:I
 
-    if-lez v1, :cond_1b
+    if-lez v1, :cond_2
 
     .line 258
     iget-object v1, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->handler:Landroid/os/Handler;
@@ -905,14 +904,14 @@
     invoke-virtual {v1, v0, v2}, Landroid/os/Handler;->removeMessages(ILjava/lang/Object;)V
 
     .line 260
-    :cond_1b
-    if-nez p1, :cond_35
+    :cond_2
+    if-nez p1, :cond_3
 
-    if-eqz p2, :cond_35
+    if-eqz p2, :cond_3
 
     iget v1, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->dispatchPeriodInSeconds:I
 
-    if-lez v1, :cond_35
+    if-lez v1, :cond_3
 
     .line 261
     iget-object v1, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->handler:Landroid/os/Handler;
@@ -934,7 +933,7 @@
     invoke-virtual {v1, v0, v2, v3}, Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message;J)Z
 
     .line 264
-    :cond_35
+    :cond_3
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -943,22 +942,22 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    if-nez p1, :cond_47
+    if-nez p1, :cond_5
 
-    if-nez p2, :cond_44
+    if-nez p2, :cond_4
 
-    goto :goto_47
+    goto :goto_0
 
-    :cond_44
+    :cond_4
     const-string v1, "terminated."
 
-    goto :goto_49
+    goto :goto_1
 
-    :cond_47
-    :goto_47
+    :cond_5
+    :goto_0
     const-string v1, "initiated."
 
-    :goto_49
+    :goto_1
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
@@ -972,8 +971,8 @@
 
     .line 267
     iput-boolean p2, p0, Lcom/google/analytics/tracking/android/GAServiceManager;->connected:Z
-    :try_end_57
-    .catchall {:try_start_10 .. :try_end_57} :catchall_59
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 268
     monitor-exit p0
@@ -983,11 +982,10 @@
     .line 253
     .end local p1    # "storeIsEmpty":Z
     .end local p2    # "connected":Z
-    :catchall_59
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/analytics/tracking/android/GAServiceManager;
     throw p1
 .end method

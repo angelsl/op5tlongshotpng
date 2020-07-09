@@ -23,7 +23,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/analytics/tracking/android/GAThread;)V
-    .registers 2
+    .locals 0
 
     .line 259
     iput-object p1, p0, Lcom/google/analytics/tracking/android/GAThread$3;->this$0:Lcom/google/analytics/tracking/android/GAThread;
@@ -36,12 +36,11 @@
 
 # virtual methods
 .method public run()V
-    .registers 2
+    .locals 1
 
     .line 262
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAThread$3;->this$0:Lcom/google/analytics/tracking/android/GAThread;
 
-    # getter for: Lcom/google/analytics/tracking/android/GAThread;->mServiceProxy:Lcom/google/analytics/tracking/android/ServiceProxy;
     invoke-static {v0}, Lcom/google/analytics/tracking/android/GAThread;->access$700(Lcom/google/analytics/tracking/android/GAThread;)Lcom/google/analytics/tracking/android/ServiceProxy;
 
     move-result-object v0

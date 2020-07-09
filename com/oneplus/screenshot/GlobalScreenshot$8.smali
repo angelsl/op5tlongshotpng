@@ -23,10 +23,10 @@
 
 # direct methods
 .method constructor <init>(Lcom/oneplus/screenshot/GlobalScreenshot;)V
-    .registers 2
+    .locals 0
     .param p1, "this$0"    # Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .line 1360
+    .line 1477
     iput-object p1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$8;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -37,13 +37,13 @@
 
 # virtual methods
 .method public run()V
-    .registers 2
+    .locals 1
 
-    .line 1363
+    .line 1480
     iget-object v0, p0, Lcom/oneplus/screenshot/GlobalScreenshot$8;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    invoke-static {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$2100(Lcom/oneplus/screenshot/GlobalScreenshot;)V
+    invoke-static {v0}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$1100(Lcom/oneplus/screenshot/GlobalScreenshot;)V
 
-    .line 1364
+    .line 1481
     return-void
 .end method

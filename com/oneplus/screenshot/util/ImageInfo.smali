@@ -5,7 +5,7 @@
 
 # direct methods
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;)V
-    .registers 3
+    .locals 0
     .param p1, "dirName"    # Ljava/lang/String;
     .param p2, "fileName"    # Ljava/lang/String;
 
@@ -19,10 +19,10 @@
 
 # virtual methods
 .method protected getSuffix()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 17
-    const-string v0, ".png"
+    const-string v0, ".jpg"
 
     return-object v0
 .end method

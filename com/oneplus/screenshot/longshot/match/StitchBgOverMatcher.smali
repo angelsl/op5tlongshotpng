@@ -9,7 +9,7 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;I)V
-    .registers 4
+    .locals 1
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "index"    # I
 
@@ -50,7 +50,7 @@
 
 # virtual methods
 .method protected canDump()Z
-    .registers 2
+    .locals 1
 
     .line 32
     sget-object v0, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper$Options;->OVER:Lcom/oneplus/screenshot/longshot/dump/BitmapDumper$Options;
@@ -63,7 +63,7 @@
 .end method
 
 .method protected getTag()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 27
     const-string v0, "StitchBgOver"

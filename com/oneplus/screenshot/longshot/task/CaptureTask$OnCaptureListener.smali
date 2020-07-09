@@ -15,5 +15,13 @@
 
 
 # virtual methods
-.method public abstract onCaptureFinished(Landroid/graphics/Bitmap;)V
+.method public abstract onCaptureFinished(Ljava/util/List;)V
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/List<",
+            "Landroid/graphics/Bitmap;",
+            ">;)V"
+        }
+    .end annotation
 .end method

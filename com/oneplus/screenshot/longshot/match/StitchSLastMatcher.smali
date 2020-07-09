@@ -9,7 +9,7 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;I)V
-    .registers 4
+    .locals 1
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "index"    # I
 
@@ -50,7 +50,7 @@
 
 # virtual methods
 .method protected getCurrOffset(Lcom/oneplus/screenshot/longshot/cache/BitmapCache;)I
-    .registers 3
+    .locals 1
     .param p1, "cache"    # Lcom/oneplus/screenshot/longshot/cache/BitmapCache;
 
     .line 43
@@ -60,7 +60,7 @@
 .end method
 
 .method protected getCurrPixels(ILcom/oneplus/screenshot/longshot/cache/BitmapCache;)[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
-    .registers 8
+    .locals 5
     .param p1, "offset"    # I
     .param p2, "cache"    # Lcom/oneplus/screenshot/longshot/cache/BitmapCache;
 
@@ -105,7 +105,7 @@
 .end method
 
 .method protected getStep()I
-    .registers 2
+    .locals 1
 
     .line 33
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/Configs;->STEP_STITCH_SLAST:Lcom/oneplus/screenshot/longshot/util/Configs;
@@ -118,7 +118,7 @@
 .end method
 
 .method protected getTag()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 28
     const-string v0, "StitchSLast"

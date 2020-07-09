@@ -23,7 +23,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;)V
-    .registers 2
+    .locals 0
 
     .line 71
     iput-object p1, p0, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl$2;->this$0:Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;
@@ -36,7 +36,7 @@
 
 # virtual methods
 .method public createResourceLoader(Lcom/google/tagmanager/CtfeHost;)Lcom/google/tagmanager/ResourceLoader;
-    .registers 5
+    .locals 3
     .param p1, "ctfeHost"    # Lcom/google/tagmanager/CtfeHost;
 
     .line 74
@@ -44,14 +44,12 @@
 
     iget-object v1, p0, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl$2;->this$0:Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;
 
-    # getter for: Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->mContext:Landroid/content/Context;
     invoke-static {v1}, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->access$000(Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;)Landroid/content/Context;
 
     move-result-object v1
 
     iget-object v2, p0, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl$2;->this$0:Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;
 
-    # getter for: Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->mContainerId:Ljava/lang/String;
     invoke-static {v2}, Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;->access$100(Lcom/google/tagmanager/ResourceLoaderSchedulerImpl;)Ljava/lang/String;
 
     move-result-object v2

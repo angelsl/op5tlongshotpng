@@ -34,7 +34,7 @@
 
 # direct methods
 .method protected constructor <init>(Landroid/content/Context;)V
-    .registers 3
+    .locals 1
     .param p1, "context"    # Landroid/content/Context;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
@@ -51,7 +51,7 @@
 .end method
 
 .method private constructor <init>(Landroid/content/Context;Lcom/google/analytics/tracking/android/AnalyticsThread;)V
-    .registers 5
+    .locals 2
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "thread"    # Lcom/google/analytics/tracking/android/AnalyticsThread;
 
@@ -75,7 +75,7 @@
     iput-object v0, p0, Lcom/google/analytics/tracking/android/GoogleAnalytics;->mTrackers:Ljava/util/Map;
 
     .line 52
-    if-eqz p1, :cond_32
+    if-eqz p1, :cond_0
 
     .line 55
     invoke-virtual {p1}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
@@ -113,7 +113,7 @@
     return-void
 
     .line 53
-    :cond_32
+    :cond_0
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v1, "context cannot be null"
@@ -124,7 +124,7 @@
 .end method
 
 .method static clearDefaultProviders()V
-    .registers 0
+    .locals 0
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
@@ -142,7 +142,7 @@
 .end method
 
 .method static clearInstance()V
-    .registers 2
+    .locals 2
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
@@ -154,7 +154,7 @@
     .line 115
     const/4 v1, 0x0
 
-    :try_start_4
+    :try_start_0
     sput-object v1, Lcom/google/analytics/tracking/android/GoogleAnalytics;->sInstance:Lcom/google/analytics/tracking/android/GoogleAnalytics;
 
     .line 116
@@ -167,18 +167,18 @@
     return-void
 
     .line 117
-    :catchall_b
+    :catchall_0
     move-exception v1
 
     monitor-exit v0
-    :try_end_d
-    .catchall {:try_start_4 .. :try_end_d} :catchall_b
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method
 
 .method static getInstance()Lcom/google/analytics/tracking/android/GoogleAnalytics;
-    .registers 2
+    .locals 2
 
     .line 86
     const-class v0, Lcom/google/analytics/tracking/android/GoogleAnalytics;
@@ -186,7 +186,7 @@
     monitor-enter v0
 
     .line 87
-    :try_start_3
+    :try_start_0
     sget-object v1, Lcom/google/analytics/tracking/android/GoogleAnalytics;->sInstance:Lcom/google/analytics/tracking/android/GoogleAnalytics;
 
     monitor-exit v0
@@ -194,18 +194,18 @@
     return-object v1
 
     .line 88
-    :catchall_7
+    :catchall_0
     move-exception v1
 
     monitor-exit v0
-    :try_end_9
-    .catchall {:try_start_3 .. :try_end_9} :catchall_7
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method
 
 .method public static getInstance(Landroid/content/Context;)Lcom/google/analytics/tracking/android/GoogleAnalytics;
-    .registers 3
+    .locals 2
     .param p0, "context"    # Landroid/content/Context;
 
     .line 71
@@ -214,10 +214,10 @@
     monitor-enter v0
 
     .line 72
-    :try_start_3
+    :try_start_0
     sget-object v1, Lcom/google/analytics/tracking/android/GoogleAnalytics;->sInstance:Lcom/google/analytics/tracking/android/GoogleAnalytics;
 
-    if-nez v1, :cond_e
+    if-nez v1, :cond_0
 
     .line 73
     new-instance v1, Lcom/google/analytics/tracking/android/GoogleAnalytics;
@@ -227,7 +227,7 @@
     sput-object v1, Lcom/google/analytics/tracking/android/GoogleAnalytics;->sInstance:Lcom/google/analytics/tracking/android/GoogleAnalytics;
 
     .line 75
-    :cond_e
+    :cond_0
     sget-object v1, Lcom/google/analytics/tracking/android/GoogleAnalytics;->sInstance:Lcom/google/analytics/tracking/android/GoogleAnalytics;
 
     monitor-exit v0
@@ -235,18 +235,18 @@
     return-object v1
 
     .line 76
-    :catchall_12
+    :catchall_0
     move-exception v1
 
     monitor-exit v0
-    :try_end_14
-    .catchall {:try_start_3 .. :try_end_14} :catchall_12
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method
 
 .method static getNewInstance(Landroid/content/Context;Lcom/google/analytics/tracking/android/AnalyticsThread;)Lcom/google/analytics/tracking/android/GoogleAnalytics;
-    .registers 4
+    .locals 2
     .param p0, "context"    # Landroid/content/Context;
     .param p1, "thread"    # Lcom/google/analytics/tracking/android/AnalyticsThread;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
@@ -258,10 +258,10 @@
     monitor-enter v0
 
     .line 101
-    :try_start_3
+    :try_start_0
     sget-object v1, Lcom/google/analytics/tracking/android/GoogleAnalytics;->sInstance:Lcom/google/analytics/tracking/android/GoogleAnalytics;
 
-    if-eqz v1, :cond_c
+    if-eqz v1, :cond_0
 
     .line 102
     sget-object v1, Lcom/google/analytics/tracking/android/GoogleAnalytics;->sInstance:Lcom/google/analytics/tracking/android/GoogleAnalytics;
@@ -269,7 +269,7 @@
     invoke-virtual {v1}, Lcom/google/analytics/tracking/android/GoogleAnalytics;->close()V
 
     .line 104
-    :cond_c
+    :cond_0
     new-instance v1, Lcom/google/analytics/tracking/android/GoogleAnalytics;
 
     invoke-direct {v1, p0, p1}, Lcom/google/analytics/tracking/android/GoogleAnalytics;-><init>(Landroid/content/Context;Lcom/google/analytics/tracking/android/AnalyticsThread;)V
@@ -284,12 +284,12 @@
     return-object v1
 
     .line 106
-    :catchall_17
+    :catchall_0
     move-exception v1
 
     monitor-exit v0
-    :try_end_19
-    .catchall {:try_start_3 .. :try_end_19} :catchall_17
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method
@@ -297,7 +297,7 @@
 
 # virtual methods
 .method close()V
-    .registers 1
+    .locals 0
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
@@ -306,14 +306,14 @@
 .end method
 
 .method public closeTracker(Ljava/lang/String;)V
-    .registers 4
+    .locals 2
     .param p1, "name"    # Ljava/lang/String;
 
     .line 223
     monitor-enter p0
 
     .line 224
-    :try_start_1
+    :try_start_0
     invoke-static {}, Lcom/google/analytics/tracking/android/GAUsage;->getInstance()Lcom/google/analytics/tracking/android/GAUsage;
 
     move-result-object v0
@@ -335,7 +335,7 @@
     .local v0, "tracker":Lcom/google/analytics/tracking/android/Tracker;
     iget-object v1, p0, Lcom/google/analytics/tracking/android/GoogleAnalytics;->mDefaultTracker:Lcom/google/analytics/tracking/android/Tracker;
 
-    if-ne v0, v1, :cond_19
+    if-ne v0, v1, :cond_0
 
     .line 227
     const/4 v1, 0x0
@@ -344,25 +344,25 @@
 
     .line 229
     .end local v0    # "tracker":Lcom/google/analytics/tracking/android/Tracker;
-    :cond_19
+    :cond_0
     monitor-exit p0
 
     .line 230
     return-void
 
     .line 229
-    :catchall_1b
+    :catchall_0
     move-exception v0
 
     monitor-exit p0
-    :try_end_1d
-    .catchall {:try_start_1 .. :try_end_1d} :catchall_1b
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
 
 .method public getAppOptOut()Z
-    .registers 3
+    .locals 2
 
     .line 274
     invoke-static {}, Lcom/google/analytics/tracking/android/GAUsage;->getInstance()Lcom/google/analytics/tracking/android/GAUsage;
@@ -384,13 +384,13 @@
 .end method
 
 .method public getDefaultTracker()Lcom/google/analytics/tracking/android/Tracker;
-    .registers 3
+    .locals 2
 
     .line 200
     monitor-enter p0
 
     .line 201
-    :try_start_1
+    :try_start_0
     invoke-static {}, Lcom/google/analytics/tracking/android/GAUsage;->getInstance()Lcom/google/analytics/tracking/android/GAUsage;
 
     move-result-object v0
@@ -407,18 +407,18 @@
     return-object v0
 
     .line 203
-    :catchall_e
+    :catchall_0
     move-exception v0
 
     monitor-exit p0
-    :try_end_10
-    .catchall {:try_start_1 .. :try_end_10} :catchall_e
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
 
 .method public getLogger()Lcom/google/analytics/tracking/android/Logger;
-    .registers 2
+    .locals 1
 
     .line 282
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GoogleAnalytics;->mLogger:Lcom/google/analytics/tracking/android/Logger;
@@ -427,7 +427,7 @@
 .end method
 
 .method public getTracker(Ljava/lang/String;)Lcom/google/analytics/tracking/android/Tracker;
-    .registers 3
+    .locals 1
     .param p1, "trackingId"    # Ljava/lang/String;
 
     .line 192
@@ -439,7 +439,7 @@
 .end method
 
 .method public getTracker(Ljava/lang/String;Ljava/lang/String;)Lcom/google/analytics/tracking/android/Tracker;
-    .registers 6
+    .locals 3
     .param p1, "name"    # Ljava/lang/String;
     .param p2, "trackingId"    # Ljava/lang/String;
 
@@ -447,12 +447,12 @@
     monitor-enter p0
 
     .line 163
-    :try_start_1
+    :try_start_0
     invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v0
 
-    if-nez v0, :cond_38
+    if-nez v0, :cond_2
 
     .line 166
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GoogleAnalytics;->mTrackers:Ljava/util/Map;
@@ -465,7 +465,7 @@
 
     .line 168
     .local v0, "tracker":Lcom/google/analytics/tracking/android/Tracker;
-    if-nez v0, :cond_22
+    if-nez v0, :cond_0
 
     .line 169
     new-instance v1, Lcom/google/analytics/tracking/android/Tracker;
@@ -482,18 +482,18 @@
     .line 171
     iget-object v1, p0, Lcom/google/analytics/tracking/android/GoogleAnalytics;->mDefaultTracker:Lcom/google/analytics/tracking/android/Tracker;
 
-    if-nez v1, :cond_22
+    if-nez v1, :cond_0
 
     .line 172
     iput-object v0, p0, Lcom/google/analytics/tracking/android/GoogleAnalytics;->mDefaultTracker:Lcom/google/analytics/tracking/android/Tracker;
 
     .line 175
-    :cond_22
+    :cond_0
     invoke-static {p2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v1
 
-    if-nez v1, :cond_2d
+    if-nez v1, :cond_1
 
     .line 176
     const-string v1, "&tid"
@@ -501,7 +501,7 @@
     invoke-virtual {v0, v1, p2}, Lcom/google/analytics/tracking/android/Tracker;->set(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 178
-    :cond_2d
+    :cond_1
     invoke-static {}, Lcom/google/analytics/tracking/android/GAUsage;->getInstance()Lcom/google/analytics/tracking/android/GAUsage;
 
     move-result-object v1
@@ -517,28 +517,34 @@
 
     .line 164
     .end local v0    # "tracker":Lcom/google/analytics/tracking/android/Tracker;
-    :cond_38
+    :cond_2
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v1, "Tracker name cannot be empty"
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/GoogleAnalytics;
+    .end local p1    # "name":Ljava/lang/String;
+    .end local p2    # "trackingId":Ljava/lang/String;
     throw v0
 
     .line 180
-    :catchall_40
+    .restart local p0    # "this":Lcom/google/analytics/tracking/android/GoogleAnalytics;
+    .restart local p1    # "name":Ljava/lang/String;
+    .restart local p2    # "trackingId":Ljava/lang/String;
+    :catchall_0
     move-exception v0
 
     monitor-exit p0
-    :try_end_42
-    .catchall {:try_start_1 .. :try_end_42} :catchall_40
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
 
 .method public isDryRunEnabled()Z
-    .registers 3
+    .locals 2
 
     .line 143
     invoke-static {}, Lcom/google/analytics/tracking/android/GAUsage;->getInstance()Lcom/google/analytics/tracking/android/GAUsage;
@@ -556,7 +562,7 @@
 .end method
 
 .method sendHit(Ljava/util/Map;)V
-    .registers 5
+    .locals 3
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -572,10 +578,10 @@
     monitor-enter p0
 
     .line 236
-    if-eqz p1, :cond_3a
+    if-eqz p1, :cond_0
 
     .line 241
-    :try_start_3
+    :try_start_0
     const-string v0, "&ul"
 
     invoke-static {}, Ljava/util/Locale;->getDefault()Ljava/util/Locale;
@@ -634,29 +640,37 @@
     .line 249
     return-void
 
+    .line 248
+    :catchall_0
+    move-exception v0
+
+    goto :goto_0
+
     .line 238
-    :cond_3a
+    :cond_0
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v1, "hit cannot be null"
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
+    .end local p0    # "this":Lcom/google/analytics/tracking/android/GoogleAnalytics;
+    .end local p1    # "hit":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     throw v0
 
     .line 248
-    :catchall_42
-    move-exception v0
-
+    .restart local p0    # "this":Lcom/google/analytics/tracking/android/GoogleAnalytics;
+    .restart local p1    # "hit":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    :goto_0
     monitor-exit p0
-    :try_end_44
-    .catchall {:try_start_3 .. :try_end_44} :catchall_42
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
 
 .method public setAppOptOut(Z)V
-    .registers 4
+    .locals 2
     .param p1, "optOut"    # Z
 
     .line 263
@@ -682,7 +696,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_1c
+    if-eqz v0, :cond_0
 
     .line 266
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GoogleAnalytics;->mThread:Lcom/google/analytics/tracking/android/AnalyticsThread;
@@ -690,19 +704,19 @@
     invoke-interface {v0}, Lcom/google/analytics/tracking/android/AnalyticsThread;->clearHits()V
 
     .line 268
-    :cond_1c
+    :cond_0
     return-void
 .end method
 
 .method public setDefaultTracker(Lcom/google/analytics/tracking/android/Tracker;)V
-    .registers 4
+    .locals 2
     .param p1, "tracker"    # Lcom/google/analytics/tracking/android/Tracker;
 
     .line 210
     monitor-enter p0
 
     .line 211
-    :try_start_1
+    :try_start_0
     invoke-static {}, Lcom/google/analytics/tracking/android/GAUsage;->getInstance()Lcom/google/analytics/tracking/android/GAUsage;
 
     move-result-object v0
@@ -721,18 +735,18 @@
     return-void
 
     .line 213
-    :catchall_e
+    :catchall_0
     move-exception v0
 
     monitor-exit p0
-    :try_end_10
-    .catchall {:try_start_1 .. :try_end_10} :catchall_e
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
 
 .method public setDryRun(Z)V
-    .registers 4
+    .locals 2
     .param p1, "dryRun"    # Z
 
     .line 135
@@ -752,7 +766,7 @@
 .end method
 
 .method public setLogger(Lcom/google/analytics/tracking/android/Logger;)V
-    .registers 4
+    .locals 2
     .param p1, "logger"    # Lcom/google/analytics/tracking/android/Logger;
 
     .line 292

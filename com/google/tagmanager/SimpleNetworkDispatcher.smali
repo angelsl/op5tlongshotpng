@@ -30,7 +30,7 @@
 
 # direct methods
 .method constructor <init>(Lorg/apache/http/client/HttpClient;Landroid/content/Context;Lcom/google/tagmanager/SimpleNetworkDispatcher$DispatchListener;)V
-    .registers 12
+    .locals 8
     .param p1, "httpClient"    # Lorg/apache/http/client/HttpClient;
     .param p2, "ctx"    # Landroid/content/Context;
     .param p3, "dispatchListener"    # Lcom/google/tagmanager/SimpleNetworkDispatcher$DispatchListener;
@@ -48,10 +48,6 @@
     iput-object v0, p0, Lcom/google/tagmanager/SimpleNetworkDispatcher;->ctx:Landroid/content/Context;
 
     .line 62
-    const-string v2, "GoogleTagManager"
-
-    const-string v3, "3.02"
-
     sget-object v4, Landroid/os/Build$VERSION;->RELEASE:Ljava/lang/String;
 
     invoke-static {}, Ljava/util/Locale;->getDefault()Ljava/util/Locale;
@@ -65,6 +61,10 @@
     sget-object v6, Landroid/os/Build;->MODEL:Ljava/lang/String;
 
     sget-object v7, Landroid/os/Build;->ID:Ljava/lang/String;
+
+    const-string v2, "GoogleTagManager"
+
+    const-string v3, "3.02"
 
     move-object v1, p0
 
@@ -85,7 +85,7 @@
 .end method
 
 .method private constructGtmRequest(Ljava/net/URL;)Lorg/apache/http/HttpEntityEnclosingRequest;
-    .registers 6
+    .locals 4
     .param p1, "url"    # Ljava/net/URL;
 
     .line 160
@@ -93,7 +93,7 @@
 
     .line 162
     .local v0, "request":Lorg/apache/http/HttpEntityEnclosingRequest;
-    :try_start_1
+    :try_start_0
     new-instance v1, Lorg/apache/http/message/BasicHttpEntityEnclosingRequest;
 
     const-string v2, "GET"
@@ -116,14 +116,14 @@
     iget-object v2, p0, Lcom/google/tagmanager/SimpleNetworkDispatcher;->userAgent:Ljava/lang/String;
 
     invoke-interface {v0, v1, v2}, Lorg/apache/http/HttpEntityEnclosingRequest;->addHeader(Ljava/lang/String;Ljava/lang/String;)V
-    :try_end_18
-    .catch Ljava/net/URISyntaxException; {:try_start_1 .. :try_end_18} :catch_19
+    :try_end_0
+    .catch Ljava/net/URISyntaxException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 167
-    goto :goto_3d
+    goto :goto_0
 
     .line 164
-    :catch_19
+    :catch_0
     move-exception v1
 
     .line 165
@@ -161,29 +161,29 @@
 
     .line 168
     .end local v1    # "e":Ljava/net/URISyntaxException;
-    :goto_3d
+    :goto_0
     return-object v0
 .end method
 
 .method static getUserAgentLanguage(Ljava/util/Locale;)Ljava/lang/String;
-    .registers 3
+    .locals 2
     .param p0, "locale"    # Ljava/util/Locale;
 
     .line 219
     const/4 v0, 0x0
 
-    if-nez p0, :cond_4
+    if-nez p0, :cond_0
 
     .line 220
     return-object v0
 
     .line 222
-    :cond_4
+    :cond_0
     invoke-virtual {p0}, Ljava/util/Locale;->getLanguage()Ljava/lang/String;
 
     move-result-object v1
 
-    if-eqz v1, :cond_4a
+    if-eqz v1, :cond_3
 
     invoke-virtual {p0}, Ljava/util/Locale;->getLanguage()Ljava/lang/String;
 
@@ -193,12 +193,12 @@
 
     move-result v1
 
-    if-nez v1, :cond_15
+    if-nez v1, :cond_1
 
-    goto :goto_4a
+    goto :goto_0
 
     .line 225
-    :cond_15
+    :cond_1
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -220,7 +220,7 @@
 
     move-result-object v1
 
-    if-eqz v1, :cond_45
+    if-eqz v1, :cond_2
 
     invoke-virtual {p0}, Ljava/util/Locale;->getCountry()Ljava/lang/String;
 
@@ -230,7 +230,7 @@
 
     move-result v1
 
-    if-eqz v1, :cond_45
+    if-eqz v1, :cond_2
 
     .line 228
     const-string v1, "-"
@@ -248,7 +248,7 @@
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 230
-    :cond_45
+    :cond_2
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1
@@ -257,13 +257,13 @@
 
     .line 223
     .end local v0    # "lang":Ljava/lang/StringBuilder;
-    :cond_4a
-    :goto_4a
+    :cond_3
+    :goto_0
     return-object v0
 .end method
 
 .method private logDebugInformation(Lorg/apache/http/HttpEntityEnclosingRequest;)V
-    .registers 8
+    .locals 7
     .param p1, "request"    # Lorg/apache/http/HttpEntityEnclosingRequest;
 
     .line 176
@@ -284,34 +284,34 @@
     const/4 v3, 0x0
 
     .local v3, "i$":I
-    :goto_b
-    if-ge v3, v2, :cond_1e
+    :goto_0
+    const-string v4, "\n"
 
-    aget-object v4, v1, v3
+    if-ge v3, v2, :cond_0
+
+    aget-object v5, v1, v3
 
     .line 178
-    .local v4, "header":Lorg/apache/http/Header;
-    invoke-virtual {v4}, Ljava/lang/Object;->toString()Ljava/lang/String;
+    .local v5, "header":Lorg/apache/http/Header;
+    invoke-virtual {v5}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
-    move-result-object v5
+    move-result-object v6
 
-    invoke-virtual {v0, v5}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    invoke-virtual {v0, v6}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
-    const-string v5, "\n"
-
-    invoke-virtual {v0, v5}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    invoke-virtual {v0, v4}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
     .line 177
-    .end local v4    # "header":Lorg/apache/http/Header;
+    .end local v5    # "header":Lorg/apache/http/Header;
     add-int/lit8 v3, v3, 0x1
 
-    goto :goto_b
+    goto :goto_0
 
     .line 180
     .end local v1    # "arr$":[Lorg/apache/http/Header;
     .end local v2    # "len$":I
     .end local v3    # "i$":I
-    :cond_1e
+    :cond_0
     invoke-interface {p1}, Lorg/apache/http/HttpEntityEnclosingRequest;->getRequestLine()Lorg/apache/http/RequestLine;
 
     move-result-object v1
@@ -322,19 +322,17 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
-    const-string v1, "\n"
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    invoke-virtual {v0, v4}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
     .line 181
     invoke-interface {p1}, Lorg/apache/http/HttpEntityEnclosingRequest;->getEntity()Lorg/apache/http/HttpEntity;
 
     move-result-object v1
 
-    if-eqz v1, :cond_62
+    if-eqz v1, :cond_2
 
     .line 183
-    :try_start_34
+    :try_start_0
     invoke-interface {p1}, Lorg/apache/http/HttpEntityEnclosingRequest;->getEntity()Lorg/apache/http/HttpEntity;
 
     move-result-object v1
@@ -345,7 +343,7 @@
 
     .line 184
     .local v1, "is":Ljava/io/InputStream;
-    if-eqz v1, :cond_5b
+    if-eqz v1, :cond_1
 
     .line 185
     invoke-virtual {v1}, Ljava/io/InputStream;->available()I
@@ -354,7 +352,7 @@
 
     .line 186
     .local v2, "avail":I
-    if-lez v2, :cond_5b
+    if-lez v2, :cond_1
 
     .line 187
     new-array v3, v2, [B
@@ -364,32 +362,30 @@
     invoke-virtual {v1, v3}, Ljava/io/InputStream;->read([B)I
 
     .line 189
-    const-string v4, "POST:\n"
+    const-string v5, "POST:\n"
 
-    invoke-virtual {v0, v4}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    invoke-virtual {v0, v5}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
     .line 190
-    new-instance v4, Ljava/lang/String;
+    new-instance v5, Ljava/lang/String;
 
-    invoke-direct {v4, v3}, Ljava/lang/String;-><init>([B)V
+    invoke-direct {v5, v3}, Ljava/lang/String;-><init>([B)V
 
-    invoke-virtual {v0, v4}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
-
-    const-string v4, "\n"
+    invoke-virtual {v0, v5}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    :try_end_5b
-    .catch Ljava/io/IOException; {:try_start_34 .. :try_end_5b} :catch_5c
+    :try_end_0
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 195
     .end local v1    # "is":Ljava/io/InputStream;
     .end local v2    # "avail":I
     .end local v3    # "b":[B
-    :cond_5b
-    goto :goto_62
+    :cond_1
+    goto :goto_1
 
     .line 193
-    :catch_5c
+    :catch_0
     move-exception v1
 
     .line 194
@@ -400,8 +396,8 @@
 
     .line 197
     .end local v1    # "e":Ljava/io/IOException;
-    :cond_62
-    :goto_62
+    :cond_2
+    :goto_1
     invoke-virtual {v0}, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
 
     move-result-object v1
@@ -415,7 +411,7 @@
 
 # virtual methods
 .method public close()V
-    .registers 2
+    .locals 1
 
     .line 151
     iget-object v0, p0, Lcom/google/tagmanager/SimpleNetworkDispatcher;->httpClient:Lorg/apache/http/client/HttpClient;
@@ -431,7 +427,7 @@
 .end method
 
 .method createUserAgentString(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    .registers 10
+    .locals 2
     .param p1, "product"    # Ljava/lang/String;
     .param p2, "version"    # Ljava/lang/String;
     .param p3, "release"    # Ljava/lang/String;
@@ -440,37 +436,37 @@
     .param p6, "id"    # Ljava/lang/String;
 
     .line 207
-    const-string v0, "%s/%s (Linux; U; Android %s; %s; %s Build/%s)"
+    const/4 v0, 0x6
 
-    const/4 v1, 0x6
+    new-array v0, v0, [Ljava/lang/Object;
 
-    new-array v1, v1, [Ljava/lang/Object;
+    const/4 v1, 0x0
 
-    const/4 v2, 0x0
+    aput-object p1, v0, v1
 
-    aput-object p1, v1, v2
+    const/4 v1, 0x1
 
-    const/4 v2, 0x1
+    aput-object p2, v0, v1
 
-    aput-object p2, v1, v2
+    const/4 v1, 0x2
 
-    const/4 v2, 0x2
+    aput-object p3, v0, v1
 
-    aput-object p3, v1, v2
+    const/4 v1, 0x3
 
-    const/4 v2, 0x3
+    aput-object p4, v0, v1
 
-    aput-object p4, v1, v2
+    const/4 v1, 0x4
 
-    const/4 v2, 0x4
+    aput-object p5, v0, v1
 
-    aput-object p5, v1, v2
+    const/4 v1, 0x5
 
-    const/4 v2, 0x5
+    aput-object p6, v0, v1
 
-    aput-object p6, v1, v2
+    const-string v1, "%s/%s (Linux; U; Android %s; %s; %s Build/%s)"
 
-    invoke-static {v0, v1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    invoke-static {v1, v0}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v0
 
@@ -478,7 +474,7 @@
 .end method
 
 .method public dispatchHits(Ljava/util/List;)V
-    .registers 14
+    .locals 12
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -509,8 +505,8 @@
     const/4 v2, 0x0
 
     .local v2, "i":I
-    :goto_c
-    if-ge v2, v0, :cond_da
+    :goto_0
+    if-ge v2, v0, :cond_5
 
     .line 95
     invoke-interface {p1, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
@@ -527,7 +523,7 @@
 
     .line 98
     .local v4, "url":Ljava/net/URL;
-    if-nez v4, :cond_26
+    if-nez v4, :cond_0
 
     .line 99
     const-string v5, "No destination: discarding hit."
@@ -540,17 +536,17 @@
     invoke-interface {v5, v3}, Lcom/google/tagmanager/SimpleNetworkDispatcher$DispatchListener;->onHitPermanentDispatchFailure(Lcom/google/tagmanager/Hit;)V
 
     .line 102
-    goto/16 :goto_d6
+    goto/16 :goto_2
 
     .line 105
-    :cond_26
+    :cond_0
     invoke-direct {p0, v4}, Lcom/google/tagmanager/SimpleNetworkDispatcher;->constructGtmRequest(Ljava/net/URL;)Lorg/apache/http/HttpEntityEnclosingRequest;
 
     move-result-object v5
 
     .line 107
     .local v5, "request":Lorg/apache/http/HttpEntityEnclosingRequest;
-    if-nez v5, :cond_33
+    if-nez v5, :cond_1
 
     .line 108
     iget-object v6, p0, Lcom/google/tagmanager/SimpleNetworkDispatcher;->dispatchListener:Lcom/google/tagmanager/SimpleNetworkDispatcher$DispatchListener;
@@ -558,10 +554,10 @@
     invoke-interface {v6, v3}, Lcom/google/tagmanager/SimpleNetworkDispatcher$DispatchListener;->onHitPermanentDispatchFailure(Lcom/google/tagmanager/Hit;)V
 
     .line 109
-    goto/16 :goto_d6
+    goto/16 :goto_2
 
     .line 112
-    :cond_33
+    :cond_1
     new-instance v6, Lorg/apache/http/HttpHost;
 
     invoke-virtual {v4}, Ljava/net/URL;->getHost()Ljava/lang/String;
@@ -580,22 +576,22 @@
 
     .line 114
     .local v6, "targetHost":Lorg/apache/http/HttpHost;
-    const-string v7, "Host"
-
     invoke-virtual {v6}, Lorg/apache/http/HttpHost;->toHostString()Ljava/lang/String;
 
-    move-result-object v8
+    move-result-object v7
 
-    invoke-interface {v5, v7, v8}, Lorg/apache/http/HttpEntityEnclosingRequest;->addHeader(Ljava/lang/String;Ljava/lang/String;)V
+    const-string v8, "Host"
+
+    invoke-interface {v5, v8, v7}, Lorg/apache/http/HttpEntityEnclosingRequest;->addHeader(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 116
     invoke-direct {p0, v5}, Lcom/google/tagmanager/SimpleNetworkDispatcher;->logDebugInformation(Lorg/apache/http/HttpEntityEnclosingRequest;)V
 
     .line 119
-    if-eqz v1, :cond_5d
+    if-eqz v1, :cond_2
 
     .line 120
-    :try_start_52
+    :try_start_0
     iget-object v7, p0, Lcom/google/tagmanager/SimpleNetworkDispatcher;->ctx:Landroid/content/Context;
 
     invoke-static {v7}, Lcom/google/tagmanager/NetworkReceiver;->sendRadioPoweredBroadcast(Landroid/content/Context;)V
@@ -603,23 +599,8 @@
     .line 121
     const/4 v1, 0x0
 
-    goto :goto_5d
-
-    .line 140
-    :catch_59
-    move-exception v7
-
-    goto :goto_a0
-
-    .line 135
-    :catch_5b
-    move-exception v7
-
-    goto :goto_ca
-
     .line 123
-    :cond_5d
-    :goto_5d
+    :cond_2
     iget-object v7, p0, Lcom/google/tagmanager/SimpleNetworkDispatcher;->httpClient:Lorg/apache/http/client/HttpClient;
 
     invoke-interface {v7, v6, v5}, Lorg/apache/http/client/HttpClient;->execute(Lorg/apache/http/HttpHost;Lorg/apache/http/HttpRequest;)Lorg/apache/http/HttpResponse;
@@ -644,16 +625,16 @@
 
     .line 126
     .local v9, "entity":Lorg/apache/http/HttpEntity;
-    if-eqz v9, :cond_74
+    if-eqz v9, :cond_3
 
     .line 127
     invoke-interface {v9}, Lorg/apache/http/HttpEntity;->consumeContent()V
 
     .line 129
-    :cond_74
+    :cond_3
     const/16 v10, 0xc8
 
-    if-eq v8, v10, :cond_9a
+    if-eq v8, v10, :cond_4
 
     .line 130
     new-instance v10, Ljava/lang/StringBuilder;
@@ -685,25 +666,25 @@
 
     invoke-interface {v10, v3}, Lcom/google/tagmanager/SimpleNetworkDispatcher$DispatchListener;->onHitTransientDispatchFailure(Lcom/google/tagmanager/Hit;)V
 
-    goto :goto_d5
+    goto :goto_1
 
     .line 133
-    :cond_9a
+    :cond_4
     iget-object v10, p0, Lcom/google/tagmanager/SimpleNetworkDispatcher;->dispatchListener:Lcom/google/tagmanager/SimpleNetworkDispatcher$DispatchListener;
 
     invoke-interface {v10, v3}, Lcom/google/tagmanager/SimpleNetworkDispatcher$DispatchListener;->onHitDispatched(Lcom/google/tagmanager/Hit;)V
-    :try_end_9f
-    .catch Lorg/apache/http/client/ClientProtocolException; {:try_start_52 .. :try_end_9f} :catch_5b
-    .catch Ljava/io/IOException; {:try_start_52 .. :try_end_9f} :catch_59
+    :try_end_0
+    .catch Lorg/apache/http/client/ClientProtocolException; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
+    goto :goto_1
+
+    .line 140
     .end local v7    # "response":Lorg/apache/http/HttpResponse;
     .end local v8    # "statusCode":I
     .end local v9    # "entity":Lorg/apache/http/HttpEntity;
-    goto :goto_d5
-
-    .line 140
-    :goto_a0
-    nop
+    :catch_0
+    move-exception v7
 
     .line 141
     .local v7, "e":Ljava/io/IOException;
@@ -743,20 +724,12 @@
 
     invoke-interface {v8, v3}, Lcom/google/tagmanager/SimpleNetworkDispatcher$DispatchListener;->onHitTransientDispatchFailure(Lcom/google/tagmanager/Hit;)V
 
-    .end local v3    # "hit":Lcom/google/tagmanager/Hit;
-    .end local v4    # "url":Ljava/net/URL;
-    .end local v5    # "request":Lorg/apache/http/HttpEntityEnclosingRequest;
-    .end local v6    # "targetHost":Lorg/apache/http/HttpHost;
-    .end local v7    # "e":Ljava/io/IOException;
-    goto :goto_d6
+    goto :goto_2
 
     .line 135
-    .restart local v3    # "hit":Lcom/google/tagmanager/Hit;
-    .restart local v4    # "url":Ljava/net/URL;
-    .restart local v5    # "request":Lorg/apache/http/HttpEntityEnclosingRequest;
-    .restart local v6    # "targetHost":Lorg/apache/http/HttpHost;
-    :goto_ca
-    nop
+    .end local v7    # "e":Ljava/io/IOException;
+    :catch_1
+    move-exception v7
 
     .line 138
     .local v7, "e":Lorg/apache/http/client/ClientProtocolException;
@@ -770,28 +743,28 @@
     invoke-interface {v8, v3}, Lcom/google/tagmanager/SimpleNetworkDispatcher$DispatchListener;->onHitPermanentDispatchFailure(Lcom/google/tagmanager/Hit;)V
 
     .line 144
+    .end local v7    # "e":Lorg/apache/http/client/ClientProtocolException;
+    :goto_1
+    nop
+
+    .line 94
     .end local v3    # "hit":Lcom/google/tagmanager/Hit;
     .end local v4    # "url":Ljava/net/URL;
     .end local v5    # "request":Lorg/apache/http/HttpEntityEnclosingRequest;
     .end local v6    # "targetHost":Lorg/apache/http/HttpHost;
-    .end local v7    # "e":Lorg/apache/http/client/ClientProtocolException;
-    :goto_d5
-    nop
-
-    .line 94
-    :goto_d6
+    :goto_2
     add-int/lit8 v2, v2, 0x1
 
-    goto/16 :goto_c
+    goto/16 :goto_0
 
     .line 146
     .end local v2    # "i":I
-    :cond_da
+    :cond_5
     return-void
 .end method
 
 .method getUrl(Lcom/google/tagmanager/Hit;)Ljava/net/URL;
-    .registers 5
+    .locals 3
     .param p1, "hit"    # Lcom/google/tagmanager/Hit;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
@@ -803,17 +776,17 @@
 
     .line 237
     .local v0, "hitUrl":Ljava/lang/String;
-    :try_start_4
+    :try_start_0
     new-instance v1, Ljava/net/URL;
 
     invoke-direct {v1, v0}, Ljava/net/URL;-><init>(Ljava/lang/String;)V
-    :try_end_9
-    .catch Ljava/net/MalformedURLException; {:try_start_4 .. :try_end_9} :catch_a
+    :try_end_0
+    .catch Ljava/net/MalformedURLException; {:try_start_0 .. :try_end_0} :catch_0
 
     return-object v1
 
     .line 238
-    :catch_a
+    :catch_0
     move-exception v1
 
     .line 239
@@ -829,7 +802,7 @@
 .end method
 
 .method public okToDispatch()Z
-    .registers 4
+    .locals 3
 
     .line 76
     iget-object v0, p0, Lcom/google/tagmanager/SimpleNetworkDispatcher;->ctx:Landroid/content/Context;
@@ -850,25 +823,25 @@
 
     .line 83
     .local v1, "network":Landroid/net/NetworkInfo;
-    if-eqz v1, :cond_19
+    if-eqz v1, :cond_1
 
     invoke-virtual {v1}, Landroid/net/NetworkInfo;->isConnected()Z
 
     move-result v2
 
-    if-nez v2, :cond_17
+    if-nez v2, :cond_0
 
-    goto :goto_19
+    goto :goto_0
 
     .line 87
-    :cond_17
+    :cond_0
     const/4 v2, 0x1
 
     return v2
 
     .line 84
-    :cond_19
-    :goto_19
+    :cond_1
+    :goto_0
     const-string v2, "...no network connectivity"
 
     invoke-static {v2}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V

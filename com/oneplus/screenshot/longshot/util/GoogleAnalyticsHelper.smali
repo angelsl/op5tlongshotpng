@@ -16,7 +16,7 @@
 
 .field private static final SYSTEM_PROPERTY_KEY_IS_BETA_ROM:Ljava/lang/String; = "ro.build.beta"
 
-.field private static TAG:Ljava/lang/String;
+.field private static final TAG:Ljava/lang/String;
 
 .field private static mIsOnlineConfigEnabled:Z
 
@@ -35,9 +35,9 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 2
+    .locals 2
 
-    .line 33
+    .line 24
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -60,384 +60,383 @@
 
     sput-object v0, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->TAG:Ljava/lang/String;
 
-    .line 38
+    .line 29
     const/4 v0, 0x0
 
     sput-boolean v0, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sInit:Z
 
-    .line 39
+    .line 30
     const/4 v1, 0x1
 
     sput-boolean v1, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sGetConfigFail:Z
 
-    .line 41
+    .line 32
     sput-boolean v0, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->mIsOnlineConfigEnabled:Z
 
     return-void
 .end method
 
 .method public constructor <init>()V
-    .registers 1
+    .locals 0
 
-    .line 32
+    .line 23
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
 .method static synthetic access$000()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
-    .line 32
+    .line 23
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->TAG:Ljava/lang/String;
 
     return-object v0
 .end method
 
 .method static synthetic access$100()Landroid/content/Context;
-    .registers 1
+    .locals 1
 
-    .line 32
+    .line 23
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sContext:Landroid/content/Context;
 
     return-object v0
 .end method
 
 .method static synthetic access$200(Lorg/json/JSONArray;)V
-    .registers 1
+    .locals 0
     .param p0, "x0"    # Lorg/json/JSONArray;
 
-    .line 32
+    .line 23
     invoke-static {p0}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->getOnlineConfig(Lorg/json/JSONArray;)V
 
     return-void
 .end method
 
 .method public static getInstance(Landroid/content/Context;)Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;
-    .registers 2
+    .locals 1
     .param p0, "context"    # Landroid/content/Context;
 
-    .line 68
+    .line 59
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sInstance:Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;
 
     return-object v0
 .end method
 
 .method private static getOnlineConfig(Lorg/json/JSONArray;)V
-    .registers 8
+    .locals 8
     .param p0, "jsonArray"    # Lorg/json/JSONArray;
 
-    .line 130
-    const/4 v0, 0x1
+    .line 123
+    const-string v0, "get GA online config error. "
 
-    if-eqz p0, :cond_e6
+    const/4 v1, 0x1
 
-    .line 132
-    const/4 v1, 0x0
+    if-eqz p0, :cond_4
 
-    move v2, v1
+    .line 125
+    const/4 v2, 0x0
 
-    .local v2, "index":I
-    :goto_5
-    :try_start_5
+    move v3, v2
+
+    .local v3, "index":I
+    :goto_0
+    :try_start_0
     invoke-virtual {p0}, Lorg/json/JSONArray;->length()I
 
-    move-result v3
+    move-result v4
 
-    if-ge v2, v3, :cond_af
+    if-ge v3, v4, :cond_3
 
-    .line 133
-    invoke-virtual {p0, v2}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
-
-    move-result-object v3
-
-    .line 134
-    .local v3, "json":Lorg/json/JSONObject;
-    const-string v4, "name"
-
-    invoke-virtual {v3, v4}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    .line 126
+    invoke-virtual {p0, v3}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v4
 
-    const-string v5, "enabled"
+    .line 127
+    .local v4, "json":Lorg/json/JSONObject;
+    const-string v5, "name"
 
-    invoke-virtual {v4, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v4
-
-    if-eqz v4, :cond_ab
-
-    .line 135
-    const-string v4, "value"
-
-    invoke-virtual {v3, v4}, Lorg/json/JSONObject;->getBoolean(Ljava/lang/String;)Z
-
-    move-result v4
-
-    sput-boolean v4, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->mIsOnlineConfigEnabled:Z
-
-    .line 136
-    sget-object v4, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->TAG:Ljava/lang/String;
-
-    new-instance v5, Ljava/lang/StringBuilder;
-
-    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v6, "GA online config "
-
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    sget-boolean v6, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->mIsOnlineConfigEnabled:Z
-
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v4, v5}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v5
 
-    invoke-static {v4, v5}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+    const-string v6, "enabled"
 
-    .line 137
-    sget-boolean v4, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->mIsOnlineConfigEnabled:Z
+    invoke-virtual {v5, v6}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    if-eqz v4, :cond_a8
+    move-result v5
 
-    .line 138
-    sget-boolean v4, Landroid/os/Build;->DEBUG_ONEPLUS:Z
+    if-eqz v5, :cond_2
 
-    if-eqz v4, :cond_77
+    .line 128
+    const-string v5, "value"
 
-    sget-object v4, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->TAG:Ljava/lang/String;
+    invoke-virtual {v4, v5}, Lorg/json/JSONObject;->getBoolean(Ljava/lang/String;)Z
 
-    new-instance v5, Ljava/lang/StringBuilder;
+    move-result v5
 
-    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+    sput-boolean v5, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->mIsOnlineConfigEnabled:Z
 
-    const-string v6, "getInstance sInstance: "
+    .line 129
+    sget-object v5, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->TAG:Ljava/lang/String;
 
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    new-instance v6, Ljava/lang/StringBuilder;
 
-    sget-object v6, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sInstance:Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;
+    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    const-string v7, "GA online config "
 
-    const-string v6, " isBetaRom: "
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    sget-boolean v7, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->mIsOnlineConfigEnabled:Z
 
-    .line 139
-    invoke-static {}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->isBetaRom()Z
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
-    move-result v6
+    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+    move-result-object v6
 
-    const-string v6, " isPrivacyEnabled: "
+    invoke-static {v5, v6}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    .line 130
+    sget-boolean v5, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->mIsOnlineConfigEnabled:Z
 
-    sget-object v6, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sContext:Landroid/content/Context;
+    if-eqz v5, :cond_1
 
-    .line 140
-    invoke-static {v6}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->isPrivacyEnabled(Landroid/content/Context;)Z
+    .line 131
+    sget-boolean v5, Landroid/os/Build;->DEBUG_ONEPLUS:Z
 
-    move-result v6
-
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v5
-
-    .line 138
-    invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 141
-    :cond_77
-    sget-object v4, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sInstance:Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;
-
-    if-nez v4, :cond_ab
-
-    invoke-static {}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->isBetaRom()Z
-
-    move-result v4
-
-    if-eqz v4, :cond_ab
-
-    sget-object v4, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sContext:Landroid/content/Context;
-
-    invoke-static {v4}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->isPrivacyEnabled(Landroid/content/Context;)Z
-
-    move-result v4
-
-    if-nez v4, :cond_ab
-
-    .line 142
-    new-instance v4, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;
-
-    invoke-direct {v4}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;-><init>()V
-
-    sput-object v4, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sInstance:Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;
-
-    .line 143
-    sget-object v4, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sContext:Landroid/content/Context;
-
-    invoke-static {v4}, Lcom/google/analytics/tracking/android/GoogleAnalytics;->getInstance(Landroid/content/Context;)Lcom/google/analytics/tracking/android/GoogleAnalytics;
-
-    move-result-object v4
-
-    .line 144
-    .local v4, "analytics":Lcom/google/analytics/tracking/android/GoogleAnalytics;
-    invoke-virtual {v4}, Lcom/google/analytics/tracking/android/GoogleAnalytics;->getLogger()Lcom/google/analytics/tracking/android/Logger;
-
-    move-result-object v5
-
-    sget-object v6, Lcom/google/analytics/tracking/android/Logger$LogLevel;->VERBOSE:Lcom/google/analytics/tracking/android/Logger$LogLevel;
-
-    invoke-interface {v5, v6}, Lcom/google/analytics/tracking/android/Logger;->setLogLevel(Lcom/google/analytics/tracking/android/Logger$LogLevel;)V
-
-    .line 145
-    const-string v5, "UA-92966593-4"
-
-    invoke-virtual {v4, v5}, Lcom/google/analytics/tracking/android/GoogleAnalytics;->getTracker(Ljava/lang/String;)Lcom/google/analytics/tracking/android/Tracker;
-
-    move-result-object v5
-
-    sput-object v5, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->mTracker:Lcom/google/analytics/tracking/android/Tracker;
-
-    .line 146
-    .end local v4    # "analytics":Lcom/google/analytics/tracking/android/GoogleAnalytics;
-    goto :goto_ab
-
-    .line 148
-    :cond_a8
-    const/4 v4, 0x0
-
-    sput-object v4, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sInstance:Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;
+    if-eqz v5, :cond_0
 
     .line 132
-    .end local v3    # "json":Lorg/json/JSONObject;
-    :cond_ab
-    :goto_ab
-    add-int/lit8 v2, v2, 0x1
+    sget-object v5, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->TAG:Ljava/lang/String;
 
-    goto/16 :goto_5
+    new-instance v6, Ljava/lang/StringBuilder;
+
+    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v7, "getInstance sInstance: "
+
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    sget-object v7, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sInstance:Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;
+
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    const-string v7, " isBetaRom: "
+
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 133
+    invoke-static {}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->isBetaRom()Z
+
+    move-result v7
+
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    const-string v7, " isPrivacyEnabled: "
+
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    sget-object v7, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sContext:Landroid/content/Context;
+
+    .line 134
+    invoke-static {v7}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->isPrivacyEnabled(Landroid/content/Context;)Z
+
+    move-result v7
+
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v6
+
+    .line 132
+    invoke-static {v5, v6}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 136
+    :cond_0
+    sget-object v5, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sInstance:Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;
+
+    if-nez v5, :cond_2
+
+    invoke-static {}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->isBetaRom()Z
+
+    move-result v5
+
+    if-eqz v5, :cond_2
+
+    sget-object v5, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sContext:Landroid/content/Context;
+
+    invoke-static {v5}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->isPrivacyEnabled(Landroid/content/Context;)Z
+
+    move-result v5
+
+    if-nez v5, :cond_2
+
+    .line 137
+    new-instance v5, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;
+
+    invoke-direct {v5}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;-><init>()V
+
+    sput-object v5, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sInstance:Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;
+
+    .line 138
+    sget-object v5, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sContext:Landroid/content/Context;
+
+    invoke-static {v5}, Lcom/google/analytics/tracking/android/GoogleAnalytics;->getInstance(Landroid/content/Context;)Lcom/google/analytics/tracking/android/GoogleAnalytics;
+
+    move-result-object v5
+
+    .line 139
+    .local v5, "analytics":Lcom/google/analytics/tracking/android/GoogleAnalytics;
+    invoke-virtual {v5}, Lcom/google/analytics/tracking/android/GoogleAnalytics;->getLogger()Lcom/google/analytics/tracking/android/Logger;
+
+    move-result-object v6
+
+    sget-object v7, Lcom/google/analytics/tracking/android/Logger$LogLevel;->VERBOSE:Lcom/google/analytics/tracking/android/Logger$LogLevel;
+
+    invoke-interface {v6, v7}, Lcom/google/analytics/tracking/android/Logger;->setLogLevel(Lcom/google/analytics/tracking/android/Logger$LogLevel;)V
+
+    .line 140
+    const-string v6, "UA-92966593-4"
+
+    invoke-virtual {v5, v6}, Lcom/google/analytics/tracking/android/GoogleAnalytics;->getTracker(Ljava/lang/String;)Lcom/google/analytics/tracking/android/Tracker;
+
+    move-result-object v6
+
+    sput-object v6, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->mTracker:Lcom/google/analytics/tracking/android/Tracker;
+
+    .line 141
+    .end local v5    # "analytics":Lcom/google/analytics/tracking/android/GoogleAnalytics;
+    goto :goto_1
+
+    .line 143
+    :cond_1
+    const/4 v5, 0x0
+
+    sput-object v5, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sInstance:Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;
+
+    .line 125
+    .end local v4    # "json":Lorg/json/JSONObject;
+    :cond_2
+    :goto_1
+    add-int/lit8 v3, v3, 0x1
+
+    goto/16 :goto_0
+
+    .line 147
+    .end local v3    # "index":I
+    :cond_3
+    sput-boolean v2, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sGetConfigFail:Z
+    :try_end_0
+    .catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    goto :goto_2
+
+    .line 151
+    :catch_0
+    move-exception v2
 
     .line 152
-    .end local v2    # "index":I
-    :cond_af
-    sput-boolean v1, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sGetConfigFail:Z
-    :try_end_b1
-    .catch Lorg/json/JSONException; {:try_start_5 .. :try_end_b1} :catch_cc
-    .catch Ljava/lang/Exception; {:try_start_5 .. :try_end_b1} :catch_b2
+    .local v2, "e":Ljava/lang/Exception;
+    sget-object v3, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->TAG:Ljava/lang/String;
 
-    goto :goto_e5
+    new-instance v4, Ljava/lang/StringBuilder;
 
-    .line 156
-    :catch_b2
-    move-exception v1
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 157
-    .local v1, "e":Ljava/lang/Exception;
-    sget-object v2, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->TAG:Ljava/lang/String;
+    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    new-instance v3, Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    const-string v4, "get GA online config error. "
+    move-result-object v0
 
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v3, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-static {v2, v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 158
-    sput-boolean v0, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sGetConfigFail:Z
-
-    .end local v1    # "e":Ljava/lang/Exception;
-    goto :goto_e5
+    invoke-static {v3, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 153
-    :catch_cc
-    move-exception v1
+    sput-boolean v1, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sGetConfigFail:Z
+
+    .end local v2    # "e":Ljava/lang/Exception;
+    goto :goto_2
+
+    .line 148
+    :catch_1
+    move-exception v2
+
+    .line 149
+    .local v2, "e":Lorg/json/JSONException;
+    sget-object v3, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->TAG:Ljava/lang/String;
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v3, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 150
+    sput-boolean v1, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sGetConfigFail:Z
 
     .line 154
-    .local v1, "e":Lorg/json/JSONException;
-    sget-object v2, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->TAG:Ljava/lang/String;
+    .end local v2    # "e":Lorg/json/JSONException;
+    :goto_2
+    goto :goto_3
 
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v4, "get GA online config error. "
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v3, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-static {v2, v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 155
-    sput-boolean v0, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sGetConfigFail:Z
-
-    .line 159
-    .end local v1    # "e":Lorg/json/JSONException;
-    :goto_e5
-    goto :goto_ef
-
-    .line 161
-    :cond_e6
-    sget-object v1, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->TAG:Ljava/lang/String;
+    .line 156
+    :cond_4
+    sget-object v0, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->TAG:Ljava/lang/String;
 
     const-string v2, "jsonArray is null"
 
-    invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v0, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 162
-    sput-boolean v0, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sGetConfigFail:Z
+    .line 157
+    sput-boolean v1, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sGetConfigFail:Z
 
-    .line 164
-    :goto_ef
+    .line 159
+    :goto_3
     return-void
 .end method
 
 .method public static init(Landroid/content/Context;)V
-    .registers 3
+    .locals 2
     .param p0, "context"    # Landroid/content/Context;
 
-    .line 47
+    .line 38
     sget-boolean v0, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sInit:Z
 
-    if-nez v0, :cond_c
+    if-nez v0, :cond_0
 
-    .line 48
+    .line 39
     const/4 v0, 0x1
 
     sput-boolean v0, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sInit:Z
 
-    .line 49
+    .line 40
     sput-object p0, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sContext:Landroid/content/Context;
 
-    .line 50
+    .line 41
     invoke-static {p0}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->registerGAOnlineConfigObserver(Landroid/content/Context;)V
 
-    .line 53
-    :cond_c
+    .line 44
+    :cond_0
     sget-boolean v0, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sGetConfigFail:Z
 
-    if-eqz v0, :cond_1c
+    if-eqz v0, :cond_1
 
-    .line 54
+    .line 45
     invoke-static {}, Lcom/android/internal/os/BackgroundThread;->getHandler()Landroid/os/Handler;
 
     move-result-object v0
@@ -448,22 +447,22 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 65
-    :cond_1c
+    .line 56
+    :cond_1
     return-void
 .end method
 
 .method private static isBetaRom()Z
-    .registers 3
+    .locals 4
 
-    .line 78
+    .line 69
     const/4 v0, 0x0
 
-    .line 79
+    .line 70
     .local v0, "isBeta":Ljava/lang/String;
     const/4 v1, 0x0
 
-    .line 81
+    .line 72
     .local v1, "isEanbleGA":Ljava/lang/String;
     const-string v2, "ro.build.beta"
 
@@ -471,105 +470,103 @@
 
     move-result-object v0
 
-    .line 82
+    .line 73
     const-string v2, "persist.op.ga"
 
     invoke-static {v2}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 84
+    .line 75
     const-string v2, "1"
 
     invoke-virtual {v2, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v2
+    move-result v3
 
-    if-nez v2, :cond_21
-
-    const-string v2, "1"
+    if-nez v3, :cond_1
 
     invoke-virtual {v2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v2
 
-    if-eqz v2, :cond_1f
+    if-eqz v2, :cond_0
 
-    goto :goto_21
+    goto :goto_0
 
-    .line 87
-    :cond_1f
+    .line 78
+    :cond_0
     const/4 v2, 0x0
 
     return v2
 
-    .line 85
-    :cond_21
-    :goto_21
+    .line 76
+    :cond_1
+    :goto_0
     const/4 v2, 0x1
 
     return v2
 .end method
 
 .method private static isPrivacyEnabled(Landroid/content/Context;)Z
-    .registers 5
+    .locals 4
     .param p0, "context"    # Landroid/content/Context;
 
-    .line 94
+    .line 85
     const/4 v0, 0x1
 
-    if-nez p0, :cond_4
+    if-nez p0, :cond_0
 
-    .line 95
+    .line 86
     return v0
 
-    .line 98
-    :cond_4
+    .line 89
+    :cond_0
     invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v1
 
-    const-string v2, "oem_join_user_plan_settings"
+    const/4 v2, 0x0
 
-    const/4 v3, 0x0
+    const-string v3, "oem_join_user_plan_settings"
 
-    invoke-static {v1, v2, v3}, Landroid/provider/Settings$System;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
+    invoke-static {v1, v3, v2}, Landroid/provider/Settings$System;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
 
     move-result v1
 
-    .line 100
+    .line 91
     .local v1, "privacy":I
-    if-ne v1, v0, :cond_12
+    if-ne v1, v0, :cond_1
 
-    .line 101
-    return v3
+    .line 92
+    return v2
 
-    .line 103
-    :cond_12
+    .line 94
+    :cond_1
     return v0
 .end method
 
 .method private static registerGAOnlineConfigObserver(Landroid/content/Context;)V
-    .registers 6
+    .locals 5
     .param p0, "context"    # Landroid/content/Context;
 
-    .line 107
+    .line 98
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sOnlineConfigObserver:Lcom/oneplus/config/ConfigObserver;
 
-    if-nez v0, :cond_43
+    if-nez v0, :cond_1
 
-    .line 108
+    .line 99
     new-instance v0, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper$OnlineConfigUpdater;
 
     const/4 v1, 0x0
 
     invoke-direct {v0, v1}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper$OnlineConfigUpdater;-><init>(Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper$1;)V
 
-    .line 109
+    .line 100
     .local v0, "updater":Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper$OnlineConfigUpdater;
     new-instance v1, Lcom/oneplus/config/ConfigObserver;
 
-    .line 110
+    .line 101
     invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
 
     move-result-object v2
@@ -584,34 +581,35 @@
 
     sput-object v1, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sOnlineConfigObserver:Lcom/oneplus/config/ConfigObserver;
 
-    .line 112
-    :try_start_1b
+    .line 103
+    :try_start_0
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sOnlineConfigObserver:Lcom/oneplus/config/ConfigObserver;
 
     invoke-virtual {v1}, Lcom/oneplus/config/ConfigObserver;->register()V
 
-    .line 113
+    .line 104
     sget-boolean v1, Landroid/os/Build;->DEBUG_ONEPLUS:Z
 
-    if-eqz v1, :cond_2b
+    if-eqz v1, :cond_0
 
+    .line 105
     sget-object v1, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->TAG:Ljava/lang/String;
 
     const-string v2, "Register online config observer"
 
     invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-    :try_end_2b
-    .catch Ljava/lang/SecurityException; {:try_start_1b .. :try_end_2b} :catch_2c
+    :try_end_0
+    .catch Ljava/lang/SecurityException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 116
-    :cond_2b
-    goto :goto_43
+    .line 109
+    :cond_0
+    goto :goto_0
 
-    .line 114
-    :catch_2c
+    .line 107
+    :catch_0
     move-exception v1
 
-    .line 115
+    .line 108
     .local v1, "e":Ljava/lang/SecurityException;
     sget-object v2, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->TAG:Ljava/lang/String;
 
@@ -631,30 +629,28 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 118
+    .line 111
     .end local v0    # "updater":Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper$OnlineConfigUpdater;
     .end local v1    # "e":Ljava/lang/SecurityException;
-    :cond_43
-    :goto_43
+    :cond_1
+    :goto_0
     return-void
 .end method
 
 
 # virtual methods
 .method public send(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    .registers 6
+    .locals 2
     .param p1, "category"    # Ljava/lang/String;
     .param p2, "label"    # Ljava/lang/String;
     .param p3, "value"    # Ljava/lang/String;
 
-    .line 72
+    .line 63
     sget-object v0, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->mTracker:Lcom/google/analytics/tracking/android/Tracker;
 
-    if-eqz v0, :cond_12
+    if-eqz v0, :cond_0
 
-    .line 73
-    sget-object v0, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->mTracker:Lcom/google/analytics/tracking/android/Tracker;
-
+    .line 64
     const/4 v1, 0x0
 
     invoke-static {p1, p3, p2, v1}, Lcom/google/analytics/tracking/android/MapBuilder;->createEvent(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;)Lcom/google/analytics/tracking/android/MapBuilder;
@@ -667,7 +663,7 @@
 
     invoke-virtual {v0, v1}, Lcom/google/analytics/tracking/android/Tracker;->send(Ljava/util/Map;)V
 
-    .line 75
-    :cond_12
+    .line 66
+    :cond_0
     return-void
 .end method

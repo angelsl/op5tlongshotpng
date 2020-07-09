@@ -5,7 +5,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 11
     const-string v0, "encryptjni"
@@ -17,7 +17,7 @@
 .end method
 
 .method public constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 7
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V

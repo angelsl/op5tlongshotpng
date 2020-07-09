@@ -23,7 +23,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/PreviewActivity;)V
-    .registers 2
+    .locals 0
 
     .line 75
     iput-object p1, p0, Lcom/google/tagmanager/PreviewActivity$1;->this$0:Lcom/google/tagmanager/PreviewActivity;
@@ -36,7 +36,7 @@
 
 # virtual methods
 .method public onClick(Landroid/content/DialogInterface;I)V
-    .registers 3
+    .locals 0
     .param p1, "dialog"    # Landroid/content/DialogInterface;
     .param p2, "which"    # I
 

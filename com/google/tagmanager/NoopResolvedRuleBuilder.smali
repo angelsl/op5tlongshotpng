@@ -16,7 +16,7 @@
 
 # direct methods
 .method constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 12
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -28,7 +28,7 @@
 
 # virtual methods
 .method public createNegativePredicate()Lcom/google/tagmanager/ResolvedFunctionCallBuilder;
-    .registers 2
+    .locals 1
 
     .line 16
     new-instance v0, Lcom/google/tagmanager/NoopResolvedFunctionCallBuilder;
@@ -39,7 +39,7 @@
 .end method
 
 .method public createPositivePredicate()Lcom/google/tagmanager/ResolvedFunctionCallBuilder;
-    .registers 2
+    .locals 1
 
     .line 21
     new-instance v0, Lcom/google/tagmanager/NoopResolvedFunctionCallBuilder;
@@ -50,7 +50,7 @@
 .end method
 
 .method public getAddedMacroFunctions()Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
-    .registers 2
+    .locals 1
 
     .line 26
     new-instance v0, Lcom/google/tagmanager/NoopResolvedRuleBuilder$NoopResolvedFunctionCallTranslatorList;
@@ -61,7 +61,7 @@
 .end method
 
 .method public getAddedTagFunctions()Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
-    .registers 2
+    .locals 1
 
     .line 36
     new-instance v0, Lcom/google/tagmanager/NoopResolvedRuleBuilder$NoopResolvedFunctionCallTranslatorList;
@@ -72,7 +72,7 @@
 .end method
 
 .method public getRemovedMacroFunctions()Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
-    .registers 2
+    .locals 1
 
     .line 31
     new-instance v0, Lcom/google/tagmanager/NoopResolvedRuleBuilder$NoopResolvedFunctionCallTranslatorList;
@@ -83,7 +83,7 @@
 .end method
 
 .method public getRemovedTagFunctions()Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
-    .registers 2
+    .locals 1
 
     .line 41
     new-instance v0, Lcom/google/tagmanager/NoopResolvedRuleBuilder$NoopResolvedFunctionCallTranslatorList;
@@ -94,7 +94,7 @@
 .end method
 
 .method public setValue(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)V
-    .registers 2
+    .locals 0
     .param p1, "result"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 46

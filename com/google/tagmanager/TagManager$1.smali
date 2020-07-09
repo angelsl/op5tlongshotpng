@@ -23,7 +23,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/TagManager;)V
-    .registers 2
+    .locals 0
 
     .line 147
     iput-object p1, p0, Lcom/google/tagmanager/TagManager$1;->this$0:Lcom/google/tagmanager/TagManager;
@@ -36,7 +36,7 @@
 
 # virtual methods
 .method public changed(Ljava/util/Map;)V
-    .registers 5
+    .locals 3
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -57,7 +57,7 @@
 
     .line 152
     .local v0, "eventValue":Ljava/lang/Object;
-    if-eqz v0, :cond_11
+    if-eqz v0, :cond_0
 
     .line 153
     iget-object v1, p0, Lcom/google/tagmanager/TagManager$1;->this$0:Lcom/google/tagmanager/TagManager;
@@ -69,6 +69,6 @@
     invoke-static {v1, v2}, Lcom/google/tagmanager/TagManager;->access$000(Lcom/google/tagmanager/TagManager;Ljava/lang/String;)V
 
     .line 155
-    :cond_11
+    :cond_0
     return-void
 .end method

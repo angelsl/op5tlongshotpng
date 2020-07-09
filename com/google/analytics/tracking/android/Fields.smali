@@ -139,7 +139,7 @@
 
 # direct methods
 .method private constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 14
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -148,7 +148,7 @@
 .end method
 
 .method public static contentGroup(I)Ljava/lang/String;
-    .registers 2
+    .locals 1
     .param p0, "index"    # I
 
     .line 115
@@ -162,7 +162,7 @@
 .end method
 
 .method public static customDimension(I)Ljava/lang/String;
-    .registers 2
+    .locals 1
     .param p0, "index"    # I
 
     .line 107
@@ -176,7 +176,7 @@
 .end method
 
 .method public static customMetric(I)Ljava/lang/String;
-    .registers 2
+    .locals 1
     .param p0, "index"    # I
 
     .line 111
@@ -190,14 +190,14 @@
 .end method
 
 .method private static getParam(Ljava/lang/String;I)Ljava/lang/String;
-    .registers 4
+    .locals 2
     .param p0, "prefix"    # Ljava/lang/String;
     .param p1, "index"    # I
 
     .line 119
     const/4 v0, 0x1
 
-    if-ge p1, v0, :cond_27
+    if-ge p1, v0, :cond_0
 
     .line 120
     new-instance v0, Ljava/lang/StringBuilder;
@@ -232,7 +232,7 @@
     return-object v0
 
     .line 123
-    :cond_27
+    :cond_0
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V

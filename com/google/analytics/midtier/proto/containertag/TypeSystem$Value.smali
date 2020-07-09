@@ -55,7 +55,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 9
     const/4 v0, 0x0
@@ -68,7 +68,7 @@
 .end method
 
 .method public constructor <init>()V
-    .registers 3
+    .locals 4
 
     .line 10
     invoke-direct {p0}, Lcom/google/tagmanager/protobuf/nano/ExtendableMessageNano;-><init>()V
@@ -84,64 +84,52 @@
     iput-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->string:Ljava/lang/String;
 
     .line 51
-    sget-object v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->EMPTY_ARRAY:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    sget-object v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->EMPTY_ARRAY:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    iput-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    iput-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 54
-    sget-object v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->EMPTY_ARRAY:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    iput-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    iput-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 57
-    sget-object v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->EMPTY_ARRAY:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    iput-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    iput-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 60
-    const-string v0, ""
-
     iput-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->macroReference:Ljava/lang/String;
 
     .line 63
-    const-string v0, ""
-
     iput-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->functionId:Ljava/lang/String;
 
     .line 66
-    const-wide/16 v0, 0x0
+    const-wide/16 v2, 0x0
 
-    iput-wide v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->integer:J
+    iput-wide v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->integer:J
 
     .line 69
-    const/4 v0, 0x0
+    const/4 v2, 0x0
 
-    iput-boolean v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->boolean_:Z
+    iput-boolean v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->boolean_:Z
 
     .line 72
-    sget-object v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->EMPTY_ARRAY:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
     iput-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 75
-    const-string v1, ""
-
-    iput-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->tagReference:Ljava/lang/String;
+    iput-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->tagReference:Ljava/lang/String;
 
     .line 78
-    sget-object v1, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->EMPTY_INT_ARRAY:[I
+    sget-object v0, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->EMPTY_INT_ARRAY:[I
 
-    iput-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
+    iput-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
 
     .line 81
-    iput-boolean v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->containsReferences:Z
+    iput-boolean v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->containsReferences:Z
 
     .line 10
     return-void
 .end method
 
 .method public static parseFrom(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 2
+    .locals 1
     .param p0, "input"    # Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -162,7 +150,7 @@
 .end method
 
 .method public static parseFrom([B)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 2
+    .locals 1
     .param p0, "data"    # [B
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -187,7 +175,7 @@
 
 # virtual methods
 .method public final clear()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 3
+    .locals 4
 
     .line 84
     const/4 v0, 0x1
@@ -200,57 +188,45 @@
     iput-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->string:Ljava/lang/String;
 
     .line 86
-    sget-object v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->EMPTY_ARRAY:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    sget-object v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->EMPTY_ARRAY:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    iput-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    iput-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 87
-    sget-object v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->EMPTY_ARRAY:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    iput-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    iput-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 88
-    sget-object v0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->EMPTY_ARRAY:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    iput-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    iput-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 89
-    const-string v0, ""
-
     iput-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->macroReference:Ljava/lang/String;
 
     .line 90
-    const-string v0, ""
-
     iput-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->functionId:Ljava/lang/String;
 
     .line 91
-    const-wide/16 v0, 0x0
+    const-wide/16 v2, 0x0
 
-    iput-wide v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->integer:J
+    iput-wide v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->integer:J
 
     .line 92
-    const/4 v0, 0x0
+    const/4 v2, 0x0
 
-    iput-boolean v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->boolean_:Z
+    iput-boolean v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->boolean_:Z
 
     .line 93
-    sget-object v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->EMPTY_ARRAY:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
     iput-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 94
-    const-string v1, ""
-
-    iput-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->tagReference:Ljava/lang/String;
+    iput-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->tagReference:Ljava/lang/String;
 
     .line 95
-    sget-object v1, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->EMPTY_INT_ARRAY:[I
+    sget-object v0, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->EMPTY_INT_ARRAY:[I
 
-    iput-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
+    iput-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
 
     .line 96
-    iput-boolean v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->containsReferences:Z
+    iput-boolean v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->containsReferences:Z
 
     .line 97
     const/4 v0, 0x0
@@ -267,28 +243,28 @@
 .end method
 
 .method public final equals(Ljava/lang/Object;)Z
-    .registers 9
+    .locals 7
     .param p1, "o"    # Ljava/lang/Object;
 
     .line 104
     const/4 v0, 0x1
 
-    if-ne p1, p0, :cond_4
+    if-ne p1, p0, :cond_0
 
     return v0
 
     .line 105
-    :cond_4
+    :cond_0
     instance-of v1, p1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     const/4 v2, 0x0
 
-    if-nez v1, :cond_a
+    if-nez v1, :cond_1
 
     return v2
 
     .line 106
-    :cond_a
+    :cond_1
     move-object v1, p1
 
     check-cast v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -299,30 +275,28 @@
 
     iget v4, v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->type:I
 
-    if-ne v3, v4, :cond_b9
+    if-ne v3, v4, :cond_7
 
     iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->string:Ljava/lang/String;
 
-    if-nez v3, :cond_1c
+    if-nez v3, :cond_2
 
     iget-object v3, v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->string:Ljava/lang/String;
 
-    if-nez v3, :cond_b9
+    if-nez v3, :cond_7
 
-    goto :goto_26
+    goto :goto_0
 
-    :cond_1c
-    iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->string:Ljava/lang/String;
-
+    :cond_2
     iget-object v4, v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->string:Ljava/lang/String;
 
     invoke-virtual {v3, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-eqz v3, :cond_b9
+    if-eqz v3, :cond_7
 
-    :goto_26
+    :goto_0
     iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     iget-object v4, v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -331,7 +305,7 @@
 
     move-result v3
 
-    if-eqz v3, :cond_b9
+    if-eqz v3, :cond_7
 
     iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
@@ -341,7 +315,7 @@
 
     move-result v3
 
-    if-eqz v3, :cond_b9
+    if-eqz v3, :cond_7
 
     iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
@@ -351,65 +325,61 @@
 
     move-result v3
 
-    if-eqz v3, :cond_b9
+    if-eqz v3, :cond_7
 
     iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->macroReference:Ljava/lang/String;
 
-    if-nez v3, :cond_4d
+    if-nez v3, :cond_3
 
     iget-object v3, v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->macroReference:Ljava/lang/String;
 
-    if-nez v3, :cond_b9
+    if-nez v3, :cond_7
 
-    goto :goto_57
+    goto :goto_1
 
-    :cond_4d
-    iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->macroReference:Ljava/lang/String;
-
+    :cond_3
     iget-object v4, v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->macroReference:Ljava/lang/String;
 
     invoke-virtual {v3, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-eqz v3, :cond_b9
+    if-eqz v3, :cond_7
 
-    :goto_57
+    :goto_1
     iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->functionId:Ljava/lang/String;
 
-    if-nez v3, :cond_60
+    if-nez v3, :cond_4
 
     iget-object v3, v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->functionId:Ljava/lang/String;
 
-    if-nez v3, :cond_b9
+    if-nez v3, :cond_7
 
-    goto :goto_6a
+    goto :goto_2
 
-    :cond_60
-    iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->functionId:Ljava/lang/String;
-
+    :cond_4
     iget-object v4, v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->functionId:Ljava/lang/String;
 
     invoke-virtual {v3, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-eqz v3, :cond_b9
+    if-eqz v3, :cond_7
 
-    :goto_6a
+    :goto_2
     iget-wide v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->integer:J
 
     iget-wide v5, v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->integer:J
 
     cmp-long v3, v3, v5
 
-    if-nez v3, :cond_b9
+    if-nez v3, :cond_7
 
     iget-boolean v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->boolean_:Z
 
     iget-boolean v4, v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->boolean_:Z
 
-    if-ne v3, v4, :cond_b9
+    if-ne v3, v4, :cond_7
 
     iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
@@ -419,30 +389,28 @@
 
     move-result v3
 
-    if-eqz v3, :cond_b9
+    if-eqz v3, :cond_7
 
     iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->tagReference:Ljava/lang/String;
 
-    if-nez v3, :cond_8b
+    if-nez v3, :cond_5
 
     iget-object v3, v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->tagReference:Ljava/lang/String;
 
-    if-nez v3, :cond_b9
+    if-nez v3, :cond_7
 
-    goto :goto_95
+    goto :goto_3
 
-    :cond_8b
-    iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->tagReference:Ljava/lang/String;
-
+    :cond_5
     iget-object v4, v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->tagReference:Ljava/lang/String;
 
     invoke-virtual {v3, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-eqz v3, :cond_b9
+    if-eqz v3, :cond_7
 
-    :goto_95
+    :goto_3
     iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
 
     iget-object v4, v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
@@ -451,25 +419,25 @@
 
     move-result v3
 
-    if-eqz v3, :cond_b9
+    if-eqz v3, :cond_7
 
     iget-boolean v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->containsReferences:Z
 
     iget-boolean v4, v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->containsReferences:Z
 
-    if-ne v3, v4, :cond_b9
+    if-ne v3, v4, :cond_7
 
     iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->unknownFieldData:Ljava/util/List;
 
-    if-nez v3, :cond_ae
+    if-nez v3, :cond_6
 
     iget-object v3, v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->unknownFieldData:Ljava/util/List;
 
-    if-nez v3, :cond_b9
+    if-nez v3, :cond_7
 
-    goto :goto_b8
+    goto :goto_4
 
-    :cond_ae
+    :cond_6
     iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->unknownFieldData:Ljava/util/List;
 
     iget-object v4, v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->unknownFieldData:Ljava/util/List;
@@ -478,20 +446,20 @@
 
     move-result v3
 
-    if-eqz v3, :cond_b9
+    if-eqz v3, :cond_7
 
-    :goto_b8
-    goto :goto_ba
+    :goto_4
+    goto :goto_5
 
-    :cond_b9
+    :cond_7
     move v0, v2
 
-    :goto_ba
+    :goto_5
     return v0
 .end method
 
 .method public getSerializedSize()I
-    .registers 10
+    .locals 9
 
     .line 222
     const/4 v0, 0x0
@@ -517,26 +485,24 @@
 
     move-result v1
 
-    if-nez v1, :cond_1b
+    if-nez v1, :cond_0
 
     .line 226
     const/4 v1, 0x2
 
-    iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->string:Ljava/lang/String;
+    iget-object v4, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->string:Ljava/lang/String;
 
-    invoke-static {v1, v3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeStringSize(ILjava/lang/String;)I
+    invoke-static {v1, v4}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeStringSize(ILjava/lang/String;)I
 
     move-result v1
 
     add-int/2addr v0, v1
 
     .line 229
-    :cond_1b
+    :cond_0
     iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    const/4 v3, 0x0
-
-    if-eqz v1, :cond_33
+    if-eqz v1, :cond_1
 
     .line 230
     iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -545,16 +511,13 @@
     array-length v4, v1
 
     .local v4, "len$":I
-    move v5, v0
+    const/4 v5, 0x0
 
-    move v0, v3
+    .local v5, "i$":I
+    :goto_0
+    if-ge v5, v4, :cond_1
 
-    .local v0, "i$":I
-    .local v5, "size":I
-    :goto_25
-    if-ge v0, v4, :cond_32
-
-    aget-object v6, v1, v0
+    aget-object v6, v1, v5
 
     .line 231
     .local v6, "element":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -564,27 +527,22 @@
 
     move-result v7
 
-    add-int/2addr v5, v7
+    add-int/2addr v0, v7
 
     .line 230
     .end local v6    # "element":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v5, v5, 0x1
 
-    goto :goto_25
+    goto :goto_0
 
     .line 235
-    .end local v0    # "i$":I
     .end local v1    # "arr$":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .end local v4    # "len$":I
-    :cond_32
-    move v0, v5
-
-    .end local v5    # "size":I
-    .local v0, "size":I
-    :cond_33
+    .end local v5    # "i$":I
+    :cond_1
     iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    if-eqz v1, :cond_4a
+    if-eqz v1, :cond_2
 
     .line 236
     iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -593,16 +551,13 @@
     array-length v4, v1
 
     .restart local v4    # "len$":I
-    move v5, v0
+    const/4 v5, 0x0
 
-    move v0, v3
+    .restart local v5    # "i$":I
+    :goto_1
+    if-ge v5, v4, :cond_2
 
-    .local v0, "i$":I
-    .restart local v5    # "size":I
-    :goto_3c
-    if-ge v0, v4, :cond_49
-
-    aget-object v6, v1, v0
+    aget-object v6, v1, v5
 
     .line 237
     .restart local v6    # "element":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -612,27 +567,22 @@
 
     move-result v7
 
-    add-int/2addr v5, v7
+    add-int/2addr v0, v7
 
     .line 236
     .end local v6    # "element":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v5, v5, 0x1
 
-    goto :goto_3c
+    goto :goto_1
 
     .line 241
-    .end local v0    # "i$":I
     .end local v1    # "arr$":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .end local v4    # "len$":I
-    :cond_49
-    move v0, v5
-
-    .end local v5    # "size":I
-    .local v0, "size":I
-    :cond_4a
+    .end local v5    # "i$":I
+    :cond_2
     iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    if-eqz v1, :cond_61
+    if-eqz v1, :cond_3
 
     .line 242
     iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -641,16 +591,13 @@
     array-length v4, v1
 
     .restart local v4    # "len$":I
-    move v5, v0
+    const/4 v5, 0x0
 
-    move v0, v3
+    .restart local v5    # "i$":I
+    :goto_2
+    if-ge v5, v4, :cond_3
 
-    .local v0, "i$":I
-    .restart local v5    # "size":I
-    :goto_53
-    if-ge v0, v4, :cond_60
-
-    aget-object v6, v1, v0
+    aget-object v6, v1, v5
 
     .line 243
     .restart local v6    # "element":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -660,33 +607,26 @@
 
     move-result v7
 
-    add-int/2addr v5, v7
+    add-int/2addr v0, v7
 
     .line 242
     .end local v6    # "element":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v5, v5, 0x1
 
-    goto :goto_53
+    goto :goto_2
 
     .line 247
-    .end local v0    # "i$":I
     .end local v1    # "arr$":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .end local v4    # "len$":I
-    :cond_60
-    move v0, v5
-
-    .end local v5    # "size":I
-    .local v0, "size":I
-    :cond_61
+    .end local v5    # "i$":I
+    :cond_3
     iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->macroReference:Ljava/lang/String;
 
-    const-string v4, ""
-
-    invoke-virtual {v1, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
-    if-nez v1, :cond_73
+    if-nez v1, :cond_4
 
     .line 248
     const/4 v1, 0x6
@@ -700,16 +640,14 @@
     add-int/2addr v0, v1
 
     .line 251
-    :cond_73
+    :cond_4
     iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->functionId:Ljava/lang/String;
 
-    const-string v4, ""
-
-    invoke-virtual {v1, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
-    if-nez v1, :cond_85
+    if-nez v1, :cond_5
 
     .line 252
     const/4 v1, 0x7
@@ -723,19 +661,17 @@
     add-int/2addr v0, v1
 
     .line 255
-    :cond_85
+    :cond_5
     iget-wide v4, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->integer:J
 
     const-wide/16 v6, 0x0
 
     cmp-long v1, v4, v6
 
-    if-eqz v1, :cond_96
+    if-eqz v1, :cond_6
 
     .line 256
     const/16 v1, 0x8
-
-    iget-wide v4, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->integer:J
 
     invoke-static {v1, v4, v5}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeInt64Size(IJ)I
 
@@ -744,33 +680,29 @@
     add-int/2addr v0, v1
 
     .line 259
-    :cond_96
+    :cond_6
     iget-boolean v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->containsReferences:Z
 
-    if-eqz v1, :cond_a3
+    if-eqz v1, :cond_7
 
     .line 260
-    const/16 v1, 0x9
+    const/16 v4, 0x9
 
-    iget-boolean v4, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->containsReferences:Z
-
-    invoke-static {v1, v4}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeBoolSize(IZ)I
+    invoke-static {v4, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeBoolSize(IZ)I
 
     move-result v1
 
     add-int/2addr v0, v1
 
     .line 263
-    :cond_a3
+    :cond_7
     iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
 
-    if-eqz v1, :cond_c4
-
-    iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
+    if-eqz v1, :cond_9
 
     array-length v1, v1
 
-    if-lez v1, :cond_c4
+    if-lez v1, :cond_9
 
     .line 264
     const/4 v1, 0x0
@@ -783,16 +715,13 @@
     array-length v5, v4
 
     .local v5, "len$":I
-    move v6, v1
+    const/4 v6, 0x0
 
-    move v1, v3
+    .local v6, "i$":I
+    :goto_3
+    if-ge v6, v5, :cond_8
 
-    .local v1, "i$":I
-    .local v6, "dataSize":I
-    :goto_b2
-    if-ge v1, v5, :cond_be
-
-    aget v7, v4, v1
+    aget v7, v4, v6
 
     .line 266
     .local v7, "element":I
@@ -800,36 +729,36 @@
 
     move-result v8
 
-    add-int/2addr v6, v8
+    add-int/2addr v1, v8
 
     .line 265
     .end local v7    # "element":I
-    add-int/lit8 v1, v1, 0x1
+    add-int/lit8 v6, v6, 0x1
 
-    goto :goto_b2
+    goto :goto_3
 
     .line 269
-    .end local v1    # "i$":I
     .end local v4    # "arr$":[I
     .end local v5    # "len$":I
-    :cond_be
-    add-int/2addr v0, v6
+    .end local v6    # "i$":I
+    :cond_8
+    add-int/2addr v0, v1
 
     .line 270
-    iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
+    iget-object v4, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
 
-    array-length v1, v1
+    array-length v4, v4
 
-    mul-int/2addr v2, v1
+    mul-int/2addr v4, v2
 
-    add-int/2addr v0, v2
+    add-int/2addr v0, v4
 
     .line 272
-    .end local v6    # "dataSize":I
-    :cond_c4
+    .end local v1    # "dataSize":I
+    :cond_9
     iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    if-eqz v1, :cond_d9
+    if-eqz v1, :cond_a
 
     .line 273
     iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -838,59 +767,57 @@
     array-length v2, v1
 
     .local v2, "len$":I
-    .local v3, "i$":I
-    :goto_cb
-    if-ge v3, v2, :cond_d9
+    const/4 v4, 0x0
 
-    aget-object v4, v1, v3
+    .local v4, "i$":I
+    :goto_4
+    if-ge v4, v2, :cond_a
+
+    aget-object v5, v1, v4
 
     .line 274
-    .local v4, "element":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    const/16 v5, 0xb
+    .local v5, "element":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    const/16 v6, 0xb
 
-    invoke-static {v5, v4}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeMessageSize(ILcom/google/tagmanager/protobuf/nano/MessageNano;)I
+    invoke-static {v6, v5}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeMessageSize(ILcom/google/tagmanager/protobuf/nano/MessageNano;)I
 
-    move-result v5
+    move-result v6
 
-    add-int/2addr v0, v5
+    add-int/2addr v0, v6
 
     .line 273
-    .end local v4    # "element":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    add-int/lit8 v3, v3, 0x1
+    .end local v5    # "element":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    add-int/lit8 v4, v4, 0x1
 
-    goto :goto_cb
+    goto :goto_4
 
     .line 278
     .end local v1    # "arr$":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .end local v2    # "len$":I
-    .end local v3    # "i$":I
-    :cond_d9
+    .end local v4    # "i$":I
+    :cond_a
     iget-boolean v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->boolean_:Z
 
-    if-eqz v1, :cond_e6
+    if-eqz v1, :cond_b
 
     .line 279
-    const/16 v1, 0xc
+    const/16 v2, 0xc
 
-    iget-boolean v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->boolean_:Z
-
-    invoke-static {v1, v2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeBoolSize(IZ)I
+    invoke-static {v2, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->computeBoolSize(IZ)I
 
     move-result v1
 
     add-int/2addr v0, v1
 
     .line 282
-    :cond_e6
+    :cond_b
     iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->tagReference:Ljava/lang/String;
 
-    const-string v2, ""
-
-    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
-    if-nez v1, :cond_f9
+    if-nez v1, :cond_c
 
     .line 283
     const/16 v1, 0xd
@@ -904,7 +831,7 @@
     add-int/2addr v0, v1
 
     .line 286
-    :cond_f9
+    :cond_c
     iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->unknownFieldData:Ljava/util/List;
 
     invoke-static {v1}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->computeWireSize(Ljava/util/List;)I
@@ -921,484 +848,424 @@
 .end method
 
 .method public hashCode()I
-    .registers 10
+    .locals 8
 
     .line 124
     const/16 v0, 0x11
 
     .line 125
     .local v0, "result":I
-    const/16 v1, 0x1f
+    mul-int/lit8 v1, v0, 0x1f
 
-    mul-int v2, v1, v0
+    iget v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->type:I
 
-    iget v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->type:I
-
-    add-int/2addr v2, v3
+    add-int/2addr v1, v2
 
     .line 126
     .end local v0    # "result":I
-    .local v2, "result":I
-    mul-int v0, v1, v2
+    .local v1, "result":I
+    mul-int/lit8 v0, v1, 0x1f
 
-    iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->string:Ljava/lang/String;
+    iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->string:Ljava/lang/String;
 
-    const/4 v4, 0x0
+    const/4 v3, 0x0
 
-    if-nez v3, :cond_12
+    if-nez v2, :cond_0
 
-    move v3, v4
+    move v2, v3
 
-    goto :goto_18
+    goto :goto_0
 
-    :cond_12
-    iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->string:Ljava/lang/String;
+    :cond_0
+    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
 
-    invoke-virtual {v3}, Ljava/lang/String;->hashCode()I
+    move-result v2
 
-    move-result v3
-
-    :goto_18
-    add-int/2addr v0, v3
+    :goto_0
+    add-int/2addr v0, v2
 
     .line 127
-    .end local v2    # "result":I
+    .end local v1    # "result":I
     .restart local v0    # "result":I
+    iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+
+    if-nez v1, :cond_1
+
+    mul-int/lit8 v0, v0, 0x1f
+
+    goto :goto_3
+
+    .line 129
+    :cond_1
+    const/4 v1, 0x0
+
+    .local v1, "i":I
+    :goto_1
     iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    if-nez v2, :cond_1f
+    array-length v4, v2
 
-    mul-int/2addr v0, v1
-
-    goto :goto_3e
-
-    .line 129
-    :cond_1f
-    move v2, v0
-
-    move v0, v4
-
-    .local v0, "i":I
-    .restart local v2    # "result":I
-    :goto_21
-    iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    array-length v3, v3
-
-    if-ge v0, v3, :cond_3d
+    if-ge v1, v4, :cond_3
 
     .line 130
-    mul-int v3, v1, v2
+    mul-int/lit8 v4, v0, 0x1f
 
-    iget-object v5, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    aget-object v5, v2, v1
 
-    aget-object v5, v5, v0
+    if-nez v5, :cond_2
 
-    if-nez v5, :cond_30
+    move v2, v3
 
-    move v5, v4
+    goto :goto_2
 
-    goto :goto_38
+    :cond_2
+    aget-object v2, v2, v1
 
-    :cond_30
-    iget-object v5, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    invoke-virtual {v2}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->hashCode()I
 
-    aget-object v5, v5, v0
+    move-result v2
 
-    invoke-virtual {v5}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->hashCode()I
-
-    move-result v5
-
-    :goto_38
-    add-int v2, v3, v5
+    :goto_2
+    add-int v0, v4, v2
 
     .line 129
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v1, v1, 0x1
 
-    goto :goto_21
+    goto :goto_1
 
     .line 133
-    .end local v0    # "i":I
-    :cond_3d
-    move v0, v2
+    .end local v1    # "i":I
+    :cond_3
+    :goto_3
+    iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    .end local v2    # "result":I
-    .local v0, "result":I
-    :goto_3e
+    if-nez v1, :cond_4
+
+    mul-int/lit8 v0, v0, 0x1f
+
+    goto :goto_6
+
+    .line 135
+    :cond_4
+    const/4 v1, 0x0
+
+    .restart local v1    # "i":I
+    :goto_4
     iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    if-nez v2, :cond_44
+    array-length v4, v2
 
-    mul-int/2addr v0, v1
-
-    goto :goto_63
-
-    .line 135
-    :cond_44
-    move v2, v0
-
-    move v0, v4
-
-    .local v0, "i":I
-    .restart local v2    # "result":I
-    :goto_46
-    iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    array-length v3, v3
-
-    if-ge v0, v3, :cond_62
+    if-ge v1, v4, :cond_6
 
     .line 136
-    mul-int v3, v1, v2
+    mul-int/lit8 v4, v0, 0x1f
 
-    iget-object v5, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    aget-object v5, v2, v1
 
-    aget-object v5, v5, v0
+    if-nez v5, :cond_5
 
-    if-nez v5, :cond_55
+    move v2, v3
 
-    move v5, v4
+    goto :goto_5
 
-    goto :goto_5d
+    :cond_5
+    aget-object v2, v2, v1
 
-    :cond_55
-    iget-object v5, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    invoke-virtual {v2}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->hashCode()I
 
-    aget-object v5, v5, v0
+    move-result v2
 
-    invoke-virtual {v5}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->hashCode()I
-
-    move-result v5
-
-    :goto_5d
-    add-int v2, v3, v5
+    :goto_5
+    add-int v0, v4, v2
 
     .line 135
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v1, v1, 0x1
 
-    goto :goto_46
+    goto :goto_4
 
     .line 139
-    .end local v0    # "i":I
-    :cond_62
-    move v0, v2
+    .end local v1    # "i":I
+    :cond_6
+    :goto_6
+    iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    .end local v2    # "result":I
-    .local v0, "result":I
-    :goto_63
+    if-nez v1, :cond_7
+
+    mul-int/lit8 v0, v0, 0x1f
+
+    goto :goto_9
+
+    .line 141
+    :cond_7
+    const/4 v1, 0x0
+
+    .restart local v1    # "i":I
+    :goto_7
     iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    if-nez v2, :cond_69
+    array-length v4, v2
 
-    mul-int/2addr v0, v1
-
-    goto :goto_88
-
-    .line 141
-    :cond_69
-    move v2, v0
-
-    move v0, v4
-
-    .local v0, "i":I
-    .restart local v2    # "result":I
-    :goto_6b
-    iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    array-length v3, v3
-
-    if-ge v0, v3, :cond_87
+    if-ge v1, v4, :cond_9
 
     .line 142
-    mul-int v3, v1, v2
+    mul-int/lit8 v4, v0, 0x1f
 
-    iget-object v5, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    aget-object v5, v2, v1
 
-    aget-object v5, v5, v0
+    if-nez v5, :cond_8
 
-    if-nez v5, :cond_7a
+    move v2, v3
 
-    move v5, v4
+    goto :goto_8
 
-    goto :goto_82
+    :cond_8
+    aget-object v2, v2, v1
 
-    :cond_7a
-    iget-object v5, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    invoke-virtual {v2}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->hashCode()I
 
-    aget-object v5, v5, v0
+    move-result v2
 
-    invoke-virtual {v5}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->hashCode()I
-
-    move-result v5
-
-    :goto_82
-    add-int v2, v3, v5
+    :goto_8
+    add-int v0, v4, v2
 
     .line 141
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v1, v1, 0x1
 
-    goto :goto_6b
+    goto :goto_7
 
     .line 145
-    .end local v0    # "i":I
-    :cond_87
-    move v0, v2
+    .end local v1    # "i":I
+    :cond_9
+    :goto_9
+    mul-int/lit8 v1, v0, 0x1f
 
-    .end local v2    # "result":I
-    .local v0, "result":I
-    :goto_88
-    mul-int v2, v1, v0
+    iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->macroReference:Ljava/lang/String;
 
-    iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->macroReference:Ljava/lang/String;
+    if-nez v2, :cond_a
 
-    if-nez v3, :cond_90
+    move v2, v3
 
-    move v3, v4
+    goto :goto_a
 
-    goto :goto_96
+    :cond_a
+    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
 
-    :cond_90
-    iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->macroReference:Ljava/lang/String;
+    move-result v2
 
-    invoke-virtual {v3}, Ljava/lang/String;->hashCode()I
-
-    move-result v3
-
-    :goto_96
-    add-int/2addr v2, v3
+    :goto_a
+    add-int/2addr v1, v2
 
     .line 146
     .end local v0    # "result":I
-    .restart local v2    # "result":I
-    mul-int v0, v1, v2
+    .local v1, "result":I
+    mul-int/lit8 v0, v1, 0x1f
 
-    iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->functionId:Ljava/lang/String;
+    iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->functionId:Ljava/lang/String;
 
-    if-nez v3, :cond_9f
+    if-nez v2, :cond_b
 
-    move v3, v4
+    move v2, v3
 
-    goto :goto_a5
+    goto :goto_b
 
-    :cond_9f
-    iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->functionId:Ljava/lang/String;
+    :cond_b
+    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
 
-    invoke-virtual {v3}, Ljava/lang/String;->hashCode()I
+    move-result v2
 
-    move-result v3
-
-    :goto_a5
-    add-int/2addr v0, v3
+    :goto_b
+    add-int/2addr v0, v2
 
     .line 147
-    .end local v2    # "result":I
+    .end local v1    # "result":I
     .restart local v0    # "result":I
-    mul-int v2, v1, v0
+    mul-int/lit8 v1, v0, 0x1f
 
-    iget-wide v5, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->integer:J
+    iget-wide v4, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->integer:J
 
-    iget-wide v7, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->integer:J
+    const/16 v2, 0x20
 
-    const/16 v3, 0x20
+    ushr-long v6, v4, v2
 
-    ushr-long/2addr v7, v3
+    xor-long/2addr v4, v6
 
-    xor-long/2addr v5, v7
+    long-to-int v2, v4
 
-    long-to-int v3, v5
-
-    add-int/2addr v2, v3
+    add-int/2addr v1, v2
 
     .line 148
     .end local v0    # "result":I
-    .restart local v2    # "result":I
-    mul-int v0, v1, v2
+    .restart local v1    # "result":I
+    mul-int/lit8 v0, v1, 0x1f
 
-    iget-boolean v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->boolean_:Z
+    iget-boolean v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->boolean_:Z
 
-    const/4 v5, 0x2
+    const/4 v4, 0x2
 
-    const/4 v6, 0x1
+    const/4 v5, 0x1
 
-    if-eqz v3, :cond_bc
+    if-eqz v2, :cond_c
 
-    move v3, v6
+    move v2, v5
 
-    goto :goto_bd
+    goto :goto_c
 
-    :cond_bc
-    move v3, v5
+    :cond_c
+    move v2, v4
 
-    :goto_bd
-    add-int/2addr v0, v3
+    :goto_c
+    add-int/2addr v0, v2
 
     .line 149
-    .end local v2    # "result":I
+    .end local v1    # "result":I
     .restart local v0    # "result":I
+    iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+
+    if-nez v1, :cond_d
+
+    mul-int/lit8 v0, v0, 0x1f
+
+    goto :goto_f
+
+    .line 151
+    :cond_d
+    const/4 v1, 0x0
+
+    .local v1, "i":I
+    :goto_d
     iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    if-nez v2, :cond_c4
+    array-length v6, v2
 
-    mul-int/2addr v0, v1
-
-    goto :goto_e3
-
-    .line 151
-    :cond_c4
-    move v2, v0
-
-    move v0, v4
-
-    .local v0, "i":I
-    .restart local v2    # "result":I
-    :goto_c6
-    iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
-    array-length v3, v3
-
-    if-ge v0, v3, :cond_e2
+    if-ge v1, v6, :cond_f
 
     .line 152
-    mul-int v3, v1, v2
+    mul-int/lit8 v6, v0, 0x1f
 
-    iget-object v7, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    aget-object v7, v2, v1
 
-    aget-object v7, v7, v0
+    if-nez v7, :cond_e
 
-    if-nez v7, :cond_d5
+    move v2, v3
 
-    move v7, v4
+    goto :goto_e
 
-    goto :goto_dd
+    :cond_e
+    aget-object v2, v2, v1
 
-    :cond_d5
-    iget-object v7, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    invoke-virtual {v2}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->hashCode()I
 
-    aget-object v7, v7, v0
+    move-result v2
 
-    invoke-virtual {v7}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->hashCode()I
-
-    move-result v7
-
-    :goto_dd
-    add-int v2, v3, v7
+    :goto_e
+    add-int v0, v6, v2
 
     .line 151
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v1, v1, 0x1
 
-    goto :goto_c6
+    goto :goto_d
 
     .line 155
-    .end local v0    # "i":I
-    :cond_e2
-    move v0, v2
+    .end local v1    # "i":I
+    :cond_f
+    :goto_f
+    mul-int/lit8 v1, v0, 0x1f
 
-    .end local v2    # "result":I
-    .local v0, "result":I
-    :goto_e3
-    mul-int v2, v1, v0
+    iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->tagReference:Ljava/lang/String;
 
-    iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->tagReference:Ljava/lang/String;
+    if-nez v2, :cond_10
 
-    if-nez v3, :cond_eb
+    move v2, v3
 
-    move v3, v4
+    goto :goto_10
 
-    goto :goto_f1
+    :cond_10
+    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
 
-    :cond_eb
-    iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->tagReference:Ljava/lang/String;
+    move-result v2
 
-    invoke-virtual {v3}, Ljava/lang/String;->hashCode()I
-
-    move-result v3
-
-    :goto_f1
-    add-int/2addr v2, v3
+    :goto_10
+    add-int/2addr v1, v2
 
     .line 156
     .end local v0    # "result":I
-    .restart local v2    # "result":I
+    .local v1, "result":I
     iget-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
 
-    if-nez v0, :cond_f8
+    if-nez v0, :cond_11
 
-    mul-int/2addr v2, v1
+    mul-int/lit8 v1, v1, 0x1f
 
-    goto :goto_109
+    goto :goto_12
 
     .line 158
-    :cond_f8
-    move v0, v4
+    :cond_11
+    const/4 v0, 0x0
 
     .local v0, "i":I
-    :goto_f9
-    iget-object v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
+    :goto_11
+    iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
 
-    array-length v3, v3
+    array-length v6, v2
 
-    if-ge v0, v3, :cond_109
+    if-ge v0, v6, :cond_12
 
     .line 159
-    mul-int v3, v1, v2
+    mul-int/lit8 v6, v1, 0x1f
 
-    iget-object v7, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
+    aget v2, v2, v0
 
-    aget v7, v7, v0
-
-    add-int v2, v3, v7
+    add-int v1, v6, v2
 
     .line 158
     add-int/lit8 v0, v0, 0x1
 
-    goto :goto_f9
+    goto :goto_11
 
     .line 162
     .end local v0    # "i":I
-    :cond_109
-    :goto_109
-    mul-int v0, v1, v2
+    :cond_12
+    :goto_12
+    mul-int/lit8 v0, v1, 0x1f
 
-    iget-boolean v3, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->containsReferences:Z
+    iget-boolean v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->containsReferences:Z
 
-    if-eqz v3, :cond_111
+    if-eqz v2, :cond_13
 
-    move v5, v6
+    move v4, v5
 
-    nop
-
-    :cond_111
-    add-int/2addr v0, v5
+    :cond_13
+    add-int/2addr v0, v4
 
     .line 163
-    .end local v2    # "result":I
+    .end local v1    # "result":I
     .local v0, "result":I
-    mul-int/2addr v1, v0
+    mul-int/lit8 v1, v0, 0x1f
 
     iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->unknownFieldData:Ljava/util/List;
 
-    if-nez v2, :cond_118
+    if-nez v2, :cond_14
 
-    goto :goto_11e
+    goto :goto_13
 
-    :cond_118
+    :cond_14
     iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->unknownFieldData:Ljava/util/List;
 
     invoke-interface {v2}, Ljava/util/List;->hashCode()I
 
-    move-result v4
+    move-result v3
 
-    :goto_11e
-    add-int/2addr v1, v4
+    :goto_13
+    add-int/2addr v1, v3
 
     .line 164
     .end local v0    # "result":I
-    .local v1, "result":I
+    .restart local v1    # "result":I
     return v1
 .end method
 
 .method public mergeFrom(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 9
+    .locals 7
     .param p1, "input"    # Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1418,12 +1285,12 @@
 
     const/4 v2, 0x0
 
-    sparse-switch v0, :sswitch_data_1e2
+    sparse-switch v0, :sswitch_data_0
 
     .line 301
     iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->unknownFieldData:Ljava/util/List;
 
-    if-nez v1, :cond_1d6
+    if-nez v1, :cond_f
 
     .line 302
     new-instance v1, Ljava/util/ArrayList;
@@ -1432,22 +1299,20 @@
 
     iput-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->unknownFieldData:Ljava/util/List;
 
-    goto/16 :goto_1d6
+    goto/16 :goto_b
 
     .line 439
-    :sswitch_16
+    :sswitch_0
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readString()Ljava/lang/String;
 
     move-result-object v1
 
     iput-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->tagReference:Ljava/lang/String;
 
-    .end local v0    # "tag":I
-    goto/16 :goto_1df
+    goto/16 :goto_c
 
     .line 435
-    .restart local v0    # "tag":I
-    :sswitch_1e
+    :sswitch_1
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readBool()Z
 
     move-result v1
@@ -1455,10 +1320,10 @@
     iput-boolean v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->boolean_:Z
 
     .line 436
-    goto/16 :goto_1df
+    goto/16 :goto_c
 
     .line 417
-    :sswitch_26
+    :sswitch_2
     const/16 v3, 0x5a
 
     invoke-static {p1, v3}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->getRepeatedFieldArrayLength(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;I)I
@@ -1469,20 +1334,18 @@
     .local v3, "arrayLength":I
     iget-object v4, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    if-nez v4, :cond_32
+    if-nez v4, :cond_0
 
     move v4, v2
 
-    goto :goto_35
+    goto :goto_1
 
-    :cond_32
-    iget-object v4, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
+    :cond_0
     array-length v4, v4
 
     .line 419
     .local v4, "i":I
-    :goto_35
+    :goto_1
     add-int v5, v4, v3
 
     new-array v5, v5, [Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -1491,30 +1354,26 @@
     .local v5, "newArray":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     iget-object v6, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    if-eqz v6, :cond_42
+    if-eqz v6, :cond_1
 
     .line 421
-    iget-object v6, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
     invoke-static {v6, v2, v5, v2, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
     .line 423
-    :cond_42
+    :cond_1
     iput-object v5, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 424
-    :goto_44
+    :goto_2
     iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    array-length v2, v2
+    array-length v6, v2
 
-    sub-int/2addr v2, v1
+    sub-int/2addr v6, v1
 
-    if-ge v4, v2, :cond_60
+    if-ge v4, v6, :cond_2
 
     .line 425
-    iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
     new-instance v6, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     invoke-direct {v6}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;-><init>()V
@@ -1534,17 +1393,15 @@
     .line 424
     add-int/lit8 v4, v4, 0x1
 
-    goto :goto_44
+    goto :goto_2
 
     .line 430
-    :cond_60
-    iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    :cond_2
+    new-instance v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    new-instance v2, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    invoke-direct {v1}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;-><init>()V
 
-    invoke-direct {v2}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;-><init>()V
-
-    aput-object v2, v1, v4
+    aput-object v1, v2, v4
 
     .line 431
     iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -1554,13 +1411,13 @@
     invoke-virtual {p1, v1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readMessage(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
 
     .line 432
-    goto/16 :goto_1df
+    goto/16 :goto_c
 
     .line 403
     .end local v3    # "arrayLength":I
     .end local v4    # "i":I
     .end local v5    # "newArray":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    :sswitch_72
+    :sswitch_3
     const/16 v3, 0x50
 
     invoke-static {p1, v3}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->getRepeatedFieldArrayLength(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;I)I
@@ -1571,68 +1428,62 @@
     .restart local v3    # "arrayLength":I
     iget-object v4, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
 
-    array-length v4, v4
+    array-length v5, v4
 
     .line 405
-    .restart local v4    # "i":I
-    add-int v5, v4, v3
+    .local v5, "i":I
+    add-int v6, v5, v3
 
-    new-array v5, v5, [I
+    new-array v6, v6, [I
 
     .line 406
-    .local v5, "newArray":[I
-    iget-object v6, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
-
-    invoke-static {v6, v2, v5, v2, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    .local v6, "newArray":[I
+    invoke-static {v4, v2, v6, v2, v5}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
     .line 407
-    iput-object v5, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
+    iput-object v6, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
 
     .line 408
-    :goto_86
+    :goto_3
     iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
 
-    array-length v2, v2
+    array-length v4, v2
 
-    sub-int/2addr v2, v1
+    sub-int/2addr v4, v1
 
-    if-ge v4, v2, :cond_9a
+    if-ge v5, v4, :cond_3
 
     .line 409
-    iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
-
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readInt32()I
 
-    move-result v6
+    move-result v4
 
-    aput v6, v2, v4
+    aput v4, v2, v5
 
     .line 410
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readTag()I
 
     .line 408
-    add-int/lit8 v4, v4, 0x1
+    add-int/lit8 v5, v5, 0x1
 
-    goto :goto_86
+    goto :goto_3
 
     .line 413
-    :cond_9a
-    iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
-
+    :cond_3
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readInt32()I
 
-    move-result v2
+    move-result v1
 
-    aput v2, v1, v4
+    aput v1, v2, v5
 
     .line 414
-    goto/16 :goto_1df
+    goto/16 :goto_c
 
     .line 399
     .end local v3    # "arrayLength":I
-    .end local v4    # "i":I
-    .end local v5    # "newArray":[I
-    :sswitch_a4
+    .end local v5    # "i":I
+    .end local v6    # "newArray":[I
+    :sswitch_4
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readBool()Z
 
     move-result v1
@@ -1640,10 +1491,10 @@
     iput-boolean v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->containsReferences:Z
 
     .line 400
-    goto/16 :goto_1df
+    goto/16 :goto_c
 
     .line 395
-    :sswitch_ac
+    :sswitch_5
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readInt64()J
 
     move-result-wide v1
@@ -1651,10 +1502,10 @@
     iput-wide v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->integer:J
 
     .line 396
-    goto/16 :goto_1df
+    goto/16 :goto_c
 
     .line 391
-    :sswitch_b4
+    :sswitch_6
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readString()Ljava/lang/String;
 
     move-result-object v1
@@ -1662,10 +1513,10 @@
     iput-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->functionId:Ljava/lang/String;
 
     .line 392
-    goto/16 :goto_1df
+    goto/16 :goto_c
 
     .line 387
-    :sswitch_bc
+    :sswitch_7
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readString()Ljava/lang/String;
 
     move-result-object v1
@@ -1673,10 +1524,10 @@
     iput-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->macroReference:Ljava/lang/String;
 
     .line 388
-    goto/16 :goto_1df
+    goto/16 :goto_c
 
     .line 369
-    :sswitch_c4
+    :sswitch_8
     const/16 v3, 0x2a
 
     invoke-static {p1, v3}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->getRepeatedFieldArrayLength(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;I)I
@@ -1687,20 +1538,18 @@
     .restart local v3    # "arrayLength":I
     iget-object v4, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    if-nez v4, :cond_d0
+    if-nez v4, :cond_4
 
     move v4, v2
 
-    goto :goto_d3
+    goto :goto_4
 
-    :cond_d0
-    iget-object v4, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
+    :cond_4
     array-length v4, v4
 
     .line 371
     .restart local v4    # "i":I
-    :goto_d3
+    :goto_4
     add-int v5, v4, v3
 
     new-array v5, v5, [Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -1709,30 +1558,26 @@
     .local v5, "newArray":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     iget-object v6, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    if-eqz v6, :cond_e0
+    if-eqz v6, :cond_5
 
     .line 373
-    iget-object v6, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
     invoke-static {v6, v2, v5, v2, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
     .line 375
-    :cond_e0
+    :cond_5
     iput-object v5, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 376
-    :goto_e2
+    :goto_5
     iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    array-length v2, v2
+    array-length v6, v2
 
-    sub-int/2addr v2, v1
+    sub-int/2addr v6, v1
 
-    if-ge v4, v2, :cond_fe
+    if-ge v4, v6, :cond_6
 
     .line 377
-    iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
     new-instance v6, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     invoke-direct {v6}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;-><init>()V
@@ -1752,17 +1597,15 @@
     .line 376
     add-int/lit8 v4, v4, 0x1
 
-    goto :goto_e2
+    goto :goto_5
 
     .line 382
-    :cond_fe
-    iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    :cond_6
+    new-instance v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    new-instance v2, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    invoke-direct {v1}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;-><init>()V
 
-    invoke-direct {v2}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;-><init>()V
-
-    aput-object v2, v1, v4
+    aput-object v1, v2, v4
 
     .line 383
     iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -1772,13 +1615,13 @@
     invoke-virtual {p1, v1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readMessage(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
 
     .line 384
-    goto/16 :goto_1df
+    goto/16 :goto_c
 
     .line 351
     .end local v3    # "arrayLength":I
     .end local v4    # "i":I
     .end local v5    # "newArray":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    :sswitch_110
+    :sswitch_9
     const/16 v3, 0x22
 
     invoke-static {p1, v3}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->getRepeatedFieldArrayLength(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;I)I
@@ -1789,20 +1632,18 @@
     .restart local v3    # "arrayLength":I
     iget-object v4, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    if-nez v4, :cond_11c
+    if-nez v4, :cond_7
 
     move v4, v2
 
-    goto :goto_11f
+    goto :goto_6
 
-    :cond_11c
-    iget-object v4, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
+    :cond_7
     array-length v4, v4
 
     .line 353
     .restart local v4    # "i":I
-    :goto_11f
+    :goto_6
     add-int v5, v4, v3
 
     new-array v5, v5, [Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -1811,30 +1652,26 @@
     .restart local v5    # "newArray":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     iget-object v6, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    if-eqz v6, :cond_12c
+    if-eqz v6, :cond_8
 
     .line 355
-    iget-object v6, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
     invoke-static {v6, v2, v5, v2, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
     .line 357
-    :cond_12c
+    :cond_8
     iput-object v5, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 358
-    :goto_12e
+    :goto_7
     iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    array-length v2, v2
+    array-length v6, v2
 
-    sub-int/2addr v2, v1
+    sub-int/2addr v6, v1
 
-    if-ge v4, v2, :cond_14a
+    if-ge v4, v6, :cond_9
 
     .line 359
-    iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
     new-instance v6, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     invoke-direct {v6}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;-><init>()V
@@ -1854,17 +1691,15 @@
     .line 358
     add-int/lit8 v4, v4, 0x1
 
-    goto :goto_12e
+    goto :goto_7
 
     .line 364
-    :cond_14a
-    iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    :cond_9
+    new-instance v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    new-instance v2, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    invoke-direct {v1}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;-><init>()V
 
-    invoke-direct {v2}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;-><init>()V
-
-    aput-object v2, v1, v4
+    aput-object v1, v2, v4
 
     .line 365
     iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -1874,13 +1709,13 @@
     invoke-virtual {p1, v1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readMessage(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
 
     .line 366
-    goto/16 :goto_1df
+    goto/16 :goto_c
 
     .line 333
     .end local v3    # "arrayLength":I
     .end local v4    # "i":I
     .end local v5    # "newArray":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    :sswitch_15c
+    :sswitch_a
     const/16 v3, 0x1a
 
     invoke-static {p1, v3}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->getRepeatedFieldArrayLength(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;I)I
@@ -1891,20 +1726,18 @@
     .restart local v3    # "arrayLength":I
     iget-object v4, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    if-nez v4, :cond_168
+    if-nez v4, :cond_a
 
     move v4, v2
 
-    goto :goto_16b
+    goto :goto_8
 
-    :cond_168
-    iget-object v4, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
+    :cond_a
     array-length v4, v4
 
     .line 335
     .restart local v4    # "i":I
-    :goto_16b
+    :goto_8
     add-int v5, v4, v3
 
     new-array v5, v5, [Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -1913,30 +1746,26 @@
     .restart local v5    # "newArray":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     iget-object v6, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    if-eqz v6, :cond_178
+    if-eqz v6, :cond_b
 
     .line 337
-    iget-object v6, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
     invoke-static {v6, v2, v5, v2, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
     .line 339
-    :cond_178
+    :cond_b
     iput-object v5, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 340
-    :goto_17a
+    :goto_9
     iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    array-length v2, v2
+    array-length v6, v2
 
-    sub-int/2addr v2, v1
+    sub-int/2addr v6, v1
 
-    if-ge v4, v2, :cond_196
+    if-ge v4, v6, :cond_c
 
     .line 341
-    iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
     new-instance v6, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     invoke-direct {v6}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;-><init>()V
@@ -1956,17 +1785,15 @@
     .line 340
     add-int/lit8 v4, v4, 0x1
 
-    goto :goto_17a
+    goto :goto_9
 
     .line 346
-    :cond_196
-    iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    :cond_c
+    new-instance v1, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    new-instance v2, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    invoke-direct {v1}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;-><init>()V
 
-    invoke-direct {v2}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;-><init>()V
-
-    aput-object v2, v1, v4
+    aput-object v1, v2, v4
 
     .line 347
     iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -1976,13 +1803,13 @@
     invoke-virtual {p1, v1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readMessage(Lcom/google/tagmanager/protobuf/nano/MessageNano;)V
 
     .line 348
-    goto :goto_1df
+    goto :goto_c
 
     .line 329
     .end local v3    # "arrayLength":I
     .end local v4    # "i":I
     .end local v5    # "newArray":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    :sswitch_1a7
+    :sswitch_b
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readString()Ljava/lang/String;
 
     move-result-object v1
@@ -1990,114 +1817,114 @@
     iput-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->string:Ljava/lang/String;
 
     .line 330
-    goto :goto_1df
+    goto :goto_c
 
     .line 312
-    :sswitch_1ae
+    :sswitch_c
     invoke-virtual {p1}, Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;->readInt32()I
 
     move-result v2
 
     .line 313
     .local v2, "temp":I
-    if-eq v2, v1, :cond_1d2
+    if-eq v2, v1, :cond_e
 
     const/4 v3, 0x2
 
-    if-eq v2, v3, :cond_1d2
+    if-eq v2, v3, :cond_e
 
     const/4 v3, 0x3
 
-    if-eq v2, v3, :cond_1d2
+    if-eq v2, v3, :cond_e
 
     const/4 v3, 0x4
 
-    if-eq v2, v3, :cond_1d2
+    if-eq v2, v3, :cond_e
 
     const/4 v3, 0x5
 
-    if-eq v2, v3, :cond_1d2
+    if-eq v2, v3, :cond_e
 
     const/4 v3, 0x6
 
-    if-eq v2, v3, :cond_1d2
+    if-eq v2, v3, :cond_e
 
     const/4 v3, 0x7
 
-    if-eq v2, v3, :cond_1d2
+    if-eq v2, v3, :cond_e
 
     const/16 v3, 0x8
 
-    if-eq v2, v3, :cond_1d2
+    if-eq v2, v3, :cond_e
 
     const/16 v3, 0x9
 
-    if-ne v2, v3, :cond_1cf
+    if-ne v2, v3, :cond_d
 
-    goto :goto_1d2
+    goto :goto_a
 
     .line 324
-    :cond_1cf
+    :cond_d
     iput v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->type:I
 
     .line 326
-    goto :goto_1df
+    goto :goto_c
 
     .line 322
-    :cond_1d2
-    :goto_1d2
+    :cond_e
+    :goto_a
     iput v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->type:I
 
-    goto :goto_1df
+    goto :goto_c
 
     .line 299
     .end local v2    # "temp":I
-    :sswitch_1d5
+    :sswitch_d
     return-object p0
 
     .line 305
-    :cond_1d6
-    :goto_1d6
+    :cond_f
+    :goto_b
     iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->unknownFieldData:Ljava/util/List;
 
     invoke-static {v1, p1, v0}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->storeUnknownField(Ljava/util/List;Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;I)Z
 
     move-result v1
 
-    if-nez v1, :cond_1df
+    if-nez v1, :cond_10
 
     .line 307
     return-object p0
 
     .line 443
     .end local v0    # "tag":I
-    :cond_1df
-    :goto_1df
+    :cond_10
+    :goto_c
     goto/16 :goto_0
 
     nop
 
-    :sswitch_data_1e2
+    :sswitch_data_0
     .sparse-switch
-        0x0 -> :sswitch_1d5
-        0x8 -> :sswitch_1ae
-        0x12 -> :sswitch_1a7
-        0x1a -> :sswitch_15c
-        0x22 -> :sswitch_110
-        0x2a -> :sswitch_c4
-        0x32 -> :sswitch_bc
-        0x3a -> :sswitch_b4
-        0x40 -> :sswitch_ac
-        0x48 -> :sswitch_a4
-        0x50 -> :sswitch_72
-        0x5a -> :sswitch_26
-        0x60 -> :sswitch_1e
-        0x6a -> :sswitch_16
+        0x0 -> :sswitch_d
+        0x8 -> :sswitch_c
+        0x12 -> :sswitch_b
+        0x1a -> :sswitch_a
+        0x22 -> :sswitch_9
+        0x2a -> :sswitch_8
+        0x32 -> :sswitch_7
+        0x3a -> :sswitch_6
+        0x40 -> :sswitch_5
+        0x48 -> :sswitch_4
+        0x50 -> :sswitch_3
+        0x5a -> :sswitch_2
+        0x60 -> :sswitch_1
+        0x6a -> :sswitch_0
     .end sparse-switch
 .end method
 
 .method public bridge synthetic mergeFrom(Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;)Lcom/google/tagmanager/protobuf/nano/MessageNano;
-    .registers 3
+    .locals 1
     .param p1, "x0"    # Lcom/google/tagmanager/protobuf/nano/CodedInputByteBufferNano;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -2114,7 +1941,7 @@
 .end method
 
 .method public writeTo(Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;)V
-    .registers 8
+    .locals 6
     .param p1, "output"    # Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -2138,22 +1965,20 @@
 
     move-result v0
 
-    if-nez v0, :cond_16
+    if-nez v0, :cond_0
 
     .line 171
     const/4 v0, 0x2
 
-    iget-object v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->string:Ljava/lang/String;
+    iget-object v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->string:Ljava/lang/String;
 
-    invoke-virtual {p1, v0, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeString(ILjava/lang/String;)V
+    invoke-virtual {p1, v0, v2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeString(ILjava/lang/String;)V
 
     .line 173
-    :cond_16
+    :cond_0
     iget-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    const/4 v1, 0x0
-
-    if-eqz v0, :cond_2a
+    if-eqz v0, :cond_1
 
     .line 174
     iget-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->listItem:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -2162,11 +1987,11 @@
     array-length v2, v0
 
     .local v2, "len$":I
-    move v3, v1
+    const/4 v3, 0x0
 
     .local v3, "i$":I
-    :goto_1f
-    if-ge v3, v2, :cond_2a
+    :goto_0
+    if-ge v3, v2, :cond_1
 
     aget-object v4, v0, v3
 
@@ -2180,16 +2005,16 @@
     .end local v4    # "element":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     add-int/lit8 v3, v3, 0x1
 
-    goto :goto_1f
+    goto :goto_0
 
     .line 178
     .end local v0    # "arr$":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .end local v2    # "len$":I
     .end local v3    # "i$":I
-    :cond_2a
+    :cond_1
     iget-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    if-eqz v0, :cond_3d
+    if-eqz v0, :cond_2
 
     .line 179
     iget-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapKey:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -2198,11 +2023,11 @@
     array-length v2, v0
 
     .restart local v2    # "len$":I
-    move v3, v1
+    const/4 v3, 0x0
 
     .restart local v3    # "i$":I
-    :goto_32
-    if-ge v3, v2, :cond_3d
+    :goto_1
+    if-ge v3, v2, :cond_2
 
     aget-object v4, v0, v3
 
@@ -2216,16 +2041,16 @@
     .end local v4    # "element":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     add-int/lit8 v3, v3, 0x1
 
-    goto :goto_32
+    goto :goto_1
 
     .line 183
     .end local v0    # "arr$":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .end local v2    # "len$":I
     .end local v3    # "i$":I
-    :cond_3d
+    :cond_2
     iget-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    if-eqz v0, :cond_50
+    if-eqz v0, :cond_3
 
     .line 184
     iget-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->mapValue:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -2234,11 +2059,11 @@
     array-length v2, v0
 
     .restart local v2    # "len$":I
-    move v3, v1
+    const/4 v3, 0x0
 
     .restart local v3    # "i$":I
-    :goto_45
-    if-ge v3, v2, :cond_50
+    :goto_2
+    if-ge v3, v2, :cond_3
 
     aget-object v4, v0, v3
 
@@ -2252,22 +2077,20 @@
     .end local v4    # "element":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     add-int/lit8 v3, v3, 0x1
 
-    goto :goto_45
+    goto :goto_2
 
     .line 188
     .end local v0    # "arr$":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .end local v2    # "len$":I
     .end local v3    # "i$":I
-    :cond_50
+    :cond_3
     iget-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->macroReference:Ljava/lang/String;
 
-    const-string v2, ""
-
-    invoke-virtual {v0, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v0
 
-    if-nez v0, :cond_60
+    if-nez v0, :cond_4
 
     .line 189
     const/4 v0, 0x6
@@ -2277,16 +2100,14 @@
     invoke-virtual {p1, v0, v2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeString(ILjava/lang/String;)V
 
     .line 191
-    :cond_60
+    :cond_4
     iget-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->functionId:Ljava/lang/String;
 
-    const-string v2, ""
-
-    invoke-virtual {v0, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v0
 
-    if-nez v0, :cond_70
+    if-nez v0, :cond_5
 
     .line 192
     const/4 v0, 0x7
@@ -2296,46 +2117,40 @@
     invoke-virtual {p1, v0, v2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeString(ILjava/lang/String;)V
 
     .line 194
-    :cond_70
+    :cond_5
     iget-wide v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->integer:J
 
     const-wide/16 v4, 0x0
 
     cmp-long v0, v2, v4
 
-    if-eqz v0, :cond_7f
+    if-eqz v0, :cond_6
 
     .line 195
     const/16 v0, 0x8
 
-    iget-wide v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->integer:J
-
     invoke-virtual {p1, v0, v2, v3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeInt64(IJ)V
 
     .line 197
-    :cond_7f
+    :cond_6
     iget-boolean v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->containsReferences:Z
 
-    if-eqz v0, :cond_8a
+    if-eqz v0, :cond_7
 
     .line 198
-    const/16 v0, 0x9
+    const/16 v2, 0x9
 
-    iget-boolean v2, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->containsReferences:Z
-
-    invoke-virtual {p1, v0, v2}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeBool(IZ)V
+    invoke-virtual {p1, v2, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeBool(IZ)V
 
     .line 200
-    :cond_8a
+    :cond_7
     iget-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
 
-    if-eqz v0, :cond_a3
-
-    iget-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
+    if-eqz v0, :cond_8
 
     array-length v0, v0
 
-    if-lez v0, :cond_a3
+    if-lez v0, :cond_8
 
     .line 201
     iget-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->escaping:[I
@@ -2344,11 +2159,11 @@
     array-length v2, v0
 
     .restart local v2    # "len$":I
-    move v3, v1
+    const/4 v3, 0x0
 
     .restart local v3    # "i$":I
-    :goto_97
-    if-ge v3, v2, :cond_a3
+    :goto_3
+    if-ge v3, v2, :cond_8
 
     aget v4, v0, v3
 
@@ -2362,16 +2177,16 @@
     .end local v4    # "element":I
     add-int/lit8 v3, v3, 0x1
 
-    goto :goto_97
+    goto :goto_3
 
     .line 205
     .end local v0    # "arr$":[I
     .end local v2    # "len$":I
     .end local v3    # "i$":I
-    :cond_a3
+    :cond_8
     iget-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    if-eqz v0, :cond_b6
+    if-eqz v0, :cond_9
 
     .line 206
     iget-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->templateToken:[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -2379,52 +2194,50 @@
     .local v0, "arr$":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     array-length v2, v0
 
-    .local v1, "i$":I
     .restart local v2    # "len$":I
-    :goto_aa
-    if-ge v1, v2, :cond_b6
+    const/4 v3, 0x0
 
-    aget-object v3, v0, v1
+    .restart local v3    # "i$":I
+    :goto_4
+    if-ge v3, v2, :cond_9
+
+    aget-object v4, v0, v3
 
     .line 207
-    .local v3, "element":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    const/16 v4, 0xb
+    .local v4, "element":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    const/16 v5, 0xb
 
-    invoke-virtual {p1, v4, v3}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeMessage(ILcom/google/tagmanager/protobuf/nano/MessageNano;)V
+    invoke-virtual {p1, v5, v4}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeMessage(ILcom/google/tagmanager/protobuf/nano/MessageNano;)V
 
     .line 206
-    .end local v3    # "element":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    add-int/lit8 v1, v1, 0x1
+    .end local v4    # "element":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    add-int/lit8 v3, v3, 0x1
 
-    goto :goto_aa
+    goto :goto_4
 
     .line 210
     .end local v0    # "arr$":[Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .end local v1    # "i$":I
     .end local v2    # "len$":I
-    :cond_b6
+    .end local v3    # "i$":I
+    :cond_9
     iget-boolean v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->boolean_:Z
 
-    if-eqz v0, :cond_c1
+    if-eqz v0, :cond_a
 
     .line 211
-    const/16 v0, 0xc
+    const/16 v2, 0xc
 
-    iget-boolean v1, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->boolean_:Z
-
-    invoke-virtual {p1, v0, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeBool(IZ)V
+    invoke-virtual {p1, v2, v0}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeBool(IZ)V
 
     .line 213
-    :cond_c1
+    :cond_a
     iget-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->tagReference:Ljava/lang/String;
-
-    const-string v1, ""
 
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v0
 
-    if-nez v0, :cond_d2
+    if-nez v0, :cond_b
 
     .line 214
     const/16 v0, 0xd
@@ -2434,7 +2247,7 @@
     invoke-virtual {p1, v0, v1}, Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;->writeString(ILjava/lang/String;)V
 
     .line 216
-    :cond_d2
+    :cond_b
     iget-object v0, p0, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->unknownFieldData:Ljava/util/List;
 
     invoke-static {v0, p1}, Lcom/google/tagmanager/protobuf/nano/WireFormatNano;->writeUnknownFields(Ljava/util/List;Lcom/google/tagmanager/protobuf/nano/CodedOutputByteBufferNano;)V

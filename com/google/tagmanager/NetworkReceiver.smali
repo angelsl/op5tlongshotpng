@@ -16,7 +16,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 25
     const-class v0, Lcom/google/tagmanager/NetworkReceiver;
@@ -31,7 +31,7 @@
 .end method
 
 .method constructor <init>(Lcom/google/tagmanager/ServiceManager;)V
-    .registers 2
+    .locals 0
     .param p1, "manager"    # Lcom/google/tagmanager/ServiceManager;
 
     .line 29
@@ -45,7 +45,7 @@
 .end method
 
 .method public static sendRadioPoweredBroadcast(Landroid/content/Context;)V
-    .registers 4
+    .locals 3
     .param p0, "context"    # Landroid/content/Context;
 
     .line 70
@@ -80,7 +80,7 @@
 
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .registers 8
+    .locals 5
     .param p1, "ctx"    # Landroid/content/Context;
     .param p2, "intent"    # Landroid/content/Intent;
 
@@ -97,7 +97,7 @@
 
     move-result v1
 
-    if-eqz v1, :cond_2e
+    if-eqz v1, :cond_1
 
     .line 37
     invoke-virtual {p2}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
@@ -110,7 +110,7 @@
 
     .line 39
     .local v2, "notConnected":Ljava/lang/Boolean;
-    if-eqz v1, :cond_22
+    if-eqz v1, :cond_0
 
     .line 40
     invoke-virtual {p2}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
@@ -128,7 +128,7 @@
     move-result-object v2
 
     .line 42
-    :cond_22
+    :cond_0
     iget-object v3, p0, Lcom/google/tagmanager/NetworkReceiver;->mManager:Lcom/google/tagmanager/ServiceManager;
 
     invoke-virtual {v2}, Ljava/lang/Boolean;->booleanValue()Z
@@ -139,19 +139,19 @@
 
     invoke-virtual {v3, v4}, Lcom/google/tagmanager/ServiceManager;->updateConnectivityStatus(Z)V
 
-    .line 43
     .end local v1    # "b":Landroid/os/Bundle;
     .end local v2    # "notConnected":Ljava/lang/Boolean;
-    goto :goto_43
+    goto :goto_0
 
-    :cond_2e
+    .line 43
+    :cond_1
     const-string v1, "com.google.analytics.RADIO_POWERED"
 
     invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
-    if-eqz v1, :cond_43
+    if-eqz v1, :cond_2
 
     sget-object v1, Lcom/google/tagmanager/NetworkReceiver;->SELF_IDENTIFYING_EXTRA:Ljava/lang/String;
 
@@ -159,21 +159,27 @@
 
     move-result v1
 
-    if-nez v1, :cond_43
+    if-nez v1, :cond_2
 
     .line 45
     iget-object v1, p0, Lcom/google/tagmanager/NetworkReceiver;->mManager:Lcom/google/tagmanager/ServiceManager;
 
     invoke-virtual {v1}, Lcom/google/tagmanager/ServiceManager;->onRadioPowered()V
 
+    goto :goto_1
+
+    .line 43
+    :cond_2
+    :goto_0
+    nop
+
     .line 47
-    :cond_43
-    :goto_43
+    :goto_1
     return-void
 .end method
 
 .method public register(Landroid/content/Context;)V
-    .registers 5
+    .locals 3
     .param p1, "context"    # Landroid/content/Context;
 
     .line 53

@@ -25,7 +25,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 23
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->FUNCTION_CALL:Lcom/google/analytics/containertag/common/FunctionType;
@@ -58,7 +58,7 @@
 .end method
 
 .method public constructor <init>(Lcom/google/tagmanager/CustomFunctionCall$CustomEvaluator;)V
-    .registers 6
+    .locals 4
     .param p1, "functionCallEvaluator"    # Lcom/google/tagmanager/CustomFunctionCall$CustomEvaluator;
 
     .line 42
@@ -84,7 +84,7 @@
 .end method
 
 .method public static getAdditionalParamsKey()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 38
     sget-object v0, Lcom/google/tagmanager/CustomFunctionCall;->ADDITIONAL_PARAMS:Ljava/lang/String;
@@ -93,7 +93,7 @@
 .end method
 
 .method public static getFunctionCallNameKey()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 34
     sget-object v0, Lcom/google/tagmanager/CustomFunctionCall;->FUNCTION_CALL_NAME:Ljava/lang/String;
@@ -102,7 +102,7 @@
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 30
     sget-object v0, Lcom/google/tagmanager/CustomFunctionCall;->ID:Ljava/lang/String;
@@ -113,7 +113,7 @@
 
 # virtual methods
 .method public evaluate(Ljava/util/Map;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 11
+    .locals 9
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -157,7 +157,7 @@
 
     .line 54
     .local v2, "additionalParamsValue":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-eqz v2, :cond_54
+    if-eqz v2, :cond_1
 
     .line 55
     invoke-static {v2}, Lcom/google/tagmanager/Types;->valueToObject(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/Object;
@@ -168,7 +168,7 @@
     .local v3, "additionalParamsObject":Ljava/lang/Object;
     instance-of v4, v3, Ljava/util/Map;
 
-    if-nez v4, :cond_2d
+    if-nez v4, :cond_0
 
     .line 57
     const-string v4, "FunctionCallMacro: expected ADDITIONAL_PARAMS to be a map."
@@ -183,7 +183,7 @@
     return-object v4
 
     .line 61
-    :cond_2d
+    :cond_0
     move-object v4, v3
 
     check-cast v4, Ljava/util/Map;
@@ -199,12 +199,12 @@
     move-result-object v5
 
     .local v5, "i$":Ljava/util/Iterator;
-    :goto_38
+    :goto_0
     invoke-interface {v5}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v6
 
-    if-eqz v6, :cond_54
+    if-eqz v6, :cond_1
 
     invoke-interface {v5}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -230,14 +230,14 @@
 
     .line 64
     .end local v6    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/Object;Ljava/lang/Object;>;"
-    goto :goto_38
+    goto :goto_0
 
     .line 67
     .end local v3    # "additionalParamsObject":Ljava/lang/Object;
     .end local v4    # "additionalParams":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Object;Ljava/lang/Object;>;"
     .end local v5    # "i$":Ljava/util/Iterator;
-    :cond_54
-    :try_start_54
+    :cond_1
+    :try_start_0
     iget-object v3, p0, Lcom/google/tagmanager/CustomFunctionCall;->mFunctionCallEvaluator:Lcom/google/tagmanager/CustomFunctionCall$CustomEvaluator;
 
     invoke-interface {v3, v0, v1}, Lcom/google/tagmanager/CustomFunctionCall$CustomEvaluator;->evaluate(Ljava/lang/String;Ljava/util/Map;)Ljava/lang/Object;
@@ -247,13 +247,13 @@
     invoke-static {v3}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     move-result-object v3
-    :try_end_5e
-    .catch Ljava/lang/Exception; {:try_start_54 .. :try_end_5e} :catch_5f
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
     return-object v3
 
     .line 69
-    :catch_5f
+    :catch_0
     move-exception v3
 
     .line 70
@@ -294,7 +294,7 @@
 .end method
 
 .method public isCacheable()Z
-    .registers 2
+    .locals 1
 
     .line 47
     const/4 v0, 0x0

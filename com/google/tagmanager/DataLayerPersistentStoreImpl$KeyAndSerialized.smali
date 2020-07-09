@@ -22,7 +22,7 @@
 
 # direct methods
 .method constructor <init>(Ljava/lang/String;[B)V
-    .registers 3
+    .locals 0
     .param p1, "key"    # Ljava/lang/String;
     .param p2, "serialized"    # [B
 
@@ -42,7 +42,7 @@
 
 # virtual methods
 .method public toString()Ljava/lang/String;
-    .registers 3
+    .locals 2
 
     .line 524
     new-instance v0, Ljava/lang/StringBuilder;

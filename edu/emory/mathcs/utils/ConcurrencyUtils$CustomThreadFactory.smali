@@ -27,7 +27,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 291
     invoke-static {}, Ljava/util/concurrent/Executors;->defaultThreadFactory()Ljava/util/concurrent/ThreadFactory;
@@ -40,7 +40,7 @@
 .end method
 
 .method constructor <init>(Ljava/lang/Thread$UncaughtExceptionHandler;)V
-    .registers 2
+    .locals 0
     .param p1, "handler"    # Ljava/lang/Thread$UncaughtExceptionHandler;
 
     .line 295
@@ -56,7 +56,7 @@
 
 # virtual methods
 .method public newThread(Ljava/lang/Runnable;)Ljava/lang/Thread;
-    .registers 4
+    .locals 2
     .param p1, "r"    # Ljava/lang/Runnable;
 
     .line 300

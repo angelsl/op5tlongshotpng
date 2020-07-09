@@ -29,7 +29,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/LRUCache;ILcom/google/tagmanager/CacheFactory$CacheSizeManager;)V
-    .registers 4
+    .locals 0
     .param p2, "x0"    # I
 
     .line 26
@@ -46,7 +46,7 @@
 
 # virtual methods
 .method protected sizeOf(Ljava/lang/Object;Ljava/lang/Object;)I
-    .registers 4
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(TK;TV;)I"

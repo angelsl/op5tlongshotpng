@@ -5,7 +5,7 @@
 
 # direct methods
 .method public constructor <init>()V
-    .registers 2
+    .locals 1
 
     .line 21
     const-string v0, "CampaignIntentService"
@@ -17,7 +17,7 @@
 .end method
 
 .method public constructor <init>(Ljava/lang/String;)V
-    .registers 2
+    .locals 0
     .param p1, "name"    # Ljava/lang/String;
 
     .line 17
@@ -30,7 +30,7 @@
 
 # virtual methods
 .method public onHandleIntent(Landroid/content/Intent;)V
-    .registers 2
+    .locals 0
     .param p1, "intent"    # Landroid/content/Intent;
 
     .line 27
@@ -41,7 +41,7 @@
 .end method
 
 .method public processIntent(Landroid/content/Context;Landroid/content/Intent;)V
-    .registers 6
+    .locals 3
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "intent"    # Landroid/content/Intent;
 
@@ -54,7 +54,7 @@
 
     .line 36
     .local v0, "campaign":Ljava/lang/String;
-    :try_start_6
+    :try_start_0
     const-string v1, "gaInstallData"
 
     const/4 v2, 0x0
@@ -73,15 +73,15 @@
 
     .line 38
     invoke-virtual {v1}, Ljava/io/OutputStream;->close()V
-    :try_end_17
-    .catch Ljava/io/IOException; {:try_start_6 .. :try_end_17} :catch_18
+    :try_end_0
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 41
     .end local v1    # "output":Ljava/io/OutputStream;
-    goto :goto_1e
+    goto :goto_0
 
     .line 39
-    :catch_18
+    :catch_0
     move-exception v1
 
     .line 40
@@ -92,6 +92,6 @@
 
     .line 42
     .end local v1    # "e":Ljava/io/IOException;
-    :goto_1e
+    :goto_0
     return-void
 .end method

@@ -8,7 +8,7 @@
 
 # direct methods
 .method constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 7
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -19,7 +19,7 @@
 
 # virtual methods
 .method public createDataLayerEventEvaluationEventInfo(Ljava/lang/String;)Lcom/google/tagmanager/EventInfoBuilder;
-    .registers 3
+    .locals 1
     .param p1, "event"    # Ljava/lang/String;
 
     .line 16
@@ -31,7 +31,7 @@
 .end method
 
 .method public createMacroEvalutionEventInfo(Ljava/lang/String;)Lcom/google/tagmanager/EventInfoBuilder;
-    .registers 3
+    .locals 1
     .param p1, "key"    # Ljava/lang/String;
 
     .line 11
@@ -43,7 +43,7 @@
 .end method
 
 .method public debugMode()Z
-    .registers 2
+    .locals 1
 
     .line 21
     const/4 v0, 0x0

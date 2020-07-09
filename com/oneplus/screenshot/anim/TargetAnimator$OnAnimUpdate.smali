@@ -25,7 +25,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/anim/TargetAnimator;F)V
-    .registers 3
+    .locals 0
     .param p2, "value"    # F
 
     .line 180
@@ -48,7 +48,7 @@
 
 # virtual methods
 .method public run(Landroid/view/View;Ljava/util/Map$Entry;)V
-    .registers 8
+    .locals 5
     .param p1, "target"    # Landroid/view/View;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -75,7 +75,7 @@
 
     .line 188
     .local v1, "interpolator":Landroid/view/animation/Interpolator;
-    if-eqz v1, :cond_e
+    if-eqz v1, :cond_0
 
     .line 189
     invoke-interface {v1, v0}, Landroid/view/animation/Interpolator;->getInterpolation(F)F
@@ -83,7 +83,7 @@
     move-result v0
 
     .line 195
-    :cond_e
+    :cond_0
     iget-object v2, p0, Lcom/oneplus/screenshot/anim/TargetAnimator$OnAnimUpdate;->this$0:Lcom/oneplus/screenshot/anim/TargetAnimator;
 
     invoke-interface {p2}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;

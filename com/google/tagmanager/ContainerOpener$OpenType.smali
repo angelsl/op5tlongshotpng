@@ -32,27 +32,27 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 4
+    .locals 4
 
     .line 57
     new-instance v0, Lcom/google/tagmanager/ContainerOpener$OpenType;
 
-    const-string v1, "PREFER_NON_DEFAULT"
+    const/4 v1, 0x0
 
-    const/4 v2, 0x0
+    const-string v2, "PREFER_NON_DEFAULT"
 
-    invoke-direct {v0, v1, v2}, Lcom/google/tagmanager/ContainerOpener$OpenType;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v2, v1}, Lcom/google/tagmanager/ContainerOpener$OpenType;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/tagmanager/ContainerOpener$OpenType;->PREFER_NON_DEFAULT:Lcom/google/tagmanager/ContainerOpener$OpenType;
 
     .line 62
     new-instance v0, Lcom/google/tagmanager/ContainerOpener$OpenType;
 
-    const-string v1, "PREFER_FRESH"
+    const/4 v2, 0x1
 
-    const/4 v3, 0x1
+    const-string v3, "PREFER_FRESH"
 
-    invoke-direct {v0, v1, v3}, Lcom/google/tagmanager/ContainerOpener$OpenType;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v3, v2}, Lcom/google/tagmanager/ContainerOpener$OpenType;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/tagmanager/ContainerOpener$OpenType;->PREFER_FRESH:Lcom/google/tagmanager/ContainerOpener$OpenType;
 
@@ -61,13 +61,13 @@
 
     new-array v0, v0, [Lcom/google/tagmanager/ContainerOpener$OpenType;
 
-    sget-object v1, Lcom/google/tagmanager/ContainerOpener$OpenType;->PREFER_NON_DEFAULT:Lcom/google/tagmanager/ContainerOpener$OpenType;
+    sget-object v3, Lcom/google/tagmanager/ContainerOpener$OpenType;->PREFER_NON_DEFAULT:Lcom/google/tagmanager/ContainerOpener$OpenType;
 
-    aput-object v1, v0, v2
+    aput-object v3, v0, v1
 
     sget-object v1, Lcom/google/tagmanager/ContainerOpener$OpenType;->PREFER_FRESH:Lcom/google/tagmanager/ContainerOpener$OpenType;
 
-    aput-object v1, v0, v3
+    aput-object v1, v0, v2
 
     sput-object v0, Lcom/google/tagmanager/ContainerOpener$OpenType;->$VALUES:[Lcom/google/tagmanager/ContainerOpener$OpenType;
 
@@ -75,7 +75,7 @@
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V
-    .registers 3
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
@@ -89,7 +89,7 @@
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Lcom/google/tagmanager/ContainerOpener$OpenType;
-    .registers 2
+    .locals 1
     .param p0, "name"    # Ljava/lang/String;
 
     .line 51
@@ -105,7 +105,7 @@
 .end method
 
 .method public static values()[Lcom/google/tagmanager/ContainerOpener$OpenType;
-    .registers 1
+    .locals 1
 
     .line 51
     sget-object v0, Lcom/google/tagmanager/ContainerOpener$OpenType;->$VALUES:[Lcom/google/tagmanager/ContainerOpener$OpenType;

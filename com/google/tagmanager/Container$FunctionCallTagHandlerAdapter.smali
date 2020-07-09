@@ -23,7 +23,7 @@
 
 # direct methods
 .method private constructor <init>(Lcom/google/tagmanager/Container;)V
-    .registers 2
+    .locals 0
 
     .line 118
     iput-object p1, p0, Lcom/google/tagmanager/Container$FunctionCallTagHandlerAdapter;->this$0:Lcom/google/tagmanager/Container;
@@ -34,7 +34,7 @@
 .end method
 
 .method synthetic constructor <init>(Lcom/google/tagmanager/Container;Lcom/google/tagmanager/Container$1;)V
-    .registers 3
+    .locals 0
     .param p1, "x0"    # Lcom/google/tagmanager/Container;
     .param p2, "x1"    # Lcom/google/tagmanager/Container$1;
 
@@ -47,7 +47,7 @@
 
 # virtual methods
 .method public evaluate(Ljava/lang/String;Ljava/util/Map;)Ljava/lang/Object;
-    .registers 5
+    .locals 2
     .param p1, "key"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
         value = {

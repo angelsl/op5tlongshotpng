@@ -19,7 +19,7 @@
 
 # direct methods
 .method public constructor <init>(Landroid/os/Handler;)V
-    .registers 3
+    .locals 1
     .param p1, "handler"    # Landroid/os/Handler;
 
     .line 14
@@ -40,19 +40,19 @@
 
 # virtual methods
 .method public clear()V
-    .registers 4
+    .locals 3
 
     .line 23
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/cache/RunnableCache;->iterator()Ljava/util/Iterator;
 
     move-result-object v0
 
-    :goto_4
+    :goto_0
     invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v1
 
-    if-eqz v1, :cond_16
+    if-eqz v1, :cond_0
 
     invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -68,10 +68,10 @@
 
     .line 25
     .end local v1    # "r":Ljava/lang/Runnable;
-    goto :goto_4
+    goto :goto_0
 
     .line 26
-    :cond_16
+    :cond_0
     invoke-super {p0}, Ljava/util/ArrayList;->clear()V
 
     .line 27
@@ -79,7 +79,7 @@
 .end method
 
 .method public postDelayed(Ljava/lang/Runnable;J)V
-    .registers 5
+    .locals 1
     .param p1, "r"    # Ljava/lang/Runnable;
     .param p2, "delayMillis"    # J
 

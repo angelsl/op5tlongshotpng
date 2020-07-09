@@ -33,7 +33,7 @@
 
 # direct methods
 .method public constructor <init>()V
-    .registers 2
+    .locals 1
 
     .line 17
     invoke-direct {p0}, Landroid/os/Binder;-><init>()V
@@ -48,11 +48,11 @@
 .end method
 
 .method public static asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/analytics/internal/IAnalyticsService;
-    .registers 3
+    .locals 2
     .param p0, "obj"    # Landroid/os/IBinder;
 
     .line 26
-    if-nez p0, :cond_4
+    if-nez p0, :cond_0
 
     .line 27
     const/4 v0, 0x0
@@ -60,7 +60,7 @@
     return-object v0
 
     .line 29
-    :cond_4
+    :cond_0
     const-string v0, "com.google.android.gms.analytics.internal.IAnalyticsService"
 
     invoke-interface {p0, v0}, Landroid/os/IBinder;->queryLocalInterface(Ljava/lang/String;)Landroid/os/IInterface;
@@ -69,11 +69,11 @@
 
     .line 30
     .local v0, "iin":Landroid/os/IInterface;
-    if-eqz v0, :cond_14
+    if-eqz v0, :cond_1
 
     instance-of v1, v0, Lcom/google/android/gms/analytics/internal/IAnalyticsService;
 
-    if-eqz v1, :cond_14
+    if-eqz v1, :cond_1
 
     .line 31
     move-object v1, v0
@@ -83,7 +83,7 @@
     return-object v1
 
     .line 33
-    :cond_14
+    :cond_1
     new-instance v1, Lcom/google/android/gms/analytics/internal/IAnalyticsService$Stub$Proxy;
 
     invoke-direct {v1, p0}, Lcom/google/android/gms/analytics/internal/IAnalyticsService$Stub$Proxy;-><init>(Landroid/os/IBinder;)V
@@ -94,14 +94,14 @@
 
 # virtual methods
 .method public asBinder()Landroid/os/IBinder;
-    .registers 1
+    .locals 0
 
     .line 37
     return-object p0
 .end method
 
 .method public onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-    .registers 20
+    .locals 16
     .param p1, "code"    # I
     .param p2, "data"    # Landroid/os/Parcel;
     .param p3, "reply"    # Landroid/os/Parcel;
@@ -112,18 +112,24 @@
         }
     .end annotation
 
+    .line 41
     move/from16 v0, p1
 
     move-object/from16 v1, p2
 
-    .line 41
-    const v2, 0x5f4e5446
+    const-string v2, "com.google.android.gms.analytics.internal.IAnalyticsService"
 
     const/4 v3, 0x1
 
-    if-eq v0, v2, :cond_49
+    if-eq v0, v3, :cond_2
 
-    packed-switch v0, :pswitch_data_52
+    const/4 v4, 0x2
+
+    if-eq v0, v4, :cond_1
+
+    const v4, 0x5f4e5446
+
+    if-eq v0, v4, :cond_0
 
     .line 72
     invoke-super/range {p0 .. p4}, Landroid/os/Binder;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
@@ -132,14 +138,23 @@
 
     return v2
 
+    .line 45
+    :cond_0
+    move-object/from16 v4, p3
+
+    invoke-virtual {v4, v2}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+
+    .line 46
+    return v3
+
     .line 66
-    :pswitch_12
-    const-string v2, "com.google.android.gms.analytics.internal.IAnalyticsService"
+    :cond_1
+    move-object/from16 v4, p3
 
     invoke-virtual {v1, v2}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
     .line 67
-    invoke-virtual {p0}, Lcom/google/android/gms/analytics/internal/IAnalyticsService$Stub;->clearHits()V
+    invoke-virtual/range {p0 .. p0}, Lcom/google/android/gms/analytics/internal/IAnalyticsService$Stub;->clearHits()V
 
     .line 68
     invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
@@ -148,13 +163,13 @@
     return v3
 
     .line 50
-    :pswitch_1e
-    const-string v2, "com.google.android.gms.analytics.internal.IAnalyticsService"
+    :cond_2
+    move-object/from16 v4, p3
 
     invoke-virtual {v1, v2}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
     .line 52
-    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    invoke-virtual/range {p0 .. p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     move-result-object v2
 
@@ -166,69 +181,45 @@
     .local v2, "cl":Ljava/lang/ClassLoader;
     invoke-virtual {v1, v2}, Landroid/os/Parcel;->readHashMap(Ljava/lang/ClassLoader;)Ljava/util/HashMap;
 
-    move-result-object v10
+    move-result-object v11
 
     .line 55
-    .local v10, "_arg0":Ljava/util/Map;
+    .local v11, "_arg0":Ljava/util/Map;
     invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readLong()J
 
-    move-result-wide v11
+    move-result-wide v12
 
     .line 57
-    .local v11, "_arg1":J
+    .local v12, "_arg1":J
     invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v13
-
-    .line 59
-    .local v13, "_arg2":Ljava/lang/String;
-    sget-object v4, Lcom/google/android/gms/analytics/internal/Command;->CREATOR:Landroid/os/Parcelable$Creator;
-
-    invoke-virtual {v1, v4}, Landroid/os/Parcel;->createTypedArrayList(Landroid/os/Parcelable$Creator;)Ljava/util/ArrayList;
 
     move-result-object v14
 
+    .line 59
+    .local v14, "_arg2":Ljava/lang/String;
+    sget-object v5, Lcom/google/android/gms/analytics/internal/Command;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-virtual {v1, v5}, Landroid/os/Parcel;->createTypedArrayList(Landroid/os/Parcelable$Creator;)Ljava/util/ArrayList;
+
+    move-result-object v15
+
     .line 60
-    .local v14, "_arg3":Ljava/util/List;, "Ljava/util/List<Lcom/google/android/gms/analytics/internal/Command;>;"
-    move-object v4, p0
+    .local v15, "_arg3":Ljava/util/List;, "Ljava/util/List<Lcom/google/android/gms/analytics/internal/Command;>;"
+    move-object/from16 v5, p0
 
-    move-object v5, v10
+    move-object v6, v11
 
-    move-wide v6, v11
-
-    move-object v8, v13
+    move-wide v7, v12
 
     move-object v9, v14
 
-    invoke-virtual/range {v4 .. v9}, Lcom/google/android/gms/analytics/internal/IAnalyticsService$Stub;->sendHit(Ljava/util/Map;JLjava/lang/String;Ljava/util/List;)V
+    move-object v10, v15
+
+    invoke-virtual/range {v5 .. v10}, Lcom/google/android/gms/analytics/internal/IAnalyticsService$Stub;->sendHit(Ljava/util/Map;JLjava/lang/String;Ljava/util/List;)V
 
     .line 61
     invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
 
     .line 62
     return v3
-
-    .line 45
-    .end local v2    # "cl":Ljava/lang/ClassLoader;
-    .end local v10    # "_arg0":Ljava/util/Map;
-    .end local v11    # "_arg1":J
-    .end local v13    # "_arg2":Ljava/lang/String;
-    .end local v14    # "_arg3":Ljava/util/List;, "Ljava/util/List<Lcom/google/android/gms/analytics/internal/Command;>;"
-    :cond_49
-    const-string v2, "com.google.android.gms.analytics.internal.IAnalyticsService"
-
-    move-object/from16 v4, p3
-
-    invoke-virtual {v4, v2}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
-
-    .line 46
-    return v3
-
-    nop
-
-    :pswitch_data_52
-    .packed-switch 0x1
-        :pswitch_1e
-        :pswitch_12
-    .end packed-switch
 .end method

@@ -25,7 +25,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 12
     const-class v0, Lcom/oneplus/screenshot/util/FileInfo;
@@ -40,7 +40,7 @@
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;)V
-    .registers 9
+    .locals 6
     .param p1, "dirName"    # Ljava/lang/String;
     .param p2, "fileName"    # Ljava/lang/String;
 
@@ -142,23 +142,23 @@
     iput-object v2, p0, Lcom/oneplus/screenshot/util/FileInfo;->mName:Ljava/lang/String;
 
     .line 38
-    const-string v2, "%s/%s/%s"
+    const/4 v2, 0x3
 
-    const/4 v4, 0x3
+    new-array v2, v2, [Ljava/lang/Object;
 
-    new-array v4, v4, [Ljava/lang/Object;
+    aput-object v1, v2, v5
 
-    aput-object v1, v4, v5
-
-    aput-object p1, v4, v3
+    aput-object p1, v2, v3
 
     iget-object v3, p0, Lcom/oneplus/screenshot/util/FileInfo;->mName:Ljava/lang/String;
 
-    const/4 v5, 0x2
+    const/4 v4, 0x2
 
-    aput-object v3, v4, v5
+    aput-object v3, v2, v4
 
-    invoke-static {v2, v4}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    const-string v3, "%s/%s/%s"
+
+    invoke-static {v3, v2}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v2
 
@@ -171,7 +171,7 @@
 
 # virtual methods
 .method public getName()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 53
     iget-object v0, p0, Lcom/oneplus/screenshot/util/FileInfo;->mName:Ljava/lang/String;
@@ -180,7 +180,7 @@
 .end method
 
 .method public getPath()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 57
     iget-object v0, p0, Lcom/oneplus/screenshot/util/FileInfo;->mPath:Ljava/lang/String;
@@ -192,7 +192,7 @@
 .end method
 
 .method public getTime()J
-    .registers 3
+    .locals 2
 
     .line 61
     iget-wide v0, p0, Lcom/oneplus/screenshot/util/FileInfo;->mTime:J
@@ -201,7 +201,7 @@
 .end method
 
 .method public getUri()Landroid/net/Uri;
-    .registers 2
+    .locals 1
 
     .line 45
     iget-object v0, p0, Lcom/oneplus/screenshot/util/FileInfo;->mUri:Landroid/net/Uri;
@@ -210,7 +210,7 @@
 .end method
 
 .method public setUri(Landroid/net/Uri;)V
-    .registers 2
+    .locals 0
     .param p1, "uri"    # Landroid/net/Uri;
 
     .line 49

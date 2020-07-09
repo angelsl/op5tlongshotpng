@@ -18,7 +18,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;)V
-    .registers 3
+    .locals 1
     .param p1, "stateContext"    # Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     .line 18
@@ -42,7 +42,7 @@
 
 # virtual methods
 .method public enter(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
-    .registers 3
+    .locals 0
     .param p1, "oldState"    # Lcom/oneplus/screenshot/longshot/state/LongshotState;
     .param p2, "listener"    # Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;
 
@@ -54,15 +54,15 @@
 .end method
 
 .method public exit(Lcom/oneplus/screenshot/longshot/state/LongshotState;)V
-    .registers 2
+    .locals 0
     .param p1, "newState"    # Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
-    .line 36
+    .line 38
     return-void
 .end method
 
 .method public toString()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 27
     invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
@@ -77,9 +77,9 @@
 .end method
 
 .method public updateMovePoint(Lcom/oneplus/screenshot/longshot/util/MovePoint;)V
-    .registers 2
+    .locals 0
     .param p1, "point"    # Lcom/oneplus/screenshot/longshot/util/MovePoint;
 
-    .line 40
+    .line 42
     return-void
 .end method

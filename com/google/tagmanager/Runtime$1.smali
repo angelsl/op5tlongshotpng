@@ -34,7 +34,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/Runtime;)V
-    .registers 2
+    .locals 0
 
     .line 193
     iput-object p1, p0, Lcom/google/tagmanager/Runtime$1;->this$0:Lcom/google/tagmanager/Runtime;
@@ -47,7 +47,7 @@
 
 # virtual methods
 .method public sizeOf(Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;Lcom/google/tagmanager/ObjectAndStatic;)I
-    .registers 4
+    .locals 1
     .param p1, "key"    # Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -75,7 +75,7 @@
 .end method
 
 .method public bridge synthetic sizeOf(Ljava/lang/Object;Ljava/lang/Object;)I
-    .registers 5
+    .locals 2
     .param p1, "x0"    # Ljava/lang/Object;
     .param p2, "x1"    # Ljava/lang/Object;
 

@@ -40,71 +40,71 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 8
+    .locals 8
 
     .line 17
     new-instance v0, Lcom/google/tagmanager/Logger$LogLevel;
 
-    const-string v1, "VERBOSE"
+    const/4 v1, 0x0
 
-    const/4 v2, 0x0
+    const-string v2, "VERBOSE"
 
-    invoke-direct {v0, v1, v2}, Lcom/google/tagmanager/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v2, v1}, Lcom/google/tagmanager/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/tagmanager/Logger$LogLevel;->VERBOSE:Lcom/google/tagmanager/Logger$LogLevel;
 
     .line 19
     new-instance v0, Lcom/google/tagmanager/Logger$LogLevel;
 
-    const-string v1, "DEBUG"
+    const/4 v2, 0x1
 
-    const/4 v3, 0x1
+    const-string v3, "DEBUG"
 
-    invoke-direct {v0, v1, v3}, Lcom/google/tagmanager/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v3, v2}, Lcom/google/tagmanager/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/tagmanager/Logger$LogLevel;->DEBUG:Lcom/google/tagmanager/Logger$LogLevel;
 
     .line 21
     new-instance v0, Lcom/google/tagmanager/Logger$LogLevel;
 
-    const-string v1, "INFO"
+    const/4 v3, 0x2
 
-    const/4 v4, 0x2
+    const-string v4, "INFO"
 
-    invoke-direct {v0, v1, v4}, Lcom/google/tagmanager/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v4, v3}, Lcom/google/tagmanager/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/tagmanager/Logger$LogLevel;->INFO:Lcom/google/tagmanager/Logger$LogLevel;
 
     .line 23
     new-instance v0, Lcom/google/tagmanager/Logger$LogLevel;
 
-    const-string v1, "WARNING"
+    const/4 v4, 0x3
 
-    const/4 v5, 0x3
+    const-string v5, "WARNING"
 
-    invoke-direct {v0, v1, v5}, Lcom/google/tagmanager/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v5, v4}, Lcom/google/tagmanager/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/tagmanager/Logger$LogLevel;->WARNING:Lcom/google/tagmanager/Logger$LogLevel;
 
     .line 25
     new-instance v0, Lcom/google/tagmanager/Logger$LogLevel;
 
-    const-string v1, "ERROR"
+    const/4 v5, 0x4
 
-    const/4 v6, 0x4
+    const-string v6, "ERROR"
 
-    invoke-direct {v0, v1, v6}, Lcom/google/tagmanager/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v6, v5}, Lcom/google/tagmanager/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/tagmanager/Logger$LogLevel;->ERROR:Lcom/google/tagmanager/Logger$LogLevel;
 
     .line 27
     new-instance v0, Lcom/google/tagmanager/Logger$LogLevel;
 
-    const-string v1, "NONE"
+    const/4 v6, 0x5
 
-    const/4 v7, 0x5
+    const-string v7, "NONE"
 
-    invoke-direct {v0, v1, v7}, Lcom/google/tagmanager/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v7, v6}, Lcom/google/tagmanager/Logger$LogLevel;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/tagmanager/Logger$LogLevel;->NONE:Lcom/google/tagmanager/Logger$LogLevel;
 
@@ -113,29 +113,29 @@
 
     new-array v0, v0, [Lcom/google/tagmanager/Logger$LogLevel;
 
-    sget-object v1, Lcom/google/tagmanager/Logger$LogLevel;->VERBOSE:Lcom/google/tagmanager/Logger$LogLevel;
+    sget-object v7, Lcom/google/tagmanager/Logger$LogLevel;->VERBOSE:Lcom/google/tagmanager/Logger$LogLevel;
 
-    aput-object v1, v0, v2
+    aput-object v7, v0, v1
 
     sget-object v1, Lcom/google/tagmanager/Logger$LogLevel;->DEBUG:Lcom/google/tagmanager/Logger$LogLevel;
 
-    aput-object v1, v0, v3
+    aput-object v1, v0, v2
 
     sget-object v1, Lcom/google/tagmanager/Logger$LogLevel;->INFO:Lcom/google/tagmanager/Logger$LogLevel;
 
-    aput-object v1, v0, v4
+    aput-object v1, v0, v3
 
     sget-object v1, Lcom/google/tagmanager/Logger$LogLevel;->WARNING:Lcom/google/tagmanager/Logger$LogLevel;
 
-    aput-object v1, v0, v5
+    aput-object v1, v0, v4
 
     sget-object v1, Lcom/google/tagmanager/Logger$LogLevel;->ERROR:Lcom/google/tagmanager/Logger$LogLevel;
 
-    aput-object v1, v0, v6
+    aput-object v1, v0, v5
 
     sget-object v1, Lcom/google/tagmanager/Logger$LogLevel;->NONE:Lcom/google/tagmanager/Logger$LogLevel;
 
-    aput-object v1, v0, v7
+    aput-object v1, v0, v6
 
     sput-object v0, Lcom/google/tagmanager/Logger$LogLevel;->$VALUES:[Lcom/google/tagmanager/Logger$LogLevel;
 
@@ -143,7 +143,7 @@
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V
-    .registers 3
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
@@ -157,7 +157,7 @@
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Lcom/google/tagmanager/Logger$LogLevel;
-    .registers 2
+    .locals 1
     .param p0, "name"    # Ljava/lang/String;
 
     .line 15
@@ -173,7 +173,7 @@
 .end method
 
 .method public static values()[Lcom/google/tagmanager/Logger$LogLevel;
-    .registers 1
+    .locals 1
 
     .line 15
     sget-object v0, Lcom/google/tagmanager/Logger$LogLevel;->$VALUES:[Lcom/google/tagmanager/Logger$LogLevel;

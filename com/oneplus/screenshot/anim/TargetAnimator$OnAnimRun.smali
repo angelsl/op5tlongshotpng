@@ -25,7 +25,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/anim/TargetAnimator;Ljava/lang/String;)V
-    .registers 3
+    .locals 0
     .param p2, "tag"    # Ljava/lang/String;
 
     .line 162
@@ -43,7 +43,7 @@
 
 # virtual methods
 .method public run(Landroid/view/View;Ljava/util/Map$Entry;)V
-    .registers 6
+    .locals 3
     .param p1, "target"    # Landroid/view/View;
     .annotation system Ldalvik/annotation/Signature;
         value = {

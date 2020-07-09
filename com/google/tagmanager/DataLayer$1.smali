@@ -19,7 +19,7 @@
 
 # direct methods
 .method constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 191
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -30,7 +30,7 @@
 
 # virtual methods
 .method public clearKeysWithPrefix(Ljava/lang/String;)V
-    .registers 2
+    .locals 0
     .param p1, "keyPrefix"    # Ljava/lang/String;
 
     .line 203
@@ -38,7 +38,7 @@
 .end method
 
 .method public loadSaved(Lcom/google/tagmanager/DataLayer$PersistentStore$Callback;)V
-    .registers 3
+    .locals 1
     .param p1, "callback"    # Lcom/google/tagmanager/DataLayer$PersistentStore$Callback;
 
     .line 198
@@ -53,7 +53,7 @@
 .end method
 
 .method public saveKeyValues(Ljava/util/List;J)V
-    .registers 4
+    .locals 0
     .param p2, "lifetimeInMillis"    # J
     .annotation system Ldalvik/annotation/Signature;
         value = {

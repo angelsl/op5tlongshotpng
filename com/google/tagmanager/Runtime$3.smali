@@ -31,7 +31,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/Runtime;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)V
-    .registers 6
+    .locals 0
 
     .line 405
     iput-object p1, p0, Lcom/google/tagmanager/Runtime$3;->this$0:Lcom/google/tagmanager/Runtime;
@@ -52,7 +52,7 @@
 
 # virtual methods
 .method public rulePassed(Lcom/google/tagmanager/ResourceUtil$ExpandedRule;Ljava/util/Set;Ljava/util/Set;Lcom/google/tagmanager/ResolvedRuleBuilder;)V
-    .registers 10
+    .locals 5
     .param p1, "rule"    # Lcom/google/tagmanager/ResourceUtil$ExpandedRule;
     .param p4, "debugRuleBuilder"    # Lcom/google/tagmanager/ResolvedRuleBuilder;
     .annotation system Ldalvik/annotation/Signature;
@@ -93,7 +93,7 @@
 
     .line 412
     .local v1, "thisMacroEnablingRuleNames":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
-    if-eqz v0, :cond_1c
+    if-eqz v0, :cond_0
 
     .line 413
     invoke-interface {p2, v0}, Ljava/util/Set;->addAll(Ljava/util/Collection;)Z
@@ -106,7 +106,7 @@
     invoke-interface {v2, v0, v1}, Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;->translateAndAddAll(Ljava/util/List;Ljava/util/List;)V
 
     .line 419
-    :cond_1c
+    :cond_0
     iget-object v2, p0, Lcom/google/tagmanager/Runtime$3;->val$removeMacros:Ljava/util/Map;
 
     invoke-interface {v2, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -127,7 +127,7 @@
 
     .line 421
     .local v3, "thisRemoveMacroRuleNames":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
-    if-eqz v2, :cond_38
+    if-eqz v2, :cond_1
 
     .line 422
     invoke-interface {p3, v2}, Ljava/util/Set;->addAll(Ljava/util/Collection;)Z
@@ -140,6 +140,6 @@
     invoke-interface {v4, v2, v3}, Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;->translateAndAddAll(Ljava/util/List;Ljava/util/List;)V
 
     .line 428
-    :cond_38
+    :cond_1
     return-void
 .end method

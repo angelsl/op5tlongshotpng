@@ -11,7 +11,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/google/tagmanager/Runtime;Lcom/google/tagmanager/ResourceUtil$ExpandedResource;)V
-    .registers 5
+    .locals 2
     .param p1, "runtime"    # Lcom/google/tagmanager/Runtime;
     .param p2, "resource"    # Lcom/google/tagmanager/ResourceUtil$ExpandedResource;
 
@@ -19,7 +19,7 @@
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 13
-    if-eqz p1, :cond_1c
+    if-eqz p1, :cond_1
 
     .line 16
     iput-object p1, p0, Lcom/google/tagmanager/EventEvaluator;->mRuntime:Lcom/google/tagmanager/Runtime;
@@ -29,7 +29,7 @@
 
     move-result-object v0
 
-    if-ne p2, v0, :cond_14
+    if-ne p2, v0, :cond_0
 
     .line 21
     invoke-virtual {p1}, Lcom/google/tagmanager/Runtime;->getResource()Lcom/google/tagmanager/ResourceUtil$ExpandedResource;
@@ -42,7 +42,7 @@
     return-void
 
     .line 19
-    :cond_14
+    :cond_0
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v1, "resource must be the same as the resource in runtime"
@@ -52,7 +52,7 @@
     throw v0
 
     .line 14
-    :cond_1c
+    :cond_1
     new-instance v0, Ljava/lang/NullPointerException;
 
     const-string v1, "runtime cannot be null"
@@ -65,7 +65,7 @@
 
 # virtual methods
 .method evaluateEvent(Ljava/lang/String;)V
-    .registers 4
+    .locals 2
     .param p1, "eventName"    # Ljava/lang/String;
 
     .line 31

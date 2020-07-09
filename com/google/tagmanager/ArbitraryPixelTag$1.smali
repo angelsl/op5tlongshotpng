@@ -23,7 +23,7 @@
 
 # direct methods
 .method constructor <init>(Landroid/content/Context;)V
-    .registers 2
+    .locals 0
 
     .line 45
     iput-object p1, p0, Lcom/google/tagmanager/ArbitraryPixelTag$1;->val$context:Landroid/content/Context;
@@ -36,7 +36,7 @@
 
 # virtual methods
 .method public get()Lcom/google/tagmanager/HitSender;
-    .registers 2
+    .locals 1
 
     .line 48
     iget-object v0, p0, Lcom/google/tagmanager/ArbitraryPixelTag$1;->val$context:Landroid/content/Context;

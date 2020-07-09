@@ -20,7 +20,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 3
+    .locals 3
 
     .line 118
     invoke-static {}, Lcom/google/tagmanager/JoinerMacro$EscapeType;->values()[Lcom/google/tagmanager/JoinerMacro$EscapeType;
@@ -33,7 +33,7 @@
 
     sput-object v0, Lcom/google/tagmanager/JoinerMacro$1;->$SwitchMap$com$google$tagmanager$JoinerMacro$EscapeType:[I
 
-    :try_start_9
+    :try_start_0
     sget-object v0, Lcom/google/tagmanager/JoinerMacro$1;->$SwitchMap$com$google$tagmanager$JoinerMacro$EscapeType:[I
 
     sget-object v1, Lcom/google/tagmanager/JoinerMacro$EscapeType;->URL:Lcom/google/tagmanager/JoinerMacro$EscapeType;
@@ -45,16 +45,16 @@
     const/4 v2, 0x1
 
     aput v2, v0, v1
-    :try_end_14
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_9 .. :try_end_14} :catch_15
+    :try_end_0
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_0 .. :try_end_0} :catch_0
 
-    goto :goto_16
+    goto :goto_0
 
-    :catch_15
+    :catch_0
     move-exception v0
 
-    :goto_16
-    :try_start_16
+    :goto_0
+    :try_start_1
     sget-object v0, Lcom/google/tagmanager/JoinerMacro$1;->$SwitchMap$com$google$tagmanager$JoinerMacro$EscapeType:[I
 
     sget-object v1, Lcom/google/tagmanager/JoinerMacro$EscapeType;->BACKSLASH:Lcom/google/tagmanager/JoinerMacro$EscapeType;
@@ -66,16 +66,16 @@
     const/4 v2, 0x2
 
     aput v2, v0, v1
-    :try_end_21
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_16 .. :try_end_21} :catch_22
+    :try_end_1
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_1 .. :try_end_1} :catch_1
 
-    goto :goto_23
+    goto :goto_1
 
-    :catch_22
+    :catch_1
     move-exception v0
 
-    :goto_23
-    :try_start_23
+    :goto_1
+    :try_start_2
     sget-object v0, Lcom/google/tagmanager/JoinerMacro$1;->$SwitchMap$com$google$tagmanager$JoinerMacro$EscapeType:[I
 
     sget-object v1, Lcom/google/tagmanager/JoinerMacro$EscapeType;->NONE:Lcom/google/tagmanager/JoinerMacro$EscapeType;
@@ -87,14 +87,14 @@
     const/4 v2, 0x3
 
     aput v2, v0, v1
-    :try_end_2e
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_23 .. :try_end_2e} :catch_2f
+    :try_end_2
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_2 .. :try_end_2} :catch_2
 
-    goto :goto_30
+    goto :goto_2
 
-    :catch_2f
+    :catch_2
     move-exception v0
 
-    :goto_30
+    :goto_2
     return-void
 .end method

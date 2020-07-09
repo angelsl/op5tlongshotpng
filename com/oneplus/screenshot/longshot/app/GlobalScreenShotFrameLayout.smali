@@ -13,7 +13,7 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;)V
-    .registers 3
+    .locals 1
     .param p1, "context"    # Landroid/content/Context;
 
     .line 17
@@ -26,7 +26,7 @@
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    .registers 3
+    .locals 0
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "attrs"    # Landroid/util/AttributeSet;
 
@@ -40,21 +40,19 @@
 
 # virtual methods
 .method public dispatchKeyEvent(Landroid/view/KeyEvent;)Z
-    .registers 3
+    .locals 1
     .param p1, "event"    # Landroid/view/KeyEvent;
 
     .line 26
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/GlobalScreenShotFrameLayout;->mKeyCallback:Lcom/oneplus/screenshot/GlobalScreenshot$KeyEventCallBack;
 
-    if-eqz v0, :cond_9
+    if-eqz v0, :cond_0
 
     .line 27
-    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/app/GlobalScreenShotFrameLayout;->mKeyCallback:Lcom/oneplus/screenshot/GlobalScreenshot$KeyEventCallBack;
-
     invoke-virtual {v0, p1}, Lcom/oneplus/screenshot/GlobalScreenshot$KeyEventCallBack;->onKeyEvent(Landroid/view/KeyEvent;)V
 
     .line 29
-    :cond_9
+    :cond_0
     invoke-super {p0, p1}, Landroid/widget/FrameLayout;->dispatchKeyEvent(Landroid/view/KeyEvent;)Z
 
     move-result v0
@@ -63,27 +61,27 @@
 .end method
 
 .method public registerKeyEventCallBack(Lcom/oneplus/screenshot/GlobalScreenshot$KeyEventCallBack;)V
-    .registers 5
+    .locals 2
     .param p1, "callback"    # Lcom/oneplus/screenshot/GlobalScreenshot$KeyEventCallBack;
 
     .line 33
-    const-string v0, "Longshot.GlobalFrameLayout"
+    new-instance v0, Ljava/lang/StringBuilder;
 
-    new-instance v1, Ljava/lang/StringBuilder;
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+    const-string v1, "registerKeyEventCallBack: "
 
-    const-string v2, "registerKeyEventCallBack: "
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v0
 
-    move-result-object v1
+    const-string v1, "Longshot.GlobalFrameLayout"
 
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 34
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/app/GlobalScreenShotFrameLayout;->mKeyCallback:Lcom/oneplus/screenshot/GlobalScreenshot$KeyEventCallBack;
@@ -93,7 +91,7 @@
 .end method
 
 .method public unregisterKeyEventCallBack()V
-    .registers 3
+    .locals 2
 
     .line 38
     const-string v0, "Longshot.GlobalFrameLayout"

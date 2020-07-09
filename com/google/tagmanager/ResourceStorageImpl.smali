@@ -32,7 +32,7 @@
 
 # direct methods
 .method constructor <init>(Landroid/content/Context;Ljava/lang/String;)V
-    .registers 4
+    .locals 1
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "containerId"    # Ljava/lang/String;
 
@@ -57,7 +57,7 @@
 .end method
 
 .method private stringFromInputStream(Ljava/io/InputStream;)Ljava/lang/String;
-    .registers 8
+    .locals 6
     .param p1, "is"    # Ljava/io/InputStream;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -90,7 +90,7 @@
 
     .line 249
     .local v2, "reader":Ljava/io/Reader;
-    :goto_15
+    :goto_0
     invoke-virtual {v2, v1}, Ljava/io/Reader;->read([C)I
 
     move-result v3
@@ -100,17 +100,17 @@
     .local v4, "n":I
     const/4 v5, -0x1
 
-    if-eq v3, v5, :cond_22
+    if-eq v3, v5, :cond_0
 
     .line 250
     const/4 v3, 0x0
 
     invoke-virtual {v0, v1, v3, v4}, Ljava/io/Writer;->write([CII)V
 
-    goto :goto_15
+    goto :goto_0
 
     .line 252
-    :cond_22
+    :cond_0
     invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
     move-result-object v3
@@ -121,17 +121,17 @@
 
 # virtual methods
 .method public declared-synchronized close()V
-    .registers 2
+    .locals 1
 
     monitor-enter p0
 
     .line 201
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/tagmanager/ResourceStorageImpl;->mExecutor:Ljava/util/concurrent/ExecutorService;
 
     invoke-interface {v0}, Ljava/util/concurrent/ExecutorService;->shutdown()V
-    :try_end_6
-    .catchall {:try_start_1 .. :try_end_6} :catchall_8
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 202
     monitor-exit p0
@@ -139,17 +139,17 @@
     return-void
 
     .line 200
-    :catchall_8
+    .end local p0    # "this":Lcom/google/tagmanager/ResourceStorageImpl;
+    :catchall_0
     move-exception v0
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/ResourceStorageImpl;
     throw v0
 .end method
 
 .method getResourceFile()Ljava/io/File;
-    .registers 5
+    .locals 4
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
@@ -192,7 +192,7 @@
 .end method
 
 .method public loadExpandedResourceFromJsonAsset(Ljava/lang/String;)Lcom/google/tagmanager/ResourceUtil$ExpandedResource;
-    .registers 8
+    .locals 6
     .param p1, "assetFile"    # Ljava/lang/String;
 
     .line 172
@@ -223,7 +223,7 @@
     .local v0, "assets":Landroid/content/res/AssetManager;
     const/4 v1, 0x0
 
-    if-nez v0, :cond_23
+    if-nez v0, :cond_0
 
     .line 175
     const-string v2, "Looking for default JSON container in package, but no assets were found."
@@ -234,12 +234,12 @@
     return-object v1
 
     .line 178
-    :cond_23
-    move-object v2, v1
+    :cond_0
+    const/4 v2, 0x0
 
     .line 180
     .local v2, "is":Ljava/io/InputStream;
-    :try_start_24
+    :try_start_0
     invoke-virtual {v0, p1}, Landroid/content/res/AssetManager;->open(Ljava/lang/String;)Ljava/io/InputStream;
 
     move-result-object v3
@@ -253,46 +253,46 @@
 
     invoke-static {v3}, Lcom/google/tagmanager/JsonUtils;->expandedResourceFromJsonString(Ljava/lang/String;)Lcom/google/tagmanager/ResourceUtil$ExpandedResource;
 
-    move-result-object v3
-    :try_end_31
-    .catch Ljava/io/IOException; {:try_start_24 .. :try_end_31} :catch_61
-    .catch Lorg/json/JSONException; {:try_start_24 .. :try_end_31} :catch_3b
-    .catchall {:try_start_24 .. :try_end_31} :catchall_39
+    move-result-object v1
+    :try_end_0
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_3
+    .catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_1
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 189
-    if-eqz v2, :cond_38
+    if-eqz v2, :cond_1
 
     .line 191
-    :try_start_33
+    :try_start_1
     invoke-virtual {v2}, Ljava/io/InputStream;->close()V
-    :try_end_36
-    .catch Ljava/io/IOException; {:try_start_33 .. :try_end_36} :catch_37
+    :try_end_1
+    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_0
 
     .line 194
-    goto :goto_38
+    goto :goto_0
 
     .line 192
-    :catch_37
-    move-exception v1
+    :catch_0
+    move-exception v3
 
     .line 194
-    :cond_38
-    :goto_38
-    return-object v3
+    :cond_1
+    :goto_0
+    return-object v1
 
     .line 189
-    :catchall_39
+    :catchall_0
     move-exception v1
 
-    goto :goto_84
+    goto :goto_3
 
     .line 185
-    :catch_3b
+    :catch_1
     move-exception v3
 
     .line 186
     .local v3, "e":Lorg/json/JSONException;
-    :try_start_3c
+    :try_start_2
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
@@ -314,41 +314,41 @@
     move-result-object v4
 
     invoke-static {v4}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
-    :try_end_58
-    .catchall {:try_start_3c .. :try_end_58} :catchall_39
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
     .line 187
     nop
 
     .line 189
-    if-eqz v2, :cond_60
+    if-eqz v2, :cond_2
 
     .line 191
-    :try_start_5b
+    :try_start_3
     invoke-virtual {v2}, Ljava/io/InputStream;->close()V
-    :try_end_5e
-    .catch Ljava/io/IOException; {:try_start_5b .. :try_end_5e} :catch_5f
+    :try_end_3
+    .catch Ljava/io/IOException; {:try_start_3 .. :try_end_3} :catch_2
 
     .line 194
-    goto :goto_60
+    goto :goto_1
 
     .line 192
-    :catch_5f
+    :catch_2
     move-exception v4
 
     .line 194
-    :cond_60
-    :goto_60
+    :cond_2
+    :goto_1
     return-object v1
 
     .line 182
     .end local v3    # "e":Lorg/json/JSONException;
-    :catch_61
+    :catch_3
     move-exception v3
 
     .line 183
     .local v3, "e":Ljava/io/IOException;
-    :try_start_62
+    :try_start_4
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
@@ -368,59 +368,59 @@
     move-result-object v4
 
     invoke-static {v4}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
-    :try_end_7b
-    .catchall {:try_start_62 .. :try_end_7b} :catchall_39
+    :try_end_4
+    .catchall {:try_start_4 .. :try_end_4} :catchall_0
 
     .line 184
     nop
 
     .line 189
-    if-eqz v2, :cond_83
+    if-eqz v2, :cond_3
 
     .line 191
-    :try_start_7e
+    :try_start_5
     invoke-virtual {v2}, Ljava/io/InputStream;->close()V
-    :try_end_81
-    .catch Ljava/io/IOException; {:try_start_7e .. :try_end_81} :catch_82
+    :try_end_5
+    .catch Ljava/io/IOException; {:try_start_5 .. :try_end_5} :catch_4
 
     .line 194
-    goto :goto_83
+    goto :goto_2
 
     .line 192
-    :catch_82
+    :catch_4
     move-exception v4
 
     .line 194
-    :cond_83
-    :goto_83
+    :cond_3
+    :goto_2
     return-object v1
 
     .line 189
     .end local v3    # "e":Ljava/io/IOException;
-    :goto_84
-    if-eqz v2, :cond_8b
+    :goto_3
+    if-eqz v2, :cond_4
 
     .line 191
-    :try_start_86
+    :try_start_6
     invoke-virtual {v2}, Ljava/io/InputStream;->close()V
-    :try_end_89
-    .catch Ljava/io/IOException; {:try_start_86 .. :try_end_89} :catch_8a
+    :try_end_6
+    .catch Ljava/io/IOException; {:try_start_6 .. :try_end_6} :catch_5
 
     .line 194
-    goto :goto_8b
+    goto :goto_4
 
     .line 192
-    :catch_8a
+    :catch_5
     move-exception v3
 
     .line 194
-    :cond_8b
-    :goto_8b
+    :cond_4
+    :goto_4
     throw v1
 .end method
 
 .method public loadResourceFromContainerAsset(Ljava/lang/String;)Lcom/google/analytics/containertag/proto/Serving$Resource;
-    .registers 10
+    .locals 8
     .param p1, "assetFile"    # Ljava/lang/String;
 
     .line 129
@@ -451,7 +451,7 @@
     .local v0, "assets":Landroid/content/res/AssetManager;
     const/4 v1, 0x0
 
-    if-nez v0, :cond_23
+    if-nez v0, :cond_0
 
     .line 132
     const-string v2, "No assets found in package"
@@ -462,17 +462,17 @@
     return-object v1
 
     .line 135
-    :cond_23
-    move-object v2, v1
+    :cond_0
+    const/4 v2, 0x0
 
     .line 137
     .local v2, "is":Ljava/io/InputStream;
-    :try_start_24
+    :try_start_0
     invoke-virtual {v0, p1}, Landroid/content/res/AssetManager;->open(Ljava/lang/String;)Ljava/io/InputStream;
 
     move-result-object v3
-    :try_end_28
-    .catch Ljava/io/IOException; {:try_start_24 .. :try_end_28} :catch_7a
+    :try_end_0
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_4
 
     move-object v2, v3
 
@@ -480,7 +480,7 @@
     nop
 
     .line 144
-    :try_start_2a
+    :try_start_1
     new-instance v3, Ljava/io/ByteArrayOutputStream;
 
     invoke-direct {v3}, Ljava/io/ByteArrayOutputStream;-><init>()V
@@ -517,46 +517,46 @@
     move-result-object v6
 
     invoke-static {v6}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
-    :try_end_4e
-    .catch Ljava/io/IOException; {:try_start_2a .. :try_end_4e} :catch_57
-    .catchall {:try_start_2a .. :try_end_4e} :catchall_55
+    :try_end_1
+    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 149
     nop
 
     .line 155
-    :try_start_4f
+    :try_start_2
     invoke-virtual {v2}, Ljava/io/InputStream;->close()V
-    :try_end_52
-    .catch Ljava/io/IOException; {:try_start_4f .. :try_end_52} :catch_53
+    :try_end_2
+    .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_0
 
     .line 158
-    goto :goto_54
+    goto :goto_0
 
     .line 156
-    :catch_53
+    :catch_0
     move-exception v1
 
     .line 158
-    :goto_54
+    :goto_0
     return-object v5
 
     .line 154
     .end local v3    # "output":Ljava/io/ByteArrayOutputStream;
     .end local v4    # "outputByteArray":[B
     .end local v5    # "result":Lcom/google/analytics/containertag/proto/Serving$Resource;
-    :catchall_55
+    :catchall_0
     move-exception v1
 
-    goto :goto_73
+    goto :goto_2
 
     .line 150
-    :catch_57
+    :catch_1
     move-exception v3
 
     .line 151
     .local v3, "e":Ljava/io/IOException;
-    :try_start_58
+    :try_start_3
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
@@ -572,53 +572,50 @@
     move-result-object v4
 
     invoke-static {v4}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
-    :try_end_6c
-    .catchall {:try_start_58 .. :try_end_6c} :catchall_55
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
     .line 152
     nop
 
     .line 155
-    :try_start_6d
+    :try_start_4
     invoke-virtual {v2}, Ljava/io/InputStream;->close()V
-    :try_end_70
-    .catch Ljava/io/IOException; {:try_start_6d .. :try_end_70} :catch_71
+    :try_end_4
+    .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_2
 
     .line 158
-    goto :goto_72
+    goto :goto_1
 
     .line 156
-    :catch_71
+    :catch_2
     move-exception v4
 
     .line 158
-    :goto_72
+    :goto_1
     return-object v1
 
-    .line 154
-    .end local v3    # "e":Ljava/io/IOException;
-    :goto_73
-    nop
-
     .line 155
-    :try_start_74
+    .end local v3    # "e":Ljava/io/IOException;
+    :goto_2
+    :try_start_5
     invoke-virtual {v2}, Ljava/io/InputStream;->close()V
-    :try_end_77
-    .catch Ljava/io/IOException; {:try_start_74 .. :try_end_77} :catch_78
+    :try_end_5
+    .catch Ljava/io/IOException; {:try_start_5 .. :try_end_5} :catch_3
 
     .line 158
-    goto :goto_79
+    goto :goto_3
 
     .line 156
-    :catch_78
+    :catch_3
     move-exception v3
 
     .line 158
-    :goto_79
+    :goto_3
     throw v1
 
     .line 138
-    :catch_7a
+    :catch_4
     move-exception v3
 
     .line 139
@@ -648,66 +645,66 @@
 .end method
 
 .method loadResourceFromDisk()V
-    .registers 5
+    .locals 5
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
     .line 69
-    iget-object v0, p0, Lcom/google/tagmanager/ResourceStorageImpl;->mCallback:Lcom/google/tagmanager/LoadCallback;
+    const-string v0, "error closing stream for reading resource from disk"
 
-    if-eqz v0, :cond_9d
+    iget-object v1, p0, Lcom/google/tagmanager/ResourceStorageImpl;->mCallback:Lcom/google/tagmanager/LoadCallback;
+
+    if-eqz v1, :cond_2
 
     .line 74
-    iget-object v0, p0, Lcom/google/tagmanager/ResourceStorageImpl;->mCallback:Lcom/google/tagmanager/LoadCallback;
-
-    invoke-interface {v0}, Lcom/google/tagmanager/LoadCallback;->startLoad()V
+    invoke-interface {v1}, Lcom/google/tagmanager/LoadCallback;->startLoad()V
 
     .line 76
-    const-string v0, "Start loading resource from disk ..."
+    const-string v1, "Start loading resource from disk ..."
 
-    invoke-static {v0}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
+    invoke-static {v1}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
 
     .line 79
     invoke-static {}, Lcom/google/tagmanager/PreviewManager;->getInstance()Lcom/google/tagmanager/PreviewManager;
 
-    move-result-object v0
+    move-result-object v1
 
-    invoke-virtual {v0}, Lcom/google/tagmanager/PreviewManager;->getPreviewMode()Lcom/google/tagmanager/PreviewManager$PreviewMode;
+    invoke-virtual {v1}, Lcom/google/tagmanager/PreviewManager;->getPreviewMode()Lcom/google/tagmanager/PreviewManager$PreviewMode;
 
-    move-result-object v0
+    move-result-object v1
 
-    sget-object v1, Lcom/google/tagmanager/PreviewManager$PreviewMode;->CONTAINER:Lcom/google/tagmanager/PreviewManager$PreviewMode;
+    sget-object v2, Lcom/google/tagmanager/PreviewManager$PreviewMode;->CONTAINER:Lcom/google/tagmanager/PreviewManager$PreviewMode;
 
-    if-eq v0, v1, :cond_26
-
-    invoke-static {}, Lcom/google/tagmanager/PreviewManager;->getInstance()Lcom/google/tagmanager/PreviewManager;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Lcom/google/tagmanager/PreviewManager;->getPreviewMode()Lcom/google/tagmanager/PreviewManager$PreviewMode;
-
-    move-result-object v0
-
-    sget-object v1, Lcom/google/tagmanager/PreviewManager$PreviewMode;->CONTAINER_DEBUG:Lcom/google/tagmanager/PreviewManager$PreviewMode;
-
-    if-ne v0, v1, :cond_3e
-
-    :cond_26
-    iget-object v0, p0, Lcom/google/tagmanager/ResourceStorageImpl;->mContainerId:Ljava/lang/String;
+    if-eq v1, v2, :cond_0
 
     invoke-static {}, Lcom/google/tagmanager/PreviewManager;->getInstance()Lcom/google/tagmanager/PreviewManager;
 
     move-result-object v1
 
-    invoke-virtual {v1}, Lcom/google/tagmanager/PreviewManager;->getContainerId()Ljava/lang/String;
+    invoke-virtual {v1}, Lcom/google/tagmanager/PreviewManager;->getPreviewMode()Lcom/google/tagmanager/PreviewManager$PreviewMode;
 
     move-result-object v1
 
-    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    sget-object v2, Lcom/google/tagmanager/PreviewManager$PreviewMode;->CONTAINER_DEBUG:Lcom/google/tagmanager/PreviewManager$PreviewMode;
 
-    move-result v0
+    if-ne v1, v2, :cond_1
 
-    if-eqz v0, :cond_3e
+    :cond_0
+    iget-object v1, p0, Lcom/google/tagmanager/ResourceStorageImpl;->mContainerId:Ljava/lang/String;
+
+    invoke-static {}, Lcom/google/tagmanager/PreviewManager;->getInstance()Lcom/google/tagmanager/PreviewManager;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Lcom/google/tagmanager/PreviewManager;->getContainerId()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_1
 
     .line 82
     iget-object v0, p0, Lcom/google/tagmanager/ResourceStorageImpl;->mCallback:Lcom/google/tagmanager/LoadCallback;
@@ -720,156 +717,149 @@
     return-void
 
     .line 86
-    :cond_3e
-    const/4 v0, 0x0
+    :cond_1
+    const/4 v1, 0x0
 
     .line 88
-    .local v0, "stream":Ljava/io/FileInputStream;
-    :try_start_3f
-    new-instance v1, Ljava/io/FileInputStream;
+    .local v1, "stream":Ljava/io/FileInputStream;
+    :try_start_0
+    new-instance v2, Ljava/io/FileInputStream;
 
     invoke-virtual {p0}, Lcom/google/tagmanager/ResourceStorageImpl;->getResourceFile()Ljava/io/File;
 
-    move-result-object v2
+    move-result-object v3
 
-    invoke-direct {v1, v2}, Ljava/io/FileInputStream;-><init>(Ljava/io/File;)V
-    :try_end_48
-    .catch Ljava/io/FileNotFoundException; {:try_start_3f .. :try_end_48} :catch_8f
+    invoke-direct {v2, v3}, Ljava/io/FileInputStream;-><init>(Ljava/io/File;)V
+    :try_end_0
+    .catch Ljava/io/FileNotFoundException; {:try_start_0 .. :try_end_0} :catch_3
 
-    move-object v0, v1
+    move-object v1, v2
 
     .line 93
     nop
 
     .line 96
-    :try_start_4a
-    new-instance v1, Ljava/io/ByteArrayOutputStream;
+    :try_start_1
+    new-instance v2, Ljava/io/ByteArrayOutputStream;
 
-    invoke-direct {v1}, Ljava/io/ByteArrayOutputStream;-><init>()V
+    invoke-direct {v2}, Ljava/io/ByteArrayOutputStream;-><init>()V
 
     .line 97
-    .local v1, "input":Ljava/io/ByteArrayOutputStream;
-    invoke-static {v0, v1}, Lcom/google/tagmanager/ResourceUtil;->copyStream(Ljava/io/InputStream;Ljava/io/OutputStream;)V
+    .local v2, "input":Ljava/io/ByteArrayOutputStream;
+    invoke-static {v1, v2}, Lcom/google/tagmanager/ResourceUtil;->copyStream(Ljava/io/InputStream;Ljava/io/OutputStream;)V
 
     .line 98
-    iget-object v2, p0, Lcom/google/tagmanager/ResourceStorageImpl;->mCallback:Lcom/google/tagmanager/LoadCallback;
+    iget-object v3, p0, Lcom/google/tagmanager/ResourceStorageImpl;->mCallback:Lcom/google/tagmanager/LoadCallback;
 
-    invoke-virtual {v1}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
+    invoke-virtual {v2}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
 
-    move-result-object v3
+    move-result-object v4
 
-    invoke-static {v3}, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->parseFrom([B)Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;
+    invoke-static {v4}, Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;->parseFrom([B)Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;
 
-    move-result-object v3
+    move-result-object v4
 
-    invoke-interface {v2, v3}, Lcom/google/tagmanager/LoadCallback;->onSuccess(Ljava/lang/Object;)V
-    :try_end_5f
-    .catch Ljava/io/IOException; {:try_start_4a .. :try_end_5f} :catch_65
-    .catchall {:try_start_4a .. :try_end_5f} :catchall_63
+    invoke-interface {v3, v4}, Lcom/google/tagmanager/LoadCallback;->onSuccess(Ljava/lang/Object;)V
+    :try_end_1
+    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_0
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 104
-    .end local v1    # "input":Ljava/io/ByteArrayOutputStream;
-    :try_start_5f
-    invoke-virtual {v0}, Ljava/io/FileInputStream;->close()V
-    :try_end_62
-    .catch Ljava/io/IOException; {:try_start_5f .. :try_end_62} :catch_76
+    .end local v2    # "input":Ljava/io/ByteArrayOutputStream;
+    :try_start_2
+    invoke-virtual {v1}, Ljava/io/FileInputStream;->close()V
+    :try_end_2
+    .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_1
 
-    goto :goto_75
+    goto :goto_0
 
     .line 103
-    :catchall_63
-    move-exception v1
+    :catchall_0
+    move-exception v2
 
-    goto :goto_83
+    goto :goto_2
 
     .line 99
-    :catch_65
-    move-exception v1
+    :catch_0
+    move-exception v2
 
     .line 100
-    .local v1, "e":Ljava/io/IOException;
-    :try_start_66
-    const-string v2, "error reading resource from disk"
+    .local v2, "e":Ljava/io/IOException;
+    :try_start_3
+    const-string v3, "error reading resource from disk"
 
-    invoke-static {v2}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
+    invoke-static {v3}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
 
     .line 101
-    iget-object v2, p0, Lcom/google/tagmanager/ResourceStorageImpl;->mCallback:Lcom/google/tagmanager/LoadCallback;
+    iget-object v3, p0, Lcom/google/tagmanager/ResourceStorageImpl;->mCallback:Lcom/google/tagmanager/LoadCallback;
 
-    sget-object v3, Lcom/google/tagmanager/LoadCallback$Failure;->IO_ERROR:Lcom/google/tagmanager/LoadCallback$Failure;
+    sget-object v4, Lcom/google/tagmanager/LoadCallback$Failure;->IO_ERROR:Lcom/google/tagmanager/LoadCallback$Failure;
 
-    invoke-interface {v2, v3}, Lcom/google/tagmanager/LoadCallback;->onFailure(Lcom/google/tagmanager/LoadCallback$Failure;)V
-    :try_end_72
-    .catchall {:try_start_66 .. :try_end_72} :catchall_63
+    invoke-interface {v3, v4}, Lcom/google/tagmanager/LoadCallback;->onFailure(Lcom/google/tagmanager/LoadCallback$Failure;)V
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
     .line 104
-    .end local v1    # "e":Ljava/io/IOException;
-    :try_start_72
-    invoke-virtual {v0}, Ljava/io/FileInputStream;->close()V
-    :try_end_75
-    .catch Ljava/io/IOException; {:try_start_72 .. :try_end_75} :catch_76
+    .end local v2    # "e":Ljava/io/IOException;
+    :try_start_4
+    invoke-virtual {v1}, Ljava/io/FileInputStream;->close()V
+    :try_end_4
+    .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_1
 
     .line 107
-    :goto_75
-    goto :goto_7d
+    :goto_0
+    goto :goto_1
 
     .line 105
-    :catch_76
-    move-exception v1
+    :catch_1
+    move-exception v2
 
     .line 106
-    .restart local v1    # "e":Ljava/io/IOException;
-    const-string v2, "error closing stream for reading resource from disk"
-
-    invoke-static {v2}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
+    .restart local v2    # "e":Ljava/io/IOException;
+    invoke-static {v0}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
 
     .line 108
-    .end local v1    # "e":Ljava/io/IOException;
+    .end local v2    # "e":Ljava/io/IOException;
     nop
 
     .line 110
-    :goto_7d
-    const-string v1, "Load resource from disk finished."
+    :goto_1
+    const-string v0, "Load resource from disk finished."
 
-    invoke-static {v1}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
+    invoke-static {v0}, Lcom/google/tagmanager/Log;->v(Ljava/lang/String;)V
 
     .line 111
     return-void
 
-    .line 103
-    :goto_83
-    nop
-
     .line 104
-    :try_start_84
-    invoke-virtual {v0}, Ljava/io/FileInputStream;->close()V
-    :try_end_87
-    .catch Ljava/io/IOException; {:try_start_84 .. :try_end_87} :catch_88
+    :goto_2
+    :try_start_5
+    invoke-virtual {v1}, Ljava/io/FileInputStream;->close()V
+    :try_end_5
+    .catch Ljava/io/IOException; {:try_start_5 .. :try_end_5} :catch_2
 
     .line 107
-    goto :goto_8e
+    goto :goto_3
 
     .line 105
-    :catch_88
-    move-exception v2
+    :catch_2
+    move-exception v3
 
     .line 106
-    .local v2, "e":Ljava/io/IOException;
-    const-string v3, "error closing stream for reading resource from disk"
-
-    invoke-static {v3}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
+    .local v3, "e":Ljava/io/IOException;
+    invoke-static {v0}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
 
     .line 107
-    .end local v2    # "e":Ljava/io/IOException;
-    :goto_8e
-    throw v1
+    .end local v3    # "e":Ljava/io/IOException;
+    :goto_3
+    throw v2
 
     .line 89
-    :catch_8f
-    move-exception v1
+    :catch_3
+    move-exception v0
 
     .line 90
-    .local v1, "e":Ljava/io/FileNotFoundException;
+    .local v0, "e":Ljava/io/FileNotFoundException;
     const-string v2, "resource not on disk"
 
     invoke-static {v2}, Lcom/google/tagmanager/Log;->d(Ljava/lang/String;)V
@@ -885,9 +875,9 @@
     return-void
 
     .line 72
-    .end local v0    # "stream":Ljava/io/FileInputStream;
-    .end local v1    # "e":Ljava/io/FileNotFoundException;
-    :cond_9d
+    .end local v0    # "e":Ljava/io/FileNotFoundException;
+    .end local v1    # "stream":Ljava/io/FileInputStream;
+    :cond_2
     new-instance v0, Ljava/lang/IllegalStateException;
 
     const-string v1, "callback must be set before execute"
@@ -898,7 +888,7 @@
 .end method
 
 .method public loadResourceFromDiskInBackground()V
-    .registers 3
+    .locals 2
 
     .line 55
     iget-object v0, p0, Lcom/google/tagmanager/ResourceStorageImpl;->mExecutor:Ljava/util/concurrent/ExecutorService;
@@ -914,168 +904,161 @@
 .end method
 
 .method saveResourceToDisk(Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;)Z
-    .registers 7
+    .locals 6
     .param p1, "resource"    # Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
     .line 209
-    const/4 v0, 0x0
+    const-string v0, "error closing stream for writing resource to disk"
+
+    const/4 v1, 0x0
 
     .line 210
-    .local v0, "stream":Ljava/io/FileOutputStream;
+    .local v1, "stream":Ljava/io/FileOutputStream;
     invoke-virtual {p0}, Lcom/google/tagmanager/ResourceStorageImpl;->getResourceFile()Ljava/io/File;
 
-    move-result-object v1
+    move-result-object v2
 
     .line 212
-    .local v1, "file":Ljava/io/File;
-    const/4 v2, 0x0
+    .local v2, "file":Ljava/io/File;
+    const/4 v3, 0x0
 
-    :try_start_6
-    new-instance v3, Ljava/io/FileOutputStream;
+    :try_start_0
+    new-instance v4, Ljava/io/FileOutputStream;
 
-    invoke-direct {v3, v1}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
-    :try_end_b
-    .catch Ljava/io/FileNotFoundException; {:try_start_6 .. :try_end_b} :catch_43
+    invoke-direct {v4, v2}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
+    :try_end_0
+    .catch Ljava/io/FileNotFoundException; {:try_start_0 .. :try_end_0} :catch_4
 
-    move-object v0, v3
+    move-object v1, v4
 
     .line 217
     nop
 
     .line 219
-    :try_start_d
+    :try_start_1
     invoke-static {p1}, Lcom/google/tagmanager/protobuf/nano/MessageNano;->toByteArray(Lcom/google/tagmanager/protobuf/nano/MessageNano;)[B
 
-    move-result-object v3
+    move-result-object v4
 
-    invoke-virtual {v0, v3}, Ljava/io/FileOutputStream;->write([B)V
-    :try_end_14
-    .catch Ljava/io/IOException; {:try_start_d .. :try_end_14} :catch_22
-    .catchall {:try_start_d .. :try_end_14} :catchall_20
+    invoke-virtual {v1, v4}, Ljava/io/FileOutputStream;->write([B)V
+    :try_end_1
+    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 220
-    const/4 v2, 0x1
+    const/4 v3, 0x1
 
     .line 227
-    :try_start_15
-    invoke-virtual {v0}, Ljava/io/FileOutputStream;->close()V
-    :try_end_18
-    .catch Ljava/io/IOException; {:try_start_15 .. :try_end_18} :catch_19
+    :try_start_2
+    invoke-virtual {v1}, Ljava/io/FileOutputStream;->close()V
+    :try_end_2
+    .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_0
 
     .line 230
-    goto :goto_1f
+    goto :goto_0
 
     .line 228
-    :catch_19
-    move-exception v3
+    :catch_0
+    move-exception v4
 
     .line 229
-    .local v3, "e":Ljava/io/IOException;
-    const-string v4, "error closing stream for writing resource to disk"
-
-    invoke-static {v4}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
+    .local v4, "e":Ljava/io/IOException;
+    invoke-static {v0}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
 
     .line 230
-    .end local v3    # "e":Ljava/io/IOException;
-    :goto_1f
-    return v2
+    .end local v4    # "e":Ljava/io/IOException;
+    :goto_0
+    return v3
 
     .line 226
-    :catchall_20
-    move-exception v2
+    :catchall_0
+    move-exception v3
 
-    goto :goto_37
+    goto :goto_2
 
     .line 221
-    :catch_22
-    move-exception v3
+    :catch_1
+    move-exception v4
 
     .line 222
-    .restart local v3    # "e":Ljava/io/IOException;
-    :try_start_23
-    const-string v4, "Error writing resource to disk. Removing resource from disk."
+    .restart local v4    # "e":Ljava/io/IOException;
+    :try_start_3
+    const-string v5, "Error writing resource to disk. Removing resource from disk."
 
-    invoke-static {v4}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
+    invoke-static {v5}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
 
     .line 224
-    invoke-virtual {v1}, Ljava/io/File;->delete()Z
-    :try_end_2b
-    .catchall {:try_start_23 .. :try_end_2b} :catchall_20
+    invoke-virtual {v2}, Ljava/io/File;->delete()Z
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
     .line 227
-    .end local v3    # "e":Ljava/io/IOException;
-    :try_start_2b
-    invoke-virtual {v0}, Ljava/io/FileOutputStream;->close()V
-    :try_end_2e
-    .catch Ljava/io/IOException; {:try_start_2b .. :try_end_2e} :catch_2f
+    .end local v4    # "e":Ljava/io/IOException;
+    :try_start_4
+    invoke-virtual {v1}, Ljava/io/FileOutputStream;->close()V
+    :try_end_4
+    .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_2
 
     .line 230
-    goto :goto_36
+    goto :goto_1
 
     .line 228
-    :catch_2f
-    move-exception v3
+    :catch_2
+    move-exception v4
 
     .line 229
-    .restart local v3    # "e":Ljava/io/IOException;
-    const-string v4, "error closing stream for writing resource to disk"
-
-    invoke-static {v4}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
+    .restart local v4    # "e":Ljava/io/IOException;
+    invoke-static {v0}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
 
     .line 231
-    .end local v3    # "e":Ljava/io/IOException;
+    .end local v4    # "e":Ljava/io/IOException;
     nop
 
     .line 232
-    :goto_36
-    return v2
-
-    .line 226
-    :goto_37
-    nop
+    :goto_1
+    return v3
 
     .line 227
-    :try_start_38
-    invoke-virtual {v0}, Ljava/io/FileOutputStream;->close()V
-    :try_end_3b
-    .catch Ljava/io/IOException; {:try_start_38 .. :try_end_3b} :catch_3c
+    :goto_2
+    :try_start_5
+    invoke-virtual {v1}, Ljava/io/FileOutputStream;->close()V
+    :try_end_5
+    .catch Ljava/io/IOException; {:try_start_5 .. :try_end_5} :catch_3
 
     .line 230
-    goto :goto_42
+    goto :goto_3
 
     .line 228
-    :catch_3c
-    move-exception v3
+    :catch_3
+    move-exception v4
 
     .line 229
-    .restart local v3    # "e":Ljava/io/IOException;
-    const-string v4, "error closing stream for writing resource to disk"
-
-    invoke-static {v4}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
+    .restart local v4    # "e":Ljava/io/IOException;
+    invoke-static {v0}, Lcom/google/tagmanager/Log;->w(Ljava/lang/String;)V
 
     .line 230
-    .end local v3    # "e":Ljava/io/IOException;
-    :goto_42
-    throw v2
+    .end local v4    # "e":Ljava/io/IOException;
+    :goto_3
+    throw v3
 
     .line 213
-    :catch_43
-    move-exception v3
+    :catch_4
+    move-exception v0
 
     .line 214
-    .local v3, "e":Ljava/io/FileNotFoundException;
+    .local v0, "e":Ljava/io/FileNotFoundException;
     const-string v4, "Error opening resource file for writing"
 
     invoke-static {v4}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
 
     .line 216
-    return v2
+    return v3
 .end method
 
 .method public saveResourceToDiskInBackground(Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;)V
-    .registers 4
+    .locals 2
     .param p1, "resource"    # Lcom/google/tagmanager/proto/Resource$ResourceWithMetadata;
 
     .line 119
@@ -1092,7 +1075,7 @@
 .end method
 
 .method public setLoadCallback(Lcom/google/tagmanager/LoadCallback;)V
-    .registers 2
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",

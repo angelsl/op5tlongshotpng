@@ -27,102 +27,102 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;I)V
-    .registers 5
+    .locals 2
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "index"    # I
 
-    .line 28
+    .line 27
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 16
+    .line 15
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchData;->mContext:Landroid/content/Context;
 
-    .line 17
+    .line 16
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchData;->mTag:Ljava/lang/String;
 
-    .line 18
+    .line 17
     const/4 v1, -0x1
 
     iput v1, p0, Lcom/oneplus/screenshot/longshot/match/MatchData;->mIndex:I
 
-    .line 19
+    .line 18
     const/4 v1, 0x0
 
     iput v1, p0, Lcom/oneplus/screenshot/longshot/match/MatchData;->mMatched:I
 
-    .line 20
+    .line 19
     iput v1, p0, Lcom/oneplus/screenshot/longshot/match/MatchData;->mRate:I
 
-    .line 21
+    .line 20
     iput v1, p0, Lcom/oneplus/screenshot/longshot/match/MatchData;->mOffset:I
 
-    .line 22
+    .line 21
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchData;->mRangeLast:Lcom/oneplus/screenshot/longshot/match/MatchRange;
 
-    .line 23
+    .line 22
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchData;->mRangeCurr:Lcom/oneplus/screenshot/longshot/match/MatchRange;
 
-    .line 29
+    .line 28
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/match/MatchData;->mContext:Landroid/content/Context;
 
-    .line 30
+    .line 29
     iput p2, p0, Lcom/oneplus/screenshot/longshot/match/MatchData;->mIndex:I
 
-    .line 31
+    .line 30
     return-void
 .end method
 
 
 # virtual methods
 .method public getCurrRange()Lcom/oneplus/screenshot/longshot/match/MatchRange;
-    .registers 2
+    .locals 1
 
-    .line 73
+    .line 72
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchData;->mRangeCurr:Lcom/oneplus/screenshot/longshot/match/MatchRange;
 
     return-object v0
 .end method
 
 .method public getLastRange()Lcom/oneplus/screenshot/longshot/match/MatchRange;
-    .registers 2
+    .locals 1
 
-    .line 69
+    .line 68
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchData;->mRangeLast:Lcom/oneplus/screenshot/longshot/match/MatchRange;
 
     return-object v0
 .end method
 
 .method public getMatched()I
-    .registers 2
+    .locals 1
 
-    .line 57
+    .line 56
     iget v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchData;->mMatched:I
 
     return v0
 .end method
 
 .method public getOffset()I
-    .registers 2
+    .locals 1
 
-    .line 65
+    .line 64
     iget v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchData;->mOffset:I
 
     return v0
 .end method
 
 .method public getRate()I
-    .registers 2
+    .locals 1
 
-    .line 61
+    .line 60
     iget v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchData;->mRate:I
 
     return v0
 .end method
 
 .method public init(III[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;ZIILcom/oneplus/screenshot/longshot/dump/BitmapDumper;)V
-    .registers 13
+    .locals 3
     .param p1, "matched"    # I
     .param p2, "posLast"    # I
     .param p3, "posCurr"    # I
@@ -133,21 +133,21 @@
     .param p8, "offset"    # I
     .param p9, "dumper"    # Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;
 
-    .line 43
+    .line 42
     iput p1, p0, Lcom/oneplus/screenshot/longshot/match/MatchData;->mMatched:I
 
-    .line 44
+    .line 43
     iput p7, p0, Lcom/oneplus/screenshot/longshot/match/MatchData;->mRate:I
 
-    .line 45
+    .line 44
     iput p8, p0, Lcom/oneplus/screenshot/longshot/match/MatchData;->mOffset:I
 
-    .line 46
+    .line 45
     iget v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchData;->mMatched:I
 
-    if-lez v0, :cond_37
+    if-lez v0, :cond_0
 
-    .line 47
+    .line 46
     new-instance v0, Lcom/oneplus/screenshot/longshot/match/MatchRange;
 
     sub-int v1, p2, p1
@@ -158,7 +158,7 @@
 
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchData;->mRangeLast:Lcom/oneplus/screenshot/longshot/match/MatchRange;
 
-    .line 48
+    .line 47
     new-instance v0, Lcom/oneplus/screenshot/longshot/match/MatchRange;
 
     sub-int v1, p3, p1
@@ -169,10 +169,10 @@
 
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchData;->mRangeCurr:Lcom/oneplus/screenshot/longshot/match/MatchRange;
 
-    .line 49
-    if-eqz p9, :cond_37
+    .line 48
+    if-eqz p9, :cond_0
 
-    .line 50
+    .line 49
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/match/MatchData;->mRangeCurr:Lcom/oneplus/screenshot/longshot/match/MatchRange;
 
     invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/match/MatchRange;->getLines()[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
@@ -193,13 +193,13 @@
 
     invoke-virtual {p9, v0, v1, v2}, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;->dump([Lcom/oneplus/screenshot/longshot/bitmap/Pixels;II)V
 
-    .line 54
-    :cond_37
+    .line 53
+    :cond_0
     return-void
 .end method
 
 .method public init(III[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;ZLcom/oneplus/screenshot/longshot/dump/BitmapDumper;)V
-    .registers 18
+    .locals 10
     .param p1, "matched"    # I
     .param p2, "posLast"    # I
     .param p3, "posCurr"    # I
@@ -208,7 +208,7 @@
     .param p6, "isNext"    # Z
     .param p7, "dumper"    # Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;
 
-    .line 38
+    .line 37
     const/4 v7, 0x1
 
     const/4 v8, 0x0
@@ -231,6 +231,6 @@
 
     invoke-virtual/range {v0 .. v9}, Lcom/oneplus/screenshot/longshot/match/MatchData;->init(III[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;ZIILcom/oneplus/screenshot/longshot/dump/BitmapDumper;)V
 
-    .line 39
+    .line 38
     return-void
 .end method

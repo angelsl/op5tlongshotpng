@@ -9,7 +9,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 21
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->LANGUAGE:Lcom/google/analytics/containertag/common/FunctionType;
@@ -24,7 +24,7 @@
 .end method
 
 .method public constructor <init>()V
-    .registers 3
+    .locals 2
 
     .line 28
     sget-object v0, Lcom/google/tagmanager/LanguageMacro;->ID:Ljava/lang/String;
@@ -40,7 +40,7 @@
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 24
     sget-object v0, Lcom/google/tagmanager/LanguageMacro;->ID:Ljava/lang/String;
@@ -51,7 +51,7 @@
 
 # virtual methods
 .method public evaluate(Ljava/util/Map;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 5
+    .locals 3
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -71,7 +71,7 @@
 
     .line 37
     .local v0, "locale":Ljava/util/Locale;
-    if-nez v0, :cond_b
+    if-nez v0, :cond_0
 
     .line 38
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -81,14 +81,14 @@
     return-object v1
 
     .line 40
-    :cond_b
+    :cond_0
     invoke-virtual {v0}, Ljava/util/Locale;->getLanguage()Ljava/lang/String;
 
     move-result-object v1
 
     .line 41
     .local v1, "language":Ljava/lang/String;
-    if-nez v1, :cond_16
+    if-nez v1, :cond_1
 
     .line 42
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -98,7 +98,7 @@
     return-object v2
 
     .line 44
-    :cond_16
+    :cond_1
     invoke-virtual {v1}, Ljava/lang/String;->toLowerCase()Ljava/lang/String;
 
     move-result-object v2
@@ -111,7 +111,7 @@
 .end method
 
 .method public isCacheable()Z
-    .registers 2
+    .locals 1
 
     .line 32
     const/4 v0, 0x0

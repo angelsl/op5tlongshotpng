@@ -19,7 +19,7 @@
 
 # direct methods
 .method public constructor <init>(ILandroid/graphics/Point;Landroid/graphics/Point;)V
-    .registers 6
+    .locals 2
     .param p1, "distance"    # I
     .param p2, "start"    # Landroid/graphics/Point;
     .param p3, "end"    # Landroid/graphics/Point;
@@ -63,20 +63,11 @@
 
 
 # virtual methods
-.method public MoveTo(II)V
-    .registers 3
-    .param p1, "x"    # I
-    .param p2, "y"    # I
-
-    .line 80
-    return-void
-.end method
-
 .method public abstract canMove()Z
 .end method
 
 .method public getDistance()I
-    .registers 2
+    .locals 1
 
     .line 51
     iget v0, p0, Lcom/oneplus/screenshot/longshot/util/MovePoint;->mDistance:I
@@ -85,7 +76,7 @@
 .end method
 
 .method public getDownTime()J
-    .registers 3
+    .locals 2
 
     .line 55
     iget-wide v0, p0, Lcom/oneplus/screenshot/longshot/util/MovePoint;->mDownTime:J
@@ -94,7 +85,7 @@
 .end method
 
 .method public getEnd()Landroid/graphics/Point;
-    .registers 2
+    .locals 1
 
     .line 47
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/util/MovePoint;->mEnd:Landroid/graphics/Point;
@@ -103,7 +94,7 @@
 .end method
 
 .method public getStart()Landroid/graphics/Point;
-    .registers 2
+    .locals 1
 
     .line 43
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/util/MovePoint;->mStart:Landroid/graphics/Point;
@@ -120,8 +111,17 @@
 .method public abstract move()V
 .end method
 
+.method public moveTo(II)V
+    .locals 0
+    .param p1, "x"    # I
+    .param p2, "y"    # I
+
+    .line 80
+    return-void
+.end method
+
 .method public reset()V
-    .registers 3
+    .locals 2
 
     .line 39
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/util/MovePoint;->mStart:Landroid/graphics/Point;
@@ -139,7 +139,7 @@
 .end method
 
 .method public setDownTime(J)V
-    .registers 3
+    .locals 0
     .param p1, "downTime"    # J
 
     .line 59
@@ -150,7 +150,7 @@
 .end method
 
 .method public toString()Ljava/lang/String;
-    .registers 3
+    .locals 2
 
     .line 32
     new-instance v0, Ljava/lang/StringBuilder;
@@ -187,7 +187,7 @@
 .end method
 
 .method public updateStart(Landroid/graphics/Point;)V
-    .registers 2
+    .locals 0
     .param p1, "start"    # Landroid/graphics/Point;
 
     .line 75

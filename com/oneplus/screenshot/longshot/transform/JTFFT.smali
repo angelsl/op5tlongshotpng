@@ -12,7 +12,7 @@
 
 # direct methods
 .method public constructor <init>(I)V
-    .registers 3
+    .locals 1
     .param p1, "size"    # I
 
     .line 9
@@ -35,7 +35,7 @@
 .end method
 
 .method private toComplex([D)[Lcom/oneplus/screenshot/longshot/transform/Complex;
-    .registers 7
+    .locals 5
     .param p1, "array"    # [D
 
     .line 36
@@ -48,10 +48,10 @@
     const/4 v1, 0x0
 
     .local v1, "i":I
-    :goto_4
+    :goto_0
     array-length v2, p1
 
-    if-ge v1, v2, :cond_13
+    if-ge v1, v2, :cond_0
 
     .line 38
     new-instance v2, Lcom/oneplus/screenshot/longshot/transform/Complex;
@@ -65,16 +65,16 @@
     .line 37
     add-int/lit8 v1, v1, 0x1
 
-    goto :goto_4
+    goto :goto_0
 
     .line 40
     .end local v1    # "i":I
-    :cond_13
+    :cond_0
     return-object v0
 .end method
 
 .method private toDouble([Lcom/oneplus/screenshot/longshot/transform/Complex;)[D
-    .registers 6
+    .locals 4
     .param p1, "array"    # [Lcom/oneplus/screenshot/longshot/transform/Complex;
 
     .line 28
@@ -87,10 +87,10 @@
     const/4 v1, 0x0
 
     .local v1, "i":I
-    :goto_4
+    :goto_0
     array-length v2, p1
 
-    if-ge v1, v2, :cond_12
+    if-ge v1, v2, :cond_0
 
     .line 30
     aget-object v2, p1, v1
@@ -104,18 +104,18 @@
     .line 29
     add-int/lit8 v1, v1, 0x1
 
-    goto :goto_4
+    goto :goto_0
 
     .line 32
     .end local v1    # "i":I
-    :cond_12
+    :cond_0
     return-object v0
 .end method
 
 
 # virtual methods
 .method public reverse([Lcom/oneplus/screenshot/longshot/transform/Complex;)[Lcom/oneplus/screenshot/longshot/transform/Complex;
-    .registers 5
+    .locals 3
     .param p1, "signal"    # [Lcom/oneplus/screenshot/longshot/transform/Complex;
 
     .line 22
@@ -140,7 +140,7 @@
 .end method
 
 .method public transform([Lcom/oneplus/screenshot/longshot/transform/Complex;)[Lcom/oneplus/screenshot/longshot/transform/Complex;
-    .registers 4
+    .locals 2
     .param p1, "signal"    # [Lcom/oneplus/screenshot/longshot/transform/Complex;
 
     .line 15

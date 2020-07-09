@@ -6,6 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/oneplus/screenshot/R$transition;,
         Lcom/oneplus/screenshot/R$styleable;,
         Lcom/oneplus/screenshot/R$style;,
         Lcom/oneplus/screenshot/R$string;,
@@ -16,6 +17,7 @@
         Lcom/oneplus/screenshot/R$drawable;,
         Lcom/oneplus/screenshot/R$dimen;,
         Lcom/oneplus/screenshot/R$color;,
+        Lcom/oneplus/screenshot/R$bool;,
         Lcom/oneplus/screenshot/R$attr;,
         Lcom/oneplus/screenshot/R$array;,
         Lcom/oneplus/screenshot/R$animator;,
@@ -26,7 +28,7 @@
 
 # direct methods
 .method public constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 10
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V

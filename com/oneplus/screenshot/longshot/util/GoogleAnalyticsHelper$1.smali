@@ -19,9 +19,9 @@
 
 # direct methods
 .method constructor <init>()V
-    .registers 1
+    .locals 0
 
-    .line 54
+    .line 45
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -30,10 +30,9 @@
 
 # virtual methods
 .method public run()V
-    .registers 4
+    .locals 3
 
-    .line 58
-    # getter for: Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->TAG:Ljava/lang/String;
+    .line 49
     invoke-static {}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->access$000()Ljava/lang/String;
 
     move-result-object v0
@@ -42,11 +41,10 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 59
+    .line 50
     new-instance v0, Lcom/oneplus/config/ConfigGrabber;
 
-    .line 60
-    # getter for: Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->sContext:Landroid/content/Context;
+    .line 51
     invoke-static {}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->access$100()Landroid/content/Context;
 
     move-result-object v1
@@ -59,7 +57,7 @@
 
     invoke-direct {v0, v1, v2}, Lcom/oneplus/config/ConfigGrabber;-><init>(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 61
+    .line 52
     .local v0, "configGrabber":Lcom/oneplus/config/ConfigGrabber;
     invoke-virtual {v0}, Lcom/oneplus/config/ConfigGrabber;->grabConfig()Lorg/json/JSONArray;
 
@@ -67,6 +65,6 @@
 
     invoke-static {v1}, Lcom/oneplus/screenshot/longshot/util/GoogleAnalyticsHelper;->access$200(Lorg/json/JSONArray;)V
 
-    .line 62
+    .line 53
     return-void
 .end method

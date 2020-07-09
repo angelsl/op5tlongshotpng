@@ -9,7 +9,7 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;IZLjava/lang/String;)V
-    .registers 5
+    .locals 0
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "index"    # I
     .param p3, "isNext"    # Z
@@ -28,7 +28,7 @@
 
 # virtual methods
 .method protected getTag()Ljava/lang/String;
-    .registers 3
+    .locals 2
 
     .line 24
     new-instance v0, Ljava/lang/StringBuilder;

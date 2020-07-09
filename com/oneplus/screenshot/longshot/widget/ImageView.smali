@@ -56,7 +56,7 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    .registers 7
+    .locals 4
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "attrs"    # Landroid/util/AttributeSet;
 
@@ -162,7 +162,7 @@
 .end method
 
 .method static synthetic access$100(Lcom/oneplus/screenshot/longshot/widget/ImageView;)Lcom/oneplus/screenshot/longshot/widget/ImageView$FlingRunnable;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
     .line 21
@@ -172,7 +172,7 @@
 .end method
 
 .method static synthetic access$200(Lcom/oneplus/screenshot/longshot/widget/ImageView;)Landroid/view/ViewParent;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
     .line 21
@@ -182,7 +182,7 @@
 .end method
 
 .method static synthetic access$300(Lcom/oneplus/screenshot/longshot/widget/ImageView;I)V
-    .registers 2
+    .locals 0
     .param p0, "x0"    # Lcom/oneplus/screenshot/longshot/widget/ImageView;
     .param p1, "x1"    # I
 
@@ -193,7 +193,7 @@
 .end method
 
 .method static synthetic access$400(Lcom/oneplus/screenshot/longshot/widget/ImageView;)I
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
     .line 21
@@ -203,7 +203,7 @@
 .end method
 
 .method static synthetic access$500(Lcom/oneplus/screenshot/longshot/widget/ImageView;)V
-    .registers 1
+    .locals 0
     .param p0, "x0"    # Lcom/oneplus/screenshot/longshot/widget/ImageView;
 
     .line 21
@@ -213,7 +213,7 @@
 .end method
 
 .method private endFlingAtEdge(I)I
-    .registers 4
+    .locals 2
     .param p1, "deltaY"    # I
 
     .line 194
@@ -228,7 +228,7 @@
 .end method
 
 .method private initDrawMatrix()V
-    .registers 13
+    .locals 12
 
     .line 79
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mDrawPadding:Lcom/oneplus/screenshot/longshot/bitmap/DrawPadding;
@@ -239,7 +239,7 @@
 
     .line 80
     .local v0, "matrix":Landroid/graphics/Matrix;
-    if-eqz v0, :cond_49
+    if-eqz v0, :cond_1
 
     .line 81
     const/4 v1, 0x0
@@ -292,7 +292,7 @@
 
     const/high16 v11, 0x3f000000    # 0.5f
 
-    if-le v9, v10, :cond_33
+    if-le v9, v10, :cond_0
 
     .line 90
     int-to-float v9, v8
@@ -314,12 +314,12 @@
 
     mul-float v2, v1, v11
 
-    goto :goto_3c
+    goto :goto_0
 
     .line 93
     .end local v9    # "scale":F
     .restart local v1    # "scale":F
-    :cond_33
+    :cond_0
     int-to-float v9, v7
 
     int-to-float v10, v5
@@ -340,7 +340,7 @@
     mul-float v3, v1, v11
 
     .line 96
-    :goto_3c
+    :goto_0
     invoke-virtual {v0, v9, v9}, Landroid/graphics/Matrix;->setScale(FF)V
 
     .line 97
@@ -367,19 +367,19 @@
     .end local v7    # "vwidth":I
     .end local v8    # "vheight":I
     .end local v9    # "scale":F
-    :cond_49
+    :cond_1
     return-void
 .end method
 
 .method private scrollIntoSlots()V
-    .registers 1
+    .locals 0
 
-    .line 223
+    .line 225
     return-void
 .end method
 
 .method private trackMotionScroll(I)V
-    .registers 4
+    .locals 2
     .param p1, "deltaY"    # I
 
     .line 200
@@ -394,60 +394,52 @@
 
     const/4 v1, 0x0
 
-    if-lez v0, :cond_1c
+    if-lez v0, :cond_1
 
     .line 203
-    if-gez p1, :cond_11
+    if-gez p1, :cond_0
 
     .line 204
     invoke-direct {p0, v1}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->endFlingAtEdge(I)I
 
     move-result p1
 
-    goto :goto_2d
+    goto :goto_0
 
     .line 205
-    :cond_11
-    iget v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mBottomY:I
-
-    if-le p1, v0, :cond_2d
+    :cond_0
+    if-le p1, v0, :cond_3
 
     .line 206
-    iget v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mBottomY:I
-
     invoke-direct {p0, v0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->endFlingAtEdge(I)I
 
     move-result p1
 
-    goto :goto_2d
+    goto :goto_0
 
     .line 209
-    :cond_1c
-    if-lez p1, :cond_23
+    :cond_1
+    if-lez p1, :cond_2
 
     .line 210
     invoke-direct {p0, v1}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->endFlingAtEdge(I)I
 
     move-result p1
 
-    goto :goto_2d
+    goto :goto_0
 
     .line 211
-    :cond_23
-    iget v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mBottomY:I
-
-    if-ge p1, v0, :cond_2d
+    :cond_2
+    if-ge p1, v0, :cond_3
 
     .line 212
-    iget v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mBottomY:I
-
     invoke-direct {p0, v0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->endFlingAtEdge(I)I
 
     move-result p1
 
     .line 216
-    :cond_2d
-    :goto_2d
+    :cond_3
+    :goto_0
     invoke-virtual {p0, p1}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->setOffsetY(I)V
 
     .line 218
@@ -463,7 +455,7 @@
 
 # virtual methods
 .method protected createGestureListener()Landroid/view/GestureDetector$OnGestureListener;
-    .registers 2
+    .locals 1
 
     .line 187
     new-instance v0, Lcom/oneplus/screenshot/longshot/widget/ImageView$ImageOnGestureListener;
@@ -474,7 +466,7 @@
 .end method
 
 .method public getNavBarHeight()I
-    .registers 2
+    .locals 1
 
     .line 157
     iget v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mNavBarHeight:I
@@ -483,7 +475,7 @@
 .end method
 
 .method public getOffsetY()I
-    .registers 2
+    .locals 1
 
     .line 168
     iget v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mOffsetY:I
@@ -492,7 +484,7 @@
 .end method
 
 .method protected onCancel()V
-    .registers 1
+    .locals 0
 
     .line 183
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->onUp()V
@@ -502,7 +494,7 @@
 .end method
 
 .method protected onDraw(Landroid/graphics/Canvas;)V
-    .registers 11
+    .locals 9
     .param p1, "canvas"    # Landroid/graphics/Canvas;
 
     .line 103
@@ -511,7 +503,7 @@
     .line 104
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mBitmaps:Ljava/util/List;
 
-    if-eqz v0, :cond_62
+    if-eqz v0, :cond_2
 
     .line 105
     invoke-virtual {p1}, Landroid/graphics/Canvas;->save()I
@@ -535,11 +527,9 @@
     .local v8, "config":Landroid/graphics/Bitmap$Config;
     iget-object v1, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mDrawPadding:Lcom/oneplus/screenshot/longshot/bitmap/DrawPadding;
 
-    if-eqz v1, :cond_48
+    if-eqz v1, :cond_1
 
     .line 109
-    iget-object v1, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mDrawPadding:Lcom/oneplus/screenshot/longshot/bitmap/DrawPadding;
-
     invoke-virtual {v1}, Lcom/oneplus/screenshot/longshot/bitmap/DrawPadding;->getPadding()I
 
     move-result v1
@@ -548,7 +538,7 @@
     .local v1, "offset":I
     iget v2, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mBottomY:I
 
-    if-gez v2, :cond_38
+    if-gez v2, :cond_0
 
     .line 111
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->getLeft()I
@@ -572,7 +562,7 @@
     invoke-virtual {p1, v2, v3, v4, v5}, Landroid/graphics/Canvas;->clipRect(IIII)Z
 
     .line 113
-    :cond_38
+    :cond_0
     int-to-float v2, v1
 
     int-to-float v3, v1
@@ -588,7 +578,7 @@
 
     .line 115
     .local v2, "matrix":Landroid/graphics/Matrix;
-    if-eqz v2, :cond_48
+    if-eqz v2, :cond_1
 
     .line 116
     invoke-virtual {p1, v2}, Landroid/graphics/Canvas;->concat(Landroid/graphics/Matrix;)V
@@ -596,7 +586,7 @@
     .line 119
     .end local v1    # "offset":I
     .end local v2    # "matrix":Landroid/graphics/Matrix;
-    :cond_48
+    :cond_1
     iget-object v1, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mBitmaps:Ljava/util/List;
 
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->getPaddingLeft()I
@@ -614,7 +604,7 @@
 
     add-int/2addr v3, v4
 
-    sget v5, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;->DIV_HEIGHT:I
+    sget v5, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;->divHeight:I
 
     .line 119
     move v4, v0
@@ -631,12 +621,12 @@
     .line 124
     .end local v0    # "width":I
     .end local v8    # "config":Landroid/graphics/Bitmap$Config;
-    :cond_62
+    :cond_2
     return-void
 .end method
 
 .method protected onMeasure(II)V
-    .registers 5
+    .locals 2
     .param p1, "widthMeasureSpec"    # I
     .param p2, "heightMeasureSpec"    # I
 
@@ -646,15 +636,13 @@
     .line 70
     iget v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mImageHeight:I
 
-    if-lez v0, :cond_18
-
-    iget v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mImageHeight:I
+    if-lez v0, :cond_0
 
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->getMeasuredHeight()I
 
     move-result v1
 
-    if-ge v0, v1, :cond_18
+    if-ge v0, v1, :cond_0
 
     .line 71
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->getMeasuredWidthAndState()I
@@ -666,7 +654,7 @@
     invoke-virtual {p0, v0, v1}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->setMeasuredDimension(II)V
 
     .line 73
-    :cond_18
+    :cond_0
     invoke-direct {p0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->initDrawMatrix()V
 
     .line 74
@@ -683,18 +671,11 @@
     .line 75
     iget v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mBottomY:I
 
-    if-lez v0, :cond_2d
-
-    iget v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mBottomY:I
+    if-lez v0, :cond_1
 
     div-int/lit8 v0, v0, 0x2
 
-    goto :goto_2f
-
-    :cond_2d
-    iget v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mBottomY:I
-
-    :goto_2f
+    :cond_1
     invoke-virtual {p0, v0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->setOffsetY(I)V
 
     .line 76
@@ -702,7 +683,7 @@
 .end method
 
 .method public onTouchEvent(Landroid/view/MotionEvent;)Z
-    .registers 5
+    .locals 3
     .param p1, "event"    # Landroid/view/MotionEvent;
 
     .line 128
@@ -710,7 +691,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_1e
+    if-eqz v0, :cond_2
 
     .line 130
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mGestureDetector:Landroid/view/GestureDetector;
@@ -729,31 +710,31 @@
     .local v1, "action":I
     const/4 v2, 0x1
 
-    if-ne v1, v2, :cond_17
+    if-ne v1, v2, :cond_0
 
     .line 134
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->onUp()V
 
-    goto :goto_1d
+    goto :goto_0
 
     .line 135
-    :cond_17
+    :cond_0
     const/4 v2, 0x3
 
-    if-ne v1, v2, :cond_1d
+    if-ne v1, v2, :cond_1
 
     .line 136
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->onCancel()V
 
     .line 138
-    :cond_1d
-    :goto_1d
+    :cond_1
+    :goto_0
     return v0
 
     .line 140
     .end local v0    # "retValue":Z
     .end local v1    # "action":I
-    :cond_1e
+    :cond_2
     invoke-super {p0, p1}, Landroid/view/View;->onTouchEvent(Landroid/view/MotionEvent;)Z
 
     move-result v0
@@ -762,7 +743,7 @@
 .end method
 
 .method protected onUp()V
-    .registers 2
+    .locals 1
 
     .line 179
     const/4 v0, 0x0
@@ -774,7 +755,7 @@
 .end method
 
 .method public setBitmaps(Ljava/util/List;)V
-    .registers 3
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -805,7 +786,7 @@
 .end method
 
 .method public setImagePadding(I)V
-    .registers 3
+    .locals 1
     .param p1, "padding"    # I
 
     .line 147
@@ -818,7 +799,7 @@
 .end method
 
 .method public setNavBarHeight(I)V
-    .registers 7
+    .locals 5
     .param p1, "value"    # I
 
     .line 161
@@ -827,7 +808,7 @@
     .line 162
     iget v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mNavBarHeight:I
 
-    if-lez v0, :cond_14
+    if-lez v0, :cond_0
 
     .line 163
     iget v0, p0, Lcom/oneplus/screenshot/longshot/widget/ImageView;->mPaddingLeft:I
@@ -845,12 +826,12 @@
     invoke-virtual {p0, v0, v1, v2, v3}, Lcom/oneplus/screenshot/longshot/widget/ImageView;->setPadding(IIII)V
 
     .line 165
-    :cond_14
+    :cond_0
     return-void
 .end method
 
 .method public setOffsetY(I)V
-    .registers 2
+    .locals 0
     .param p1, "value"    # I
 
     .line 172

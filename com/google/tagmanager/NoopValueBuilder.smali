@@ -8,7 +8,7 @@
 
 # direct methods
 .method constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 7
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -19,7 +19,7 @@
 
 # virtual methods
 .method public createValueMacroEvaluationInfoExtension()Lcom/google/tagmanager/MacroEvaluationInfoBuilder;
-    .registers 2
+    .locals 1
 
     .line 31
     new-instance v0, Lcom/google/tagmanager/NoopMacroEvaluationInfoBuilder;
@@ -30,7 +30,7 @@
 .end method
 
 .method public getListItem(I)Lcom/google/tagmanager/ValueBuilder;
-    .registers 3
+    .locals 1
     .param p1, "index"    # I
 
     .line 11
@@ -42,7 +42,7 @@
 .end method
 
 .method public getMapKey(I)Lcom/google/tagmanager/ValueBuilder;
-    .registers 3
+    .locals 1
     .param p1, "index"    # I
 
     .line 16
@@ -54,7 +54,7 @@
 .end method
 
 .method public getMapValue(I)Lcom/google/tagmanager/ValueBuilder;
-    .registers 3
+    .locals 1
     .param p1, "index"    # I
 
     .line 21
@@ -66,7 +66,7 @@
 .end method
 
 .method public getTemplateToken(I)Lcom/google/tagmanager/ValueBuilder;
-    .registers 3
+    .locals 1
     .param p1, "index"    # I
 
     .line 26

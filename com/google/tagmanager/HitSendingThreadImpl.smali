@@ -32,7 +32,7 @@
 
 # direct methods
 .method private constructor <init>(Landroid/content/Context;)V
-    .registers 3
+    .locals 1
     .param p1, "ctx"    # Landroid/content/Context;
 
     .line 37
@@ -56,7 +56,7 @@
     iput-boolean v0, p0, Lcom/google/tagmanager/HitSendingThreadImpl;->mClosed:Z
 
     .line 38
-    if-eqz p1, :cond_1a
+    if-eqz p1, :cond_0
 
     .line 39
     invoke-virtual {p1}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
@@ -65,14 +65,14 @@
 
     iput-object v0, p0, Lcom/google/tagmanager/HitSendingThreadImpl;->mContext:Landroid/content/Context;
 
-    goto :goto_1c
+    goto :goto_0
 
     .line 41
-    :cond_1a
+    :cond_0
     iput-object p1, p0, Lcom/google/tagmanager/HitSendingThreadImpl;->mContext:Landroid/content/Context;
 
     .line 43
-    :goto_1c
+    :goto_0
     invoke-virtual {p0}, Lcom/google/tagmanager/HitSendingThreadImpl;->start()V
 
     .line 44
@@ -80,7 +80,7 @@
 .end method
 
 .method constructor <init>(Landroid/content/Context;Lcom/google/tagmanager/HitStore;)V
-    .registers 4
+    .locals 1
     .param p1, "ctx"    # Landroid/content/Context;
     .param p2, "store"    # Lcom/google/tagmanager/HitStore;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
@@ -107,7 +107,7 @@
     iput-boolean v0, p0, Lcom/google/tagmanager/HitSendingThreadImpl;->mClosed:Z
 
     .line 49
-    if-eqz p1, :cond_1a
+    if-eqz p1, :cond_0
 
     .line 50
     invoke-virtual {p1}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
@@ -116,14 +116,14 @@
 
     iput-object v0, p0, Lcom/google/tagmanager/HitSendingThreadImpl;->mContext:Landroid/content/Context;
 
-    goto :goto_1c
+    goto :goto_0
 
     .line 52
-    :cond_1a
+    :cond_0
     iput-object p1, p0, Lcom/google/tagmanager/HitSendingThreadImpl;->mContext:Landroid/content/Context;
 
     .line 54
-    :goto_1c
+    :goto_0
     iput-object p2, p0, Lcom/google/tagmanager/HitSendingThreadImpl;->mUrlStore:Lcom/google/tagmanager/HitStore;
 
     .line 55
@@ -134,7 +134,7 @@
 .end method
 
 .method static synthetic access$000(Lcom/google/tagmanager/HitSendingThreadImpl;)Lcom/google/tagmanager/HitStore;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/tagmanager/HitSendingThreadImpl;
 
     .line 17
@@ -144,7 +144,7 @@
 .end method
 
 .method static synthetic access$002(Lcom/google/tagmanager/HitSendingThreadImpl;Lcom/google/tagmanager/HitStore;)Lcom/google/tagmanager/HitStore;
-    .registers 2
+    .locals 0
     .param p0, "x0"    # Lcom/google/tagmanager/HitSendingThreadImpl;
     .param p1, "x1"    # Lcom/google/tagmanager/HitStore;
 
@@ -155,7 +155,7 @@
 .end method
 
 .method static synthetic access$100(Lcom/google/tagmanager/HitSendingThreadImpl;)Landroid/content/Context;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/tagmanager/HitSendingThreadImpl;
 
     .line 17
@@ -165,13 +165,13 @@
 .end method
 
 .method static getInstance(Landroid/content/Context;)Lcom/google/tagmanager/HitSendingThreadImpl;
-    .registers 2
+    .locals 1
     .param p0, "ctx"    # Landroid/content/Context;
 
     .line 29
     sget-object v0, Lcom/google/tagmanager/HitSendingThreadImpl;->sInstance:Lcom/google/tagmanager/HitSendingThreadImpl;
 
-    if-nez v0, :cond_b
+    if-nez v0, :cond_0
 
     .line 30
     new-instance v0, Lcom/google/tagmanager/HitSendingThreadImpl;
@@ -181,14 +181,14 @@
     sput-object v0, Lcom/google/tagmanager/HitSendingThreadImpl;->sInstance:Lcom/google/tagmanager/HitSendingThreadImpl;
 
     .line 32
-    :cond_b
+    :cond_0
     sget-object v0, Lcom/google/tagmanager/HitSendingThreadImpl;->sInstance:Lcom/google/tagmanager/HitSendingThreadImpl;
 
     return-object v0
 .end method
 
 .method private printStackTrace(Ljava/lang/Throwable;)Ljava/lang/String;
-    .registers 6
+    .locals 4
     .param p1, "t"    # Ljava/lang/Throwable;
 
     .line 96
@@ -224,7 +224,7 @@
 
 # virtual methods
 .method close()V
-    .registers 2
+    .locals 1
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
@@ -241,7 +241,7 @@
 .end method
 
 .method getQueueSize()I
-    .registers 2
+    .locals 1
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
@@ -256,7 +256,7 @@
 .end method
 
 .method getStore()Lcom/google/tagmanager/HitStore;
-    .registers 2
+    .locals 1
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
@@ -267,7 +267,7 @@
 .end method
 
 .method isDisabled()Z
-    .registers 2
+    .locals 1
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
@@ -278,7 +278,7 @@
 .end method
 
 .method public queueToThread(Ljava/lang/Runnable;)V
-    .registers 3
+    .locals 1
     .param p1, "r"    # Ljava/lang/Runnable;
 
     .line 87
@@ -291,19 +291,18 @@
 .end method
 
 .method public run()V
-    .registers 4
+    .locals 3
 
-    .line 105
     const/4 v0, 0x0
 
-    .local v0, "r":Ljava/lang/Runnable;
-    :goto_1
+    .line 105
+    :goto_0
     iget-boolean v1, p0, Lcom/google/tagmanager/HitSendingThreadImpl;->mClosed:Z
 
-    if-nez v1, :cond_43
+    if-nez v1, :cond_1
 
     .line 111
-    :try_start_5
+    :try_start_0
     iget-object v1, p0, Lcom/google/tagmanager/HitSendingThreadImpl;->queue:Ljava/util/concurrent/LinkedBlockingQueue;
 
     invoke-virtual {v1}, Ljava/util/concurrent/LinkedBlockingQueue;->take()Ljava/lang/Object;
@@ -311,59 +310,65 @@
     move-result-object v1
 
     check-cast v1, Ljava/lang/Runnable;
+    :try_end_0
+    .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_1
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .end local v0    # "r":Ljava/lang/Runnable;
     move-object v0, v1
 
     .line 112
-    .restart local v0    # "r":Ljava/lang/Runnable;
+    .local v0, "r":Ljava/lang/Runnable;
+    :try_start_1
     iget-boolean v1, p0, Lcom/google/tagmanager/HitSendingThreadImpl;->mDisabled:Z
 
-    if-nez v1, :cond_15
+    if-nez v1, :cond_0
 
     .line 113
     invoke-interface {v0}, Ljava/lang/Runnable;->run()V
-    :try_end_15
-    .catch Ljava/lang/InterruptedException; {:try_start_5 .. :try_end_15} :catch_18
-    .catch Ljava/lang/Throwable; {:try_start_5 .. :try_end_15} :catch_16
+    :try_end_1
+    .catch Ljava/lang/InterruptedException; {:try_start_1 .. :try_end_1} :catch_0
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 117
-    :cond_15
-    goto :goto_42
+    :cond_0
+    goto :goto_3
+
+    .line 115
+    :catch_0
+    move-exception v1
+
+    goto :goto_1
 
     .line 118
     .end local v0    # "r":Ljava/lang/Runnable;
-    :catch_16
+    :catchall_0
     move-exception v0
 
-    goto :goto_21
+    goto :goto_2
 
     .line 115
-    .restart local v0    # "r":Ljava/lang/Runnable;
-    :catch_18
+    :catch_1
     move-exception v1
 
     .line 116
+    .restart local v0    # "r":Ljava/lang/Runnable;
     .local v1, "e":Ljava/lang/InterruptedException;
-    :try_start_19
+    :goto_1
+    :try_start_2
     invoke-virtual {v1}, Ljava/lang/InterruptedException;->toString()Ljava/lang/String;
 
     move-result-object v2
 
     invoke-static {v2}, Lcom/google/tagmanager/Log;->i(Ljava/lang/String;)V
-    :try_end_20
-    .catch Ljava/lang/Throwable; {:try_start_19 .. :try_end_20} :catch_16
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .end local v0    # "r":Ljava/lang/Runnable;
-    .end local v1    # "e":Ljava/lang/InterruptedException;
-    goto :goto_42
-
-    .line 118
-    :goto_21
-    nop
+    goto :goto_3
 
     .line 119
+    .end local v1    # "e":Ljava/lang/InterruptedException;
     .local v0, "t":Ljava/lang/Throwable;
+    :goto_2
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -395,18 +400,17 @@
     iput-boolean v1, p0, Lcom/google/tagmanager/HitSendingThreadImpl;->mDisabled:Z
 
     .line 124
-    .local v0, "r":Ljava/lang/Runnable;
-    :goto_42
-    goto :goto_1
+    .end local v0    # "t":Ljava/lang/Throwable;
+    :goto_3
+    goto :goto_0
 
     .line 126
-    .end local v0    # "r":Ljava/lang/Runnable;
-    :cond_43
+    :cond_1
     return-void
 .end method
 
 .method public sendHit(Ljava/lang/String;)V
-    .registers 4
+    .locals 2
     .param p1, "url"    # Ljava/lang/String;
 
     .line 65
@@ -421,7 +425,7 @@
 .end method
 
 .method sendHit(Ljava/lang/String;J)V
-    .registers 11
+    .locals 7
     .param p1, "url"    # Ljava/lang/String;
     .param p2, "hitTime"    # J
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;

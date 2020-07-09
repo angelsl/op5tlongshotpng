@@ -33,7 +33,7 @@
 
 # direct methods
 .method constructor <init>(Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;IIII[D)V
-    .registers 7
+    .locals 0
     .param p1, "this$0"    # Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;
 
     .line 567
@@ -57,21 +57,19 @@
 
 # virtual methods
 .method public run()V
-    .registers 8
+    .locals 8
 
     .line 570
     iget v0, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$2;->val$firstIdx:I
 
     .local v0, "k":I
-    :goto_2
+    :goto_0
     iget v1, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$2;->val$lastIdx:I
 
-    if-ge v0, v1, :cond_2f
+    if-ge v0, v1, :cond_0
 
     .line 571
-    const/4 v1, 0x2
-
-    mul-int/2addr v1, v0
+    mul-int/lit8 v1, v0, 0x2
 
     .line 572
     .local v1, "idx1":I
@@ -79,56 +77,44 @@
 
     iget v3, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$2;->val$twon:I
 
-    sub-int/2addr v3, v1
+    sub-int v4, v3, v1
 
-    iget v4, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$2;->val$twon:I
+    rem-int/2addr v4, v3
 
-    rem-int/2addr v3, v4
-
-    add-int/2addr v2, v3
+    add-int/2addr v4, v2
 
     .line 573
-    .local v2, "idx2":I
+    .local v4, "idx2":I
     iget-object v3, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$2;->val$a:[D
 
-    iget-object v4, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$2;->val$a:[D
+    add-int v5, v2, v1
 
-    iget v5, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$2;->val$offa:I
-
-    add-int/2addr v5, v1
-
-    aget-wide v4, v4, v5
-
-    aput-wide v4, v3, v2
-
-    .line 574
-    iget-object v3, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$2;->val$a:[D
-
-    add-int/lit8 v4, v2, 0x1
-
-    iget-object v5, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$2;->val$a:[D
-
-    iget v6, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$2;->val$offa:I
-
-    add-int/2addr v6, v1
-
-    add-int/lit8 v6, v6, 0x1
-
-    aget-wide v5, v5, v6
-
-    neg-double v5, v5
+    aget-wide v5, v3, v5
 
     aput-wide v5, v3, v4
+
+    .line 574
+    add-int/lit8 v5, v4, 0x1
+
+    add-int/2addr v2, v1
+
+    add-int/lit8 v2, v2, 0x1
+
+    aget-wide v6, v3, v2
+
+    neg-double v6, v6
+
+    aput-wide v6, v3, v5
 
     .line 570
     add-int/lit8 v0, v0, 0x1
 
-    goto :goto_2
+    goto :goto_0
 
     .line 576
     .end local v0    # "k":I
     .end local v1    # "idx1":I
-    .end local v2    # "idx2":I
-    :cond_2f
+    .end local v4    # "idx2":I
+    :cond_0
     return-void
 .end method

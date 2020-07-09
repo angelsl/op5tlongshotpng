@@ -40,71 +40,71 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 8
+    .locals 8
 
     .line 38
     new-instance v0, Lcom/google/tagmanager/Container$RefreshFailure;
 
-    const-string v1, "NO_SAVED_CONTAINER"
+    const/4 v1, 0x0
 
-    const/4 v2, 0x0
+    const-string v2, "NO_SAVED_CONTAINER"
 
-    invoke-direct {v0, v1, v2}, Lcom/google/tagmanager/Container$RefreshFailure;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v2, v1}, Lcom/google/tagmanager/Container$RefreshFailure;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/tagmanager/Container$RefreshFailure;->NO_SAVED_CONTAINER:Lcom/google/tagmanager/Container$RefreshFailure;
 
     .line 40
     new-instance v0, Lcom/google/tagmanager/Container$RefreshFailure;
 
-    const-string v1, "IO_ERROR"
+    const/4 v2, 0x1
 
-    const/4 v3, 0x1
+    const-string v3, "IO_ERROR"
 
-    invoke-direct {v0, v1, v3}, Lcom/google/tagmanager/Container$RefreshFailure;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v3, v2}, Lcom/google/tagmanager/Container$RefreshFailure;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/tagmanager/Container$RefreshFailure;->IO_ERROR:Lcom/google/tagmanager/Container$RefreshFailure;
 
     .line 42
     new-instance v0, Lcom/google/tagmanager/Container$RefreshFailure;
 
-    const-string v1, "NO_NETWORK"
+    const/4 v3, 0x2
 
-    const/4 v4, 0x2
+    const-string v4, "NO_NETWORK"
 
-    invoke-direct {v0, v1, v4}, Lcom/google/tagmanager/Container$RefreshFailure;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v4, v3}, Lcom/google/tagmanager/Container$RefreshFailure;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/tagmanager/Container$RefreshFailure;->NO_NETWORK:Lcom/google/tagmanager/Container$RefreshFailure;
 
     .line 44
     new-instance v0, Lcom/google/tagmanager/Container$RefreshFailure;
 
-    const-string v1, "NETWORK_ERROR"
+    const/4 v4, 0x3
 
-    const/4 v5, 0x3
+    const-string v5, "NETWORK_ERROR"
 
-    invoke-direct {v0, v1, v5}, Lcom/google/tagmanager/Container$RefreshFailure;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v5, v4}, Lcom/google/tagmanager/Container$RefreshFailure;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/tagmanager/Container$RefreshFailure;->NETWORK_ERROR:Lcom/google/tagmanager/Container$RefreshFailure;
 
     .line 46
     new-instance v0, Lcom/google/tagmanager/Container$RefreshFailure;
 
-    const-string v1, "SERVER_ERROR"
+    const/4 v5, 0x4
 
-    const/4 v6, 0x4
+    const-string v6, "SERVER_ERROR"
 
-    invoke-direct {v0, v1, v6}, Lcom/google/tagmanager/Container$RefreshFailure;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v6, v5}, Lcom/google/tagmanager/Container$RefreshFailure;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/tagmanager/Container$RefreshFailure;->SERVER_ERROR:Lcom/google/tagmanager/Container$RefreshFailure;
 
     .line 48
     new-instance v0, Lcom/google/tagmanager/Container$RefreshFailure;
 
-    const-string v1, "UNKNOWN_ERROR"
+    const/4 v6, 0x5
 
-    const/4 v7, 0x5
+    const-string v7, "UNKNOWN_ERROR"
 
-    invoke-direct {v0, v1, v7}, Lcom/google/tagmanager/Container$RefreshFailure;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v7, v6}, Lcom/google/tagmanager/Container$RefreshFailure;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/tagmanager/Container$RefreshFailure;->UNKNOWN_ERROR:Lcom/google/tagmanager/Container$RefreshFailure;
 
@@ -113,29 +113,29 @@
 
     new-array v0, v0, [Lcom/google/tagmanager/Container$RefreshFailure;
 
-    sget-object v1, Lcom/google/tagmanager/Container$RefreshFailure;->NO_SAVED_CONTAINER:Lcom/google/tagmanager/Container$RefreshFailure;
+    sget-object v7, Lcom/google/tagmanager/Container$RefreshFailure;->NO_SAVED_CONTAINER:Lcom/google/tagmanager/Container$RefreshFailure;
 
-    aput-object v1, v0, v2
+    aput-object v7, v0, v1
 
     sget-object v1, Lcom/google/tagmanager/Container$RefreshFailure;->IO_ERROR:Lcom/google/tagmanager/Container$RefreshFailure;
 
-    aput-object v1, v0, v3
+    aput-object v1, v0, v2
 
     sget-object v1, Lcom/google/tagmanager/Container$RefreshFailure;->NO_NETWORK:Lcom/google/tagmanager/Container$RefreshFailure;
 
-    aput-object v1, v0, v4
+    aput-object v1, v0, v3
 
     sget-object v1, Lcom/google/tagmanager/Container$RefreshFailure;->NETWORK_ERROR:Lcom/google/tagmanager/Container$RefreshFailure;
 
-    aput-object v1, v0, v5
+    aput-object v1, v0, v4
 
     sget-object v1, Lcom/google/tagmanager/Container$RefreshFailure;->SERVER_ERROR:Lcom/google/tagmanager/Container$RefreshFailure;
 
-    aput-object v1, v0, v6
+    aput-object v1, v0, v5
 
     sget-object v1, Lcom/google/tagmanager/Container$RefreshFailure;->UNKNOWN_ERROR:Lcom/google/tagmanager/Container$RefreshFailure;
 
-    aput-object v1, v0, v7
+    aput-object v1, v0, v6
 
     sput-object v0, Lcom/google/tagmanager/Container$RefreshFailure;->$VALUES:[Lcom/google/tagmanager/Container$RefreshFailure;
 
@@ -143,7 +143,7 @@
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V
-    .registers 3
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
@@ -157,7 +157,7 @@
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Lcom/google/tagmanager/Container$RefreshFailure;
-    .registers 2
+    .locals 1
     .param p0, "name"    # Ljava/lang/String;
 
     .line 36
@@ -173,7 +173,7 @@
 .end method
 
 .method public static values()[Lcom/google/tagmanager/Container$RefreshFailure;
-    .registers 1
+    .locals 1
 
     .line 36
     sget-object v0, Lcom/google/tagmanager/Container$RefreshFailure;->$VALUES:[Lcom/google/tagmanager/Container$RefreshFailure;

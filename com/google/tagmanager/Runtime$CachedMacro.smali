@@ -30,7 +30,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/google/tagmanager/ObjectAndStatic;)V
-    .registers 3
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -51,7 +51,7 @@
 .end method
 
 .method public constructor <init>(Lcom/google/tagmanager/ObjectAndStatic;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)V
-    .registers 3
+    .locals 0
     .param p2, "pushAfterEvaluate"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -81,7 +81,7 @@
 
 # virtual methods
 .method public getObjectAndStatic()Lcom/google/tagmanager/ObjectAndStatic;
-    .registers 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -98,7 +98,7 @@
 .end method
 
 .method public getPushAfterEvaluate()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 2
+    .locals 1
 
     .line 926
     iget-object v0, p0, Lcom/google/tagmanager/Runtime$CachedMacro;->mPushAfterEvaluate:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
@@ -107,7 +107,7 @@
 .end method
 
 .method public getSize()I
-    .registers 3
+    .locals 2
 
     .line 930
     iget-object v0, p0, Lcom/google/tagmanager/Runtime$CachedMacro;->mObjectAndStatic:Lcom/google/tagmanager/ObjectAndStatic;
@@ -124,20 +124,18 @@
 
     iget-object v1, p0, Lcom/google/tagmanager/Runtime$CachedMacro;->mPushAfterEvaluate:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    if-nez v1, :cond_12
+    if-nez v1, :cond_0
 
     const/4 v1, 0x0
 
-    goto :goto_18
+    goto :goto_0
 
-    :cond_12
-    iget-object v1, p0, Lcom/google/tagmanager/Runtime$CachedMacro;->mPushAfterEvaluate:Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-
+    :cond_0
     invoke-virtual {v1}, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;->getCachedSize()I
 
     move-result v1
 
-    :goto_18
+    :goto_0
     add-int/2addr v0, v1
 
     return v0

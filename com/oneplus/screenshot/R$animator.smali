@@ -15,14 +15,14 @@
 
 
 # static fields
-.field public static final drop:I = 0x7f050000
+.field public static final drop:I = 0x7f020000
 
 
 # direct methods
 .method public constructor <init>()V
-    .registers 1
+    .locals 0
 
-    .line 17
+    .line 66
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

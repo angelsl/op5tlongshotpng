@@ -38,7 +38,7 @@
 
 # direct methods
 .method public constructor <init>()V
-    .registers 2
+    .locals 1
 
     .line 29
     .local p0, "this":Lcom/google/tagmanager/CacheFactory;, "Lcom/google/tagmanager/CacheFactory<TK;TV;>;"
@@ -58,7 +58,7 @@
 
 # virtual methods
 .method public createCache(I)Lcom/google/tagmanager/Cache;
-    .registers 3
+    .locals 1
     .param p1, "maxSize"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -80,7 +80,7 @@
 .end method
 
 .method public createCache(ILcom/google/tagmanager/CacheFactory$CacheSizeManager;)Lcom/google/tagmanager/Cache;
-    .registers 5
+    .locals 2
     .param p1, "maxSize"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -95,7 +95,7 @@
     .line 54
     .local p0, "this":Lcom/google/tagmanager/CacheFactory;, "Lcom/google/tagmanager/CacheFactory<TK;TV;>;"
     .local p2, "sizeManager":Lcom/google/tagmanager/CacheFactory$CacheSizeManager;, "Lcom/google/tagmanager/CacheFactory$CacheSizeManager<TK;TV;>;"
-    if-lez p1, :cond_16
+    if-lez p1, :cond_1
 
     .line 61
     invoke-virtual {p0}, Lcom/google/tagmanager/CacheFactory;->getSdkVersion()I
@@ -104,7 +104,7 @@
 
     const/16 v1, 0xc
 
-    if-ge v0, v1, :cond_10
+    if-ge v0, v1, :cond_0
 
     .line 62
     new-instance v0, Lcom/google/tagmanager/SimpleCache;
@@ -114,7 +114,7 @@
     return-object v0
 
     .line 64
-    :cond_10
+    :cond_0
     new-instance v0, Lcom/google/tagmanager/LRUCache;
 
     invoke-direct {v0, p1, p2}, Lcom/google/tagmanager/LRUCache;-><init>(ILcom/google/tagmanager/CacheFactory$CacheSizeManager;)V
@@ -122,7 +122,7 @@
     return-object v0
 
     .line 55
-    :cond_16
+    :cond_1
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v1, "maxSize <= 0"
@@ -133,7 +133,7 @@
 .end method
 
 .method getSdkVersion()I
-    .registers 2
+    .locals 1
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 

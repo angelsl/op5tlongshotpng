@@ -12,7 +12,7 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;)V
-    .registers 2
+    .locals 0
     .param p1, "context"    # Landroid/content/Context;
 
     .line 15
@@ -28,7 +28,7 @@
 
 # virtual methods
 .method public changed(Ljava/util/Map;)V
-    .registers 6
+    .locals 4
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -49,7 +49,7 @@
 
     .line 23
     .local v0, "url":Ljava/lang/Object;
-    if-nez v0, :cond_1d
+    if-nez v0, :cond_0
 
     .line 24
     const-string v1, "gtm"
@@ -60,11 +60,11 @@
 
     .line 25
     .local v1, "gtm":Ljava/lang/Object;
-    if-eqz v1, :cond_1d
+    if-eqz v1, :cond_0
 
     instance-of v2, v1, Ljava/util/Map;
 
-    if-eqz v2, :cond_1d
+    if-eqz v2, :cond_0
 
     .line 26
     move-object v2, v1
@@ -79,17 +79,17 @@
 
     .line 29
     .end local v1    # "gtm":Ljava/lang/Object;
-    :cond_1d
-    if-eqz v0, :cond_39
+    :cond_0
+    if-eqz v0, :cond_3
 
     instance-of v1, v0, Ljava/lang/String;
 
-    if-nez v1, :cond_24
+    if-nez v1, :cond_1
 
-    goto :goto_39
+    goto :goto_0
 
     .line 32
-    :cond_24
+    :cond_1
     move-object v1, v0
 
     check-cast v1, Ljava/lang/String;
@@ -108,7 +108,7 @@
 
     .line 34
     .local v2, "referrer":Ljava/lang/String;
-    if-eqz v2, :cond_38
+    if-eqz v2, :cond_2
 
     .line 35
     iget-object v3, p0, Lcom/google/tagmanager/AdwordsClickReferrerListener;->context:Landroid/content/Context;
@@ -116,13 +116,13 @@
     invoke-static {v3, v2}, Lcom/google/tagmanager/InstallReferrerUtil;->addClickReferrer(Landroid/content/Context;Ljava/lang/String;)V
 
     .line 37
-    :cond_38
+    :cond_2
     return-void
 
     .line 30
     .end local v1    # "uri":Landroid/net/Uri;
     .end local v2    # "referrer":Ljava/lang/String;
-    :cond_39
-    :goto_39
+    :cond_3
+    :goto_0
     return-void
 .end method

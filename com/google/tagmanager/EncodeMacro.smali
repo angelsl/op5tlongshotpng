@@ -21,7 +21,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 14
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->ENCODE:Lcom/google/analytics/containertag/common/FunctionType;
@@ -72,7 +72,7 @@
 .end method
 
 .method public constructor <init>()V
-    .registers 5
+    .locals 4
 
     .line 28
     sget-object v0, Lcom/google/tagmanager/EncodeMacro;->ID:Ljava/lang/String;
@@ -94,7 +94,7 @@
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 24
     sget-object v0, Lcom/google/tagmanager/EncodeMacro;->ID:Ljava/lang/String;
@@ -105,7 +105,7 @@
 
 # virtual methods
 .method public evaluate(Ljava/util/Map;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 14
+    .locals 14
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -129,18 +129,18 @@
 
     .line 37
     .local v0, "argumentParameter":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-eqz v0, :cond_fa
+    if-eqz v0, :cond_b
 
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     move-result-object v1
 
-    if-ne v0, v1, :cond_12
+    if-ne v0, v1, :cond_0
 
-    goto/16 :goto_fa
+    goto/16 :goto_4
 
     .line 40
-    :cond_12
+    :cond_0
     invoke-static {v0}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
 
     move-result-object v1
@@ -157,310 +157,332 @@
 
     .line 43
     .local v2, "inputFormatParameter":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-nez v2, :cond_23
-
     const-string v3, "text"
 
-    goto :goto_27
+    if-nez v2, :cond_1
 
-    :cond_23
+    move-object v4, v3
+
+    goto :goto_0
+
+    :cond_1
     invoke-static {v2}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 46
-    .local v3, "inputFormat":Ljava/lang/String;
-    :goto_27
-    sget-object v4, Lcom/google/tagmanager/EncodeMacro;->OUTPUT_FORMAT:Ljava/lang/String;
-
-    invoke-interface {p1, v4}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v4
 
-    check-cast v4, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    .line 46
+    .local v4, "inputFormat":Ljava/lang/String;
+    :goto_0
+    sget-object v5, Lcom/google/tagmanager/EncodeMacro;->OUTPUT_FORMAT:Ljava/lang/String;
 
-    .line 47
-    .local v4, "outputFormatParameter":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-nez v4, :cond_34
-
-    const-string v5, "base16"
-
-    goto :goto_38
-
-    :cond_34
-    invoke-static {v4}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
+    invoke-interface {p1, v5}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v5
 
-    .line 50
-    .local v5, "outputFormat":Ljava/lang/String;
-    :goto_38
-    sget-object v6, Lcom/google/tagmanager/EncodeMacro;->INPUT_FORMAT:Ljava/lang/String;
+    check-cast v5, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    invoke-interface {p1, v6}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    .line 47
+    .local v5, "outputFormatParameter":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    const-string v6, "base16"
 
-    .line 52
-    const/4 v6, 0x0
+    if-nez v5, :cond_2
 
-    .line 53
-    .local v6, "flags":I
-    sget-object v7, Lcom/google/tagmanager/EncodeMacro;->NO_PADDING:Ljava/lang/String;
+    move-object v7, v6
 
-    invoke-interface {p1, v7}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    goto :goto_1
+
+    :cond_2
+    invoke-static {v5}, Lcom/google/tagmanager/Types;->valueToString(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/String;
 
     move-result-object v7
 
-    check-cast v7, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    .line 50
+    .local v7, "outputFormat":Ljava/lang/String;
+    :goto_1
+    sget-object v8, Lcom/google/tagmanager/EncodeMacro;->INPUT_FORMAT:Ljava/lang/String;
 
-    .line 54
-    .local v7, "noPaddingParameter":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-eqz v7, :cond_54
-
-    invoke-static {v7}, Lcom/google/tagmanager/Types;->valueToBoolean(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/Boolean;
+    invoke-interface {p1, v8}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v8
 
-    invoke-virtual {v8}, Ljava/lang/Boolean;->booleanValue()Z
+    check-cast v8, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    move-result v8
+    .line 52
+    .local v8, "inputFormatValue":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    const/4 v9, 0x0
 
-    if-eqz v8, :cond_54
+    .line 53
+    .local v9, "flags":I
+    sget-object v10, Lcom/google/tagmanager/EncodeMacro;->NO_PADDING:Ljava/lang/String;
+
+    invoke-interface {p1, v10}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v10
+
+    check-cast v10, Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+
+    .line 54
+    .local v10, "noPaddingParameter":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    if-eqz v10, :cond_3
+
+    invoke-static {v10}, Lcom/google/tagmanager/Types;->valueToBoolean(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Ljava/lang/Boolean;
+
+    move-result-object v11
+
+    invoke-virtual {v11}, Ljava/lang/Boolean;->booleanValue()Z
+
+    move-result v11
+
+    if-eqz v11, :cond_3
 
     .line 55
-    or-int/lit8 v6, v6, 0x1
+    or-int/lit8 v9, v9, 0x1
 
     .line 58
-    :cond_54
-    const/4 v8, 0x0
+    :cond_3
+    const/4 v11, 0x0
 
     .line 60
-    .local v8, "inputBytes":[B
-    :try_start_55
-    const-string v9, "text"
+    .local v11, "inputBytes":[B
+    :try_start_0
+    invoke-virtual {v3, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    invoke-virtual {v9, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    move-result v3
+    :try_end_0
+    .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_0
 
-    move-result v9
+    const-string v12, "base64url"
 
-    if-eqz v9, :cond_63
+    const-string v13, "base64"
+
+    if-eqz v3, :cond_4
 
     .line 61
+    :try_start_1
     invoke-virtual {v1}, Ljava/lang/String;->getBytes()[B
 
-    move-result-object v9
+    move-result-object v3
 
-    move-object v8, v9
-
-    goto :goto_8e
+    .end local v11    # "inputBytes":[B
+    .local v3, "inputBytes":[B
+    goto :goto_2
 
     .line 62
-    :cond_63
-    const-string v9, "base16"
+    .end local v3    # "inputBytes":[B
+    .restart local v11    # "inputBytes":[B
+    :cond_4
+    invoke-virtual {v6, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    invoke-virtual {v9, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    move-result v3
 
-    move-result v9
-
-    if-eqz v9, :cond_71
+    if-eqz v3, :cond_5
 
     .line 63
     invoke-static {v1}, Lcom/google/tagmanager/Base16;->decode(Ljava/lang/String;)[B
 
-    move-result-object v9
+    move-result-object v3
 
-    move-object v8, v9
-
-    goto :goto_8e
+    .end local v11    # "inputBytes":[B
+    .restart local v3    # "inputBytes":[B
+    goto :goto_2
 
     .line 64
-    :cond_71
-    const-string v9, "base64"
+    .end local v3    # "inputBytes":[B
+    .restart local v11    # "inputBytes":[B
+    :cond_5
+    invoke-virtual {v13, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    invoke-virtual {v9, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    move-result v3
 
-    move-result v9
-
-    if-eqz v9, :cond_7f
+    if-eqz v3, :cond_6
 
     .line 65
-    invoke-static {v1, v6}, Lcom/google/tagmanager/Base64Encoder;->decode(Ljava/lang/String;I)[B
-
-    move-result-object v9
-
-    move-object v8, v9
-
-    goto :goto_8e
-
-    .line 66
-    :cond_7f
-    const-string v9, "base64url"
-
-    invoke-virtual {v9, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v9
-
-    if-eqz v9, :cond_d6
-
-    .line 67
-    or-int/lit8 v9, v6, 0x2
-
     invoke-static {v1, v9}, Lcom/google/tagmanager/Base64Encoder;->decode(Ljava/lang/String;I)[B
 
-    move-result-object v9
-    :try_end_8d
-    .catch Ljava/lang/IllegalArgumentException; {:try_start_55 .. :try_end_8d} :catch_ef
+    move-result-object v3
 
-    move-object v8, v9
+    .end local v11    # "inputBytes":[B
+    .restart local v3    # "inputBytes":[B
+    goto :goto_2
+
+    .line 66
+    .end local v3    # "inputBytes":[B
+    .restart local v11    # "inputBytes":[B
+    :cond_6
+    invoke-virtual {v12, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_a
+
+    .line 67
+    or-int/lit8 v3, v9, 0x2
+
+    invoke-static {v1, v3}, Lcom/google/tagmanager/Base64Encoder;->decode(Ljava/lang/String;I)[B
+
+    move-result-object v3
+    :try_end_1
+    .catch Ljava/lang/IllegalArgumentException; {:try_start_1 .. :try_end_1} :catch_0
 
     .line 75
-    :goto_8e
+    .end local v11    # "inputBytes":[B
+    .restart local v3    # "inputBytes":[B
+    :goto_2
     nop
 
     .line 77
-    const/4 v9, 0x0
+    const/4 v11, 0x0
 
     .line 78
-    .local v9, "encoded":Ljava/lang/String;
-    const-string v10, "base16"
+    .local v11, "encoded":Ljava/lang/String;
+    invoke-virtual {v6, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    invoke-virtual {v10, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    move-result v6
 
-    move-result v10
-
-    if-eqz v10, :cond_9d
+    if-eqz v6, :cond_7
 
     .line 79
-    invoke-static {v8}, Lcom/google/tagmanager/Base16;->encode([B)Ljava/lang/String;
+    invoke-static {v3}, Lcom/google/tagmanager/Base16;->encode([B)Ljava/lang/String;
 
-    move-result-object v9
+    move-result-object v6
 
-    goto :goto_b8
+    .end local v11    # "encoded":Ljava/lang/String;
+    .local v6, "encoded":Ljava/lang/String;
+    goto :goto_3
 
     .line 81
-    :cond_9d
-    const-string v10, "base64"
+    .end local v6    # "encoded":Ljava/lang/String;
+    .restart local v11    # "encoded":Ljava/lang/String;
+    :cond_7
+    invoke-virtual {v13, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    invoke-virtual {v10, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    move-result v6
 
-    move-result v10
-
-    if-eqz v10, :cond_aa
+    if-eqz v6, :cond_8
 
     .line 82
-    invoke-static {v8, v6}, Lcom/google/tagmanager/Base64Encoder;->encodeToString([BI)Ljava/lang/String;
+    invoke-static {v3, v9}, Lcom/google/tagmanager/Base64Encoder;->encodeToString([BI)Ljava/lang/String;
 
-    move-result-object v9
+    move-result-object v6
 
-    goto :goto_b8
+    .end local v11    # "encoded":Ljava/lang/String;
+    .restart local v6    # "encoded":Ljava/lang/String;
+    goto :goto_3
 
     .line 83
-    :cond_aa
-    const-string v10, "base64url"
+    .end local v6    # "encoded":Ljava/lang/String;
+    .restart local v11    # "encoded":Ljava/lang/String;
+    :cond_8
+    invoke-virtual {v12, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    invoke-virtual {v10, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    move-result v6
 
-    move-result v10
-
-    if-eqz v10, :cond_bd
+    if-eqz v6, :cond_9
 
     .line 84
-    or-int/lit8 v10, v6, 0x2
+    or-int/lit8 v6, v9, 0x2
 
-    invoke-static {v8, v10}, Lcom/google/tagmanager/Base64Encoder;->encodeToString([BI)Ljava/lang/String;
+    invoke-static {v3, v6}, Lcom/google/tagmanager/Base64Encoder;->encodeToString([BI)Ljava/lang/String;
 
-    move-result-object v9
+    move-result-object v6
 
     .line 89
-    :goto_b8
-    invoke-static {v9}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    .end local v11    # "encoded":Ljava/lang/String;
+    .restart local v6    # "encoded":Ljava/lang/String;
+    :goto_3
+    invoke-static {v6}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    move-result-object v10
+    move-result-object v11
 
-    return-object v10
+    return-object v11
 
     .line 86
-    :cond_bd
-    new-instance v10, Ljava/lang/StringBuilder;
+    .end local v6    # "encoded":Ljava/lang/String;
+    .restart local v11    # "encoded":Ljava/lang/String;
+    :cond_9
+    new-instance v6, Ljava/lang/StringBuilder;
 
-    invoke-direct {v10}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v11, "Encode: unknown output format: "
+    const-string v12, "Encode: unknown output format: "
 
-    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v6, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v10, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v10}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v10
+    move-result-object v6
 
-    invoke-static {v10}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
+    invoke-static {v6}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
 
     .line 87
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    move-result-object v10
+    move-result-object v6
 
-    return-object v10
+    return-object v6
 
     .line 69
-    .end local v9    # "encoded":Ljava/lang/String;
-    :cond_d6
-    :try_start_d6
-    new-instance v9, Ljava/lang/StringBuilder;
+    .end local v3    # "inputBytes":[B
+    .local v11, "inputBytes":[B
+    :cond_a
+    :try_start_2
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v10, "Encode: unknown input format: "
+    const-string v6, "Encode: unknown input format: "
 
-    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v9, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v9
+    move-result-object v3
 
-    invoke-static {v9}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
+    invoke-static {v3}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
 
     .line 70
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    move-result-object v9
-    :try_end_ee
-    .catch Ljava/lang/IllegalArgumentException; {:try_start_d6 .. :try_end_ee} :catch_ef
+    move-result-object v3
+    :try_end_2
+    .catch Ljava/lang/IllegalArgumentException; {:try_start_2 .. :try_end_2} :catch_0
 
-    return-object v9
+    return-object v3
 
     .line 72
-    :catch_ef
-    move-exception v9
+    :catch_0
+    move-exception v3
 
     .line 73
-    .local v9, "e":Ljava/lang/IllegalArgumentException;
-    const-string v10, "Encode: invalid input:"
+    .local v3, "e":Ljava/lang/IllegalArgumentException;
+    const-string v6, "Encode: invalid input:"
 
-    invoke-static {v10}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
+    invoke-static {v6}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
 
     .line 74
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
-    move-result-object v10
+    move-result-object v6
 
-    return-object v10
+    return-object v6
 
     .line 38
     .end local v1    # "argument":Ljava/lang/String;
     .end local v2    # "inputFormatParameter":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .end local v3    # "inputFormat":Ljava/lang/String;
-    .end local v4    # "outputFormatParameter":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .end local v5    # "outputFormat":Ljava/lang/String;
-    .end local v6    # "flags":I
-    .end local v7    # "noPaddingParameter":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .end local v8    # "inputBytes":[B
-    .end local v9    # "e":Ljava/lang/IllegalArgumentException;
-    :cond_fa
-    :goto_fa
+    .end local v3    # "e":Ljava/lang/IllegalArgumentException;
+    .end local v4    # "inputFormat":Ljava/lang/String;
+    .end local v5    # "outputFormatParameter":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    .end local v7    # "outputFormat":Ljava/lang/String;
+    .end local v8    # "inputFormatValue":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    .end local v9    # "flags":I
+    .end local v10    # "noPaddingParameter":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
+    .end local v11    # "inputBytes":[B
+    :cond_b
+    :goto_4
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     move-result-object v1
@@ -469,7 +491,7 @@
 .end method
 
 .method public isCacheable()Z
-    .registers 2
+    .locals 1
 
     .line 32
     const/4 v0, 0x1

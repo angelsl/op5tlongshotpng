@@ -23,7 +23,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/google/tagmanager/ContainerOpener;)V
-    .registers 2
+    .locals 0
 
     .line 106
     iput-object p1, p0, Lcom/google/tagmanager/ContainerOpener$WaitForNonDefaultRefresh;->this$0:Lcom/google/tagmanager/ContainerOpener;
@@ -37,7 +37,7 @@
 
 # virtual methods
 .method public containerRefreshBegin(Lcom/google/tagmanager/Container;Lcom/google/tagmanager/Container$RefreshType;)V
-    .registers 3
+    .locals 0
     .param p1, "container"    # Lcom/google/tagmanager/Container;
     .param p2, "refreshType"    # Lcom/google/tagmanager/Container$RefreshType;
 
@@ -46,7 +46,7 @@
 .end method
 
 .method public containerRefreshFailure(Lcom/google/tagmanager/Container;Lcom/google/tagmanager/Container$RefreshType;Lcom/google/tagmanager/Container$RefreshFailure;)V
-    .registers 5
+    .locals 1
     .param p1, "container"    # Lcom/google/tagmanager/Container;
     .param p2, "refreshType"    # Lcom/google/tagmanager/Container$RefreshType;
     .param p3, "refreshFailure"    # Lcom/google/tagmanager/Container$RefreshFailure;
@@ -54,7 +54,7 @@
     .line 122
     sget-object v0, Lcom/google/tagmanager/Container$RefreshType;->NETWORK:Lcom/google/tagmanager/Container$RefreshType;
 
-    if-ne p2, v0, :cond_9
+    if-ne p2, v0, :cond_0
 
     .line 123
     iget-object v0, p0, Lcom/google/tagmanager/ContainerOpener$WaitForNonDefaultRefresh;->this$0:Lcom/google/tagmanager/ContainerOpener;
@@ -62,12 +62,12 @@
     invoke-static {v0, p1}, Lcom/google/tagmanager/ContainerOpener;->access$000(Lcom/google/tagmanager/ContainerOpener;Lcom/google/tagmanager/Container;)V
 
     .line 125
-    :cond_9
+    :cond_0
     return-void
 .end method
 
 .method public containerRefreshSuccess(Lcom/google/tagmanager/Container;Lcom/google/tagmanager/Container$RefreshType;)V
-    .registers 4
+    .locals 1
     .param p1, "container"    # Lcom/google/tagmanager/Container;
     .param p2, "refreshType"    # Lcom/google/tagmanager/Container$RefreshType;
 

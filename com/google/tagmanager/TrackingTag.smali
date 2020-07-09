@@ -5,7 +5,7 @@
 
 # direct methods
 .method public varargs constructor <init>(Ljava/lang/String;[Ljava/lang/String;)V
-    .registers 3
+    .locals 0
     .param p1, "functionId"    # Ljava/lang/String;
     .param p2, "requiredKeys"    # [Ljava/lang/String;
 
@@ -19,7 +19,7 @@
 
 # virtual methods
 .method public evaluate(Ljava/util/Map;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 3
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -56,7 +56,7 @@
 .end method
 
 .method public isCacheable()Z
-    .registers 2
+    .locals 1
 
     .line 27
     const/4 v0, 0x0

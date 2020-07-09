@@ -9,7 +9,7 @@
 
 # direct methods
 .method public constructor <init>(Ljava/lang/String;)V
-    .registers 2
+    .locals 0
     .param p1, "description"    # Ljava/lang/String;
 
     .line 45
@@ -20,7 +20,7 @@
 .end method
 
 .method static invalidEndTag()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
-    .registers 2
+    .locals 2
 
     .line 73
     new-instance v0, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
@@ -33,7 +33,7 @@
 .end method
 
 .method static invalidTag()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
-    .registers 2
+    .locals 2
 
     .line 68
     new-instance v0, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
@@ -46,7 +46,7 @@
 .end method
 
 .method static invalidWireType()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
-    .registers 2
+    .locals 2
 
     .line 78
     new-instance v0, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
@@ -59,7 +59,7 @@
 .end method
 
 .method static malformedVarint()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
-    .registers 2
+    .locals 2
 
     .line 63
     new-instance v0, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
@@ -72,7 +72,7 @@
 .end method
 
 .method static negativeSize()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
-    .registers 2
+    .locals 2
 
     .line 57
     new-instance v0, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
@@ -85,7 +85,7 @@
 .end method
 
 .method static recursionLimitExceeded()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
-    .registers 2
+    .locals 2
 
     .line 83
     new-instance v0, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
@@ -98,7 +98,7 @@
 .end method
 
 .method static sizeLimitExceeded()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
-    .registers 2
+    .locals 2
 
     .line 89
     new-instance v0, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
@@ -111,7 +111,7 @@
 .end method
 
 .method static truncatedMessage()Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;
-    .registers 2
+    .locals 2
 
     .line 49
     new-instance v0, Lcom/google/tagmanager/protobuf/nano/InvalidProtocolBufferNanoException;

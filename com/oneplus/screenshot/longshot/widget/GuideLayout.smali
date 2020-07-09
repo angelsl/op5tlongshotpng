@@ -13,7 +13,7 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    .registers 5
+    .locals 2
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "attrs"    # Landroid/util/AttributeSet;
 
@@ -50,23 +50,23 @@
 
 # virtual methods
 .method public onTouchEvent(Landroid/view/MotionEvent;)Z
-    .registers 3
+    .locals 1
     .param p1, "event"    # Landroid/view/MotionEvent;
 
     .line 35
     iget-boolean v0, p0, Lcom/oneplus/screenshot/longshot/widget/GuideLayout;->mClickable:Z
 
-    if-eqz v0, :cond_9
+    if-eqz v0, :cond_0
 
     invoke-super {p0, p1}, Landroid/widget/RelativeLayout;->onTouchEvent(Landroid/view/MotionEvent;)Z
 
     move-result v0
 
-    goto :goto_a
+    goto :goto_0
 
-    :cond_9
+    :cond_0
     const/4 v0, 0x1
 
-    :goto_a
+    :goto_0
     return v0
 .end method

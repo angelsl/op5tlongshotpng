@@ -13,7 +13,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 16
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->RANDOM:Lcom/google/analytics/containertag/common/FunctionType;
@@ -46,7 +46,7 @@
 .end method
 
 .method public constructor <init>()V
-    .registers 3
+    .locals 2
 
     .line 25
     sget-object v0, Lcom/google/tagmanager/RandomMacro;->ID:Ljava/lang/String;
@@ -62,7 +62,7 @@
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 21
     sget-object v0, Lcom/google/tagmanager/RandomMacro;->ID:Ljava/lang/String;
@@ -73,7 +73,7 @@
 
 # virtual methods
 .method public evaluate(Ljava/util/Map;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 15
+    .locals 13
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -115,21 +115,21 @@
 
     .line 37
     .local v5, "maxParameter":Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    if-eqz v4, :cond_49
+    if-eqz v4, :cond_0
 
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     move-result-object v6
 
-    if-eq v4, v6, :cond_49
+    if-eq v4, v6, :cond_0
 
-    if-eqz v5, :cond_49
+    if-eqz v5, :cond_0
 
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultValue()Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     move-result-object v6
 
-    if-eq v5, v6, :cond_49
+    if-eq v5, v6, :cond_0
 
     .line 39
     invoke-static {v4}, Lcom/google/tagmanager/Types;->valueToNumber(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)Lcom/google/tagmanager/TypedNumber;
@@ -148,13 +148,13 @@
 
     move-result-object v8
 
-    if-eq v6, v8, :cond_49
+    if-eq v6, v8, :cond_0
 
     invoke-static {}, Lcom/google/tagmanager/Types;->getDefaultNumber()Lcom/google/tagmanager/TypedNumber;
 
     move-result-object v8
 
-    if-eq v7, v8, :cond_49
+    if-eq v7, v8, :cond_0
 
     .line 42
     invoke-virtual {v6}, Lcom/google/tagmanager/TypedNumber;->doubleValue()D
@@ -171,7 +171,7 @@
     .local v10, "maxDouble":D
     cmpg-double v12, v8, v10
 
-    if-gtz v12, :cond_49
+    if-gtz v12, :cond_0
 
     .line 47
     move-wide v0, v8
@@ -184,7 +184,7 @@
     .end local v7    # "maxValue":Lcom/google/tagmanager/TypedNumber;
     .end local v8    # "minDouble":D
     .end local v10    # "maxDouble":D
-    :cond_49
+    :cond_0
     invoke-static {}, Ljava/lang/Math;->random()D
 
     move-result-wide v6
@@ -211,7 +211,7 @@
 .end method
 
 .method public isCacheable()Z
-    .registers 2
+    .locals 1
 
     .line 29
     const/4 v0, 0x0

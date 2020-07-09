@@ -34,7 +34,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 54
     new-instance v0, Lcom/google/android/gms/analytics/internal/Command$1;
@@ -47,7 +47,7 @@
 .end method
 
 .method public constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 66
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -57,7 +57,7 @@
 .end method
 
 .method constructor <init>(Landroid/os/Parcel;)V
-    .registers 2
+    .locals 0
     .param p1, "in"    # Landroid/os/Parcel;
 
     .line 70
@@ -71,7 +71,7 @@
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    .registers 4
+    .locals 0
     .param p1, "id"    # Ljava/lang/String;
     .param p2, "urlParam"    # Ljava/lang/String;
     .param p3, "value"    # Ljava/lang/String;
@@ -93,7 +93,7 @@
 .end method
 
 .method private readFromParcel(Landroid/os/Parcel;)V
-    .registers 3
+    .locals 1
     .param p1, "in"    # Landroid/os/Parcel;
 
     .line 87
@@ -124,7 +124,7 @@
 
 # virtual methods
 .method public describeContents()I
-    .registers 2
+    .locals 1
 
     .line 76
     const/4 v0, 0x0
@@ -133,7 +133,7 @@
 .end method
 
 .method public getId()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 43
     iget-object v0, p0, Lcom/google/android/gms/analytics/internal/Command;->id:Ljava/lang/String;
@@ -142,7 +142,7 @@
 .end method
 
 .method public getUrlParam()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 47
     iget-object v0, p0, Lcom/google/android/gms/analytics/internal/Command;->urlParam:Ljava/lang/String;
@@ -151,7 +151,7 @@
 .end method
 
 .method public getValue()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 51
     iget-object v0, p0, Lcom/google/android/gms/analytics/internal/Command;->value:Ljava/lang/String;
@@ -160,7 +160,7 @@
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
-    .registers 4
+    .locals 1
     .param p1, "out"    # Landroid/os/Parcel;
     .param p2, "flags"    # I
 

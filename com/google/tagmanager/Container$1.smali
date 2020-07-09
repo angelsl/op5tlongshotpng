@@ -23,7 +23,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/Container;)V
-    .registers 2
+    .locals 0
 
     .line 385
     iput-object p1, p0, Lcom/google/tagmanager/Container$1;->this$0:Lcom/google/tagmanager/Container;
@@ -36,7 +36,7 @@
 
 # virtual methods
 .method public currentTimeMillis()J
-    .registers 3
+    .locals 2
 
     .line 388
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J

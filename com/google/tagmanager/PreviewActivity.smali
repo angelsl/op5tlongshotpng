@@ -5,7 +5,7 @@
 
 # direct methods
 .method public constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 28
     invoke-direct {p0}, Landroid/app/Activity;-><init>()V
@@ -14,7 +14,7 @@
 .end method
 
 .method private displayAlert(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    .registers 7
+    .locals 3
     .param p1, "title"    # Ljava/lang/String;
     .param p2, "message"    # Ljava/lang/String;
     .param p3, "buttonLabel"    # Ljava/lang/String;
@@ -54,7 +54,7 @@
 
 # virtual methods
 .method public onCreate(Landroid/os/Bundle;)V
-    .registers 6
+    .locals 4
     .param p1, "savedInstanceState"    # Landroid/os/Bundle;
 
     .line 39
@@ -85,7 +85,7 @@
 
     move-result v1
 
-    if-nez v1, :cond_3a
+    if-nez v1, :cond_0
 
     .line 45
     new-instance v1, Ljava/lang/StringBuilder;
@@ -119,7 +119,7 @@
 
     .line 52
     .end local v1    # "message":Ljava/lang/String;
-    :cond_3a
+    :cond_0
     invoke-virtual {p0}, Lcom/google/tagmanager/PreviewActivity;->getPackageManager()Landroid/content/pm/PackageManager;
 
     move-result-object v1
@@ -134,7 +134,7 @@
 
     .line 53
     .local v1, "intent":Landroid/content/Intent;
-    if-eqz v1, :cond_64
+    if-eqz v1, :cond_1
 
     .line 54
     new-instance v2, Ljava/lang/StringBuilder;
@@ -160,10 +160,10 @@
     .line 55
     invoke-virtual {p0, v1}, Lcom/google/tagmanager/PreviewActivity;->startActivity(Landroid/content/Intent;)V
 
-    goto :goto_7c
+    goto :goto_0
 
     .line 57
-    :cond_64
+    :cond_1
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
@@ -183,17 +183,17 @@
     move-result-object v2
 
     invoke-static {v2}, Lcom/google/tagmanager/Log;->i(Ljava/lang/String;)V
-    :try_end_7c
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_7c} :catch_7d
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 63
     .end local v0    # "data":Landroid/net/Uri;
     .end local v1    # "intent":Landroid/content/Intent;
-    :goto_7c
-    goto :goto_96
+    :goto_0
+    goto :goto_1
 
     .line 61
-    :catch_7d
+    :catch_0
     move-exception v0
 
     .line 62
@@ -220,6 +220,6 @@
 
     .line 64
     .end local v0    # "e":Ljava/lang/Exception;
-    :goto_96
+    :goto_1
     return-void
 .end method

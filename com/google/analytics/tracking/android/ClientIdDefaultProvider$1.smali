@@ -20,7 +20,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;Ljava/lang/String;)V
-    .registers 3
+    .locals 0
     .param p2, "x0"    # Ljava/lang/String;
 
     .line 130
@@ -34,12 +34,11 @@
 
 # virtual methods
 .method public run()V
-    .registers 4
+    .locals 3
 
     .line 133
     iget-object v0, p0, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider$1;->this$0:Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;
 
-    # getter for: Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->mClientIdLock:Ljava/lang/Object;
     invoke-static {v0}, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->access$000(Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;)Ljava/lang/Object;
 
     move-result-object v0
@@ -47,7 +46,7 @@
     monitor-enter v0
 
     .line 134
-    :try_start_7
+    :try_start_0
     iget-object v1, p0, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider$1;->this$0:Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;
 
     iget-object v2, p0, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider$1;->this$0:Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;
@@ -56,7 +55,6 @@
 
     move-result-object v2
 
-    # setter for: Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->mClientId:Ljava/lang/String;
     invoke-static {v1, v2}, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->access$102(Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;Ljava/lang/String;)Ljava/lang/String;
 
     .line 135
@@ -64,13 +62,11 @@
 
     const/4 v2, 0x1
 
-    # setter for: Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->mClientIdLoaded:Z
     invoke-static {v1, v2}, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->access$202(Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;Z)Z
 
     .line 136
     iget-object v1, p0, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider$1;->this$0:Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;
 
-    # getter for: Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->mClientIdLock:Ljava/lang/Object;
     invoke-static {v1}, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->access$000(Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;)Ljava/lang/Object;
 
     move-result-object v1
@@ -84,12 +80,12 @@
     return-void
 
     .line 137
-    :catchall_23
+    :catchall_0
     move-exception v1
 
     monitor-exit v0
-    :try_end_25
-    .catchall {:try_start_7 .. :try_end_25} :catchall_23
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method

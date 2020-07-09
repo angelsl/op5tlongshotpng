@@ -41,7 +41,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/longshot/task/EditTask$OnEditListener;Ljava/util/List;)V
-    .registers 4
+    .locals 1
     .param p1, "listener"    # Lcom/oneplus/screenshot/longshot/task/EditTask$OnEditListener;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -53,41 +53,41 @@
         }
     .end annotation
 
-    .line 24
+    .line 23
     .local p2, "bitmaps":Ljava/util/List;, "Ljava/util/List<Landroid/graphics/Bitmap;>;"
     invoke-direct {p0}, Landroid/os/AsyncTask;-><init>()V
 
-    .line 18
+    .line 17
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/task/EditTask;->mListener:Lcom/oneplus/screenshot/longshot/task/EditTask$OnEditListener;
 
-    .line 19
+    .line 18
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/task/EditTask;->mBitmaps:Ljava/util/List;
 
-    .line 25
+    .line 24
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/task/EditTask;->mListener:Lcom/oneplus/screenshot/longshot/task/EditTask$OnEditListener;
 
-    .line 26
+    .line 25
     iput-object p2, p0, Lcom/oneplus/screenshot/longshot/task/EditTask;->mBitmaps:Ljava/util/List;
 
-    .line 27
+    .line 26
     return-void
 .end method
 
 
 # virtual methods
 .method protected varargs doInBackground([Ljava/lang/Integer;)Ljava/lang/Integer;
-    .registers 13
+    .locals 11
     .param p1, "params"    # [Ljava/lang/Integer;
 
-    .line 31
+    .line 30
     invoke-static {}, Lcom/oneplus/screenshot/util/Utils;->setThreadPriority()V
 
-    .line 32
+    .line 31
     const/4 v0, 0x0
 
-    .line 33
+    .line 32
     .local v0, "result":I
     const/4 v1, 0x0
 
@@ -97,7 +97,7 @@
 
     move-result v2
 
-    .line 34
+    .line 33
     .local v2, "pos":I
     const/4 v3, 0x1
 
@@ -107,7 +107,7 @@
 
     move-result v4
 
-    .line 35
+    .line 34
     .local v4, "cut":I
     const/4 v5, 0x2
 
@@ -117,14 +117,14 @@
 
     move-result v5
 
-    .line 36
+    .line 35
     .local v5, "bottom":I
     iget-object v6, p0, Lcom/oneplus/screenshot/longshot/task/EditTask;->mBitmaps:Ljava/util/List;
 
     monitor-enter v6
 
-    .line 37
-    :try_start_1c
+    .line 36
+    :try_start_0
     iget-object v7, p0, Lcom/oneplus/screenshot/longshot/task/EditTask;->mBitmaps:Ljava/util/List;
 
     invoke-interface {v7}, Ljava/util/List;->size()I
@@ -134,10 +134,10 @@
     sub-int/2addr v7, v3
 
     .local v7, "i":I
-    :goto_23
-    if-le v7, v2, :cond_35
+    :goto_0
+    if-le v7, v2, :cond_0
 
-    .line 38
+    .line 37
     iget-object v8, p0, Lcom/oneplus/screenshot/longshot/task/EditTask;->mBitmaps:Ljava/util/List;
 
     invoke-interface {v8, v7}, Ljava/util/List;->remove(I)Ljava/lang/Object;
@@ -146,7 +146,7 @@
 
     check-cast v8, Landroid/graphics/Bitmap;
 
-    .line 39
+    .line 38
     .local v8, "bitmap":Landroid/graphics/Bitmap;
     invoke-virtual {v8}, Landroid/graphics/Bitmap;->getHeight()I
 
@@ -154,22 +154,22 @@
 
     add-int/2addr v0, v9
 
-    .line 37
+    .line 36
     .end local v8    # "bitmap":Landroid/graphics/Bitmap;
     add-int/lit8 v7, v7, -0x1
 
-    goto :goto_23
+    goto :goto_0
 
-    .line 41
+    .line 40
     .end local v7    # "i":I
-    :cond_35
+    :cond_0
     add-int/lit8 v7, v5, -0x1
 
     sub-int/2addr v7, v4
 
-    .line 42
+    .line 41
     .local v7, "offset":I
-    if-lez v7, :cond_6b
+    if-lez v7, :cond_3
 
     iget-object v8, p0, Lcom/oneplus/screenshot/longshot/task/EditTask;->mBitmaps:Ljava/util/List;
 
@@ -177,9 +177,9 @@
 
     move-result v8
 
-    if-lez v8, :cond_6b
+    if-lez v8, :cond_3
 
-    .line 43
+    .line 42
     iget-object v8, p0, Lcom/oneplus/screenshot/longshot/task/EditTask;->mBitmaps:Ljava/util/List;
 
     iget-object v9, p0, Lcom/oneplus/screenshot/longshot/task/EditTask;->mBitmaps:Ljava/util/List;
@@ -196,13 +196,13 @@
 
     check-cast v3, Landroid/graphics/Bitmap;
 
-    .line 44
+    .line 43
     .local v3, "cache":Landroid/graphics/Bitmap;
     invoke-virtual {v3}, Landroid/graphics/Bitmap;->getWidth()I
 
     move-result v8
 
-    .line 45
+    .line 44
     .local v8, "w":I
     invoke-virtual {v3}, Landroid/graphics/Bitmap;->getHeight()I
 
@@ -210,66 +210,66 @@
 
     sub-int/2addr v9, v7
 
-    .line 46
+    .line 45
     .local v9, "h":I
-    if-lez v9, :cond_6a
+    if-lez v9, :cond_2
 
-    .line 47
+    .line 46
     invoke-static {v3, v1, v1, v8, v9}, Landroid/graphics/Bitmap;->createBitmap(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
 
     move-result-object v1
 
-    .line 48
+    .line 47
     .local v1, "bitmap":Landroid/graphics/Bitmap;
-    if-eq v3, v1, :cond_65
+    if-eq v3, v1, :cond_1
 
-    .line 49
+    .line 48
     invoke-virtual {v3}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 51
-    :cond_65
+    .line 50
+    :cond_1
     iget-object v10, p0, Lcom/oneplus/screenshot/longshot/task/EditTask;->mBitmaps:Ljava/util/List;
 
     invoke-interface {v10, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 53
+    .line 52
     .end local v1    # "bitmap":Landroid/graphics/Bitmap;
-    :cond_6a
+    :cond_2
     add-int/2addr v0, v7
 
-    .line 55
+    .line 54
     .end local v3    # "cache":Landroid/graphics/Bitmap;
     .end local v7    # "offset":I
     .end local v8    # "w":I
     .end local v9    # "h":I
-    :cond_6b
+    :cond_3
     monitor-exit v6
-    :try_end_6c
-    .catchall {:try_start_1c .. :try_end_6c} :catchall_71
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 56
+    .line 55
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v1
 
     return-object v1
 
-    .line 55
-    :catchall_71
+    .line 54
+    :catchall_0
     move-exception v1
 
-    :try_start_72
+    :try_start_1
     monitor-exit v6
-    :try_end_73
-    .catchall {:try_start_72 .. :try_end_73} :catchall_71
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v1
 .end method
 
 .method protected bridge synthetic doInBackground([Ljava/lang/Object;)Ljava/lang/Object;
-    .registers 2
+    .locals 0
 
-    .line 11
+    .line 10
     check-cast p1, [Ljava/lang/Integer;
 
     invoke-virtual {p0, p1}, Lcom/oneplus/screenshot/longshot/task/EditTask;->doInBackground([Ljava/lang/Integer;)Ljava/lang/Integer;
@@ -280,39 +280,37 @@
 .end method
 
 .method protected onCancelled()V
-    .registers 1
+    .locals 0
 
-    .line 68
+    .line 67
     return-void
 .end method
 
 .method protected onPostExecute(Ljava/lang/Integer;)V
-    .registers 4
+    .locals 2
     .param p1, "result"    # Ljava/lang/Integer;
 
+    .line 60
+    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/task/EditTask;->mListener:Lcom/oneplus/screenshot/longshot/task/EditTask$OnEditListener;
+
+    if-eqz v0, :cond_0
+
     .line 61
-    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/task/EditTask;->mListener:Lcom/oneplus/screenshot/longshot/task/EditTask$OnEditListener;
-
-    if-eqz v0, :cond_d
-
-    .line 62
-    iget-object v0, p0, Lcom/oneplus/screenshot/longshot/task/EditTask;->mListener:Lcom/oneplus/screenshot/longshot/task/EditTask$OnEditListener;
-
     invoke-virtual {p1}, Ljava/lang/Integer;->intValue()I
 
     move-result v1
 
     invoke-interface {v0, v1}, Lcom/oneplus/screenshot/longshot/task/EditTask$OnEditListener;->onEditFinished(I)V
 
-    .line 64
-    :cond_d
+    .line 63
+    :cond_0
     return-void
 .end method
 
 .method protected bridge synthetic onPostExecute(Ljava/lang/Object;)V
-    .registers 2
+    .locals 0
 
-    .line 11
+    .line 10
     check-cast p1, Ljava/lang/Integer;
 
     invoke-virtual {p0, p1}, Lcom/oneplus/screenshot/longshot/task/EditTask;->onPostExecute(Ljava/lang/Integer;)V

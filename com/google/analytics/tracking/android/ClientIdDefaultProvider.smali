@@ -24,7 +24,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 23
     new-instance v0, Ljava/lang/Object;
@@ -37,7 +37,7 @@
 .end method
 
 .method protected constructor <init>(Landroid/content/Context;)V
-    .registers 3
+    .locals 1
     .param p1, "c"    # Landroid/content/Context;
 
     .line 51
@@ -66,7 +66,7 @@
 .end method
 
 .method static synthetic access$000(Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;)Ljava/lang/Object;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;
 
     .line 20
@@ -76,7 +76,7 @@
 .end method
 
 .method static synthetic access$102(Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;Ljava/lang/String;)Ljava/lang/String;
-    .registers 2
+    .locals 0
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;
     .param p1, "x1"    # Ljava/lang/String;
 
@@ -87,7 +87,7 @@
 .end method
 
 .method static synthetic access$202(Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;Z)Z
-    .registers 2
+    .locals 0
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;
     .param p1, "x1"    # Z
 
@@ -98,7 +98,7 @@
 .end method
 
 .method private asyncInitializeClientId()V
-    .registers 3
+    .locals 2
 
     .line 130
     new-instance v0, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider$1;
@@ -116,12 +116,12 @@
 .end method
 
 .method private blockingGetClientId()Ljava/lang/String;
-    .registers 5
+    .locals 4
 
     .line 74
     iget-boolean v0, p0, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->mClientIdLoaded:Z
 
-    if-nez v0, :cond_34
+    if-nez v0, :cond_2
 
     .line 75
     iget-object v0, p0, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->mClientIdLock:Ljava/lang/Object;
@@ -129,38 +129,38 @@
     monitor-enter v0
 
     .line 76
-    :try_start_7
+    :try_start_0
     iget-boolean v1, p0, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->mClientIdLoaded:Z
 
-    if-nez v1, :cond_2f
+    if-nez v1, :cond_1
 
     .line 77
     const-string v1, "Waiting for clientId to load"
 
     invoke-static {v1}, Lcom/google/analytics/tracking/android/Log;->v(Ljava/lang/String;)V
-    :try_end_10
-    .catchall {:try_start_7 .. :try_end_10} :catchall_31
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 80
-    :cond_10
-    :try_start_10
+    :cond_0
+    :try_start_1
     iget-object v1, p0, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->mClientIdLock:Ljava/lang/Object;
 
     invoke-virtual {v1}, Ljava/lang/Object;->wait()V
-    :try_end_15
-    .catch Ljava/lang/InterruptedException; {:try_start_10 .. :try_end_15} :catch_16
-    .catchall {:try_start_10 .. :try_end_15} :catchall_31
+    :try_end_1
+    .catch Ljava/lang/InterruptedException; {:try_start_1 .. :try_end_1} :catch_0
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 83
-    goto :goto_2b
+    goto :goto_0
 
     .line 81
-    :catch_16
+    :catch_0
     move-exception v1
 
     .line 82
     .local v1, "e":Ljava/lang/InterruptedException;
-    :try_start_17
+    :try_start_2
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
@@ -179,29 +179,29 @@
 
     .line 84
     .end local v1    # "e":Ljava/lang/InterruptedException;
-    :goto_2b
+    :goto_0
     iget-boolean v1, p0, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->mClientIdLoaded:Z
 
-    if-eqz v1, :cond_10
+    if-eqz v1, :cond_0
 
     .line 86
-    :cond_2f
+    :cond_1
     monitor-exit v0
 
-    goto :goto_34
+    goto :goto_1
 
-    :catchall_31
+    :catchall_0
     move-exception v1
 
     monitor-exit v0
-    :try_end_33
-    .catchall {:try_start_17 .. :try_end_33} :catchall_31
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
     throw v1
 
     .line 89
-    :cond_34
-    :goto_34
+    :cond_2
+    :goto_1
     const-string v0, "Loaded clientId"
 
     invoke-static {v0}, Lcom/google/analytics/tracking/android/Log;->v(Ljava/lang/String;)V
@@ -213,7 +213,7 @@
 .end method
 
 .method static dropInstance()V
-    .registers 2
+    .locals 2
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
@@ -225,7 +225,7 @@
     .line 41
     const/4 v1, 0x0
 
-    :try_start_4
+    :try_start_0
     sput-object v1, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->sInstance:Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;
 
     .line 42
@@ -235,18 +235,18 @@
     return-void
 
     .line 42
-    :catchall_8
+    :catchall_0
     move-exception v1
 
     monitor-exit v0
-    :try_end_a
-    .catchall {:try_start_4 .. :try_end_a} :catchall_8
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method
 
 .method public static getProvider()Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;
-    .registers 2
+    .locals 2
 
     .line 46
     sget-object v0, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->sInstanceLock:Ljava/lang/Object;
@@ -254,7 +254,7 @@
     monitor-enter v0
 
     .line 47
-    :try_start_3
+    :try_start_0
     sget-object v1, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->sInstance:Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;
 
     monitor-exit v0
@@ -262,18 +262,18 @@
     return-object v1
 
     .line 48
-    :catchall_7
+    :catchall_0
     move-exception v1
 
     monitor-exit v0
-    :try_end_9
-    .catchall {:try_start_3 .. :try_end_9} :catchall_7
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method
 
 .method public static initializeProvider(Landroid/content/Context;)V
-    .registers 3
+    .locals 2
     .param p0, "c"    # Landroid/content/Context;
 
     .line 31
@@ -282,10 +282,10 @@
     monitor-enter v0
 
     .line 32
-    :try_start_3
+    :try_start_0
     sget-object v1, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->sInstance:Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;
 
-    if-nez v1, :cond_e
+    if-nez v1, :cond_0
 
     .line 33
     new-instance v1, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;
@@ -295,31 +295,31 @@
     sput-object v1, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->sInstance:Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;
 
     .line 35
-    :cond_e
+    :cond_0
     monitor-exit v0
 
     .line 36
     return-void
 
     .line 35
-    :catchall_10
+    :catchall_0
     move-exception v1
 
     monitor-exit v0
-    :try_end_12
-    .catchall {:try_start_3 .. :try_end_12} :catchall_10
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method
 
 .method private storeClientId(Ljava/lang/String;)Z
-    .registers 5
+    .locals 3
     .param p1, "clientId"    # Ljava/lang/String;
 
     .line 101
     const/4 v0, 0x0
 
-    :try_start_1
+    :try_start_0
     const-string v1, "Storing clientId."
 
     invoke-static {v1}, Lcom/google/analytics/tracking/android/Log;->v(Ljava/lang/String;)V
@@ -343,9 +343,9 @@
 
     .line 105
     invoke-virtual {v1}, Ljava/io/FileOutputStream;->close()V
-    :try_end_18
-    .catch Ljava/io/FileNotFoundException; {:try_start_1 .. :try_end_18} :catch_21
-    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_18} :catch_1a
+    :try_end_0
+    .catch Ljava/io/FileNotFoundException; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 106
     const/4 v0, 0x1
@@ -354,7 +354,7 @@
 
     .line 110
     .end local v1    # "fos":Ljava/io/FileOutputStream;
-    :catch_1a
+    :catch_0
     move-exception v1
 
     .line 111
@@ -368,7 +368,7 @@
 
     .line 107
     .end local v1    # "e":Ljava/io/IOException;
-    :catch_21
+    :catch_1
     move-exception v1
 
     .line 108
@@ -384,7 +384,7 @@
 
 # virtual methods
 .method protected generateClientId()Ljava/lang/String;
-    .registers 3
+    .locals 2
 
     .line 122
     invoke-static {}, Ljava/util/UUID;->randomUUID()Ljava/util/UUID;
@@ -405,18 +405,18 @@
 
     move-result v1
 
-    if-nez v1, :cond_14
+    if-nez v1, :cond_0
 
     .line 124
     const-string v0, "0"
 
     .line 126
-    :cond_14
+    :cond_0
     return-object v0
 .end method
 
 .method public getValue(Ljava/lang/String;)Ljava/lang/String;
-    .registers 3
+    .locals 1
     .param p1, "field"    # Ljava/lang/String;
 
     .line 67
@@ -426,7 +426,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_d
+    if-eqz v0, :cond_0
 
     .line 68
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->blockingGetClientId()Ljava/lang/String;
@@ -436,154 +436,148 @@
     return-object v0
 
     .line 70
-    :cond_d
+    :cond_0
     const/4 v0, 0x0
 
     return-object v0
 .end method
 
 .method initializeClientId()Ljava/lang/String;
-    .registers 7
+    .locals 7
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
     .line 152
-    const/4 v0, 0x0
+    const-string v0, "gaClientId"
+
+    const/4 v1, 0x0
 
     .line 154
-    .local v0, "rslt":Ljava/lang/String;
-    :try_start_1
-    iget-object v1, p0, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->mContext:Landroid/content/Context;
-
-    const-string v2, "gaClientId"
-
-    invoke-virtual {v1, v2}, Landroid/content/Context;->openFileInput(Ljava/lang/String;)Ljava/io/FileInputStream;
-
-    move-result-object v1
-
-    .line 155
-    .local v1, "input":Ljava/io/FileInputStream;
-    const/16 v2, 0x80
-
-    new-array v3, v2, [B
-
-    .line 156
-    .local v3, "bytes":[B
-    const/4 v4, 0x0
-
-    invoke-virtual {v1, v3, v4, v2}, Ljava/io/FileInputStream;->read([BII)I
-
-    move-result v2
-
-    .line 157
-    .local v2, "readLen":I
-    invoke-virtual {v1}, Ljava/io/FileInputStream;->available()I
-
-    move-result v5
-
-    if-lez v5, :cond_28
-
-    .line 160
-    const-string v4, "clientId file seems corrupted, deleting it."
-
-    invoke-static {v4}, Lcom/google/analytics/tracking/android/Log;->e(Ljava/lang/String;)V
-
-    .line 161
-    invoke-virtual {v1}, Ljava/io/FileInputStream;->close()V
-
-    .line 162
-    iget-object v4, p0, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->mContext:Landroid/content/Context;
-
-    const-string v5, "gaClientId"
-
-    invoke-virtual {v4, v5}, Landroid/content/Context;->deleteFile(Ljava/lang/String;)Z
-
-    goto :goto_53
-
-    .line 163
-    :cond_28
-    if-gtz v2, :cond_3a
-
-    .line 164
-    const-string v4, "clientId file seems empty, deleting it."
-
-    invoke-static {v4}, Lcom/google/analytics/tracking/android/Log;->e(Ljava/lang/String;)V
-
-    .line 165
-    invoke-virtual {v1}, Ljava/io/FileInputStream;->close()V
-
-    .line 166
-    iget-object v4, p0, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->mContext:Landroid/content/Context;
-
-    const-string v5, "gaClientId"
-
-    invoke-virtual {v4, v5}, Landroid/content/Context;->deleteFile(Ljava/lang/String;)Z
-
-    goto :goto_53
-
-    .line 168
-    :cond_3a
-    new-instance v5, Ljava/lang/String;
-
-    invoke-direct {v5, v3, v4, v2}, Ljava/lang/String;-><init>([BII)V
-
-    move-object v0, v5
-
-    .line 169
-    invoke-virtual {v1}, Ljava/io/FileInputStream;->close()V
-    :try_end_43
-    .catch Ljava/io/FileNotFoundException; {:try_start_1 .. :try_end_43} :catch_52
-    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_43} :catch_44
-
-    .end local v1    # "input":Ljava/io/FileInputStream;
-    .end local v2    # "readLen":I
-    .end local v3    # "bytes":[B
-    goto :goto_53
-
-    .line 173
-    :catch_44
-    move-exception v1
-
-    .line 174
-    .local v1, "e":Ljava/io/IOException;
-    const-string v2, "Error reading clientId file, deleting it."
-
-    invoke-static {v2}, Lcom/google/analytics/tracking/android/Log;->e(Ljava/lang/String;)V
-
-    .line 175
+    .local v1, "rslt":Ljava/lang/String;
+    :try_start_0
     iget-object v2, p0, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->mContext:Landroid/content/Context;
 
-    const-string v3, "gaClientId"
+    invoke-virtual {v2, v0}, Landroid/content/Context;->openFileInput(Ljava/lang/String;)Ljava/io/FileInputStream;
 
-    invoke-virtual {v2, v3}, Landroid/content/Context;->deleteFile(Ljava/lang/String;)Z
+    move-result-object v2
 
-    .end local v1    # "e":Ljava/io/IOException;
-    goto :goto_54
+    .line 155
+    .local v2, "input":Ljava/io/FileInputStream;
+    const/16 v3, 0x80
+
+    new-array v4, v3, [B
+
+    .line 156
+    .local v4, "bytes":[B
+    const/4 v5, 0x0
+
+    invoke-virtual {v2, v4, v5, v3}, Ljava/io/FileInputStream;->read([BII)I
+
+    move-result v3
+
+    .line 157
+    .local v3, "readLen":I
+    invoke-virtual {v2}, Ljava/io/FileInputStream;->available()I
+
+    move-result v6
+
+    if-lez v6, :cond_0
+
+    .line 160
+    const-string v5, "clientId file seems corrupted, deleting it."
+
+    invoke-static {v5}, Lcom/google/analytics/tracking/android/Log;->e(Ljava/lang/String;)V
+
+    .line 161
+    invoke-virtual {v2}, Ljava/io/FileInputStream;->close()V
+
+    .line 162
+    iget-object v5, p0, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v5, v0}, Landroid/content/Context;->deleteFile(Ljava/lang/String;)Z
+
+    goto :goto_0
+
+    .line 163
+    :cond_0
+    if-gtz v3, :cond_1
+
+    .line 164
+    const-string v5, "clientId file seems empty, deleting it."
+
+    invoke-static {v5}, Lcom/google/analytics/tracking/android/Log;->e(Ljava/lang/String;)V
+
+    .line 165
+    invoke-virtual {v2}, Ljava/io/FileInputStream;->close()V
+
+    .line 166
+    iget-object v5, p0, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v5, v0}, Landroid/content/Context;->deleteFile(Ljava/lang/String;)Z
+
+    goto :goto_0
+
+    .line 168
+    :cond_1
+    new-instance v6, Ljava/lang/String;
+
+    invoke-direct {v6, v4, v5, v3}, Ljava/lang/String;-><init>([BII)V
+
+    move-object v1, v6
+
+    .line 169
+    invoke-virtual {v2}, Ljava/io/FileInputStream;->close()V
+    :try_end_0
+    .catch Ljava/io/FileNotFoundException; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
+
+    goto :goto_0
+
+    .line 173
+    .end local v2    # "input":Ljava/io/FileInputStream;
+    .end local v3    # "readLen":I
+    .end local v4    # "bytes":[B
+    :catch_0
+    move-exception v2
+
+    .line 174
+    .local v2, "e":Ljava/io/IOException;
+    const-string v3, "Error reading clientId file, deleting it."
+
+    invoke-static {v3}, Lcom/google/analytics/tracking/android/Log;->e(Ljava/lang/String;)V
+
+    .line 175
+    iget-object v3, p0, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v3, v0}, Landroid/content/Context;->deleteFile(Ljava/lang/String;)Z
+
+    goto :goto_1
 
     .line 171
-    :catch_52
-    move-exception v1
+    .end local v2    # "e":Ljava/io/IOException;
+    :catch_1
+    move-exception v0
 
     .line 176
-    :goto_53
+    :goto_0
     nop
 
     .line 178
-    :goto_54
-    if-nez v0, :cond_5a
+    :goto_1
+    if-nez v1, :cond_2
 
     .line 179
     invoke-virtual {p0}, Lcom/google/analytics/tracking/android/ClientIdDefaultProvider;->generateClientId()Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v1
 
     .line 181
-    :cond_5a
-    return-object v0
+    :cond_2
+    return-object v1
 .end method
 
 .method public providesField(Ljava/lang/String;)Z
-    .registers 3
+    .locals 1
     .param p1, "field"    # Ljava/lang/String;
 
     .line 58

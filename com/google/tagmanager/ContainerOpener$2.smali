@@ -23,7 +23,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;)V
-    .registers 2
+    .locals 0
 
     .line 303
     iput-object p1, p0, Lcom/google/tagmanager/ContainerOpener$2;->val$future:Lcom/google/tagmanager/ContainerOpener$ContainerFutureImpl;
@@ -36,7 +36,7 @@
 
 # virtual methods
 .method public containerAvailable(Lcom/google/tagmanager/Container;)V
-    .registers 3
+    .locals 1
     .param p1, "container"    # Lcom/google/tagmanager/Container;
 
     .line 306

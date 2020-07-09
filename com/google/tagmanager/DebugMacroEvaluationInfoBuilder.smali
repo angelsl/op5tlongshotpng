@@ -12,7 +12,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/google/analytics/containertag/proto/Debug$MacroEvaluationInfo;)V
-    .registers 2
+    .locals 0
     .param p1, "macroEvaluationInfo"    # Lcom/google/analytics/containertag/proto/Debug$MacroEvaluationInfo;
 
     .line 15
@@ -28,7 +28,7 @@
 
 # virtual methods
 .method public createResult()Lcom/google/tagmanager/ResolvedFunctionCallBuilder;
-    .registers 3
+    .locals 2
 
     .line 21
     iget-object v0, p0, Lcom/google/tagmanager/DebugMacroEvaluationInfoBuilder;->macroEvaluationInfo:Lcom/google/analytics/containertag/proto/Debug$MacroEvaluationInfo;
@@ -52,7 +52,7 @@
 .end method
 
 .method public createRulesEvaluation()Lcom/google/tagmanager/RuleEvaluationStepInfoBuilder;
-    .registers 3
+    .locals 2
 
     .line 27
     iget-object v0, p0, Lcom/google/tagmanager/DebugMacroEvaluationInfoBuilder;->macroEvaluationInfo:Lcom/google/analytics/containertag/proto/Debug$MacroEvaluationInfo;

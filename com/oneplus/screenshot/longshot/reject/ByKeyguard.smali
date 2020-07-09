@@ -9,7 +9,7 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;)V
-    .registers 2
+    .locals 0
     .param p1, "context"    # Landroid/content/Context;
 
     .line 11
@@ -25,7 +25,7 @@
 
 # virtual methods
 .method public isReject()Z
-    .registers 3
+    .locals 2
 
     .line 18
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/reject/ByKeyguard;->mContext:Landroid/content/Context;

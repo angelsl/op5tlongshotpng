@@ -14,14 +14,14 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;)V
-    .registers 4
+    .locals 2
     .param p1, "context"    # Landroid/content/Context;
 
     .line 19
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 20
-    if-eqz p1, :cond_c
+    if-eqz p1, :cond_0
 
     .line 23
     invoke-virtual {p1}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
@@ -34,7 +34,7 @@
     return-void
 
     .line 21
-    :cond_c
+    :cond_0
     new-instance v0, Ljava/lang/NullPointerException;
 
     const-string v1, "Context cannot be null"
@@ -45,14 +45,14 @@
 .end method
 
 .method private getResourceIdForType(Ljava/lang/String;Ljava/lang/String;)I
-    .registers 5
+    .locals 2
     .param p1, "key"    # Ljava/lang/String;
     .param p2, "type"    # Ljava/lang/String;
 
     .line 36
     iget-object v0, p0, Lcom/google/analytics/tracking/android/ParameterLoaderImpl;->mContext:Landroid/content/Context;
 
-    if-nez v0, :cond_6
+    if-nez v0, :cond_0
 
     .line 37
     const/4 v0, 0x0
@@ -60,25 +60,23 @@
     return v0
 
     .line 42
-    :cond_6
-    iget-object v0, p0, Lcom/google/analytics/tracking/android/ParameterLoaderImpl;->mOverrideResourcePackageName:Ljava/lang/String;
+    :cond_0
+    iget-object v1, p0, Lcom/google/analytics/tracking/android/ParameterLoaderImpl;->mOverrideResourcePackageName:Ljava/lang/String;
 
-    if-eqz v0, :cond_d
+    if-eqz v1, :cond_1
 
-    iget-object v0, p0, Lcom/google/analytics/tracking/android/ParameterLoaderImpl;->mOverrideResourcePackageName:Ljava/lang/String;
+    goto :goto_0
 
-    goto :goto_13
-
-    :cond_d
-    iget-object v0, p0, Lcom/google/analytics/tracking/android/ParameterLoaderImpl;->mContext:Landroid/content/Context;
-
+    :cond_1
     invoke-virtual {v0}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v1
+
+    :goto_0
+    move-object v0, v1
 
     .line 47
     .local v0, "resourcePackageName":Ljava/lang/String;
-    :goto_13
     iget-object v1, p0, Lcom/google/analytics/tracking/android/ParameterLoaderImpl;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
@@ -95,7 +93,7 @@
 
 # virtual methods
 .method public getBoolean(Ljava/lang/String;)Z
-    .registers 5
+    .locals 3
     .param p1, "key"    # Ljava/lang/String;
 
     .line 62
@@ -107,7 +105,7 @@
 
     .line 63
     .local v0, "id":I
-    if-nez v0, :cond_a
+    if-nez v0, :cond_0
 
     .line 64
     const/4 v1, 0x0
@@ -115,16 +113,16 @@
     return v1
 
     .line 66
-    :cond_a
-    const-string v1, "true"
+    :cond_0
+    iget-object v1, p0, Lcom/google/analytics/tracking/android/ParameterLoaderImpl;->mContext:Landroid/content/Context;
 
-    iget-object v2, p0, Lcom/google/analytics/tracking/android/ParameterLoaderImpl;->mContext:Landroid/content/Context;
+    invoke-virtual {v1, v0}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
-    invoke-virtual {v2, v0}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+    move-result-object v1
 
-    move-result-object v2
+    const-string v2, "true"
 
-    invoke-virtual {v1, v2}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+    invoke-virtual {v2, v1}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
 
     move-result v1
 
@@ -132,7 +130,7 @@
 .end method
 
 .method public getDoubleFromString(Ljava/lang/String;)Ljava/lang/Double;
-    .registers 7
+    .locals 5
     .param p1, "key"    # Ljava/lang/String;
 
     .line 92
@@ -148,14 +146,14 @@
 
     const/4 v2, 0x0
 
-    if-eqz v1, :cond_c
+    if-eqz v1, :cond_0
 
     .line 94
     return-object v2
 
     .line 97
-    :cond_c
-    :try_start_c
+    :cond_0
+    :try_start_0
     invoke-static {v0}, Ljava/lang/Double;->parseDouble(Ljava/lang/String;)D
 
     move-result-wide v3
@@ -163,13 +161,13 @@
     invoke-static {v3, v4}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
 
     move-result-object v1
-    :try_end_14
-    .catch Ljava/lang/NumberFormatException; {:try_start_c .. :try_end_14} :catch_15
+    :try_end_0
+    .catch Ljava/lang/NumberFormatException; {:try_start_0 .. :try_end_0} :catch_0
 
     return-object v1
 
     .line 98
-    :catch_15
+    :catch_0
     move-exception v1
 
     .line 99
@@ -195,7 +193,7 @@
 .end method
 
 .method public getInt(Ljava/lang/String;I)I
-    .registers 7
+    .locals 4
     .param p1, "key"    # Ljava/lang/String;
     .param p2, "defaultValue"    # I
 
@@ -208,14 +206,14 @@
 
     .line 73
     .local v0, "id":I
-    if-nez v0, :cond_9
+    if-nez v0, :cond_0
 
     .line 74
     return p2
 
     .line 77
-    :cond_9
-    :try_start_9
+    :cond_0
+    :try_start_0
     iget-object v1, p0, Lcom/google/analytics/tracking/android/ParameterLoaderImpl;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1, v0}, Landroid/content/Context;->getString(I)Ljava/lang/String;
@@ -225,13 +223,13 @@
     invoke-static {v1}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
 
     move-result v1
-    :try_end_13
-    .catch Ljava/lang/NumberFormatException; {:try_start_9 .. :try_end_13} :catch_14
+    :try_end_0
+    .catch Ljava/lang/NumberFormatException; {:try_start_0 .. :try_end_0} :catch_0
 
     return v1
 
     .line 78
-    :catch_14
+    :catch_0
     move-exception v1
 
     .line 79
@@ -263,7 +261,7 @@
 .end method
 
 .method public getString(Ljava/lang/String;)Ljava/lang/String;
-    .registers 4
+    .locals 2
     .param p1, "key"    # Ljava/lang/String;
 
     .line 52
@@ -275,7 +273,7 @@
 
     .line 53
     .local v0, "id":I
-    if-nez v0, :cond_a
+    if-nez v0, :cond_0
 
     .line 54
     const/4 v1, 0x0
@@ -283,7 +281,7 @@
     return-object v1
 
     .line 56
-    :cond_a
+    :cond_0
     iget-object v1, p0, Lcom/google/analytics/tracking/android/ParameterLoaderImpl;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1, v0}, Landroid/content/Context;->getString(I)Ljava/lang/String;
@@ -294,7 +292,7 @@
 .end method
 
 .method public isBooleanKeyPresent(Ljava/lang/String;)Z
-    .registers 3
+    .locals 1
     .param p1, "key"    # Ljava/lang/String;
 
     .line 87
@@ -304,21 +302,21 @@
 
     move-result v0
 
-    if-eqz v0, :cond_a
+    if-eqz v0, :cond_0
 
     const/4 v0, 0x1
 
-    goto :goto_b
+    goto :goto_0
 
-    :cond_a
+    :cond_0
     const/4 v0, 0x0
 
-    :goto_b
+    :goto_0
     return v0
 .end method
 
 .method public setResourcePackageName(Ljava/lang/String;)V
-    .registers 2
+    .locals 0
     .param p1, "resourcePackageName"    # Ljava/lang/String;
 
     .line 106

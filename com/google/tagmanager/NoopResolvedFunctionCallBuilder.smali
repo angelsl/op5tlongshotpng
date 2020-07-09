@@ -8,7 +8,7 @@
 
 # direct methods
 .method constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 9
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -19,7 +19,7 @@
 
 # virtual methods
 .method public createResolvedPropertyBuilder(Ljava/lang/String;)Lcom/google/tagmanager/ResolvedPropertyBuilder;
-    .registers 3
+    .locals 1
     .param p1, "key"    # Ljava/lang/String;
 
     .line 13
@@ -31,7 +31,7 @@
 .end method
 
 .method public setFunctionResult(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)V
-    .registers 2
+    .locals 0
     .param p1, "functionResult"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 18

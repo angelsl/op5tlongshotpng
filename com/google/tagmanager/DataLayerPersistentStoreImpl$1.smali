@@ -19,7 +19,7 @@
 
 # direct methods
 .method constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 59
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -30,7 +30,7 @@
 
 # virtual methods
 .method public currentTimeMillis()J
-    .registers 3
+    .locals 2
 
     .line 62
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J

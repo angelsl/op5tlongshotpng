@@ -13,7 +13,7 @@
 
 # direct methods
 .method constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 11
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -22,7 +22,7 @@
 .end method
 
 .method public static decode(Ljava/lang/String;I)[B
-    .registers 6
+    .locals 4
     .param p0, "s"    # Ljava/lang/String;
     .param p1, "flags"    # I
 
@@ -33,7 +33,7 @@
 
     const/16 v1, 0x8
 
-    if-lt v0, v1, :cond_1a
+    if-lt v0, v1, :cond_2
 
     .line 44
     const/4 v0, 0x2
@@ -42,22 +42,22 @@
     .local v0, "newFlags":I
     and-int/lit8 v1, p1, 0x1
 
-    if-eqz v1, :cond_f
+    if-eqz v1, :cond_0
 
     .line 46
     or-int/lit8 v0, v0, 0x1
 
     .line 48
-    :cond_f
+    :cond_0
     and-int/lit8 v1, p1, 0x2
 
-    if-eqz v1, :cond_15
+    if-eqz v1, :cond_1
 
     .line 49
     or-int/lit8 v0, v0, 0x8
 
     .line 52
-    :cond_15
+    :cond_1
     invoke-static {p0, v0}, Landroid/util/Base64;->decode(Ljava/lang/String;I)[B
 
     move-result-object v1
@@ -66,37 +66,35 @@
 
     .line 54
     .end local v0    # "newFlags":I
-    :cond_1a
+    :cond_2
     and-int/lit8 v0, p1, 0x1
 
     const/4 v1, 0x0
 
     const/4 v2, 0x1
 
-    if-nez v0, :cond_22
+    if-nez v0, :cond_3
 
     move v0, v2
 
-    goto :goto_23
+    goto :goto_0
 
-    :cond_22
+    :cond_3
     move v0, v1
 
     .line 55
     .local v0, "paddingDesired":Z
-    :goto_23
+    :goto_0
     and-int/lit8 v3, p1, 0x2
 
-    if-eqz v3, :cond_29
+    if-eqz v3, :cond_4
 
     move v1, v2
 
-    nop
-
     .line 56
     .local v1, "websafeDesired":Z
-    :cond_29
-    if-eqz v1, :cond_30
+    :cond_4
+    if-eqz v1, :cond_5
 
     .line 57
     invoke-static {p0}, Lcom/google/tagmanager/Base64;->decodeWebSafe(Ljava/lang/String;)[B
@@ -106,7 +104,7 @@
     return-object v2
 
     .line 59
-    :cond_30
+    :cond_5
     invoke-static {p0}, Lcom/google/tagmanager/Base64;->decode(Ljava/lang/String;)[B
 
     move-result-object v2
@@ -115,7 +113,7 @@
 .end method
 
 .method public static encodeToString([BI)Ljava/lang/String;
-    .registers 6
+    .locals 4
     .param p0, "input"    # [B
     .param p1, "flags"    # I
 
@@ -126,7 +124,7 @@
 
     const/16 v1, 0x8
 
-    if-lt v0, v1, :cond_1a
+    if-lt v0, v1, :cond_2
 
     .line 22
     const/4 v0, 0x2
@@ -135,22 +133,22 @@
     .local v0, "newFlags":I
     and-int/lit8 v1, p1, 0x1
 
-    if-eqz v1, :cond_f
+    if-eqz v1, :cond_0
 
     .line 24
     or-int/lit8 v0, v0, 0x1
 
     .line 26
-    :cond_f
+    :cond_0
     and-int/lit8 v1, p1, 0x2
 
-    if-eqz v1, :cond_15
+    if-eqz v1, :cond_1
 
     .line 27
     or-int/lit8 v0, v0, 0x8
 
     .line 30
-    :cond_15
+    :cond_1
     invoke-static {p0, v0}, Landroid/util/Base64;->encodeToString([BI)Ljava/lang/String;
 
     move-result-object v1
@@ -159,37 +157,35 @@
 
     .line 32
     .end local v0    # "newFlags":I
-    :cond_1a
+    :cond_2
     and-int/lit8 v0, p1, 0x1
 
     const/4 v1, 0x0
 
     const/4 v2, 0x1
 
-    if-nez v0, :cond_22
+    if-nez v0, :cond_3
 
     move v0, v2
 
-    goto :goto_23
+    goto :goto_0
 
-    :cond_22
+    :cond_3
     move v0, v1
 
     .line 33
     .local v0, "paddingDesired":Z
-    :goto_23
+    :goto_0
     and-int/lit8 v3, p1, 0x2
 
-    if-eqz v3, :cond_29
+    if-eqz v3, :cond_4
 
     move v1, v2
 
-    nop
-
     .line 34
     .local v1, "websafeDesired":Z
-    :cond_29
-    if-eqz v1, :cond_30
+    :cond_4
+    if-eqz v1, :cond_5
 
     .line 35
     invoke-static {p0, v0}, Lcom/google/tagmanager/Base64;->encodeWebSafe([BZ)Ljava/lang/String;
@@ -199,7 +195,7 @@
     return-object v2
 
     .line 37
-    :cond_30
+    :cond_5
     invoke-static {p0, v0}, Lcom/google/tagmanager/Base64;->encode([BZ)Ljava/lang/String;
 
     move-result-object v2
@@ -208,7 +204,7 @@
 .end method
 
 .method static getSdkVersion()I
-    .registers 1
+    .locals 1
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 

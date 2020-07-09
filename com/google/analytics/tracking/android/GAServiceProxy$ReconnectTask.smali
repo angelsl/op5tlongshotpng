@@ -20,7 +20,7 @@
 
 # direct methods
 .method private constructor <init>(Lcom/google/analytics/tracking/android/GAServiceProxy;)V
-    .registers 2
+    .locals 0
 
     .line 412
     iput-object p1, p0, Lcom/google/analytics/tracking/android/GAServiceProxy$ReconnectTask;->this$0:Lcom/google/analytics/tracking/android/GAServiceProxy;
@@ -31,7 +31,7 @@
 .end method
 
 .method synthetic constructor <init>(Lcom/google/analytics/tracking/android/GAServiceProxy;Lcom/google/analytics/tracking/android/GAServiceProxy$1;)V
-    .registers 3
+    .locals 0
     .param p1, "x0"    # Lcom/google/analytics/tracking/android/GAServiceProxy;
     .param p2, "x1"    # Lcom/google/analytics/tracking/android/GAServiceProxy$1;
 
@@ -44,7 +44,7 @@
 
 # virtual methods
 .method public run()V
-    .registers 2
+    .locals 1
 
     .line 415
     iget-object v0, p0, Lcom/google/analytics/tracking/android/GAServiceProxy$ReconnectTask;->this$0:Lcom/google/analytics/tracking/android/GAServiceProxy;

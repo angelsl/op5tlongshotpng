@@ -23,7 +23,7 @@
 
 # direct methods
 .method private constructor <init>(Lcom/google/tagmanager/Container;)V
-    .registers 2
+    .locals 0
 
     .line 105
     iput-object p1, p0, Lcom/google/tagmanager/Container$FunctionCallMacroHandlerAdapter;->this$0:Lcom/google/tagmanager/Container;
@@ -34,7 +34,7 @@
 .end method
 
 .method synthetic constructor <init>(Lcom/google/tagmanager/Container;Lcom/google/tagmanager/Container$1;)V
-    .registers 3
+    .locals 0
     .param p1, "x0"    # Lcom/google/tagmanager/Container;
     .param p2, "x1"    # Lcom/google/tagmanager/Container$1;
 
@@ -47,7 +47,7 @@
 
 # virtual methods
 .method public evaluate(Ljava/lang/String;Ljava/util/Map;)Ljava/lang/Object;
-    .registers 5
+    .locals 2
     .param p1, "key"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -71,17 +71,17 @@
 
     .line 109
     .local v0, "handler":Lcom/google/tagmanager/Container$FunctionCallMacroHandler;
-    if-nez v0, :cond_a
+    if-nez v0, :cond_0
 
     const/4 v1, 0x0
 
-    goto :goto_e
+    goto :goto_0
 
-    :cond_a
+    :cond_0
     invoke-interface {v0, p1, p2}, Lcom/google/tagmanager/Container$FunctionCallMacroHandler;->getValue(Ljava/lang/String;Ljava/util/Map;)Ljava/lang/Object;
 
     move-result-object v1
 
-    :goto_e
+    :goto_0
     return-object v1
 .end method

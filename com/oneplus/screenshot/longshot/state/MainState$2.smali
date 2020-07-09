@@ -23,7 +23,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/oneplus/screenshot/longshot/state/MainState;)V
-    .registers 2
+    .locals 0
     .param p1, "this$0"    # Lcom/oneplus/screenshot/longshot/state/MainState;
 
     .line 33
@@ -37,7 +37,7 @@
 
 # virtual methods
 .method public updateState()V
-    .registers 4
+    .locals 3
 
     .line 36
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MainState$2;->this$0:Lcom/oneplus/screenshot/longshot/state/MainState;

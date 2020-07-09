@@ -32,27 +32,27 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 4
+    .locals 4
 
     .line 78
     new-instance v0, Lcom/google/tagmanager/TagManager$RefreshMode;
 
-    const-string v1, "STANDARD"
+    const/4 v1, 0x0
 
-    const/4 v2, 0x0
+    const-string v2, "STANDARD"
 
-    invoke-direct {v0, v1, v2}, Lcom/google/tagmanager/TagManager$RefreshMode;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v2, v1}, Lcom/google/tagmanager/TagManager$RefreshMode;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/tagmanager/TagManager$RefreshMode;->STANDARD:Lcom/google/tagmanager/TagManager$RefreshMode;
 
     .line 89
     new-instance v0, Lcom/google/tagmanager/TagManager$RefreshMode;
 
-    const-string v1, "DEFAULT_CONTAINER"
+    const/4 v2, 0x1
 
-    const/4 v3, 0x1
+    const-string v3, "DEFAULT_CONTAINER"
 
-    invoke-direct {v0, v1, v3}, Lcom/google/tagmanager/TagManager$RefreshMode;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v3, v2}, Lcom/google/tagmanager/TagManager$RefreshMode;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/tagmanager/TagManager$RefreshMode;->DEFAULT_CONTAINER:Lcom/google/tagmanager/TagManager$RefreshMode;
 
@@ -61,13 +61,13 @@
 
     new-array v0, v0, [Lcom/google/tagmanager/TagManager$RefreshMode;
 
-    sget-object v1, Lcom/google/tagmanager/TagManager$RefreshMode;->STANDARD:Lcom/google/tagmanager/TagManager$RefreshMode;
+    sget-object v3, Lcom/google/tagmanager/TagManager$RefreshMode;->STANDARD:Lcom/google/tagmanager/TagManager$RefreshMode;
 
-    aput-object v1, v0, v2
+    aput-object v3, v0, v1
 
     sget-object v1, Lcom/google/tagmanager/TagManager$RefreshMode;->DEFAULT_CONTAINER:Lcom/google/tagmanager/TagManager$RefreshMode;
 
-    aput-object v1, v0, v3
+    aput-object v1, v0, v2
 
     sput-object v0, Lcom/google/tagmanager/TagManager$RefreshMode;->$VALUES:[Lcom/google/tagmanager/TagManager$RefreshMode;
 
@@ -75,7 +75,7 @@
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V
-    .registers 3
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
@@ -89,7 +89,7 @@
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Lcom/google/tagmanager/TagManager$RefreshMode;
-    .registers 2
+    .locals 1
     .param p0, "name"    # Ljava/lang/String;
 
     .line 71
@@ -105,7 +105,7 @@
 .end method
 
 .method public static values()[Lcom/google/tagmanager/TagManager$RefreshMode;
-    .registers 1
+    .locals 1
 
     .line 71
     sget-object v0, Lcom/google/tagmanager/TagManager$RefreshMode;->$VALUES:[Lcom/google/tagmanager/TagManager$RefreshMode;

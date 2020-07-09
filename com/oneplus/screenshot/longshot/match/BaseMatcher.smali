@@ -36,7 +36,7 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;I)V
-    .registers 6
+    .locals 3
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "index"    # I
 
@@ -93,7 +93,7 @@
 
     const/4 v2, 0x1
 
-    if-eqz v1, :cond_2c
+    if-eqz v1, :cond_0
 
     .line 34
     iput v2, p0, Lcom/oneplus/screenshot/longshot/match/BaseMatcher;->mStep:I
@@ -101,10 +101,10 @@
     .line 35
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/match/BaseMatcher;->createDumper()V
 
-    goto :goto_32
+    goto :goto_0
 
     .line 37
-    :cond_2c
+    :cond_0
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/match/BaseMatcher;->getStep()I
 
     move-result v1
@@ -112,8 +112,8 @@
     iput v1, p0, Lcom/oneplus/screenshot/longshot/match/BaseMatcher;->mStep:I
 
     .line 41
-    :goto_32
-    sget-boolean v1, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_RTL:Z
+    :goto_0
+    sget-boolean v1, Lcom/oneplus/screenshot/longshot/util/Configs;->isRtl:Z
 
     invoke-static {v0, v1}, Lcom/oneplus/screenshot/longshot/util/Configs;->getSideOffset(ZZ)I
 
@@ -122,7 +122,7 @@
     iput v0, p0, Lcom/oneplus/screenshot/longshot/match/BaseMatcher;->mRightSideOffset:I
 
     .line 42
-    sget-boolean v0, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_RTL:Z
+    sget-boolean v0, Lcom/oneplus/screenshot/longshot/util/Configs;->isRtl:Z
 
     invoke-static {v2, v0}, Lcom/oneplus/screenshot/longshot/util/Configs;->getSideOffset(ZZ)I
 
@@ -143,7 +143,7 @@
 .end method
 
 .method protected getCurrTag()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 67
     const-string v0, "Curr"
@@ -152,7 +152,7 @@
 .end method
 
 .method protected getLastTag()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 63
     const-string v0, "Last"
@@ -161,7 +161,7 @@
 .end method
 
 .method public getOffsetCurr()I
-    .registers 2
+    .locals 1
 
     .line 56
     iget v0, p0, Lcom/oneplus/screenshot/longshot/match/BaseMatcher;->mOffsetCurr:I
@@ -170,7 +170,7 @@
 .end method
 
 .method public getOffsetLast()I
-    .registers 2
+    .locals 1
 
     .line 51
     iget v0, p0, Lcom/oneplus/screenshot/longshot/match/BaseMatcher;->mOffsetLast:I
@@ -179,7 +179,7 @@
 .end method
 
 .method protected getStep()I
-    .registers 2
+    .locals 1
 
     .line 71
     const/4 v0, 0x1

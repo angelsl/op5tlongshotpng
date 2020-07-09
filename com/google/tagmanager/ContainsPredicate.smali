@@ -9,7 +9,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 13
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->CONTAINS:Lcom/google/analytics/containertag/common/FunctionType;
@@ -24,7 +24,7 @@
 .end method
 
 .method public constructor <init>()V
-    .registers 2
+    .locals 1
 
     .line 20
     sget-object v0, Lcom/google/tagmanager/ContainsPredicate;->ID:Ljava/lang/String;
@@ -36,7 +36,7 @@
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 16
     sget-object v0, Lcom/google/tagmanager/ContainsPredicate;->ID:Ljava/lang/String;
@@ -47,7 +47,7 @@
 
 # virtual methods
 .method protected evaluateString(Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Z
-    .registers 5
+    .locals 1
     .param p1, "arg0"    # Ljava/lang/String;
     .param p2, "arg1"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;

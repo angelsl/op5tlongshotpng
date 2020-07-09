@@ -9,7 +9,7 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    .registers 3
+    .locals 0
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "attrs"    # Landroid/util/AttributeSet;
 
@@ -23,7 +23,7 @@
 
 # virtual methods
 .method public getInterpolation(F)F
-    .registers 6
+    .locals 4
     .param p1, "x"    # F
 
     .line 22
@@ -37,13 +37,13 @@
 
     const/4 v1, 0x0
 
-    if-gez v0, :cond_b
+    if-gez v0, :cond_0
 
     .line 23
     return v1
 
     .line 25
-    :cond_b
+    :cond_0
     iget v0, p0, Lcom/oneplus/screenshot/anim/DropInterpolator;->mDurationFactor:F
 
     sub-float v0, p1, v0
@@ -65,12 +65,12 @@
     .local v0, "x":F
     cmpg-float p1, v0, v1
 
-    if-gez p1, :cond_1d
+    if-gez p1, :cond_1
 
     .line 27
     const/4 v0, 0x0
 
     .line 29
-    :cond_1d
+    :cond_1
     return v0
 .end method

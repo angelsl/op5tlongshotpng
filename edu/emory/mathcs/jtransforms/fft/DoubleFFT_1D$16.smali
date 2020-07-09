@@ -35,7 +35,7 @@
 
 # direct methods
 .method constructor <init>(Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;III[D[DI)V
-    .registers 8
+    .locals 0
     .param p1, "this$0"    # Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;
 
     .line 5504
@@ -61,7 +61,7 @@
 
 # virtual methods
 .method public run()V
-    .registers 14
+    .locals 14
 
     .line 5507
     iget v0, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$16;->val$firstIdx:I
@@ -80,10 +80,10 @@
 
     .line 5510
     .local v2, "m":I
-    :goto_8
+    :goto_0
     const/16 v3, 0x200
 
-    if-le v2, v3, :cond_21
+    if-le v2, v3, :cond_0
 
     .line 5511
     shr-int/lit8 v2, v2, 0x2
@@ -108,10 +108,10 @@
 
     invoke-static/range {v4 .. v9}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->access$500(Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;I[DI[DI)V
 
-    goto :goto_8
+    goto :goto_0
 
     .line 5515
-    :cond_21
+    :cond_0
     iget-object v3, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$16;->this$0:Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;
 
     const/4 v5, 0x0
@@ -142,18 +142,23 @@
 
     sub-int/2addr v3, v2
 
-    .local v3, "j":I
-    :goto_39
-    move v12, v3
+    move v13, v3
 
-    .end local v3    # "j":I
-    .local v12, "j":I
-    if-lez v12, :cond_60
+    move v3, v1
+
+    move v1, v13
+
+    .local v1, "j":I
+    .local v3, "k":I
+    :goto_1
+    if-lez v1, :cond_1
 
     .line 5519
-    add-int/lit8 v1, v1, 0x1
+    add-int/lit8 v12, v3, 0x1
 
     .line 5520
+    .end local v3    # "k":I
+    .local v12, "k":I
     iget-object v3, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$16;->this$0:Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;
 
     iget-object v7, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$16;->val$a:[D
@@ -166,11 +171,10 @@
 
     move v4, v2
 
-    move v5, v12
+    move v5, v1
 
-    move v6, v1
+    move v6, v12
 
-    # invokes: Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->cfttree(III[DII[D)I
     invoke-static/range {v3 .. v10}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->access$400(Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;III[DII[D)I
 
     move-result v10
@@ -181,7 +185,7 @@
 
     iget-object v6, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$16;->val$a:[D
 
-    add-int v7, v11, v12
+    add-int v7, v11, v1
 
     iget v8, p0, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D$16;->val$nw:I
 
@@ -192,16 +196,16 @@
     invoke-static/range {v3 .. v9}, Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;->access$300(Ledu/emory/mathcs/jtransforms/fft/DoubleFFT_1D;II[DII[D)V
 
     .line 5518
-    sub-int v3, v12, v2
+    sub-int/2addr v1, v2
 
-    .end local v12    # "j":I
-    .restart local v3    # "j":I
-    goto :goto_39
+    move v3, v12
+
+    goto :goto_1
 
     .line 5523
-    .end local v3    # "j":I
     .end local v10    # "isplt":I
-    .restart local v12    # "j":I
-    :cond_60
+    .end local v12    # "k":I
+    .restart local v3    # "k":I
+    :cond_1
     return-void
 .end method

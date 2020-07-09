@@ -9,7 +9,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 13
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->GREATER_THAN:Lcom/google/analytics/containertag/common/FunctionType;
@@ -24,7 +24,7 @@
 .end method
 
 .method public constructor <init>()V
-    .registers 2
+    .locals 1
 
     .line 20
     sget-object v0, Lcom/google/tagmanager/GreaterThanPredicate;->ID:Ljava/lang/String;
@@ -36,7 +36,7 @@
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 16
     sget-object v0, Lcom/google/tagmanager/GreaterThanPredicate;->ID:Ljava/lang/String;
@@ -47,7 +47,7 @@
 
 # virtual methods
 .method protected evaluateNumber(Lcom/google/tagmanager/TypedNumber;Lcom/google/tagmanager/TypedNumber;Ljava/util/Map;)Z
-    .registers 5
+    .locals 1
     .param p1, "arg0"    # Lcom/google/tagmanager/TypedNumber;
     .param p2, "arg1"    # Lcom/google/tagmanager/TypedNumber;
     .annotation system Ldalvik/annotation/Signature;
@@ -68,15 +68,15 @@
 
     move-result v0
 
-    if-lez v0, :cond_8
+    if-lez v0, :cond_0
 
     const/4 v0, 0x1
 
-    goto :goto_9
+    goto :goto_0
 
-    :cond_8
+    :cond_0
     const/4 v0, 0x0
 
-    :goto_9
+    :goto_0
     return v0
 .end method

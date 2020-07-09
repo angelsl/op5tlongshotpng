@@ -7,8 +7,8 @@
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingClass;
-    value = Lcom/oneplus/screenshot/longshot/state/LongshotMode;
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/oneplus/screenshot/longshot/state/LongshotMode;->updateState(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -23,10 +23,10 @@
 
 # direct methods
 .method constructor <init>(Lcom/oneplus/screenshot/longshot/state/LongshotMode;)V
-    .registers 2
+    .locals 0
     .param p1, "this$0"    # Lcom/oneplus/screenshot/longshot/state/LongshotMode;
 
-    .line 728
+    .line 362
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode$1;->this$0:Lcom/oneplus/screenshot/longshot/state/LongshotMode;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -37,17 +37,22 @@
 
 # virtual methods
 .method public run()V
-    .registers 4
+    .locals 2
 
-    .line 731
+    .line 364
+    const-string v0, "Longshot.LongshotMode"
+
+    const-string v1, "disablekeys() at LongshotState.SHOT_FIRST"
+
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 365
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode$1;->this$0:Lcom/oneplus/screenshot/longshot/state/LongshotMode;
 
-    sget-object v1, Lcom/oneplus/screenshot/longshot/state/LongshotState;->UNSUPPORTED:Lcom/oneplus/screenshot/longshot/state/LongshotState;
+    const/4 v1, 0x1
 
-    const/4 v2, 0x0
+    invoke-static {v0, v1}, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->access$100(Lcom/oneplus/screenshot/longshot/state/LongshotMode;Z)V
 
-    invoke-virtual {v0, v1, v2}, Lcom/oneplus/screenshot/longshot/state/LongshotMode;->updateState(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
-
-    .line 732
+    .line 366
     return-void
 .end method

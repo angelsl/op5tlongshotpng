@@ -9,22 +9,22 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;)V
-    .registers 2
+    .locals 0
     .param p1, "stateContext"    # Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
-    .line 15
+    .line 14
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/longshot/state/AbsJoinState;-><init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;)V
 
-    .line 16
+    .line 15
     return-void
 .end method
 
 
 # virtual methods
 .method protected createJoinTask()Lcom/oneplus/screenshot/longshot/task/JoinTask;
-    .registers 5
+    .locals 4
 
-    .line 23
+    .line 22
     new-instance v0, Lcom/oneplus/screenshot/longshot/task/UndoTask;
 
     iget-object v1, p0, Lcom/oneplus/screenshot/longshot/state/UndoState;->mJoinCache:Lcom/oneplus/screenshot/longshot/cache/JoinCache;
@@ -47,38 +47,38 @@
 .end method
 
 .method protected getSuccessText()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
-    .line 33
+    .line 32
     const-string v0, ""
 
     return-object v0
 .end method
 
 .method protected prepareSuccess()V
-    .registers 3
+    .locals 2
 
-    .line 28
+    .line 27
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/UndoState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     const/4 v1, 0x0
 
     invoke-interface {v0, v1}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->setLast(Z)V
 
-    .line 29
+    .line 28
     return-void
 .end method
 
 .method protected updateIndex()V
-    .registers 3
+    .locals 2
 
-    .line 38
+    .line 37
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/UndoState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     const/4 v1, -0x1
 
     invoke-interface {v0, v1}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->updateIndex(I)V
 
-    .line 39
+    .line 38
     return-void
 .end method

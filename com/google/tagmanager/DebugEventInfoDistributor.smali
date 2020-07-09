@@ -16,7 +16,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/google/tagmanager/DebugInformationHandler;Ljava/lang/String;Ljava/lang/String;)V
-    .registers 4
+    .locals 0
     .param p1, "handler"    # Lcom/google/tagmanager/DebugInformationHandler;
     .param p2, "containerVersion"    # Ljava/lang/String;
     .param p3, "containerId"    # Ljava/lang/String;
@@ -40,7 +40,7 @@
 
 # virtual methods
 .method public createDataLayerEventEvaluationEventInfo(Ljava/lang/String;)Lcom/google/tagmanager/EventInfoBuilder;
-    .registers 9
+    .locals 7
     .param p1, "event"    # Ljava/lang/String;
 
     .line 29
@@ -64,7 +64,7 @@
 .end method
 
 .method public createMacroEvalutionEventInfo(Ljava/lang/String;)Lcom/google/tagmanager/EventInfoBuilder;
-    .registers 9
+    .locals 7
     .param p1, "key"    # Ljava/lang/String;
 
     .line 23
@@ -88,7 +88,7 @@
 .end method
 
 .method public debugMode()Z
-    .registers 2
+    .locals 1
 
     .line 35
     const/4 v0, 0x1

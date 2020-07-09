@@ -20,7 +20,7 @@
 
 # direct methods
 .method public constructor <init>()V
-    .registers 4
+    .locals 3
 
     .line 39
     const/16 v0, 0x3c
@@ -34,7 +34,7 @@
 .end method
 
 .method public constructor <init>(IJ)V
-    .registers 6
+    .locals 2
     .param p1, "maxTokenCount"    # I
     .param p2, "millisecondsPerToken"    # J
 
@@ -68,7 +68,7 @@
 
 # virtual methods
 .method setLastTrackTime(J)V
-    .registers 3
+    .locals 0
     .param p1, "lastTrackTime"    # J
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
@@ -81,7 +81,7 @@
 .end method
 
 .method setTokensAvailable(J)V
-    .registers 5
+    .locals 2
     .param p1, "tokens"    # J
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
@@ -96,7 +96,7 @@
 .end method
 
 .method public tokenAvailable()Z
-    .registers 12
+    .locals 11
 
     .line 62
     iget-object v0, p0, Lcom/google/analytics/tracking/android/SendHitRateLimiter;->mTokenLock:Ljava/lang/Object;
@@ -104,7 +104,7 @@
     monitor-enter v0
 
     .line 63
-    :try_start_3
+    :try_start_0
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v1
@@ -119,7 +119,7 @@
 
     cmpg-double v3, v3, v5
 
-    if-gez v3, :cond_2b
+    if-gez v3, :cond_0
 
     .line 65
     iget-wide v3, p0, Lcom/google/analytics/tracking/android/SendHitRateLimiter;->mLastTrackTime:J
@@ -142,7 +142,7 @@
 
     cmpl-double v7, v5, v7
 
-    if-lez v7, :cond_2b
+    if-lez v7, :cond_0
 
     .line 68
     iget v7, p0, Lcom/google/analytics/tracking/android/SendHitRateLimiter;->mMaxTokens:I
@@ -162,7 +162,7 @@
     .line 71
     .end local v3    # "timeElapsed":J
     .end local v5    # "tokensDue":D
-    :cond_2b
+    :cond_0
     iput-wide v1, p0, Lcom/google/analytics/tracking/android/SendHitRateLimiter;->mLastTrackTime:J
 
     .line 72
@@ -172,7 +172,7 @@
 
     cmpl-double v3, v3, v5
 
-    if-ltz v3, :cond_3d
+    if-ltz v3, :cond_1
 
     .line 73
     iget-wide v3, p0, Lcom/google/analytics/tracking/android/SendHitRateLimiter;->mTokens:D
@@ -189,7 +189,7 @@
     return v3
 
     .line 76
-    :cond_3d
+    :cond_1
     const-string v3, "Excessive tracking detected.  Tracking call ignored."
 
     invoke-static {v3}, Lcom/google/analytics/tracking/android/Log;->w(Ljava/lang/String;)V
@@ -203,12 +203,12 @@
 
     .line 78
     .end local v1    # "timeNow":J
-    :catchall_45
+    :catchall_0
     move-exception v1
 
     monitor-exit v0
-    :try_end_47
-    .catchall {:try_start_3 .. :try_end_47} :catchall_45
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method

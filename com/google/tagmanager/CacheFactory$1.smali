@@ -31,7 +31,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/CacheFactory;)V
-    .registers 2
+    .locals 0
 
     .line 30
     .local p0, "this":Lcom/google/tagmanager/CacheFactory$1;, "Lcom/google/tagmanager/CacheFactory.1;"
@@ -45,7 +45,7 @@
 
 # virtual methods
 .method public sizeOf(Ljava/lang/Object;Ljava/lang/Object;)I
-    .registers 4
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(TK;TV;)I"

@@ -8,7 +8,7 @@
 
 # direct methods
 .method constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 7
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -19,7 +19,7 @@
 
 # virtual methods
 .method public createResult()Lcom/google/tagmanager/ResolvedFunctionCallBuilder;
-    .registers 2
+    .locals 1
 
     .line 11
     new-instance v0, Lcom/google/tagmanager/NoopResolvedFunctionCallBuilder;
@@ -30,7 +30,7 @@
 .end method
 
 .method public createRulesEvaluation()Lcom/google/tagmanager/RuleEvaluationStepInfoBuilder;
-    .registers 2
+    .locals 1
 
     .line 16
     new-instance v0, Lcom/google/tagmanager/NoopRuleEvaluationStepInfoBuilder;

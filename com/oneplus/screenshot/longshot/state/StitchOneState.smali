@@ -9,7 +9,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;)V
-    .registers 2
+    .locals 0
     .param p1, "stateContext"    # Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     .line 14
@@ -22,7 +22,7 @@
 
 # virtual methods
 .method protected createJoinTask()Lcom/oneplus/screenshot/longshot/task/JoinTask;
-    .registers 5
+    .locals 4
 
     .line 22
     new-instance v0, Lcom/oneplus/screenshot/longshot/task/StitchOneTask;

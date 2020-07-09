@@ -28,7 +28,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 3
+    .locals 3
 
     .line 51
     new-instance v0, Ledu/emory/mathcs/utils/ConcurrencyUtils$CustomThreadFactory;
@@ -78,7 +78,7 @@
 .end method
 
 .method private constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 63
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -88,7 +88,7 @@
 .end method
 
 .method public static getNumberOfProcessors()I
-    .registers 1
+    .locals 1
 
     .line 73
     invoke-static {}, Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;
@@ -103,7 +103,7 @@
 .end method
 
 .method public static getNumberOfThreads()I
-    .registers 1
+    .locals 1
 
     .line 82
     sget v0, Ledu/emory/mathcs/utils/ConcurrencyUtils;->NTHREADS:I
@@ -112,7 +112,7 @@
 .end method
 
 .method public static getThreadsBeginN_1D_FFT_2Threads()I
-    .registers 1
+    .locals 1
 
     .line 103
     sget v0, Ledu/emory/mathcs/utils/ConcurrencyUtils;->THREADS_BEGIN_N_1D_FFT_2THREADS:I
@@ -121,7 +121,7 @@
 .end method
 
 .method public static getThreadsBeginN_1D_FFT_4Threads()I
-    .registers 1
+    .locals 1
 
     .line 125
     sget v0, Ledu/emory/mathcs/utils/ConcurrencyUtils;->THREADS_BEGIN_N_1D_FFT_4THREADS:I
@@ -130,7 +130,7 @@
 .end method
 
 .method public static getThreadsBeginN_2D()I
-    .registers 1
+    .locals 1
 
     .line 147
     sget v0, Ledu/emory/mathcs/utils/ConcurrencyUtils;->THREADS_BEGIN_N_2D:I
@@ -139,7 +139,7 @@
 .end method
 
 .method public static getThreadsBeginN_3D()I
-    .registers 1
+    .locals 1
 
     .line 165
     sget v0, Ledu/emory/mathcs/utils/ConcurrencyUtils;->THREADS_BEGIN_N_3D:I
@@ -148,54 +148,52 @@
 .end method
 
 .method public static isPowerOf2(I)Z
-    .registers 3
+    .locals 2
     .param p0, "x"    # I
 
     .line 234
     const/4 v0, 0x0
 
-    if-gtz p0, :cond_4
+    if-gtz p0, :cond_0
 
     .line 235
     return v0
 
     .line 237
-    :cond_4
+    :cond_0
     add-int/lit8 v1, p0, -0x1
 
     and-int/2addr v1, p0
 
-    if-nez v1, :cond_b
+    if-nez v1, :cond_1
 
     const/4 v0, 0x1
 
-    nop
-
-    :cond_b
+    :cond_1
     return v0
 .end method
 
 .method public static nextPow2(I)I
-    .registers 3
+    .locals 2
     .param p0, "x"    # I
 
     .line 201
     const/4 v0, 0x1
 
-    if-lt p0, v0, :cond_1e
+    if-lt p0, v0, :cond_1
 
     .line 203
     add-int/lit8 v0, p0, -0x1
 
     and-int/2addr v0, p0
 
-    if-nez v0, :cond_9
+    if-nez v0, :cond_0
 
     .line 204
     return p0
 
     .line 206
-    :cond_9
+    :cond_0
     ushr-int/lit8 v0, p0, 0x1
 
     or-int/2addr p0, v0
@@ -231,7 +229,7 @@
     return v0
 
     .line 202
-    :cond_1e
+    :cond_1
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v1, "x must be greater or equal 1"
@@ -242,13 +240,13 @@
 .end method
 
 .method public static prevPow2(I)I
-    .registers 7
+    .locals 6
     .param p0, "x"    # I
 
     .line 222
     const/4 v0, 0x1
 
-    if-lt p0, v0, :cond_19
+    if-lt p0, v0, :cond_0
 
     .line 224
     int-to-double v0, p0
@@ -278,7 +276,7 @@
     return v0
 
     .line 223
-    :cond_19
+    :cond_0
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v1, "x must be greater or equal 1"
@@ -289,7 +287,7 @@
 .end method
 
 .method public static resetThreadsBeginN()V
-    .registers 1
+    .locals 1
 
     .line 190
     const/high16 v0, 0x10000
@@ -304,7 +302,7 @@
 .end method
 
 .method public static resetThreadsBeginN_FFT()V
-    .registers 1
+    .locals 1
 
     .line 182
     const/16 v0, 0x2000
@@ -321,7 +319,7 @@
 .end method
 
 .method public static setNumberOfThreads(I)V
-    .registers 2
+    .locals 1
     .param p0, "n"    # I
 
     .line 94
@@ -336,53 +334,53 @@
 .end method
 
 .method public static setThreadsBeginN_1D_FFT_2Threads(I)V
-    .registers 2
+    .locals 1
     .param p0, "n"    # I
 
     .line 112
     const/16 v0, 0x200
 
-    if-ge p0, v0, :cond_7
+    if-ge p0, v0, :cond_0
 
     .line 113
     sput v0, Ledu/emory/mathcs/utils/ConcurrencyUtils;->THREADS_BEGIN_N_1D_FFT_2THREADS:I
 
-    goto :goto_9
+    goto :goto_0
 
     .line 115
-    :cond_7
+    :cond_0
     sput p0, Ledu/emory/mathcs/utils/ConcurrencyUtils;->THREADS_BEGIN_N_1D_FFT_2THREADS:I
 
     .line 117
-    :goto_9
+    :goto_0
     return-void
 .end method
 
 .method public static setThreadsBeginN_1D_FFT_4Threads(I)V
-    .registers 2
+    .locals 1
     .param p0, "n"    # I
 
     .line 134
     const/16 v0, 0x200
 
-    if-ge p0, v0, :cond_7
+    if-ge p0, v0, :cond_0
 
     .line 135
     sput v0, Ledu/emory/mathcs/utils/ConcurrencyUtils;->THREADS_BEGIN_N_1D_FFT_4THREADS:I
 
-    goto :goto_9
+    goto :goto_0
 
     .line 137
-    :cond_7
+    :cond_0
     sput p0, Ledu/emory/mathcs/utils/ConcurrencyUtils;->THREADS_BEGIN_N_1D_FFT_4THREADS:I
 
     .line 139
-    :goto_9
+    :goto_0
     return-void
 .end method
 
 .method public static setThreadsBeginN_2D(I)V
-    .registers 1
+    .locals 0
     .param p0, "n"    # I
 
     .line 156
@@ -393,7 +391,7 @@
 .end method
 
 .method public static setThreadsBeginN_3D(I)V
-    .registers 1
+    .locals 0
     .param p0, "n"    # I
 
     .line 174
@@ -404,22 +402,22 @@
 .end method
 
 .method public static sleep(J)V
-    .registers 4
+    .locals 2
     .param p0, "millis"    # J
 
     .line 248
     const-wide/16 v0, 0x1388
 
-    :try_start_2
+    :try_start_0
     invoke-static {v0, v1}, Ljava/lang/Thread;->sleep(J)V
-    :try_end_5
-    .catch Ljava/lang/InterruptedException; {:try_start_2 .. :try_end_5} :catch_6
+    :try_end_0
+    .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 251
-    goto :goto_a
+    goto :goto_0
 
     .line 249
-    :catch_6
+    :catch_0
     move-exception v0
 
     .line 250
@@ -428,12 +426,12 @@
 
     .line 252
     .end local v0    # "e":Ljava/lang/InterruptedException;
-    :goto_a
+    :goto_0
     return-void
 .end method
 
 .method public static submit(Ljava/lang/Runnable;)Ljava/util/concurrent/Future;
-    .registers 2
+    .locals 1
     .param p0, "task"    # Ljava/lang/Runnable;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -456,7 +454,7 @@
 .end method
 
 .method public static waitForCompletion([Ljava/util/concurrent/Future;)V
-    .registers 4
+    .locals 3
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "([",
@@ -474,49 +472,51 @@
     const/4 v1, 0x0
 
     .local v1, "j":I
-    :goto_2
-    if-ge v1, v0, :cond_15
+    :goto_0
+    if-ge v1, v0, :cond_0
 
     .line 274
-    :try_start_4
+    :try_start_0
     aget-object v2, p0, v1
 
     invoke-interface {v2}, Ljava/util/concurrent/Future;->get()Ljava/lang/Object;
-    :try_end_9
-    .catch Ljava/util/concurrent/ExecutionException; {:try_start_4 .. :try_end_9} :catch_11
-    .catch Ljava/lang/InterruptedException; {:try_start_4 .. :try_end_9} :catch_c
+    :try_end_0
+    .catch Ljava/util/concurrent/ExecutionException; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 273
     add-int/lit8 v1, v1, 0x1
 
-    goto :goto_2
+    goto :goto_0
 
     .line 278
     .end local v1    # "j":I
-    :catch_c
+    :catch_0
     move-exception v1
 
     .line 279
     .local v1, "e":Ljava/lang/InterruptedException;
     invoke-virtual {v1}, Ljava/lang/InterruptedException;->printStackTrace()V
 
-    .end local v1    # "e":Ljava/lang/InterruptedException;
-    goto :goto_16
+    goto :goto_1
 
     .line 276
-    :catch_11
+    .end local v1    # "e":Ljava/lang/InterruptedException;
+    :catch_1
     move-exception v1
 
     .line 277
     .local v1, "ex":Ljava/util/concurrent/ExecutionException;
     invoke-virtual {v1}, Ljava/util/concurrent/ExecutionException;->printStackTrace()V
 
-    .line 280
     .end local v1    # "ex":Ljava/util/concurrent/ExecutionException;
-    :cond_15
+    nop
+
+    .line 280
+    :cond_0
     nop
 
     .line 281
-    :goto_16
+    :goto_1
     return-void
 .end method

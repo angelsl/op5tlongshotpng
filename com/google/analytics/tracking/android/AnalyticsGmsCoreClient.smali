@@ -44,7 +44,7 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient$OnConnectedListener;Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient$OnConnectionFailedListener;)V
-    .registers 6
+    .locals 2
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "onConnectedListener"    # Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient$OnConnectedListener;
     .param p3, "onConnectionFailedListener"    # Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient$OnConnectionFailedListener;
@@ -56,13 +56,13 @@
     iput-object p1, p0, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;->mContext:Landroid/content/Context;
 
     .line 59
-    if-eqz p2, :cond_16
+    if-eqz p2, :cond_1
 
     .line 62
     iput-object p2, p0, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;->mOnConnectedListener:Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient$OnConnectedListener;
 
     .line 63
-    if-eqz p3, :cond_e
+    if-eqz p3, :cond_0
 
     .line 66
     iput-object p3, p0, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;->mOnConnectionFailedListener:Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient$OnConnectionFailedListener;
@@ -71,7 +71,7 @@
     return-void
 
     .line 64
-    :cond_e
+    :cond_0
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v1, "onConnectionFailedListener cannot be null"
@@ -81,7 +81,7 @@
     throw v0
 
     .line 60
-    :cond_16
+    :cond_1
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v1, "onConnectedListener cannot be null"
@@ -92,7 +92,7 @@
 .end method
 
 .method static synthetic access$002(Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;Lcom/google/android/gms/analytics/internal/IAnalyticsService;)Lcom/google/android/gms/analytics/internal/IAnalyticsService;
-    .registers 2
+    .locals 0
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;
     .param p1, "x1"    # Lcom/google/android/gms/analytics/internal/IAnalyticsService;
 
@@ -103,7 +103,7 @@
 .end method
 
 .method static synthetic access$100(Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;)V
-    .registers 1
+    .locals 0
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;
 
     .line 24
@@ -113,7 +113,7 @@
 .end method
 
 .method static synthetic access$200(Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;)Landroid/content/Context;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;
 
     .line 24
@@ -123,7 +123,7 @@
 .end method
 
 .method static synthetic access$302(Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;Landroid/content/ServiceConnection;)Landroid/content/ServiceConnection;
-    .registers 2
+    .locals 0
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;
     .param p1, "x1"    # Landroid/content/ServiceConnection;
 
@@ -134,7 +134,7 @@
 .end method
 
 .method static synthetic access$400(Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;)Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient$OnConnectionFailedListener;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;
 
     .line 24
@@ -144,7 +144,7 @@
 .end method
 
 .method static synthetic access$500(Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;)Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient$OnConnectedListener;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;
 
     .line 24
@@ -154,7 +154,7 @@
 .end method
 
 .method private getService()Lcom/google/android/gms/analytics/internal/IAnalyticsService;
-    .registers 2
+    .locals 1
 
     .line 146
     invoke-virtual {p0}, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;->checkConnected()V
@@ -166,7 +166,7 @@
 .end method
 
 .method private onConnectionSuccess()V
-    .registers 2
+    .locals 1
 
     .line 215
     iget-object v0, p0, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;->mOnConnectedListener:Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient$OnConnectedListener;
@@ -178,7 +178,7 @@
 .end method
 
 .method private onServiceBound()V
-    .registers 1
+    .locals 0
 
     .line 207
     invoke-direct {p0}, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;->onConnectionSuccess()V
@@ -190,20 +190,20 @@
 
 # virtual methods
 .method protected checkConnected()V
-    .registers 3
+    .locals 2
 
     .line 155
     invoke-virtual {p0}, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;->isConnected()Z
 
     move-result v0
 
-    if-eqz v0, :cond_7
+    if-eqz v0, :cond_0
 
     .line 159
     return-void
 
     .line 156
-    :cond_7
+    :cond_0
     new-instance v0, Ljava/lang/IllegalStateException;
 
     const-string v1, "Not connected. Call connect() and wait for onConnected() to be called."
@@ -214,7 +214,7 @@
 .end method
 
 .method public clearHits()V
-    .registers 4
+    .locals 3
 
     .line 140
     :try_start_0
@@ -223,14 +223,14 @@
     move-result-object v0
 
     invoke-interface {v0}, Lcom/google/android/gms/analytics/internal/IAnalyticsService;->clearHits()V
-    :try_end_7
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_7} :catch_8
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 143
-    goto :goto_1d
+    goto :goto_0
 
     .line 141
-    :catch_8
+    :catch_0
     move-exception v0
 
     .line 142
@@ -253,12 +253,12 @@
 
     .line 144
     .end local v0    # "e":Landroid/os/RemoteException;
-    :goto_1d
+    :goto_0
     return-void
 .end method
 
 .method public connect()V
-    .registers 6
+    .locals 5
 
     .line 75
     new-instance v0, Landroid/content/Intent;
@@ -280,20 +280,20 @@
     invoke-virtual {v0, v1}, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;
 
     .line 79
-    const-string v1, "app_package_name"
+    iget-object v1, p0, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;->mContext:Landroid/content/Context;
 
-    iget-object v2, p0, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;->mContext:Landroid/content/Context;
+    invoke-virtual {v1}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
 
-    invoke-virtual {v2}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+    move-result-object v1
 
-    move-result-object v2
+    const-string v2, "app_package_name"
 
-    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    invoke-virtual {v0, v2, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
     .line 80
     iget-object v1, p0, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;->mConnection:Landroid/content/ServiceConnection;
 
-    if-eqz v1, :cond_28
+    if-eqz v1, :cond_0
 
     .line 81
     const-string v1, "Calling connect() while still connected, missing disconnect()."
@@ -304,7 +304,7 @@
     return-void
 
     .line 84
-    :cond_28
+    :cond_0
     new-instance v1, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient$AnalyticsServiceConnection;
 
     invoke-direct {v1, p0}, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient$AnalyticsServiceConnection;-><init>(Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;)V
@@ -347,7 +347,7 @@
     invoke-static {v2}, Lcom/google/analytics/tracking/android/Log;->v(Ljava/lang/String;)V
 
     .line 88
-    if-nez v1, :cond_60
+    if-nez v1, :cond_1
 
     .line 89
     const/4 v2, 0x0
@@ -362,12 +362,12 @@
     invoke-interface {v3, v4, v2}, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient$OnConnectionFailedListener;->onConnectionFailed(ILandroid/content/Intent;)V
 
     .line 92
-    :cond_60
+    :cond_1
     return-void
 .end method
 
 .method public disconnect()V
-    .registers 4
+    .locals 3
 
     .line 103
     const/4 v0, 0x0
@@ -377,37 +377,35 @@
     .line 104
     iget-object v1, p0, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;->mConnection:Landroid/content/ServiceConnection;
 
-    if-eqz v1, :cond_1a
+    if-eqz v1, :cond_0
 
     .line 113
-    :try_start_7
-    iget-object v1, p0, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;->mContext:Landroid/content/Context;
+    :try_start_0
+    iget-object v2, p0, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;->mContext:Landroid/content/Context;
 
-    iget-object v2, p0, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;->mConnection:Landroid/content/ServiceConnection;
+    invoke-virtual {v2, v1}, Landroid/content/Context;->unbindService(Landroid/content/ServiceConnection;)V
+    :try_end_0
+    .catch Ljava/lang/IllegalStateException; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_0
 
-    invoke-virtual {v1, v2}, Landroid/content/Context;->unbindService(Landroid/content/ServiceConnection;)V
-    :try_end_e
-    .catch Ljava/lang/IllegalStateException; {:try_start_7 .. :try_end_e} :catch_11
-    .catch Ljava/lang/IllegalArgumentException; {:try_start_7 .. :try_end_e} :catch_f
-
-    goto :goto_12
+    goto :goto_0
 
     .line 117
-    :catch_f
+    :catch_0
     move-exception v1
 
-    goto :goto_13
+    goto :goto_1
 
     .line 114
-    :catch_11
+    :catch_1
     move-exception v1
 
     .line 121
-    :goto_12
+    :goto_0
     nop
 
     .line 122
-    :goto_13
+    :goto_1
     iput-object v0, p0, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;->mConnection:Landroid/content/ServiceConnection;
 
     .line 123
@@ -416,31 +414,31 @@
     invoke-interface {v0}, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient$OnConnectedListener;->onDisconnected()V
 
     .line 125
-    :cond_1a
+    :cond_0
     return-void
 .end method
 
 .method public isConnected()Z
-    .registers 2
+    .locals 1
 
     .line 165
     iget-object v0, p0, Lcom/google/analytics/tracking/android/AnalyticsGmsCoreClient;->mService:Lcom/google/android/gms/analytics/internal/IAnalyticsService;
 
-    if-eqz v0, :cond_6
+    if-eqz v0, :cond_0
 
     const/4 v0, 0x1
 
-    goto :goto_7
+    goto :goto_0
 
-    :cond_6
+    :cond_0
     const/4 v0, 0x0
 
-    :goto_7
+    :goto_0
     return v0
 .end method
 
 .method public sendHit(Ljava/util/Map;JLjava/lang/String;Ljava/util/List;)V
-    .registers 12
+    .locals 6
     .param p2, "hitTimeInMilliseconds"    # J
     .param p4, "path"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
@@ -474,14 +472,14 @@
     move-object v5, p5
 
     invoke-interface/range {v0 .. v5}, Lcom/google/android/gms/analytics/internal/IAnalyticsService;->sendHit(Ljava/util/Map;JLjava/lang/String;Ljava/util/List;)V
-    :try_end_b
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_b} :catch_c
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 134
-    goto :goto_21
+    goto :goto_0
 
     .line 132
-    :catch_c
+    :catch_0
     move-exception v0
 
     .line 133
@@ -504,6 +502,6 @@
 
     .line 135
     .end local v0    # "e":Landroid/os/RemoteException;
-    :goto_21
+    :goto_0
     return-void
 .end method

@@ -13,7 +13,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 16
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->APP_VERSION:Lcom/google/analytics/containertag/common/FunctionType;
@@ -28,7 +28,7 @@
 .end method
 
 .method public constructor <init>(Landroid/content/Context;)V
-    .registers 4
+    .locals 2
     .param p1, "context"    # Landroid/content/Context;
 
     .line 25
@@ -48,7 +48,7 @@
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 21
     sget-object v0, Lcom/google/tagmanager/AppVersionMacro;->ID:Ljava/lang/String;
@@ -59,7 +59,7 @@
 
 # virtual methods
 .method public evaluate(Ljava/util/Map;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 5
+    .locals 3
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -103,14 +103,14 @@
     invoke-static {v1}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     move-result-object v1
-    :try_end_1b
-    .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_0 .. :try_end_1b} :catch_1c
+    :try_end_0
+    .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
 
     return-object v1
 
     .line 38
     .end local v0    # "packageInfo":Landroid/content/pm/PackageInfo;
-    :catch_1c
+    :catch_0
     move-exception v0
 
     .line 39
@@ -156,7 +156,7 @@
 .end method
 
 .method public isCacheable()Z
-    .registers 2
+    .locals 1
 
     .line 30
     const/4 v0, 0x1

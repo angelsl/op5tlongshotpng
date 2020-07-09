@@ -8,7 +8,7 @@
 
 # direct methods
 .method constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 15
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -19,14 +19,14 @@
 
 # virtual methods
 .method public close()V
-    .registers 1
+    .locals 0
 
     .line 54
     return-void
 .end method
 
 .method public dispatchHits(Ljava/util/List;)I
-    .registers 9
+    .locals 7
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -38,51 +38,51 @@
 
     .line 23
     .local p1, "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/analytics/tracking/android/Hit;>;"
-    const/4 v0, 0x0
-
-    if-nez p1, :cond_4
+    if-nez p1, :cond_0
 
     .line 24
+    const/4 v0, 0x0
+
     return v0
 
     .line 26
-    :cond_4
+    :cond_0
     invoke-interface {p1}, Ljava/util/List;->size()I
 
-    move-result v1
+    move-result v0
 
-    const/16 v2, 0x28
+    const/16 v1, 0x28
 
-    invoke-static {v1, v2}, Ljava/lang/Math;->min(II)I
+    invoke-static {v0, v1}, Ljava/lang/Math;->min(II)I
 
-    move-result v1
+    move-result v0
 
     .line 27
-    .local v1, "maxHits":I
+    .local v0, "maxHits":I
     invoke-static {}, Lcom/google/analytics/tracking/android/Log;->isVerbose()Z
 
-    move-result v2
+    move-result v1
 
-    if-eqz v2, :cond_74
+    if-eqz v1, :cond_5
 
     .line 28
-    const-string v2, "Hits not actually being sent as dispatch is false..."
+    const-string v1, "Hits not actually being sent as dispatch is false..."
 
-    invoke-static {v2}, Lcom/google/analytics/tracking/android/Log;->v(Ljava/lang/String;)V
+    invoke-static {v1}, Lcom/google/analytics/tracking/android/Log;->v(Ljava/lang/String;)V
 
     .line 29
-    nop
+    const/4 v1, 0x0
 
-    .local v0, "i":I
-    :goto_1a
-    if-ge v0, v1, :cond_74
+    .local v1, "i":I
+    :goto_0
+    if-ge v1, v0, :cond_5
 
     .line 30
     const/4 v2, 0x0
 
     .line 31
     .local v2, "logMessage":Ljava/lang/String;
-    invoke-interface {p1, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    invoke-interface {p1, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     move-result-object v3
 
@@ -98,14 +98,14 @@
 
     move-result v4
 
-    if-eqz v4, :cond_30
+    if-eqz v4, :cond_1
 
     const-string v4, ""
 
-    goto :goto_3e
+    goto :goto_1
 
-    :cond_30
-    invoke-interface {p1, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    :cond_1
+    invoke-interface {p1, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     move-result-object v4
 
@@ -121,54 +121,54 @@
 
     .line 34
     .local v4, "modifiedHit":Ljava/lang/String;
-    :goto_3e
+    :goto_1
     invoke-static {v4}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v5
 
-    if-eqz v5, :cond_47
+    if-eqz v5, :cond_2
 
     .line 35
     const-string v2, "Hit couldn\'t be read, wouldn\'t be sent:"
 
-    goto :goto_5f
+    goto :goto_2
 
     .line 36
-    :cond_47
+    :cond_2
     invoke-virtual {v4}, Ljava/lang/String;->length()I
 
     move-result v5
 
     const/16 v6, 0x7f4
 
-    if-gt v5, v6, :cond_52
+    if-gt v5, v6, :cond_3
 
     .line 37
     const-string v2, "GET would be sent:"
 
-    goto :goto_5f
+    goto :goto_2
 
     .line 38
-    :cond_52
+    :cond_3
     invoke-virtual {v4}, Ljava/lang/String;->length()I
 
     move-result v5
 
     const/16 v6, 0x2000
 
-    if-le v5, v6, :cond_5d
+    if-le v5, v6, :cond_4
 
     .line 39
     const-string v2, "Would be too big:"
 
-    goto :goto_5f
+    goto :goto_2
 
     .line 41
-    :cond_5d
+    :cond_4
     const-string v2, "POST would be sent:"
 
     .line 43
-    :goto_5f
+    :goto_2
     new-instance v5, Ljava/lang/StringBuilder;
 
     invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
@@ -187,18 +187,18 @@
     .end local v2    # "logMessage":Ljava/lang/String;
     .end local v3    # "hitString":Ljava/lang/String;
     .end local v4    # "modifiedHit":Ljava/lang/String;
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v1, v1, 0x1
 
-    goto :goto_1a
+    goto :goto_0
 
     .line 46
-    .end local v0    # "i":I
-    :cond_74
-    return v1
+    .end local v1    # "i":I
+    :cond_5
+    return v0
 .end method
 
 .method public okToDispatch()Z
-    .registers 2
+    .locals 1
 
     .line 18
     const/4 v0, 0x1
@@ -207,7 +207,7 @@
 .end method
 
 .method public overrideHostUrl(Ljava/lang/String;)V
-    .registers 2
+    .locals 0
     .param p1, "hostOverride"    # Ljava/lang/String;
 
     .line 51

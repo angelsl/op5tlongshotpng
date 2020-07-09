@@ -68,52 +68,52 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 4
+    .locals 3
 
     .line 60
-    const-string v0, "CREATE TABLE IF NOT EXISTS %s ( \'%s\' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \'%s\' INTEGER NOT NULL, \'%s\' TEXT NOT NULL, \'%s\' TEXT NOT NULL, \'%s\' INTEGER);"
+    const/4 v0, 0x6
 
-    const/4 v1, 0x6
+    new-array v0, v0, [Ljava/lang/Object;
 
-    new-array v1, v1, [Ljava/lang/Object;
+    const/4 v1, 0x0
 
     const-string v2, "hits2"
 
-    const/4 v3, 0x0
+    aput-object v2, v0, v1
 
-    aput-object v2, v1, v3
+    const/4 v1, 0x1
 
     const-string v2, "hit_id"
 
-    const/4 v3, 0x1
+    aput-object v2, v0, v1
 
-    aput-object v2, v1, v3
+    const/4 v1, 0x2
 
     const-string v2, "hit_time"
 
-    const/4 v3, 0x2
+    aput-object v2, v0, v1
 
-    aput-object v2, v1, v3
+    const/4 v1, 0x3
 
     const-string v2, "hit_url"
 
-    const/4 v3, 0x3
+    aput-object v2, v0, v1
 
-    aput-object v2, v1, v3
+    const/4 v1, 0x4
 
     const-string v2, "hit_string"
 
-    const/4 v3, 0x4
+    aput-object v2, v0, v1
 
-    aput-object v2, v1, v3
+    const/4 v1, 0x5
 
     const-string v2, "hit_app_id"
 
-    const/4 v3, 0x5
+    aput-object v2, v0, v1
 
-    aput-object v2, v1, v3
+    const-string v1, "CREATE TABLE IF NOT EXISTS %s ( \'%s\' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \'%s\' INTEGER NOT NULL, \'%s\' TEXT NOT NULL, \'%s\' TEXT NOT NULL, \'%s\' INTEGER);"
 
-    invoke-static {v0, v1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    invoke-static {v1, v0}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v0
 
@@ -123,7 +123,7 @@
 .end method
 
 .method constructor <init>(Lcom/google/analytics/tracking/android/AnalyticsStoreStateListener;Landroid/content/Context;)V
-    .registers 4
+    .locals 1
     .param p1, "listener"    # Lcom/google/analytics/tracking/android/AnalyticsStoreStateListener;
     .param p2, "ctx"    # Landroid/content/Context;
 
@@ -137,7 +137,7 @@
 .end method
 
 .method constructor <init>(Lcom/google/analytics/tracking/android/AnalyticsStoreStateListener;Landroid/content/Context;Ljava/lang/String;)V
-    .registers 7
+    .locals 3
     .param p1, "listener"    # Lcom/google/analytics/tracking/android/AnalyticsStoreStateListener;
     .param p2, "ctx"    # Landroid/content/Context;
     .param p3, "databaseName"    # Ljava/lang/String;
@@ -201,7 +201,7 @@
 .end method
 
 .method static synthetic access$000(Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;)Lcom/google/analytics/tracking/android/Clock;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;
 
     .line 41
@@ -211,7 +211,7 @@
 .end method
 
 .method static synthetic access$100(Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;)Ljava/lang/String;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;
 
     .line 41
@@ -221,7 +221,7 @@
 .end method
 
 .method static synthetic access$200(Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;)Landroid/content/Context;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;
 
     .line 41
@@ -231,7 +231,7 @@
 .end method
 
 .method static synthetic access$300()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 41
     sget-object v0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->CREATE_HITS_TABLE:Ljava/lang/String;
@@ -240,7 +240,7 @@
 .end method
 
 .method private fillVersionParameter(Ljava/util/Map;Ljava/util/Collection;)V
-    .registers 8
+    .locals 5
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -267,7 +267,7 @@
 
     .line 189
     .local v0, "clientVersionParam":Ljava/lang/String;
-    if-eqz p2, :cond_2e
+    if-eqz p2, :cond_1
 
     .line 190
     invoke-interface {p2}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
@@ -275,12 +275,12 @@
     move-result-object v1
 
     .local v1, "i$":Ljava/util/Iterator;
-    :goto_d
+    :goto_0
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v2
 
-    if-eqz v2, :cond_2e
+    if-eqz v2, :cond_1
 
     invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -290,17 +290,17 @@
 
     .line 191
     .local v2, "command":Lcom/google/android/gms/analytics/internal/Command;
-    const-string v3, "appendVersion"
-
     invoke-virtual {v2}, Lcom/google/android/gms/analytics/internal/Command;->getId()Ljava/lang/String;
 
-    move-result-object v4
+    move-result-object v3
 
-    invoke-virtual {v3, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    const-string v4, "appendVersion"
+
+    invoke-virtual {v4, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-eqz v3, :cond_2d
+    if-eqz v3, :cond_0
 
     .line 192
     invoke-virtual {v2}, Lcom/google/android/gms/analytics/internal/Command;->getValue()Ljava/lang/String;
@@ -310,22 +310,22 @@
     invoke-interface {p1, v0, v3}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 193
-    goto :goto_2e
+    goto :goto_1
 
     .line 195
     .end local v2    # "command":Lcom/google/android/gms/analytics/internal/Command;
-    :cond_2d
-    goto :goto_d
+    :cond_0
+    goto :goto_0
 
     .line 197
     .end local v1    # "i$":Ljava/util/Iterator;
-    :cond_2e
-    :goto_2e
+    :cond_1
+    :goto_1
     return-void
 .end method
 
 .method static generateHitString(Ljava/util/Map;)Ljava/lang/String;
-    .registers 6
+    .locals 5
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -358,12 +358,12 @@
     move-result-object v1
 
     .local v1, "i$":Ljava/util/Iterator;
-    :goto_11
+    :goto_0
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v2
 
-    if-eqz v2, :cond_49
+    if-eqz v2, :cond_0
 
     invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -413,11 +413,11 @@
 
     .line 260
     .end local v2    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/lang/String;>;"
-    goto :goto_11
+    goto :goto_0
 
     .line 261
     .end local v1    # "i$":Ljava/util/Iterator;
-    :cond_49
+    :cond_0
     const-string v1, "&"
 
     invoke-static {v1, v0}, Landroid/text/TextUtils;->join(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
@@ -428,51 +428,47 @@
 .end method
 
 .method private getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
-    .registers 5
+    .locals 3
     .param p1, "errorMessage"    # Ljava/lang/String;
 
     .line 563
     const/4 v0, 0x0
 
-    move-object v1, v0
-
     .line 565
-    .local v1, "db":Landroid/database/sqlite/SQLiteDatabase;
-    :try_start_2
-    iget-object v2, p0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->mDbHelper:Lcom/google/analytics/tracking/android/PersistentAnalyticsStore$AnalyticsDatabaseHelper;
+    .local v0, "db":Landroid/database/sqlite/SQLiteDatabase;
+    :try_start_0
+    iget-object v1, p0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->mDbHelper:Lcom/google/analytics/tracking/android/PersistentAnalyticsStore$AnalyticsDatabaseHelper;
 
-    invoke-virtual {v2}, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore$AnalyticsDatabaseHelper;->getWritableDatabase()Landroid/database/sqlite/SQLiteDatabase;
+    invoke-virtual {v1}, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore$AnalyticsDatabaseHelper;->getWritableDatabase()Landroid/database/sqlite/SQLiteDatabase;
 
-    move-result-object v2
-    :try_end_8
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_2 .. :try_end_8} :catch_b
+    move-result-object v1
+    :try_end_0
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    move-object v0, v2
+    move-object v0, v1
 
     .line 569
-    .end local v1    # "db":Landroid/database/sqlite/SQLiteDatabase;
-    .local v0, "db":Landroid/database/sqlite/SQLiteDatabase;
     nop
 
     .line 570
     return-object v0
 
     .line 566
-    .end local v0    # "db":Landroid/database/sqlite/SQLiteDatabase;
-    .restart local v1    # "db":Landroid/database/sqlite/SQLiteDatabase;
-    :catch_b
-    move-exception v2
+    :catch_0
+    move-exception v1
 
     .line 567
-    .local v2, "e":Landroid/database/sqlite/SQLiteException;
+    .local v1, "e":Landroid/database/sqlite/SQLiteException;
     invoke-static {p1}, Lcom/google/analytics/tracking/android/Log;->w(Ljava/lang/String;)V
 
     .line 568
-    return-object v0
+    const/4 v2, 0x0
+
+    return-object v2
 .end method
 
 .method private removeOldHitIfFull()V
-    .registers 5
+    .locals 4
 
     .line 204
     invoke-virtual {p0}, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->getNumStoredHits()I
@@ -485,7 +481,7 @@
 
     .line 205
     .local v0, "hitsOverLimit":I
-    if-lez v0, :cond_37
+    if-lez v0, :cond_0
 
     .line 206
     invoke-virtual {p0, v0}, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->peekHitIds(I)Ljava/util/List;
@@ -533,12 +529,12 @@
 
     .line 210
     .end local v1    # "hitsToDelete":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
-    :cond_37
+    :cond_0
     return-void
 .end method
 
 .method private writeHitToDatabase(Ljava/util/Map;JLjava/lang/String;)V
-    .registers 11
+    .locals 6
     .param p2, "hitTimeInMilliseconds"    # J
     .param p4, "path"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
@@ -563,35 +559,35 @@
 
     .line 215
     .local v0, "db":Landroid/database/sqlite/SQLiteDatabase;
-    if-nez v0, :cond_9
+    if-nez v0, :cond_0
 
     .line 216
     return-void
 
     .line 219
-    :cond_9
+    :cond_0
     new-instance v1, Landroid/content/ContentValues;
 
     invoke-direct {v1}, Landroid/content/ContentValues;-><init>()V
 
     .line 221
     .local v1, "content":Landroid/content/ContentValues;
-    const-string v2, "hit_string"
-
     invoke-static {p1}, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->generateHitString(Ljava/util/Map;)Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v2
 
-    invoke-virtual {v1, v2, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+    const-string v3, "hit_string"
+
+    invoke-virtual {v1, v3, v2}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 222
-    const-string v2, "hit_time"
-
     invoke-static {p2, p3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
-    move-result-object v3
+    move-result-object v2
 
-    invoke-virtual {v1, v2, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
+    const-string v3, "hit_time"
+
+    invoke-virtual {v1, v3, v2}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
     .line 223
     const-wide/16 v2, 0x0
@@ -602,14 +598,12 @@
 
     invoke-interface {p1, v4}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
 
-    move-result v4
+    move-result v5
 
-    if-eqz v4, :cond_39
+    if-eqz v5, :cond_1
 
     .line 226
-    :try_start_2a
-    const-string v4, "AppUID"
-
+    :try_start_0
     invoke-interface {p1, v4}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v4
@@ -619,42 +613,42 @@
     invoke-static {v4}, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J
 
     move-result-wide v4
-    :try_end_36
-    .catch Ljava/lang/NumberFormatException; {:try_start_2a .. :try_end_36} :catch_38
+    :try_end_0
+    .catch Ljava/lang/NumberFormatException; {:try_start_0 .. :try_end_0} :catch_0
 
     move-wide v2, v4
 
     .line 229
-    goto :goto_39
+    goto :goto_0
 
     .line 227
-    :catch_38
+    :catch_0
     move-exception v4
 
     .line 231
-    :cond_39
-    :goto_39
-    const-string v4, "hit_app_id"
-
+    :cond_1
+    :goto_0
     invoke-static {v2, v3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
-    move-result-object v5
+    move-result-object v4
 
-    invoke-virtual {v1, v4, v5}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
+    const-string v5, "hit_app_id"
+
+    invoke-virtual {v1, v5, v4}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
     .line 232
-    if-nez p4, :cond_46
+    if-nez p4, :cond_2
 
     .line 233
     const-string p4, "http://www.google-analytics.com/collect"
 
     .line 236
-    :cond_46
+    :cond_2
     invoke-virtual {p4}, Ljava/lang/String;->length()I
 
     move-result v4
 
-    if-nez v4, :cond_52
+    if-nez v4, :cond_3
 
     .line 239
     const-string v4, "Empty path: not sending hit"
@@ -665,13 +659,13 @@
     return-void
 
     .line 242
-    :cond_52
+    :cond_3
     const-string v4, "hit_url"
 
     invoke-virtual {v1, v4, p4}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 244
-    :try_start_57
+    :try_start_1
     const-string v4, "hits2"
 
     const/4 v5, 0x0
@@ -684,14 +678,14 @@
     const/4 v5, 0x0
 
     invoke-interface {v4, v5}, Lcom/google/analytics/tracking/android/AnalyticsStoreStateListener;->reportStoreIsEmpty(Z)V
-    :try_end_63
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_57 .. :try_end_63} :catch_64
+    :try_end_1
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_1 .. :try_end_1} :catch_1
 
     .line 250
-    goto :goto_6a
+    goto :goto_1
 
     .line 248
-    :catch_64
+    :catch_1
     move-exception v4
 
     .line 249
@@ -702,14 +696,14 @@
 
     .line 251
     .end local v4    # "e":Landroid/database/sqlite/SQLiteException;
-    :goto_6a
+    :goto_1
     return-void
 .end method
 
 
 # virtual methods
 .method public clearHits(J)V
-    .registers 9
+    .locals 6
     .param p1, "appId"    # J
 
     .line 149
@@ -721,76 +715,72 @@
 
     .line 150
     .local v0, "db":Landroid/database/sqlite/SQLiteDatabase;
-    if-eqz v0, :cond_37
+    if-eqz v0, :cond_2
 
     .line 151
     const-wide/16 v1, 0x0
 
     cmp-long v1, p1, v1
 
-    const/4 v2, 0x0
+    const-string v2, "hits2"
 
-    const/4 v3, 0x1
+    const/4 v3, 0x0
 
-    if-nez v1, :cond_17
+    const/4 v4, 0x1
+
+    if-nez v1, :cond_0
 
     .line 152
-    const-string v1, "hits2"
+    const/4 v1, 0x0
 
-    const/4 v4, 0x0
+    invoke-virtual {v0, v2, v1, v1}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
-    invoke-virtual {v0, v1, v4, v4}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
-
-    goto :goto_2a
+    goto :goto_0
 
     .line 154
-    :cond_17
-    new-array v1, v3, [Ljava/lang/String;
+    :cond_0
+    new-array v1, v4, [Ljava/lang/String;
 
     .line 155
     .local v1, "params":[Ljava/lang/String;
     invoke-static {p1, p2}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
-    move-result-object v4
+    move-result-object v5
 
-    invoke-virtual {v4}, Ljava/lang/Long;->toString()Ljava/lang/String;
+    invoke-virtual {v5}, Ljava/lang/Long;->toString()Ljava/lang/String;
 
-    move-result-object v4
+    move-result-object v5
 
-    aput-object v4, v1, v2
+    aput-object v5, v1, v3
 
     .line 156
-    const-string v4, "hits2"
-
     const-string v5, "hit_app_id = ?"
 
-    invoke-virtual {v0, v4, v5, v1}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v0, v2, v5, v1}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     .line 158
     .end local v1    # "params":[Ljava/lang/String;
-    :goto_2a
+    :goto_0
     iget-object v1, p0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->mListener:Lcom/google/analytics/tracking/android/AnalyticsStoreStateListener;
 
     invoke-virtual {p0}, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->getNumStoredHits()I
 
-    move-result v4
+    move-result v2
 
-    if-nez v4, :cond_34
+    if-nez v2, :cond_1
 
-    move v2, v3
+    move v3, v4
 
-    nop
-
-    :cond_34
-    invoke-interface {v1, v2}, Lcom/google/analytics/tracking/android/AnalyticsStoreStateListener;->reportStoreIsEmpty(Z)V
+    :cond_1
+    invoke-interface {v1, v3}, Lcom/google/analytics/tracking/android/AnalyticsStoreStateListener;->reportStoreIsEmpty(Z)V
 
     .line 160
-    :cond_37
+    :cond_2
     return-void
 .end method
 
 .method public close()V
-    .registers 3
+    .locals 2
 
     .line 542
     :try_start_0
@@ -806,8 +796,8 @@
     iget-object v0, p0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->mDispatcher:Lcom/google/analytics/tracking/android/Dispatcher;
 
     invoke-interface {v0}, Lcom/google/analytics/tracking/android/Dispatcher;->close()V
-    :try_end_e
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_0 .. :try_end_e} :catch_10
+    :try_end_0
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 547
     nop
@@ -816,7 +806,7 @@
     return-void
 
     .line 544
-    :catch_10
+    :catch_0
     move-exception v0
 
     .line 545
@@ -830,7 +820,7 @@
 .end method
 
 .method deleteHits(Ljava/util/Collection;)V
-    .registers 9
+    .locals 7
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -845,18 +835,18 @@
 
     .line 446
     .local p1, "hits":Ljava/util/Collection;, "Ljava/util/Collection<Lcom/google/analytics/tracking/android/Hit;>;"
-    if-eqz p1, :cond_33
+    if-eqz p1, :cond_2
 
     invoke-interface {p1}, Ljava/util/Collection;->isEmpty()Z
 
     move-result v0
 
-    if-eqz v0, :cond_9
+    if-eqz v0, :cond_0
 
-    goto :goto_33
+    goto :goto_1
 
     .line 450
-    :cond_9
+    :cond_0
     invoke-interface {p1}, Ljava/util/Collection;->size()I
 
     move-result v0
@@ -874,12 +864,12 @@
     move-result-object v2
 
     .local v2, "i$":Ljava/util/Iterator;
-    :goto_14
+    :goto_0
     invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v3
 
-    if-eqz v3, :cond_2f
+    if-eqz v3, :cond_1
 
     invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -891,6 +881,7 @@
     .local v3, "h":Lcom/google/analytics/tracking/android/Hit;
     add-int/lit8 v4, v1, 0x1
 
+    .end local v1    # "i":I
     .local v4, "i":I
     invoke-virtual {v3}, Lcom/google/analytics/tracking/android/Hit;->getHitId()J
 
@@ -903,20 +894,16 @@
     aput-object v5, v0, v1
 
     .line 454
-    .end local v1    # "i":I
     .end local v3    # "h":Lcom/google/analytics/tracking/android/Hit;
-    nop
-
-    .line 452
     move v1, v4
 
-    goto :goto_14
+    goto :goto_0
 
     .line 455
     .end local v2    # "i$":Ljava/util/Iterator;
     .end local v4    # "i":I
     .restart local v1    # "i":I
-    :cond_2f
+    :cond_1
     invoke-virtual {p0, v0}, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->deleteHits([Ljava/lang/String;)V
 
     .line 456
@@ -925,8 +912,8 @@
     .line 447
     .end local v0    # "hitIds":[Ljava/lang/String;
     .end local v1    # "i":I
-    :cond_33
-    :goto_33
+    :cond_2
+    :goto_1
     const-string v0, "Empty/Null collection passed to deleteHits."
 
     invoke-static {v0}, Lcom/google/analytics/tracking/android/Log;->w(Ljava/lang/String;)V
@@ -936,20 +923,20 @@
 .end method
 
 .method deleteHits([Ljava/lang/String;)V
-    .registers 9
+    .locals 6
     .param p1, "hitIds"    # [Ljava/lang/String;
 
     .line 464
-    if-eqz p1, :cond_51
+    if-eqz p1, :cond_3
 
     array-length v0, p1
 
-    if-nez v0, :cond_6
+    if-nez v0, :cond_0
 
-    goto :goto_51
+    goto :goto_2
 
     .line 468
-    :cond_6
+    :cond_0
     const-string v0, "Error opening database for deleteHits."
 
     invoke-direct {p0, v0}, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
@@ -958,76 +945,76 @@
 
     .line 469
     .local v0, "db":Landroid/database/sqlite/SQLiteDatabase;
-    if-nez v0, :cond_f
+    if-nez v0, :cond_1
 
     .line 470
     return-void
 
     .line 472
-    :cond_f
-    const-string v1, "HIT_ID in (%s)"
+    :cond_1
+    const/4 v1, 0x1
 
-    const/4 v2, 0x1
+    new-array v2, v1, [Ljava/lang/Object;
 
-    new-array v3, v2, [Ljava/lang/Object;
+    array-length v3, p1
+
+    const-string v4, "?"
+
+    invoke-static {v3, v4}, Ljava/util/Collections;->nCopies(ILjava/lang/Object;)Ljava/util/List;
+
+    move-result-object v3
 
     const-string v4, ","
 
-    array-length v5, p1
+    invoke-static {v4, v3}, Landroid/text/TextUtils;->join(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
 
-    const-string v6, "?"
+    move-result-object v3
 
-    invoke-static {v5, v6}, Ljava/util/Collections;->nCopies(ILjava/lang/Object;)Ljava/util/List;
+    const/4 v4, 0x0
 
-    move-result-object v5
+    aput-object v3, v2, v4
 
-    invoke-static {v4, v5}, Landroid/text/TextUtils;->join(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
+    const-string v3, "HIT_ID in (%s)"
 
-    move-result-object v4
+    invoke-static {v3, v2}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
-    const/4 v5, 0x0
-
-    aput-object v4, v3, v5
-
-    invoke-static {v1, v3}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-
-    move-result-object v1
+    move-result-object v2
 
     .line 475
-    .local v1, "whereClause":Ljava/lang/String;
-    :try_start_28
+    .local v2, "whereClause":Ljava/lang/String;
+    :try_start_0
     const-string v3, "hits2"
 
-    invoke-virtual {v0, v3, v1, p1}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v0, v3, v2, p1}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     .line 476
     iget-object v3, p0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->mListener:Lcom/google/analytics/tracking/android/AnalyticsStoreStateListener;
 
     invoke-virtual {p0}, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->getNumStoredHits()I
 
-    move-result v4
+    move-result v5
 
-    if-nez v4, :cond_36
+    if-nez v5, :cond_2
 
-    goto :goto_37
+    goto :goto_0
 
-    :cond_36
-    move v2, v5
+    :cond_2
+    move v1, v4
 
-    :goto_37
-    invoke-interface {v3, v2}, Lcom/google/analytics/tracking/android/AnalyticsStoreStateListener;->reportStoreIsEmpty(Z)V
-    :try_end_3a
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_28 .. :try_end_3a} :catch_3b
+    :goto_0
+    invoke-interface {v3, v1}, Lcom/google/analytics/tracking/android/AnalyticsStoreStateListener;->reportStoreIsEmpty(Z)V
+    :try_end_0
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 479
-    goto :goto_50
+    goto :goto_1
 
     .line 477
-    :catch_3b
-    move-exception v2
+    :catch_0
+    move-exception v1
 
     .line 478
-    .local v2, "e":Landroid/database/sqlite/SQLiteException;
+    .local v1, "e":Landroid/database/sqlite/SQLiteException;
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
@@ -1045,15 +1032,15 @@
     invoke-static {v3}, Lcom/google/analytics/tracking/android/Log;->w(Ljava/lang/String;)V
 
     .line 480
-    .end local v2    # "e":Landroid/database/sqlite/SQLiteException;
-    :goto_50
+    .end local v1    # "e":Landroid/database/sqlite/SQLiteException;
+    :goto_1
     return-void
 
     .line 465
     .end local v0    # "db":Landroid/database/sqlite/SQLiteDatabase;
-    .end local v1    # "whereClause":Ljava/lang/String;
-    :cond_51
-    :goto_51
+    .end local v2    # "whereClause":Ljava/lang/String;
+    :cond_3
+    :goto_2
     const-string v0, "Empty hitIds passed to deleteHits."
 
     invoke-static {v0}, Lcom/google/analytics/tracking/android/Log;->w(Ljava/lang/String;)V
@@ -1063,7 +1050,7 @@
 .end method
 
 .method deleteStaleHits()I
-    .registers 12
+    .locals 10
 
     .line 422
     iget-object v0, p0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->mClock:Lcom/google/analytics/tracking/android/Clock;
@@ -1084,13 +1071,13 @@
 
     const/4 v3, 0x0
 
-    if-gtz v2, :cond_12
+    if-gtz v2, :cond_0
 
     .line 426
     return v3
 
     .line 428
-    :cond_12
+    :cond_0
     iput-wide v0, p0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->mLastDeleteStaleHitsTime:J
 
     .line 429
@@ -1102,13 +1089,13 @@
 
     .line 430
     .local v2, "db":Landroid/database/sqlite/SQLiteDatabase;
-    if-nez v2, :cond_1d
+    if-nez v2, :cond_1
 
     .line 431
     return v3
 
     .line 433
-    :cond_1d
+    :cond_1
     iget-object v4, p0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->mClock:Lcom/google/analytics/tracking/android/Clock;
 
     invoke-interface {v4}, Lcom/google/analytics/tracking/android/Clock;->currentTimeMillis()J
@@ -1121,47 +1108,45 @@
 
     .line 434
     .local v4, "lastGoodTime":J
-    const-string v6, "hits2"
+    const/4 v6, 0x1
 
-    const-string v7, "HIT_TIME < ?"
-
-    const/4 v8, 0x1
-
-    new-array v9, v8, [Ljava/lang/String;
+    new-array v7, v6, [Ljava/lang/String;
 
     invoke-static {v4, v5}, Ljava/lang/Long;->toString(J)Ljava/lang/String;
 
-    move-result-object v10
+    move-result-object v8
 
-    aput-object v10, v9, v3
+    aput-object v8, v7, v3
 
-    invoke-virtual {v2, v6, v7, v9}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    const-string v8, "hits2"
 
-    move-result v6
+    const-string v9, "HIT_TIME < ?"
+
+    invoke-virtual {v2, v8, v9, v7}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+
+    move-result v7
 
     .line 435
-    .local v6, "rslt":I
-    iget-object v7, p0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->mListener:Lcom/google/analytics/tracking/android/AnalyticsStoreStateListener;
+    .local v7, "rslt":I
+    iget-object v8, p0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->mListener:Lcom/google/analytics/tracking/android/AnalyticsStoreStateListener;
 
     invoke-virtual {p0}, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->getNumStoredHits()I
 
     move-result v9
 
-    if-nez v9, :cond_44
+    if-nez v9, :cond_2
 
-    move v3, v8
+    move v3, v6
 
-    nop
-
-    :cond_44
-    invoke-interface {v7, v3}, Lcom/google/analytics/tracking/android/AnalyticsStoreStateListener;->reportStoreIsEmpty(Z)V
+    :cond_2
+    invoke-interface {v8, v3}, Lcom/google/analytics/tracking/android/AnalyticsStoreStateListener;->reportStoreIsEmpty(Z)V
 
     .line 436
-    return v6
+    return v7
 .end method
 
 .method public dispatch()V
-    .registers 5
+    .locals 4
 
     .line 507
     const-string v0, "Dispatch running..."
@@ -1175,13 +1160,13 @@
 
     move-result v0
 
-    if-nez v0, :cond_e
+    if-nez v0, :cond_0
 
     .line 510
     return-void
 
     .line 513
-    :cond_e
+    :cond_0
     const/16 v0, 0x28
 
     invoke-virtual {p0, v0}, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->peekHits(I)Ljava/util/List;
@@ -1194,7 +1179,7 @@
 
     move-result v1
 
-    if-eqz v1, :cond_26
+    if-eqz v1, :cond_1
 
     .line 515
     const-string v1, "...nothing to dispatch"
@@ -1212,7 +1197,7 @@
     return-void
 
     .line 519
-    :cond_26
+    :cond_1
     iget-object v1, p0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->mDispatcher:Lcom/google/analytics/tracking/android/Dispatcher;
 
     invoke-interface {v1, v0}, Lcom/google/analytics/tracking/android/Dispatcher;->dispatchHits(Ljava/util/List;)I
@@ -1273,13 +1258,13 @@
 
     move-result v2
 
-    if-ne v1, v2, :cond_74
+    if-ne v1, v2, :cond_2
 
     invoke-virtual {p0}, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->getNumStoredHits()I
 
     move-result v2
 
-    if-lez v2, :cond_74
+    if-lez v2, :cond_2
 
     .line 530
     invoke-static {}, Lcom/google/analytics/tracking/android/GAServiceManager;->getInstance()Lcom/google/analytics/tracking/android/GAServiceManager;
@@ -1289,12 +1274,12 @@
     invoke-virtual {v2}, Lcom/google/analytics/tracking/android/GAServiceManager;->dispatchLocalHits()V
 
     .line 532
-    :cond_74
+    :cond_2
     return-void
 .end method
 
 .method public getDbHelper()Lcom/google/analytics/tracking/android/PersistentAnalyticsStore$AnalyticsDatabaseHelper;
-    .registers 2
+    .locals 1
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
@@ -1305,7 +1290,7 @@
 .end method
 
 .method public getDispatcher()Lcom/google/analytics/tracking/android/Dispatcher;
-    .registers 2
+    .locals 1
 
     .line 536
     iget-object v0, p0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->mDispatcher:Lcom/google/analytics/tracking/android/Dispatcher;
@@ -1314,7 +1299,7 @@
 .end method
 
 .method getHelper()Lcom/google/analytics/tracking/android/PersistentAnalyticsStore$AnalyticsDatabaseHelper;
-    .registers 2
+    .locals 1
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
@@ -1325,7 +1310,7 @@
 .end method
 
 .method getNumStoredHits()I
-    .registers 7
+    .locals 5
 
     .line 483
     const/4 v0, 0x0
@@ -1340,100 +1325,101 @@
 
     .line 485
     .local v1, "db":Landroid/database/sqlite/SQLiteDatabase;
-    if-nez v1, :cond_a
+    if-nez v1, :cond_0
 
     .line 486
     return v0
 
     .line 488
-    :cond_a
+    :cond_0
     const/4 v2, 0x0
-
-    move-object v3, v2
 
     .line 490
-    .local v3, "cursor":Landroid/database/Cursor;
-    :try_start_c
-    const-string v4, "SELECT COUNT(*) from hits2"
+    .local v2, "cursor":Landroid/database/Cursor;
+    :try_start_0
+    const-string v3, "SELECT COUNT(*) from hits2"
 
-    invoke-virtual {v1, v4, v2}, Landroid/database/sqlite/SQLiteDatabase;->rawQuery(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    const/4 v4, 0x0
 
-    move-result-object v2
+    invoke-virtual {v1, v3, v4}, Landroid/database/sqlite/SQLiteDatabase;->rawQuery(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-object v3, v2
+    move-result-object v3
+
+    move-object v2, v3
 
     .line 491
-    invoke-interface {v3}, Landroid/database/Cursor;->moveToFirst()Z
+    invoke-interface {v2}, Landroid/database/Cursor;->moveToFirst()Z
 
-    move-result v2
+    move-result v3
 
-    if-eqz v2, :cond_1f
+    if-eqz v3, :cond_1
 
     .line 492
-    const/4 v2, 0x0
+    const/4 v3, 0x0
 
-    invoke-interface {v3, v2}, Landroid/database/Cursor;->getLong(I)J
+    invoke-interface {v2, v3}, Landroid/database/Cursor;->getLong(I)J
 
-    move-result-wide v4
-    :try_end_1e
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_c .. :try_end_1e} :catch_27
-    .catchall {:try_start_c .. :try_end_1e} :catchall_25
+    move-result-wide v3
+    :try_end_0
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    long-to-int v0, v4
+    long-to-int v0, v3
 
     .line 497
-    :cond_1f
-    if-eqz v3, :cond_30
+    :cond_1
+    nop
 
     .line 498
-    :goto_21
-    invoke-interface {v3}, Landroid/database/Cursor;->close()V
+    :goto_0
+    invoke-interface {v2}, Landroid/database/Cursor;->close()V
 
-    goto :goto_30
+    goto :goto_1
 
     .line 497
-    :catchall_25
-    move-exception v2
+    :catchall_0
+    move-exception v3
 
-    goto :goto_31
+    goto :goto_2
 
     .line 494
-    :catch_27
-    move-exception v2
+    :catch_0
+    move-exception v3
 
     .line 495
-    .local v2, "e":Landroid/database/sqlite/SQLiteException;
-    :try_start_28
+    .local v3, "e":Landroid/database/sqlite/SQLiteException;
+    :try_start_1
     const-string v4, "Error getting numStoredHits"
 
     invoke-static {v4}, Lcom/google/analytics/tracking/android/Log;->w(Ljava/lang/String;)V
-    :try_end_2d
-    .catchall {:try_start_28 .. :try_end_2d} :catchall_25
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 497
-    .end local v2    # "e":Landroid/database/sqlite/SQLiteException;
-    if-eqz v3, :cond_30
+    .end local v3    # "e":Landroid/database/sqlite/SQLiteException;
+    if-eqz v2, :cond_2
 
-    goto :goto_21
+    .line 498
+    goto :goto_0
 
     .line 501
-    :cond_30
-    :goto_30
+    :cond_2
+    :goto_1
     return v0
 
     .line 497
-    :goto_31
-    if-eqz v3, :cond_36
+    :goto_2
+    if-eqz v2, :cond_3
 
     .line 498
-    invoke-interface {v3}, Landroid/database/Cursor;->close()V
+    invoke-interface {v2}, Landroid/database/Cursor;->close()V
 
-    :cond_36
-    throw v2
+    :cond_3
+    throw v3
 .end method
 
 .method peekHitIds(I)Ljava/util/List;
-    .registers 15
+    .locals 14
     .param p1, "maxHits"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -1445,55 +1431,51 @@
     .end annotation
 
     .line 272
-    new-instance v0, Ljava/util/ArrayList;
+    const-string v0, "hit_id"
 
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+    new-instance v1, Ljava/util/ArrayList;
+
+    invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
 
     .line 273
-    .local v0, "hitIds":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
-    if-gtz p1, :cond_d
+    .local v1, "hitIds":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
+    if-gtz p1, :cond_0
 
     .line 274
-    const-string v1, "Invalid maxHits specified. Skipping"
+    const-string v0, "Invalid maxHits specified. Skipping"
 
-    invoke-static {v1}, Lcom/google/analytics/tracking/android/Log;->w(Ljava/lang/String;)V
+    invoke-static {v0}, Lcom/google/analytics/tracking/android/Log;->w(Ljava/lang/String;)V
 
     .line 275
-    return-object v0
+    return-object v1
 
     .line 277
-    :cond_d
-    const-string v1, "Error opening database for peekHitIds."
+    :cond_0
+    const-string v2, "Error opening database for peekHitIds."
 
-    invoke-direct {p0, v1}, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
+    invoke-direct {p0, v2}, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
 
-    move-result-object v1
+    move-result-object v2
 
     .line 278
-    .local v1, "db":Landroid/database/sqlite/SQLiteDatabase;
-    if-nez v1, :cond_16
+    .local v2, "db":Landroid/database/sqlite/SQLiteDatabase;
+    if-nez v2, :cond_1
 
     .line 279
-    return-object v0
+    return-object v1
 
     .line 282
-    :cond_16
-    const/4 v2, 0x0
-
-    move-object v11, v2
+    :cond_1
+    const/4 v12, 0x0
 
     .line 284
-    .local v11, "cursor":Landroid/database/Cursor;
-    :try_start_18
-    const-string v3, "hits2"
+    .local v12, "cursor":Landroid/database/Cursor;
+    :try_start_0
+    const-string v4, "hits2"
 
-    const-string v2, "hit_id"
+    filled-new-array {v0}, [Ljava/lang/String;
 
-    filled-new-array {v2}, [Ljava/lang/String;
-
-    move-result-object v4
-
-    const/4 v5, 0x0
+    move-result-object v5
 
     const/4 v6, 0x0
 
@@ -1501,86 +1483,86 @@
 
     const/4 v8, 0x0
 
-    const-string v2, "%s ASC"
+    const/4 v9, 0x0
 
-    const/4 v9, 0x1
+    const-string v3, "%s ASC"
 
-    new-array v9, v9, [Ljava/lang/Object;
+    const/4 v10, 0x1
 
-    const-string v10, "hit_id"
+    new-array v10, v10, [Ljava/lang/Object;
 
-    const/4 v12, 0x0
+    const/4 v13, 0x0
 
-    aput-object v10, v9, v12
+    aput-object v0, v10, v13
 
-    invoke-static {v2, v9}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-
-    move-result-object v9
-
-    invoke-static {p1}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
+    invoke-static {v3, v10}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v10
 
-    move-object v2, v1
+    invoke-static {p1}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
 
-    invoke-virtual/range {v2 .. v10}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    move-result-object v11
 
-    move-result-object v2
+    move-object v3, v2
 
-    move-object v11, v2
+    invoke-virtual/range {v3 .. v11}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+
+    move-result-object v0
+
+    move-object v12, v0
 
     .line 292
-    invoke-interface {v11}, Landroid/database/Cursor;->moveToFirst()Z
+    invoke-interface {v12}, Landroid/database/Cursor;->moveToFirst()Z
 
-    move-result v2
+    move-result v0
 
-    if-eqz v2, :cond_53
+    if-eqz v0, :cond_3
 
     .line 294
-    :cond_42
-    invoke-interface {v11, v12}, Landroid/database/Cursor;->getLong(I)J
+    :cond_2
+    invoke-interface {v12, v13}, Landroid/database/Cursor;->getLong(I)J
 
-    move-result-wide v2
+    move-result-wide v3
 
-    invoke-static {v2, v3}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
+    invoke-static {v3, v4}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v0
 
-    invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+    invoke-interface {v1, v0}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     .line 295
-    invoke-interface {v11}, Landroid/database/Cursor;->moveToNext()Z
+    invoke-interface {v12}, Landroid/database/Cursor;->moveToNext()Z
 
-    move-result v2
-    :try_end_51
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_18 .. :try_end_51} :catch_5b
-    .catchall {:try_start_18 .. :try_end_51} :catchall_59
+    move-result v0
+    :try_end_0
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    if-nez v2, :cond_42
+    if-nez v0, :cond_2
 
     .line 300
-    :cond_53
-    if-eqz v11, :cond_77
+    :cond_3
+    nop
 
     .line 301
-    :goto_55
-    invoke-interface {v11}, Landroid/database/Cursor;->close()V
+    :goto_0
+    invoke-interface {v12}, Landroid/database/Cursor;->close()V
 
-    goto :goto_77
+    goto :goto_1
 
     .line 300
-    :catchall_59
-    move-exception v2
+    :catchall_0
+    move-exception v0
 
-    goto :goto_78
+    goto :goto_2
 
     .line 297
-    :catch_5b
-    move-exception v2
+    :catch_0
+    move-exception v0
 
     .line 298
-    .local v2, "e":Landroid/database/sqlite/SQLiteException;
-    :try_start_5c
+    .local v0, "e":Landroid/database/sqlite/SQLiteException;
+    :try_start_1
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
@@ -1589,7 +1571,7 @@
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2}, Landroid/database/sqlite/SQLiteException;->getMessage()Ljava/lang/String;
+    invoke-virtual {v0}, Landroid/database/sqlite/SQLiteException;->getMessage()Ljava/lang/String;
 
     move-result-object v4
 
@@ -1600,33 +1582,34 @@
     move-result-object v3
 
     invoke-static {v3}, Lcom/google/analytics/tracking/android/Log;->w(Ljava/lang/String;)V
-    :try_end_74
-    .catchall {:try_start_5c .. :try_end_74} :catchall_59
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 300
-    .end local v2    # "e":Landroid/database/sqlite/SQLiteException;
-    if-eqz v11, :cond_77
-
-    goto :goto_55
-
-    .line 304
-    :cond_77
-    :goto_77
-    return-object v0
-
-    .line 300
-    :goto_78
-    if-eqz v11, :cond_7d
+    .end local v0    # "e":Landroid/database/sqlite/SQLiteException;
+    if-eqz v12, :cond_4
 
     .line 301
-    invoke-interface {v11}, Landroid/database/Cursor;->close()V
+    goto :goto_0
 
-    :cond_7d
-    throw v2
+    .line 304
+    :cond_4
+    :goto_1
+    return-object v1
+
+    .line 300
+    :goto_2
+    if-eqz v12, :cond_5
+
+    .line 301
+    invoke-interface {v12}, Landroid/database/Cursor;->close()V
+
+    :cond_5
+    throw v0
 .end method
 
 .method public peekHits(I)Ljava/util/List;
-    .registers 19
+    .locals 17
     .param p1, "maxHits"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -1638,207 +1621,204 @@
     .end annotation
 
     .line 315
-    new-instance v0, Ljava/util/ArrayList;
+    const-string v0, "%s ASC"
 
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+    const-string v1, "hit_id"
 
-    move-object v1, v0
+    new-instance v2, Ljava/util/ArrayList;
+
+    invoke-direct {v2}, Ljava/util/ArrayList;-><init>()V
 
     .line 316
-    .local v1, "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/analytics/tracking/android/Hit;>;"
-    const-string v0, "Error opening database for peekHits"
+    .local v2, "hits":Ljava/util/List;, "Ljava/util/List<Lcom/google/analytics/tracking/android/Hit;>;"
+    const-string v3, "Error opening database for peekHits"
 
-    move-object/from16 v2, p0
+    move-object/from16 v4, p0
 
-    invoke-direct {v2, v0}, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
+    invoke-direct {v4, v3}, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->getWritableDatabase(Ljava/lang/String;)Landroid/database/sqlite/SQLiteDatabase;
+
+    move-result-object v3
+
+    .line 317
+    .local v3, "db":Landroid/database/sqlite/SQLiteDatabase;
+    if-nez v3, :cond_0
+
+    .line 318
+    return-object v2
+
+    .line 321
+    :cond_0
+    const/4 v14, 0x0
+
+    .line 329
+    .local v14, "cursor":Landroid/database/Cursor;
+    :try_start_0
+    const-string v6, "hits2"
+
+    const-string v5, "hit_time"
+
+    filled-new-array {v1, v5}, [Ljava/lang/String;
+
+    move-result-object v7
+
+    const/4 v8, 0x0
+
+    const/4 v9, 0x0
+
+    const/4 v10, 0x0
+
+    const/4 v11, 0x0
+
+    const/4 v15, 0x1
+
+    new-array v5, v15, [Ljava/lang/Object;
+
+    const/4 v13, 0x0
+
+    aput-object v1, v5, v13
+
+    invoke-static {v0, v5}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v12
 
-    .line 317
-    .local v12, "db":Landroid/database/sqlite/SQLiteDatabase;
-    if-nez v12, :cond_11
+    invoke-static/range {p1 .. p1}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
 
-    .line 318
-    return-object v1
+    move-result-object v16
 
-    .line 321
-    :cond_11
-    const/4 v0, 0x0
+    move-object v5, v3
 
-    move-object v13, v0
+    move v15, v13
 
-    .line 329
-    .local v13, "cursor":Landroid/database/Cursor;
-    :try_start_13
-    const-string v4, "hits2"
+    move-object/from16 v13, v16
 
-    const-string v0, "hit_id"
-
-    const-string v3, "hit_time"
-
-    filled-new-array {v0, v3}, [Ljava/lang/String;
+    invoke-virtual/range {v5 .. v13}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
     move-result-object v5
 
-    const/4 v6, 0x0
+    move-object v14, v5
+
+    .line 338
+    new-instance v5, Ljava/util/ArrayList;
+
+    invoke-direct {v5}, Ljava/util/ArrayList;-><init>()V
+
+    move-object v2, v5
+
+    .line 339
+    invoke-interface {v14}, Landroid/database/Cursor;->moveToFirst()Z
+
+    move-result v5
+
+    if-eqz v5, :cond_2
+
+    .line 341
+    :cond_1
+    new-instance v5, Lcom/google/analytics/tracking/android/Hit;
 
     const/4 v7, 0x0
 
-    const/4 v8, 0x0
+    invoke-interface {v14, v15}, Landroid/database/Cursor;->getLong(I)J
 
-    const/4 v9, 0x0
+    move-result-wide v8
 
-    const-string v0, "%s ASC"
+    const/4 v6, 0x1
 
-    const/4 v14, 0x1
+    invoke-interface {v14, v6}, Landroid/database/Cursor;->getLong(I)J
 
-    new-array v3, v14, [Ljava/lang/Object;
+    move-result-wide v10
 
-    const-string v10, "hit_id"
+    move-object v6, v5
 
-    const/4 v15, 0x0
-
-    aput-object v10, v3, v15
-
-    invoke-static {v0, v3}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-
-    move-result-object v10
-
-    invoke-static/range {p1 .. p1}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
-
-    move-result-object v11
-
-    move-object v3, v12
-
-    invoke-virtual/range {v3 .. v11}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-
-    move-result-object v0
-
-    move-object v13, v0
-
-    .line 338
-    new-instance v0, Ljava/util/ArrayList;
-
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
-
-    move-object v1, v0
-
-    .line 339
-    invoke-interface {v13}, Landroid/database/Cursor;->moveToFirst()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_5d
-
-    .line 341
-    :cond_45
-    new-instance v0, Lcom/google/analytics/tracking/android/Hit;
-
-    const/4 v4, 0x0
-
-    invoke-interface {v13, v15}, Landroid/database/Cursor;->getLong(I)J
-
-    move-result-wide v5
-
-    invoke-interface {v13, v14}, Landroid/database/Cursor;->getLong(I)J
-
-    move-result-wide v7
-
-    move-object v3, v0
-
-    invoke-direct/range {v3 .. v8}, Lcom/google/analytics/tracking/android/Hit;-><init>(Ljava/lang/String;JJ)V
+    invoke-direct/range {v6 .. v11}, Lcom/google/analytics/tracking/android/Hit;-><init>(Ljava/lang/String;JJ)V
 
     .line 342
-    .local v0, "hit":Lcom/google/analytics/tracking/android/Hit;
-    invoke-interface {v1, v0}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+    .local v5, "hit":Lcom/google/analytics/tracking/android/Hit;
+    invoke-interface {v2, v5}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     .line 343
-    .end local v0    # "hit":Lcom/google/analytics/tracking/android/Hit;
-    invoke-interface {v13}, Landroid/database/Cursor;->moveToNext()Z
+    nop
 
-    move-result v0
-    :try_end_5b
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_13 .. :try_end_5b} :catch_142
-    .catchall {:try_start_13 .. :try_end_5b} :catchall_140
+    .end local v5    # "hit":Lcom/google/analytics/tracking/android/Hit;
+    invoke-interface {v14}, Landroid/database/Cursor;->moveToNext()Z
 
-    if-nez v0, :cond_45
+    move-result v5
+    :try_end_0
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_0 .. :try_end_0} :catch_2
+    .catchall {:try_start_0 .. :try_end_0} :catchall_2
+
+    if-nez v5, :cond_1
 
     .line 349
-    :cond_5d
-    if-eqz v13, :cond_62
+    :cond_2
+    nop
 
     .line 350
-    invoke-interface {v13}, Landroid/database/Cursor;->close()V
+    invoke-interface {v14}, Landroid/database/Cursor;->close()V
 
     .line 354
-    :cond_62
-    move/from16 v16, v15
+    const/16 v16, 0x0
 
     .line 356
     .local v16, "count":I
-    :try_start_64
-    const-string v4, "hits2"
+    :try_start_1
+    const-string v6, "hits2"
 
-    const-string v0, "hit_id"
+    const-string v5, "hit_string"
 
-    const-string v3, "hit_string"
+    const-string v7, "hit_url"
 
-    const-string v5, "hit_url"
+    filled-new-array {v1, v5, v7}, [Ljava/lang/String;
 
-    filled-new-array {v0, v3, v5}, [Ljava/lang/String;
-
-    move-result-object v5
-
-    const/4 v6, 0x0
-
-    const/4 v7, 0x0
+    move-result-object v7
 
     const/4 v8, 0x0
 
     const/4 v9, 0x0
 
-    const-string v0, "%s ASC"
+    const/4 v10, 0x0
 
-    new-array v3, v14, [Ljava/lang/Object;
+    const/4 v11, 0x0
 
-    const-string v10, "hit_id"
+    const/4 v5, 0x1
 
-    aput-object v10, v3, v15
+    new-array v12, v5, [Ljava/lang/Object;
 
-    invoke-static {v0, v3}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    aput-object v1, v12, v15
 
-    move-result-object v10
+    invoke-static {v0, v12}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v12
 
     invoke-static/range {p1 .. p1}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
 
-    move-result-object v11
+    move-result-object v13
 
-    move-object v3, v12
+    move-object v5, v3
 
-    invoke-virtual/range {v3 .. v11}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual/range {v5 .. v13}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
     move-result-object v0
 
-    move-object v13, v0
+    move-object v14, v0
 
     .line 365
-    invoke-interface {v13}, Landroid/database/Cursor;->moveToFirst()Z
+    invoke-interface {v14}, Landroid/database/Cursor;->moveToFirst()Z
 
     move-result v0
-    :try_end_8e
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_64 .. :try_end_8e} :catch_f2
-    .catchall {:try_start_64 .. :try_end_8e} :catchall_f0
+    :try_end_1
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_1 .. :try_end_1} :catch_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_1
 
-    if-eqz v0, :cond_e9
+    if-eqz v0, :cond_5
+
+    move/from16 v1, v16
 
     .line 367
-    move/from16 v3, v16
-
     .end local v16    # "count":I
-    .local v3, "count":I
-    :cond_92
-    :try_start_92
-    move-object v0, v13
+    .local v1, "count":I
+    :cond_3
+    :try_start_2
+    move-object v0, v14
 
     check-cast v0, Landroid/database/sqlite/SQLiteCursor;
 
@@ -1850,305 +1830,313 @@
     .local v0, "cw":Landroid/database/CursorWindow;
     invoke-virtual {v0}, Landroid/database/CursorWindow;->getNumRows()I
 
-    move-result v4
+    move-result v5
 
-    if-lez v4, :cond_bb
+    if-lez v5, :cond_4
 
     .line 372
-    invoke-interface {v1, v3}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Lcom/google/analytics/tracking/android/Hit;
-
-    invoke-interface {v13, v14}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+    invoke-interface {v2, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     move-result-object v5
 
-    invoke-virtual {v4, v5}, Lcom/google/analytics/tracking/android/Hit;->setHitString(Ljava/lang/String;)V
+    check-cast v5, Lcom/google/analytics/tracking/android/Hit;
+
+    const/4 v6, 0x1
+
+    invoke-interface {v14, v6}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+
+    move-result-object v7
+
+    invoke-virtual {v5, v7}, Lcom/google/analytics/tracking/android/Hit;->setHitString(Ljava/lang/String;)V
 
     .line 373
-    invoke-interface {v1, v3}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Lcom/google/analytics/tracking/android/Hit;
-
-    const/4 v5, 0x2
-
-    invoke-interface {v13, v5}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+    invoke-interface {v2, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     move-result-object v5
 
-    invoke-virtual {v4, v5}, Lcom/google/analytics/tracking/android/Hit;->setHitUrl(Ljava/lang/String;)V
+    check-cast v5, Lcom/google/analytics/tracking/android/Hit;
 
-    goto :goto_d6
+    const/4 v6, 0x2
+
+    invoke-interface {v14, v6}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-virtual {v5, v6}, Lcom/google/analytics/tracking/android/Hit;->setHitUrl(Ljava/lang/String;)V
+
+    const/4 v6, 0x1
+
+    goto :goto_0
 
     .line 375
-    :cond_bb
-    const-string v4, "HitString for hitId %d too large.  Hit will be deleted."
+    :cond_4
+    const-string v5, "HitString for hitId %d too large.  Hit will be deleted."
 
-    new-array v5, v14, [Ljava/lang/Object;
+    const/4 v6, 0x1
 
-    invoke-interface {v1, v3}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    new-array v7, v6, [Ljava/lang/Object;
 
-    move-result-object v6
+    invoke-interface {v2, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    check-cast v6, Lcom/google/analytics/tracking/android/Hit;
+    move-result-object v8
 
-    invoke-virtual {v6}, Lcom/google/analytics/tracking/android/Hit;->getHitId()J
+    check-cast v8, Lcom/google/analytics/tracking/android/Hit;
 
-    move-result-wide v6
+    invoke-virtual {v8}, Lcom/google/analytics/tracking/android/Hit;->getHitId()J
 
-    invoke-static {v6, v7}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+    move-result-wide v8
 
-    move-result-object v6
+    invoke-static {v8, v9}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
-    aput-object v6, v5, v15
+    move-result-object v8
 
-    invoke-static {v4, v5}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    aput-object v8, v7, v15
 
-    move-result-object v4
+    invoke-static {v5, v7}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
-    invoke-static {v4}, Lcom/google/analytics/tracking/android/Log;->w(Ljava/lang/String;)V
+    move-result-object v5
+
+    invoke-static {v5}, Lcom/google/analytics/tracking/android/Log;->w(Ljava/lang/String;)V
 
     .line 378
-    :goto_d6
-    add-int/lit8 v3, v3, 0x1
+    :goto_0
+    nop
+
+    .end local v0    # "cw":Landroid/database/CursorWindow;
+    add-int/lit8 v1, v1, 0x1
 
     .line 379
-    .end local v0    # "cw":Landroid/database/CursorWindow;
-    invoke-interface {v13}, Landroid/database/Cursor;->moveToNext()Z
+    invoke-interface {v14}, Landroid/database/Cursor;->moveToNext()Z
 
     move-result v0
-    :try_end_dc
-    .catch Landroid/database/sqlite/SQLiteException; {:try_start_92 .. :try_end_dc} :catch_e5
-    .catchall {:try_start_92 .. :try_end_dc} :catchall_e1
+    :try_end_2
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_2 .. :try_end_2} :catch_0
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    if-nez v0, :cond_92
+    if-nez v0, :cond_3
 
-    .line 381
-    move/from16 v16, v3
+    move/from16 v16, v1
 
-    goto :goto_e9
+    goto :goto_1
 
     .line 406
-    :catchall_e1
+    :catchall_0
     move-exception v0
 
-    move/from16 v16, v3
+    move/from16 v16, v1
 
-    goto :goto_13a
+    goto :goto_5
 
     .line 382
-    :catch_e5
+    :catch_0
     move-exception v0
 
-    move/from16 v16, v3
+    move/from16 v16, v1
 
-    goto :goto_f3
+    goto :goto_2
 
     .line 381
-    .end local v3    # "count":I
+    .end local v1    # "count":I
     .restart local v16    # "count":I
-    :cond_e9
-    :goto_e9
+    :cond_5
+    :goto_1
     nop
 
     .line 406
-    if-eqz v13, :cond_ef
+    nop
 
     .line 407
-    invoke-interface {v13}, Landroid/database/Cursor;->close()V
+    invoke-interface {v14}, Landroid/database/Cursor;->close()V
 
-    :cond_ef
-    return-object v1
+    return-object v2
 
     .line 406
-    :catchall_f0
+    :catchall_1
     move-exception v0
 
-    goto :goto_13a
+    goto :goto_5
 
     .line 382
-    :catch_f2
+    :catch_1
     move-exception v0
 
     .line 383
     .local v0, "e":Landroid/database/sqlite/SQLiteException;
-    :goto_f3
-    :try_start_f3
-    new-instance v3, Ljava/lang/StringBuilder;
+    :goto_2
+    :try_start_3
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v4, "Error in peekHits fetching hitString: "
+    const-string v5, "Error in peekHits fetching hitString: "
 
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v0}, Landroid/database/sqlite/SQLiteException;->getMessage()Ljava/lang/String;
 
-    move-result-object v4
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-static {v3}, Lcom/google/analytics/tracking/android/Log;->w(Ljava/lang/String;)V
-
-    .line 392
-    new-instance v3, Ljava/util/ArrayList;
-
-    invoke-direct {v3}, Ljava/util/ArrayList;-><init>()V
-
-    .line 393
-    .local v3, "partialHits":Ljava/util/List;, "Ljava/util/List<Lcom/google/analytics/tracking/android/Hit;>;"
-    const/4 v4, 0x0
-
-    .line 394
-    .local v4, "foundOneBadHit":Z
-    invoke-interface {v1}, Ljava/util/List;->iterator()Ljava/util/Iterator;
-
     move-result-object v5
 
-    .local v5, "i$":Ljava/util/Iterator;
-    :goto_115
-    invoke-interface {v5}, Ljava/util/Iterator;->hasNext()Z
+    invoke-virtual {v1, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result v6
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    if-eqz v6, :cond_133
+    move-result-object v1
 
-    invoke-interface {v5}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-static {v1}, Lcom/google/analytics/tracking/android/Log;->w(Ljava/lang/String;)V
+
+    .line 392
+    new-instance v1, Ljava/util/ArrayList;
+
+    invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
+
+    .line 393
+    .local v1, "partialHits":Ljava/util/List;, "Ljava/util/List<Lcom/google/analytics/tracking/android/Hit;>;"
+    const/4 v5, 0x0
+
+    .line 394
+    .local v5, "foundOneBadHit":Z
+    invoke-interface {v2}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
     move-result-object v6
 
-    check-cast v6, Lcom/google/analytics/tracking/android/Hit;
-
-    .line 395
-    .local v6, "hit":Lcom/google/analytics/tracking/android/Hit;
-    invoke-virtual {v6}, Lcom/google/analytics/tracking/android/Hit;->getHitParams()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-static {v7}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+    .local v6, "i$":Ljava/util/Iterator;
+    :goto_3
+    invoke-interface {v6}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v7
 
-    if-eqz v7, :cond_12f
+    if-eqz v7, :cond_8
+
+    invoke-interface {v6}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v7
+
+    check-cast v7, Lcom/google/analytics/tracking/android/Hit;
+
+    .line 395
+    .local v7, "hit":Lcom/google/analytics/tracking/android/Hit;
+    invoke-virtual {v7}, Lcom/google/analytics/tracking/android/Hit;->getHitParams()Ljava/lang/String;
+
+    move-result-object v8
+
+    invoke-static {v8}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v8
+
+    if-eqz v8, :cond_7
 
     .line 396
-    if-eqz v4, :cond_12e
+    if-eqz v5, :cond_6
 
     .line 397
-    goto :goto_133
+    goto :goto_4
 
     .line 399
-    :cond_12e
-    const/4 v4, 0x1
+    :cond_6
+    const/4 v5, 0x1
 
     .line 402
-    :cond_12f
-    invoke-interface {v3, v6}, Ljava/util/List;->add(Ljava/lang/Object;)Z
-    :try_end_132
-    .catchall {:try_start_f3 .. :try_end_132} :catchall_f0
+    :cond_7
+    invoke-interface {v1, v7}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_1
 
     .line 403
-    .end local v6    # "hit":Lcom/google/analytics/tracking/android/Hit;
-    goto :goto_115
+    nop
+
+    .end local v7    # "hit":Lcom/google/analytics/tracking/android/Hit;
+    goto :goto_3
 
     .line 404
-    .end local v5    # "i$":Ljava/util/Iterator;
-    :cond_133
-    :goto_133
+    .end local v6    # "i$":Ljava/util/Iterator;
+    :cond_8
+    :goto_4
     nop
 
     .line 406
-    if-eqz v13, :cond_139
+    if-eqz v14, :cond_9
 
     .line 407
-    invoke-interface {v13}, Landroid/database/Cursor;->close()V
+    invoke-interface {v14}, Landroid/database/Cursor;->close()V
 
-    :cond_139
-    return-object v3
+    :cond_9
+    return-object v1
 
     .line 406
     .end local v0    # "e":Landroid/database/sqlite/SQLiteException;
-    .end local v3    # "partialHits":Ljava/util/List;, "Ljava/util/List<Lcom/google/analytics/tracking/android/Hit;>;"
-    .end local v4    # "foundOneBadHit":Z
-    :goto_13a
-    if-eqz v13, :cond_13f
+    .end local v1    # "partialHits":Ljava/util/List;, "Ljava/util/List<Lcom/google/analytics/tracking/android/Hit;>;"
+    .end local v5    # "foundOneBadHit":Z
+    :goto_5
+    if-eqz v14, :cond_a
 
     .line 407
-    invoke-interface {v13}, Landroid/database/Cursor;->close()V
+    invoke-interface {v14}, Landroid/database/Cursor;->close()V
 
-    :cond_13f
+    :cond_a
     throw v0
 
     .line 349
     .end local v16    # "count":I
-    :catchall_140
+    :catchall_2
     move-exception v0
 
-    goto :goto_162
+    goto :goto_6
 
     .line 345
-    :catch_142
+    :catch_2
     move-exception v0
 
     .line 346
     .restart local v0    # "e":Landroid/database/sqlite/SQLiteException;
-    :try_start_143
-    new-instance v3, Ljava/lang/StringBuilder;
+    :try_start_4
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v4, "Error in peekHits fetching hitIds: "
+    const-string v5, "Error in peekHits fetching hitIds: "
 
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v0}, Landroid/database/sqlite/SQLiteException;->getMessage()Ljava/lang/String;
 
-    move-result-object v4
+    move-result-object v5
 
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v1
 
-    invoke-static {v3}, Lcom/google/analytics/tracking/android/Log;->w(Ljava/lang/String;)V
-    :try_end_15b
-    .catchall {:try_start_143 .. :try_end_15b} :catchall_140
+    invoke-static {v1}, Lcom/google/analytics/tracking/android/Log;->w(Ljava/lang/String;)V
+    :try_end_4
+    .catchall {:try_start_4 .. :try_end_4} :catchall_2
 
     .line 347
     nop
 
     .line 349
-    if-eqz v13, :cond_161
+    if-eqz v14, :cond_b
 
     .line 350
-    invoke-interface {v13}, Landroid/database/Cursor;->close()V
+    invoke-interface {v14}, Landroid/database/Cursor;->close()V
 
-    :cond_161
-    return-object v1
+    :cond_b
+    return-object v2
 
     .line 349
     .end local v0    # "e":Landroid/database/sqlite/SQLiteException;
-    :goto_162
-    if-eqz v13, :cond_167
+    :goto_6
+    if-eqz v14, :cond_c
 
     .line 350
-    invoke-interface {v13}, Landroid/database/Cursor;->close()V
+    invoke-interface {v14}, Landroid/database/Cursor;->close()V
 
-    :cond_167
+    :cond_c
     throw v0
 .end method
 
 .method public putHit(Ljava/util/Map;JLjava/lang/String;Ljava/util/Collection;)V
-    .registers 6
+    .locals 0
     .param p2, "hitTimeInMilliseconds"    # J
     .param p4, "path"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
@@ -2184,7 +2172,7 @@
 .end method
 
 .method public setClock(Lcom/google/analytics/tracking/android/Clock;)V
-    .registers 2
+    .locals 0
     .param p1, "clock"    # Lcom/google/analytics/tracking/android/Clock;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
@@ -2197,11 +2185,11 @@
 .end method
 
 .method public setDispatch(Z)V
-    .registers 5
+    .locals 3
     .param p1, "dispatch"    # Z
 
     .line 137
-    if-eqz p1, :cond_f
+    if-eqz p1, :cond_0
 
     new-instance v0, Lcom/google/analytics/tracking/android/SimpleNetworkDispatcher;
 
@@ -2213,14 +2201,14 @@
 
     invoke-direct {v0, v1, v2}, Lcom/google/analytics/tracking/android/SimpleNetworkDispatcher;-><init>(Lorg/apache/http/client/HttpClient;Landroid/content/Context;)V
 
-    goto :goto_14
+    goto :goto_0
 
-    :cond_f
+    :cond_0
     new-instance v0, Lcom/google/analytics/tracking/android/NoopDispatcher;
 
     invoke-direct {v0}, Lcom/google/analytics/tracking/android/NoopDispatcher;-><init>()V
 
-    :goto_14
+    :goto_0
     iput-object v0, p0, Lcom/google/analytics/tracking/android/PersistentAnalyticsStore;->mDispatcher:Lcom/google/analytics/tracking/android/Dispatcher;
 
     .line 140
@@ -2228,7 +2216,7 @@
 .end method
 
 .method setDispatcher(Lcom/google/analytics/tracking/android/Dispatcher;)V
-    .registers 2
+    .locals 0
     .param p1, "dispatcher"    # Lcom/google/analytics/tracking/android/Dispatcher;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
@@ -2241,7 +2229,7 @@
 .end method
 
 .method setLastDeleteStaleHitsTime(J)V
-    .registers 3
+    .locals 0
     .param p1, "timeInMilliseconds"    # J
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation

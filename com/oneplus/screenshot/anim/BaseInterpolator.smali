@@ -18,7 +18,7 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    .registers 5
+    .locals 2
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "attrs"    # Landroid/util/AttributeSet;
 
@@ -38,7 +38,7 @@
 .end method
 
 .method private constructor <init>(Landroid/content/res/Resources;Landroid/content/res/Resources$Theme;Landroid/util/AttributeSet;)V
-    .registers 7
+    .locals 4
     .param p1, "res"    # Landroid/content/res/Resources;
     .param p2, "theme"    # Landroid/content/res/Resources$Theme;
     .param p3, "attrs"    # Landroid/util/AttributeSet;
@@ -57,7 +57,7 @@
     .line 32
     const/4 v1, 0x0
 
-    if-eqz p2, :cond_13
+    if-eqz p2, :cond_0
 
     .line 33
     sget-object v2, Lcom/oneplus/screenshot/R$styleable;->Interpolator:[I
@@ -67,11 +67,11 @@
     move-result-object v2
 
     .local v2, "a":Landroid/content/res/TypedArray;
-    goto :goto_19
+    goto :goto_0
 
     .line 35
     .end local v2    # "a":Landroid/content/res/TypedArray;
-    :cond_13
+    :cond_0
     sget-object v2, Lcom/oneplus/screenshot/R$styleable;->Interpolator:[I
 
     invoke-virtual {p1, p3, v2}, Landroid/content/res/Resources;->obtainAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
@@ -80,16 +80,16 @@
 
     .line 38
     .restart local v2    # "a":Landroid/content/res/TypedArray;
-    :goto_19
-    invoke-virtual {v2, v1, v0}, Landroid/content/res/TypedArray;->getFloat(IF)F
+    :goto_0
+    const/4 v3, 0x1
 
-    move-result v1
+    invoke-virtual {v2, v3, v0}, Landroid/content/res/TypedArray;->getFloat(IF)F
 
-    iput v1, p0, Lcom/oneplus/screenshot/anim/BaseInterpolator;->mFactor:F
+    move-result v3
+
+    iput v3, p0, Lcom/oneplus/screenshot/anim/BaseInterpolator;->mFactor:F
 
     .line 40
-    const/4 v1, 0x1
-
     invoke-virtual {v2, v1, v0}, Landroid/content/res/TypedArray;->getFloat(IF)F
 
     move-result v0

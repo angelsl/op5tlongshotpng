@@ -5,7 +5,7 @@
 
 # direct methods
 .method constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 10
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -16,7 +16,7 @@
 
 # virtual methods
 .method public createNetworkClient()Lcom/google/tagmanager/NetworkClient;
-    .registers 3
+    .locals 2
 
     .line 12
     invoke-virtual {p0}, Lcom/google/tagmanager/NetworkClientFactory;->getSdkVersion()I
@@ -25,7 +25,7 @@
 
     const/16 v1, 0x8
 
-    if-ge v0, v1, :cond_e
+    if-ge v0, v1, :cond_0
 
     .line 15
     new-instance v0, Lcom/google/tagmanager/HttpNetworkClient;
@@ -35,7 +35,7 @@
     return-object v0
 
     .line 20
-    :cond_e
+    :cond_0
     new-instance v0, Lcom/google/tagmanager/HttpUrlConnectionNetworkClient;
 
     invoke-direct {v0}, Lcom/google/tagmanager/HttpUrlConnectionNetworkClient;-><init>()V
@@ -44,7 +44,7 @@
 .end method
 
 .method getSdkVersion()I
-    .registers 2
+    .locals 1
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 

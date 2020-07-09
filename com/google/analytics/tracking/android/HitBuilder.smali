@@ -5,7 +5,7 @@
 
 # direct methods
 .method constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 17
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -14,7 +14,7 @@
 .end method
 
 .method static encode(Ljava/lang/String;)Ljava/lang/String;
-    .registers 5
+    .locals 4
     .param p0, "input"    # Ljava/lang/String;
 
     .line 74
@@ -24,13 +24,13 @@
     invoke-static {p0, v0}, Ljava/net/URLEncoder;->encode(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
-    :try_end_6
-    .catch Ljava/io/UnsupportedEncodingException; {:try_start_0 .. :try_end_6} :catch_7
+    :try_end_0
+    .catch Ljava/io/UnsupportedEncodingException; {:try_start_0 .. :try_end_0} :catch_0
 
     return-object v0
 
     .line 75
-    :catch_7
+    :catch_0
     move-exception v0
 
     .line 76
@@ -57,7 +57,7 @@
 .end method
 
 .method static generateHitParams(Ljava/util/Map;)Ljava/util/Map;
-    .registers 6
+    .locals 5
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -89,13 +89,13 @@
     move-result-object v1
 
     .local v1, "i$":Ljava/util/Iterator;
-    :cond_d
-    :goto_d
+    :cond_0
+    :goto_0
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v2
 
-    if-eqz v2, :cond_48
+    if-eqz v2, :cond_3
 
     invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -117,19 +117,19 @@
 
     move-result v3
 
-    if-eqz v3, :cond_d
+    if-eqz v3, :cond_0
 
     invoke-interface {v2}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
     move-result-object v3
 
-    if-nez v3, :cond_2e
+    if-nez v3, :cond_1
 
     .line 32
-    goto :goto_d
+    goto :goto_0
 
     .line 34
-    :cond_2e
+    :cond_1
     invoke-interface {v2}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
 
     move-result-object v3
@@ -148,13 +148,13 @@
 
     move-result v4
 
-    if-eqz v4, :cond_40
+    if-eqz v4, :cond_2
 
     .line 36
-    goto :goto_d
+    goto :goto_0
 
     .line 38
-    :cond_40
+    :cond_2
     invoke-interface {v2}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
     move-result-object v4
@@ -164,16 +164,16 @@
     .line 39
     .end local v2    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/lang/String;>;"
     .end local v3    # "urlParam":Ljava/lang/String;
-    goto :goto_d
+    goto :goto_0
 
     .line 40
     .end local v1    # "i$":Ljava/util/Iterator;
-    :cond_48
+    :cond_3
     return-object v0
 .end method
 
 .method static postProcessHit(Lcom/google/analytics/tracking/android/Hit;J)Ljava/lang/String;
-    .registers 8
+    .locals 7
     .param p0, "hit"    # Lcom/google/analytics/tracking/android/Hit;
     .param p1, "currentTimeMillis"    # J
 
@@ -199,42 +199,40 @@
 
     cmp-long v1, v1, v3
 
-    if-lez v1, :cond_2d
+    const-string v2, "="
+
+    if-lez v1, :cond_0
 
     .line 57
     invoke-virtual {p0}, Lcom/google/analytics/tracking/android/Hit;->getHitTime()J
 
-    move-result-wide v1
+    move-result-wide v5
 
-    sub-long v1, p1, v1
+    sub-long v5, p1, v5
 
     .line 58
-    .local v1, "queueTime":J
-    cmp-long v3, v1, v3
+    .local v5, "queueTime":J
+    cmp-long v1, v5, v3
 
-    if-ltz v3, :cond_2d
+    if-ltz v1, :cond_0
 
     .line 59
-    const-string v3, "&qt"
+    const-string v1, "&qt"
 
-    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string v3, "="
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v5, v6}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
     .line 67
-    .end local v1    # "queueTime":J
-    :cond_2d
+    .end local v5    # "queueTime":J
+    :cond_0
     const-string v1, "&z"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string v1, "="
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {p0}, Lcom/google/analytics/tracking/android/Hit;->getHitId()J
 

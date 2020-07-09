@@ -23,7 +23,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/ResourceStorageImpl;)V
-    .registers 2
+    .locals 0
 
     .line 55
     iput-object p1, p0, Lcom/google/tagmanager/ResourceStorageImpl$1;->this$0:Lcom/google/tagmanager/ResourceStorageImpl;
@@ -36,7 +36,7 @@
 
 # virtual methods
 .method public run()V
-    .registers 2
+    .locals 1
 
     .line 58
     iget-object v0, p0, Lcom/google/tagmanager/ResourceStorageImpl$1;->this$0:Lcom/google/tagmanager/ResourceStorageImpl;

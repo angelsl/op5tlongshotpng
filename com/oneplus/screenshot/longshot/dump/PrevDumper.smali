@@ -9,7 +9,7 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;ILjava/lang/String;Z)V
-    .registers 7
+    .locals 2
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "index"    # I
     .param p3, "tag"    # Ljava/lang/String;
@@ -27,16 +27,16 @@
 
     invoke-virtual {v0, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    if-eqz p4, :cond_11
+    if-eqz p4, :cond_0
 
     const-string v1, "Curr"
 
-    goto :goto_13
+    goto :goto_0
 
-    :cond_11
+    :cond_0
     const-string v1, "Last"
 
-    :goto_13
+    :goto_0
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;

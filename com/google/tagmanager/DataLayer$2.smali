@@ -23,7 +23,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/DataLayer;)V
-    .registers 2
+    .locals 0
 
     .line 281
     iput-object p1, p0, Lcom/google/tagmanager/DataLayer$2;->this$0:Lcom/google/tagmanager/DataLayer;
@@ -36,7 +36,7 @@
 
 # virtual methods
 .method public onKeyValuesLoaded(Ljava/util/List;)V
-    .registers 8
+    .locals 5
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -53,12 +53,12 @@
     move-result-object v0
 
     .local v0, "i$":Ljava/util/Iterator;
-    :goto_4
+    :goto_0
     invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v1
 
-    if-eqz v1, :cond_20
+    if-eqz v1, :cond_0
 
     invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -70,13 +70,11 @@
     .local v1, "keyValue":Lcom/google/tagmanager/DataLayer$KeyValue;
     iget-object v2, p0, Lcom/google/tagmanager/DataLayer$2;->this$0:Lcom/google/tagmanager/DataLayer;
 
-    iget-object v3, p0, Lcom/google/tagmanager/DataLayer$2;->this$0:Lcom/google/tagmanager/DataLayer;
+    iget-object v3, v1, Lcom/google/tagmanager/DataLayer$KeyValue;->mKey:Ljava/lang/String;
 
-    iget-object v4, v1, Lcom/google/tagmanager/DataLayer$KeyValue;->mKey:Ljava/lang/String;
+    iget-object v4, v1, Lcom/google/tagmanager/DataLayer$KeyValue;->mValue:Ljava/lang/Object;
 
-    iget-object v5, v1, Lcom/google/tagmanager/DataLayer$KeyValue;->mValue:Ljava/lang/Object;
-
-    invoke-virtual {v3, v4, v5}, Lcom/google/tagmanager/DataLayer;->expandKeyValue(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+    invoke-virtual {v2, v3, v4}, Lcom/google/tagmanager/DataLayer;->expandKeyValue(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
 
     move-result-object v3
 
@@ -84,14 +82,13 @@
 
     .line 286
     .end local v1    # "keyValue":Lcom/google/tagmanager/DataLayer$KeyValue;
-    goto :goto_4
+    goto :goto_0
 
     .line 287
     .end local v0    # "i$":Ljava/util/Iterator;
-    :cond_20
+    :cond_0
     iget-object v0, p0, Lcom/google/tagmanager/DataLayer$2;->this$0:Lcom/google/tagmanager/DataLayer;
 
-    # getter for: Lcom/google/tagmanager/DataLayer;->mPersistentStoreLoaded:Ljava/util/concurrent/CountDownLatch;
     invoke-static {v0}, Lcom/google/tagmanager/DataLayer;->access$100(Lcom/google/tagmanager/DataLayer;)Ljava/util/concurrent/CountDownLatch;
 
     move-result-object v0

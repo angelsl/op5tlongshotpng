@@ -9,7 +9,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;Lcom/oneplus/screenshot/longshot/util/MovePoint;)V
-    .registers 3
+    .locals 0
     .param p1, "stateContext"    # Lcom/oneplus/screenshot/longshot/state/LongshotContext;
     .param p2, "movePoint"    # Lcom/oneplus/screenshot/longshot/util/MovePoint;
 
@@ -23,7 +23,7 @@
 
 # virtual methods
 .method public onCaptureSuccess(Landroid/graphics/Bitmap;)V
-    .registers 7
+    .locals 5
     .param p1, "bitmap"    # Landroid/graphics/Bitmap;
 
     .line 25
@@ -74,7 +74,7 @@
     monitor-enter v2
 
     .line 28
-    :try_start_26
+    :try_start_0
     iget-object v3, p0, Lcom/oneplus/screenshot/longshot/state/ShotPrevState;->mJoinCache:Lcom/oneplus/screenshot/longshot/cache/JoinCache;
 
     invoke-virtual {v3}, Lcom/oneplus/screenshot/longshot/cache/JoinCache;->removeLast()Ljava/lang/Object;
@@ -102,8 +102,8 @@
     .line 32
     .end local v3    # "cache":Lcom/oneplus/screenshot/longshot/cache/BitmapCache;
     monitor-exit v2
-    :try_end_3d
-    .catchall {:try_start_26 .. :try_end_3d} :catchall_49
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 33
     invoke-super {p0, p1}, Lcom/oneplus/screenshot/longshot/state/AbsShotState;->onCaptureSuccess(Landroid/graphics/Bitmap;)V
@@ -121,13 +121,13 @@
     return-void
 
     .line 32
-    :catchall_49
+    :catchall_0
     move-exception v3
 
-    :try_start_4a
+    :try_start_1
     monitor-exit v2
-    :try_end_4b
-    .catchall {:try_start_4a .. :try_end_4b} :catchall_49
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v3
 .end method

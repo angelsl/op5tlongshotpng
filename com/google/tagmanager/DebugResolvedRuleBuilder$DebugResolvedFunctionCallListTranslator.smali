@@ -31,7 +31,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/DebugResolvedRuleBuilder;I)V
-    .registers 3
+    .locals 0
     .param p2, "type"    # I
 
     .line 109
@@ -49,7 +49,7 @@
 
 # virtual methods
 .method public translateAndAddAll(Ljava/util/List;Ljava/util/List;)V
-    .registers 8
+    .locals 4
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -77,74 +77,74 @@
     .local v0, "translatedList":Ljava/util/List;, "Ljava/util/List<Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;>;"
     const/4 v1, 0x0
 
-    move v2, v1
-
-    .local v2, "i":I
-    :goto_b
+    .local v1, "i":I
+    :goto_0
     invoke-interface {p1}, Ljava/util/List;->size()I
 
-    move-result v3
+    move-result v2
 
-    if-ge v2, v3, :cond_40
+    if-ge v1, v2, :cond_1
 
     .line 119
-    invoke-interface {p1, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    invoke-interface {p1, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    move-result-object v3
+    move-result-object v2
 
-    check-cast v3, Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
+    check-cast v2, Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
 
-    invoke-static {v3}, Lcom/google/tagmanager/DebugResolvedRuleBuilder;->translateExpandedFunctionCall(Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;)Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    invoke-static {v2}, Lcom/google/tagmanager/DebugResolvedRuleBuilder;->translateExpandedFunctionCall(Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;)Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
-    move-result-object v3
+    move-result-object v2
 
-    invoke-interface {v0, v3}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+    invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     .line 120
     invoke-interface {p2}, Ljava/util/List;->size()I
 
-    move-result v3
+    move-result v2
 
-    if-ge v2, v3, :cond_33
+    if-ge v1, v2, :cond_0
 
     .line 121
-    invoke-interface {v0, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    invoke-interface {v0, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+
+    invoke-interface {p2, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     move-result-object v3
 
-    check-cast v3, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    check-cast v3, Ljava/lang/String;
 
-    invoke-interface {p2, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    iput-object v3, v2, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;->associatedRuleName:Ljava/lang/String;
 
-    move-result-object v4
-
-    check-cast v4, Ljava/lang/String;
-
-    iput-object v4, v3, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;->associatedRuleName:Ljava/lang/String;
-
-    goto :goto_3d
+    goto :goto_1
 
     .line 127
-    :cond_33
-    invoke-interface {v0, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    :cond_0
+    invoke-interface {v0, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    move-result-object v3
+    move-result-object v2
 
-    check-cast v3, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    check-cast v2, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
-    const-string v4, "Unknown"
+    const-string v3, "Unknown"
 
-    iput-object v4, v3, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;->associatedRuleName:Ljava/lang/String;
+    iput-object v3, v2, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;->associatedRuleName:Ljava/lang/String;
 
     .line 118
-    :goto_3d
-    add-int/lit8 v2, v2, 0x1
+    :goto_1
+    add-int/lit8 v1, v1, 0x1
 
-    goto :goto_b
+    goto :goto_0
 
     .line 130
-    .end local v2    # "i":I
-    :cond_40
+    .end local v1    # "i":I
+    :cond_1
+    const/4 v1, 0x0
+
     new-array v1, v1, [Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
     invoke-interface {v0, v1}, Ljava/util/List;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
@@ -157,7 +157,21 @@
     .local v1, "translated":[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
     iget v2, p0, Lcom/google/tagmanager/DebugResolvedRuleBuilder$DebugResolvedFunctionCallListTranslator;->type:I
 
-    packed-switch v2, :pswitch_data_82
+    const/4 v3, 0x1
+
+    if-eq v2, v3, :cond_5
+
+    const/4 v3, 0x2
+
+    if-eq v2, v3, :cond_4
+
+    const/4 v3, 0x3
+
+    if-eq v2, v3, :cond_3
+
+    const/4 v3, 0x4
+
+    if-eq v2, v3, :cond_2
 
     .line 145
     new-instance v2, Ljava/lang/StringBuilder;
@@ -178,10 +192,10 @@
 
     invoke-static {v2}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
 
-    goto :goto_80
+    goto :goto_2
 
     .line 142
-    :pswitch_64
+    :cond_2
     iget-object v2, p0, Lcom/google/tagmanager/DebugResolvedRuleBuilder$DebugResolvedFunctionCallListTranslator;->this$0:Lcom/google/tagmanager/DebugResolvedRuleBuilder;
 
     iget-object v2, v2, Lcom/google/tagmanager/DebugResolvedRuleBuilder;->resolvedRule:Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
@@ -189,10 +203,10 @@
     iput-object v1, v2, Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;->removeTags:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
     .line 143
-    goto :goto_80
+    goto :goto_2
 
     .line 139
-    :pswitch_6b
+    :cond_3
     iget-object v2, p0, Lcom/google/tagmanager/DebugResolvedRuleBuilder$DebugResolvedFunctionCallListTranslator;->this$0:Lcom/google/tagmanager/DebugResolvedRuleBuilder;
 
     iget-object v2, v2, Lcom/google/tagmanager/DebugResolvedRuleBuilder;->resolvedRule:Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
@@ -200,10 +214,10 @@
     iput-object v1, v2, Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;->addTags:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
     .line 140
-    goto :goto_80
+    goto :goto_2
 
     .line 136
-    :pswitch_72
+    :cond_4
     iget-object v2, p0, Lcom/google/tagmanager/DebugResolvedRuleBuilder$DebugResolvedFunctionCallListTranslator;->this$0:Lcom/google/tagmanager/DebugResolvedRuleBuilder;
 
     iget-object v2, v2, Lcom/google/tagmanager/DebugResolvedRuleBuilder;->resolvedRule:Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
@@ -211,10 +225,10 @@
     iput-object v1, v2, Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;->removeMacros:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
     .line 137
-    goto :goto_80
+    goto :goto_2
 
     .line 133
-    :pswitch_79
+    :cond_5
     iget-object v2, p0, Lcom/google/tagmanager/DebugResolvedRuleBuilder$DebugResolvedFunctionCallListTranslator;->this$0:Lcom/google/tagmanager/DebugResolvedRuleBuilder;
 
     iget-object v2, v2, Lcom/google/tagmanager/DebugResolvedRuleBuilder;->resolvedRule:Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
@@ -225,16 +239,6 @@
     nop
 
     .line 148
-    :goto_80
+    :goto_2
     return-void
-
-    nop
-
-    :pswitch_data_82
-    .packed-switch 0x1
-        :pswitch_79
-        :pswitch_72
-        :pswitch_6b
-        :pswitch_64
-    .end packed-switch
 .end method

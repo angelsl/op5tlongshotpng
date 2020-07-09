@@ -9,7 +9,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 14
     sget-object v0, Lcom/google/analytics/containertag/common/FunctionType;->DEVICE_NAME:Lcom/google/analytics/containertag/common/FunctionType;
@@ -24,7 +24,7 @@
 .end method
 
 .method public constructor <init>()V
-    .registers 3
+    .locals 2
 
     .line 21
     sget-object v0, Lcom/google/tagmanager/DeviceNameMacro;->ID:Ljava/lang/String;
@@ -40,7 +40,7 @@
 .end method
 
 .method public static getFunctionId()Ljava/lang/String;
-    .registers 1
+    .locals 1
 
     .line 17
     sget-object v0, Lcom/google/tagmanager/DeviceNameMacro;->ID:Ljava/lang/String;
@@ -51,7 +51,7 @@
 
 # virtual methods
 .method public evaluate(Ljava/util/Map;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
-    .registers 6
+    .locals 4
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -77,7 +77,7 @@
 
     move-result v2
 
-    if-nez v2, :cond_26
+    if-nez v2, :cond_0
 
     const-string v2, "unknown"
 
@@ -85,7 +85,7 @@
 
     move-result v2
 
-    if-nez v2, :cond_26
+    if-nez v2, :cond_0
 
     .line 32
     new-instance v2, Ljava/lang/StringBuilder;
@@ -105,7 +105,7 @@
     move-result-object v1
 
     .line 34
-    :cond_26
+    :cond_0
     invoke-static {v1}, Lcom/google/tagmanager/Types;->objectToValue(Ljava/lang/Object;)Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     move-result-object v2
@@ -114,7 +114,7 @@
 .end method
 
 .method public isCacheable()Z
-    .registers 2
+    .locals 1
 
     .line 25
     const/4 v0, 0x1

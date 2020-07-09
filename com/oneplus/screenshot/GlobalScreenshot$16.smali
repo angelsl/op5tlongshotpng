@@ -20,22 +20,14 @@
 # instance fields
 .field final synthetic this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-.field final synthetic val$finalPos:Landroid/graphics/PointF;
-
-.field final synthetic val$scaleInterpolator:Landroid/view/animation/Interpolator;
-
 
 # direct methods
-.method constructor <init>(Lcom/oneplus/screenshot/GlobalScreenshot;Landroid/view/animation/Interpolator;Landroid/graphics/PointF;)V
-    .registers 4
+.method constructor <init>(Lcom/oneplus/screenshot/GlobalScreenshot;)V
+    .locals 0
     .param p1, "this$0"    # Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .line 1573
+    .line 1737
     iput-object p1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$16;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
-
-    iput-object p2, p0, Lcom/oneplus/screenshot/GlobalScreenshot$16;->val$scaleInterpolator:Landroid/view/animation/Interpolator;
-
-    iput-object p3, p0, Lcom/oneplus/screenshot/GlobalScreenshot$16;->val$finalPos:Landroid/graphics/PointF;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -45,10 +37,10 @@
 
 # virtual methods
 .method public onAnimationUpdate(Landroid/animation/ValueAnimator;)V
-    .registers 8
+    .locals 5
     .param p1, "animation"    # Landroid/animation/ValueAnimator;
 
-    .line 1576
+    .line 1740
     invoke-virtual {p1}, Landroid/animation/ValueAnimator;->getAnimatedValue()Ljava/lang/Object;
 
     move-result-object v0
@@ -59,121 +51,67 @@
 
     move-result v0
 
-    .line 1577
+    .line 1741
     .local v0, "t":F
     iget-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$16;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    # getter for: Lcom/oneplus/screenshot/GlobalScreenshot;->mBgPaddingScale:F
-    invoke-static {v1}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$2300(Lcom/oneplus/screenshot/GlobalScreenshot;)F
+    invoke-static {v1}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$1900(Lcom/oneplus/screenshot/GlobalScreenshot;)F
 
     move-result v1
 
     const v2, 0x3f39999a    # 0.725f
 
-    add-float/2addr v2, v1
+    add-float/2addr v1, v2
 
-    iget-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$16;->val$scaleInterpolator:Landroid/view/animation/Interpolator;
+    const/high16 v2, 0x3e000000    # 0.125f
 
-    .line 1578
-    invoke-interface {v1, v0}, Landroid/view/animation/Interpolator;->getInterpolation(F)F
+    mul-float/2addr v2, v0
 
-    move-result v1
+    sub-float/2addr v1, v2
 
-    const v3, 0x3e8cccce    # 0.27500004f
+    .line 1745
+    .local v1, "scaleT":F
+    iget-object v2, p0, Lcom/oneplus/screenshot/GlobalScreenshot$16;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    mul-float/2addr v1, v3
+    invoke-static {v2}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$1800(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageView;
 
-    sub-float/2addr v2, v1
-
-    .line 1580
-    .local v2, "scaleT":F
-    iget-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$16;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
-
-    # getter for: Lcom/oneplus/screenshot/GlobalScreenshot;->mBackgroundView:Landroid/widget/ImageView;
-    invoke-static {v1}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$2200(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageView;
-
-    move-result-object v1
+    move-result-object v2
 
     const/high16 v3, 0x3f800000    # 1.0f
 
     sub-float v4, v3, v0
 
-    const v5, 0x3f333333    # 0.7f
+    invoke-virtual {v2, v4}, Landroid/widget/ImageView;->setAlpha(F)V
 
-    mul-float/2addr v4, v5
+    .line 1747
+    iget-object v2, p0, Lcom/oneplus/screenshot/GlobalScreenshot$16;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    invoke-virtual {v1, v4}, Landroid/widget/ImageView;->setAlpha(F)V
+    invoke-static {v2}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$1400(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageView;
 
-    .line 1581
-    iget-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$16;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
+    move-result-object v2
 
-    # getter for: Lcom/oneplus/screenshot/GlobalScreenshot;->mScreenshotView:Landroid/widget/ImageView;
-    invoke-static {v1}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$1800(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageView;
+    sub-float/2addr v3, v0
 
-    move-result-object v1
+    invoke-virtual {v2, v3}, Landroid/widget/ImageView;->setAlpha(F)V
 
-    iget-object v4, p0, Lcom/oneplus/screenshot/GlobalScreenshot$16;->val$scaleInterpolator:Landroid/view/animation/Interpolator;
+    .line 1748
+    iget-object v2, p0, Lcom/oneplus/screenshot/GlobalScreenshot$16;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    invoke-interface {v4, v0}, Landroid/view/animation/Interpolator;->getInterpolation(F)F
+    invoke-static {v2}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$1400(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageView;
 
-    move-result v4
+    move-result-object v2
 
-    sub-float/2addr v3, v4
+    invoke-virtual {v2, v1}, Landroid/widget/ImageView;->setScaleX(F)V
 
-    invoke-virtual {v1, v3}, Landroid/widget/ImageView;->setAlpha(F)V
+    .line 1749
+    iget-object v2, p0, Lcom/oneplus/screenshot/GlobalScreenshot$16;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
 
-    .line 1582
-    iget-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$16;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
+    invoke-static {v2}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$1400(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageView;
 
-    # getter for: Lcom/oneplus/screenshot/GlobalScreenshot;->mScreenshotView:Landroid/widget/ImageView;
-    invoke-static {v1}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$1800(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageView;
+    move-result-object v2
 
-    move-result-object v1
+    invoke-virtual {v2, v1}, Landroid/widget/ImageView;->setScaleY(F)V
 
-    invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setScaleX(F)V
-
-    .line 1583
-    iget-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$16;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
-
-    # getter for: Lcom/oneplus/screenshot/GlobalScreenshot;->mScreenshotView:Landroid/widget/ImageView;
-    invoke-static {v1}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$1800(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageView;
-
-    move-result-object v1
-
-    invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setScaleY(F)V
-
-    .line 1584
-    iget-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$16;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
-
-    # getter for: Lcom/oneplus/screenshot/GlobalScreenshot;->mScreenshotView:Landroid/widget/ImageView;
-    invoke-static {v1}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$1800(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageView;
-
-    move-result-object v1
-
-    iget-object v3, p0, Lcom/oneplus/screenshot/GlobalScreenshot$16;->val$finalPos:Landroid/graphics/PointF;
-
-    iget v3, v3, Landroid/graphics/PointF;->x:F
-
-    mul-float/2addr v3, v0
-
-    invoke-virtual {v1, v3}, Landroid/widget/ImageView;->setTranslationX(F)V
-
-    .line 1585
-    iget-object v1, p0, Lcom/oneplus/screenshot/GlobalScreenshot$16;->this$0:Lcom/oneplus/screenshot/GlobalScreenshot;
-
-    # getter for: Lcom/oneplus/screenshot/GlobalScreenshot;->mScreenshotView:Landroid/widget/ImageView;
-    invoke-static {v1}, Lcom/oneplus/screenshot/GlobalScreenshot;->access$1800(Lcom/oneplus/screenshot/GlobalScreenshot;)Landroid/widget/ImageView;
-
-    move-result-object v1
-
-    iget-object v3, p0, Lcom/oneplus/screenshot/GlobalScreenshot$16;->val$finalPos:Landroid/graphics/PointF;
-
-    iget v3, v3, Landroid/graphics/PointF;->y:F
-
-    mul-float/2addr v3, v0
-
-    invoke-virtual {v1, v3}, Landroid/widget/ImageView;->setTranslationY(F)V
-
-    .line 1586
+    .line 1750
     return-void
 .end method

@@ -25,10 +25,10 @@
 
 # direct methods
 .method constructor <init>(Lcom/oneplus/screenshot/longshot/task/CheckThread;Landroid/content/Context;)V
-    .registers 3
+    .locals 0
     .param p1, "this$0"    # Lcom/oneplus/screenshot/longshot/task/CheckThread;
 
-    .line 47
+    .line 46
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/task/CheckThread$1;->this$0:Lcom/oneplus/screenshot/longshot/task/CheckThread;
 
     iput-object p2, p0, Lcom/oneplus/screenshot/longshot/task/CheckThread$1;->val$context:Landroid/content/Context;
@@ -41,16 +41,14 @@
 
 # virtual methods
 .method public run()V
-    .registers 4
+    .locals 3
 
-    .line 51
+    .line 50
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/task/CheckThread$1;->val$context:Landroid/content/Context;
 
-    iget-object v1, p0, Lcom/oneplus/screenshot/longshot/task/CheckThread$1;->val$context:Landroid/content/Context;
+    const v1, 0x7f0d0068
 
-    const v2, 0x7f0c0001
-
-    invoke-virtual {v1, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+    invoke-virtual {v0, v1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
     move-result-object v1
 
@@ -58,16 +56,15 @@
 
     invoke-static {v0, v2, v1, v2}, Lcom/oneplus/screenshot/longshot/util/Configs;->notifyToast(Landroid/content/Context;ZLjava/lang/String;I)V
 
-    .line 52
+    .line 51
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/task/CheckThread$1;->this$0:Lcom/oneplus/screenshot/longshot/task/CheckThread;
 
-    # getter for: Lcom/oneplus/screenshot/longshot/task/CheckThread;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
     invoke-static {v0}, Lcom/oneplus/screenshot/longshot/task/CheckThread;->access$000(Lcom/oneplus/screenshot/longshot/task/CheckThread;)Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     move-result-object v0
 
     invoke-interface {v0}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->stop()V
 
-    .line 53
+    .line 52
     return-void
 .end method

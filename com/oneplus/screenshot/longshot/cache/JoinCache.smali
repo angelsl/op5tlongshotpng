@@ -15,7 +15,7 @@
 
 # direct methods
 .method public constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 11
     invoke-direct {p0}, Ljava/util/LinkedList;-><init>()V
@@ -26,7 +26,7 @@
 
 # virtual methods
 .method public getImageHeight()I
-    .registers 3
+    .locals 2
 
     .line 17
     new-instance v0, Ljava/util/ArrayList;

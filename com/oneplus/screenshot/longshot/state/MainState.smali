@@ -28,10 +28,10 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;)V
-    .registers 3
+    .locals 1
     .param p1, "stateContext"    # Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
-    .line 102
+    .line 106
     invoke-direct {p0, p1}, Lcom/oneplus/screenshot/longshot/state/AbsViewState;-><init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;)V
 
     .line 21
@@ -69,7 +69,7 @@
 
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MainState;->mEnterRunnable:Ljava/lang/Runnable;
 
-    .line 103
+    .line 107
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MainState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     invoke-interface {v0}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->getFirstCache()Lcom/oneplus/screenshot/longshot/cache/ImageCache;
@@ -78,7 +78,7 @@
 
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MainState;->mFirstCache:Lcom/oneplus/screenshot/longshot/cache/ImageCache;
 
-    .line 104
+    .line 108
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MainState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     invoke-interface {v0}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->getImageCache()Lcom/oneplus/screenshot/longshot/cache/ImageCache;
@@ -87,7 +87,7 @@
 
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MainState;->mImageCache:Lcom/oneplus/screenshot/longshot/cache/ImageCache;
 
-    .line 105
+    .line 109
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MainState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     invoke-interface {v0}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->getJoinCache()Lcom/oneplus/screenshot/longshot/cache/JoinCache;
@@ -96,7 +96,7 @@
 
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MainState;->mJoinCache:Lcom/oneplus/screenshot/longshot/cache/JoinCache;
 
-    .line 106
+    .line 110
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MainState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     invoke-interface {v0}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->getSharedPrefs()Lcom/oneplus/screenshot/util/SharedPrefs;
@@ -105,12 +105,12 @@
 
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MainState;->mSharedPrefs:Lcom/oneplus/screenshot/util/SharedPrefs;
 
-    .line 107
+    .line 111
     return-void
 .end method
 
 .method static synthetic access$000(Lcom/oneplus/screenshot/longshot/state/MainState;)Z
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/oneplus/screenshot/longshot/state/MainState;
 
     .line 15
@@ -122,7 +122,7 @@
 .end method
 
 .method static synthetic access$100(Lcom/oneplus/screenshot/longshot/state/MainState;)Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/oneplus/screenshot/longshot/state/MainState;
 
     .line 15
@@ -132,7 +132,7 @@
 .end method
 
 .method static synthetic access$200(Lcom/oneplus/screenshot/longshot/state/MainState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
-    .registers 2
+    .locals 0
     .param p0, "x0"    # Lcom/oneplus/screenshot/longshot/state/MainState;
     .param p1, "x1"    # Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;
 
@@ -143,7 +143,7 @@
 .end method
 
 .method static synthetic access$300(Lcom/oneplus/screenshot/longshot/state/MainState;)Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;
-    .registers 2
+    .locals 1
     .param p0, "x0"    # Lcom/oneplus/screenshot/longshot/state/MainState;
 
     .line 15
@@ -153,74 +153,74 @@
 .end method
 
 .method private gotToNextState(Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
-    .registers 4
+    .locals 2
     .param p1, "listener"    # Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;
 
-    .line 71
+    .line 75
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MainState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     invoke-interface {v0}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->isFirst()Z
 
     move-result v0
 
-    if-eqz v0, :cond_16
+    if-eqz v0, :cond_0
 
-    .line 72
+    .line 76
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MainState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     const/4 v1, 0x0
 
     invoke-interface {v0, v1}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->setFirst(Z)V
 
-    .line 73
+    .line 77
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MainState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     sget-object v1, Lcom/oneplus/screenshot/longshot/state/LongshotState;->SHOT_FIRST:Lcom/oneplus/screenshot/longshot/state/LongshotState;
 
     invoke-interface {v0, v1, p1}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->updateState(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
 
-    goto :goto_19
+    goto :goto_0
 
-    .line 75
-    :cond_16
+    .line 79
+    :cond_0
     invoke-interface {p1}, Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;->updateState()V
 
-    .line 77
-    :goto_19
+    .line 81
+    :goto_0
     return-void
 .end method
 
 .method private hasNext()Z
-    .registers 4
+    .locals 4
 
-    .line 81
-    sget-boolean v0, Lcom/oneplus/screenshot/longshot/util/Configs;->STOP_BY_USER:Z
+    .line 85
+    sget-boolean v0, Lcom/oneplus/screenshot/longshot/util/Configs;->stopByUser:Z
 
     const/4 v1, 0x0
 
-    if-eqz v0, :cond_d
+    const-string v2, "Longshot.MainState"
 
-    .line 82
-    const-string v0, "Longshot.MainState"
+    if-eqz v0, :cond_0
 
-    const-string v2, "touch to stop scroll"
+    .line 86
+    const-string v0, "touch to stop scroll"
 
-    invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 83
-    return v1
+    invoke-static {v2, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 87
-    :cond_d
+    return v1
+
+    .line 91
+    :cond_0
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MainState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     invoke-interface {v0}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->isLast()Z
 
     move-result v0
 
-    const/4 v2, 0x1
+    const/4 v3, 0x1
 
-    if-nez v0, :cond_34
+    if-nez v0, :cond_3
 
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MainState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
@@ -228,12 +228,12 @@
 
     move-result v0
 
-    if-eqz v0, :cond_1f
+    if-eqz v0, :cond_1
 
-    goto :goto_34
+    goto :goto_0
 
-    .line 92
-    :cond_1f
+    .line 96
+    :cond_1
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MainState;->mJoinCache:Lcom/oneplus/screenshot/longshot/cache/JoinCache;
 
     invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/cache/JoinCache;->size()I
@@ -244,65 +244,61 @@
 
     move-result v0
 
-    if-eqz v0, :cond_33
+    if-eqz v0, :cond_2
 
-    .line 93
-    const-string v0, "Longshot.MainState"
+    .line 97
+    const-string v0, "max pages"
 
-    const-string v2, "max pages"
+    invoke-static {v2, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 94
+    .line 98
     return v1
 
-    .line 96
-    :cond_33
-    return v2
+    .line 100
+    :cond_2
+    return v3
 
-    .line 88
-    :cond_34
-    :goto_34
+    .line 92
+    :cond_3
+    :goto_0
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MainState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
-    invoke-interface {v0, v2}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->setLast(Z)V
+    invoke-interface {v0, v3}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->setLast(Z)V
 
-    .line 89
-    const-string v0, "Longshot.MainState"
+    .line 93
+    const-string v0, "last page"
 
-    const-string v2, "last page"
+    invoke-static {v2, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 90
+    .line 94
     return v1
 .end method
 
 
 # virtual methods
 .method public enter(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
-    .registers 7
+    .locals 4
     .param p1, "oldState"    # Lcom/oneplus/screenshot/longshot/state/LongshotState;
     .param p2, "listener"    # Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;
 
-    .line 113
+    .line 117
     invoke-super {p0, p1, p2}, Lcom/oneplus/screenshot/longshot/state/AbsViewState;->enter(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
 
-    .line 115
-    sget-boolean v0, Lcom/oneplus/screenshot/longshot/util/Configs;->IS_LONGSHOT_RUNNING:Z
+    .line 119
+    sget-boolean v0, Lcom/oneplus/screenshot/longshot/util/Configs;->isLongshotRunning:Z
 
-    if-eqz v0, :cond_2b
+    if-eqz v0, :cond_1
 
-    .line 116
+    .line 120
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MainState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     invoke-interface {v0}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->isFirst()Z
 
     move-result v0
 
-    if-eqz v0, :cond_1d
+    if-eqz v0, :cond_0
 
-    .line 117
+    .line 121
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MainState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     invoke-interface {v0}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->getHandler()Landroid/os/Handler;
@@ -315,10 +311,10 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
 
-    goto :goto_3d
+    goto :goto_0
 
-    .line 119
-    :cond_1d
+    .line 123
+    :cond_0
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MainState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     invoke-interface {v0}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->getHandler()Landroid/os/Handler;
@@ -331,17 +327,17 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
 
-    goto :goto_3d
+    goto :goto_0
 
-    .line 122
-    :cond_2b
+    .line 126
+    :cond_1
     const-string v0, "Longshot.MainState"
 
     const-string v1, "enter, not running"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 123
+    .line 127
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/state/MainState;->mStateContext:Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     invoke-interface {v0}, Lcom/oneplus/screenshot/longshot/state/LongshotContext;->getHandler()Landroid/os/Handler;
@@ -352,50 +348,50 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
 
-    .line 125
-    :goto_3d
+    .line 129
+    :goto_0
     return-void
 .end method
 
 .method protected initDecor(Landroid/widget/FrameLayout;)V
-    .registers 2
+    .locals 0
     .param p1, "decor"    # Landroid/widget/FrameLayout;
-
-    .line 134
-    return-void
-.end method
-
-.method protected initViews(Landroid/widget/FrameLayout;)V
-    .registers 2
-    .param p1, "content"    # Landroid/widget/FrameLayout;
-
-    .line 142
-    return-void
-.end method
-
-.method public onClick(Landroid/view/View;)V
-    .registers 2
-    .param p1, "view"    # Landroid/view/View;
 
     .line 138
     return-void
 .end method
 
-.method public onShow(Landroid/app/Dialog;)V
-    .registers 2
-    .param p1, "dialog"    # Landroid/app/Dialog;
+.method protected initViews(Landroid/widget/FrameLayout;)V
+    .locals 0
+    .param p1, "content"    # Landroid/widget/FrameLayout;
 
-    .line 129
-    invoke-super {p0, p1}, Lcom/oneplus/screenshot/longshot/state/AbsViewState;->onShow(Landroid/app/Dialog;)V
+    .line 146
+    return-void
+.end method
 
-    .line 130
+.method public onClick(Landroid/view/View;)V
+    .locals 0
+    .param p1, "view"    # Landroid/view/View;
+
+    .line 142
+    return-void
+.end method
+
+.method public onShow(Lcom/oneplus/screenshot/longshot/app/LongshotDialog;)V
+    .locals 0
+    .param p1, "dialog"    # Lcom/oneplus/screenshot/longshot/app/LongshotDialog;
+
+    .line 133
+    invoke-super {p0, p1}, Lcom/oneplus/screenshot/longshot/state/AbsViewState;->onShow(Lcom/oneplus/screenshot/longshot/app/LongshotDialog;)V
+
+    .line 134
     return-void
 .end method
 
 .method protected updateButtons(Landroid/widget/FrameLayout;)V
-    .registers 2
+    .locals 0
     .param p1, "decor"    # Landroid/widget/FrameLayout;
 
-    .line 145
+    .line 149
     return-void
 .end method

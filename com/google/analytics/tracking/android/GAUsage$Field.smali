@@ -154,698 +154,698 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 17
+    .locals 16
 
     .line 32
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "MAP_BUILDER_SET"
+    const/4 v1, 0x0
 
-    const/4 v2, 0x0
+    const-string v2, "MAP_BUILDER_SET"
 
-    invoke-direct {v0, v1, v2}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v2, v1}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->MAP_BUILDER_SET:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 33
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "MAP_BUILDER_SET_ALL"
+    const/4 v2, 0x1
 
-    const/4 v3, 0x1
+    const-string v3, "MAP_BUILDER_SET_ALL"
 
-    invoke-direct {v0, v1, v3}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v3, v2}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->MAP_BUILDER_SET_ALL:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 34
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "MAP_BUILDER_GET"
+    const/4 v3, 0x2
 
-    const/4 v4, 0x2
+    const-string v4, "MAP_BUILDER_GET"
 
-    invoke-direct {v0, v1, v4}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v4, v3}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->MAP_BUILDER_GET:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 35
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "MAP_BUILDER_SET_CAMPAIGN_PARAMS"
+    const/4 v4, 0x3
 
-    const/4 v5, 0x3
+    const-string v5, "MAP_BUILDER_SET_CAMPAIGN_PARAMS"
 
-    invoke-direct {v0, v1, v5}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v5, v4}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->MAP_BUILDER_SET_CAMPAIGN_PARAMS:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 36
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_04"
+    const/4 v5, 0x4
 
-    const/4 v6, 0x4
+    const-string v6, "BLANK_04"
 
-    invoke-direct {v0, v1, v6}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v6, v5}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_04:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 37
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_05"
+    const/4 v6, 0x5
 
-    const/4 v7, 0x5
+    const-string v7, "BLANK_05"
 
-    invoke-direct {v0, v1, v7}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v7, v6}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_05:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 38
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_06"
+    const/4 v7, 0x6
 
-    const/4 v8, 0x6
+    const-string v8, "BLANK_06"
 
-    invoke-direct {v0, v1, v8}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v8, v7}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_06:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 39
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_07"
+    const/4 v8, 0x7
 
-    const/4 v9, 0x7
+    const-string v9, "BLANK_07"
 
-    invoke-direct {v0, v1, v9}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v9, v8}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_07:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 40
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_08"
+    const/16 v9, 0x8
 
-    const/16 v10, 0x8
+    const-string v10, "BLANK_08"
 
-    invoke-direct {v0, v1, v10}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v10, v9}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_08:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 41
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "GET"
+    const/16 v10, 0x9
 
-    const/16 v11, 0x9
+    const-string v11, "GET"
 
-    invoke-direct {v0, v1, v11}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v11, v10}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->GET:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 42
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "SET"
+    const/16 v11, 0xa
 
-    const/16 v12, 0xa
+    const-string v12, "SET"
 
-    invoke-direct {v0, v1, v12}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v12, v11}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->SET:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 43
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "SEND"
+    const/16 v12, 0xb
 
-    const/16 v13, 0xb
+    const-string v13, "SEND"
 
-    invoke-direct {v0, v1, v13}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v13, v12}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->SEND:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 44
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_12"
+    const/16 v13, 0xc
 
-    const/16 v14, 0xc
+    const-string v14, "BLANK_12"
 
-    invoke-direct {v0, v1, v14}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v13}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_12:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 45
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_13"
+    const/16 v14, 0xd
 
-    const/16 v15, 0xd
+    const-string v15, "BLANK_13"
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v15, v14}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_13:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 46
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_14"
-
     const/16 v15, 0xe
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    const-string v14, "BLANK_14"
+
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_14:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 47
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_15"
+    const-string v14, "BLANK_15"
 
     const/16 v15, 0xf
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_15:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 48
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_16"
+    const-string v14, "BLANK_16"
 
     const/16 v15, 0x10
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_16:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 49
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_17"
+    const-string v14, "BLANK_17"
 
     const/16 v15, 0x11
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_17:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 50
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_18"
+    const-string v14, "BLANK_18"
 
     const/16 v15, 0x12
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_18:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 51
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_19"
+    const-string v14, "BLANK_19"
 
     const/16 v15, 0x13
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_19:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 52
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_20"
+    const-string v14, "BLANK_20"
 
     const/16 v15, 0x14
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_20:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 53
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_21"
+    const-string v14, "BLANK_21"
 
     const/16 v15, 0x15
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_21:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 54
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_22"
+    const-string v14, "BLANK_22"
 
     const/16 v15, 0x16
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_22:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 55
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_23"
+    const-string v14, "BLANK_23"
 
     const/16 v15, 0x17
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_23:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 56
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_24"
+    const-string v14, "BLANK_24"
 
     const/16 v15, 0x18
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_24:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 57
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_25"
+    const-string v14, "BLANK_25"
 
     const/16 v15, 0x19
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_25:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 58
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_26"
+    const-string v14, "BLANK_26"
 
     const/16 v15, 0x1a
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_26:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 59
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_27"
+    const-string v14, "BLANK_27"
 
     const/16 v15, 0x1b
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_27:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 60
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_28"
+    const-string v14, "BLANK_28"
 
     const/16 v15, 0x1c
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_28:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 61
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_29"
+    const-string v14, "BLANK_29"
 
     const/16 v15, 0x1d
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_29:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 62
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "SET_EXCEPTION_PARSER"
+    const-string v14, "SET_EXCEPTION_PARSER"
 
     const/16 v15, 0x1e
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->SET_EXCEPTION_PARSER:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 63
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "GET_EXCEPTION_PARSER"
+    const-string v14, "GET_EXCEPTION_PARSER"
 
     const/16 v15, 0x1f
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->GET_EXCEPTION_PARSER:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 64
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "CONSTRUCT_TRANSACTION"
+    const-string v14, "CONSTRUCT_TRANSACTION"
 
     const/16 v15, 0x20
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->CONSTRUCT_TRANSACTION:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 65
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "CONSTRUCT_EXCEPTION"
+    const-string v14, "CONSTRUCT_EXCEPTION"
 
     const/16 v15, 0x21
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->CONSTRUCT_EXCEPTION:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 66
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "CONSTRUCT_RAW_EXCEPTION"
+    const-string v14, "CONSTRUCT_RAW_EXCEPTION"
 
     const/16 v15, 0x22
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->CONSTRUCT_RAW_EXCEPTION:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 67
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "CONSTRUCT_TIMING"
+    const-string v14, "CONSTRUCT_TIMING"
 
     const/16 v15, 0x23
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->CONSTRUCT_TIMING:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 68
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "CONSTRUCT_SOCIAL"
+    const-string v14, "CONSTRUCT_SOCIAL"
 
     const/16 v15, 0x24
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->CONSTRUCT_SOCIAL:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 69
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_37"
+    const-string v14, "BLANK_37"
 
     const/16 v15, 0x25
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_37:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 70
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_38"
+    const-string v14, "BLANK_38"
 
     const/16 v15, 0x26
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_38:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 71
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "GET_TRACKER"
+    const-string v14, "GET_TRACKER"
 
     const/16 v15, 0x27
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->GET_TRACKER:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 72
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "GET_DEFAULT_TRACKER"
+    const-string v14, "GET_DEFAULT_TRACKER"
 
     const/16 v15, 0x28
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->GET_DEFAULT_TRACKER:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 73
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "SET_DEFAULT_TRACKER"
+    const-string v14, "SET_DEFAULT_TRACKER"
 
     const/16 v15, 0x29
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->SET_DEFAULT_TRACKER:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 74
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "SET_APP_OPT_OUT"
+    const-string v14, "SET_APP_OPT_OUT"
 
     const/16 v15, 0x2a
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->SET_APP_OPT_OUT:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 75
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "GET_APP_OPT_OUT"
+    const-string v14, "GET_APP_OPT_OUT"
 
     const/16 v15, 0x2b
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->GET_APP_OPT_OUT:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 76
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "DISPATCH"
+    const-string v14, "DISPATCH"
 
     const/16 v15, 0x2c
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->DISPATCH:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 77
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "SET_DISPATCH_PERIOD"
+    const-string v14, "SET_DISPATCH_PERIOD"
 
     const/16 v15, 0x2d
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->SET_DISPATCH_PERIOD:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 78
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_46"
+    const-string v14, "BLANK_46"
 
     const/16 v15, 0x2e
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_46:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 79
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "REPORT_UNCAUGHT_EXCEPTIONS"
+    const-string v14, "REPORT_UNCAUGHT_EXCEPTIONS"
 
     const/16 v15, 0x2f
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->REPORT_UNCAUGHT_EXCEPTIONS:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 80
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "SET_AUTO_ACTIVITY_TRACKING"
+    const-string v14, "SET_AUTO_ACTIVITY_TRACKING"
 
     const/16 v15, 0x30
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->SET_AUTO_ACTIVITY_TRACKING:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 81
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "SET_SESSION_TIMEOUT"
+    const-string v14, "SET_SESSION_TIMEOUT"
 
     const/16 v15, 0x31
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->SET_SESSION_TIMEOUT:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 82
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "CONSTRUCT_EVENT"
+    const-string v14, "CONSTRUCT_EVENT"
 
     const/16 v15, 0x32
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->CONSTRUCT_EVENT:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 83
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "CONSTRUCT_ITEM"
+    const-string v14, "CONSTRUCT_ITEM"
 
     const/16 v15, 0x33
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->CONSTRUCT_ITEM:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 84
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_52"
+    const-string v14, "BLANK_52"
 
     const/16 v15, 0x34
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_52:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 85
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "BLANK_53"
+    const-string v14, "BLANK_53"
 
     const/16 v15, 0x35
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_53:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 86
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "SET_DRY_RUN"
+    const-string v14, "SET_DRY_RUN"
 
     const/16 v15, 0x36
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->SET_DRY_RUN:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 87
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "GET_DRY_RUN"
+    const-string v14, "GET_DRY_RUN"
 
     const/16 v15, 0x37
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->GET_DRY_RUN:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 88
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "SET_LOGGER"
+    const-string v14, "SET_LOGGER"
 
     const/16 v15, 0x38
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->SET_LOGGER:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 89
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "SET_FORCE_LOCAL_DISPATCH"
+    const-string v14, "SET_FORCE_LOCAL_DISPATCH"
 
     const/16 v15, 0x39
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->SET_FORCE_LOCAL_DISPATCH:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 90
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "GET_TRACKER_NAME"
+    const-string v14, "GET_TRACKER_NAME"
 
     const/16 v15, 0x3a
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->GET_TRACKER_NAME:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 91
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "CLOSE_TRACKER"
+    const-string v14, "CLOSE_TRACKER"
 
     const/16 v15, 0x3b
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->CLOSE_TRACKER:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 92
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "EASY_TRACKER_ACTIVITY_START"
+    const-string v14, "EASY_TRACKER_ACTIVITY_START"
 
     const/16 v15, 0x3c
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->EASY_TRACKER_ACTIVITY_START:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 93
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "EASY_TRACKER_ACTIVITY_STOP"
+    const-string v14, "EASY_TRACKER_ACTIVITY_STOP"
 
     const/16 v15, 0x3d
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->EASY_TRACKER_ACTIVITY_STOP:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
     .line 94
     new-instance v0, Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    const-string v1, "CONSTRUCT_APP_VIEW"
+    const-string v14, "CONSTRUCT_APP_VIEW"
 
     const/16 v15, 0x3e
 
-    invoke-direct {v0, v1, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v14, v15}, Lcom/google/analytics/tracking/android/GAUsage$Field;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->CONSTRUCT_APP_VIEW:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
@@ -854,57 +854,57 @@
 
     new-array v0, v0, [Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    sget-object v1, Lcom/google/analytics/tracking/android/GAUsage$Field;->MAP_BUILDER_SET:Lcom/google/analytics/tracking/android/GAUsage$Field;
+    sget-object v14, Lcom/google/analytics/tracking/android/GAUsage$Field;->MAP_BUILDER_SET:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    aput-object v1, v0, v2
+    aput-object v14, v0, v1
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAUsage$Field;->MAP_BUILDER_SET_ALL:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    aput-object v1, v0, v3
+    aput-object v1, v0, v2
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAUsage$Field;->MAP_BUILDER_GET:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    aput-object v1, v0, v4
+    aput-object v1, v0, v3
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAUsage$Field;->MAP_BUILDER_SET_CAMPAIGN_PARAMS:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    aput-object v1, v0, v5
+    aput-object v1, v0, v4
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_04:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    aput-object v1, v0, v6
+    aput-object v1, v0, v5
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_05:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    aput-object v1, v0, v7
+    aput-object v1, v0, v6
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_06:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    aput-object v1, v0, v8
+    aput-object v1, v0, v7
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_07:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    aput-object v1, v0, v9
+    aput-object v1, v0, v8
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_08:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    aput-object v1, v0, v10
+    aput-object v1, v0, v9
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAUsage$Field;->GET:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    aput-object v1, v0, v11
+    aput-object v1, v0, v10
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAUsage$Field;->SET:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    aput-object v1, v0, v12
+    aput-object v1, v0, v11
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAUsage$Field;->SEND:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    aput-object v1, v0, v13
+    aput-object v1, v0, v12
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_12:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
-    aput-object v1, v0, v14
+    aput-object v1, v0, v13
 
     sget-object v1, Lcom/google/analytics/tracking/android/GAUsage$Field;->BLANK_13:Lcom/google/analytics/tracking/android/GAUsage$Field;
 
@@ -1212,7 +1212,7 @@
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V
-    .registers 3
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
@@ -1226,7 +1226,7 @@
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Lcom/google/analytics/tracking/android/GAUsage$Field;
-    .registers 2
+    .locals 1
     .param p0, "name"    # Ljava/lang/String;
 
     .line 31
@@ -1242,7 +1242,7 @@
 .end method
 
 .method public static values()[Lcom/google/analytics/tracking/android/GAUsage$Field;
-    .registers 1
+    .locals 1
 
     .line 31
     sget-object v0, Lcom/google/analytics/tracking/android/GAUsage$Field;->$VALUES:[Lcom/google/analytics/tracking/android/GAUsage$Field;

@@ -17,7 +17,7 @@
 
 # direct methods
 .method public constructor <init>()V
-    .registers 2
+    .locals 1
 
     .line 5
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -45,7 +45,7 @@
 
 # virtual methods
 .method public getMatrix()Landroid/graphics/Matrix;
-    .registers 2
+    .locals 1
 
     .line 33
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/bitmap/DrawPadding;->mMatrix:Landroid/graphics/Matrix;
@@ -54,7 +54,7 @@
 .end method
 
 .method public getPadding()I
-    .registers 2
+    .locals 1
 
     .line 20
     iget v0, p0, Lcom/oneplus/screenshot/longshot/bitmap/DrawPadding;->mPadding:I
@@ -63,7 +63,7 @@
 .end method
 
 .method public setPadding(I)V
-    .registers 3
+    .locals 1
     .param p1, "padding"    # I
 
     .line 24
@@ -72,22 +72,22 @@
     .line 25
     iget v0, p0, Lcom/oneplus/screenshot/longshot/bitmap/DrawPadding;->mPadding:I
 
-    if-eqz v0, :cond_b
+    if-eqz v0, :cond_0
 
     .line 26
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/bitmap/DrawPadding;->mDrawMatrix:Landroid/graphics/Matrix;
 
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/bitmap/DrawPadding;->mMatrix:Landroid/graphics/Matrix;
 
-    goto :goto_e
+    goto :goto_0
 
     .line 28
-    :cond_b
+    :cond_0
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/oneplus/screenshot/longshot/bitmap/DrawPadding;->mMatrix:Landroid/graphics/Matrix;
 
     .line 30
-    :goto_e
+    :goto_0
     return-void
 .end method

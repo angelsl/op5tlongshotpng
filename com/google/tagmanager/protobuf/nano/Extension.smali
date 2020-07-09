@@ -46,7 +46,7 @@
 
 # direct methods
 .method private constructor <init>(ILcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;)V
-    .registers 4
+    .locals 1
     .param p1, "fieldNumber"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -65,7 +65,6 @@
     iput p1, p0, Lcom/google/tagmanager/protobuf/nano/Extension;->fieldNumber:I
 
     .line 51
-    # invokes: Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;->isList()Z
     invoke-static {p2}, Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;->access$000(Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;)Z
 
     move-result v0
@@ -73,7 +72,6 @@
     iput-boolean v0, p0, Lcom/google/tagmanager/protobuf/nano/Extension;->isRepeatedField:Z
 
     .line 52
-    # invokes: Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;->getTargetClass()Ljava/lang/Class;
     invoke-static {p2}, Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;->access$100(Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;)Ljava/lang/Class;
 
     move-result-object v0
@@ -83,19 +81,18 @@
     .line 53
     iget-boolean v0, p0, Lcom/google/tagmanager/protobuf/nano/Extension;->isRepeatedField:Z
 
-    if-eqz v0, :cond_1a
+    if-eqz v0, :cond_0
 
-    # invokes: Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;->getListType()Ljava/lang/Class;
     invoke-static {p2}, Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;->access$200(Lcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;)Ljava/lang/Class;
 
     move-result-object v0
 
-    goto :goto_1b
+    goto :goto_0
 
-    :cond_1a
+    :cond_0
     const/4 v0, 0x0
 
-    :goto_1b
+    :goto_0
     iput-object v0, p0, Lcom/google/tagmanager/protobuf/nano/Extension;->listType:Ljava/lang/Class;
 
     .line 54
@@ -103,7 +100,7 @@
 .end method
 
 .method public static create(ILcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;)Lcom/google/tagmanager/protobuf/nano/Extension;
-    .registers 3
+    .locals 1
     .param p0, "fieldNumber"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -127,7 +124,7 @@
 .end method
 
 .method public static createRepeated(ILcom/google/tagmanager/protobuf/nano/Extension$TypeLiteral;)Lcom/google/tagmanager/protobuf/nano/Extension;
-    .registers 3
+    .locals 1
     .param p0, "fieldNumber"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {

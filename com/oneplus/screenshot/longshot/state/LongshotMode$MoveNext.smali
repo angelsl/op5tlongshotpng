@@ -20,42 +20,27 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/longshot/state/LongshotMode;ILandroid/graphics/Point;Landroid/graphics/Point;)V
-    .registers 5
+    .locals 0
     .param p2, "distance"    # I
     .param p3, "start"    # Landroid/graphics/Point;
     .param p4, "end"    # Landroid/graphics/Point;
 
-    .line 659
+    .line 973
     iput-object p1, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->this$0:Lcom/oneplus/screenshot/longshot/state/LongshotMode;
 
-    .line 660
+    .line 974
     invoke-direct {p0, p2, p3, p4}, Lcom/oneplus/screenshot/longshot/util/MovePoint;-><init>(ILandroid/graphics/Point;Landroid/graphics/Point;)V
 
-    .line 661
+    .line 975
     return-void
 .end method
 
 
 # virtual methods
-.method public MoveTo(II)V
-    .registers 3
-    .param p1, "x"    # I
-    .param p2, "y"    # I
-
-    .line 684
-    iput p1, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->x:I
-
-    .line 685
-    iput p2, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->y:I
-
-    .line 686
-    return-void
-.end method
-
 .method public canMove()Z
-    .registers 3
+    .locals 2
 
-    .line 675
+    .line 989
     iget v0, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->y:I
 
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->getEnd()Landroid/graphics/Point;
@@ -64,41 +49,41 @@
 
     iget v1, v1, Landroid/graphics/Point;->y:I
 
-    if-le v0, v1, :cond_c
+    if-le v0, v1, :cond_0
 
     const/4 v0, 0x1
 
-    goto :goto_d
+    goto :goto_0
 
-    :cond_c
+    :cond_0
     const/4 v0, 0x0
 
-    :goto_d
+    :goto_0
     return v0
 .end method
 
 .method public getTag()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
-    .line 665
+    .line 979
     const-string v0, "Next"
 
     return-object v0
 .end method
 
 .method public isNext()Z
-    .registers 2
+    .locals 1
 
-    .line 680
+    .line 994
     const/4 v0, 0x1
 
     return v0
 .end method
 
 .method public move()V
-    .registers 3
+    .locals 2
 
-    .line 670
+    .line 984
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->getDistance()I
 
     move-result v0
@@ -109,6 +94,21 @@
 
     invoke-virtual {p0, v1, v0}, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->offset(II)V
 
-    .line 671
+    .line 985
+    return-void
+.end method
+
+.method public moveTo(II)V
+    .locals 0
+    .param p1, "x"    # I
+    .param p2, "y"    # I
+
+    .line 998
+    iput p1, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->x:I
+
+    .line 999
+    iput p2, p0, Lcom/oneplus/screenshot/longshot/state/LongshotMode$MoveNext;->y:I
+
+    .line 1000
     return-void
 .end method

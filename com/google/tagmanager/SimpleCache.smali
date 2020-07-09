@@ -47,7 +47,7 @@
 
 # direct methods
 .method constructor <init>(ILcom/google/tagmanager/CacheFactory$CacheSizeManager;)V
-    .registers 4
+    .locals 1
     .param p1, "maxSize"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -82,7 +82,7 @@
 
 # virtual methods
 .method public declared-synchronized get(Ljava/lang/Object;)Ljava/lang/Object;
-    .registers 3
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(TK;)TV;"
@@ -94,31 +94,31 @@
     monitor-enter p0
 
     .line 56
-    :try_start_1
+    :try_start_0
     iget-object v0, p0, Lcom/google/tagmanager/SimpleCache;->mHashMap:Ljava/util/Map;
 
     invoke-interface {v0, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v0
-    :try_end_7
-    .catchall {:try_start_1 .. :try_end_7} :catchall_9
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     monitor-exit p0
 
     return-object v0
 
+    .end local p0    # "this":Lcom/google/tagmanager/SimpleCache;, "Lcom/google/tagmanager/SimpleCache<TK;TV;>;"
     .end local p1    # "key":Ljava/lang/Object;, "TK;"
-    :catchall_9
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/SimpleCache;, "Lcom/google/tagmanager/SimpleCache<TK;TV;>;"
     throw p1
 .end method
 
 .method public declared-synchronized put(Ljava/lang/Object;Ljava/lang/Object;)V
-    .registers 9
+    .locals 6
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(TK;TV;)V"
@@ -131,12 +131,12 @@
     monitor-enter p0
 
     .line 34
-    if-eqz p1, :cond_51
+    if-eqz p1, :cond_2
 
-    if-eqz p2, :cond_51
+    if-eqz p2, :cond_2
 
     .line 38
-    :try_start_5
+    :try_start_0
     iget v0, p0, Lcom/google/tagmanager/SimpleCache;->mTotalSize:I
 
     iget-object v1, p0, Lcom/google/tagmanager/SimpleCache;->mSizeManager:Lcom/google/tagmanager/CacheFactory$CacheSizeManager;
@@ -154,7 +154,7 @@
 
     iget v1, p0, Lcom/google/tagmanager/SimpleCache;->mMaxSize:I
 
-    if-le v0, v1, :cond_4a
+    if-le v0, v1, :cond_1
 
     .line 41
     iget-object v0, p0, Lcom/google/tagmanager/SimpleCache;->mHashMap:Ljava/util/Map;
@@ -169,12 +169,12 @@
 
     .line 42
     .local v0, "iter":Ljava/util/Iterator;, "Ljava/util/Iterator<Ljava/util/Map$Entry<TK;TV;>;>;"
-    :goto_20
+    :goto_0
     invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v1
 
-    if-eqz v1, :cond_4a
+    if-eqz v1, :cond_1
 
     .line 43
     invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
@@ -213,25 +213,26 @@
 
     iget v3, p0, Lcom/google/tagmanager/SimpleCache;->mMaxSize:I
 
-    if-gt v2, v3, :cond_49
+    if-gt v2, v3, :cond_0
 
     .line 47
-    goto :goto_4a
+    goto :goto_1
 
     .line 49
     .end local v1    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<TK;TV;>;"
-    :cond_49
-    goto :goto_20
+    :cond_0
+    goto :goto_0
 
     .line 51
     .end local v0    # "iter":Ljava/util/Iterator;, "Ljava/util/Iterator<Ljava/util/Map$Entry<TK;TV;>;>;"
-    :cond_4a
-    :goto_4a
+    .end local p0    # "this":Lcom/google/tagmanager/SimpleCache;, "Lcom/google/tagmanager/SimpleCache<TK;TV;>;"
+    :cond_1
+    :goto_1
     iget-object v0, p0, Lcom/google/tagmanager/SimpleCache;->mHashMap:Ljava/util/Map;
 
     invoke-interface {v0, p1, p2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    :try_end_4f
-    .catchall {:try_start_5 .. :try_end_4f} :catchall_59
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 52
     monitor-exit p0
@@ -239,8 +240,8 @@
     return-void
 
     .line 35
-    :cond_51
-    :try_start_51
+    :cond_2
+    :try_start_1
     new-instance v0, Ljava/lang/NullPointerException;
 
     const-string v1, "key == null || value == null"
@@ -248,17 +249,16 @@
     invoke-direct {v0, v1}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
 
     throw v0
-    :try_end_59
-    .catchall {:try_start_51 .. :try_end_59} :catchall_59
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 33
     .end local p1    # "key":Ljava/lang/Object;, "TK;"
     .end local p2    # "value":Ljava/lang/Object;, "TV;"
-    :catchall_59
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/SimpleCache;, "Lcom/google/tagmanager/SimpleCache<TK;TV;>;"
     throw p1
 .end method

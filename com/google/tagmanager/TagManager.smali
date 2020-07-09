@@ -43,7 +43,7 @@
 
 # direct methods
 .method constructor <init>(Landroid/content/Context;Lcom/google/tagmanager/TagManager$ContainerProvider;Lcom/google/tagmanager/DataLayer;)V
-    .registers 7
+    .locals 3
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "containerProvider"    # Lcom/google/tagmanager/TagManager$ContainerProvider;
     .param p3, "dataLayer"    # Lcom/google/tagmanager/DataLayer;
@@ -54,7 +54,7 @@
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 138
-    if-eqz p1, :cond_31
+    if-eqz p1, :cond_0
 
     .line 141
     invoke-virtual {p1}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
@@ -105,7 +105,7 @@
     return-void
 
     .line 139
-    :cond_31
+    :cond_0
     new-instance v0, Ljava/lang/NullPointerException;
 
     const-string v1, "context cannot be null"
@@ -116,7 +116,7 @@
 .end method
 
 .method static synthetic access$000(Lcom/google/tagmanager/TagManager;Ljava/lang/String;)V
-    .registers 2
+    .locals 0
     .param p0, "x0"    # Lcom/google/tagmanager/TagManager;
     .param p1, "x1"    # Ljava/lang/String;
 
@@ -127,7 +127,7 @@
 .end method
 
 .method static clearInstance()V
-    .registers 2
+    .locals 2
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
 
@@ -139,7 +139,7 @@
     .line 190
     const/4 v1, 0x0
 
-    :try_start_4
+    :try_start_0
     sput-object v1, Lcom/google/tagmanager/TagManager;->sInstance:Lcom/google/tagmanager/TagManager;
 
     .line 191
@@ -149,18 +149,18 @@
     return-void
 
     .line 191
-    :catchall_8
+    :catchall_0
     move-exception v1
 
     monitor-exit v0
-    :try_end_a
-    .catchall {:try_start_4 .. :try_end_a} :catchall_8
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method
 
 .method public static getInstance(Landroid/content/Context;)Lcom/google/tagmanager/TagManager;
-    .registers 6
+    .locals 5
     .param p0, "context"    # Landroid/content/Context;
 
     .line 166
@@ -169,13 +169,13 @@
     monitor-enter v0
 
     .line 167
-    :try_start_3
+    :try_start_0
     sget-object v1, Lcom/google/tagmanager/TagManager;->sInstance:Lcom/google/tagmanager/TagManager;
 
-    if-nez v1, :cond_2b
+    if-nez v1, :cond_1
 
     .line 168
-    if-eqz p0, :cond_20
+    if-eqz p0, :cond_0
 
     .line 172
     new-instance v1, Lcom/google/tagmanager/TagManager$2;
@@ -200,12 +200,12 @@
 
     sput-object v3, Lcom/google/tagmanager/TagManager;->sInstance:Lcom/google/tagmanager/TagManager;
 
-    .end local v1    # "provider":Lcom/google/tagmanager/TagManager$ContainerProvider;
-    .end local v2    # "store":Lcom/google/tagmanager/DataLayer$PersistentStore;
-    goto :goto_2b
+    goto :goto_0
 
     .line 169
-    :cond_20
+    .end local v1    # "provider":Lcom/google/tagmanager/TagManager$ContainerProvider;
+    .end local v2    # "store":Lcom/google/tagmanager/DataLayer$PersistentStore;
+    :cond_0
     const-string v1, "TagManager.getInstance requires non-null context."
 
     invoke-static {v1}, Lcom/google/tagmanager/Log;->e(Ljava/lang/String;)V
@@ -215,11 +215,13 @@
 
     invoke-direct {v1}, Ljava/lang/NullPointerException;-><init>()V
 
+    .end local p0    # "context":Landroid/content/Context;
     throw v1
 
     .line 182
-    :cond_2b
-    :goto_2b
+    .restart local p0    # "context":Landroid/content/Context;
+    :cond_1
+    :goto_0
     sget-object v1, Lcom/google/tagmanager/TagManager;->sInstance:Lcom/google/tagmanager/TagManager;
 
     monitor-exit v0
@@ -227,18 +229,18 @@
     return-object v1
 
     .line 183
-    :catchall_2f
+    :catchall_0
     move-exception v1
 
     monitor-exit v0
-    :try_end_31
-    .catchall {:try_start_3 .. :try_end_31} :catchall_2f
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method
 
 .method private refreshTagsInAllContainers(Ljava/lang/String;)V
-    .registers 4
+    .locals 2
     .param p1, "eventName"    # Ljava/lang/String;
 
     .line 314
@@ -253,12 +255,12 @@
     move-result-object v0
 
     .local v0, "i$":Ljava/util/Iterator;
-    :goto_a
+    :goto_0
     invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v1
 
-    if-eqz v1, :cond_1a
+    if-eqz v1, :cond_0
 
     invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -272,18 +274,18 @@
 
     .line 316
     .end local v1    # "container":Lcom/google/tagmanager/Container;
-    goto :goto_a
+    goto :goto_0
 
     .line 317
     .end local v0    # "i$":Ljava/util/Iterator;
-    :cond_1a
+    :cond_0
     return-void
 .end method
 
 
 # virtual methods
 .method public getContainer(Ljava/lang/String;)Lcom/google/tagmanager/Container;
-    .registers 3
+    .locals 1
     .param p1, "containerId"    # Ljava/lang/String;
 
     .line 267
@@ -299,7 +301,7 @@
 .end method
 
 .method public getContext()Landroid/content/Context;
-    .registers 2
+    .locals 1
 
     .line 237
     iget-object v0, p0, Lcom/google/tagmanager/TagManager;->mContext:Landroid/content/Context;
@@ -308,7 +310,7 @@
 .end method
 
 .method public getDataLayer()Lcom/google/tagmanager/DataLayer;
-    .registers 2
+    .locals 1
 
     .line 198
     iget-object v0, p0, Lcom/google/tagmanager/TagManager;->mDataLayer:Lcom/google/tagmanager/DataLayer;
@@ -317,7 +319,7 @@
 .end method
 
 .method public getLogger()Lcom/google/tagmanager/Logger;
-    .registers 2
+    .locals 1
 
     .line 249
     invoke-static {}, Lcom/google/tagmanager/Log;->getLogger()Lcom/google/tagmanager/Logger;
@@ -328,7 +330,7 @@
 .end method
 
 .method public getRefreshMode()Lcom/google/tagmanager/TagManager$RefreshMode;
-    .registers 2
+    .locals 1
 
     .line 259
     iget-object v0, p0, Lcom/google/tagmanager/TagManager;->mRefreshMode:Lcom/google/tagmanager/TagManager$RefreshMode;
@@ -337,7 +339,7 @@
 .end method
 
 .method public openContainer(Ljava/lang/String;Lcom/google/tagmanager/Container$Callback;)Lcom/google/tagmanager/Container;
-    .registers 7
+    .locals 4
     .param p1, "containerId"    # Ljava/lang/String;
     .param p2, "callback"    # Lcom/google/tagmanager/Container$Callback;
 
@@ -358,12 +360,12 @@
 
     move-result-object v1
 
-    if-nez v1, :cond_1d
+    if-nez v1, :cond_1
 
     .line 226
     iget-object v1, p0, Lcom/google/tagmanager/TagManager;->mCtfeServerAddr:Ljava/lang/String;
 
-    if-eqz v1, :cond_19
+    if-eqz v1, :cond_0
 
     .line 227
     iget-object v1, p0, Lcom/google/tagmanager/TagManager;->mCtfeServerAddr:Ljava/lang/String;
@@ -371,14 +373,14 @@
     invoke-virtual {v0, v1}, Lcom/google/tagmanager/Container;->setCtfeServerAddress(Ljava/lang/String;)V
 
     .line 229
-    :cond_19
+    :cond_0
     invoke-virtual {v0, p2}, Lcom/google/tagmanager/Container;->load(Lcom/google/tagmanager/Container$Callback;)V
 
     .line 230
     return-object v0
 
     .line 223
-    :cond_1d
+    :cond_1
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -405,7 +407,7 @@
 .end method
 
 .method removeContainer(Ljava/lang/String;)Z
-    .registers 3
+    .locals 1
     .param p1, "containerId"    # Ljava/lang/String;
 
     .line 310
@@ -415,21 +417,21 @@
 
     move-result-object v0
 
-    if-eqz v0, :cond_a
+    if-eqz v0, :cond_0
 
     const/4 v0, 0x1
 
-    goto :goto_b
+    goto :goto_0
 
-    :cond_a
+    :cond_0
     const/4 v0, 0x0
 
-    :goto_b
+    :goto_0
     return v0
 .end method
 
 .method setCtfeServerAddress(Ljava/lang/String;)V
-    .registers 2
+    .locals 0
     .param p1, "addr"    # Ljava/lang/String;
     .annotation build Lcom/google/android/gms/common/util/VisibleForTesting;
     .end annotation
@@ -442,7 +444,7 @@
 .end method
 
 .method public setLogger(Lcom/google/tagmanager/Logger;)V
-    .registers 2
+    .locals 0
     .param p1, "logger"    # Lcom/google/tagmanager/Logger;
 
     .line 244
@@ -453,13 +455,13 @@
 .end method
 
 .method declared-synchronized setPreviewData(Landroid/net/Uri;)Z
-    .registers 9
+    .locals 9
     .param p1, "data"    # Landroid/net/Uri;
 
     monitor-enter p0
 
     .line 271
-    :try_start_1
+    :try_start_0
     invoke-static {}, Lcom/google/tagmanager/PreviewManager;->getInstance()Lcom/google/tagmanager/PreviewManager;
 
     move-result-object v0
@@ -470,7 +472,7 @@
 
     move-result v1
 
-    if-eqz v1, :cond_73
+    if-eqz v1, :cond_5
 
     .line 273
     invoke-virtual {v0}, Lcom/google/tagmanager/PreviewManager;->getContainerId()Ljava/lang/String;
@@ -491,96 +493,111 @@
 
     aget v2, v2, v3
 
-    const/4 v3, 0x0
+    const/4 v3, 0x1
 
-    packed-switch v2, :pswitch_data_7a
+    const/4 v4, 0x0
 
-    goto :goto_70
+    if-eq v2, v3, :cond_3
+
+    const/4 v5, 0x2
+
+    if-eq v2, v5, :cond_0
+
+    const/4 v5, 0x3
+
+    if-eq v2, v5, :cond_0
+
+    goto :goto_2
+
+    :cond_0
+    move-object v2, v4
 
     .line 284
-    :pswitch_20
-    iget-object v2, p0, Lcom/google/tagmanager/TagManager;->mContainers:Ljava/util/concurrent/ConcurrentMap;
+    .local v2, "exitPreviewContainer":Lcom/google/tagmanager/Container;
+    iget-object v5, p0, Lcom/google/tagmanager/TagManager;->mContainers:Ljava/util/concurrent/ConcurrentMap;
 
-    invoke-interface {v2}, Ljava/util/concurrent/ConcurrentMap;->entrySet()Ljava/util/Set;
-
-    move-result-object v2
-
-    invoke-interface {v2}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
-
-    move-result-object v2
-
-    .local v2, "i$":Ljava/util/Iterator;
-    :goto_2a
-    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v4
-
-    if-eqz v4, :cond_70
-
-    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Ljava/util/Map$Entry;
-
-    .line 285
-    .local v4, "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Lcom/google/tagmanager/Container;>;"
-    invoke-interface {v4}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+    invoke-interface {v5}, Ljava/util/concurrent/ConcurrentMap;->entrySet()Ljava/util/Set;
 
     move-result-object v5
 
-    check-cast v5, Lcom/google/tagmanager/Container;
+    invoke-interface {v5}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
 
-    .line 286
-    .local v5, "container":Lcom/google/tagmanager/Container;
-    invoke-interface {v4}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+    move-result-object v5
 
-    move-result-object v6
-
-    check-cast v6, Ljava/lang/String;
-
-    invoke-virtual {v6, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    .local v5, "i$":Ljava/util/Iterator;
+    :goto_0
+    invoke-interface {v5}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v6
 
-    if-eqz v6, :cond_53
+    if-eqz v6, :cond_4
+
+    invoke-interface {v5}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v6
+
+    check-cast v6, Ljava/util/Map$Entry;
+
+    .line 285
+    .local v6, "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Lcom/google/tagmanager/Container;>;"
+    invoke-interface {v6}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+
+    move-result-object v7
+
+    check-cast v7, Lcom/google/tagmanager/Container;
+
+    .line 286
+    .local v7, "container":Lcom/google/tagmanager/Container;
+    invoke-interface {v6}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+
+    move-result-object v8
+
+    check-cast v8, Ljava/lang/String;
+
+    invoke-virtual {v8, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v8
+
+    if-eqz v8, :cond_1
 
     .line 287
     invoke-virtual {v0}, Lcom/google/tagmanager/PreviewManager;->getCTFEUrlPath()Ljava/lang/String;
 
-    move-result-object v6
+    move-result-object v8
 
-    invoke-virtual {v5, v6}, Lcom/google/tagmanager/Container;->setCtfeUrlPathAndQuery(Ljava/lang/String;)V
+    invoke-virtual {v7, v8}, Lcom/google/tagmanager/Container;->setCtfeUrlPathAndQuery(Ljava/lang/String;)V
 
     .line 288
-    invoke-virtual {v5}, Lcom/google/tagmanager/Container;->refresh()V
+    invoke-virtual {v7}, Lcom/google/tagmanager/Container;->refresh()V
 
-    goto :goto_5f
+    goto :goto_1
 
     .line 289
-    :cond_53
-    invoke-virtual {v5}, Lcom/google/tagmanager/Container;->getCtfeUrlPathAndQuery()Ljava/lang/String;
+    .end local p0    # "this":Lcom/google/tagmanager/TagManager;
+    :cond_1
+    invoke-virtual {v7}, Lcom/google/tagmanager/Container;->getCtfeUrlPathAndQuery()Ljava/lang/String;
 
-    move-result-object v6
+    move-result-object v8
 
-    if-eqz v6, :cond_5f
+    if-eqz v8, :cond_2
 
     .line 291
-    invoke-virtual {v5, v3}, Lcom/google/tagmanager/Container;->setCtfeUrlPathAndQuery(Ljava/lang/String;)V
+    invoke-virtual {v7, v4}, Lcom/google/tagmanager/Container;->setCtfeUrlPathAndQuery(Ljava/lang/String;)V
 
     .line 292
-    invoke-virtual {v5}, Lcom/google/tagmanager/Container;->refresh()V
+    invoke-virtual {v7}, Lcom/google/tagmanager/Container;->refresh()V
 
     .line 294
-    .end local v4    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Lcom/google/tagmanager/Container;>;"
-    .end local v5    # "container":Lcom/google/tagmanager/Container;
-    :cond_5f
-    :goto_5f
-    goto :goto_2a
+    .end local v6    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Lcom/google/tagmanager/Container;>;"
+    .end local v7    # "container":Lcom/google/tagmanager/Container;
+    :cond_2
+    :goto_1
+    goto :goto_0
 
     .line 276
-    .end local v2    # "i$":Ljava/util/Iterator;
-    :pswitch_60
+    .end local v2    # "exitPreviewContainer":Lcom/google/tagmanager/Container;
+    .end local v5    # "i$":Ljava/util/Iterator;
+    :cond_3
     iget-object v2, p0, Lcom/google/tagmanager/TagManager;->mContainers:Ljava/util/concurrent/ConcurrentMap;
 
     invoke-interface {v2, v1}, Ljava/util/concurrent/ConcurrentMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -590,30 +607,28 @@
     check-cast v2, Lcom/google/tagmanager/Container;
 
     .line 277
-    .local v2, "exitPreviewContainer":Lcom/google/tagmanager/Container;
-    if-eqz v2, :cond_70
+    .restart local v2    # "exitPreviewContainer":Lcom/google/tagmanager/Container;
+    if-eqz v2, :cond_4
 
     .line 278
-    invoke-virtual {v2, v3}, Lcom/google/tagmanager/Container;->setCtfeUrlPathAndQuery(Ljava/lang/String;)V
+    invoke-virtual {v2, v4}, Lcom/google/tagmanager/Container;->setCtfeUrlPathAndQuery(Ljava/lang/String;)V
 
     .line 279
     invoke-virtual {v2}, Lcom/google/tagmanager/Container;->refresh()V
-    :try_end_70
-    .catchall {:try_start_1 .. :try_end_70} :catchall_76
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 297
     .end local v2    # "exitPreviewContainer":Lcom/google/tagmanager/Container;
-    :cond_70
-    :goto_70
-    const/4 v2, 0x1
-
+    :cond_4
+    :goto_2
     monitor-exit p0
 
-    return v2
+    return v3
 
     .line 299
     .end local v1    # "previewContainerId":Ljava/lang/String;
-    :cond_73
+    :cond_5
     const/4 v1, 0x0
 
     monitor-exit p0
@@ -623,26 +638,16 @@
     .line 270
     .end local v0    # "previewManager":Lcom/google/tagmanager/PreviewManager;
     .end local p1    # "data":Landroid/net/Uri;
-    :catchall_76
+    :catchall_0
     move-exception p1
 
     monitor-exit p0
 
-    .end local p0    # "this":Lcom/google/tagmanager/TagManager;
     throw p1
-
-    nop
-
-    :pswitch_data_7a
-    .packed-switch 0x1
-        :pswitch_60
-        :pswitch_20
-        :pswitch_20
-    .end packed-switch
 .end method
 
 .method public setRefreshMode(Lcom/google/tagmanager/TagManager$RefreshMode;)V
-    .registers 2
+    .locals 0
     .param p1, "mode"    # Lcom/google/tagmanager/TagManager$RefreshMode;
 
     .line 254

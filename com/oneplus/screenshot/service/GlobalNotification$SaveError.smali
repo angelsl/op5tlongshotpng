@@ -20,21 +20,21 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/service/GlobalNotification;Landroid/graphics/Bitmap;)V
-    .registers 5
+    .locals 2
     .param p2, "preview"    # Landroid/graphics/Bitmap;
 
-    .line 157
+    .line 153
     iput-object p1, p0, Lcom/oneplus/screenshot/service/GlobalNotification$SaveError;->this$0:Lcom/oneplus/screenshot/service/GlobalNotification;
 
-    .line 158
+    .line 154
     invoke-direct {p0, p1, p2}, Lcom/oneplus/screenshot/service/GlobalNotification$Builder;-><init>(Lcom/oneplus/screenshot/service/GlobalNotification;Landroid/graphics/Bitmap;)V
 
-    .line 159
+    .line 155
     iget-object p1, p0, Lcom/oneplus/screenshot/service/GlobalNotification$SaveError;->mBuilder:Landroid/app/Notification$Builder;
 
     iget-object v0, p0, Lcom/oneplus/screenshot/service/GlobalNotification$SaveError;->mResources:Landroid/content/res/Resources;
 
-    const v1, 0x7f0c0019
+    const v1, 0x7f0d003e
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -42,12 +42,12 @@
 
     invoke-virtual {p1, v0}, Landroid/app/Notification$Builder;->setContentTitle(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
 
-    .line 160
+    .line 156
     iget-object p1, p0, Lcom/oneplus/screenshot/service/GlobalNotification$SaveError;->mBuilder:Landroid/app/Notification$Builder;
 
     iget-object v0, p0, Lcom/oneplus/screenshot/service/GlobalNotification$SaveError;->mResources:Landroid/content/res/Resources;
 
-    const v1, 0x7f0c001a
+    const v1, 0x7f0d003d
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -55,7 +55,7 @@
 
     invoke-virtual {p1, v0}, Landroid/app/Notification$Builder;->setContentText(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
 
-    .line 161
+    .line 157
     iget-object p1, p0, Lcom/oneplus/screenshot/service/GlobalNotification$SaveError;->mBuilder:Landroid/app/Notification$Builder;
 
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
@@ -64,53 +64,53 @@
 
     invoke-virtual {p1, v0, v1}, Landroid/app/Notification$Builder;->setWhen(J)Landroid/app/Notification$Builder;
 
-    .line 162
+    .line 158
     iget-object p1, p0, Lcom/oneplus/screenshot/service/GlobalNotification$SaveError;->mBuilder:Landroid/app/Notification$Builder;
 
     const/4 v0, 0x1
 
     invoke-virtual {p1, v0}, Landroid/app/Notification$Builder;->setAutoCancel(Z)Landroid/app/Notification$Builder;
 
-    .line 163
+    .line 159
     return-void
 .end method
 
 
 # virtual methods
 .method protected getBigContentViews()Landroid/widget/RemoteViews;
-    .registers 2
+    .locals 1
 
-    .line 182
+    .line 178
     const/4 v0, 0x0
 
     return-object v0
 .end method
 
 .method protected getContentViews()Landroid/widget/RemoteViews;
-    .registers 2
+    .locals 1
 
-    .line 177
+    .line 173
     const/4 v0, 0x0
 
     return-object v0
 .end method
 
 .method protected getSmallIcon()I
-    .registers 2
+    .locals 1
 
-    .line 172
-    const v0, 0x7f020031
+    .line 168
+    const v0, 0x7f0801f3
 
     return v0
 .end method
 
 .method protected getTicker()Ljava/lang/String;
-    .registers 3
+    .locals 2
 
-    .line 167
+    .line 163
     iget-object v0, p0, Lcom/oneplus/screenshot/service/GlobalNotification$SaveError;->mResources:Landroid/content/res/Resources;
 
-    const v1, 0x7f0c0019
+    const v1, 0x7f0d003e
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 

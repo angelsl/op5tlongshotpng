@@ -9,7 +9,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/oneplus/screenshot/longshot/state/LongshotContext;)V
-    .registers 2
+    .locals 0
     .param p1, "stateContext"    # Lcom/oneplus/screenshot/longshot/state/LongshotContext;
 
     .line 17
@@ -22,7 +22,7 @@
 
 # virtual methods
 .method public enter(Lcom/oneplus/screenshot/longshot/state/LongshotState;Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;)V
-    .registers 4
+    .locals 2
     .param p1, "oldState"    # Lcom/oneplus/screenshot/longshot/state/LongshotState;
     .param p2, "listener"    # Lcom/oneplus/screenshot/longshot/state/LongshotAction$OnStateListener;
 
@@ -34,30 +34,42 @@
 
     invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/util/Features;->getValue()Z
 
-    .line 28
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 27
+    const-string v0, "Longshot.UnsupportedState"
+
+    const-string v1, "Unsupported"
+
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 29
+    :cond_0
     return-void
 .end method
 
 .method protected initViews(Landroid/widget/FrameLayout;)V
-    .registers 2
+    .locals 0
     .param p1, "content"    # Landroid/widget/FrameLayout;
 
-    .line 36
+    .line 37
     return-void
 .end method
 
 .method public onClick(Landroid/view/View;)V
-    .registers 2
+    .locals 0
     .param p1, "view"    # Landroid/view/View;
 
-    .line 32
+    .line 33
     return-void
 .end method
 
 .method protected updateButtons(Landroid/widget/FrameLayout;)V
-    .registers 2
+    .locals 0
     .param p1, "decor"    # Landroid/widget/FrameLayout;
 
-    .line 39
+    .line 41
     return-void
 .end method

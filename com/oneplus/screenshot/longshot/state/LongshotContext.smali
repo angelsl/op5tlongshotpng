@@ -4,6 +4,9 @@
 
 
 # virtual methods
+.method public abstract getBarCache()Lcom/oneplus/screenshot/longshot/cache/ImageCache;
+.end method
+
 .method public abstract getContext()Landroid/content/Context;
 .end method
 
@@ -28,7 +31,16 @@
 .method public abstract getJoinCache()Lcom/oneplus/screenshot/longshot/cache/JoinCache;
 .end method
 
+.method public abstract getLastMove()I
+.end method
+
 .method public abstract getNavBarHeight()I
+.end method
+
+.method public abstract getPreviewCache()Landroid/graphics/Bitmap;
+.end method
+
+.method public abstract getPreviewController()Lcom/oneplus/screenshot/longshot/preview/PreviewController;
 .end method
 
 .method public abstract getRealDisplayHeight()I
@@ -43,6 +55,12 @@
 .method public abstract getSharedPrefs()Lcom/oneplus/screenshot/util/SharedPrefs;
 .end method
 
+.method public abstract getStatusbarBarHeight()I
+.end method
+
+.method public abstract getWindowToken()Landroid/os/IBinder;
+.end method
+
 .method public abstract hide()V
 .end method
 
@@ -53,6 +71,9 @@
 .end method
 
 .method public abstract isOverScroll()Z
+.end method
+
+.method public abstract isRecognizeScrollView()Z
 .end method
 
 .method public abstract isScroll()Z

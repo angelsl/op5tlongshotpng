@@ -20,7 +20,7 @@
 
 # direct methods
 .method private constructor <init>(Lcom/google/analytics/tracking/android/EasyTracker;)V
-    .registers 2
+    .locals 0
 
     .line 448
     iput-object p1, p0, Lcom/google/analytics/tracking/android/EasyTracker$NotInForegroundTimerTask;->this$0:Lcom/google/analytics/tracking/android/EasyTracker;
@@ -31,7 +31,7 @@
 .end method
 
 .method synthetic constructor <init>(Lcom/google/analytics/tracking/android/EasyTracker;Lcom/google/analytics/tracking/android/EasyTracker$1;)V
-    .registers 3
+    .locals 0
     .param p1, "x0"    # Lcom/google/analytics/tracking/android/EasyTracker;
     .param p2, "x1"    # Lcom/google/analytics/tracking/android/EasyTracker$1;
 
@@ -44,14 +44,13 @@
 
 # virtual methods
 .method public run()V
-    .registers 3
+    .locals 2
 
     .line 451
     iget-object v0, p0, Lcom/google/analytics/tracking/android/EasyTracker$NotInForegroundTimerTask;->this$0:Lcom/google/analytics/tracking/android/EasyTracker;
 
     const/4 v1, 0x0
 
-    # setter for: Lcom/google/analytics/tracking/android/EasyTracker;->mIsInForeground:Z
     invoke-static {v0, v1}, Lcom/google/analytics/tracking/android/EasyTracker;->access$102(Lcom/google/analytics/tracking/android/EasyTracker;Z)Z
 
     .line 456

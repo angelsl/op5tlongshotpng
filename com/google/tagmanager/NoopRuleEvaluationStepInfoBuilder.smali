@@ -8,7 +8,7 @@
 
 # direct methods
 .method constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 11
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -19,7 +19,7 @@
 
 # virtual methods
 .method public createResolvedRuleBuilder()Lcom/google/tagmanager/ResolvedRuleBuilder;
-    .registers 2
+    .locals 1
 
     .line 19
     new-instance v0, Lcom/google/tagmanager/NoopResolvedRuleBuilder;
@@ -30,7 +30,7 @@
 .end method
 
 .method public setEnabledFunctions(Ljava/util/Set;)V
-    .registers 2
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",

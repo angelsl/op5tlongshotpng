@@ -28,7 +28,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;)V
-    .registers 4
+    .locals 2
     .param p1, "rule"    # Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
 
     .line 26
@@ -78,7 +78,7 @@
 .end method
 
 .method public static translateExpandedFunctionCall(Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;)Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
-    .registers 6
+    .locals 5
     .param p0, "f"    # Lcom/google/tagmanager/ResourceUtil$ExpandedFunctionCall;
 
     .line 83
@@ -101,12 +101,12 @@
     move-result-object v1
 
     .local v1, "i$":Ljava/util/Iterator;
-    :goto_11
+    :goto_0
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v2
 
-    if-eqz v2, :cond_3f
+    if-eqz v2, :cond_0
 
     invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -155,18 +155,18 @@
     .line 89
     .end local v2    # "originalParam":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;>;"
     .end local v3    # "prop":Lcom/google/analytics/containertag/proto/Debug$ResolvedProperty;
-    goto :goto_11
+    goto :goto_0
 
     .line 90
     .end local v1    # "i$":Ljava/util/Iterator;
-    :cond_3f
+    :cond_0
     return-object v0
 .end method
 
 
 # virtual methods
 .method public createNegativePredicate()Lcom/google/tagmanager/ResolvedFunctionCallBuilder;
-    .registers 4
+    .locals 3
 
     .line 40
     new-instance v0, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
@@ -177,9 +177,7 @@
     .local v0, "predicate":Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
     iget-object v1, p0, Lcom/google/tagmanager/DebugResolvedRuleBuilder;->resolvedRule:Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
 
-    iget-object v2, p0, Lcom/google/tagmanager/DebugResolvedRuleBuilder;->resolvedRule:Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-
-    iget-object v2, v2, Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;->negativePredicates:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    iget-object v2, v1, Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;->negativePredicates:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
     invoke-static {v2, v0}, Lcom/google/tagmanager/ArrayUtils;->appendToArray([Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;)[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
@@ -196,7 +194,7 @@
 .end method
 
 .method public createPositivePredicate()Lcom/google/tagmanager/ResolvedFunctionCallBuilder;
-    .registers 4
+    .locals 3
 
     .line 48
     new-instance v0, Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
@@ -207,9 +205,7 @@
     .local v0, "predicate":Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
     iget-object v1, p0, Lcom/google/tagmanager/DebugResolvedRuleBuilder;->resolvedRule:Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
 
-    iget-object v2, p0, Lcom/google/tagmanager/DebugResolvedRuleBuilder;->resolvedRule:Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;
-
-    iget-object v2, v2, Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;->positivePredicates:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
+    iget-object v2, v1, Lcom/google/analytics/containertag/proto/Debug$ResolvedRule;->positivePredicates:[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
     invoke-static {v2, v0}, Lcom/google/tagmanager/ArrayUtils;->appendToArray([Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;)[Lcom/google/analytics/containertag/proto/Debug$ResolvedFunctionCall;
 
@@ -226,7 +222,7 @@
 .end method
 
 .method public getAddedMacroFunctions()Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
-    .registers 2
+    .locals 1
 
     .line 56
     iget-object v0, p0, Lcom/google/tagmanager/DebugResolvedRuleBuilder;->addMacrosHolder:Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
@@ -235,7 +231,7 @@
 .end method
 
 .method public getAddedTagFunctions()Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
-    .registers 2
+    .locals 1
 
     .line 66
     iget-object v0, p0, Lcom/google/tagmanager/DebugResolvedRuleBuilder;->addTagsHolder:Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
@@ -244,7 +240,7 @@
 .end method
 
 .method public getRemovedMacroFunctions()Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
-    .registers 2
+    .locals 1
 
     .line 61
     iget-object v0, p0, Lcom/google/tagmanager/DebugResolvedRuleBuilder;->removeMacrosHolder:Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
@@ -253,7 +249,7 @@
 .end method
 
 .method public getRemovedTagFunctions()Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
-    .registers 2
+    .locals 1
 
     .line 71
     iget-object v0, p0, Lcom/google/tagmanager/DebugResolvedRuleBuilder;->removeTagsHolder:Lcom/google/tagmanager/ResolvedFunctionCallTranslatorList;
@@ -262,7 +258,7 @@
 .end method
 
 .method public setValue(Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;)V
-    .registers 4
+    .locals 2
     .param p1, "result"    # Lcom/google/analytics/midtier/proto/containertag/TypeSystem$Value;
 
     .line 76

@@ -31,21 +31,21 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 2
+    .locals 2
 
     .line 55
     const/16 v0, 0x40
 
     new-array v1, v0, [B
 
-    fill-array-data v1, :array_22
+    fill-array-data v1, :array_0
 
     sput-object v1, Lcom/google/tagmanager/Base64;->ALPHABET:[B
 
     .line 73
     new-array v0, v0, [B
 
-    fill-array-data v0, :array_46
+    fill-array-data v0, :array_1
 
     sput-object v0, Lcom/google/tagmanager/Base64;->WEBSAFE_ALPHABET:[B
 
@@ -54,14 +54,14 @@
 
     new-array v1, v0, [B
 
-    fill-array-data v1, :array_6a
+    fill-array-data v1, :array_2
 
     sput-object v1, Lcom/google/tagmanager/Base64;->DECODABET:[B
 
     .line 127
     new-array v0, v0, [B
 
-    fill-array-data v0, :array_ae
+    fill-array-data v0, :array_3
 
     sput-object v0, Lcom/google/tagmanager/Base64;->WEBSAFE_DECODABET:[B
 
@@ -69,7 +69,7 @@
 
     nop
 
-    :array_22
+    :array_0
     .array-data 1
         0x41t
         0x42t
@@ -137,7 +137,7 @@
         0x2ft
     .end array-data
 
-    :array_46
+    :array_1
     .array-data 1
         0x41t
         0x42t
@@ -205,7 +205,7 @@
         0x5ft
     .end array-data
 
-    :array_6a
+    :array_2
     .array-data 1
         -0x9t
         -0x9t
@@ -337,7 +337,7 @@
         -0x9t
     .end array-data
 
-    :array_ae
+    :array_3
     .array-data 1
         -0x9t
         -0x9t
@@ -471,7 +471,7 @@
 .end method
 
 .method private constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 168
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -481,7 +481,7 @@
 .end method
 
 .method public static decode(Ljava/lang/String;)[B
-    .registers 4
+    .locals 3
     .param p0, "s"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -508,7 +508,7 @@
 .end method
 
 .method public static decode([B)[B
-    .registers 3
+    .locals 2
     .param p0, "source"    # [B
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -529,7 +529,7 @@
 .end method
 
 .method public static decode([BII)[B
-    .registers 4
+    .locals 1
     .param p0, "source"    # [B
     .param p1, "off"    # I
     .param p2, "len"    # I
@@ -550,7 +550,7 @@
 .end method
 
 .method private static decode([BII[B)[B
-    .registers 20
+    .locals 15
     .param p0, "source"    # [B
     .param p1, "off"    # I
     .param p2, "len"    # I
@@ -561,9 +561,9 @@
         }
     .end annotation
 
+    .line 532
     move/from16 v0, p2
 
-    .line 532
     move-object/from16 v1, p3
 
     mul-int/lit8 v2, v0, 0x3
@@ -574,327 +574,311 @@
 
     .line 533
     .local v2, "len34":I
-    const/4 v4, 0x2
+    add-int/lit8 v4, v2, 0x2
 
-    add-int v5, v4, v2
-
-    new-array v5, v5, [B
+    new-array v4, v4, [B
 
     .line 534
-    .local v5, "outBuff":[B
-    const/4 v6, 0x0
+    .local v4, "outBuff":[B
+    const/4 v5, 0x0
 
     .line 536
-    .local v6, "outBuffPosn":I
-    new-array v7, v3, [B
+    .local v5, "outBuffPosn":I
+    new-array v6, v3, [B
 
     .line 537
-    .local v7, "b4":[B
-    const/4 v8, 0x0
+    .local v6, "b4":[B
+    const/4 v7, 0x0
 
     .line 538
-    .local v8, "b4Posn":I
-    const/4 v9, 0x0
+    .local v7, "b4Posn":I
+    const/4 v8, 0x0
 
     .line 539
-    .local v9, "i":I
-    const/4 v10, 0x0
-
-    .line 540
-    .local v10, "sbiCrop":B
-    const/4 v11, 0x0
-
-    .line 541
-    .local v11, "sbiDecode":B
-    const/4 v12, 0x0
-
-    .line 542
-    .local v12, "paddingByteSeen":Z
+    .local v8, "i":I
     const/4 v9, 0x0
 
-    :goto_16
-    const/16 v13, 0x3d
+    .line 540
+    .local v9, "sbiCrop":B
+    const/4 v10, 0x0
 
-    if-ge v9, v0, :cond_b9
+    .line 541
+    .local v10, "sbiDecode":B
+    const/4 v11, 0x0
+
+    .line 542
+    .local v11, "paddingByteSeen":Z
+    const/4 v8, 0x0
+
+    :goto_0
+    const/16 v12, 0x3d
+
+    const/4 v13, 0x0
+
+    if-ge v8, v0, :cond_9
 
     .line 543
-    add-int v14, v9, p1
+    add-int v14, v8, p1
 
     aget-byte v14, p0, v14
 
-    and-int/lit8 v3, v14, 0x7f
+    and-int/lit8 v14, v14, 0x7f
 
-    int-to-byte v10, v3
+    int-to-byte v9, v14
 
     .line 544
-    aget-byte v11, v1, v10
+    aget-byte v10, v1, v9
 
     .line 546
-    const/4 v3, -0x5
+    const/4 v14, -0x5
 
-    if-lt v11, v3, :cond_91
+    if-lt v10, v14, :cond_8
 
     .line 551
-    const/4 v3, -0x1
+    const/4 v14, -0x1
 
-    if-lt v11, v3, :cond_4b
+    if-lt v10, v14, :cond_7
 
     .line 552
-    if-ne v10, v13, :cond_64
+    if-ne v9, v12, :cond_4
 
     .line 553
-    if-eqz v12, :cond_2e
+    if-eqz v11, :cond_0
 
     .line 554
-    goto :goto_4b
+    goto :goto_2
 
     .line 558
-    :cond_2e
-    if-lt v9, v4, :cond_4d
+    :cond_0
+    const/4 v13, 0x2
+
+    if-lt v8, v13, :cond_3
 
     .line 562
-    const/4 v3, 0x1
+    const/4 v11, 0x1
 
     .line 563
-    .end local v12    # "paddingByteSeen":Z
-    .local v3, "paddingByteSeen":Z
-    add-int/lit8 v12, v0, -0x1
+    add-int/lit8 v13, v0, -0x1
 
-    add-int v12, v12, p1
-
-    aget-byte v12, p0, v12
-
-    and-int/lit8 v12, v12, 0x7f
-
-    int-to-byte v12, v12
-
-    .line 564
-    .local v12, "lastByte":B
-    if-eq v12, v13, :cond_49
-
-    const/16 v13, 0xa
-
-    if-ne v12, v13, :cond_41
-
-    .end local v12    # "lastByte":B
-    goto :goto_49
-
-    .line 565
-    .restart local v12    # "lastByte":B
-    :cond_41
-    new-instance v4, Lcom/google/tagmanager/Base64$Base64DecoderException;
-
-    const-string v13, "encoded value has invalid trailing byte"
-
-    invoke-direct {v4, v13}, Lcom/google/tagmanager/Base64$Base64DecoderException;-><init>(Ljava/lang/String;)V
-
-    throw v4
-
-    .line 569
-    .end local v12    # "lastByte":B
-    :cond_49
-    :goto_49
-    nop
-
-    .line 542
-    move v12, v3
-
-    .end local v3    # "paddingByteSeen":Z
-    .local v12, "paddingByteSeen":Z
-    :cond_4b
-    :goto_4b
-    const/4 v13, 0x4
-
-    goto :goto_8d
-
-    .line 559
-    :cond_4d
-    new-instance v3, Lcom/google/tagmanager/Base64$Base64DecoderException;
-
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v13, "Invalid padding byte found in position "
-
-    invoke-virtual {v4, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v4, v9}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-direct {v3, v4}, Lcom/google/tagmanager/Base64$Base64DecoderException;-><init>(Ljava/lang/String;)V
-
-    throw v3
-
-    .line 569
-    :cond_64
-    if-nez v12, :cond_76
-
-    .line 574
-    add-int/lit8 v3, v8, 0x1
-
-    .local v3, "b4Posn":I
-    aput-byte v10, v7, v8
-
-    .line 575
-    .end local v8    # "b4Posn":I
-    const/4 v13, 0x4
-
-    if-ne v3, v13, :cond_74
-
-    .line 576
-    const/4 v8, 0x0
-
-    invoke-static {v7, v8, v5, v6, v1}, Lcom/google/tagmanager/Base64;->decode4to3([BI[BI[B)I
-
-    move-result v8
-
-    add-int/2addr v6, v8
-
-    .line 577
-    const/4 v3, 0x0
-
-    .line 542
-    .end local v3    # "b4Posn":I
-    .restart local v8    # "b4Posn":I
-    :cond_74
-    move v8, v3
-
-    goto :goto_8d
-
-    .line 570
-    :cond_76
-    new-instance v3, Lcom/google/tagmanager/Base64$Base64DecoderException;
-
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v13, "Data found after trailing padding byte at index "
-
-    invoke-virtual {v4, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v4, v9}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-direct {v3, v4}, Lcom/google/tagmanager/Base64$Base64DecoderException;-><init>(Ljava/lang/String;)V
-
-    throw v3
-
-    .line 542
-    :goto_8d
-    add-int/lit8 v9, v9, 0x1
-
-    move v3, v13
-
-    goto :goto_16
-
-    .line 547
-    :cond_91
-    new-instance v3, Lcom/google/tagmanager/Base64$Base64DecoderException;
-
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v13, "Bad Base64 input character at "
-
-    invoke-virtual {v4, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v4, v9}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    const-string v13, ": "
-
-    invoke-virtual {v4, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    add-int v13, v9, p1
+    add-int v13, v13, p1
 
     aget-byte v13, p0, v13
 
-    invoke-virtual {v4, v13}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    and-int/lit8 v13, v13, 0x7f
+
+    int-to-byte v13, v13
+
+    .line 564
+    .local v13, "lastByte":B
+    if-eq v13, v12, :cond_2
+
+    const/16 v12, 0xa
+
+    if-ne v13, v12, :cond_1
+
+    goto :goto_1
+
+    .line 565
+    :cond_1
+    new-instance v3, Lcom/google/tagmanager/Base64$Base64DecoderException;
+
+    const-string v12, "encoded value has invalid trailing byte"
+
+    invoke-direct {v3, v12}, Lcom/google/tagmanager/Base64$Base64DecoderException;-><init>(Ljava/lang/String;)V
+
+    throw v3
+
+    .line 569
+    .end local v13    # "lastByte":B
+    :cond_2
+    :goto_1
+    goto :goto_2
+
+    .line 559
+    :cond_3
+    new-instance v3, Lcom/google/tagmanager/Base64$Base64DecoderException;
+
+    new-instance v12, Ljava/lang/StringBuilder;
+
+    invoke-direct {v12}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v13, "Invalid padding byte found in position "
+
+    invoke-virtual {v12, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v12, v8}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v12}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v12
+
+    invoke-direct {v3, v12}, Lcom/google/tagmanager/Base64$Base64DecoderException;-><init>(Ljava/lang/String;)V
+
+    throw v3
+
+    .line 569
+    :cond_4
+    if-nez v11, :cond_6
+
+    .line 574
+    add-int/lit8 v12, v7, 0x1
+
+    .end local v7    # "b4Posn":I
+    .local v12, "b4Posn":I
+    aput-byte v9, v6, v7
+
+    .line 575
+    if-ne v12, v3, :cond_5
+
+    .line 576
+    invoke-static {v6, v13, v4, v5, v1}, Lcom/google/tagmanager/Base64;->decode4to3([BI[BI[B)I
+
+    move-result v7
+
+    add-int/2addr v5, v7
+
+    .line 577
+    const/4 v7, 0x0
+
+    .end local v12    # "b4Posn":I
+    .restart local v7    # "b4Posn":I
+    goto :goto_2
+
+    .line 575
+    .end local v7    # "b4Posn":I
+    .restart local v12    # "b4Posn":I
+    :cond_5
+    move v7, v12
+
+    goto :goto_2
+
+    .line 570
+    .end local v12    # "b4Posn":I
+    .restart local v7    # "b4Posn":I
+    :cond_6
+    new-instance v3, Lcom/google/tagmanager/Base64$Base64DecoderException;
+
+    new-instance v12, Ljava/lang/StringBuilder;
+
+    invoke-direct {v12}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v13, "Data found after trailing padding byte at index "
+
+    invoke-virtual {v12, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v12, v8}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v12}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v12
+
+    invoke-direct {v3, v12}, Lcom/google/tagmanager/Base64$Base64DecoderException;-><init>(Ljava/lang/String;)V
+
+    throw v3
+
+    .line 542
+    :cond_7
+    :goto_2
+    add-int/lit8 v8, v8, 0x1
+
+    goto :goto_0
+
+    .line 547
+    :cond_8
+    new-instance v3, Lcom/google/tagmanager/Base64$Base64DecoderException;
+
+    new-instance v12, Ljava/lang/StringBuilder;
+
+    invoke-direct {v12}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v13, "Bad Base64 input character at "
+
+    invoke-virtual {v12, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v12, v8}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v13, ": "
+
+    invoke-virtual {v12, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    add-int v13, v8, p1
+
+    aget-byte v13, p0, v13
+
+    invoke-virtual {v12, v13}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     const-string v13, "(decimal)"
 
-    invoke-virtual {v4, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v12, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v12}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v4
+    move-result-object v12
 
-    invoke-direct {v3, v4}, Lcom/google/tagmanager/Base64$Base64DecoderException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v3, v12}, Lcom/google/tagmanager/Base64$Base64DecoderException;-><init>(Ljava/lang/String;)V
 
     throw v3
 
     .line 589
-    :cond_b9
-    if-eqz v8, :cond_e0
+    :cond_9
+    if-eqz v7, :cond_b
 
     .line 590
     const/4 v3, 0x1
 
-    if-eq v8, v3, :cond_c7
+    if-eq v7, v3, :cond_a
 
     .line 593
-    aput-byte v13, v7, v8
+    aput-byte v12, v6, v7
 
     .line 594
-    const/4 v3, 0x0
+    invoke-static {v6, v13, v4, v5, v1}, Lcom/google/tagmanager/Base64;->decode4to3([BI[BI[B)I
 
-    invoke-static {v7, v3, v5, v6, v1}, Lcom/google/tagmanager/Base64;->decode4to3([BI[BI[B)I
+    move-result v3
 
-    move-result v4
+    add-int/2addr v5, v3
 
-    add-int/2addr v6, v4
-
-    goto :goto_e0
+    goto :goto_3
 
     .line 591
-    :cond_c7
+    :cond_a
     new-instance v3, Lcom/google/tagmanager/Base64$Base64DecoderException;
 
-    new-instance v4, Ljava/lang/StringBuilder;
+    new-instance v12, Ljava/lang/StringBuilder;
 
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v12}, Ljava/lang/StringBuilder;-><init>()V
 
     const-string v13, "single trailing character at offset "
 
-    invoke-virtual {v4, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v12, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     add-int/lit8 v13, v0, -0x1
 
-    invoke-virtual {v4, v13}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v12, v13}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v12}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v4
+    move-result-object v12
 
-    invoke-direct {v3, v4}, Lcom/google/tagmanager/Base64$Base64DecoderException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v3, v12}, Lcom/google/tagmanager/Base64$Base64DecoderException;-><init>(Ljava/lang/String;)V
 
     throw v3
 
     .line 597
-    :cond_e0
-    :goto_e0
-    new-array v3, v6, [B
+    :cond_b
+    :goto_3
+    new-array v3, v5, [B
 
     .line 598
     .local v3, "out":[B
-    const/4 v4, 0x0
-
-    invoke-static {v5, v4, v3, v4, v6}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {v4, v13, v3, v13, v5}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
     .line 599
     return-object v3
 .end method
 
 .method private static decode4to3([BI[BI[B)I
-    .registers 8
+    .locals 3
     .param p0, "source"    # [B
     .param p1, "srcOffset"    # I
     .param p2, "destination"    # [B
@@ -908,7 +892,7 @@
 
     const/16 v1, 0x3d
 
-    if-ne v0, v1, :cond_22
+    if-ne v0, v1, :cond_0
 
     .line 405
     aget-byte v0, p0, p1
@@ -946,12 +930,12 @@
 
     .line 411
     .end local v0    # "outBuff":I
-    :cond_22
+    :cond_0
     add-int/lit8 v0, p1, 0x3
 
     aget-byte v0, p0, v0
 
-    if-ne v0, v1, :cond_54
+    if-ne v0, v1, :cond_1
 
     .line 413
     aget-byte v0, p0, p1
@@ -1010,7 +994,7 @@
 
     .line 423
     .end local v0    # "outBuff":I
-    :cond_54
+    :cond_1
     aget-byte v0, p0, p1
 
     aget-byte v0, p4, v0
@@ -1086,7 +1070,7 @@
 .end method
 
 .method public static decodeWebSafe(Ljava/lang/String;)[B
-    .registers 4
+    .locals 3
     .param p0, "s"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1113,7 +1097,7 @@
 .end method
 
 .method public static decodeWebSafe([B)[B
-    .registers 3
+    .locals 2
     .param p0, "source"    # [B
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -1134,7 +1118,7 @@
 .end method
 
 .method public static decodeWebSafe([BII)[B
-    .registers 4
+    .locals 1
     .param p0, "source"    # [B
     .param p1, "off"    # I
     .param p2, "len"    # I
@@ -1155,7 +1139,7 @@
 .end method
 
 .method public static encode([B)Ljava/lang/String;
-    .registers 5
+    .locals 4
     .param p0, "source"    # [B
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
@@ -1177,7 +1161,7 @@
 .end method
 
 .method private static encode([BII[BZ)Ljava/lang/String;
-    .registers 9
+    .locals 4
     .param p0, "source"    # [B
     .param p1, "off"    # I
     .param p2, "len"    # I
@@ -1197,10 +1181,10 @@
 
     .line 305
     .local v1, "outLen":I
-    :goto_8
-    if-nez p4, :cond_18
+    :goto_0
+    if-nez p4, :cond_1
 
-    if-lez v1, :cond_18
+    if-lez v1, :cond_1
 
     .line 306
     add-int/lit8 v2, v1, -0x1
@@ -1209,20 +1193,20 @@
 
     const/16 v3, 0x3d
 
-    if-eq v2, v3, :cond_15
+    if-eq v2, v3, :cond_0
 
     .line 307
-    goto :goto_18
+    goto :goto_1
 
     .line 309
-    :cond_15
+    :cond_0
     add-int/lit8 v1, v1, -0x1
 
-    goto :goto_8
+    goto :goto_0
 
     .line 312
-    :cond_18
-    :goto_18
+    :cond_1
+    :goto_1
     new-instance v2, Ljava/lang/String;
 
     const/4 v3, 0x0
@@ -1233,7 +1217,7 @@
 .end method
 
 .method public static encode([BZ)Ljava/lang/String;
-    .registers 5
+    .locals 3
     .param p0, "source"    # [B
     .param p1, "doPadding"    # Z
 
@@ -1252,16 +1236,16 @@
 .end method
 
 .method public static encode([BII[BI)[B
-    .registers 21
+    .locals 16
     .param p0, "source"    # [B
     .param p1, "off"    # I
     .param p2, "len"    # I
     .param p3, "alphabet"    # [B
     .param p4, "maxLineLength"    # I
 
+    .line 327
     move/from16 v6, p2
 
-    .line 327
     move/from16 v7, p4
 
     add-int/lit8 v0, v6, 0x2
@@ -1300,20 +1284,18 @@
 
     move v13, v1
 
-    .end local v0    # "d":I
-    .end local v1    # "e":I
-    .local v2, "lineLength":I
-    .local v12, "d":I
-    .local v13, "e":I
-    :goto_16
     move v14, v2
 
     .line 336
-    .end local v2    # "lineLength":I
+    .end local v0    # "d":I
+    .end local v1    # "e":I
+    .local v12, "d":I
+    .local v13, "e":I
     .local v14, "lineLength":I
+    :goto_0
     const/16 v15, 0xa
 
-    if-ge v12, v11, :cond_6e
+    if-ge v12, v11, :cond_1
 
     .line 341
     add-int v0, v12, p1
@@ -1388,50 +1370,36 @@
     aput-byte v2, v10, v1
 
     .line 350
-    add-int/lit8 v1, v14, 0x4
+    add-int/lit8 v14, v14, 0x4
 
     .line 351
-    .end local v14    # "lineLength":I
-    .local v1, "lineLength":I
-    if-ne v1, v7, :cond_68
+    if-ne v14, v7, :cond_0
 
     .line 352
-    add-int/lit8 v2, v13, 0x4
+    add-int/lit8 v1, v13, 0x4
 
-    aput-byte v15, v10, v2
+    aput-byte v15, v10, v1
 
     .line 353
     add-int/lit8 v13, v13, 0x1
 
     .line 354
-    const/4 v0, 0x0
+    const/4 v1, 0x0
+
+    move v14, v1
 
     .line 336
-    .end local v1    # "lineLength":I
-    .local v0, "lineLength":I
-    move v2, v0
-
-    goto :goto_69
-
-    .end local v0    # "lineLength":I
-    .restart local v1    # "lineLength":I
-    :cond_68
-    move v2, v1
-
-    .end local v1    # "lineLength":I
-    .restart local v2    # "lineLength":I
-    :goto_69
+    .end local v0    # "inBuff":I
+    :cond_0
     add-int/lit8 v12, v12, 0x3
 
     add-int/lit8 v13, v13, 0x4
 
-    goto :goto_16
+    goto :goto_0
 
     .line 358
-    .end local v2    # "lineLength":I
-    .restart local v14    # "lineLength":I
-    :cond_6e
-    if-ge v12, v6, :cond_8a
+    :cond_1
+    if-ge v12, v6, :cond_3
 
     .line 359
     add-int v1, v12, p1
@@ -1449,41 +1417,30 @@
     invoke-static/range {v0 .. v5}, Lcom/google/tagmanager/Base64;->encode3to4([BII[BI[B)[B
 
     .line 361
-    add-int/lit8 v0, v14, 0x4
+    add-int/lit8 v14, v14, 0x4
 
     .line 362
-    .end local v14    # "lineLength":I
-    .restart local v0    # "lineLength":I
-    if-ne v0, v7, :cond_87
+    if-ne v14, v7, :cond_2
 
     .line 364
-    add-int/lit8 v1, v13, 0x4
+    add-int/lit8 v0, v13, 0x4
 
-    aput-byte v15, v10, v1
+    aput-byte v15, v10, v0
 
     .line 365
     add-int/lit8 v13, v13, 0x1
 
     .line 367
-    :cond_87
+    :cond_2
     add-int/lit8 v13, v13, 0x4
 
-    goto :goto_8b
-
     .line 371
-    .end local v0    # "lineLength":I
-    .restart local v14    # "lineLength":I
-    :cond_8a
-    move v0, v14
-
-    .end local v14    # "lineLength":I
-    .restart local v0    # "lineLength":I
-    :goto_8b
+    :cond_3
     return-object v10
 .end method
 
 .method private static encode3to4([BII[BI[B)[B
-    .registers 10
+    .locals 4
     .param p0, "source"    # [B
     .param p1, "srcOffset"    # I
     .param p2, "numSigBytes"    # I
@@ -1494,7 +1451,7 @@
     .line 222
     const/4 v0, 0x0
 
-    if-lez p2, :cond_a
+    if-lez p2, :cond_0
 
     aget-byte v1, p0, p1
 
@@ -1502,35 +1459,35 @@
 
     ushr-int/lit8 v1, v1, 0x8
 
-    goto :goto_b
+    goto :goto_0
 
-    :cond_a
+    :cond_0
     move v1, v0
 
-    :goto_b
+    :goto_0
     const/4 v2, 0x1
 
-    if-le p2, v2, :cond_17
+    if-le p2, v2, :cond_1
 
-    add-int/lit8 v2, p1, 0x1
+    add-int/lit8 v3, p1, 0x1
 
-    aget-byte v2, p0, v2
+    aget-byte v3, p0, v3
 
-    shl-int/lit8 v2, v2, 0x18
+    shl-int/lit8 v3, v3, 0x18
 
-    ushr-int/lit8 v2, v2, 0x10
+    ushr-int/lit8 v3, v3, 0x10
 
-    goto :goto_18
+    goto :goto_1
 
-    :cond_17
-    move v2, v0
+    :cond_1
+    move v3, v0
 
-    :goto_18
-    or-int/2addr v1, v2
+    :goto_1
+    or-int/2addr v1, v3
 
-    const/4 v2, 0x2
+    const/4 v3, 0x2
 
-    if-le p2, v2, :cond_25
+    if-le p2, v3, :cond_2
 
     add-int/lit8 v0, p1, 0x2
 
@@ -1540,22 +1497,26 @@
 
     ushr-int/lit8 v0, v0, 0x18
 
-    nop
-
-    :cond_25
+    :cond_2
     or-int/2addr v0, v1
 
     .line 227
     .local v0, "inBuff":I
     const/16 v1, 0x3d
 
-    packed-switch p2, :pswitch_data_88
+    if-eq p2, v2, :cond_5
+
+    if-eq p2, v3, :cond_4
+
+    const/4 v1, 0x3
+
+    if-eq p2, v1, :cond_3
 
     .line 247
     return-object p3
 
     .line 229
-    :pswitch_2c
+    :cond_3
     ushr-int/lit8 v1, v0, 0x12
 
     aget-byte v1, p5, v1
@@ -1597,7 +1558,7 @@
     return-object p3
 
     .line 235
-    :pswitch_4f
+    :cond_4
     ushr-int/lit8 v2, v0, 0x12
 
     aget-byte v2, p5, v2
@@ -1635,7 +1596,7 @@
     return-object p3
 
     .line 241
-    :pswitch_6e
+    :cond_5
     ushr-int/lit8 v2, v0, 0x12
 
     aget-byte v2, p5, v2
@@ -1665,19 +1626,10 @@
 
     .line 245
     return-object p3
-
-    nop
-
-    :pswitch_data_88
-    .packed-switch 0x1
-        :pswitch_6e
-        :pswitch_4f
-        :pswitch_2c
-    .end packed-switch
 .end method
 
 .method public static encodeWebSafe([BZ)Ljava/lang/String;
-    .registers 5
+    .locals 3
     .param p0, "source"    # [B
     .param p1, "doPadding"    # Z
 
@@ -1696,7 +1648,7 @@
 .end method
 
 .method public static getAlphabet()[B
-    .registers 1
+    .locals 1
 
     .line 175
     sget-object v0, Lcom/google/tagmanager/Base64;->ALPHABET:[B
@@ -1711,7 +1663,7 @@
 .end method
 
 .method public static getWebsafeAlphabet()[B
-    .registers 1
+    .locals 1
 
     .line 182
     sget-object v0, Lcom/google/tagmanager/Base64;->WEBSAFE_ALPHABET:[B

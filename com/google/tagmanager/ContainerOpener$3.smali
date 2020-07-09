@@ -20,7 +20,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/google/tagmanager/ContainerOpener;)V
-    .registers 2
+    .locals 0
 
     .line 387
     iput-object p1, p0, Lcom/google/tagmanager/ContainerOpener$3;->this$0:Lcom/google/tagmanager/ContainerOpener;
@@ -33,7 +33,7 @@
 
 # virtual methods
 .method public run()V
-    .registers 3
+    .locals 2
 
     .line 390
     const-string v0, "Timer expired."
@@ -43,10 +43,7 @@
     .line 391
     iget-object v0, p0, Lcom/google/tagmanager/ContainerOpener$3;->this$0:Lcom/google/tagmanager/ContainerOpener;
 
-    iget-object v1, p0, Lcom/google/tagmanager/ContainerOpener$3;->this$0:Lcom/google/tagmanager/ContainerOpener;
-
-    # getter for: Lcom/google/tagmanager/ContainerOpener;->mContainer:Lcom/google/tagmanager/Container;
-    invoke-static {v1}, Lcom/google/tagmanager/ContainerOpener;->access$100(Lcom/google/tagmanager/ContainerOpener;)Lcom/google/tagmanager/Container;
+    invoke-static {v0}, Lcom/google/tagmanager/ContainerOpener;->access$100(Lcom/google/tagmanager/ContainerOpener;)Lcom/google/tagmanager/Container;
 
     move-result-object v1
 

@@ -14,10 +14,6 @@
 # static fields
 .field private static final DIR_NAME:Ljava/lang/String; = "Dump"
 
-.field public static DIV_COLOR:I = 0x0
-
-.field public static DIV_HEIGHT:I = 0x0
-
 .field private static final TAG:Ljava/lang/String; = "BitmapDumper"
 
 .field public static final TAG_CURR:Ljava/lang/String; = "Curr"
@@ -27,6 +23,10 @@
 .field public static final TAG_NEXT:Ljava/lang/String; = "Next"
 
 .field public static final TAG_PREV:Ljava/lang/String; = "Prev"
+
+.field public static divColor:I
+
+.field public static divHeight:I
 
 
 # instance fields
@@ -41,23 +41,23 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .registers 1
+    .locals 1
 
     .line 35
     const/4 v0, 0x0
 
-    sput v0, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;->DIV_HEIGHT:I
+    sput v0, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;->divHeight:I
 
     .line 36
     const v0, -0xffff01
 
-    sput v0, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;->DIV_COLOR:I
+    sput v0, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;->divColor:I
 
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;IZ)V
-    .registers 5
+    .locals 1
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "index"    # I
     .param p3, "isNext"    # Z
@@ -97,7 +97,7 @@
 .end method
 
 .method private getCombinedTag()Ljava/lang/String;
-    .registers 3
+    .locals 2
 
     .line 145
     new-instance v0, Ljava/lang/StringBuilder;
@@ -114,16 +114,16 @@
 
     iget-boolean v1, p0, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;->mIsNext:Z
 
-    if-eqz v1, :cond_16
+    if-eqz v1, :cond_0
 
     const-string v1, "Next"
 
-    goto :goto_18
+    goto :goto_0
 
-    :cond_16
+    :cond_0
     const-string v1, "Prev"
 
-    :goto_18
+    :goto_0
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {p0}, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;->getTag()Ljava/lang/String;
@@ -140,7 +140,7 @@
 .end method
 
 .method public static load(Landroid/content/Context;)V
-    .registers 6
+    .locals 5
     .param p0, "context"    # Landroid/content/Context;
 
     .line 63
@@ -148,7 +148,7 @@
 
     move-result v0
 
-    if-nez v0, :cond_17
+    if-nez v0, :cond_0
 
     .line 64
     invoke-static {}, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper$Options;->values()[Lcom/oneplus/screenshot/longshot/dump/BitmapDumper$Options;
@@ -161,46 +161,45 @@
 
     move v3, v2
 
-    :goto_d
-    if-ge v3, v1, :cond_17
+    :goto_0
+    if-ge v3, v1, :cond_0
 
     aget-object v4, v0, v3
 
     .line 65
     .local v4, "opt":Lcom/oneplus/screenshot/longshot/dump/BitmapDumper$Options;
-    # setter for: Lcom/oneplus/screenshot/longshot/dump/BitmapDumper$Options;->mValue:Z
     invoke-static {v4, v2}, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper$Options;->access$002(Lcom/oneplus/screenshot/longshot/dump/BitmapDumper$Options;Z)Z
 
     .line 64
     .end local v4    # "opt":Lcom/oneplus/screenshot/longshot/dump/BitmapDumper$Options;
     add-int/lit8 v3, v3, 0x1
 
-    goto :goto_d
+    goto :goto_0
 
     .line 68
-    :cond_17
+    :cond_0
     sget-object v0, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper$Options;->DIVIDE:Lcom/oneplus/screenshot/longshot/dump/BitmapDumper$Options;
 
     invoke-virtual {v0}, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper$Options;->getValue()Z
 
     move-result v0
 
-    if-eqz v0, :cond_22
+    if-eqz v0, :cond_1
 
     .line 69
     const/4 v0, 0x1
 
-    sput v0, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;->DIV_HEIGHT:I
+    sput v0, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;->divHeight:I
 
     .line 71
-    :cond_22
+    :cond_1
     return-void
 .end method
 
 
 # virtual methods
 .method public dump(Landroid/graphics/Bitmap;Ljava/lang/String;)V
-    .registers 6
+    .locals 3
     .param p1, "bitmap"    # Landroid/graphics/Bitmap;
     .param p2, "tag"    # Ljava/lang/String;
 
@@ -214,18 +213,18 @@
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 75
-    if-nez p1, :cond_c
+    if-nez p1, :cond_0
 
     .line 76
     return-void
 
     .line 78
-    :cond_c
+    :cond_0
     invoke-virtual {p1}, Landroid/graphics/Bitmap;->getHeight()I
 
     move-result v0
 
-    if-lez v0, :cond_1e
+    if-lez v0, :cond_1
 
     .line 79
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;->mContext:Landroid/content/Context;
@@ -239,12 +238,12 @@
     invoke-static {v0, v1, p1}, Lcom/oneplus/screenshot/util/Utils;->saveToFile(Landroid/content/Context;Lcom/oneplus/screenshot/util/FileInfo;Landroid/graphics/Bitmap;)Z
 
     .line 81
-    :cond_1e
+    :cond_1
     return-void
 .end method
 
 .method public dump(Lcom/oneplus/screenshot/longshot/cache/BitmapCache;Z)V
-    .registers 23
+    .locals 19
     .param p1, "cache"    # Lcom/oneplus/screenshot/longshot/cache/BitmapCache;
     .param p2, "isCurr"    # Z
 
@@ -264,7 +263,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_7c
+    if-eqz v0, :cond_5
 
     .line 104
     new-instance v0, Ljava/util/ArrayList;
@@ -291,29 +290,29 @@
 
     .line 108
     .local v3, "bottom":Landroid/graphics/Bitmap;
-    if-eqz v1, :cond_29
+    if-eqz v1, :cond_0
 
-    if-nez p2, :cond_29
+    if-nez p2, :cond_0
 
     .line 109
     invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     .line 111
-    :cond_29
-    if-eqz v2, :cond_2e
+    :cond_0
+    if-eqz v2, :cond_1
 
     .line 112
     invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     .line 114
-    :cond_2e
-    if-eqz v3, :cond_33
+    :cond_1
+    if-eqz v3, :cond_2
 
     .line 115
     invoke-interface {v0, v3}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     .line 117
-    :cond_33
+    :cond_2
     invoke-static {v0}, Lcom/oneplus/screenshot/longshot/bitmap/BitmapUtils;->getImageWidth(Ljava/util/List;)I
 
     move-result v10
@@ -338,14 +337,12 @@
 
     move-result-object v13
 
-    :goto_42
+    :goto_0
     invoke-interface {v13}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v5
 
-    const/4 v6, 0x0
-
-    if-eqz v5, :cond_75
+    if-eqz v5, :cond_4
 
     invoke-interface {v13}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -357,83 +354,77 @@
 
     .line 122
     .local v14, "bitmap":Landroid/graphics/Bitmap;
-    move v15, v4
+    const/4 v5, 0x0
+
+    move/from16 v16, v4
+
+    move v15, v5
 
     .end local v4    # "i":I
-    .local v6, "y":I
-    .local v15, "i":I
-    :goto_51
-    move v9, v6
-
-    .end local v6    # "y":I
-    .local v9, "y":I
+    .local v15, "y":I
+    .local v16, "i":I
+    :goto_1
     invoke-virtual {v14}, Landroid/graphics/Bitmap;->getHeight()I
 
     move-result v4
 
-    if-ge v9, v4, :cond_72
+    if-ge v15, v4, :cond_3
 
     .line 123
-    add-int/lit8 v16, v15, 0x1
+    add-int/lit8 v17, v16, 0x1
 
-    .local v16, "i":I
-    new-instance v17, Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
+    .end local v16    # "i":I
+    .local v17, "i":I
+    new-instance v18, Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
 
     const/4 v6, 0x0
 
-    const/16 v18, 0x1
+    const/4 v9, 0x1
 
-    move-object/from16 v4, v17
+    move-object/from16 v4, v18
 
     move-object v5, v14
 
-    move v7, v9
+    move v7, v15
 
     move v8, v10
 
-    move/from16 v19, v9
-
-    move/from16 v9, v18
-
-    .end local v9    # "y":I
-    .local v19, "y":I
     invoke-direct/range {v4 .. v9}, Lcom/oneplus/screenshot/longshot/bitmap/Pixels;-><init>(Landroid/graphics/Bitmap;IIII)V
 
-    aput-object v17, v12, v15
+    aput-object v18, v12, v16
 
     .line 122
-    .end local v15    # "i":I
-    add-int/lit8 v6, v19, 0x1
+    add-int/lit8 v15, v15, 0x1
 
-    .end local v19    # "y":I
-    .restart local v6    # "y":I
-    move/from16 v15, v16
+    move/from16 v16, v17
 
-    goto :goto_51
+    goto :goto_1
 
     .line 125
-    .end local v6    # "y":I
     .end local v14    # "bitmap":Landroid/graphics/Bitmap;
-    .end local v16    # "i":I
-    .restart local v15    # "i":I
-    :cond_72
-    nop
+    .end local v15    # "y":I
+    .end local v17    # "i":I
+    .restart local v16    # "i":I
+    :cond_3
+    move/from16 v4, v16
 
-    .line 121
-    move v4, v15
-
-    goto :goto_42
+    goto :goto_0
 
     .line 126
-    .end local v15    # "i":I
+    .end local v16    # "i":I
     .restart local v4    # "i":I
-    :cond_75
-    array-length v5, v12
+    :cond_4
+    const/4 v5, 0x0
+
+    array-length v6, v12
 
     move-object/from16 v7, p0
 
-    invoke-virtual {v7, v12, v6, v5}, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;->dump([Lcom/oneplus/screenshot/longshot/bitmap/Pixels;II)V
+    invoke-virtual {v7, v12, v5, v6}, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;->dump([Lcom/oneplus/screenshot/longshot/bitmap/Pixels;II)V
 
+    goto :goto_2
+
+    .line 103
     .end local v0    # "bitmaps":Ljava/util/List;, "Ljava/util/List<Landroid/graphics/Bitmap;>;"
     .end local v1    # "top":Landroid/graphics/Bitmap;
     .end local v2    # "main":Landroid/graphics/Bitmap;
@@ -442,18 +433,16 @@
     .end local v10    # "w":I
     .end local v11    # "h":I
     .end local v12    # "lines":[Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
-    goto :goto_7e
-
-    .line 128
-    :cond_7c
+    :cond_5
     move-object/from16 v7, p0
 
-    :goto_7e
+    .line 128
+    :goto_2
     return-void
 .end method
 
 .method public dump([Lcom/oneplus/screenshot/longshot/bitmap/Pixels;II)V
-    .registers 13
+    .locals 9
     .param p1, "lines"    # [Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
     .param p2, "offset"    # I
     .param p3, "height"    # I
@@ -468,7 +457,7 @@
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 85
-    if-lez p3, :cond_46
+    if-lez p3, :cond_1
 
     .line 86
     const/4 v0, 0x0
@@ -493,11 +482,11 @@
 
     .line 89
     .local v3, "pixels":[I
-    move v4, v0
+    const/4 v4, 0x0
 
     .local v4, "i":I
-    :goto_19
-    if-ge v4, v2, :cond_30
+    :goto_0
+    if-ge v4, v2, :cond_0
 
     .line 90
     add-int v5, v4, p2
@@ -524,11 +513,11 @@
     .end local v5    # "line":Lcom/oneplus/screenshot/longshot/bitmap/Pixels;
     add-int/lit8 v4, v4, 0x1
 
-    goto :goto_19
+    goto :goto_0
 
     .line 93
     .end local v4    # "i":I
-    :cond_30
+    :cond_0
     sget-object v0, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
 
     invoke-static {v3, v1, v2, v0}, Landroid/graphics/Bitmap;->createBitmap([IIILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
@@ -541,13 +530,13 @@
 
     new-instance v5, Lcom/oneplus/screenshot/util/ImageInfo;
 
-    const-string v6, "Dump"
-
     invoke-direct {p0}, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;->getCombinedTag()Ljava/lang/String;
 
-    move-result-object v7
+    move-result-object v6
 
-    invoke-direct {v5, v6, v7}, Lcom/oneplus/screenshot/util/ImageInfo;-><init>(Ljava/lang/String;Ljava/lang/String;)V
+    const-string v7, "Dump"
+
+    invoke-direct {v5, v7, v6}, Lcom/oneplus/screenshot/util/ImageInfo;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
     invoke-static {v4, v5, v0}, Lcom/oneplus/screenshot/util/Utils;->saveToFile(Landroid/content/Context;Lcom/oneplus/screenshot/util/FileInfo;Landroid/graphics/Bitmap;)Z
 
@@ -556,12 +545,12 @@
     .end local v1    # "w":I
     .end local v2    # "h":I
     .end local v3    # "pixels":[I
-    :cond_46
+    :cond_1
     return-void
 .end method
 
 .method protected getTag()Ljava/lang/String;
-    .registers 2
+    .locals 1
 
     .line 131
     iget-object v0, p0, Lcom/oneplus/screenshot/longshot/dump/BitmapDumper;->mTag:Ljava/lang/String;
@@ -570,7 +559,7 @@
 .end method
 
 .method protected setTag(Ljava/lang/String;)V
-    .registers 2
+    .locals 0
     .param p1, "tag"    # Ljava/lang/String;
 
     .line 138

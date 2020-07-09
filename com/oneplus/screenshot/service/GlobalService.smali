@@ -15,7 +15,7 @@
 
 # direct methods
 .method public constructor <init>()V
-    .registers 1
+    .locals 0
 
     .line 8
     invoke-direct {p0}, Landroid/app/Service;-><init>()V
@@ -26,7 +26,7 @@
 
 # virtual methods
 .method public onBind(Landroid/content/Intent;)Landroid/os/IBinder;
-    .registers 4
+    .locals 2
     .param p1, "intent"    # Landroid/content/Intent;
 
     .line 47
@@ -43,7 +43,7 @@
 .end method
 
 .method public onCreate()V
-    .registers 3
+    .locals 2
 
     .line 23
     invoke-super {p0}, Landroid/app/Service;->onCreate()V
@@ -60,7 +60,7 @@
 .end method
 
 .method public onDestroy()V
-    .registers 3
+    .locals 2
 
     .line 29
     invoke-super {p0}, Landroid/app/Service;->onDestroy()V
@@ -77,7 +77,7 @@
 .end method
 
 .method public onStartCommand(Landroid/content/Intent;II)I
-    .registers 7
+    .locals 3
     .param p1, "intent"    # Landroid/content/Intent;
     .param p2, "flags"    # I
     .param p3, "startId"    # I
@@ -90,7 +90,7 @@
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 36
-    if-eqz p1, :cond_21
+    if-eqz p1, :cond_0
 
     .line 37
     invoke-virtual {p1}, Landroid/content/Intent;->getAction()Ljava/lang/String;
@@ -105,7 +105,7 @@
 
     move-result v1
 
-    if-eqz v1, :cond_21
+    if-eqz v1, :cond_0
 
     .line 39
     new-instance v1, Lcom/oneplus/screenshot/service/GlobalSave;
@@ -120,7 +120,7 @@
 
     .line 42
     .end local v0    # "action":Ljava/lang/String;
-    :cond_21
+    :cond_0
     invoke-super {p0, p1, p2, p3}, Landroid/app/Service;->onStartCommand(Landroid/content/Intent;II)I
 
     move-result v0
