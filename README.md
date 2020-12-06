@@ -2,6 +2,12 @@
 
 This fixes OPLongshot to produce PNG files instead of JPG files.
 
+## Deprecation
+
+This does not work as of OxygenOS 10, because the system APKs no longer have their vdex files included outside of the original APK.
+
+Also, I've moved on to a new phone.
+
 ## Method
 
 1. Retrieve the DEX file from the VDEX file using [vdex2dex](https://github.com/angelsl/vdex2dex).
